@@ -60,9 +60,17 @@ const SearchBar = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!query.trim()) return;
+    const trimmed = query.trim();
+    if (!trimmed) return;
+    
+    const lcMatch = trimmed.match(/leetcode\.com\/problems\/([^/]+)/i);
+    if (lcMatch && lcMatch[1]) {
+      navigateTo(lcMatch[1]);
+      return;
+    }
+    
     if (results.length > 0) { navigateTo(results[0].slug); return; }
-    const slug = query.toLowerCase().trim().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+    const slug = trimmed.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
     navigateTo(slug);
   };
 
