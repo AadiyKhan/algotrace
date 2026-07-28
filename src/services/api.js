@@ -1,4 +1,4 @@
-const BASE = import.meta.env.VITE_API_BASE ?? 'http://localhost:3001/api';
+const BASE = import.meta.env.VITE_API_BASE ?? (import.meta.env.PROD ? '/api' : 'http://localhost:3001/api');
 
 // ── Fetch full trace for a problem ──────────────────────────
 export const fetchProblemData = async (slug) => {
