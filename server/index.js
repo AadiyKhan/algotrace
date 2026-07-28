@@ -51,7 +51,13 @@ async function indexTraces() {
 const app = express();
 
 app.use(cors({
-  origin: process.env.ALLOWED_ORIGIN || 'http://localhost:5173',
+  origin: function (origin, callback) {
+    if (!origin || origin.startsWith('http://localhost:')) {
+      callback(null, true);
+    } else {
+      callback(null, process.env.ALLOWED_ORIGIN || 'http://localhost:5173');
+    }
+  }
 }));
 app.use(express.json());
 
@@ -192,6 +198,5 @@ app.use((req, res) => {
 });
 
 const PORT = process.env.PORT || 3001;
-indexTraces().then(() => {
-  app.listen(PORT, () => console.log(`AlgoTrace server running on port ${PORT}`));
-});
+app.listen(PORT, () => console.log(`AlgoTrace server running on port ${PORT}`));
+indexTraces().catch(console.error);
