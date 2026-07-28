@@ -1,0 +1,42 @@
+{
+  "title": "Satisfiability of Equality Equations",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Graph",
+    "Union-Find",
+    "String"
+  ],
+  "description": "Determine if a system of equality and inequality equations is satisfiable using Union-Find.",
+  "target": null,
+  "pseudocode": "1. parent = Array(26).fill(0).map((_, i) => i)\n2. find = (i) => parent[i] === i ? i : (parent[i] = find(parent[i]))\n3. for (eq of equations) if (eq[1] === '=') parent[find(eq.charCodeAt(0)-97)] = find(eq.charCodeAt(3)-97)\n4. for (eq of equations) if (eq[1] === '!' && find(eq.charCodeAt(0)-97) === find(eq.charCodeAt(3)-97)) return false\n5. return true",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize parent array where each letter points to itself (a=0, b=1, c=2)",
+      "array": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Process 'a==b': Union 'a' and 'b'. Parent of 0 becomes 1.",
+      "array": [
+        1,
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Process 'a!=b': Find(a) is 1, Find(b) is 1. Since 1 == 1, return false.",
+      "array": [
+        1,
+        1,
+        2
+      ]
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "title": "Kth Largest Element In A Stream",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Heap",
+    "Design"
+  ],
+  "description": "Design a class to find the kth largest element in a stream.",
+  "target": 3,
+  "pseudocode": "1. Initialize min-heap with size k\n2. For each num in nums: add(num)\n3. If heap.length > k: heap.pop()\n4. Return heap.peek()",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize min-heap with size k=3",
+      "array": []
+    },
+    {
+      "codeLine": 2,
+      "note": "Adding 4 to stream",
+      "array": [
+        4
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Adding 5 to stream",
+      "array": [
+        4,
+        5
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Adding 8 to stream",
+      "array": [
+        4,
+        5,
+        8
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Adding 2 to stream",
+      "array": [
+        2,
+        4,
+        5,
+        8
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Heap exceeds size 3, remove smallest (2)",
+      "array": [
+        4,
+        5,
+        8
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Return min-heap root (4)",
+      "array": [
+        4,
+        5,
+        8
+      ]
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "title": "Mini Parser",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "String",
+    "Stack",
+    "Recursion"
+  ],
+  "description": "Deserialize a nested list string into a NestedInteger structure.",
+  "target": "[123,[456,[789]]]",
+  "pseudocode": "1. stack = []\n2. for char in s:\n3.   if char == '[': stack.push(NestedInteger())\n4.   else if char == ',' : continue\n5.   else if char == ']': \n6.     curr = stack.pop()\n7.     if stack: stack.top().add(curr)\n8.     else: return curr\n9.   else: parse number and add to stack.top()",
+  "steps": [
+    {
+      "codeLine": 3,
+      "note": "Initialize stack with empty list for '['",
+      "array": [
+        "[]"
+      ]
+    },
+    {
+      "codeLine": 9,
+      "note": "Parse 123 and add to top list",
+      "array": [
+        "[123]"
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Encountered '[', push new list onto stack",
+      "array": [
+        "[123]",
+        "[]"
+      ]
+    },
+    {
+      "codeLine": 9,
+      "note": "Parse 456 and add to top list",
+      "array": [
+        "[123]",
+        "[456]"
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Encountered '[', push new list onto stack",
+      "array": [
+        "[123]",
+        "[456]",
+        "[]"
+      ]
+    },
+    {
+      "codeLine": 9,
+      "note": "Parse 789 and add to top list",
+      "array": [
+        "[123]",
+        "[456]",
+        "[789]"
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Pop [789] and add to [456]",
+      "array": [
+        "[123]",
+        "[456, [789]]"
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Pop [456, [789]] and add to [123]",
+      "array": [
+        "[123, [456, [789]]]"
+      ]
+    }
+  ]
+}

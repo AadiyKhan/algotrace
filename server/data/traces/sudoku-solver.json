@@ -1,0 +1,118 @@
+{
+  "title": "Sudoku Solver",
+  "difficulty": "Hard",
+  "type": "matrix",
+  "tags": [
+    "Backtracking",
+    "Matrix",
+    "Recursion"
+  ],
+  "description": "Fill a 9x9 Sudoku board such that every row, column, and 3x3 sub-grid contains digits 1-9.",
+  "pseudocode": "1. function solve(board) {\n2.   for (let r = 0; r < 9; r++) {\n3.     for (let c = 0; c < 9; c++) {\n4.       if (board[r][c] == '.') {\n5.         for (let k = 1; k <= 9; k++) {\n6.           if (isValid(board, r, c, k)) {\n7.             board[r][c] = k;\n8.             if (solve(board)) return true;\n9.             board[r][c] = '.';\n10.          }\n11.        }\n12.        return false;\n13.      }\n14.    }\n15.  }\n16.  return true;\n17. }",
+  "steps": [
+    {
+      "codeLine": 4,
+      "note": "Finding the first empty cell at [0, 0]",
+      "matrix": [
+        [
+          ".",
+          "5"
+        ],
+        [
+          "6",
+          "."
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Checking if 1 is valid at [0, 0]",
+      "matrix": [
+        [
+          ".",
+          "5"
+        ],
+        [
+          "6",
+          "."
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Placing 1 at [0, 0]",
+      "matrix": [
+        [
+          1,
+          "5"
+        ],
+        [
+          "6",
+          "."
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Recursively calling solve for next empty cell",
+      "matrix": [
+        [
+          1,
+          "5"
+        ],
+        [
+          "6",
+          "."
+        ]
+      ],
+      "curr": [
+        1,
+        1
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Placing 2 at [1, 1] to complete grid",
+      "matrix": [
+        [
+          1,
+          "5"
+        ],
+        [
+          "6",
+          2
+        ]
+      ],
+      "curr": [
+        1,
+        1
+      ]
+    },
+    {
+      "codeLine": 16,
+      "note": "Grid solved, returning true",
+      "matrix": [
+        [
+          1,
+          "5"
+        ],
+        [
+          "6",
+          2
+        ]
+      ]
+    }
+  ]
+}

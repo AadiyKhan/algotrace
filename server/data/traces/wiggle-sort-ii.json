@@ -1,0 +1,140 @@
+{
+  "title": "Wiggle Sort II",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Sorting"
+  ],
+  "description": "Rearrange an array such that nums[0] < nums[1] > nums[2] < nums[3]...",
+  "target": null,
+  "pseudocode": "1. sorted = nums.sort((a,b) => a - b)\n2. n = nums.length\n3. mid = Math.floor((n + 1) / 2)\n4. left = sorted.slice(0, mid).reverse()\n5. right = sorted.slice(mid).reverse()\n6. for i from 0 to n-1:\n7.   nums[i] = (i % 2 === 0) ? left[Math.floor(i/2)] : right[Math.floor(i/2)]",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Sort array: [1, 5, 1, 1, 6, 4] -> [1, 1, 1, 4, 5, 6]",
+      "array": [
+        1,
+        1,
+        1,
+        4,
+        5,
+        6
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Calculate mid point (3) to split array",
+      "array": [
+        1,
+        1,
+        1,
+        4,
+        5,
+        6
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Left half reversed: [1, 1, 1]",
+      "array": [
+        1,
+        1,
+        1,
+        4,
+        5,
+        6
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Right half reversed: [6, 5, 4]",
+      "array": [
+        1,
+        1,
+        1,
+        4,
+        5,
+        6
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "i=0: nums[0] = left[0] = 1",
+      "array": [
+        1,
+        1,
+        1,
+        4,
+        5,
+        6
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 7,
+      "note": "i=1: nums[1] = right[0] = 6",
+      "array": [
+        1,
+        6,
+        1,
+        4,
+        5,
+        6
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "i=2: nums[2] = left[1] = 1",
+      "array": [
+        1,
+        6,
+        1,
+        4,
+        5,
+        6
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 7,
+      "note": "i=3: nums[3] = right[1] = 5",
+      "array": [
+        1,
+        6,
+        1,
+        5,
+        5,
+        6
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 7,
+      "note": "i=4: nums[4] = left[2] = 1",
+      "array": [
+        1,
+        6,
+        1,
+        5,
+        1,
+        6
+      ],
+      "i": 4
+    },
+    {
+      "codeLine": 7,
+      "note": "i=5: nums[5] = right[2] = 4",
+      "array": [
+        1,
+        6,
+        1,
+        5,
+        1,
+        4
+      ],
+      "i": 5
+    }
+  ]
+}

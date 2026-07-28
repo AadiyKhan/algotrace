@@ -1,0 +1,89 @@
+{
+  "title": "Add Bold Tag in String",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "String",
+    "Intervals"
+  ],
+  "description": "Wrap bold tags <b> and </b> around substrings that match the given dictionary of words.",
+  "target": "s = 'aaabbc', dict = ['aaa', 'aab', 'bc']",
+  "pseudocode": "1. mask = new Array(s.length).fill(false)\n2. for word in dict:\n3.   start = s.indexOf(word)\n4.   while start != -1:\n5.     for i from start to start + word.length - 1: mask[i] = true\n6.     start = s.indexOf(word, start + 1)\n7. result = ''\n8. for i from 0 to s.length - 1:\n9.   if mask[i] and (i == 0 or !mask[i-1]): result += '<b>'\n10.  result += s[i]\n11.  if mask[i] and (i == s.length - 1 or !mask[i+1]): result += '</b>'",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize boolean mask to track bold indices",
+      "array": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Mark indices for 'aaa' (0,1,2)",
+      "array": [
+        true,
+        true,
+        true,
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Mark indices for 'aab' (2,3,4)",
+      "array": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        false
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Mark indices for 'bc' (4,5)",
+      "array": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "codeLine": 9,
+      "note": "Start bold tag at index 0",
+      "array": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 11,
+      "note": "End bold tag at index 5",
+      "array": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "i": 5
+    }
+  ]
+}

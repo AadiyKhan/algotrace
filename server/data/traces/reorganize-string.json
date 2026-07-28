@@ -1,0 +1,59 @@
+{
+  "title": "Reorganize String",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "String",
+    "Greedy",
+    "Heap",
+    "Hash Table"
+  ],
+  "description": "Rearrange characters in a string such that no two adjacent characters are the same.",
+  "target": "aab",
+  "pseudocode": "1. count frequencies of all chars\n2. store in max-heap\n3. extract two most frequent and append to result\n4. decrement counts and push back to heap\n5. if remaining count exists, push to heap\n6. return result if length matches input",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Count frequencies: {a: 2, b: 1}",
+      "array": [
+        "a",
+        "a",
+        "b"
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Extract 'a' and 'b', append 'ab'",
+      "array": [
+        "a",
+        "b"
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Decrement counts: {a: 1, b: 0}",
+      "array": [
+        "a",
+        "b"
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Extract 'a', append 'aba'",
+      "array": [
+        "a",
+        "b",
+        "a"
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Final string 'aba' valid, return result",
+      "array": [
+        "a",
+        "b",
+        "a"
+      ]
+    }
+  ]
+}

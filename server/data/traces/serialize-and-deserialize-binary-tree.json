@@ -1,0 +1,208 @@
+{
+  "title": "Serialize and Deserialize Binary Tree",
+  "difficulty": "Hard",
+  "type": "tree",
+  "tags": [
+    "Tree",
+    "Design",
+    "String"
+  ],
+  "description": "Serialization is the process of converting a tree structure into a string, and deserialization is the inverse. Using BFS (Level-order traversal).",
+  "pseudocode": "1: queue = [root]\n2: result = []\n3: while queue is not empty:\n4:   node = queue.shift()\n5:   if node: result.push(node.val); queue.push(node.left, node.right)\n6:   else: result.push('null')\n7: return result",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize queue with root node [1]",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 3,
+          "val": 4,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 5,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Dequeued node 1",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 3,
+          "val": 4,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 5,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        0
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Added 1 to result, queue now [2, 3]",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 3,
+          "val": 4,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 5,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        0
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Dequeued node 2",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 3,
+          "val": 4,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 5,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Node 2 has no children, added 'null' markers to queue",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 3,
+          "val": 4,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 5,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        0,
+        1
+      ]
+    }
+  ]
+}

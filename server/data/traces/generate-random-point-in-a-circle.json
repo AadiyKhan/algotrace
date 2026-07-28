@@ -1,0 +1,55 @@
+{
+  "title": "Generate Random Point In A Circle",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Math",
+    "Geometry",
+    "Randomized"
+  ],
+  "description": "Generate a random point within a circle of radius r centered at (x, y) using rejection sampling.",
+  "target": "radius: 1, center: [0, 0]",
+  "pseudocode": "1: r = Math.sqrt(Math.random()) * radius\n2: theta = Math.random() * 2 * Math.PI\n3: x_coord = x + r * Math.cos(theta)\n4: y_coord = y + r * Math.sin(theta)\n5: return [x_coord, y_coord]",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Calculate random radius offset using square root for uniform distribution.",
+      "array": [
+        0.5,
+        0
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Generate a random angle theta in radians.",
+      "array": [
+        0.5,
+        1.57
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Calculate x coordinate based on polar to cartesian conversion.",
+      "array": [
+        0,
+        1.57
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Calculate y coordinate based on polar to cartesian conversion.",
+      "array": [
+        0,
+        0.5
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Return the generated point [x, y].",
+      "array": [
+        0,
+        0.5
+      ]
+    }
+  ]
+}

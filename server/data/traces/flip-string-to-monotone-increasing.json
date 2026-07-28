@@ -1,0 +1,113 @@
+{
+  "title": "Flip String to Monotone Increasing",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "String",
+    "Dynamic Programming"
+  ],
+  "description": "Find the minimum number of flips to make a binary string monotone increasing (all 0s before all 1s).",
+  "target": null,
+  "pseudocode": "1: flips = 0\n2: ones = 0\n3: for char in s:\n4:   if char == '1':\n5:     ones += 1\n6:   else:\n7:     flips = min(flips + 1, ones)\n8: return flips",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize flips and ones counters",
+      "array": [
+        0,
+        0,
+        1,
+        0
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Processing '0' at index 0",
+      "array": [
+        0,
+        0,
+        1,
+        0
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 7,
+      "note": "Found '0', flips = min(0 + 1, 0) = 0",
+      "array": [
+        0,
+        0,
+        1,
+        0
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Processing '0' at index 1",
+      "array": [
+        0,
+        0,
+        1,
+        0
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "Found '0', flips = min(0 + 1, 0) = 0",
+      "array": [
+        0,
+        0,
+        1,
+        0
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Processing '1' at index 2",
+      "array": [
+        0,
+        0,
+        1,
+        0
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Found '1', increment ones to 1",
+      "array": [
+        0,
+        0,
+        1,
+        0
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Processing '0' at index 3",
+      "array": [
+        0,
+        0,
+        1,
+        0
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 7,
+      "note": "Found '0', flips = min(0 + 1, 1) = 1",
+      "array": [
+        0,
+        0,
+        1,
+        0
+      ],
+      "i": 3
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "title": "Count of Range Sum",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Divide and Conquer",
+    "Binary Indexed Tree",
+    "Merge Sort"
+  ],
+  "description": "Find the number of range sums that lie in [lower, upper]. A range sum S(i, j) is defined as the sum of elements between indices i and j inclusive.",
+  "target": "lower: -1, upper: 1",
+  "pseudocode": "1. Compute prefix sums P[i]\n2. Use merge sort on P\n3. For each left half, count j in right half where lower <= P[j] - P[i] <= upper\n4. Merge sorted halves",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize prefix sums for nums [0, 0] with lower -1, upper 1",
+      "array": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Divide prefix array into [0] and [0, 0]",
+      "array": [
+        0,
+        0,
+        0
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Count pairs: (0,1) sum 0, (0,2) sum 0, (1,2) sum 0. All 3 are in [-1, 1]",
+      "array": [
+        0,
+        0,
+        0
+      ],
+      "i": 0,
+      "j": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Merge sorted subarrays",
+      "array": [
+        0,
+        0,
+        0
+      ],
+      "i": 2
+    }
+  ]
+}

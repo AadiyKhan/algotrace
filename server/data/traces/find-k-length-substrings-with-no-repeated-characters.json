@@ -1,0 +1,148 @@
+{
+  "title": "Find K Length Substrings With No Repeated Characters",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "String",
+    "Sliding Window",
+    "Hash Table"
+  ],
+  "description": "Count substrings of length K with no repeating characters.",
+  "target": 3,
+  "pseudocode": "1. i = 0, j = 0, count = 0, set = {}\n2. while j < s.length:\n3.   while s[j] in set:\n4.     set.delete(s[i++])\n5.   set.add(s[j])\n6.   if (j - i + 1) == k: count++\n7.   j++",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize variables for sliding window",
+      "array": [
+        "a",
+        "b",
+        "c",
+        "b"
+      ],
+      "i": 0,
+      "j": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Add 'a' to set",
+      "array": [
+        "a",
+        "b",
+        "c",
+        "b"
+      ],
+      "i": 0,
+      "j": 0
+    },
+    {
+      "codeLine": 7,
+      "note": "Increment j to 1",
+      "array": [
+        "a",
+        "b",
+        "c",
+        "b"
+      ],
+      "i": 0,
+      "j": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Add 'b' to set",
+      "array": [
+        "a",
+        "b",
+        "c",
+        "b"
+      ],
+      "i": 0,
+      "j": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "Increment j to 2",
+      "array": [
+        "a",
+        "b",
+        "c",
+        "b"
+      ],
+      "i": 0,
+      "j": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Add 'c' to set",
+      "array": [
+        "a",
+        "b",
+        "c",
+        "b"
+      ],
+      "i": 0,
+      "j": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Window size is 3, count incremented",
+      "array": [
+        "a",
+        "b",
+        "c",
+        "b"
+      ],
+      "i": 0,
+      "j": 2
+    },
+    {
+      "codeLine": 7,
+      "note": "Increment j to 3",
+      "array": [
+        "a",
+        "b",
+        "c",
+        "b"
+      ],
+      "i": 0,
+      "j": 3
+    },
+    {
+      "codeLine": 3,
+      "note": "'b' exists in set, removing 'a' from start",
+      "array": [
+        "a",
+        "b",
+        "c",
+        "b"
+      ],
+      "i": 1,
+      "j": 3
+    },
+    {
+      "codeLine": 5,
+      "note": "Add 'b' at index 3",
+      "array": [
+        "a",
+        "b",
+        "c",
+        "b"
+      ],
+      "i": 1,
+      "j": 3
+    },
+    {
+      "codeLine": 6,
+      "note": "Window size is 3, count incremented",
+      "array": [
+        "a",
+        "b",
+        "c",
+        "b"
+      ],
+      "i": 1,
+      "j": 3
+    }
+  ]
+}

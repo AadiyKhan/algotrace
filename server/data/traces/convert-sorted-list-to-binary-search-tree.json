@@ -1,0 +1,134 @@
+{
+  "title": "Convert Sorted List to Binary Search Tree",
+  "difficulty": "Medium",
+  "type": "tree",
+  "tags": [
+    "Linked List",
+    "Tree",
+    "Depth-First Search",
+    "Divide and Conquer"
+  ],
+  "description": "Convert a sorted linked list into a height-balanced binary search tree using a recursive divide and conquer approach.",
+  "target": null,
+  "pseudocode": "1: function sortedListToBST(head) {\n2:   if (!head) return null;\n3:   let mid = findMiddle(head);\n4:   let node = new TreeNode(mid.val);\n5:   node.left = sortedListToBST(head);\n6:   node.right = sortedListToBST(mid.next);\n7:   return node;\n8: }",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize conversion with linked list: [-10, -3, 0, 5, 9]",
+      "treeNodes": []
+    },
+    {
+      "codeLine": 3,
+      "note": "Find the middle element of the list to serve as the root: 0",
+      "treeNodes": []
+    },
+    {
+      "codeLine": 4,
+      "note": "Create root node with value 0",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 0,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Recursively build left subtree with list [-10, -3]",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 0,
+          "left": 1,
+          "right": null
+        },
+        {
+          "id": 1,
+          "val": -3,
+          "left": 2,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": -10,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Recursively build right subtree with list [5, 9]",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 0,
+          "left": 1,
+          "right": 3
+        },
+        {
+          "id": 1,
+          "val": -3,
+          "left": 2,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": -10,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 9,
+          "left": 4,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 5,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Tree construction complete",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 0,
+          "left": 1,
+          "right": 3
+        },
+        {
+          "id": 1,
+          "val": -3,
+          "left": 2,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": -10,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 9,
+          "left": 4,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 5,
+          "left": null,
+          "right": null
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,96 @@
+{
+  "title": "Smallest Range Covering Elements From K Lists",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Heap",
+    "Greedy",
+    "Sliding Window"
+  ],
+  "description": "Find the smallest range that includes at least one number from each of the k lists.",
+  "target": null,
+  "pseudocode": "1. minHeap = push {val, listIdx, elemIdx} for first of each list\n2. maxVal = max(all first elements)\n3. while minHeap not empty:\n4.   {minVal, l, e} = minHeap.pop()\n5.   if maxVal - minVal < minRange: update minRange\n6.   if e + 1 < list[l].length:\n7.     nextVal = list[l][e+1]\n8.     minHeap.push({nextVal, l, e+1})\n9.     maxVal = max(maxVal, nextVal)\n10.  else: break",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize heap with first elements: [4, 10, 15]",
+      "array": [
+        4,
+        10,
+        15
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Pop min: 4. Current range: [4, 15]",
+      "array": [
+        4,
+        10,
+        15
+      ],
+      "i": 4
+    },
+    {
+      "codeLine": 8,
+      "note": "Push next from list 0: 10. Heap: [10, 10, 15]",
+      "array": [
+        10,
+        10,
+        15
+      ],
+      "i": 10
+    },
+    {
+      "codeLine": 4,
+      "note": "Pop min: 10. Current range: [10, 15]",
+      "array": [
+        10,
+        10,
+        15
+      ],
+      "i": 10
+    },
+    {
+      "codeLine": 8,
+      "note": "Push next from list 0: 12. Heap: [10, 12, 15]",
+      "array": [
+        10,
+        12,
+        15
+      ],
+      "i": 12
+    },
+    {
+      "codeLine": 4,
+      "note": "Pop min: 10. Current range: [10, 15]",
+      "array": [
+        10,
+        12,
+        15
+      ],
+      "i": 10
+    },
+    {
+      "codeLine": 8,
+      "note": "Push next from list 1: 12. Heap: [12, 12, 15]",
+      "array": [
+        12,
+        12,
+        15
+      ],
+      "i": 12
+    },
+    {
+      "codeLine": 4,
+      "note": "Pop min: 12. Current range: [12, 15]",
+      "array": [
+        12,
+        12,
+        15
+      ],
+      "i": 12
+    }
+  ]
+}

@@ -1,0 +1,96 @@
+{
+  "title": "Valid Triangle Number",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Two Pointers",
+    "Sorting"
+  ],
+  "description": "Count the number of triplets (i, j, k) such that 0 <= i < j < k < n and nums[i] + nums[j] > nums[k].",
+  "target": null,
+  "pseudocode": "1. sort(nums)\n2. for k from n-1 down to 2:\n3.   left = 0, right = k - 1\n4.   while left < right:\n5.     if nums[left] + nums[right] > nums[k]:\n6.       count += (right - left)\n7.       right--\n8.     else:\n9.       left++",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Sort the array: [2, 2, 3, 4]",
+      "array": [
+        2,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Start outer loop with k = 3 (value 4)",
+      "array": [
+        2,
+        2,
+        3,
+        4
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 3,
+      "note": "Initialize left = 0, right = 2",
+      "array": [
+        2,
+        2,
+        3,
+        4
+      ],
+      "i": 0,
+      "j": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Check if 2 + 3 > 4 (True)",
+      "array": [
+        2,
+        2,
+        3,
+        4
+      ],
+      "i": 0,
+      "j": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Add (right - left) = 2 to count, move right",
+      "array": [
+        2,
+        2,
+        3,
+        4
+      ],
+      "i": 0,
+      "j": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Check if 2 + 2 > 4 (False)",
+      "array": [
+        2,
+        2,
+        3,
+        4
+      ],
+      "i": 0,
+      "j": 1
+    },
+    {
+      "codeLine": 9,
+      "note": "Increment left",
+      "array": [
+        2,
+        2,
+        3,
+        4
+      ],
+      "i": 1,
+      "j": 1
+    }
+  ]
+}

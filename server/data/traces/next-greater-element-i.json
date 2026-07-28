@@ -1,0 +1,132 @@
+{
+  "title": "Next Greater Element I",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Stack",
+    "Hash Table"
+  ],
+  "description": "Find the next greater element for each number in nums1 within the scope of nums2.",
+  "target": null,
+  "pseudocode": "1. let map = {}\n2. let stack = []\n3. for num of nums2:\n4.   while stack.length && stack[stack.length-1] < num:\n5.     map[stack.pop()] = num\n6.   stack.push(num)\n7. return nums1.map(n => map[n] || -1)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize empty hash map to store next greater elements.",
+      "array": [
+        4,
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Start processing nums2 element: 1.",
+      "array": [
+        1,
+        3,
+        4,
+        2
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Stack is empty, push 1 onto stack.",
+      "array": [
+        1,
+        3,
+        4,
+        2
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Next element in nums2 is 3.",
+      "array": [
+        1,
+        3,
+        4,
+        2
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "3 > 1, so 3 is the next greater element for 1.",
+      "array": [
+        1,
+        3,
+        4,
+        2
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Map 1 to 3 and pop 1 from stack.",
+      "array": [
+        1,
+        3,
+        4,
+        2
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Push 3 onto stack.",
+      "array": [
+        1,
+        3,
+        4,
+        2
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Next element in nums2 is 4. 4 > 3, map 3 to 4.",
+      "array": [
+        1,
+        3,
+        4,
+        2
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Push 4 onto stack.",
+      "array": [
+        1,
+        3,
+        4,
+        2
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Next element in nums2 is 2. 2 < 4, push 2 onto stack.",
+      "array": [
+        1,
+        3,
+        4,
+        2
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 7,
+      "note": "Map lookup complete. Return results for nums1: [4, 1, 2].",
+      "array": [
+        -1,
+        3,
+        -1
+      ]
+    }
+  ]
+}

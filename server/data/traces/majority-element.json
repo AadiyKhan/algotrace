@@ -1,0 +1,281 @@
+{
+  "title": "Majority Element",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Divide and Conquer",
+    "Sorting",
+    "Boyer-Moore Voting Algorithm"
+  ],
+  "description": "Find the element in an array that appears more than n/2 times.",
+  "target": null,
+  "pseudocode": "1: candidate = null, count = 0\n2: for num in nums:\n3:   if count == 0:\n4:     candidate = num\n5:   count += (num == candidate) ? 1 : -1\n6: return candidate",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize candidate and count.",
+      "array": [
+        2,
+        2,
+        1,
+        1,
+        1,
+        2,
+        2
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Start iteration, first element is 2.",
+      "array": [
+        2,
+        2,
+        1,
+        1,
+        1,
+        2,
+        2
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Count is 0, set candidate to 2.",
+      "array": [
+        2,
+        2,
+        1,
+        1,
+        1,
+        2,
+        2
+      ],
+      "i": 0,
+      "prev": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Count increments to 1.",
+      "array": [
+        2,
+        2,
+        1,
+        1,
+        1,
+        2,
+        2
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Next element is 2. Count is not 0.",
+      "array": [
+        2,
+        2,
+        1,
+        1,
+        1,
+        2,
+        2
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Num matches candidate, count becomes 2.",
+      "array": [
+        2,
+        2,
+        1,
+        1,
+        1,
+        2,
+        2
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Next element is 1.",
+      "array": [
+        2,
+        2,
+        1,
+        1,
+        1,
+        2,
+        2
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Num differs, count decrements to 1.",
+      "array": [
+        2,
+        2,
+        1,
+        1,
+        1,
+        2,
+        2
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 2,
+      "note": "Next element is 1.",
+      "array": [
+        2,
+        2,
+        1,
+        1,
+        1,
+        2,
+        2
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 5,
+      "note": "Num differs, count decrements to 0.",
+      "array": [
+        2,
+        2,
+        1,
+        1,
+        1,
+        2,
+        2
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 2,
+      "note": "Next element is 1.",
+      "array": [
+        2,
+        2,
+        1,
+        1,
+        1,
+        2,
+        2
+      ],
+      "i": 4
+    },
+    {
+      "codeLine": 3,
+      "note": "Count is 0, update candidate to 1.",
+      "array": [
+        2,
+        2,
+        1,
+        1,
+        1,
+        2,
+        2
+      ],
+      "i": 4
+    },
+    {
+      "codeLine": 5,
+      "note": "Count increments to 1.",
+      "array": [
+        2,
+        2,
+        1,
+        1,
+        1,
+        2,
+        2
+      ],
+      "i": 4
+    },
+    {
+      "codeLine": 2,
+      "note": "Next element is 2.",
+      "array": [
+        2,
+        2,
+        1,
+        1,
+        1,
+        2,
+        2
+      ],
+      "i": 5
+    },
+    {
+      "codeLine": 5,
+      "note": "Num differs, count decrements to 0.",
+      "array": [
+        2,
+        2,
+        1,
+        1,
+        1,
+        2,
+        2
+      ],
+      "i": 5
+    },
+    {
+      "codeLine": 2,
+      "note": "Next element is 2.",
+      "array": [
+        2,
+        2,
+        1,
+        1,
+        1,
+        2,
+        2
+      ],
+      "i": 6
+    },
+    {
+      "codeLine": 3,
+      "note": "Count is 0, update candidate to 2.",
+      "array": [
+        2,
+        2,
+        1,
+        1,
+        1,
+        2,
+        2
+      ],
+      "i": 6
+    },
+    {
+      "codeLine": 5,
+      "note": "Count increments to 1.",
+      "array": [
+        2,
+        2,
+        1,
+        1,
+        1,
+        2,
+        2
+      ],
+      "i": 6
+    },
+    {
+      "codeLine": 6,
+      "note": "Returning final candidate: 2.",
+      "array": [
+        2,
+        2,
+        1,
+        1,
+        1,
+        2,
+        2
+      ]
+    }
+  ]
+}

@@ -1,0 +1,104 @@
+{
+  "title": "Maximum Product Subarray",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Dynamic Programming"
+  ],
+  "description": "Find the contiguous subarray within an array that has the largest product.",
+  "target": null,
+  "pseudocode": "1. let maxSoFar = nums[0], minSoFar = nums[0], res = nums[0]\n2. for i from 1 to nums.length - 1:\n3.   let temp = maxSoFar\n4.   maxSoFar = Math.max(nums[i], maxSoFar * nums[i], minSoFar * nums[i])\n5.   minSoFar = Math.min(nums[i], temp * nums[i], minSoFar * nums[i])\n6.   res = Math.max(res, maxSoFar)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize variables with first element of array.",
+      "array": [
+        2,
+        -5,
+        3
+      ],
+      "i": null
+    },
+    {
+      "codeLine": 2,
+      "note": "Start loop at index 1.",
+      "array": [
+        2,
+        -5,
+        3
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Update maxSoFar: max(-5, 2*-5, 2*-5) = -5.",
+      "array": [
+        2,
+        -5,
+        3
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Update minSoFar: min(-5, 2*-5, 2*-5) = -10.",
+      "array": [
+        2,
+        -5,
+        3
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Update global result res: max(2, -5) = 2.",
+      "array": [
+        2,
+        -5,
+        3
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Loop to index 2.",
+      "array": [
+        2,
+        -5,
+        3
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Update maxSoFar: max(3, -5*3, -10*3) = 3.",
+      "array": [
+        2,
+        -5,
+        3
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Update minSoFar: min(3, -5*3, -10*3) = -30.",
+      "array": [
+        2,
+        -5,
+        3
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Update result: max(2, 3) = 3.",
+      "array": [
+        2,
+        -5,
+        3
+      ],
+      "i": 2
+    }
+  ]
+}

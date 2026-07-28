@@ -1,0 +1,215 @@
+{
+  "title": "Inorder Successor in BST",
+  "difficulty": "Medium",
+  "type": "tree",
+  "tags": [
+    "Tree",
+    "Binary Search Tree",
+    "Binary Tree"
+  ],
+  "description": "Find the inorder successor of a given node in a binary search tree.",
+  "target": 2,
+  "pseudocode": "1: successor = null\n2: curr = root\n3: while curr != null:\n4:   if curr.val > p.val:\n5:     successor = curr\n6:     curr = curr.left\n7:   else:\n8:     curr = curr.right\n9: return successor",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize successor to null.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 2,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": null
+    },
+    {
+      "codeLine": 2,
+      "note": "Set curr to root (node 2).",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 2,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Compare curr.val (2) with p.val (2). It is not greater.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 2,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 8,
+      "note": "Move curr to right child.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 2,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Compare curr.val (3) with p.val (2). 3 > 2.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 2,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Found potential successor, update successor to node 2 (val 3).",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 2,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Move to left child.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 2,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": null
+    },
+    {
+      "codeLine": 9,
+      "note": "Return successor (val 3).",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 2,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": null
+    }
+  ]
+}

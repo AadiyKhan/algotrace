@@ -1,0 +1,75 @@
+{
+  "title": "Perfect Number",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Math"
+  ],
+  "description": "Determine if a positive integer is a perfect number, which is a number equal to the sum of its positive divisors excluding itself.",
+  "target": 6,
+  "pseudocode": "1. if num <= 1 return false\n2. sum = 1\n3. for i = 2; i * i <= num; i++\n4. if num % i == 0\n5. sum += i\n6. if i * i != num sum += num / i\n7. return sum == num",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Check if 6 is less than or equal to 1. It is not.",
+      "array": [
+        6
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Initialize sum to 1 (since 1 is always a divisor).",
+      "array": [
+        6
+      ],
+      "i": "init"
+    },
+    {
+      "codeLine": 3,
+      "note": "Start loop from i=2. i*i (4) <= 6 is true.",
+      "array": [
+        6
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Check if 6 % 2 == 0. True.",
+      "array": [
+        6
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Add divisor 2 to sum. sum = 1 + 2 = 3.",
+      "array": [
+        6
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Check if i*i != num (4 != 6). True. Add quotient 6/2 = 3 to sum. sum = 3 + 3 = 6.",
+      "array": [
+        6
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Increment i to 3. i*i (9) <= 6 is false. Terminate loop.",
+      "array": [
+        6
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 7,
+      "note": "Check if sum (6) == num (6). Returns true.",
+      "array": [
+        6
+      ]
+    }
+  ]
+}

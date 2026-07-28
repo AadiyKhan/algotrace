@@ -1,0 +1,227 @@
+{
+  "title": "Array Nesting",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Depth-First Search"
+  ],
+  "description": "Find the length of the longest set S where S[i] = {A[i], A[A[i]], A[A[A[i]]], ...} following the array indices.",
+  "target": null,
+  "pseudocode": "let maxLen = 0;\nlet visited = new Array(nums.length).fill(false);\nfor (let i = 0; i < nums.length; i++) {\n  if (!visited[i]) {\n    let curr = i, count = 0;\n    while (!visited[curr]) {\n      visited[curr] = true;\n      curr = nums[curr];\n      count++;\n    }\n    maxLen = Math.max(maxLen, count);\n  }\n}\nreturn maxLen;",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize maxLen to 0",
+      "array": [
+        5,
+        4,
+        0,
+        3,
+        1,
+        6,
+        2
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Start loop at i=0",
+      "i": 0,
+      "array": [
+        5,
+        4,
+        0,
+        3,
+        1,
+        6,
+        2
+      ],
+      "visited": []
+    },
+    {
+      "codeLine": 6,
+      "note": "Traverse cycle starting at 0: 0 -> 5 -> 6 -> 2 -> 0",
+      "i": 0,
+      "curr": 0,
+      "array": [
+        5,
+        4,
+        0,
+        3,
+        1,
+        6,
+        2
+      ],
+      "visited": [
+        0
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Marking 5 as visited",
+      "i": 0,
+      "curr": 5,
+      "array": [
+        5,
+        4,
+        0,
+        3,
+        1,
+        6,
+        2
+      ],
+      "visited": [
+        0,
+        5
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Marking 6 as visited",
+      "i": 0,
+      "curr": 6,
+      "array": [
+        5,
+        4,
+        0,
+        3,
+        1,
+        6,
+        2
+      ],
+      "visited": [
+        0,
+        5,
+        6
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Marking 2 as visited",
+      "i": 0,
+      "curr": 2,
+      "array": [
+        5,
+        4,
+        0,
+        3,
+        1,
+        6,
+        2
+      ],
+      "visited": [
+        0,
+        5,
+        6,
+        2
+      ]
+    },
+    {
+      "codeLine": 10,
+      "note": "Cycle complete, update maxLen to 4",
+      "i": 0,
+      "array": [
+        5,
+        4,
+        0,
+        3,
+        1,
+        6,
+        2
+      ],
+      "visited": [
+        0,
+        5,
+        6,
+        2
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Check next index i=1",
+      "i": 1,
+      "array": [
+        5,
+        4,
+        0,
+        3,
+        1,
+        6,
+        2
+      ],
+      "visited": [
+        0,
+        5,
+        6,
+        2
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Traverse cycle starting at 1: 1 -> 4 -> 1",
+      "i": 1,
+      "curr": 1,
+      "array": [
+        5,
+        4,
+        0,
+        3,
+        1,
+        6,
+        2
+      ],
+      "visited": [
+        0,
+        5,
+        6,
+        2,
+        1
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Marking 4 as visited",
+      "i": 1,
+      "curr": 4,
+      "array": [
+        5,
+        4,
+        0,
+        3,
+        1,
+        6,
+        2
+      ],
+      "visited": [
+        0,
+        5,
+        6,
+        2,
+        1,
+        4
+      ]
+    },
+    {
+      "codeLine": 10,
+      "note": "MaxLen remains 4",
+      "i": 1,
+      "array": [
+        5,
+        4,
+        0,
+        3,
+        1,
+        6,
+        2
+      ],
+      "visited": [
+        0,
+        5,
+        6,
+        2,
+        1,
+        4
+      ]
+    }
+  ]
+}

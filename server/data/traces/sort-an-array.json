@@ -1,0 +1,58 @@
+{
+  "title": "Sort An Array",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Sorting",
+    "Divide and Conquer"
+  ],
+  "description": "Sort an array of integers in ascending order using Merge Sort.",
+  "target": null,
+  "pseudocode": "1. function mergeSort(arr) {\n2.   if (arr.length <= 1) return arr;\n3.   mid = Math.floor(arr.length / 2);\n4.   left = mergeSort(arr.slice(0, mid));\n5.   right = mergeSort(arr.slice(mid));\n6.   return merge(left, right);\n7. }",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initial call with array [3, 1, 2]",
+      "array": [
+        3,
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Calculating midpoint",
+      "array": [
+        3,
+        1,
+        2
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Recursively sorting left half [3]",
+      "array": [
+        3
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Recursively sorting right half [1, 2]",
+      "array": [
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Merging sorted halves [3] and [1, 2]",
+      "array": [
+        1,
+        2,
+        3
+      ]
+    }
+  ]
+}

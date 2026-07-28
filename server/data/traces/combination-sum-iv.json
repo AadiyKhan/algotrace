@@ -1,0 +1,168 @@
+{
+  "title": "Combination Sum IV",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Dynamic Programming"
+  ],
+  "description": "Find the number of possible combinations that add up to a target integer using an array of distinct numbers.",
+  "target": 4,
+  "pseudocode": "1. dp = new Array(target + 1).fill(0)\n2. dp[0] = 1\n3. for i = 1 to target:\n4.   for num of nums:\n5.     if i >= num:\n6.       dp[i] += dp[i - num]",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize DP array of size 5 with 0s.",
+      "array": [
+        1,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Base case: one way to reach sum 0.",
+      "array": [
+        1,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Start outer loop for i=1.",
+      "i": 1,
+      "array": [
+        1,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "i=1, num=1: dp[1] += dp[0].",
+      "i": 1,
+      "array": [
+        1,
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Outer loop for i=2.",
+      "i": 2,
+      "array": [
+        1,
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "i=2, num=1: dp[2] += dp[1].",
+      "i": 2,
+      "array": [
+        1,
+        1,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "i=2, num=2: dp[2] += dp[0].",
+      "i": 2,
+      "array": [
+        1,
+        1,
+        2,
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Outer loop for i=3.",
+      "i": 3,
+      "array": [
+        1,
+        1,
+        2,
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "i=3, num=1: dp[3] += dp[2].",
+      "i": 3,
+      "array": [
+        1,
+        1,
+        2,
+        2,
+        0
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "i=3, num=2: dp[3] += dp[1].",
+      "i": 3,
+      "array": [
+        1,
+        1,
+        2,
+        3,
+        0
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Outer loop for i=4.",
+      "i": 4,
+      "array": [
+        1,
+        1,
+        2,
+        3,
+        0
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "i=4, num=1: dp[4] += dp[3].",
+      "i": 4,
+      "array": [
+        1,
+        1,
+        2,
+        3,
+        3
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "i=4, num=2: dp[4] += dp[2].",
+      "i": 4,
+      "array": [
+        1,
+        1,
+        2,
+        3,
+        5
+      ]
+    }
+  ]
+}

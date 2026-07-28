@@ -1,0 +1,796 @@
+{
+  "title": "Reverse Nodes In K Group",
+  "difficulty": "Hard",
+  "type": "linked-list",
+  "tags": [
+    "Linked List",
+    "Two Pointers"
+  ],
+  "description": "Given the head of a linked list, reverse the nodes of the list k at a time, and return the modified list. If the number of nodes is not a multiple of k then left-out nodes, in the end, should remain as they are.",
+  "target": {
+    "k": 2
+  },
+  "pseudocode": "function reverseKGroup(head, k) {\n    if (!head || k === 1) {\n        return head;\n    }\n\n    let dummy = { val: 0, next: head };\n    let prevGroupEnd = dummy; // Node before the current k-group\n\n    while (true) {\n        let groupStart = prevGroupEnd.next;\n        if (!groupStart) { // No more nodes\n            break;\n        }\n\n        // 1. Find the k-th node of the current group\n        let groupEnd = groupStart;\n        for (let i = 1; i < k; i++) {\n            if (!groupEnd) {\n                break;\n            }\n            groupEnd = groupEnd.next;\n        }\n\n        if (!groupEnd) { // Not enough nodes, remaining list is not reversed\n            break;\n        }\n\n        // 2. Store next_group_start\n        let nextGroupStart = groupEnd.next;\n\n        // 3. Cut the k-group\n        groupEnd.next = null;\n\n        // 4. Reverse the k-group (from groupStart to groupEnd)\n        let reversedHead = reverseList(groupStart);\n        \n        // 5. Connect previous group to reversed group\n        prevGroupEnd.next = reversedHead;\n\n        // 6. Connect reversed group tail to next group\n        groupStart.next = nextGroupStart; // groupStart is now the tail of the reversed group\n\n        // 7. Update prevGroupEnd for the next iteration\n        prevGroupEnd = groupStart;\n    }\n\n    return dummy.next;\n}\n\n// Helper function to reverse a standard linked list\nfunction reverseList(head) {\n    let prev = null;\n    let curr = head;\n    while (curr) {\n        let nextTemp = curr.next;\n        curr.next = prev;\n        prev = curr;\n        curr = nextTemp;\n    }\n    return prev;\n}",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Starting `reverseKGroup` with head `[1,2,3,4,5]` and `k=2`. The list nodes are internally represented by their initial indices, with 0 being a dummy node.",
+      "nodes": [
+        {
+          "val": 0,
+          "next": 1
+        },
+        {
+          "val": 1,
+          "next": 2
+        },
+        {
+          "val": 2,
+          "next": 3
+        },
+        {
+          "val": 3,
+          "next": 4
+        },
+        {
+          "val": 4,
+          "next": 5
+        },
+        {
+          "val": 5,
+          "next": null
+        }
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Check for base cases: head (node 1) is not null and k (2) is not 1. Neither condition triggers a return."
+    },
+    {
+      "codeLine": 5,
+      "note": "Create a dummy node (index 0) to simplify list manipulations. Its `next` points to the original head (node 1).",
+      "nodes": [
+        {
+          "val": 0,
+          "next": 1
+        },
+        {
+          "val": 1,
+          "next": 2
+        },
+        {
+          "val": 2,
+          "next": 3
+        },
+        {
+          "val": 3,
+          "next": 4
+        },
+        {
+          "val": 4,
+          "next": 5
+        },
+        {
+          "val": 5,
+          "next": null
+        }
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "`prevGroupEnd` (pointer `prev`) is initialized to the dummy node (index 0), which is the node before the first k-group.",
+      "prev": 0
+    },
+    {
+      "codeLine": 7,
+      "note": "Begin the `while(true)` loop to process k-groups."
+    },
+    {
+      "codeLine": 8,
+      "note": "`groupStart` (pointer `curr`) is set to `prevGroupEnd.next` (node 1).",
+      "prev": 0,
+      "curr": 1
+    },
+    {
+      "codeLine": 9,
+      "note": "`groupStart` (node 1) is not null. Proceed to find the k-th node."
+    },
+    {
+      "codeLine": 13,
+      "note": "`groupEnd` (pointer `j`) initially points to `groupStart` (node 1).",
+      "prev": 0,
+      "curr": 1,
+      "j": 1
+    },
+    {
+      "codeLine": 14,
+      "note": "Start `for` loop to advance `groupEnd` by `k-1` steps. `i` starts at 1, loop for `i < k` (i.e., `i < 2`).",
+      "i": 1
+    },
+    {
+      "codeLine": 15,
+      "note": "`groupEnd` (node 1) is not null. Continue."
+    },
+    {
+      "codeLine": 18,
+      "note": "Advance `groupEnd` to `groupEnd.next` (node 2).",
+      "j": 2
+    },
+    {
+      "codeLine": 14,
+      "note": "Increment `i` to 2. The loop condition `i < k` (i.e., `2 < 2`) is now false. The `for` loop finishes. `groupEnd` is node 2.",
+      "i": 2
+    },
+    {
+      "codeLine": 20,
+      "note": "`groupEnd` (node 2) is not null, indicating that a full k-group (nodes 1 and 2) exists.",
+      "prev": 0,
+      "curr": 1,
+      "j": 2
+    },
+    {
+      "codeLine": 24,
+      "note": "`nextGroupStart` (node 3) stores the node immediately after the current k-group for later reconnection.",
+      "nodes": [
+        {
+          "val": 0,
+          "next": 1
+        },
+        {
+          "val": 1,
+          "next": 2
+        },
+        {
+          "val": 2,
+          "next": 3
+        },
+        {
+          "val": 3,
+          "next": 4
+        },
+        {
+          "val": 4,
+          "next": 5
+        },
+        {
+          "val": 5,
+          "next": null
+        }
+      ]
+    },
+    {
+      "codeLine": 26,
+      "note": "Cut the k-group from the rest of the list by setting `groupEnd.next` (node 2's next) to null. This isolates `(1->2)`.",
+      "nodes": [
+        {
+          "val": 0,
+          "next": 1
+        },
+        {
+          "val": 1,
+          "next": 2
+        },
+        {
+          "val": 2,
+          "next": null
+        },
+        {
+          "val": 3,
+          "next": 4
+        },
+        {
+          "val": 4,
+          "next": 5
+        },
+        {
+          "val": 5,
+          "next": null
+        }
+      ]
+    },
+    {
+      "codeLine": 28,
+      "note": "Call `reverseList` helper function to reverse the current k-group, starting from `groupStart` (node 1). Pointers `prev`, `curr`, `j` reflect the main function's state.",
+      "prev": 0,
+      "curr": 1,
+      "j": 2
+    },
+    {
+      "codeLine": 39,
+      "note": "Entering `reverseList` helper. The `head` for this helper is `groupStart` (node 1). Internal pointers for `reverseList` are initialized: `prev_rev` (null), `curr_rev` (node 1).",
+      "nodes": [
+        {
+          "val": 0,
+          "next": 1
+        },
+        {
+          "val": 1,
+          "next": 2
+        },
+        {
+          "val": 2,
+          "next": null
+        },
+        {
+          "val": 3,
+          "next": 4
+        },
+        {
+          "val": 4,
+          "next": 5
+        },
+        {
+          "val": 5,
+          "next": null
+        }
+      ]
+    },
+    {
+      "codeLine": 42,
+      "note": "Inside `reverseList` loop: `curr_rev` (node 1) is not null."
+    },
+    {
+      "codeLine": 43,
+      "note": "`nextTemp` stores `curr_rev.next` (node 2) before `curr_rev.next` is modified."
+    },
+    {
+      "codeLine": 44,
+      "note": "`curr_rev.next` (node 1's next) is set to `prev_rev` (null).",
+      "nodes": [
+        {
+          "val": 0,
+          "next": 1
+        },
+        {
+          "val": 1,
+          "next": null
+        },
+        {
+          "val": 2,
+          "next": null
+        },
+        {
+          "val": 3,
+          "next": 4
+        },
+        {
+          "val": 4,
+          "next": 5
+        },
+        {
+          "val": 5,
+          "next": null
+        }
+      ]
+    },
+    {
+      "codeLine": 45,
+      "note": "`prev_rev` moves to `curr_rev` (node 1)."
+    },
+    {
+      "codeLine": 46,
+      "note": "`curr_rev` moves to `nextTemp` (node 2)."
+    },
+    {
+      "codeLine": 42,
+      "note": "Inside `reverseList` loop: `curr_rev` (node 2) is not null."
+    },
+    {
+      "codeLine": 43,
+      "note": "`nextTemp` stores `curr_rev.next` (null) before `curr_rev.next` is modified."
+    },
+    {
+      "codeLine": 44,
+      "note": "`curr_rev.next` (node 2's next) is set to `prev_rev` (node 1). List is now `2->1`.",
+      "nodes": [
+        {
+          "val": 0,
+          "next": 1
+        },
+        {
+          "val": 1,
+          "next": null
+        },
+        {
+          "val": 2,
+          "next": 1
+        },
+        {
+          "val": 3,
+          "next": 4
+        },
+        {
+          "val": 4,
+          "next": 5
+        },
+        {
+          "val": 5,
+          "next": null
+        }
+      ]
+    },
+    {
+      "codeLine": 45,
+      "note": "`prev_rev` moves to `curr_rev` (node 2)."
+    },
+    {
+      "codeLine": 46,
+      "note": "`curr_rev` moves to `nextTemp` (null)."
+    },
+    {
+      "codeLine": 42,
+      "note": "Inside `reverseList` loop: `curr_rev` is null. Loop ends."
+    },
+    {
+      "codeLine": 48,
+      "note": "Returning `prev_rev` (node 2), which is the new head of the reversed sublist `(2->1)`.",
+      "reversedHead": 2
+    },
+    {
+      "codeLine": 30,
+      "note": "Back in `reverseKGroup`. `prevGroupEnd.next` (dummy 0's next) is connected to `reversedHead` (node 2). The list segment is now `0->2->1`.",
+      "nodes": [
+        {
+          "val": 0,
+          "next": 2
+        },
+        {
+          "val": 1,
+          "next": null
+        },
+        {
+          "val": 2,
+          "next": 1
+        },
+        {
+          "val": 3,
+          "next": 4
+        },
+        {
+          "val": 4,
+          "next": 5
+        },
+        {
+          "val": 5,
+          "next": null
+        }
+      ],
+      "prev": 0,
+      "curr": 1,
+      "j": 2
+    },
+    {
+      "codeLine": 32,
+      "note": "`groupStart` (node 1, now the tail of the reversed group) has its `next` connected to `nextGroupStart` (node 3). The list is `0->2->1->3->4->5`.",
+      "nodes": [
+        {
+          "val": 0,
+          "next": 2
+        },
+        {
+          "val": 1,
+          "next": 3
+        },
+        {
+          "val": 2,
+          "next": 1
+        },
+        {
+          "val": 3,
+          "next": 4
+        },
+        {
+          "val": 4,
+          "next": 5
+        },
+        {
+          "val": 5,
+          "next": null
+        }
+      ]
+    },
+    {
+      "codeLine": 34,
+      "note": "`prevGroupEnd` (pointer `prev`) is updated to `groupStart` (node 1) for the next iteration. This node will be the new tail of the previously reversed group.",
+      "prev": 1,
+      "curr": 1,
+      "j": 2
+    },
+    {
+      "codeLine": 7,
+      "note": "Beginning next `while` loop iteration."
+    },
+    {
+      "codeLine": 8,
+      "note": "`groupStart` (pointer `curr`) is set to `prevGroupEnd.next` (node 3).",
+      "prev": 1,
+      "curr": 3
+    },
+    {
+      "codeLine": 9,
+      "note": "`groupStart` (node 3) is not null. Proceed."
+    },
+    {
+      "codeLine": 13,
+      "note": "`groupEnd` (pointer `j`) initially points to `groupStart` (node 3).",
+      "prev": 1,
+      "curr": 3,
+      "j": 3
+    },
+    {
+      "codeLine": 14,
+      "note": "Start `for` loop to find the `k`-th node. `i` starts at 1.",
+      "i": 1
+    },
+    {
+      "codeLine": 15,
+      "note": "`groupEnd` (node 3) is not null. Continue."
+    },
+    {
+      "codeLine": 18,
+      "note": "Advance `groupEnd` to `groupEnd.next` (node 4).",
+      "j": 4
+    },
+    {
+      "codeLine": 14,
+      "note": "Increment `i` to 2. The loop condition `i < k` (i.e., `2 < 2`) is now false. The `for` loop finishes. `groupEnd` is node 4.",
+      "i": 2
+    },
+    {
+      "codeLine": 20,
+      "note": "`groupEnd` (node 4) is not null, indicating a full k-group (nodes 3 and 4) exists.",
+      "prev": 1,
+      "curr": 3,
+      "j": 4
+    },
+    {
+      "codeLine": 24,
+      "note": "`nextGroupStart` (node 5) stores the node immediately after the current k-group.",
+      "nodes": [
+        {
+          "val": 0,
+          "next": 2
+        },
+        {
+          "val": 1,
+          "next": 3
+        },
+        {
+          "val": 2,
+          "next": 1
+        },
+        {
+          "val": 3,
+          "next": 4
+        },
+        {
+          "val": 4,
+          "next": 5
+        },
+        {
+          "val": 5,
+          "next": null
+        }
+      ]
+    },
+    {
+      "codeLine": 26,
+      "note": "Cut the k-group from the rest of the list: `groupEnd.next` (node 4's next) is set to null. This isolates `(3->4)`.",
+      "nodes": [
+        {
+          "val": 0,
+          "next": 2
+        },
+        {
+          "val": 1,
+          "next": 3
+        },
+        {
+          "val": 2,
+          "next": 1
+        },
+        {
+          "val": 3,
+          "next": 4
+        },
+        {
+          "val": 4,
+          "next": null
+        },
+        {
+          "val": 5,
+          "next": null
+        }
+      ]
+    },
+    {
+      "codeLine": 28,
+      "note": "Call `reverseList` to reverse the current k-group, starting from `groupStart` (node 3).",
+      "prev": 1,
+      "curr": 3,
+      "j": 4
+    },
+    {
+      "codeLine": 39,
+      "note": "Entering `reverseList` helper. `head` for `reverseList` is node 3. Internal pointers: `prev_rev` (null), `curr_rev` (node 3).",
+      "nodes": [
+        {
+          "val": 0,
+          "next": 2
+        },
+        {
+          "val": 1,
+          "next": 3
+        },
+        {
+          "val": 2,
+          "next": 1
+        },
+        {
+          "val": 3,
+          "next": 4
+        },
+        {
+          "val": 4,
+          "next": null
+        },
+        {
+          "val": 5,
+          "next": null
+        }
+      ]
+    },
+    {
+      "codeLine": 42,
+      "note": "Inside `reverseList` loop: `curr_rev` (node 3) is not null."
+    },
+    {
+      "codeLine": 43,
+      "note": "`nextTemp` stores `curr_rev.next` (node 4) before `curr_rev.next` is modified."
+    },
+    {
+      "codeLine": 44,
+      "note": "`curr_rev.next` (node 3's next) is set to `prev_rev` (null).",
+      "nodes": [
+        {
+          "val": 0,
+          "next": 2
+        },
+        {
+          "val": 1,
+          "next": 3
+        },
+        {
+          "val": 2,
+          "next": 1
+        },
+        {
+          "val": 3,
+          "next": null
+        },
+        {
+          "val": 4,
+          "next": null
+        },
+        {
+          "val": 5,
+          "next": null
+        }
+      ]
+    },
+    {
+      "codeLine": 45,
+      "note": "`prev_rev` moves to `curr_rev` (node 3)."
+    },
+    {
+      "codeLine": 46,
+      "note": "`curr_rev` moves to `nextTemp` (node 4)."
+    },
+    {
+      "codeLine": 42,
+      "note": "Inside `reverseList` loop: `curr_rev` (node 4) is not null."
+    },
+    {
+      "codeLine": 43,
+      "note": "`nextTemp` stores `curr_rev.next` (null) before `curr_rev.next` is modified."
+    },
+    {
+      "codeLine": 44,
+      "note": "`curr_rev.next` (node 4's next) is set to `prev_rev` (node 3). List is now `4->3`.",
+      "nodes": [
+        {
+          "val": 0,
+          "next": 2
+        },
+        {
+          "val": 1,
+          "next": 3
+        },
+        {
+          "val": 2,
+          "next": 1
+        },
+        {
+          "val": 3,
+          "next": null
+        },
+        {
+          "val": 4,
+          "next": 3
+        },
+        {
+          "val": 5,
+          "next": null
+        }
+      ]
+    },
+    {
+      "codeLine": 45,
+      "note": "`prev_rev` moves to `curr_rev` (node 4)."
+    },
+    {
+      "codeLine": 46,
+      "note": "`curr_rev` moves to `nextTemp` (null)."
+    },
+    {
+      "codeLine": 42,
+      "note": "Inside `reverseList` loop: `curr_rev` is null. Loop ends."
+    },
+    {
+      "codeLine": 48,
+      "note": "Returning `prev_rev` (node 4), which is the new head of the reversed sublist `(4->3)`.",
+      "reversedHead": 4
+    },
+    {
+      "codeLine": 30,
+      "note": "Back in `reverseKGroup`. `prevGroupEnd.next` (node 1's next) is connected to `reversedHead` (node 4). The list segment is now `1->4->3`.",
+      "nodes": [
+        {
+          "val": 0,
+          "next": 2
+        },
+        {
+          "val": 1,
+          "next": 4
+        },
+        {
+          "val": 2,
+          "next": 1
+        },
+        {
+          "val": 3,
+          "next": null
+        },
+        {
+          "val": 4,
+          "next": 3
+        },
+        {
+          "val": 5,
+          "next": null
+        }
+      ],
+      "prev": 1,
+      "curr": 3,
+      "j": 4
+    },
+    {
+      "codeLine": 32,
+      "note": "`groupStart` (node 3, now the tail of the reversed group) has its `next` connected to `nextGroupStart` (node 5). The overall list is `0->2->1->4->3->5`.",
+      "nodes": [
+        {
+          "val": 0,
+          "next": 2
+        },
+        {
+          "val": 1,
+          "next": 4
+        },
+        {
+          "val": 2,
+          "next": 1
+        },
+        {
+          "val": 3,
+          "next": 5
+        },
+        {
+          "val": 4,
+          "next": 3
+        },
+        {
+          "val": 5,
+          "next": null
+        }
+      ]
+    },
+    {
+      "codeLine": 34,
+      "note": "`prevGroupEnd` (pointer `prev`) is updated to `groupStart` (node 3) for the next iteration.",
+      "prev": 3,
+      "curr": 3,
+      "j": 4
+    },
+    {
+      "codeLine": 7,
+      "note": "Beginning next `while` loop iteration."
+    },
+    {
+      "codeLine": 8,
+      "note": "`groupStart` (pointer `curr`) is set to `prevGroupEnd.next` (node 5).",
+      "prev": 3,
+      "curr": 5
+    },
+    {
+      "codeLine": 9,
+      "note": "`groupStart` (node 5) is not null. Proceed."
+    },
+    {
+      "codeLine": 13,
+      "note": "`groupEnd` (pointer `j`) initially points to `groupStart` (node 5).",
+      "prev": 3,
+      "curr": 5,
+      "j": 5
+    },
+    {
+      "codeLine": 14,
+      "note": "Start `for` loop to find the `k`-th node. `i` starts at 1.",
+      "i": 1
+    },
+    {
+      "codeLine": 15,
+      "note": "`groupEnd` (node 5) is not null. Continue."
+    },
+    {
+      "codeLine": 18,
+      "note": "Advance `groupEnd` to `groupEnd.next` (null).",
+      "j": null
+    },
+    {
+      "codeLine": 14,
+      "note": "Increment `i` to 2. The loop condition `i < k` (i.e., `2 < 2`) is now false. The `for` loop finishes. `groupEnd` is null because node 5 is the last node, and there aren't enough nodes for a full k-group.",
+      "i": 2
+    },
+    {
+      "codeLine": 20,
+      "note": "`groupEnd` is null. This means there are fewer than `k` nodes remaining (only node 5). According to the problem, these nodes should remain unreversed."
+    },
+    {
+      "codeLine": 21,
+      "note": "Break out of the main `while` loop."
+    },
+    {
+      "codeLine": 36,
+      "note": "Return `dummy.next` (node 2), which is the new head of the modified list. The final list is `2 -> 1 -> 4 -> 3 -> 5 -> null`.",
+      "prev": 3,
+      "curr": 5,
+      "j": null,
+      "nodes": [
+        {
+          "val": 0,
+          "next": 2
+        },
+        {
+          "val": 1,
+          "next": 4
+        },
+        {
+          "val": 2,
+          "next": 1
+        },
+        {
+          "val": 3,
+          "next": 5
+        },
+        {
+          "val": 4,
+          "next": 3
+        },
+        {
+          "val": 5,
+          "next": null
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,112 @@
+{
+  "title": "Pacific Atlantic Water Flow",
+  "difficulty": "Medium",
+  "type": "matrix",
+  "tags": [
+    "Matrix",
+    "DFS",
+    "Graph"
+  ],
+  "description": "Find coordinates of cells from which water can flow to both Pacific and Atlantic oceans.",
+  "pseudocode": "1. dfs(r, c, visited, prevHeight)\n2. if out of bounds or height < prevHeight or visited, return\n3. visited.add(r, c)\n4. for each neighbor (nr, nc):\n5.   dfs(nr, nc, visited, matrix[r][c])\n6. run dfs from all boundary cells for Pacific and Atlantic\n7. find intersection of visited sets",
+  "steps": [
+    {
+      "codeLine": 6,
+      "note": "Initialize Pacific visited set at the top row (0,0)",
+      "matrix": [
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "codeLine": 1,
+      "note": "DFS from (0,0) to (0,1)",
+      "curr": [
+        0,
+        1
+      ],
+      "prev": [
+        0,
+        0
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Initialize Atlantic visited set at the bottom row (1,1)",
+      "matrix": [
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "visited": [
+        [
+          1,
+          1
+        ]
+      ]
+    },
+    {
+      "codeLine": 1,
+      "note": "DFS from (1,1) to (1,0)",
+      "curr": [
+        1,
+        0
+      ],
+      "prev": [
+        1,
+        1
+      ],
+      "visited": [
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Intersection of Pacific and Atlantic sets for matrix [[1,2],[3,4]]",
+      "visited": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ]
+    }
+  ]
+}

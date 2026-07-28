@@ -1,0 +1,177 @@
+{
+  "title": "Shortest Path to Get Food",
+  "difficulty": "Medium",
+  "type": "matrix",
+  "tags": [
+    "Matrix",
+    "Breadth-First Search",
+    "Queue"
+  ],
+  "description": "Find the shortest distance from the starting position ('*') to any food location ('#') in a grid with obstacles ('X').",
+  "target": "#",
+  "pseudocode": "1. Find start position (r, c)\n2. Initialize queue with [r, c, 0] and visited set\n3. While queue is not empty:\n4.   curr = queue.shift()\n5.   If grid[r][c] == '#', return dist\n6.   For each neighbor (nr, nc):\n7.     If valid and not visited, add to queue",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Starting at position [0, 0]",
+      "matrix": [
+        [
+          "*",
+          "O"
+        ],
+        [
+          "X",
+          "#"
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Initialize queue with start point",
+      "matrix": [
+        [
+          "*",
+          "O"
+        ],
+        [
+          "X",
+          "#"
+        ]
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Processing [0, 0]",
+      "matrix": [
+        [
+          "*",
+          "O"
+        ],
+        [
+          "X",
+          "#"
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Checking neighbors of [0, 0]",
+      "matrix": [
+        [
+          "*",
+          "O"
+        ],
+        [
+          "X",
+          "#"
+        ]
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Processing [0, 1]",
+      "matrix": [
+        [
+          "*",
+          "O"
+        ],
+        [
+          "X",
+          "#"
+        ]
+      ],
+      "curr": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Checking neighbors of [0, 1]",
+      "matrix": [
+        [
+          "*",
+          "O"
+        ],
+        [
+          "X",
+          "#"
+        ]
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Processing [1, 1], found food!",
+      "matrix": [
+        [
+          "*",
+          "O"
+        ],
+        [
+          "X",
+          "#"
+        ]
+      ],
+      "curr": [
+        1,
+        1
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Return distance 2",
+      "matrix": [
+        [
+          "*",
+          "O"
+        ],
+        [
+          "X",
+          "#"
+        ]
+      ],
+      "curr": [
+        1,
+        1
+      ]
+    }
+  ]
+}

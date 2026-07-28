@@ -1,0 +1,434 @@
+{
+  "title": "Valid Palindrome",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Two Pointers",
+    "String"
+  ],
+  "description": "A phrase is a palindrome if, after converting all uppercase letters into lowercase letters and removing all non-alphanumeric characters, it reads the same forward and backward.",
+  "target": true,
+  "pseudocode": "function isPalindrome(s):\n  left = 0, right = s.length - 1\n  while left < right:\n    if s[left] != s[right]:\n      return false\n    left++, right--\n  return true",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Filter string 'A Santa at NASA' into clean array of characters and initialize pointers.",
+      "array": [
+        "a",
+        "s",
+        "a",
+        "n",
+        "t",
+        "a",
+        "a",
+        "t",
+        "n",
+        "a",
+        "s",
+        "a"
+      ],
+      "i": 0,
+      "j": 11
+    },
+    {
+      "codeLine": 3,
+      "note": "Check loop condition: left (0) < right (11) is true.",
+      "array": [
+        "a",
+        "s",
+        "a",
+        "n",
+        "t",
+        "a",
+        "a",
+        "t",
+        "n",
+        "a",
+        "s",
+        "a"
+      ],
+      "i": 0,
+      "j": 11
+    },
+    {
+      "codeLine": 4,
+      "note": "Compare s[0] ('a') and s[11] ('a'). Characters match.",
+      "array": [
+        "a",
+        "s",
+        "a",
+        "n",
+        "t",
+        "a",
+        "a",
+        "t",
+        "n",
+        "a",
+        "s",
+        "a"
+      ],
+      "i": 0,
+      "j": 11
+    },
+    {
+      "codeLine": 6,
+      "note": "Increment left pointer to 1 and decrement right pointer to 10.",
+      "array": [
+        "a",
+        "s",
+        "a",
+        "n",
+        "t",
+        "a",
+        "a",
+        "t",
+        "n",
+        "a",
+        "s",
+        "a"
+      ],
+      "i": 1,
+      "j": 10
+    },
+    {
+      "codeLine": 3,
+      "note": "Check loop condition: left (1) < right (10) is true.",
+      "array": [
+        "a",
+        "s",
+        "a",
+        "n",
+        "t",
+        "a",
+        "a",
+        "t",
+        "n",
+        "a",
+        "s",
+        "a"
+      ],
+      "i": 1,
+      "j": 10
+    },
+    {
+      "codeLine": 4,
+      "note": "Compare s[1] ('s') and s[10] ('s'). Characters match.",
+      "array": [
+        "a",
+        "s",
+        "a",
+        "n",
+        "t",
+        "a",
+        "a",
+        "t",
+        "n",
+        "a",
+        "s",
+        "a"
+      ],
+      "i": 1,
+      "j": 10
+    },
+    {
+      "codeLine": 6,
+      "note": "Increment left pointer to 2 and decrement right pointer to 9.",
+      "array": [
+        "a",
+        "s",
+        "a",
+        "n",
+        "t",
+        "a",
+        "a",
+        "t",
+        "n",
+        "a",
+        "s",
+        "a"
+      ],
+      "i": 2,
+      "j": 9
+    },
+    {
+      "codeLine": 3,
+      "note": "Check loop condition: left (2) < right (9) is true.",
+      "array": [
+        "a",
+        "s",
+        "a",
+        "n",
+        "t",
+        "a",
+        "a",
+        "t",
+        "n",
+        "a",
+        "s",
+        "a"
+      ],
+      "i": 2,
+      "j": 9
+    },
+    {
+      "codeLine": 4,
+      "note": "Compare s[2] ('a') and s[9] ('a'). Characters match.",
+      "array": [
+        "a",
+        "s",
+        "a",
+        "n",
+        "t",
+        "a",
+        "a",
+        "t",
+        "n",
+        "a",
+        "s",
+        "a"
+      ],
+      "i": 2,
+      "j": 9
+    },
+    {
+      "codeLine": 6,
+      "note": "Increment left pointer to 3 and decrement right pointer to 8.",
+      "array": [
+        "a",
+        "s",
+        "a",
+        "n",
+        "t",
+        "a",
+        "a",
+        "t",
+        "n",
+        "a",
+        "s",
+        "a"
+      ],
+      "i": 3,
+      "j": 8
+    },
+    {
+      "codeLine": 3,
+      "note": "Check loop condition: left (3) < right (8) is true.",
+      "array": [
+        "a",
+        "s",
+        "a",
+        "n",
+        "t",
+        "a",
+        "a",
+        "t",
+        "n",
+        "a",
+        "s",
+        "a"
+      ],
+      "i": 3,
+      "j": 8
+    },
+    {
+      "codeLine": 4,
+      "note": "Compare s[3] ('n') and s[8] ('n'). Characters match.",
+      "array": [
+        "a",
+        "s",
+        "a",
+        "n",
+        "t",
+        "a",
+        "a",
+        "t",
+        "n",
+        "a",
+        "s",
+        "a"
+      ],
+      "i": 3,
+      "j": 8
+    },
+    {
+      "codeLine": 6,
+      "note": "Increment left pointer to 4 and decrement right pointer to 7.",
+      "array": [
+        "a",
+        "s",
+        "a",
+        "n",
+        "t",
+        "a",
+        "a",
+        "t",
+        "n",
+        "a",
+        "s",
+        "a"
+      ],
+      "i": 4,
+      "j": 7
+    },
+    {
+      "codeLine": 3,
+      "note": "Check loop condition: left (4) < right (7) is true.",
+      "array": [
+        "a",
+        "s",
+        "a",
+        "n",
+        "t",
+        "a",
+        "a",
+        "t",
+        "n",
+        "a",
+        "s",
+        "a"
+      ],
+      "i": 4,
+      "j": 7
+    },
+    {
+      "codeLine": 4,
+      "note": "Compare s[4] ('t') and s[7] ('t'). Characters match.",
+      "array": [
+        "a",
+        "s",
+        "a",
+        "n",
+        "t",
+        "a",
+        "a",
+        "t",
+        "n",
+        "a",
+        "s",
+        "a"
+      ],
+      "i": 4,
+      "j": 7
+    },
+    {
+      "codeLine": 6,
+      "note": "Increment left pointer to 5 and decrement right pointer to 6.",
+      "array": [
+        "a",
+        "s",
+        "a",
+        "n",
+        "t",
+        "a",
+        "a",
+        "t",
+        "n",
+        "a",
+        "s",
+        "a"
+      ],
+      "i": 5,
+      "j": 6
+    },
+    {
+      "codeLine": 3,
+      "note": "Check loop condition: left (5) < right (6) is true.",
+      "array": [
+        "a",
+        "s",
+        "a",
+        "n",
+        "t",
+        "a",
+        "a",
+        "t",
+        "n",
+        "a",
+        "s",
+        "a"
+      ],
+      "i": 5,
+      "j": 6
+    },
+    {
+      "codeLine": 4,
+      "note": "Compare s[5] ('a') and s[6] ('a'). Characters match.",
+      "array": [
+        "a",
+        "s",
+        "a",
+        "n",
+        "t",
+        "a",
+        "a",
+        "t",
+        "n",
+        "a",
+        "s",
+        "a"
+      ],
+      "i": 5,
+      "j": 6
+    },
+    {
+      "codeLine": 6,
+      "note": "Increment left pointer to 6 and decrement right pointer to 5.",
+      "array": [
+        "a",
+        "s",
+        "a",
+        "n",
+        "t",
+        "a",
+        "a",
+        "t",
+        "n",
+        "a",
+        "s",
+        "a"
+      ],
+      "i": 6,
+      "j": 5
+    },
+    {
+      "codeLine": 3,
+      "note": "Check loop condition: left (6) < right (5) is false. Loop terminates.",
+      "array": [
+        "a",
+        "s",
+        "a",
+        "n",
+        "t",
+        "a",
+        "a",
+        "t",
+        "n",
+        "a",
+        "s",
+        "a"
+      ],
+      "i": 6,
+      "j": 5
+    },
+    {
+      "codeLine": 7,
+      "note": "All character pairs matched. Return true.",
+      "array": [
+        "a",
+        "s",
+        "a",
+        "n",
+        "t",
+        "a",
+        "a",
+        "t",
+        "n",
+        "a",
+        "s",
+        "a"
+      ],
+      "i": 6,
+      "j": 5
+    }
+  ]
+}

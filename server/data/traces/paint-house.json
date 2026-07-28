@@ -1,0 +1,98 @@
+{
+  "title": "Paint House",
+  "difficulty": "Medium",
+  "type": "matrix",
+  "tags": [
+    "Dynamic Programming",
+    "Array"
+  ],
+  "description": "Calculate the minimum cost to paint a row of houses such that no two adjacent houses have the same color.",
+  "target": null,
+  "pseudocode": "1: for i from 1 to n-1:\n2:   costs[i][0] += min(costs[i-1][1], costs[i-1][2])\n3:   costs[i][1] += min(costs[i-1][0], costs[i-1][2])\n4:   costs[i][2] += min(costs[i-1][0], costs[i-1][1])\n5: return min(costs[n-1])",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Starting DP from the second house (index 1)",
+      "matrix": [
+        [
+          17,
+          2,
+          17
+        ],
+        [
+          16,
+          16,
+          5
+        ]
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Updating red cost for house 1: 16 + min(2, 17) = 18",
+      "matrix": [
+        [
+          17,
+          2,
+          17
+        ],
+        [
+          18,
+          16,
+          5
+        ]
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Updating blue cost for house 1: 16 + min(17, 17) = 33",
+      "matrix": [
+        [
+          17,
+          2,
+          17
+        ],
+        [
+          18,
+          33,
+          5
+        ]
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Updating green cost for house 1: 5 + min(17, 2) = 7",
+      "matrix": [
+        [
+          17,
+          2,
+          17
+        ],
+        [
+          18,
+          33,
+          7
+        ]
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Returning the minimum of the last row: min(18, 33, 7) = 7",
+      "matrix": [
+        [
+          17,
+          2,
+          17
+        ],
+        [
+          18,
+          33,
+          7
+        ]
+      ]
+    }
+  ]
+}

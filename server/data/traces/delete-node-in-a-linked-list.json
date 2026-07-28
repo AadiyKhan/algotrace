@@ -1,0 +1,55 @@
+{
+  "title": "Delete Node in a Linked List",
+  "difficulty": "Medium",
+  "type": "linked-list",
+  "tags": [
+    "Linked List"
+  ],
+  "description": "Delete a given node in a singly linked list. You are not given access to the head, only the node to be deleted.",
+  "target": 5,
+  "pseudocode": "1. node.val = node.next.val\n2. node.next = node.next.next",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Copy the value of the next node (5) into the current node (4). The list effectively becomes [4, 5, 5, 9].",
+      "nodes": [
+        {
+          "val": 4,
+          "next": 1
+        },
+        {
+          "val": 5,
+          "next": 2
+        },
+        {
+          "val": 5,
+          "next": 3
+        },
+        {
+          "val": 9,
+          "next": null
+        }
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Skip the next node by updating the current node's next pointer to point to the node after next. The list becomes [4, 5, 9].",
+      "nodes": [
+        {
+          "val": 4,
+          "next": 2
+        },
+        {
+          "val": 5,
+          "next": 2
+        },
+        {
+          "val": 9,
+          "next": null
+        }
+      ],
+      "curr": 0
+    }
+  ]
+}

@@ -1,0 +1,100 @@
+{
+  "title": "Logger Rate Limiter",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Hash Table",
+    "Design"
+  ],
+  "description": "Design a logger system that receives a stream of messages along with their timestamps. Each unique message should only be printed at most every 10 seconds.",
+  "pseudocode": "1. map = new Map();\n2. if (!map.has(msg) || timestamp - map.get(msg) >= 10) {\n3.   map.set(msg, timestamp);\n4.   return true;\n5. } else {\n6.   return false;\n7. }",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize the hash map to store the last allowed timestamp for each message.",
+      "array": []
+    },
+    {
+      "codeLine": 2,
+      "note": "Check 'foo' at timestamp 1: Not in map, proceed.",
+      "array": []
+    },
+    {
+      "codeLine": 3,
+      "note": "Set 'foo' to timestamp 1 in map.",
+      "array": [
+        "foo: 1"
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Return true for 'foo' at timestamp 1.",
+      "array": [
+        "foo: 1"
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Check 'bar' at timestamp 2: Not in map, proceed.",
+      "array": [
+        "foo: 1"
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Set 'bar' to timestamp 2 in map.",
+      "array": [
+        "foo: 1",
+        "bar: 2"
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Return true for 'bar' at timestamp 2.",
+      "array": [
+        "foo: 1",
+        "bar: 2"
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Check 'foo' at timestamp 8: Exists but 8-1 < 10.",
+      "array": [
+        "foo: 1",
+        "bar: 2"
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Return false for 'foo' at timestamp 8.",
+      "array": [
+        "foo: 1",
+        "bar: 2"
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Check 'foo' at timestamp 11: Exists and 11-1 >= 10.",
+      "array": [
+        "foo: 1",
+        "bar: 2"
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Update 'foo' to timestamp 11.",
+      "array": [
+        "foo: 11",
+        "bar: 2"
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Return true for 'foo' at timestamp 11.",
+      "array": [
+        "foo: 11",
+        "bar: 2"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,83 @@
+{
+  "title": "Unique Paths",
+  "difficulty": "Medium",
+  "type": "matrix",
+  "tags": [
+    "Array",
+    "Dynamic Programming",
+    "Combinatorics"
+  ],
+  "description": "Find the number of unique paths to reach the bottom-right corner of an m x n grid.",
+  "target": 3,
+  "pseudocode": "1. Initialize grid[m][n] with 1s\n2. for i from 1 to m-1:\n3.   for j from 1 to n-1:\n4.     grid[i][j] = grid[i-1][j] + grid[i][j-1]\n5. return grid[m-1][n-1]",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize a 2x3 grid with 1s representing base cases.",
+      "matrix": [
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ]
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Calculate paths for grid[1][1] = grid[0][1] + grid[1][0] = 1 + 1 = 2.",
+      "matrix": [
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          2,
+          1
+        ]
+      ],
+      "i": 1,
+      "j": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Calculate paths for grid[1][2] = grid[0][2] + grid[1][1] = 1 + 2 = 3.",
+      "matrix": [
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          2,
+          3
+        ]
+      ],
+      "i": 1,
+      "j": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Return the value at bottom-right corner: 3.",
+      "matrix": [
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          2,
+          3
+        ]
+      ]
+    }
+  ]
+}

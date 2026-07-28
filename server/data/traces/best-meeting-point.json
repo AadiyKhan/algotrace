@@ -1,0 +1,59 @@
+{
+  "title": "Best Meeting Point",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Math",
+    "Sorting"
+  ],
+  "description": "Find the point that minimizes the total travel distance to all 1s in a binary grid.",
+  "pseudocode": "1. Collect all row indices of 1s in order.\n2. Collect all col indices of 1s in order.\n3. Median row = rows[rows.length / 2].\n4. Median col = cols[cols.length / 2].\n5. Calculate distance: sum(|r - medianRow| + |c - medianCol| for all points).",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Collecting row indices of 1s from the grid.",
+      "array": [
+        0,
+        2
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Collecting column indices of 1s in sorted order.",
+      "array": [
+        0,
+        2
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Finding the median row index.",
+      "array": [
+        0,
+        2
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Finding the median column index.",
+      "array": [
+        0,
+        2
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Calculating total Manhattan distance to the median point (0, 0).",
+      "array": [
+        0,
+        2
+      ],
+      "i": 2
+    }
+  ]
+}

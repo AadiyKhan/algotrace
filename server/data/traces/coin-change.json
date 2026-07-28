@@ -1,0 +1,90 @@
+{
+  "title": "Coin Change",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Dynamic Programming",
+    "Array"
+  ],
+  "description": "Find the minimum number of coins to make up a target amount using given denominations.",
+  "target": 3,
+  "pseudocode": "1. dp = [0, inf, inf, inf]\n2. for i in 1..amount:\n3.   for coin in coins:\n4.     if i >= coin:\n5.       dp[i] = min(dp[i], dp[i-coin] + 1)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize DP array with infinity, base case dp[0] = 0.",
+      "array": [
+        0,
+        99,
+        99,
+        99
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Start calculating min coins for amount i=1.",
+      "array": [
+        0,
+        99,
+        99,
+        99
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Use coin 1: dp[1] = min(inf, dp[0] + 1) = 1.",
+      "array": [
+        0,
+        1,
+        99,
+        99
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Calculate for i=2.",
+      "array": [
+        0,
+        1,
+        99,
+        99
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Use coin 1: dp[2] = min(inf, dp[1] + 1) = 2.",
+      "array": [
+        0,
+        1,
+        2,
+        99
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 2,
+      "note": "Calculate for i=3.",
+      "array": [
+        0,
+        1,
+        2,
+        99
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 5,
+      "note": "Use coin 3: dp[3] = min(inf, dp[0] + 1) = 1.",
+      "array": [
+        0,
+        1,
+        2,
+        1
+      ],
+      "i": 3
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "title": "Find All Anagrams In A String",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "Sliding Window"
+  ],
+  "description": "Find all start indices of p's anagrams in s using a sliding window.",
+  "target": "abc",
+  "pseudocode": "1. pCount = count characters in p\n2. sCount = count characters in first window of s\n3. for i from 0 to s.length - p.length:\n4.   if sCount == pCount: add i to result\n5.   update sCount by removing s[i] and adding s[i + p.length]",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize pCount for 'abc': {a:1, b:1, c:1}",
+      "array": [
+        "a",
+        "b",
+        "c"
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Initialize sCount for first window 'cba': {c:1, b:1, a:1}",
+      "array": [
+        "c",
+        "b",
+        "a",
+        "e",
+        "b",
+        "a"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "sCount matches pCount, index 0 is an anagram",
+      "array": [
+        "c",
+        "b",
+        "a",
+        "e",
+        "b",
+        "a"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Slide window: remove 'c', add 'e'. sCount: {b:1, a:1, e:1}",
+      "array": [
+        "c",
+        "b",
+        "a",
+        "e",
+        "b",
+        "a"
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "sCount does not match pCount",
+      "array": [
+        "c",
+        "b",
+        "a",
+        "e",
+        "b",
+        "a"
+      ],
+      "i": 1
+    }
+  ]
+}

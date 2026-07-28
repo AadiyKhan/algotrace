@@ -1,0 +1,53 @@
+{
+  "title": "Sort Characters By Frequency",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Hash Table",
+    "String",
+    "Sorting",
+    "Heap"
+  ],
+  "description": "Sort a string in decreasing order of the frequency of its characters.",
+  "target": null,
+  "pseudocode": "1. map = new Map();\n2. for (char of s) map.set(char, (map.get(char) || 0) + 1);\n3. arr = [...map.entries()].sort((a, b) => b[1] - a[1]);\n4. result = '';\n5. for (let [char, freq] of arr) result += char.repeat(freq);",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize an empty hash map to store frequencies.",
+      "array": []
+    },
+    {
+      "codeLine": 2,
+      "note": "Populate map with frequencies for 'tree'.",
+      "array": [
+        "t",
+        "r",
+        "e",
+        "e"
+      ],
+      "i": "t:1, r:1, e:2"
+    },
+    {
+      "codeLine": 3,
+      "note": "Convert map to array and sort by frequency descending.",
+      "array": [
+        "e",
+        "t",
+        "r"
+      ],
+      "i": "e:2, t:1, r:1"
+    },
+    {
+      "codeLine": 5,
+      "note": "Append characters based on frequency to build result string.",
+      "array": [
+        "e",
+        "e",
+        "t",
+        "r"
+      ],
+      "i": "eetr"
+    }
+  ]
+}

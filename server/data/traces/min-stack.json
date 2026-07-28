@@ -1,0 +1,53 @@
+{
+  "title": "Min Stack",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Stack",
+    "Design"
+  ],
+  "description": "Design a stack that supports push, pop, top, and retrieving the minimum element in constant time.",
+  "pseudocode": "1. push(val): stack.push(val); minStack.push(min(val, minStack.top()))\n2. pop(): stack.pop(); minStack.pop()\n3. top(): return stack.top()\n4. getMin(): return minStack.top()",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Push 5: stack becomes [5], minStack becomes [5]",
+      "array": [
+        5
+      ]
+    },
+    {
+      "codeLine": 1,
+      "note": "Push 2: stack becomes [5, 2], minStack becomes [5, 2]",
+      "array": [
+        5,
+        2
+      ]
+    },
+    {
+      "codeLine": 1,
+      "note": "Push 8: stack becomes [5, 2, 8], minStack becomes [5, 2, 2]",
+      "array": [
+        5,
+        2,
+        8
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Pop: remove top element, stack becomes [5, 2], minStack becomes [5, 2]",
+      "array": [
+        5,
+        2
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "getMin: return top of minStack, which is 2",
+      "array": [
+        5,
+        2
+      ]
+    }
+  ]
+}

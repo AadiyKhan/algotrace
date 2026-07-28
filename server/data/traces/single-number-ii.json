@@ -1,0 +1,79 @@
+{
+  "title": "Single Number II",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Bit Manipulation"
+  ],
+  "description": "Find the element that appears once in an array where every other element appears three times.",
+  "target": 3,
+  "pseudocode": "1: let ones = 0, twos = 0\n2: for num in nums:\n3:   ones = (ones ^ num) & ~twos\n4:   twos = (twos ^ num) & ~ones\n5: return ones",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize bitmasks ones and twos to 0.",
+      "array": [
+        2,
+        2,
+        3,
+        2
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Processing 2: ones becomes 2, twos remains 0.",
+      "array": [
+        2,
+        2,
+        3,
+        2
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Processing 2: twos becomes 2, ones becomes 0.",
+      "array": [
+        2,
+        2,
+        3,
+        2
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Processing 3: ones becomes 3, twos remains 2.",
+      "array": [
+        2,
+        2,
+        3,
+        2
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Processing 2: ones becomes 3, twos becomes 0.",
+      "array": [
+        2,
+        2,
+        3,
+        2
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 5,
+      "note": "Return ones (3) as the single element.",
+      "array": [
+        2,
+        2,
+        3,
+        2
+      ]
+    }
+  ]
+}

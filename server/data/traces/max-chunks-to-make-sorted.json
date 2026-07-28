@@ -1,0 +1,146 @@
+{
+  "title": "Max Chunks To Make Sorted",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Greedy"
+  ],
+  "description": "Partition an array of [0, n-1] into the maximum number of chunks such that sorting each chunk individually results in a fully sorted array.",
+  "target": null,
+  "pseudocode": "1. maxVal = 0\n2. chunks = 0\n3. for i from 0 to arr.length - 1:\n4.   maxVal = max(maxVal, arr[i])\n5.   if maxVal == i:\n6.     chunks++",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize maxVal to track the highest value seen so far.",
+      "array": [
+        1,
+        0,
+        2,
+        3
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "First element is 1. maxVal becomes 1.",
+      "array": [
+        1,
+        0,
+        2,
+        3
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "maxVal (1) != i (0). Continue.",
+      "array": [
+        1,
+        0,
+        2,
+        3
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Second element is 0. maxVal stays 1.",
+      "array": [
+        1,
+        0,
+        2,
+        3
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "maxVal (1) == i (1). Found a chunk!",
+      "array": [
+        1,
+        0,
+        2,
+        3
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Increment chunks to 1.",
+      "array": [
+        1,
+        0,
+        2,
+        3
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Third element is 2. maxVal becomes 2.",
+      "array": [
+        1,
+        0,
+        2,
+        3
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "maxVal (2) == i (2). Found a chunk!",
+      "array": [
+        1,
+        0,
+        2,
+        3
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Increment chunks to 2.",
+      "array": [
+        1,
+        0,
+        2,
+        3
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Fourth element is 3. maxVal becomes 3.",
+      "array": [
+        1,
+        0,
+        2,
+        3
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 5,
+      "note": "maxVal (3) == i (3). Found a chunk!",
+      "array": [
+        1,
+        0,
+        2,
+        3
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 6,
+      "note": "Increment chunks to 3. End of array.",
+      "array": [
+        1,
+        0,
+        2,
+        3
+      ],
+      "i": 3
+    }
+  ]
+}

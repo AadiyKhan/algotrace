@@ -1,0 +1,79 @@
+{
+  "title": "Range Sum of BST",
+  "difficulty": "Easy",
+  "type": "tree",
+  "tags": [
+    "Tree",
+    "DFS",
+    "BST"
+  ],
+  "description": "Given the root node of a binary search tree and two integers low and high, return the sum of values of all nodes with a value in the inclusive range [low, high].",
+  "target": "low: 7, high: 15",
+  "pseudocode": "function rangeSumBST(root, low, high) {\n  if (!root) return 0;\n  if (root.val < low) return rangeSumBST(root.right, low, high);\n  if (root.val > high) return rangeSumBST(root.left, low, high);\n  return root.val + rangeSumBST(root.left, low, high) + rangeSumBST(root.right, low, high);\n}",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Initialize traversal at root (10).",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 10,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 5,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 15,
+          "left": null,
+          "right": 3
+        },
+        {
+          "id": 3,
+          "val": 18,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Root 10 is within [7, 15]. Add 10 to sum and traverse left.",
+      "visited": [
+        0
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Node 5 is less than low (7). Prune left branch, go right.",
+      "visited": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Node 15 is within [7, 15]. Add 15 to sum.",
+      "visited": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Node 18 is greater than high (15). Prune right branch.",
+      "visited": [
+        0,
+        1,
+        2,
+        3
+      ]
+    }
+  ]
+}

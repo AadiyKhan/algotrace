@@ -1,0 +1,73 @@
+{
+  "title": "Sequence Reconstruction",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Graph",
+    "Topological Sort"
+  ],
+  "description": "Check if the original sequence can be uniquely reconstructed from a set of sequences using Kahn's algorithm (topological sort).",
+  "target": true,
+  "pseudocode": "1. Build adjacency list and in-degree count\n2. Add nodes with 0 in-degree to queue\n3. While queue length is 1\n4. Pop node, add to result, update neighbors\n5. If neighbor's in-degree is 0, push to queue\n6. Return result length == original length",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize graph: nodes [1, 2, 3], edges 1->2, 2->3. In-degrees: {1:0, 2:1, 3:1}",
+      "array": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Queue initialized with nodes having 0 in-degree: [1]",
+      "array": [
+        1,
+        2,
+        3
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Queue length is 1 (only node 1), proceeding to extract unique node",
+      "array": [
+        1,
+        2,
+        3
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Pop 1, result is [1], decrement in-degree of node 2",
+      "array": [
+        1,
+        2,
+        3
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Node 2 in-degree is 0, add 2 to queue. Queue is [2]",
+      "array": [
+        1,
+        2,
+        3
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Loop finishes, result is [1, 2, 3]. Length matches, unique reconstruction confirmed.",
+      "array": [
+        1,
+        2,
+        3
+      ]
+    }
+  ]
+}

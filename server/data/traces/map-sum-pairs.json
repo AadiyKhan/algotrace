@@ -1,0 +1,135 @@
+{
+  "title": "Map Sum Pairs",
+  "difficulty": "Medium",
+  "type": "tree",
+  "tags": [
+    "Trie",
+    "Hash Table",
+    "Design"
+  ],
+  "description": "Design a map sum structure that supports inserting key-value pairs and returning the sum of all values whose keys start with a given prefix.",
+  "pseudocode": "1: function insert(key, val) {\n2:   let curr = root;\n3:   for (let char of key) {\n4:     if (!curr.children[char]) curr.children[char] = new Node();\n5:     curr = curr.children[char];\n6:     curr.sum += val;\n7:   }\n8: }\n9: function sum(prefix) {\n10:  let curr = root;\n11:  for (let char of prefix) {\n12:    if (!curr.children[char]) return 0;\n13:    curr = curr.children[char];\n14:  }\n15:  return curr.sum;\n16: }",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Inserting key 'ap' with value 3",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 0,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Traversed 'a', updated sum to 3",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 0,
+          "left": 1,
+          "right": null
+        },
+        {
+          "id": 1,
+          "val": 3,
+          "left": 2,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Traversed 'p', updated sum to 3",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 0,
+          "left": 1,
+          "right": null
+        },
+        {
+          "id": 1,
+          "val": 3,
+          "left": 2,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 1,
+      "note": "Inserting key 'apple' with value 2",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 0,
+          "left": 1,
+          "right": null
+        },
+        {
+          "id": 1,
+          "val": 5,
+          "left": 2,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 5,
+          "left": 3,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 2,
+          "left": 4,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 2,
+          "left": 5,
+          "right": null
+        },
+        {
+          "id": 5,
+          "val": 2,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 15,
+      "note": "Querying prefix 'ap', returning node sum 5",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 0,
+          "left": 1,
+          "right": null
+        },
+        {
+          "id": 1,
+          "val": 5,
+          "left": 2,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 5,
+          "left": 3,
+          "right": null
+        }
+      ],
+      "curr": 2
+    }
+  ]
+}

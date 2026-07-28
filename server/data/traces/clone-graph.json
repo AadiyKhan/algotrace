@@ -1,0 +1,152 @@
+{
+  "title": "Clone Graph",
+  "difficulty": "Medium",
+  "type": "tree",
+  "tags": [
+    "Graph",
+    "Breadth-First Search",
+    "Depth-First Search"
+  ],
+  "description": "Given a reference of a node in a connected undirected graph, return a deep copy (clone) of the graph.",
+  "target": null,
+  "pseudocode": "1. map = new Map();\n2. function clone(node) {\n3.   if (!node) return null;\n4.   if (map.has(node)) return map.get(node);\n5.   let copy = new Node(node.val);\n6.   map.set(node, copy);\n7.   for (let neighbor of node.neighbors) {\n8.     copy.neighbors.push(clone(neighbor));\n9.   }\n10.  return copy;\n11. }",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize memoization map to track cloned nodes.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "neighbors": [
+            1,
+            2
+          ]
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "neighbors": [
+            0
+          ]
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "neighbors": [
+            0
+          ]
+        }
+      ],
+      "visited": []
+    },
+    {
+      "codeLine": 5,
+      "note": "Clone node 1.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "neighbors": [
+            1,
+            2
+          ]
+        }
+      ],
+      "visited": [
+        0
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Recursively clone neighbor node 2.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "neighbors": [
+            1,
+            2
+          ]
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "neighbors": [
+            0
+          ]
+        }
+      ],
+      "visited": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Recursively clone neighbor node 3.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "neighbors": [
+            1,
+            2
+          ]
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "neighbors": [
+            0
+          ]
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "neighbors": [
+            0
+          ]
+        }
+      ],
+      "visited": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 10,
+      "note": "Return the cloned graph head.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "neighbors": [
+            1,
+            2
+          ]
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "neighbors": [
+            0
+          ]
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "neighbors": [
+            0
+          ]
+        }
+      ],
+      "visited": [
+        0,
+        1,
+        2
+      ]
+    }
+  ]
+}

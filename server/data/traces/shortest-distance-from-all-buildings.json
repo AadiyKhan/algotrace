@@ -1,0 +1,157 @@
+{
+  "title": "Shortest Distance from All Buildings",
+  "difficulty": "Hard",
+  "type": "matrix",
+  "tags": [
+    "Array",
+    "Breadth-First Search",
+    "Matrix"
+  ],
+  "description": "Find a vacant land that minimizes the total travel distance to all buildings using BFS.",
+  "pseudocode": "1. For each building, perform BFS to find distances to all reachable empty cells.\n2. Maintain totalDist matrix and reachCount matrix.\n3. Return min distance among cells reachable by all buildings.",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize matrices for total distances and reach counts.",
+      "matrix": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "codeLine": 1,
+      "note": "Start BFS from building at [0,0].",
+      "matrix": [
+        [
+          0,
+          1,
+          2
+        ],
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          2,
+          3,
+          4
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Update distances for empty cell [0,1].",
+      "matrix": [
+        [
+          0,
+          1,
+          2
+        ],
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          2,
+          3,
+          4
+        ]
+      ],
+      "curr": [
+        0,
+        1
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Update distances for empty cell [1,0].",
+      "matrix": [
+        [
+          0,
+          1,
+          2
+        ],
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          2,
+          3,
+          4
+        ]
+      ],
+      "curr": [
+        1,
+        0
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Find minimum in totalDist matrix where reachCount equals total buildings.",
+      "matrix": [
+        [
+          0,
+          1,
+          2
+        ],
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          2,
+          3,
+          4
+        ]
+      ],
+      "i": 1,
+      "j": 1
+    }
+  ]
+}

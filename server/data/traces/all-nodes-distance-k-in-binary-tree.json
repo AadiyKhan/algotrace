@@ -1,0 +1,176 @@
+{
+  "title": "All Nodes Distance K in Binary Tree",
+  "difficulty": "Medium",
+  "type": "tree",
+  "tags": [
+    "Tree",
+    "DFS",
+    "BFS",
+    "Graph"
+  ],
+  "description": "Find all nodes at distance K from target node in a binary tree.",
+  "target": 5,
+  "pseudocode": "1. Build adjacency list graph from parent-child pointers\n2. Perform BFS from target node\n3. Track visited nodes in a set\n4. Collect nodes at distance K",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Building graph: Mapping parent-child relationships",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 3,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 5,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 2,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 6,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 2,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Starting BFS from target node (val 5, id 1)",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 3,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 5,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 2,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 6,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 2,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        1
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Exploring neighbors at distance 1 from node 5: {3, 6, 2}",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 3,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 5,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 2,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 6,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 2,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        1,
+        0,
+        3,
+        4
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Returning nodes found at distance K=2: [6, 2, 1]",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 3,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 5,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 2,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 6,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 2,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        1,
+        0,
+        3,
+        4,
+        2
+      ]
+    }
+  ]
+}

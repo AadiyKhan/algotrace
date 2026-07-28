@@ -1,0 +1,54 @@
+{
+  "title": "Bulb Switcher II",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Math",
+    "Bit Manipulation",
+    "Depth-First Search",
+    "Breadth-First Search"
+  ],
+  "description": "Find the number of unique states of n bulbs after m operations using 4 different buttons.",
+  "target": 2,
+  "pseudocode": "1. if m == 0 return 1\n2. if n == 1 return 2\n3. if n == 2 and m == 1 return 3\n4. if n == 2 or m == 1 return 4\n5. if m == 2 return 7\n6. return 8",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Check base case: no operations mean initial state only.",
+      "array": [
+        1,
+        1,
+        1
+      ],
+      "i": null
+    },
+    {
+      "codeLine": 2,
+      "note": "If only 1 bulb, operations toggle between ON and OFF.",
+      "array": [
+        1
+      ],
+      "i": null
+    },
+    {
+      "codeLine": 4,
+      "note": "For n=3, m=1, calculate possible states: all off, all on, flip even, flip odd.",
+      "array": [
+        0,
+        0,
+        0
+      ],
+      "i": 4
+    },
+    {
+      "codeLine": 6,
+      "note": "For n >= 3 and m >= 3, all 8 combinations of operations are reachable.",
+      "array": [
+        0,
+        1,
+        0
+      ],
+      "i": 8
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "title": "Range Addition II",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Math"
+  ],
+  "description": "Find the count of the maximum integer in an m x n matrix after multiple range increment operations.",
+  "target": null,
+  "pseudocode": "1: minR = m, minC = n\n2: for op in ops:\n3:   minR = min(minR, op[0])\n4:   minC = min(minC, op[1])\n5: return minR * minC",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize minR and minC to matrix dimensions 3x3",
+      "i": 3,
+      "j": 3
+    },
+    {
+      "codeLine": 2,
+      "note": "Processing operation [2, 2]",
+      "i": 2,
+      "j": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Update minR = min(3, 2)",
+      "i": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Update minC = min(3, 2)",
+      "j": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Return minR * minC = 2 * 2 = 4"
+    }
+  ]
+}

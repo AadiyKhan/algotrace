@@ -1,0 +1,47 @@
+{
+  "title": "Insert Delete GetRandom O(1)",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "Design",
+    "Randomized"
+  ],
+  "description": "Implement the RandomizedSet class to support insert, remove, and getRandom in O(1) average time.",
+  "target": null,
+  "pseudocode": "1. map = {}\n2. list = []\n3. insert(val): if val in map: return false; list.push(val); map[val] = list.length - 1; return true\n4. remove(val): if val not in map: return false; last = list[list.length - 1]; idx = map[val]; list[idx] = last; map[last] = idx; list.pop(); delete map[val]; return true\n5. getRandom(): return list[Math.floor(Math.random() * list.length)]",
+  "steps": [
+    {
+      "codeLine": 3,
+      "note": "Insert 10 into the set. Added to list and map.",
+      "array": [
+        10
+      ],
+      "i": "10"
+    },
+    {
+      "codeLine": 3,
+      "note": "Insert 20 into the set. Appended to list.",
+      "array": [
+        10,
+        20
+      ],
+      "i": "20"
+    },
+    {
+      "codeLine": 4,
+      "note": "Remove 10. Replace 10 with last element (20), then pop.",
+      "array": [
+        20
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Get random from current array.",
+      "array": [
+        20
+      ]
+    }
+  ]
+}

@@ -1,0 +1,93 @@
+{
+  "title": "Backspace String Compare",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "String",
+    "Stack",
+    "Two Pointers"
+  ],
+  "description": "Compare two strings S and T. '#' represents a backspace character. Return true if they are equal after processing backspaces.",
+  "pseudocode": "function backspaceCompare(S, T) {\n  const build = (s) => {\n    let res = [];\n    for (let char of s) {\n      if (char !== '#') res.push(char);\n      else res.pop();\n    }\n    return res.join('');\n  };\n  return build(S) === build(T);\n}",
+  "steps": [
+    {
+      "codeLine": 3,
+      "note": "Initialize result array for string S ('ab#c')",
+      "array": []
+    },
+    {
+      "codeLine": 5,
+      "note": "Push 'a' to stack",
+      "array": [
+        "a"
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Push 'b' to stack",
+      "array": [
+        "a",
+        "b"
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Encountered '#', pop 'b'",
+      "array": [
+        "a"
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Push 'c' to stack",
+      "array": [
+        "a",
+        "c"
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Initialize result array for string T ('ad#c')",
+      "array": []
+    },
+    {
+      "codeLine": 5,
+      "note": "Push 'a' to stack",
+      "array": [
+        "a"
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Push 'd' to stack",
+      "array": [
+        "a",
+        "d"
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Encountered '#', pop 'd'",
+      "array": [
+        "a"
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Push 'c' to stack",
+      "array": [
+        "a",
+        "c"
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Compare 'ac' === 'ac', return true",
+      "array": [
+        "a",
+        "c"
+      ]
+    }
+  ]
+}

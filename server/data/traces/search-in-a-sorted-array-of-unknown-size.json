@@ -1,0 +1,170 @@
+{
+  "title": "Search in a Sorted Array of Unknown Size",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Binary Search"
+  ],
+  "description": "Find target in a sorted array where size is unknown using an exponential search to find bounds, then binary search.",
+  "target": 9,
+  "pseudocode": "1: let high = 1\n2: while reader.get(high) < target:\n3:   high *= 2\n4: let low = high / 2\n5: while low <= high:\n6:   let mid = Math.floor(low + (high - low) / 2)\n7:   if reader.get(mid) == target: return mid\n8:   if reader.get(mid) > target: high = mid - 1\n9:   else: low = mid + 1",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize high bound at 1",
+      "array": [
+        1,
+        3,
+        5,
+        7,
+        9,
+        11
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Check if target 9 is beyond index 1",
+      "array": [
+        1,
+        3,
+        5,
+        7,
+        9,
+        11
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Double high bound to 2",
+      "array": [
+        1,
+        3,
+        5,
+        7,
+        9,
+        11
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 2,
+      "note": "Check if target 9 is beyond index 2",
+      "array": [
+        1,
+        3,
+        5,
+        7,
+        9,
+        11
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Double high bound to 4",
+      "array": [
+        1,
+        3,
+        5,
+        7,
+        9,
+        11
+      ],
+      "i": 4
+    },
+    {
+      "codeLine": 2,
+      "note": "Check if target 9 is beyond index 4 (Value is 9)",
+      "array": [
+        1,
+        3,
+        5,
+        7,
+        9,
+        11
+      ],
+      "i": 4
+    },
+    {
+      "codeLine": 4,
+      "note": "Set low bound to 2",
+      "array": [
+        1,
+        3,
+        5,
+        7,
+        9,
+        11
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Calculate mid index between 2 and 4",
+      "array": [
+        1,
+        3,
+        5,
+        7,
+        9,
+        11
+      ],
+      "curr": 3
+    },
+    {
+      "codeLine": 7,
+      "note": "Compare reader.get(3) [7] with target 9",
+      "array": [
+        1,
+        3,
+        5,
+        7,
+        9,
+        11
+      ],
+      "curr": 3
+    },
+    {
+      "codeLine": 9,
+      "note": "Target is higher, move low to mid + 1",
+      "array": [
+        1,
+        3,
+        5,
+        7,
+        9,
+        11
+      ],
+      "i": 4
+    },
+    {
+      "codeLine": 6,
+      "note": "Calculate mid index between 4 and 4",
+      "array": [
+        1,
+        3,
+        5,
+        7,
+        9,
+        11
+      ],
+      "curr": 4
+    },
+    {
+      "codeLine": 7,
+      "note": "Target found at index 4",
+      "array": [
+        1,
+        3,
+        5,
+        7,
+        9,
+        11
+      ],
+      "curr": 4
+    }
+  ]
+}

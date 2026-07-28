@@ -1,0 +1,95 @@
+{
+  "title": "Continuous Subarray Sum",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "Prefix Sum"
+  ],
+  "description": "Given an integer array nums and an integer k, return true if there is a continuous subarray of size at least two whose elements sum up to a multiple of k.",
+  "target": 6,
+  "pseudocode": "1. map = {0: -1}\n2. sum = 0\n3. for i from 0 to nums.length - 1:\n4.   sum = (sum + nums[i]) % k\n5.   if sum in map:\n6.     if i - map[sum] >= 2: return true\n7.   else: map[sum] = i\n8. return false",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize remainder map with 0 at index -1 to handle subarrays starting from index 0.",
+      "array": [
+        23,
+        2,
+        4
+      ],
+      "i": null
+    },
+    {
+      "codeLine": 4,
+      "note": "Calculate remainder for index 0: (0 + 23) % 6 = 5.",
+      "array": [
+        23,
+        2,
+        4
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 7,
+      "note": "Remainder 5 not in map, add it: {0: -1, 5: 0}.",
+      "array": [
+        23,
+        2,
+        4
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Calculate remainder for index 1: (5 + 2) % 6 = 1.",
+      "array": [
+        23,
+        2,
+        4
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "Remainder 1 not in map, add it: {0: -1, 5: 0, 1: 1}.",
+      "array": [
+        23,
+        2,
+        4
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Calculate remainder for index 2: (1 + 4) % 6 = 5.",
+      "array": [
+        23,
+        2,
+        4
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Remainder 5 found in map at index 0.",
+      "array": [
+        23,
+        2,
+        4
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Check distance: 2 - 0 = 2. Since 2 >= 2, return true.",
+      "array": [
+        23,
+        2,
+        4
+      ],
+      "i": 2
+    }
+  ]
+}

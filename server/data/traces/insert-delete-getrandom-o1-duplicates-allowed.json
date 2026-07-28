@@ -1,0 +1,48 @@
+{
+  "title": "Insert Delete GetRandom O(1) - Duplicates allowed",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "Design",
+    "Randomized"
+  ],
+  "description": "Design a data structure that supports insert, remove, and getRandom with duplicates, all in O(1) average time complexity.",
+  "target": null,
+  "pseudocode": "1. map = {val: Set(indices)}\n2. list = []\n3. insert(val): list.push(val), map[val].add(list.length - 1)\n4. remove(val): idx = map[val].values().next(), lastVal = list.pop(), swap(idx, lastVal), update map",
+  "steps": [
+    {
+      "codeLine": 3,
+      "note": "Insert 1: list becomes [1], map becomes {1: {0}}",
+      "array": [
+        1
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Insert 1 again: list becomes [1, 1], map becomes {1: {0, 1}}",
+      "array": [
+        1,
+        1
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Insert 2: list becomes [1, 1, 2], map becomes {1: {0, 1}, 2: {2}}",
+      "array": [
+        1,
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Remove 1: swap index 0 with last element 2. list becomes [2, 1], map becomes {1: {1}, 2: {0}}",
+      "array": [
+        2,
+        1
+      ]
+    }
+  ]
+}

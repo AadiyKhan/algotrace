@@ -1,0 +1,148 @@
+{
+  "title": "Triangle",
+  "difficulty": "Medium",
+  "type": "matrix",
+  "tags": [
+    "Array",
+    "Dynamic Programming"
+  ],
+  "description": "Find the minimum path sum from top to bottom in a triangle of numbers.",
+  "target": null,
+  "pseudocode": "1. n = triangle.length\n2. for i = n - 2 down to 0:\n3.   for j = 0 to triangle[i].length - 1:\n4.     triangle[i][j] += min(triangle[i+1][j], triangle[i+1][j+1])\n5. return triangle[0][0]",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize triangle array: [[2], [3, 4], [6, 5, 7]]",
+      "matrix": [
+        [
+          2
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          6,
+          5,
+          7
+        ]
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Start outer loop from row 1 (i=1)",
+      "matrix": [
+        [
+          2
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          6,
+          5,
+          7
+        ]
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Process index j=0, updating value with min(6, 5)",
+      "matrix": [
+        [
+          2
+        ],
+        [
+          8,
+          4
+        ],
+        [
+          6,
+          5,
+          7
+        ]
+      ],
+      "i": 1,
+      "j": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Process index j=1, updating value with min(5, 7)",
+      "matrix": [
+        [
+          2
+        ],
+        [
+          8,
+          9
+        ],
+        [
+          6,
+          5,
+          7
+        ]
+      ],
+      "i": 1,
+      "j": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Move to row 0 (i=0)",
+      "matrix": [
+        [
+          2
+        ],
+        [
+          8,
+          9
+        ],
+        [
+          6,
+          5,
+          7
+        ]
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Process index j=0, updating value with min(8, 9)",
+      "matrix": [
+        [
+          10
+        ],
+        [
+          8,
+          9
+        ],
+        [
+          6,
+          5,
+          7
+        ]
+      ],
+      "i": 0,
+      "j": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Return the result at triangle[0][0]",
+      "matrix": [
+        [
+          10
+        ],
+        [
+          8,
+          9
+        ],
+        [
+          6,
+          5,
+          7
+        ]
+      ]
+    }
+  ]
+}

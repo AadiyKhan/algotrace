@@ -1,0 +1,123 @@
+{
+  "title": "Battleships in a Board",
+  "difficulty": "Medium",
+  "type": "matrix",
+  "tags": [
+    "Array",
+    "Matrix",
+    "Depth-First Search"
+  ],
+  "description": "Count the number of battleships on a 2D board where ships are placed horizontally or vertically.",
+  "target": 2,
+  "pseudocode": "count = 0\nfor r = 0 to rows-1:\n  for c = 0 to cols-1:\n    if board[r][c] == 'X':\n      if (r > 0 and board[r-1][c] == 'X') or (c > 0 and board[r][c-1] == 'X'):\n        continue\n      count += 1\nreturn count",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize count to 0",
+      "matrix": [
+        [
+          "X",
+          "."
+        ],
+        [
+          ".",
+          "X"
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Found an 'X' at (0,0). Check for neighbors above or left.",
+      "matrix": [
+        [
+          "X",
+          "."
+        ],
+        [
+          ".",
+          "X"
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "No 'X' above or left. New ship identified. Increment count.",
+      "matrix": [
+        [
+          "X",
+          "."
+        ],
+        [
+          ".",
+          "X"
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Checking cell (1,1). Found an 'X'.",
+      "matrix": [
+        [
+          "X",
+          "."
+        ],
+        [
+          ".",
+          "X"
+        ]
+      ],
+      "curr": [
+        1,
+        1
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Check neighbors for (1,1). None are 'X'.",
+      "matrix": [
+        [
+          "X",
+          "."
+        ],
+        [
+          ".",
+          "X"
+        ]
+      ],
+      "curr": [
+        1,
+        1
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Increment count. Total is 2.",
+      "matrix": [
+        [
+          "X",
+          "."
+        ],
+        [
+          ".",
+          "X"
+        ]
+      ],
+      "curr": [
+        1,
+        1
+      ]
+    }
+  ]
+}

@@ -1,0 +1,191 @@
+{
+  "title": "Longest Line of Consecutive One in Matrix",
+  "difficulty": "Medium",
+  "type": "matrix",
+  "tags": [
+    "Array",
+    "Matrix",
+    "Dynamic Programming"
+  ],
+  "description": "Find the longest line of consecutive 1's in the matrix (horizontal, vertical, diagonal, or anti-diagonal).",
+  "target": null,
+  "pseudocode": "1: maxLen = 0\n2: for r in 0..rows-1\n3:   for c in 0..cols-1\n4:     if M[r][c] == 1\n5:       update directions: horizontal, vertical, diagonal, anti-diagonal\n6:       maxLen = max(maxLen, current_max)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize maxLen to 0",
+      "matrix": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Checking M[0][0]",
+      "matrix": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "M[0][0] is 0, skipping",
+      "matrix": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Checking M[0][1]",
+      "matrix": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "curr": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Found 1 at [0,1], maxLen becomes 1",
+      "matrix": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "curr": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Checking M[1][0]",
+      "matrix": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "curr": [
+        1,
+        0
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Found 1 at [1,0], maxLen remains 1",
+      "matrix": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "curr": [
+        1,
+        0
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Checking M[1][1]",
+      "matrix": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "curr": [
+        1,
+        1
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Found 1 at [1,1], vertical and diagonal match found",
+      "matrix": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "curr": [
+        1,
+        1
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "maxLen updated to 2",
+      "matrix": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "curr": [
+        1,
+        1
+      ]
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "title": "Fizz Buzz",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Math",
+    "String"
+  ],
+  "description": "Return an array of strings representing numbers from 1 to n, replacing multiples of 3 with 'Fizz', 5 with 'Buzz', and both with 'FizzBuzz'.",
+  "target": 5,
+  "pseudocode": "1. result = []\n2. for i = 1 to n:\n3.   if i % 15 == 0: result.push('FizzBuzz')\n4.   else if i % 3 == 0: result.push('Fizz')\n5.   else if i % 5 == 0: result.push('Buzz')\n6.   else: result.push(i.toString())",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize empty result array",
+      "array": []
+    },
+    {
+      "codeLine": 2,
+      "i": 1,
+      "note": "Checking i=1",
+      "array": []
+    },
+    {
+      "codeLine": 6,
+      "i": 1,
+      "note": "1 is not divisible by 3 or 5",
+      "array": [
+        "1"
+      ]
+    },
+    {
+      "codeLine": 4,
+      "i": 3,
+      "note": "3 is divisible by 3",
+      "array": [
+        "1",
+        "2",
+        "Fizz"
+      ]
+    },
+    {
+      "codeLine": 5,
+      "i": 5,
+      "note": "5 is divisible by 5",
+      "array": [
+        "1",
+        "2",
+        "Fizz",
+        "4",
+        "Buzz"
+      ]
+    }
+  ]
+}

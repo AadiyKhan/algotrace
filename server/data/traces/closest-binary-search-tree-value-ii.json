@@ -1,0 +1,208 @@
+{
+  "title": "Closest Binary Search Tree Value II",
+  "difficulty": "Hard",
+  "type": "tree",
+  "tags": [
+    "Tree",
+    "BST",
+    "Stack"
+  ],
+  "description": "Find the k closest values to a target in a Binary Search Tree using an in-order traversal with a deque.",
+  "target": 3.7,
+  "pseudocode": "1. Initialize deque result\n2. Perform inorder traversal\n3. If len < k, push current\n4. Else if abs(curr - target) < abs(first - target), pop first, push current\n5. Else break traversal",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize empty deque for results.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 4,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 5,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": []
+    },
+    {
+      "codeLine": 2,
+      "note": "Traversing to node 2 (left child).",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 4,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 5,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        1
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Push 2 to result (len < k).",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 4,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 5,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        1
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Traversing to node 4 (root).",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 4,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 5,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        1,
+        0
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Check proximity of 4 to target 3.7. 4 is closer than 2.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 4,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 5,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        1,
+        0
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Traversing to node 5 (right child).",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 4,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 5,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        1,
+        0,
+        2
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "5 is further from 3.7 than 4, stop traversal.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 4,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 5,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        1,
+        0,
+        2
+      ]
+    }
+  ]
+}

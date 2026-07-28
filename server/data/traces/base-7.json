@@ -1,0 +1,72 @@
+{
+  "title": "Base 7",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Math",
+    "String"
+  ],
+  "description": "Convert an integer to its base 7 string representation.",
+  "target": "100",
+  "pseudocode": "1: let n = Math.abs(num)\n2: let res = ''\n3: while n > 0\n4:   res = (n % 7) + res\n5:   n = Math.floor(n / 7)\n6: return num < 0 ? '-' + res : res",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize absolute value n = 100",
+      "i": 100
+    },
+    {
+      "codeLine": 2,
+      "note": "Initialize result string",
+      "array": []
+    },
+    {
+      "codeLine": 4,
+      "note": "Calculate remainder: 100 % 7 = 2. Prepend to res.",
+      "array": [
+        "2"
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Update n: 100 / 7 = 14",
+      "i": 14
+    },
+    {
+      "codeLine": 4,
+      "note": "Calculate remainder: 14 % 7 = 0. Prepend to res.",
+      "array": [
+        "0",
+        "2"
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Update n: 14 / 7 = 2",
+      "i": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Calculate remainder: 2 % 7 = 2. Prepend to res.",
+      "array": [
+        "2",
+        "0",
+        "2"
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Update n: 2 / 7 = 0. Loop terminates.",
+      "i": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Return final string '202'",
+      "array": [
+        "2",
+        "0",
+        "2"
+      ]
+    }
+  ]
+}

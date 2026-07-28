@@ -1,0 +1,164 @@
+{
+  "title": "Distribute Coins In Binary Tree",
+  "difficulty": "Medium",
+  "type": "tree",
+  "tags": [
+    "Tree",
+    "DFS"
+  ],
+  "description": "Distribute coins in a binary tree such that every node has exactly one coin using minimum moves.",
+  "pseudocode": "let moves = 0;\nfunction dfs(node) {\n  if (!node) return 0;\n  let left = dfs(node.left);\n  let right = dfs(node.right);\n  moves += Math.abs(left) + Math.abs(right);\n  return node.val + left + right - 1;\n}",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Initialize traversal at root (Node 0, val: 3)",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 3,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 0,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 0,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "DFS into left child (Node 1, val: 0)",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 3,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 0,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 0,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        1
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Left child returns -1 (needs 1 coin)",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 3,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 0,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 0,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "DFS into right child (Node 2, val: 0)",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 3,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 0,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 0,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Right child returns -1 (needs 1 coin)",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 3,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 0,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 0,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Root calculates moves: abs(-1) + abs(-1) = 2",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 3,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 0,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 0,
+          "left": null,
+          "right": null
+        }
+      ]
+    }
+  ]
+}

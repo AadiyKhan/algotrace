@@ -1,0 +1,60 @@
+{
+  "title": "Verify Preorder Serialization Of A Binary Tree",
+  "difficulty": "Medium",
+  "type": "tree",
+  "tags": [
+    "Tree",
+    "String",
+    "Stack"
+  ],
+  "description": "Determine if a comma-separated string is a valid preorder traversal serialization of a binary tree.",
+  "target": "9,#,#,1",
+  "pseudocode": "1: let slots = 1\n2: for node in serialization.split(','):\n3:   slots -= 1\n4:   if slots < 0: return false\n5:   if node != '#': slots += 2\n6: return slots == 0",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize slots to 1 representing the root node capacity.",
+      "treeNodes": []
+    },
+    {
+      "codeLine": 2,
+      "note": "Process first node: '9'",
+      "i": "9"
+    },
+    {
+      "codeLine": 3,
+      "note": "Decrease slots: 1 - 1 = 0",
+      "i": "9"
+    },
+    {
+      "codeLine": 5,
+      "note": "Node is not '#', add 2 children slots: 0 + 2 = 2",
+      "i": "9"
+    },
+    {
+      "codeLine": 2,
+      "note": "Process next node: '#'",
+      "i": "#"
+    },
+    {
+      "codeLine": 3,
+      "note": "Decrease slots: 2 - 1 = 1",
+      "i": "#"
+    },
+    {
+      "codeLine": 2,
+      "note": "Process next node: '#'",
+      "i": "#"
+    },
+    {
+      "codeLine": 3,
+      "note": "Decrease slots: 1 - 1 = 0",
+      "i": "#"
+    },
+    {
+      "codeLine": 6,
+      "note": "All nodes processed, slots is 0. Valid serialization.",
+      "i": null
+    }
+  ]
+}

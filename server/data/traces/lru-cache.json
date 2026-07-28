@@ -1,0 +1,67 @@
+{
+  "title": "LRU Cache",
+  "difficulty": "Medium",
+  "type": "linked-list",
+  "tags": [
+    "Design",
+    "Hash Table",
+    "Linked List",
+    "Doubly-Linked List"
+  ],
+  "description": "Design an LRU (Least Recently Used) cache with capacity 2. Perform operations: put(1,1), put(2,2), get(1), put(3,3).",
+  "pseudocode": "1. map = new Map();\n2. if (map.has(key)) map.delete(key);\n3. map.set(key, value);\n4. if (map.size > capacity) map.delete(map.keys().next().value);",
+  "steps": [
+    {
+      "codeLine": 3,
+      "note": "Insert key 1 with value 1",
+      "nodes": [
+        {
+          "val": 1,
+          "next": null
+        }
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Insert key 2 with value 2",
+      "nodes": [
+        {
+          "val": 1,
+          "next": 1
+        },
+        {
+          "val": 2,
+          "next": null
+        }
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Get key 1: move 1 to most recently used position",
+      "nodes": [
+        {
+          "val": 2,
+          "next": 1
+        },
+        {
+          "val": 1,
+          "next": null
+        }
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Put key 3: capacity exceeded, remove LRU key 2",
+      "nodes": [
+        {
+          "val": 1,
+          "next": 3
+        },
+        {
+          "val": 3,
+          "next": null
+        }
+      ]
+    }
+  ]
+}

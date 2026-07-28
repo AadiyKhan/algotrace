@@ -1,0 +1,95 @@
+{
+  "title": "Candy Crush",
+  "difficulty": "Medium",
+  "type": "matrix",
+  "tags": [
+    "Array",
+    "Matrix",
+    "Simulation"
+  ],
+  "description": "Crush candies in a grid: find lines of 3 or more identical candies, mark them, and drop remaining candies.",
+  "pseudocode": "1. while True:\n2.   toCrush = findCandy(board)\n3.   if not toCrush: break\n4.   crush(board, toCrush)\n5.   drop(board)",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Scanning board for 3+ consecutive matching candies.",
+      "matrix": [
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          2,
+          3,
+          2
+        ],
+        [
+          3,
+          2,
+          1
+        ]
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ]
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Marking identified candies for crushing.",
+      "matrix": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          2,
+          3,
+          2
+        ],
+        [
+          3,
+          2,
+          1
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Gravity logic: dropping candies to fill empty spots.",
+      "matrix": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          3,
+          1
+        ],
+        [
+          2,
+          2,
+          2
+        ]
+      ]
+    }
+  ]
+}

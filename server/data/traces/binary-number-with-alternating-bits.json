@@ -1,0 +1,65 @@
+{
+  "title": "Binary Number with Alternating Bits",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Bit Manipulation"
+  ],
+  "description": "Check if two adjacent bits in a binary representation are always different.",
+  "target": 5,
+  "pseudocode": "1. prev = -1\n2. while n > 0:\n3.   curr = n % 2\n4.   if curr == prev: return false\n5.   prev = curr\n6.   n = Math.floor(n / 2)\n7. return true",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize prev bit tracker to -1",
+      "i": -1
+    },
+    {
+      "codeLine": 3,
+      "note": "Extract last bit of 5 (101)",
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Update prev to 1",
+      "i": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Shift n right (5 -> 2)",
+      "i": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Extract last bit of 2 (10)",
+      "i": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Update prev to 0",
+      "i": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Shift n right (2 -> 1)",
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Extract last bit of 1 (1)",
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Update prev to 1",
+      "i": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "Loop finished, return true"
+    }
+  ]
+}

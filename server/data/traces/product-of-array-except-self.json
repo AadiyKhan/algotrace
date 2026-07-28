@@ -1,0 +1,62 @@
+{
+  "title": "Product of Array Except Self",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Prefix Sum"
+  ],
+  "description": "Given an integer array nums, return an array answer such that answer[i] is equal to the product of all the elements of nums except nums[i].",
+  "pseudocode": "1. res = array of 1s, left = 1, right = 1\n2. for i in 0 to n-1: res[i] = left, left *= nums[i]\n3. for i in n-1 down to 0: res[i] *= right, right *= nums[i]",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize result array and pointers",
+      "array": [
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Prefix pass: res stores product of elements to the left",
+      "array": [
+        1,
+        1,
+        2
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Prefix pass: res stores product of elements to the left",
+      "array": [
+        1,
+        1,
+        2
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Suffix pass: multiply res by product of elements to the right",
+      "array": [
+        2,
+        2,
+        1
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Final calculation step",
+      "array": [
+        2,
+        3,
+        1
+      ],
+      "i": 1
+    }
+  ]
+}

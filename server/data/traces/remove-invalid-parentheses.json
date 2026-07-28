@@ -1,0 +1,80 @@
+{
+  "title": "Remove Invalid Parentheses",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "String",
+    "Backtracking",
+    "BFS"
+  ],
+  "description": "Remove the minimum number of invalid parentheses in order to make the input string valid. Return all possible results.",
+  "target": "()",
+  "pseudocode": "1. function removeInvalidParentheses(s) {\n2.   let result = [];\n3.   let queue = [s];\n4.   let visited = new Set([s]);\n5.   let found = false;\n6.   while(queue.length > 0) {\n7.     let str = queue.shift();\n8.     if(isValid(str)) { result.push(str); found = true; }\n9.     if(!found) {\n10.      for(let i=0; i<str.length; i++) {\n11.        if(str[i] !== '(' && str[i] !== ')') continue;\n12.        let next = str.slice(0, i) + str.slice(i+1);\n13.        if(!visited.has(next)) { visited.add(next); queue.push(next); }\n14.      }\n15.    }\n16.  }\n17.  return result;\n18. }",
+  "steps": [
+    {
+      "codeLine": 3,
+      "note": "Initialize queue with starting string '()('",
+      "array": [
+        "(",
+        ")",
+        "("
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Dequeue '()('",
+      "array": [
+        "(",
+        ")",
+        "("
+      ],
+      "i": null
+    },
+    {
+      "codeLine": 8,
+      "note": "Check validity: '()(' is invalid",
+      "array": [
+        "(",
+        ")",
+        "("
+      ]
+    },
+    {
+      "codeLine": 12,
+      "note": "Generate next level strings by removing one parenthesis",
+      "array": [
+        ")",
+        "(",
+        "("
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 13,
+      "note": "Add '()', '((' to queue",
+      "array": [
+        "(",
+        ")"
+      ],
+      "visited": [
+        "()",
+        "(("
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Check validity of '()'",
+      "array": [
+        "(",
+        ")"
+      ]
+    },
+    {
+      "codeLine": 17,
+      "note": "Return result",
+      "array": [
+        "()"
+      ]
+    }
+  ]
+}

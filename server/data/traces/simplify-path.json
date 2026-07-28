@@ -1,0 +1,82 @@
+{
+  "title": "Simplify Path",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "String",
+    "Stack"
+  ],
+  "description": "Given an absolute path for a Unix-style file system, simplify it to the canonical path.",
+  "target": "/home/user/Documents",
+  "pseudocode": "1. components = path.split('/')\n2. stack = []\n3. for part in components:\n4.   if part == '..' and stack: stack.pop()\n5.   elif part != '.' and part != '' and part != '..': stack.push(part)\n6. return '/' + stack.join('/')",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Split input path '/a/./b/../../c/' by '/'",
+      "array": [
+        "",
+        "a",
+        ".",
+        "b",
+        "..",
+        "..",
+        "c",
+        ""
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Process component 'a'",
+      "i": 1,
+      "array": [
+        "a"
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Process component '.' - skip",
+      "i": 2,
+      "array": [
+        "a"
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Process component 'b'",
+      "i": 3,
+      "array": [
+        "a",
+        "b"
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Process '..' - pop 'b'",
+      "i": 4,
+      "array": [
+        "a"
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Process '..' - pop 'a'",
+      "i": 5,
+      "array": []
+    },
+    {
+      "codeLine": 5,
+      "note": "Process 'c' - push to stack",
+      "i": 6,
+      "array": [
+        "c"
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Join stack into canonical path '/c'",
+      "array": [
+        "c"
+      ]
+    }
+  ]
+}

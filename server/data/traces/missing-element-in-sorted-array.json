@@ -1,0 +1,73 @@
+{
+  "title": "Missing Element in Sorted Array",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Binary Search"
+  ],
+  "description": "Find the kth missing element in a sorted array where elements are strictly increasing.",
+  "target": 5,
+  "pseudocode": "1: let missing = (nums[mid] - nums[0]) - mid\n2: if missing < k: low = mid + 1\n3: else: high = mid\n4: return nums[low - 1] + k - ((nums[low - 1] - nums[0]) - (low - 1))",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Calculate missing elements before index mid=1 (value 7). missing = (7-4)-1 = 2.",
+      "array": [
+        4,
+        7,
+        9,
+        10
+      ],
+      "i": 0,
+      "j": 3
+    },
+    {
+      "codeLine": 2,
+      "note": "2 < 5 is true, move low to mid + 1 (index 2).",
+      "array": [
+        4,
+        7,
+        9,
+        10
+      ],
+      "i": 2,
+      "j": 3
+    },
+    {
+      "codeLine": 1,
+      "note": "Calculate missing elements before index mid=2 (value 9). missing = (9-4)-2 = 3.",
+      "array": [
+        4,
+        7,
+        9,
+        10
+      ],
+      "i": 2,
+      "j": 3
+    },
+    {
+      "codeLine": 2,
+      "note": "3 < 5 is true, move low to mid + 1 (index 3).",
+      "array": [
+        4,
+        7,
+        9,
+        10
+      ],
+      "i": 3,
+      "j": 3
+    },
+    {
+      "codeLine": 4,
+      "note": "Binary search ends. Calculate kth missing element using low=3.",
+      "array": [
+        4,
+        7,
+        9,
+        10
+      ],
+      "i": 3
+    }
+  ]
+}

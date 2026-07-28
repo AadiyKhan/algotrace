@@ -1,0 +1,145 @@
+{
+  "title": "Remove Duplicates from Sorted List II",
+  "difficulty": "Medium",
+  "type": "linked-list",
+  "tags": [
+    "Linked List",
+    "Two Pointers"
+  ],
+  "description": "Given the head of a sorted linked list, delete all nodes that have duplicate numbers, leaving only distinct numbers from the original list.",
+  "pseudocode": "let dummy = {val: 0, next: head};\nlet prev = dummy;\nwhile (head) {\n  if (head.next && head.val === head.next.val) {\n    while (head.next && head.val === head.next.val) head = head.next;\n    prev.next = head.next;\n  } else {\n    prev = prev.next;\n  }\n  head = head.next;\n}",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize dummy node to handle head deletion case",
+      "nodes": [
+        {
+          "val": 0,
+          "next": 1
+        },
+        {
+          "val": 1,
+          "next": 2
+        },
+        {
+          "val": 1,
+          "next": 3
+        },
+        {
+          "val": 2,
+          "next": null
+        }
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Start iteration: head points to first 1",
+      "nodes": [
+        {
+          "val": 0,
+          "next": 1
+        },
+        {
+          "val": 1,
+          "next": 2
+        },
+        {
+          "val": 1,
+          "next": 3
+        },
+        {
+          "val": 2,
+          "next": null
+        }
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Duplicate detected at node 1",
+      "nodes": [
+        {
+          "val": 0,
+          "next": 1
+        },
+        {
+          "val": 1,
+          "next": 2
+        },
+        {
+          "val": 1,
+          "next": 3
+        },
+        {
+          "val": 2,
+          "next": null
+        }
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Skip all nodes with value 1",
+      "nodes": [
+        {
+          "val": 0,
+          "next": 3
+        },
+        {
+          "val": 1,
+          "next": 2
+        },
+        {
+          "val": 1,
+          "next": 3
+        },
+        {
+          "val": 2,
+          "next": null
+        }
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Update prev.next to point to node 2",
+      "nodes": [
+        {
+          "val": 0,
+          "next": 3
+        },
+        {
+          "val": 1,
+          "next": 2
+        },
+        {
+          "val": 1,
+          "next": 3
+        },
+        {
+          "val": 2,
+          "next": null
+        }
+      ]
+    },
+    {
+      "codeLine": 9,
+      "note": "Move head to next node",
+      "nodes": [
+        {
+          "val": 0,
+          "next": 3
+        },
+        {
+          "val": 1,
+          "next": 2
+        },
+        {
+          "val": 1,
+          "next": 3
+        },
+        {
+          "val": 2,
+          "next": null
+        }
+      ]
+    }
+  ]
+}

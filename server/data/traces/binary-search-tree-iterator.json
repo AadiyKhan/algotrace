@@ -1,0 +1,211 @@
+{
+  "title": "Binary Search Tree Iterator",
+  "difficulty": "Medium",
+  "type": "tree",
+  "tags": [
+    "Tree",
+    "Stack",
+    "Design"
+  ],
+  "description": "Implement an iterator over a binary search tree that returns nodes in in-order traversal.",
+  "target": null,
+  "pseudocode": "1: function pushLeft(node) {\n2:   while (node) {\n3:     stack.push(node);\n4:     node = node.left;\n5:   }\n6: }\n7: function next() {\n8:   let node = stack.pop();\n9:   pushLeft(node.right);\n10:  return node.val;\n11: }",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize stack with left-most path of root",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 7,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 3,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 15,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 3,
+          "val": 9,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 20,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Pop node from stack for next() call",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 7,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 3,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 15,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 3,
+          "val": 9,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 20,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        0
+      ]
+    },
+    {
+      "codeLine": 10,
+      "note": "Returned node value: 3",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 7,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 3,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 15,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 3,
+          "val": 9,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 20,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        0
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Pop next node from stack",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 7,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 3,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 15,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 3,
+          "val": 9,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 20,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        0
+      ]
+    },
+    {
+      "codeLine": 10,
+      "note": "Returned node value: 7",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 7,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 3,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 15,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 3,
+          "val": 9,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 20,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        2
+      ]
+    }
+  ]
+}

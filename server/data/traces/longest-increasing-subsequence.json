@@ -1,0 +1,85 @@
+{
+  "title": "Longest Increasing Subsequence",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Dynamic Programming",
+    "Binary Search"
+  ],
+  "description": "Find the length of the longest strictly increasing subsequence in an array.",
+  "target": null,
+  "pseudocode": "1. tails = []\n2. for x in nums:\n3.   if not tails or x > tails[-1]:\n4.     tails.append(x)\n5.   else:\n6.     idx = binary_search(tails, x)\n7.     tails[idx] = x",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize tails array as empty.",
+      "array": []
+    },
+    {
+      "codeLine": 2,
+      "note": "Processing first element: 10.",
+      "array": [
+        10
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "10 is greater than last element, append.",
+      "array": [
+        10
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Processing second element: 9.",
+      "array": [
+        10
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "9 is smaller, find position to replace in tails.",
+      "array": [
+        9
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Processing third element: 2.",
+      "array": [
+        9
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "2 is smaller, replace 9 with 2.",
+      "array": [
+        2
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 2,
+      "note": "Processing fourth element: 5.",
+      "array": [
+        2
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 4,
+      "note": "5 is greater than 2, append.",
+      "array": [
+        2,
+        5
+      ],
+      "i": 3
+    }
+  ]
+}

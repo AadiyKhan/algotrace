@@ -1,0 +1,108 @@
+{
+  "title": "Projection Area of 3D Shapes",
+  "difficulty": "Easy",
+  "type": "matrix",
+  "tags": [
+    "Array",
+    "Math",
+    "Matrix"
+  ],
+  "description": "Calculate the total projection area of 3D shapes formed by 1x1x1 cubes in an n x n grid.",
+  "pseudocode": "1: xy = 0, yz = 0, zx = 0\n2: for r in 0..n-1:\n3:   maxR = 0, maxC = 0\n4:   for c in 0..n-1:\n5:     if grid[r][c] > 0: xy++\n6:     maxR = max(maxR, grid[r][c])\n7:     maxC = max(maxC, grid[c][r])\n8:   yz += maxR\n9:   zx += maxC\n10: return xy + yz + zx",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize projection sums to zero.",
+      "matrix": [
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Check cell [0,0] (val 1). xy increases.",
+      "matrix": [
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ],
+      "i": 0,
+      "j": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Update max in row 0: maxR becomes 2.",
+      "matrix": [
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 8,
+      "note": "Row 0 processed. Add maxR (2) to yz.",
+      "matrix": [
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 9,
+      "note": "Col 0 processed. Add maxC (3) to zx.",
+      "matrix": [
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 10,
+      "note": "Final calculation for 2x2 grid. Total = 4 (xy) + 6 (yz) + 7 (zx) = 17.",
+      "matrix": [
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          4
+        ]
+      ]
+    }
+  ]
+}

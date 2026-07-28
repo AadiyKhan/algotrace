@@ -1,0 +1,77 @@
+{
+  "title": "Sentence Screen Fitting",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Dynamic Programming",
+    "Greedy"
+  ],
+  "description": "Find how many times a sentence can be fitted into a screen of size rows x cols.",
+  "target": "rows: 2, cols: 8",
+  "pseudocode": "1. count = 0\n2. s = sentence.join(' ') + ' '\n3. for r from 0 to rows-1\n4.   count += cols\n5.   while count > 0 and s[count % n] != ' '\n6.     count--\n7.   count++\n8. return count / n",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize count to 0. Sentence is 'a b ', n=4.",
+      "array": [
+        "a",
+        "b"
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Processing row 0. Add cols (8) to count.",
+      "i": 0,
+      "array": [
+        "a",
+        "b"
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "count becomes 8.",
+      "i": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Check if s[8 % 4] (' ') is a space. It is, no decrement needed.",
+      "i": 0
+    },
+    {
+      "codeLine": 7,
+      "note": "count increments to 9. Sentence 'a b a b ' fits perfectly.",
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Processing row 1. Add cols (8) to count.",
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "count becomes 17.",
+      "i": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "s[17 % 4] is 'b'. Must decrement count.",
+      "i": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Decrement count until a space is found.",
+      "i": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "Final count is 17.",
+      "i": 1
+    },
+    {
+      "codeLine": 8,
+      "note": "Return 17 / 4 = 4 times.",
+      "i": 1
+    }
+  ]
+}

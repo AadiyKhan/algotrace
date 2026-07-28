@@ -1,0 +1,121 @@
+{
+  "title": "Capacity To Ship Packages Within D Days",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Binary Search",
+    "Greedy"
+  ],
+  "description": "Find the minimum weight capacity of a ship to transport all packages within D days.",
+  "target": 3,
+  "pseudocode": "1. low = max(weights), high = sum(weights)\n2. while low < high:\n3.   mid = (low + high) // 2\n4.   days = 1, current_load = 0\n5.   for w in weights:\n6.     if current_load + w > mid: days++, current_load = 0\n7.     current_load += w\n8.   if days <= D: high = mid\n9.   else: low = mid + 1\n10. return low",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize binary search bounds. weights = [3, 2, 2, 4, 1, 4], D = 3",
+      "array": [
+        3,
+        2,
+        2,
+        4,
+        1,
+        4
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Calculate mid capacity: (4 + 16) / 2 = 10",
+      "array": [
+        3,
+        2,
+        2,
+        4,
+        1,
+        4
+      ],
+      "i": 10
+    },
+    {
+      "codeLine": 5,
+      "note": "Simulate shipping with capacity 10",
+      "array": [
+        3,
+        2,
+        2,
+        4,
+        1,
+        4
+      ],
+      "i": 10,
+      "curr": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Packages [3, 2, 2] fit (sum 7 <= 10). Next is 4, 7+4 > 10, start new day.",
+      "array": [
+        3,
+        2,
+        2,
+        4,
+        1,
+        4
+      ],
+      "i": 10,
+      "curr": 3
+    },
+    {
+      "codeLine": 8,
+      "note": "Days needed (2) <= D (3). Capacity 10 is feasible, try smaller.",
+      "array": [
+        3,
+        2,
+        2,
+        4,
+        1,
+        4
+      ],
+      "i": 10
+    },
+    {
+      "codeLine": 3,
+      "note": "New mid capacity: (4 + 10) / 2 = 7",
+      "array": [
+        3,
+        2,
+        2,
+        4,
+        1,
+        4
+      ],
+      "i": 7
+    },
+    {
+      "codeLine": 5,
+      "note": "Simulate shipping with capacity 7",
+      "array": [
+        3,
+        2,
+        2,
+        4,
+        1,
+        4
+      ],
+      "i": 7,
+      "curr": 0
+    },
+    {
+      "codeLine": 8,
+      "note": "Calculated days = 3. Days <= D (3) is true.",
+      "array": [
+        3,
+        2,
+        2,
+        4,
+        1,
+        4
+      ],
+      "i": 7
+    }
+  ]
+}

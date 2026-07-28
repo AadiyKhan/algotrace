@@ -1,0 +1,70 @@
+{
+  "title": "Repeated DNA Sequences",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Hash Table",
+    "String",
+    "Sliding Window"
+  ],
+  "description": "Identify all 10-letter-long sequences that occur more than once in a DNA molecule.",
+  "target": 2,
+  "pseudocode": "1. seen = Set()\n2. repeated = Set()\n3. for i = 0 to s.length - 10:\n4.   sub = s.substring(i, i + 10)\n5.   if sub in seen:\n6.     repeated.add(sub)\n7.   seen.add(sub)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize empty set 'seen' to track encountered sequences.",
+      "array": [
+        "A",
+        "A",
+        "A",
+        "A",
+        "A",
+        "A",
+        "A",
+        "A",
+        "A",
+        "A",
+        "A"
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Start iteration at index 0.",
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Extract substring from index 0 to 10: 'AAAAAAAAAA'.",
+      "i": 0
+    },
+    {
+      "codeLine": 7,
+      "note": "Add 'AAAAAAAAAA' to seen set.",
+      "i": 0,
+      "visited": [
+        "AAAAAAAAAA"
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Increment loop to index 1.",
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Extract substring from index 1 to 11: 'AAAAAAAAAA'.",
+      "i": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Substring found in seen set.",
+      "i": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Add 'AAAAAAAAAA' to repeated set.",
+      "i": 1
+    }
+  ]
+}

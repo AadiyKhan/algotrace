@@ -1,0 +1,60 @@
+{
+  "title": "Basic Calculator",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Math",
+    "Stack",
+    "String"
+  ],
+  "description": "Evaluate a string expression containing non-negative integers, '+', '-', '(', and ')'.",
+  "target": null,
+  "pseudocode": "1. stack = [], res = 0, sign = 1, num = 0\n2. for char in s:\n3.   if char is digit: num = num * 10 + int(char)\n4.   else if char is '+': res += sign * num, num = 0, sign = 1\n5.   else if char is '-': res += sign * num, num = 0, sign = -1\n6.   else if char is '(': stack.push(res, sign), res = 0, sign = 1\n7.   else if char is ')': res += sign * num, res *= stack.pop(), res += stack.pop(), num = 0\n8. return res + sign * num",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize variables for expression '1-(2+3)'",
+      "i": "1-(2+3)"
+    },
+    {
+      "codeLine": 3,
+      "note": "Read '1', num becomes 1",
+      "i": "1"
+    },
+    {
+      "codeLine": 5,
+      "note": "Read '-', res becomes 1, sign becomes -1",
+      "i": "-"
+    },
+    {
+      "codeLine": 6,
+      "note": "Read '(', push current context [1, -1] to stack",
+      "i": "("
+    },
+    {
+      "codeLine": 3,
+      "note": "Read '2', num becomes 2",
+      "i": "2"
+    },
+    {
+      "codeLine": 4,
+      "note": "Read '+', res becomes 2, sign becomes 1",
+      "i": "+"
+    },
+    {
+      "codeLine": 3,
+      "note": "Read '3', num becomes 3",
+      "i": "3"
+    },
+    {
+      "codeLine": 7,
+      "note": "Read ')', finalize inner sum 2+3=5, apply sign, pop stack",
+      "i": ")"
+    },
+    {
+      "codeLine": 8,
+      "note": "Final calculation: 1 + (-1 * 5) = -4",
+      "i": "end"
+    }
+  ]
+}

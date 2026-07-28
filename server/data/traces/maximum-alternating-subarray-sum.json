@@ -1,0 +1,166 @@
+{
+  "title": "Maximum Alternating Subarray Sum",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Dynamic Programming"
+  ],
+  "description": "Find the maximum sum of an alternating subarray where signs alternate: nums[i] - nums[i+1] + nums[i+2]...",
+  "target": null,
+  "pseudocode": "1: let even = 0, odd = 0\n2: for x in nums:\n3:   even = max(even, odd + x)\n4:   odd = max(odd, even - x)\n5: return even",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize DP states for even and odd position indices",
+      "array": [
+        4,
+        2,
+        5,
+        3
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Process x = 4",
+      "array": [
+        4,
+        2,
+        5,
+        3
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "even = max(0, 0 + 4) = 4",
+      "array": [
+        4,
+        2,
+        5,
+        3
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "odd = max(0, 4 - 4) = 0",
+      "array": [
+        4,
+        2,
+        5,
+        3
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Process x = 2",
+      "array": [
+        4,
+        2,
+        5,
+        3
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "even = max(4, 0 + 2) = 4",
+      "array": [
+        4,
+        2,
+        5,
+        3
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "odd = max(0, 4 - 2) = 2",
+      "array": [
+        4,
+        2,
+        5,
+        3
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Process x = 5",
+      "array": [
+        4,
+        2,
+        5,
+        3
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "even = max(4, 2 + 5) = 7",
+      "array": [
+        4,
+        2,
+        5,
+        3
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "odd = max(2, 7 - 5) = 2",
+      "array": [
+        4,
+        2,
+        5,
+        3
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 2,
+      "note": "Process x = 3",
+      "array": [
+        4,
+        2,
+        5,
+        3
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 3,
+      "note": "even = max(7, 2 + 3) = 7",
+      "array": [
+        4,
+        2,
+        5,
+        3
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 4,
+      "note": "odd = max(2, 7 - 3) = 4",
+      "array": [
+        4,
+        2,
+        5,
+        3
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 5,
+      "note": "Return even as the result",
+      "array": [
+        4,
+        2,
+        5,
+        3
+      ]
+    }
+  ]
+}

@@ -1,0 +1,129 @@
+{
+  "title": "Find Peak Element",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Binary Search"
+  ],
+  "description": "Find a peak element in an array where a peak is an element strictly greater than its neighbors.",
+  "target": null,
+  "pseudocode": "1: low = 0, high = nums.length - 1\n2: while low < high:\n3:   mid = Math.floor((low + high) / 2)\n4:   if nums[mid] > nums[mid + 1]: high = mid\n5:   else: low = mid + 1\n6: return low",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize search range pointers",
+      "array": [
+        1,
+        2,
+        3,
+        1
+      ],
+      "i": 0,
+      "j": 3
+    },
+    {
+      "codeLine": 2,
+      "note": "Enter loop, low < high (0 < 3)",
+      "array": [
+        1,
+        2,
+        3,
+        1
+      ],
+      "i": 0,
+      "j": 3
+    },
+    {
+      "codeLine": 3,
+      "note": "Calculate mid index",
+      "array": [
+        1,
+        2,
+        3,
+        1
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Check if nums[1] > nums[2] (2 > 3 is false)",
+      "array": [
+        1,
+        2,
+        3,
+        1
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Condition false, move low to mid + 1",
+      "array": [
+        1,
+        2,
+        3,
+        1
+      ],
+      "i": 2,
+      "j": 3
+    },
+    {
+      "codeLine": 2,
+      "note": "Check loop condition (2 < 3)",
+      "array": [
+        1,
+        2,
+        3,
+        1
+      ],
+      "i": 2,
+      "j": 3
+    },
+    {
+      "codeLine": 3,
+      "note": "Calculate new mid index",
+      "array": [
+        1,
+        2,
+        3,
+        1
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Check if nums[2] > nums[3] (3 > 1 is true)",
+      "array": [
+        1,
+        2,
+        3,
+        1
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Condition true, move high to mid",
+      "array": [
+        1,
+        2,
+        3,
+        1
+      ],
+      "i": 2,
+      "j": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Loop terminates, peak found at index 2",
+      "array": [
+        1,
+        2,
+        3,
+        1
+      ],
+      "i": 2
+    }
+  ]
+}

@@ -1,0 +1,138 @@
+{
+  "title": "Max Sum Of Rectangle No Larger Than K",
+  "difficulty": "Hard",
+  "type": "matrix",
+  "tags": [
+    "Array",
+    "Matrix",
+    "Binary Search",
+    "Sliding Window"
+  ],
+  "description": "Find the maximum sum of a rectangle in a 2D matrix such that the sum is no larger than K.",
+  "target": 2,
+  "pseudocode": "1. max_sum = -infinity\n2. for left = 0 to cols:\n3.   row_sums = [0]*rows\n4.   for right = left to cols:\n5.     for row = 0 to rows:\n6.       row_sums[row] += matrix[row][right]\n7.     current_max = find_max_subarray_le_k(row_sums, k)\n8.     max_sum = max(max_sum, current_max)",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Initialize left boundary",
+      "matrix": [
+        [
+          1,
+          0
+        ],
+        [
+          -2,
+          3
+        ]
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Calculating row sums for columns 0 to 0",
+      "matrix": [
+        [
+          1,
+          0
+        ],
+        [
+          -2,
+          3
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Row sums for column 0: [1, -2]",
+      "matrix": [
+        [
+          1,
+          0
+        ],
+        [
+          -2,
+          3
+        ]
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 7,
+      "note": "Max subarray <= 2 for [1, -2] is 1",
+      "matrix": [
+        [
+          1,
+          0
+        ],
+        [
+          -2,
+          3
+        ]
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Expanding right boundary to column 1",
+      "matrix": [
+        [
+          1,
+          0
+        ],
+        [
+          -2,
+          3
+        ]
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Updating row sums: [1+0, -2+3] = [1, 1]",
+      "matrix": [
+        [
+          1,
+          0
+        ],
+        [
+          -2,
+          3
+        ]
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "Max subarray <= 2 for [1, 1] is 2",
+      "matrix": [
+        [
+          1,
+          0
+        ],
+        [
+          -2,
+          3
+        ]
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 8,
+      "note": "Update global max_sum to 2",
+      "matrix": [
+        [
+          1,
+          0
+        ],
+        [
+          -2,
+          3
+        ]
+      ]
+    }
+  ]
+}

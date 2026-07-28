@@ -1,0 +1,84 @@
+{
+  "title": "Design In Memory File System",
+  "difficulty": "Hard",
+  "type": "tree",
+  "tags": [
+    "Design",
+    "Trie",
+    "Hash Table"
+  ],
+  "description": "Implement an in-memory file system where you can ls, mkdir, and write content to files.",
+  "pseudocode": "1. root = new Node();\n2. for part in path.split('/'):\n3.   if part not in node.children: node.children[part] = new Node();\n4.   node = node.children[part];\n5. if node.isFile: return node.content;\n6. else: return sorted(node.children.keys());",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize the root directory.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": "/",
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Starting mkdir /a",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": "/",
+          "left": 1,
+          "right": null
+        },
+        {
+          "id": 1,
+          "val": "a",
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Create directory 'a' as a child of root.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": "/",
+          "left": 1,
+          "right": null
+        },
+        {
+          "id": 1,
+          "val": "a",
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "ls '/' returns ['a']",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": "/",
+          "left": 1,
+          "right": null
+        },
+        {
+          "id": 1,
+          "val": "a",
+          "left": null,
+          "right": null
+        }
+      ]
+    }
+  ]
+}

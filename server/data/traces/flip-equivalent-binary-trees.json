@@ -1,0 +1,88 @@
+{
+  "title": "Flip Equivalent Binary Trees",
+  "difficulty": "Medium",
+  "type": "tree",
+  "tags": [
+    "Tree",
+    "DFS",
+    "Recursion"
+  ],
+  "description": "Determine if two binary trees are flip equivalent by recursively checking node equality and potential swaps.",
+  "pseudocode": "function flipEquiv(root1, root2) {\n  if (!root1 && !root2) return true;\n  if (!root1 || !root2 || root1.val !== root2.val) return false;\n  return (flipEquiv(root1.left, root2.left) && flipEquiv(root1.right, root2.right)) ||\n         (flipEquiv(root1.left, root2.right) && flipEquiv(root1.right, root2.left));\n}",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize comparison for root nodes (1, 1).",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 1,
+          "left": 5,
+          "right": 4
+        },
+        {
+          "id": 4,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 5,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Roots are non-null and match (val: 1).",
+      "visited": [
+        0,
+        3
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Checking non-flipped path: comparing children 2/3 with 2/3.",
+      "visited": [
+        0,
+        3,
+        1,
+        4,
+        2,
+        5
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Checking flipped path: swapping children 2/3 to match 3/2.",
+      "visited": [
+        0,
+        3,
+        1,
+        5,
+        2,
+        4
+      ]
+    }
+  ]
+}

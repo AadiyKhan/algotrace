@@ -1,0 +1,91 @@
+{
+  "title": "Pancake Sorting",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Two Pointers",
+    "Greedy"
+  ],
+  "description": "Sort an array of integers by performing pancake flips on prefixes.",
+  "target": null,
+  "pseudocode": "1. for (n = arr.length; n > 1; n--) {\n2.   idx = findMaxIndex(arr, n);\n3.   flip(arr, idx);\n4.   flip(arr, n - 1);\n5. }",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Start sorting with n=3 for array [3, 2, 1]",
+      "array": [
+        3,
+        2,
+        1
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 2,
+      "note": "Find index of max element (3) in prefix [3, 2, 1], which is 0",
+      "array": [
+        3,
+        2,
+        1
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Flip prefix index 0 to 0 (no change)",
+      "array": [
+        3,
+        2,
+        1
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Flip prefix index 0 to 2 to move 3 to the end",
+      "array": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "codeLine": 1,
+      "note": "Continue for n=2",
+      "array": [
+        1,
+        2,
+        3
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 2,
+      "note": "Find index of max element (2) in prefix [1, 2], which is 1",
+      "array": [
+        1,
+        2,
+        3
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Flip prefix index 1 to 1 (no change)",
+      "array": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Flip prefix index 1 to 1 (no change)",
+      "array": [
+        1,
+        2,
+        3
+      ]
+    }
+  ]
+}

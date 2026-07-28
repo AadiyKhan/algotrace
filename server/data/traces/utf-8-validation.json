@@ -1,0 +1,112 @@
+{
+  "title": "UTF-8 Validation",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Bit Manipulation"
+  ],
+  "description": "Determine if a sequence of integers represents a valid UTF-8 encoding.",
+  "target": null,
+  "pseudocode": "let count = 0;\nfor (let byte of data) {\n  if (count === 0) {\n    if ((byte >> 5) === 0b110) count = 1;\n    else if ((byte >> 4) === 0b1110) count = 2;\n    else if ((byte >> 3) === 0b11110) count = 3;\n    else if ((byte >> 7) !== 0) return false;\n  } else {\n    if ((byte >> 6) !== 0b10) return false;\n    count--;\n  }\n}\nreturn count === 0;",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize count to 0 to track remaining continuation bytes.",
+      "array": [
+        197,
+        130,
+        1
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Process byte 197 (11000101).",
+      "array": [
+        197,
+        130,
+        1
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Check prefix 110: byte 197 matches 2-byte sequence start.",
+      "array": [
+        197,
+        130,
+        1
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Set count to 1 for the next continuation byte.",
+      "array": [
+        197,
+        130,
+        1
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Process byte 130 (10000010).",
+      "array": [
+        197,
+        130,
+        1
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 9,
+      "note": "Count is 1, check if prefix is 10.",
+      "array": [
+        197,
+        130,
+        1
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 11,
+      "note": "Valid continuation byte, decrement count to 0.",
+      "array": [
+        197,
+        130,
+        1
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Process byte 1 (00000001).",
+      "array": [
+        197,
+        130,
+        1
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 7,
+      "note": "Byte 1 is single-byte character (starts with 0).",
+      "array": [
+        197,
+        130,
+        1
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 13,
+      "note": "Finished loop, count is 0, return true.",
+      "array": [
+        197,
+        130,
+        1
+      ]
+    }
+  ]
+}

@@ -1,0 +1,158 @@
+{
+  "title": "Number Of Corner Rectangles",
+  "difficulty": "Medium",
+  "type": "matrix",
+  "tags": [
+    "Array",
+    "Matrix",
+    "Math"
+  ],
+  "description": "Count the number of rectangles with 1s as corners in a binary matrix.",
+  "target": null,
+  "pseudocode": "1. count = 0\n2. for i = 0 to rows-1\n3.   for j = i + 1 to rows-1\n4.     cols_with_ones = 0\n5.     for k = 0 to cols-1\n6.       if grid[i][k] == 1 and grid[j][k] == 1\n7.         count += cols_with_ones\n8.         cols_with_ones++",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize count to 0.",
+      "matrix": [
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "i": 0,
+      "j": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Start outer loop i = 0.",
+      "matrix": [
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Start inner loop j = 1.",
+      "matrix": [
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "i": 0,
+      "j": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Iterate through columns k=0.",
+      "matrix": [
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "i": 0,
+      "j": 1,
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Found 1 at [0,0] and [1,0]. Increment cols_with_ones.",
+      "matrix": [
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "i": 0,
+      "j": 1,
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "cols_with_ones becomes 1.",
+      "matrix": [
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "i": 0,
+      "j": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Iterate through column k=1.",
+      "matrix": [
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "i": 0,
+      "j": 1,
+      "curr": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Found 1 at [0,1] but grid[1][1] is 0. No rectangle formed.",
+      "matrix": [
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "i": 0,
+      "j": 1,
+      "curr": [
+        1,
+        1
+      ]
+    }
+  ]
+}

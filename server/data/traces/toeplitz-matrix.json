@@ -1,0 +1,262 @@
+{
+  "title": "Toeplitz Matrix",
+  "difficulty": "Easy",
+  "type": "matrix",
+  "tags": [
+    "Array",
+    "Matrix"
+  ],
+  "description": "Determine if a matrix is Toeplitz, where every diagonal from top-left to bottom-right has the same elements.",
+  "pseudocode": "1. for r from 0 to rows-2:\n2.   for c from 0 to cols-2:\n3.     if matrix[r][c] != matrix[r+1][c+1]:\n4.       return false\n5. return true",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Starting row iteration for a 3x3 matrix.",
+      "matrix": [
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          4,
+          1,
+          2
+        ],
+        [
+          5,
+          4,
+          1
+        ]
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Starting column iteration.",
+      "matrix": [
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          4,
+          1,
+          2
+        ],
+        [
+          5,
+          4,
+          1
+        ]
+      ],
+      "i": 0,
+      "j": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Compare matrix[0][0] (1) with matrix[1][1] (1). Match.",
+      "matrix": [
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          4,
+          1,
+          2
+        ],
+        [
+          5,
+          4,
+          1
+        ]
+      ],
+      "i": 0,
+      "j": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Move to next column.",
+      "matrix": [
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          4,
+          1,
+          2
+        ],
+        [
+          5,
+          4,
+          1
+        ]
+      ],
+      "i": 0,
+      "j": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Compare matrix[0][1] (2) with matrix[1][2] (2). Match.",
+      "matrix": [
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          4,
+          1,
+          2
+        ],
+        [
+          5,
+          4,
+          1
+        ]
+      ],
+      "i": 0,
+      "j": 1
+    },
+    {
+      "codeLine": 1,
+      "note": "Move to next row.",
+      "matrix": [
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          4,
+          1,
+          2
+        ],
+        [
+          5,
+          4,
+          1
+        ]
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Iterate columns for row 1.",
+      "matrix": [
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          4,
+          1,
+          2
+        ],
+        [
+          5,
+          4,
+          1
+        ]
+      ],
+      "i": 1,
+      "j": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Compare matrix[1][0] (4) with matrix[2][1] (4). Match.",
+      "matrix": [
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          4,
+          1,
+          2
+        ],
+        [
+          5,
+          4,
+          1
+        ]
+      ],
+      "i": 1,
+      "j": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Next column.",
+      "matrix": [
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          4,
+          1,
+          2
+        ],
+        [
+          5,
+          4,
+          1
+        ]
+      ],
+      "i": 1,
+      "j": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Compare matrix[1][1] (1) with matrix[2][2] (1). Match.",
+      "matrix": [
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          4,
+          1,
+          2
+        ],
+        [
+          5,
+          4,
+          1
+        ]
+      ],
+      "i": 1,
+      "j": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "All diagonals checked. Matrix is Toeplitz.",
+      "matrix": [
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          4,
+          1,
+          2
+        ],
+        [
+          5,
+          4,
+          1
+        ]
+      ]
+    }
+  ]
+}

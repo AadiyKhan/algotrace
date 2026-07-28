@@ -1,0 +1,182 @@
+{
+  "title": "Binary Tree Longest Consecutive Sequence II",
+  "difficulty": "Medium",
+  "type": "tree",
+  "tags": [
+    "Tree",
+    "DFS",
+    "Binary Tree"
+  ],
+  "description": "Find the length of the longest consecutive sequence path in a binary tree where the path can be increasing or decreasing.",
+  "pseudocode": "1. int maxLen = 0;\n2. int[] dfs(node) {\n3.   if (!node) return {0, 0};\n4.   int inc = 1, dec = 1;\n5.   if (node.left) {\n6.     int[] l = dfs(node.left);\n7.     if (node.val == node.left.val + 1) dec = Math.max(dec, l[1] + 1);\n8.     if (node.val == node.left.val - 1) inc = Math.max(inc, l[0] + 1);\n9.   }\n10.  if (node.right) {\n11.    int[] r = dfs(node.right);\n12.    if (node.val == node.right.val + 1) dec = Math.max(dec, r[1] + 1);\n13.    if (node.val == node.right.val - 1) inc = Math.max(inc, r[0] + 1);\n14.  }\n15.  maxLen = Math.max(maxLen, inc + dec - 1);\n16.  return {inc, dec};\n17. }",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Starting DFS at root (val: 2)",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 2,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Recursive call to left child (val: 1)",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 2,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 16,
+      "note": "Leaf node 1 returns {1, 1}",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 2,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Comparing node 2 with left child 1: 2 == 1 + 1 (decreasing match)",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 2,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 11,
+      "note": "Recursive call to right child (val: 3)",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 2,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 13,
+      "note": "Comparing node 2 with right child 3: 2 == 3 - 1 (increasing match)",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 2,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 15,
+      "note": "Update maxLen: inc=2, dec=2 -> 2+2-1 = 3",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 2,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ]
+    }
+  ]
+}

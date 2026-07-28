@@ -1,0 +1,39 @@
+{
+  "title": "Water and Jug Problem",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Math",
+    "BFS",
+    "GCD"
+  ],
+  "description": "Determine if you can measure exactly target liters of water using two jugs with capacities jug1Capacity and jug2Capacity.",
+  "target": 4,
+  "pseudocode": "1. if (jug1 + jug2 < target) return false;\n2. if (target % gcd(jug1, jug2) == 0) return true;\n3. return false;",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Check if total capacity is less than target. jug1=3, jug2=5, target=4.",
+      "array": [
+        3,
+        5
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Calculate GCD(3, 5) which is 1. Check if target 4 is divisible by 1.",
+      "array": [
+        3,
+        5
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "4 % 1 == 0 is true, return true.",
+      "array": [
+        3,
+        5
+      ]
+    }
+  ]
+}

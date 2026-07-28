@@ -1,0 +1,67 @@
+{
+  "title": "Short Encoding of Words",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "String",
+    "Trie",
+    "Hash Table"
+  ],
+  "description": "Find the length of the shortest reference string encoding of a list of words, where words are suffixes of others.",
+  "pseudocode": "1. words.sort((a, b) => b.length - a.length)\n2. let set = new Set(words)\n3. for (let word of words) {\n4.   for (let i = 1; i < word.length; i++) {\n5.     set.delete(word.substring(i))\n6.   }\n7. }\n8. return Array.from(set).reduce((acc, w) => acc + w.length + 1, 0)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Sort words by length descending: ['time', 'me', 'bell']",
+      "array": [
+        "time",
+        "me",
+        "bell"
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Initialize set with all words",
+      "array": [
+        "time",
+        "me",
+        "bell"
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Processing 'time'",
+      "i": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Delete 'ime' and 'me' from set if present",
+      "array": [
+        "time",
+        "bell"
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Processing 'bell'",
+      "i": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Delete 'ell', 'll', 'l' from set",
+      "array": [
+        "time",
+        "bell"
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Calculate result: length of 'time' (4+1) + length of 'bell' (4+1) = 10",
+      "array": [
+        "time",
+        "bell"
+      ]
+    }
+  ]
+}

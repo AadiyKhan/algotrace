@@ -1,0 +1,553 @@
+{
+  "title": "Remove Duplicates From Sorted Array",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Two Pointers"
+  ],
+  "description": "Given a sorted array `nums`, remove the duplicates in-place such that each unique element appears only once. The relative order of the elements should be kept the same. Return the new length. You must do this by modifying the input array in-place with O(1) extra memory.",
+  "pseudocode": "function removeDuplicates(nums):\n1     if nums.length == 0:\n2         return 0\n3     \n4     slow = 0 // Pointer for the next unique element position\n5     for fast from 1 to nums.length - 1: // Pointer to iterate through the array\n6         if nums[fast] != nums[slow]: // If a new unique element is found\n7             slow = slow + 1 // Move slow pointer forward\n8             nums[slow] = nums[fast] // Place the unique element at slow's position\n9     return slow + 1 // The new length is slow + 1 (0-indexed to 1-indexed count)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Check if the array is empty. It's not, so proceed.",
+      "array": [
+        0,
+        0,
+        1,
+        1,
+        1,
+        2,
+        2,
+        3,
+        3,
+        4
+      ],
+      "i": null,
+      "j": null
+    },
+    {
+      "codeLine": 4,
+      "note": "Initialize `slow` pointer to 0. This pointer will track the position where the next unique element should be placed.",
+      "array": [
+        0,
+        0,
+        1,
+        1,
+        1,
+        2,
+        2,
+        3,
+        3,
+        4
+      ],
+      "i": 0,
+      "j": null
+    },
+    {
+      "codeLine": 5,
+      "note": "Start `fast` pointer from index 1 to iterate through the array.",
+      "array": [
+        0,
+        0,
+        1,
+        1,
+        1,
+        2,
+        2,
+        3,
+        3,
+        4
+      ],
+      "i": 0,
+      "j": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Compare `nums[fast]` (0) with `nums[slow]` (0). They are equal, indicating a duplicate. Skip this element.",
+      "array": [
+        0,
+        0,
+        1,
+        1,
+        1,
+        2,
+        2,
+        3,
+        3,
+        4
+      ],
+      "i": 0,
+      "j": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Increment `fast` pointer to the next element.",
+      "array": [
+        0,
+        0,
+        1,
+        1,
+        1,
+        2,
+        2,
+        3,
+        3,
+        4
+      ],
+      "i": 0,
+      "j": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Compare `nums[fast]` (1) with `nums[slow]` (0). They are different, meaning `nums[fast]` is a new unique element.",
+      "array": [
+        0,
+        0,
+        1,
+        1,
+        1,
+        2,
+        2,
+        3,
+        3,
+        4
+      ],
+      "i": 0,
+      "j": 2
+    },
+    {
+      "codeLine": 7,
+      "note": "Increment `slow` pointer. It now points to the next available slot for a unique element.",
+      "array": [
+        0,
+        0,
+        1,
+        1,
+        1,
+        2,
+        2,
+        3,
+        3,
+        4
+      ],
+      "i": 1,
+      "j": 2
+    },
+    {
+      "codeLine": 8,
+      "note": "Place `nums[fast]` (1) at `nums[slow]` (index 1). The array is modified in-place.",
+      "array": [
+        0,
+        1,
+        1,
+        1,
+        1,
+        2,
+        2,
+        3,
+        3,
+        4
+      ],
+      "i": 1,
+      "j": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Increment `fast` pointer.",
+      "array": [
+        0,
+        1,
+        1,
+        1,
+        1,
+        2,
+        2,
+        3,
+        3,
+        4
+      ],
+      "i": 1,
+      "j": 3
+    },
+    {
+      "codeLine": 6,
+      "note": "Compare `nums[fast]` (1) with `nums[slow]` (1). They are equal, a duplicate. Skip.",
+      "array": [
+        0,
+        1,
+        1,
+        1,
+        1,
+        2,
+        2,
+        3,
+        3,
+        4
+      ],
+      "i": 1,
+      "j": 3
+    },
+    {
+      "codeLine": 5,
+      "note": "Increment `fast` pointer.",
+      "array": [
+        0,
+        1,
+        1,
+        1,
+        1,
+        2,
+        2,
+        3,
+        3,
+        4
+      ],
+      "i": 1,
+      "j": 4
+    },
+    {
+      "codeLine": 6,
+      "note": "Compare `nums[fast]` (1) with `nums[slow]` (1). They are equal, a duplicate. Skip.",
+      "array": [
+        0,
+        1,
+        1,
+        1,
+        1,
+        2,
+        2,
+        3,
+        3,
+        4
+      ],
+      "i": 1,
+      "j": 4
+    },
+    {
+      "codeLine": 5,
+      "note": "Increment `fast` pointer.",
+      "array": [
+        0,
+        1,
+        1,
+        1,
+        1,
+        2,
+        2,
+        3,
+        3,
+        4
+      ],
+      "i": 1,
+      "j": 5
+    },
+    {
+      "codeLine": 6,
+      "note": "Compare `nums[fast]` (2) with `nums[slow]` (1). They are different, a new unique element.",
+      "array": [
+        0,
+        1,
+        1,
+        1,
+        1,
+        2,
+        2,
+        3,
+        3,
+        4
+      ],
+      "i": 1,
+      "j": 5
+    },
+    {
+      "codeLine": 7,
+      "note": "Increment `slow` pointer.",
+      "array": [
+        0,
+        1,
+        1,
+        1,
+        1,
+        2,
+        2,
+        3,
+        3,
+        4
+      ],
+      "i": 2,
+      "j": 5
+    },
+    {
+      "codeLine": 8,
+      "note": "Place `nums[fast]` (2) at `nums[slow]` (index 2).",
+      "array": [
+        0,
+        1,
+        2,
+        1,
+        1,
+        2,
+        2,
+        3,
+        3,
+        4
+      ],
+      "i": 2,
+      "j": 5
+    },
+    {
+      "codeLine": 5,
+      "note": "Increment `fast` pointer.",
+      "array": [
+        0,
+        1,
+        2,
+        1,
+        1,
+        2,
+        2,
+        3,
+        3,
+        4
+      ],
+      "i": 2,
+      "j": 6
+    },
+    {
+      "codeLine": 6,
+      "note": "Compare `nums[fast]` (2) with `nums[slow]` (2). They are equal, a duplicate. Skip.",
+      "array": [
+        0,
+        1,
+        2,
+        1,
+        1,
+        2,
+        2,
+        3,
+        3,
+        4
+      ],
+      "i": 2,
+      "j": 6
+    },
+    {
+      "codeLine": 5,
+      "note": "Increment `fast` pointer.",
+      "array": [
+        0,
+        1,
+        2,
+        1,
+        1,
+        2,
+        2,
+        3,
+        3,
+        4
+      ],
+      "i": 2,
+      "j": 7
+    },
+    {
+      "codeLine": 6,
+      "note": "Compare `nums[fast]` (3) with `nums[slow]` (2). They are different, a new unique element.",
+      "array": [
+        0,
+        1,
+        2,
+        1,
+        1,
+        2,
+        2,
+        3,
+        3,
+        4
+      ],
+      "i": 2,
+      "j": 7
+    },
+    {
+      "codeLine": 7,
+      "note": "Increment `slow` pointer.",
+      "array": [
+        0,
+        1,
+        2,
+        1,
+        1,
+        2,
+        2,
+        3,
+        3,
+        4
+      ],
+      "i": 3,
+      "j": 7
+    },
+    {
+      "codeLine": 8,
+      "note": "Place `nums[fast]` (3) at `nums[slow]` (index 3).",
+      "array": [
+        0,
+        1,
+        2,
+        3,
+        1,
+        2,
+        2,
+        3,
+        3,
+        4
+      ],
+      "i": 3,
+      "j": 7
+    },
+    {
+      "codeLine": 5,
+      "note": "Increment `fast` pointer.",
+      "array": [
+        0,
+        1,
+        2,
+        3,
+        1,
+        2,
+        2,
+        3,
+        3,
+        4
+      ],
+      "i": 3,
+      "j": 8
+    },
+    {
+      "codeLine": 6,
+      "note": "Compare `nums[fast]` (3) with `nums[slow]` (3). They are equal, a duplicate. Skip.",
+      "array": [
+        0,
+        1,
+        2,
+        3,
+        1,
+        2,
+        2,
+        3,
+        3,
+        4
+      ],
+      "i": 3,
+      "j": 8
+    },
+    {
+      "codeLine": 5,
+      "note": "Increment `fast` pointer.",
+      "array": [
+        0,
+        1,
+        2,
+        3,
+        1,
+        2,
+        2,
+        3,
+        3,
+        4
+      ],
+      "i": 3,
+      "j": 9
+    },
+    {
+      "codeLine": 6,
+      "note": "Compare `nums[fast]` (4) with `nums[slow]` (3). They are different, a new unique element.",
+      "array": [
+        0,
+        1,
+        2,
+        3,
+        1,
+        2,
+        2,
+        3,
+        3,
+        4
+      ],
+      "i": 3,
+      "j": 9
+    },
+    {
+      "codeLine": 7,
+      "note": "Increment `slow` pointer.",
+      "array": [
+        0,
+        1,
+        2,
+        3,
+        1,
+        2,
+        2,
+        3,
+        3,
+        4
+      ],
+      "i": 4,
+      "j": 9
+    },
+    {
+      "codeLine": 8,
+      "note": "Place `nums[fast]` (4) at `nums[slow]` (index 4).",
+      "array": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        2,
+        2,
+        3,
+        3,
+        4
+      ],
+      "i": 4,
+      "j": 9
+    },
+    {
+      "codeLine": 5,
+      "note": "The `fast` pointer has reached the end of the array. The loop terminates.",
+      "array": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        2,
+        2,
+        3,
+        3,
+        4
+      ],
+      "i": 4,
+      "j": null
+    },
+    {
+      "codeLine": 9,
+      "note": "Return `slow + 1` (4 + 1 = 5), which is the new length of the array containing only unique elements. The relevant part of the array is `[0, 1, 2, 3, 4]`.",
+      "array": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        2,
+        2,
+        3,
+        3,
+        4
+      ],
+      "i": 4,
+      "j": null
+    }
+  ]
+}

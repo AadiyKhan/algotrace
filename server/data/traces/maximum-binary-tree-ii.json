@@ -1,0 +1,93 @@
+{
+  "title": "Maximum Binary Tree II",
+  "difficulty": "Medium",
+  "type": "tree",
+  "tags": [
+    "Tree",
+    "Recursion"
+  ],
+  "description": "Insert a value into a maximum binary tree, maintaining the max-tree property where every node is greater than all nodes in its subtrees.",
+  "target": 5,
+  "pseudocode": "1. if (!root || val > root.val) {\n2.   newNode = new Node(val)\n3.   newNode.left = root\n4.   return newNode\n5. } else {\n6.   root.right = insertIntoMaxTree(root.right, val)\n7.   return root\n8. }",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initial call: root is 4, val is 5. 5 > 4 is true.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 4,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        0
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Creating a new node for the value 5.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 4,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 1,
+          "val": 5,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        1
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "New node's left becomes the old root (4).",
+      "treeNodes": [
+        {
+          "id": 1,
+          "val": 5,
+          "left": 0,
+          "right": null
+        },
+        {
+          "id": 0,
+          "val": 4,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        1,
+        0
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Returning the new root.",
+      "treeNodes": [
+        {
+          "id": 1,
+          "val": 5,
+          "left": 0,
+          "right": null
+        },
+        {
+          "id": 0,
+          "val": 4,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        1
+      ]
+    }
+  ]
+}

@@ -1,0 +1,112 @@
+{
+  "title": "Largest Number At Least Twice Of Others",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array"
+  ],
+  "description": "Find the index of the largest element in the array that is at least twice as large as every other element.",
+  "target": null,
+  "pseudocode": "1. let maxVal = -1, maxIdx = -1, secondMax = -1\n2. for (let i = 0; i < nums.length; i++) {\n3.   if (nums[i] > maxVal) {\n4.     secondMax = maxVal\n5.     maxVal = nums[i]\n6.     maxIdx = i\n7.   } else if (nums[i] > secondMax) {\n8.     secondMax = nums[i]\n9.   }\n10. }\n11. return maxVal >= 2 * secondMax ? maxIdx : -1",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Initialize variables with nums = [3, 6, 1]",
+      "array": [
+        3,
+        6,
+        1
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "First element: 3 > maxVal (-1)",
+      "array": [
+        3,
+        6,
+        1
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Set maxVal to 3, maxIdx to 0",
+      "array": [
+        3,
+        6,
+        1
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Move to next index",
+      "array": [
+        3,
+        6,
+        1
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "6 > maxVal (3)",
+      "array": [
+        3,
+        6,
+        1
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Update secondMax to 3",
+      "array": [
+        3,
+        6,
+        1
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Update maxVal to 6, maxIdx to 1",
+      "array": [
+        3,
+        6,
+        1
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Move to final index",
+      "array": [
+        3,
+        6,
+        1
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 7,
+      "note": "1 is not > maxVal (6), check against secondMax (3)",
+      "array": [
+        3,
+        6,
+        1
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 11,
+      "note": "Check if 6 >= 2 * 3",
+      "array": [
+        3,
+        6,
+        1
+      ]
+    }
+  ]
+}

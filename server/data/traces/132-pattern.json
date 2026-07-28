@@ -1,0 +1,102 @@
+{
+  "title": "132 Pattern",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Stack",
+    "Monotonic Stack"
+  ],
+  "description": "Find if there exists a subsequence of three indices (i, j, k) such that i < j < k and nums[i] < nums[k] < nums[j].",
+  "target": null,
+  "pseudocode": "1. let stack = [], s3 = -Infinity\n2. for i from nums.length - 1 down to 0:\n3.   if nums[i] < s3 return true\n4.   while stack.length > 0 and nums[i] > stack[stack.length - 1]:\n5.     s3 = stack.pop()\n6.   stack.push(nums[i])\n7. return false",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize empty stack and s3 as negative infinity.",
+      "array": [
+        3,
+        1,
+        4,
+        2
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Start iteration from the end (index 3).",
+      "array": [
+        3,
+        1,
+        4,
+        2
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 6,
+      "note": "Stack is empty, push nums[3]=2.",
+      "array": [
+        3,
+        1,
+        4,
+        2
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 2,
+      "note": "Move to index 2 (value 4).",
+      "array": [
+        3,
+        1,
+        4,
+        2
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "4 > 2, pop 2 and set s3 = 2.",
+      "array": [
+        3,
+        1,
+        4,
+        2
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Push 4 onto stack.",
+      "array": [
+        3,
+        1,
+        4,
+        2
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 2,
+      "note": "Move to index 1 (value 1).",
+      "array": [
+        3,
+        1,
+        4,
+        2
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "1 < s3(2), pattern found! Return true.",
+      "array": [
+        3,
+        1,
+        4,
+        2
+      ],
+      "i": 1
+    }
+  ]
+}

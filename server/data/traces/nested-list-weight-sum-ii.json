@@ -1,0 +1,111 @@
+{
+  "title": "Nested List Weight Sum II",
+  "difficulty": "Medium",
+  "type": "tree",
+  "tags": [
+    "Tree",
+    "DFS",
+    "Depth-First Search"
+  ],
+  "description": "Calculate the weighted sum of a nested list where weights are defined by max depth - current depth + 1.",
+  "target": null,
+  "pseudocode": "1. maxDepth = getDepth(list)\n2. sum = 0\n3. for each element in list:\n4.   dfs(element, 1, maxDepth)\n5. return sum\n\n6. dfs(item, depth, maxDepth):\n7.   if item is integer:\n8.     sum += item * (maxDepth - depth + 1)\n9.   else:\n10.    for child in item:\n11.      dfs(child, depth + 1, maxDepth)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Calculate max depth of the structure [[1, 1], 2, [1, 1]]. Max depth is 2.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": "root",
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": "list",
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 2,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 1,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Process first nested list at depth 1.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": "root",
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": "list",
+          "left": 3,
+          "right": 4
+        }
+      ],
+      "visited": [
+        1
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Process integer 1 at depth 2. Weight = 2 - 2 + 1 = 1. Sum = 1.",
+      "treeNodes": [
+        {
+          "id": 3,
+          "val": 1
+        }
+      ],
+      "visited": [
+        3
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Process integer 1 at depth 2. Weight = 1. Sum = 2.",
+      "treeNodes": [
+        {
+          "id": 4,
+          "val": 1
+        }
+      ],
+      "visited": [
+        4
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Process integer 2 at depth 1. Weight = 2 - 1 + 1 = 2. Sum = 2 + (2*2) = 6.",
+      "treeNodes": [
+        {
+          "id": 2,
+          "val": 2
+        }
+      ],
+      "visited": [
+        2
+      ]
+    }
+  ]
+}

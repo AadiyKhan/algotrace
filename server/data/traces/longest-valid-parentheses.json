@@ -1,0 +1,330 @@
+{
+  "title": "Longest Valid Parentheses",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "String",
+    "Stack",
+    "Dynamic Programming"
+  ],
+  "description": "Given a string containing just the characters '(' and ')', find the length of the longest valid (well-formed) parentheses substring.",
+  "pseudocode": "1. function longestValidParentheses(s):\n2.     maxLength = 0\n3.     stack = []\n4.     stack.push(-1) // Base index for calculating lengths\n5.\n6.     for i from 0 to s.length - 1:\n7.         if s[i] == '(': \n8.             stack.push(i)\n9.         else: // s[i] == ')'\n10.            stack.pop()\n11.            if stack.isEmpty():\n12.                stack.push(i) // Unmatched ')' becomes new base\n13.            else:\n14.                maxLength = Math.max(maxLength, i - stack.top())\n15.\n16.    return maxLength",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Initialize `maxLength` to 0. This variable will store the maximum length found so far.",
+      "array": [
+        ")",
+        "(",
+        ")",
+        "(",
+        ")",
+        ")"
+      ],
+      "stack": [],
+      "i": null
+    },
+    {
+      "codeLine": 3,
+      "note": "Initialize an empty stack. This stack will store indices of '(' characters and base indices for length calculations.",
+      "array": [
+        ")",
+        "(",
+        ")",
+        "(",
+        ")",
+        ")"
+      ],
+      "stack": [],
+      "i": null
+    },
+    {
+      "codeLine": 4,
+      "note": "Push -1 onto the stack. This serves as a base index to correctly calculate lengths from the beginning of the string or after an invalid parenthesis.",
+      "array": [
+        ")",
+        "(",
+        ")",
+        "(",
+        ")",
+        ")"
+      ],
+      "stack": [
+        -1
+      ],
+      "i": null
+    },
+    {
+      "codeLine": 6,
+      "note": "Start iterating through the string `s`. Current index `i` is 0, character `s[0]` is ')'.",
+      "array": [
+        ")",
+        "(",
+        ")",
+        "(",
+        ")",
+        ")"
+      ],
+      "stack": [
+        -1
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 9,
+      "note": "Character `s[0]` is ')'. Pop the top element from the stack.",
+      "array": [
+        ")",
+        "(",
+        ")",
+        "(",
+        ")",
+        ")"
+      ],
+      "stack": [],
+      "i": 0
+    },
+    {
+      "codeLine": 11,
+      "note": "After popping, the stack is empty. This means `s[0]` is an unmatched closing parenthesis. Push its current index (0) onto the stack to serve as a new base for subsequent valid parentheses. `maxLength` remains 0.",
+      "array": [
+        ")",
+        "(",
+        ")",
+        "(",
+        ")",
+        ")"
+      ],
+      "stack": [
+        0
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Move to the next character. Current index `i` is 1, character `s[1]` is '('.",
+      "array": [
+        ")",
+        "(",
+        ")",
+        "(",
+        ")",
+        ")"
+      ],
+      "stack": [
+        0
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 8,
+      "note": "Character `s[1]` is '('. Push its index (1) onto the stack. `maxLength` remains 0.",
+      "array": [
+        ")",
+        "(",
+        ")",
+        "(",
+        ")",
+        ")"
+      ],
+      "stack": [
+        0,
+        1
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Move to the next character. Current index `i` is 2, character `s[2]` is ')'.",
+      "array": [
+        ")",
+        "(",
+        ")",
+        "(",
+        ")",
+        ")"
+      ],
+      "stack": [
+        0,
+        1
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 10,
+      "note": "Character `s[2]` is ')'. Pop the top element from the stack (which is 1).",
+      "array": [
+        ")",
+        "(",
+        ")",
+        "(",
+        ")",
+        ")"
+      ],
+      "stack": [
+        0
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 14,
+      "note": "The stack is not empty. Calculate the length of the current valid parentheses substring: `i - stack.top()` = `2 - 0 = 2`. Update `maxLength` if this length is greater. `maxLength` becomes `max(0, 2) = 2`.",
+      "array": [
+        ")",
+        "(",
+        ")",
+        "(",
+        ")",
+        ")"
+      ],
+      "stack": [
+        0
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Move to the next character. Current index `i` is 3, character `s[3]` is '('.",
+      "array": [
+        ")",
+        "(",
+        ")",
+        "(",
+        ")",
+        ")"
+      ],
+      "stack": [
+        0
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 8,
+      "note": "Character `s[3]` is '('. Push its index (3) onto the stack. `maxLength` remains 2.",
+      "array": [
+        ")",
+        "(",
+        ")",
+        "(",
+        ")",
+        ")"
+      ],
+      "stack": [
+        0,
+        3
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 6,
+      "note": "Move to the next character. Current index `i` is 4, character `s[4]` is ')'.",
+      "array": [
+        ")",
+        "(",
+        ")",
+        "(",
+        ")",
+        ")"
+      ],
+      "stack": [
+        0,
+        3
+      ],
+      "i": 4
+    },
+    {
+      "codeLine": 10,
+      "note": "Character `s[4]` is ')'. Pop the top element from the stack (which is 3).",
+      "array": [
+        ")",
+        "(",
+        ")",
+        "(",
+        ")",
+        ")"
+      ],
+      "stack": [
+        0
+      ],
+      "i": 4
+    },
+    {
+      "codeLine": 14,
+      "note": "The stack is not empty. Calculate the length of the current valid parentheses substring: `i - stack.top()` = `4 - 0 = 4`. Update `maxLength` if this length is greater. `maxLength` becomes `max(2, 4) = 4`.",
+      "array": [
+        ")",
+        "(",
+        ")",
+        "(",
+        ")",
+        ")"
+      ],
+      "stack": [
+        0
+      ],
+      "i": 4
+    },
+    {
+      "codeLine": 6,
+      "note": "Move to the next character. Current index `i` is 5, character `s[5]` is ')'.",
+      "array": [
+        ")",
+        "(",
+        ")",
+        "(",
+        ")",
+        ")"
+      ],
+      "stack": [
+        0
+      ],
+      "i": 5
+    },
+    {
+      "codeLine": 10,
+      "note": "Character `s[5]` is ')'. Pop the top element from the stack (which is 0).",
+      "array": [
+        ")",
+        "(",
+        ")",
+        "(",
+        ")",
+        ")"
+      ],
+      "stack": [],
+      "i": 5
+    },
+    {
+      "codeLine": 12,
+      "note": "After popping, the stack is empty. This means `s[5]` is an unmatched closing parenthesis. Push its current index (5) onto the stack to serve as a new base. `maxLength` remains 4.",
+      "array": [
+        ")",
+        "(",
+        ")",
+        "(",
+        ")",
+        ")"
+      ],
+      "stack": [
+        5
+      ],
+      "i": 5
+    },
+    {
+      "codeLine": 16,
+      "note": "End of loop. All characters processed. Return the final `maxLength` which is 4.",
+      "array": [
+        ")",
+        "(",
+        ")",
+        "(",
+        ")",
+        ")"
+      ],
+      "stack": [
+        5
+      ],
+      "i": null
+    }
+  ]
+}

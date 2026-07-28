@@ -1,0 +1,143 @@
+{
+  "title": "Employee Importance",
+  "difficulty": "Medium",
+  "type": "tree",
+  "tags": [
+    "DFS",
+    "Hash Table",
+    "Tree"
+  ],
+  "description": "Find the total importance value of an employee and all their direct and indirect subordinates.",
+  "target": 1,
+  "pseudocode": "1. map = new Map(employees.map(e => [e.id, e]))\n2. function getTotal(id) {\n3.   emp = map.get(id)\n4.   sum = emp.importance\n5.   for (subId of emp.subordinates) {\n6.     sum += getTotal(subId)\n7.   }\n8.   return sum\n9. }",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Map created: {1: [5, [2, 3]], 2: [3, []], 3: [3, []]}",
+      "treeNodes": [
+        {
+          "id": 1,
+          "val": 5,
+          "left": 2,
+          "right": 3
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Get employee 1, importance = 5",
+      "treeNodes": [
+        {
+          "id": 1,
+          "val": 5,
+          "left": 2,
+          "right": 3
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Traverse to subordinate 2",
+      "treeNodes": [
+        {
+          "id": 1,
+          "val": 5,
+          "left": 2,
+          "right": 3
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Traverse to subordinate 3",
+      "treeNodes": [
+        {
+          "id": 1,
+          "val": 5,
+          "left": 2,
+          "right": 3
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 8,
+      "note": "Return total importance: 5 + 3 + 3 = 11",
+      "treeNodes": [
+        {
+          "id": 1,
+          "val": 5,
+          "left": 2,
+          "right": 3
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        0,
+        1,
+        2
+      ]
+    }
+  ]
+}

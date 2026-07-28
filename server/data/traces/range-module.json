@@ -1,0 +1,60 @@
+{
+  "title": "Range Module",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Design",
+    "Segment Tree",
+    "Ordered Map"
+  ],
+  "description": "Maintain a set of disjoint intervals to track ranges of numbers.",
+  "target": null,
+  "pseudocode": "1: function addRange(left, right):\n2:   find first interval starting after left\n3:   merge overlapping intervals\n4:   insert new consolidated interval",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initial state: empty range set.",
+      "array": []
+    },
+    {
+      "codeLine": 2,
+      "note": "Adding range [10, 20]. No intervals exist.",
+      "array": [
+        [
+          10,
+          20
+        ]
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Adding range [15, 25]. Found overlap with [10, 20].",
+      "array": [
+        [
+          10,
+          20
+        ]
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Merging [10, 20] and [15, 25] into [10, 25].",
+      "array": [
+        [
+          10,
+          25
+        ]
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Interval successfully updated.",
+      "array": [
+        [
+          10,
+          25
+        ]
+      ]
+    }
+  ]
+}

@@ -1,0 +1,94 @@
+{
+  "title": "Minimum Moves to Equal Array Elements II",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Math",
+    "Sorting"
+  ],
+  "description": "Find the minimum number of moves to make all array elements equal, where a move consists of incrementing or decrementing an element by 1.",
+  "target": "Median",
+  "pseudocode": "1. sort(nums)\n2. median = nums[Math.floor(nums.length / 2)]\n3. moves = 0\n4. for x of nums:\n5.   moves += Math.abs(x - median)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Sort the array to easily find the median.",
+      "array": [
+        1,
+        2,
+        9
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Identify the median value at the middle index.",
+      "array": [
+        1,
+        2,
+        9
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Iterate through elements to calculate distance from median (2).",
+      "array": [
+        1,
+        2,
+        9
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Calculate abs(1 - 2) = 1. Total moves: 1.",
+      "array": [
+        1,
+        2,
+        9
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Next element.",
+      "array": [
+        1,
+        2,
+        9
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Calculate abs(2 - 2) = 0. Total moves: 1.",
+      "array": [
+        1,
+        2,
+        9
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Next element.",
+      "array": [
+        1,
+        2,
+        9
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Calculate abs(9 - 2) = 7. Total moves: 8.",
+      "array": [
+        1,
+        2,
+        9
+      ],
+      "i": 2
+    }
+  ]
+}

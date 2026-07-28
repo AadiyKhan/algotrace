@@ -1,0 +1,82 @@
+{
+  "title": "Non-overlapping Intervals",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Dynamic Programming",
+    "Greedy",
+    "Sorting"
+  ],
+  "description": "Given an array of intervals, find the minimum number of intervals to remove to make the rest non-overlapping.",
+  "target": null,
+  "pseudocode": "1. intervals.sort((a, b) => a[1] - b[1]);\n2. let count = 0, end = intervals[0][1];\n3. for (let i = 1; i < intervals.length; i++) {\n4.   if (intervals[i][0] < end) {\n5.     count++;\n6.   } else {\n7.     end = intervals[i][1];\n8.   }\n9. }",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Sort intervals by end time: [[1,2], [1,3], [2,3]]",
+      "array": [
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          3
+        ]
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Initialize count to 0 and end to the first interval's end (2)",
+      "array": [
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          3
+        ]
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Start loop at index i=1",
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Compare current start (1) with end (2). 1 < 2, so overlap.",
+      "i": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Increment count to 1",
+      "i": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Move to index i=2",
+      "i": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Compare current start (2) with end (2). 2 is not < 2, no overlap.",
+      "i": 2
+    },
+    {
+      "codeLine": 7,
+      "note": "Update end to current interval's end (3)",
+      "i": 2
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "title": "Minimum Domino Rotations For Equal Row",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Greedy"
+  ],
+  "description": "Find the minimum number of rotations to make all values in either the top or bottom row equal.",
+  "target": 2,
+  "pseudocode": "1. candidates = [tops[0], bottoms[0]]\n2. for val in candidates:\n3.   rotations = check(val)\n4.   if rotations != -1: return rotations\n5. return -1",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize candidates from the first domino: [2, 1]",
+      "array": [
+        2,
+        1,
+        2,
+        4,
+        2,
+        2
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Check candidate 2: count rotations to make top row all 2s",
+      "array": [
+        2,
+        1,
+        2,
+        4,
+        2,
+        2
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Check candidate 2: rotations needed = 2",
+      "array": [
+        2,
+        1,
+        2,
+        4,
+        2,
+        2
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Found valid target, return 2",
+      "array": [
+        2,
+        1,
+        2,
+        4,
+        2,
+        2
+      ]
+    }
+  ]
+}

@@ -1,0 +1,208 @@
+{
+  "title": "Spiral Matrix II",
+  "difficulty": "Medium",
+  "type": "matrix",
+  "tags": [
+    "Array",
+    "Matrix",
+    "Simulation"
+  ],
+  "description": "Generate an n x n matrix filled with elements from 1 to n^2 in spiral order.",
+  "target": 3,
+  "pseudocode": "1. matrix = Array(n).fill().map(() => Array(n))\n2. top=0, bottom=n-1, left=0, right=n-1, num=1\n3. while num <= n*n\n4. for i from left to right: matrix[top][i] = num++\n5. top++\n6. for i from top to bottom: matrix[i][right] = num++\n7. right--\n8. for i from right down to left: matrix[bottom][i] = num++\n9. bottom--\n10. for i from bottom down to top: matrix[i][left] = num++\n11. left++",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize 3x3 matrix with zeros.",
+      "matrix": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Fill top row from left to right.",
+      "matrix": [
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Increment top boundary.",
+      "matrix": [
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Fill right column from top to bottom.",
+      "matrix": [
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          0,
+          0,
+          4
+        ],
+        [
+          0,
+          0,
+          5
+        ]
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 7,
+      "note": "Decrement right boundary.",
+      "matrix": [
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          0,
+          0,
+          4
+        ],
+        [
+          0,
+          0,
+          5
+        ]
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Fill bottom row from right to left.",
+      "matrix": [
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          0,
+          0,
+          4
+        ],
+        [
+          7,
+          6,
+          5
+        ]
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 9,
+      "note": "Decrement bottom boundary.",
+      "matrix": [
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          0,
+          0,
+          4
+        ],
+        [
+          7,
+          6,
+          5
+        ]
+      ]
+    },
+    {
+      "codeLine": 10,
+      "note": "Fill left column from bottom to top.",
+      "matrix": [
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          8,
+          0,
+          4
+        ],
+        [
+          7,
+          6,
+          5
+        ]
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 11,
+      "note": "Increment left boundary. Next loop fills middle.",
+      "matrix": [
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          8,
+          9,
+          4
+        ],
+        [
+          7,
+          6,
+          5
+        ]
+      ]
+    }
+  ]
+}

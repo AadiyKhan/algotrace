@@ -1,0 +1,74 @@
+{
+  "title": "All Paths From Source Lead To Destination",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Graph",
+    "DFS",
+    "Recursion"
+  ],
+  "description": "Determine if all paths from source node start at source and end at destination, where destination has no outgoing edges.",
+  "target": 3,
+  "pseudocode": "1. function dfs(curr, target, graph, visited):\n2.   if graph[curr].length == 0:\n3.     return curr == target\n4.   for neighbor in graph[curr]:\n5.     if !dfs(neighbor, target, graph, visited):\n6.       return false\n7.   return true",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Starting DFS from node 0 to find paths to node 3.",
+      "i": 0,
+      "visited": [
+        0
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Traversing neighbor 1 of node 0.",
+      "i": 1,
+      "visited": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Traversing neighbor 2 of node 1.",
+      "i": 2,
+      "visited": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Node 2 has an edge to 3, checking branch.",
+      "i": 3,
+      "visited": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Node 3 has no outgoing edges. Checking if curr == target.",
+      "i": 3,
+      "visited": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "3 == 3 is true. Path valid.",
+      "i": 3
+    },
+    {
+      "codeLine": 7,
+      "note": "All paths confirmed leading to destination.",
+      "i": 0
+    }
+  ]
+}

@@ -1,0 +1,95 @@
+{
+  "title": "Best Time to Buy and Sell Stock III",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Dynamic Programming"
+  ],
+  "description": "Find the maximum profit with at most two transactions.",
+  "target": null,
+  "pseudocode": "1. buy1 = -Infinity, sell1 = 0\n2. buy2 = -Infinity, sell2 = 0\n3. for price in prices:\n4.   buy1 = max(buy1, -price)\n5.   sell1 = max(sell1, price + buy1)\n6.   buy2 = max(buy2, sell1 - price)\n7.   sell2 = max(sell2, price + buy2)",
+  "steps": [
+    {
+      "codeLine": 3,
+      "note": "Initialize variables for two transactions with prices [3, 1]",
+      "array": [
+        3,
+        1
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Processing price 3: buy1 becomes -3",
+      "array": [
+        3,
+        1
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Processing price 3: sell1 stays 0",
+      "array": [
+        3,
+        1
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Processing price 3: buy2 becomes -3",
+      "array": [
+        3,
+        1
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 7,
+      "note": "Processing price 3: sell2 stays 0",
+      "array": [
+        3,
+        1
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Processing price 1: buy1 updated to -1",
+      "array": [
+        3,
+        1
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Processing price 1: sell1 remains 0",
+      "array": [
+        3,
+        1
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Processing price 1: buy2 becomes max(-3, 0 - 1) = -1",
+      "array": [
+        3,
+        1
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "Processing price 1: sell2 remains 0",
+      "array": [
+        3,
+        1
+      ],
+      "i": 1
+    }
+  ]
+}

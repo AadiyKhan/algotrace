@@ -1,0 +1,50 @@
+{
+  "title": "Sum of Two Integers",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Bit Manipulation",
+    "Math"
+  ],
+  "description": "Calculate the sum of two integers a and b, but you are not allowed to use the operator + and -.",
+  "target": 3,
+  "pseudocode": "1: while (b !== 0) {\n2:   let carry = a & b;\n3:   a = a ^ b;\n4:   b = carry << 1;\n5: }\n6: return a;",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize a=1, b=2. Since b is not 0, enter the loop.",
+      "i": 1,
+      "j": 2
+    },
+    {
+      "codeLine": 2,
+      "note": "Calculate carry: 1 & 2 is 0 (binary 01 & 10 = 00).",
+      "i": 1,
+      "j": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Update a: 1 ^ 2 is 3 (binary 01 ^ 10 = 11).",
+      "i": 3,
+      "j": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Update b: carry 0 shifted left by 1 is 0.",
+      "i": 3,
+      "j": 0
+    },
+    {
+      "codeLine": 1,
+      "note": "Loop condition check: b is 0, exit loop.",
+      "i": 3,
+      "j": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Return a, which is 3.",
+      "i": 3,
+      "j": 0
+    }
+  ]
+}

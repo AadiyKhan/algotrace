@@ -1,0 +1,68 @@
+{
+  "title": "Decoded String At Index",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "String",
+    "Stack"
+  ],
+  "description": "Find the K-th character in a decoded string where digits indicate repeating the existing decoded string.",
+  "target": 10,
+  "pseudocode": "1: size = 0\n2: for char in s: \n3:   if char is digit: size *= int(char)\n4:   else: size += 1\n5: for i from s.length-1 to 0:\n6:   k %= size\n7:   if k == 0 and char is not digit: return char\n8:   if char is digit: size /= int(char)\n9:   else: size -= 1",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize total size to 0.",
+      "array": [
+        "l",
+        "e",
+        "e",
+        "2"
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Calculate total decoded length: 'lee' is 3, 'lee2' is 3*2 = 6.",
+      "array": [
+        "l",
+        "e",
+        "e",
+        "2"
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 5,
+      "note": "Working backwards from end to find the 10th character.",
+      "array": [
+        "l",
+        "e",
+        "e",
+        "2"
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 6,
+      "note": "Reducing K by modulo current size.",
+      "array": [
+        "l",
+        "e",
+        "e",
+        "2"
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 8,
+      "note": "Digit found, reduce size by dividing.",
+      "array": [
+        "l",
+        "e",
+        "e",
+        "2"
+      ],
+      "i": 1
+    }
+  ]
+}

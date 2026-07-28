@@ -1,0 +1,93 @@
+{
+  "title": "Heaters",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Binary Search",
+    "Two Pointers"
+  ],
+  "description": "Find the minimum heater radius to cover all houses given heater positions.",
+  "target": null,
+  "pseudocode": "1. houses.sort(); heaters.sort();\n2. radius = 0;\n3. for h in houses:\n4.   dist = min_dist_to_any_heater(h, heaters);\n5.   radius = max(radius, dist);\n6. return radius;",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Sort houses [1, 2, 3] and heaters [2].",
+      "array": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Processing house at index 0 (val 1). Distance to heater at 2 is 1.",
+      "array": [
+        1,
+        2,
+        3
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Radius updated to 1.",
+      "array": [
+        1,
+        2,
+        3
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Processing house at index 1 (val 2). Distance to heater at 2 is 0.",
+      "array": [
+        1,
+        2,
+        3
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Radius remains 1.",
+      "array": [
+        1,
+        2,
+        3
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Processing house at index 2 (val 3). Distance to heater at 2 is 1.",
+      "array": [
+        1,
+        2,
+        3
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Radius remains 1.",
+      "array": [
+        1,
+        2,
+        3
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Returning final radius 1.",
+      "array": [
+        1,
+        2,
+        3
+      ]
+    }
+  ]
+}

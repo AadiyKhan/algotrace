@@ -1,0 +1,109 @@
+{
+  "title": "Minimum Area Rectangle II",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Geometry",
+    "Math",
+    "Hash Table"
+  ],
+  "description": "Find the minimum area of a rectangle formed by 4 points from a given set of points.",
+  "target": 0,
+  "pseudocode": "1. map = new Map();\n2. for i from 0 to n-1:\n3.   for j from i + 1 to n-1:\n4.     center = [(p[i].x + p[j].x)/2, (p[i].y + p[j].y)/2];\n5.     dist = distSq(p[i], p[j]);\n6.     key = `${dist}-${center[0]}-${center[1]}`;\n7.     for prev in map.get(key):\n8.       area = calculateArea(p[i], p[j], prev.p1, prev.p2);\n9.       minArea = min(minArea, area);\n10.    map.get(key).push({p1: p[i], p2: p[j]});",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize empty hash map to store pairs of points by their center and diagonal length.",
+      "array": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Calculate center of points [0,0] and [1,1]. Center: [0.5, 0.5], DistSq: 2.",
+      "array": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "i": 0,
+      "j": 3
+    },
+    {
+      "codeLine": 7,
+      "note": "Check map for existing diagonal with same center [0.5, 0.5] and length 2. Found pair [1,0] and [0,1].",
+      "array": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "i": 0,
+      "j": 3
+    },
+    {
+      "codeLine": 9,
+      "note": "Calculate area of rectangle formed by these 4 points: 1 * 1 = 1.0.",
+      "array": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "i": 0,
+      "j": 3
+    }
+  ]
+}

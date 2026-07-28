@@ -1,0 +1,132 @@
+{
+  "title": "Sliding Puzzle",
+  "difficulty": "Hard",
+  "type": "matrix",
+  "tags": [
+    "Breadth-First Search",
+    "Graph",
+    "Matrix"
+  ],
+  "description": "Find the minimum number of moves to solve a 2x3 sliding puzzle board.",
+  "target": "123450",
+  "pseudocode": "1. queue = [[start, 0]]\n2. visited = {start}\n3. while queue not empty:\n4.   curr, dist = queue.shift()\n5.   if curr == target: return dist\n6.   for neighbor of valid_moves(curr):\n7.     if neighbor not in visited:\n8.       visited.add(neighbor)\n9.       queue.push([neighbor, dist + 1])",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize BFS queue with starting state '412503' and distance 0.",
+      "matrix": [
+        [
+          4,
+          1,
+          2
+        ],
+        [
+          5,
+          0,
+          3
+        ]
+      ],
+      "visited": []
+    },
+    {
+      "codeLine": 4,
+      "note": "Dequeue current state '412503'.",
+      "matrix": [
+        [
+          4,
+          1,
+          2
+        ],
+        [
+          5,
+          0,
+          3
+        ]
+      ],
+      "visited": [
+        "412503"
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Explore neighbors: move 0 up to swap with 1.",
+      "matrix": [
+        [
+          4,
+          0,
+          2
+        ],
+        [
+          5,
+          1,
+          3
+        ]
+      ],
+      "visited": [
+        "412503"
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Add new state '402513' to visited and queue.",
+      "matrix": [
+        [
+          4,
+          0,
+          2
+        ],
+        [
+          5,
+          1,
+          3
+        ]
+      ],
+      "visited": [
+        "412503",
+        "402513"
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Explore neighbor: move 0 left to swap with 5.",
+      "matrix": [
+        [
+          4,
+          1,
+          2
+        ],
+        [
+          0,
+          5,
+          3
+        ]
+      ],
+      "visited": [
+        "412503",
+        "402513",
+        "412053"
+      ]
+    },
+    {
+      "codeLine": 9,
+      "note": "Push new state '412053' to queue with distance 1.",
+      "matrix": [
+        [
+          4,
+          1,
+          2
+        ],
+        [
+          0,
+          5,
+          3
+        ]
+      ],
+      "visited": [
+        "412503",
+        "402513",
+        "412053"
+      ]
+    }
+  ]
+}

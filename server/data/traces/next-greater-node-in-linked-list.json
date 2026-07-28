@@ -1,0 +1,204 @@
+{
+  "title": "Next Greater Node In Linked List",
+  "difficulty": "Medium",
+  "type": "linked-list",
+  "tags": [
+    "Linked List",
+    "Stack",
+    "Monotonic Stack"
+  ],
+  "description": "Find the next greater node value for each node in a linked list using a monotonic stack.",
+  "target": null,
+  "pseudocode": "1: let stack = [];\n2: let res = new Array(nodes.length).fill(0);\n3: for (let i = 0; i < nodes.length; i++) {\n4:   while (stack.length > 0 && nodes[i].val > nodes[stack[stack.length - 1]].val) {\n5:     let idx = stack.pop();\n6:     res[idx] = nodes[i].val;\n7:   }\n8:   stack.push(i);\n9: }",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize empty stack and result array.",
+      "nodes": [
+        {
+          "val": 2,
+          "next": 1
+        },
+        {
+          "val": 1,
+          "next": 2
+        },
+        {
+          "val": 5,
+          "next": null
+        }
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Start iteration at index 0 (val: 2).",
+      "nodes": [
+        {
+          "val": 2,
+          "next": 1
+        },
+        {
+          "val": 1,
+          "next": 2
+        },
+        {
+          "val": 5,
+          "next": null
+        }
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 8,
+      "note": "Stack is empty, push index 0.",
+      "nodes": [
+        {
+          "val": 2,
+          "next": 1
+        },
+        {
+          "val": 1,
+          "next": 2
+        },
+        {
+          "val": 5,
+          "next": null
+        }
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Move to index 1 (val: 1).",
+      "nodes": [
+        {
+          "val": 2,
+          "next": 1
+        },
+        {
+          "val": 1,
+          "next": 2
+        },
+        {
+          "val": 5,
+          "next": null
+        }
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 8,
+      "note": "1 is not greater than stack top (2), push index 1.",
+      "nodes": [
+        {
+          "val": 2,
+          "next": 1
+        },
+        {
+          "val": 1,
+          "next": 2
+        },
+        {
+          "val": 5,
+          "next": null
+        }
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Move to index 2 (val: 5).",
+      "nodes": [
+        {
+          "val": 2,
+          "next": 1
+        },
+        {
+          "val": 1,
+          "next": 2
+        },
+        {
+          "val": 5,
+          "next": null
+        }
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "5 > nodes[1].val (1). Pop index 1.",
+      "nodes": [
+        {
+          "val": 2,
+          "next": 1
+        },
+        {
+          "val": 1,
+          "next": 2
+        },
+        {
+          "val": 5,
+          "next": null
+        }
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Update res[1] = 5.",
+      "nodes": [
+        {
+          "val": 2,
+          "next": 1
+        },
+        {
+          "val": 1,
+          "next": 2
+        },
+        {
+          "val": 5,
+          "next": null
+        }
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "5 > nodes[0].val (2). Pop index 0.",
+      "nodes": [
+        {
+          "val": 2,
+          "next": 1
+        },
+        {
+          "val": 1,
+          "next": 2
+        },
+        {
+          "val": 5,
+          "next": null
+        }
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Update res[0] = 5.",
+      "nodes": [
+        {
+          "val": 2,
+          "next": 1
+        },
+        {
+          "val": 1,
+          "next": 2
+        },
+        {
+          "val": 5,
+          "next": null
+        }
+      ],
+      "i": 2
+    }
+  ]
+}

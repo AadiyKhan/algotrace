@@ -1,0 +1,61 @@
+{
+  "title": "Course Schedule III",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Greedy",
+    "Sorting",
+    "Priority Queue"
+  ],
+  "description": "Find the maximum number of courses that can be taken given their durations and deadlines.",
+  "target": null,
+  "pseudocode": "1. courses.sort((a, b) => a[1] - b[1])\n2. time = 0\n3. pq = new MaxHeap()\n4. for [duration, end] of courses:\n5.   if time + duration <= end:\n6.     time += duration\n7.     pq.push(duration)\n8.   else if pq.size > 0 and pq.peek() > duration:\n9.     time = time - pq.pop() + duration\n10.    pq.push(duration)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Sort courses by deadline: [[3, 7], [2, 8], [5, 12]]",
+      "array": [
+        [
+          3,
+          7
+        ],
+        [
+          2,
+          8
+        ],
+        [
+          5,
+          12
+        ]
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Course [3, 7]: time 0 + 3 <= 7. Take it.",
+      "array": [
+        3
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Course [2, 8]: time 3 + 2 <= 8. Take it.",
+      "array": [
+        3,
+        2
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Course [5, 12]: time 5 + 5 <= 12. Take it.",
+      "array": [
+        3,
+        2,
+        5
+      ],
+      "i": 2
+    }
+  ]
+}

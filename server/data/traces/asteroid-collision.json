@@ -1,0 +1,127 @@
+{
+  "title": "Asteroid Collision",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Stack"
+  ],
+  "description": "Given an array of asteroids, return the state of the asteroids after all collisions.",
+  "target": null,
+  "pseudocode": "1. stack = []\n2. for asteroid in asteroids:\n3.   while stack and asteroid < 0 < stack[-1]:\n4.     if stack[-1] < -asteroid: stack.pop(); continue\n5.     elif stack[-1] == -asteroid: stack.pop()\n6.     break\n7.   else: stack.append(asteroid)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize empty stack",
+      "array": []
+    },
+    {
+      "codeLine": 2,
+      "note": "Process asteroid 5",
+      "array": [
+        5
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 7,
+      "note": "5 is positive, push to stack",
+      "array": [
+        5
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Process asteroid 10",
+      "array": [
+        5,
+        10
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "10 is positive, push to stack",
+      "array": [
+        5,
+        10
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Process asteroid -5",
+      "array": [
+        5,
+        10,
+        -5
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Collision detected: 10 vs -5",
+      "array": [
+        5,
+        10,
+        -5
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "10 > 5, -5 destroyed",
+      "array": [
+        5,
+        10
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Process asteroid -12",
+      "array": [
+        5,
+        10,
+        -12
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 3,
+      "note": "Collision: 10 vs -12",
+      "array": [
+        5,
+        10,
+        -12
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "10 < 12, 10 destroyed",
+      "array": [
+        5,
+        -12
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Collision: 5 vs -12",
+      "array": [
+        5,
+        -12
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "5 < 12, 5 destroyed",
+      "array": [
+        -12
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "-12 has no collision, push to stack",
+      "array": [
+        -12
+      ]
+    }
+  ]
+}

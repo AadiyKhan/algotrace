@@ -1,0 +1,115 @@
+{
+  "title": "Minimum Height Trees",
+  "difficulty": "Medium",
+  "type": "tree",
+  "tags": [
+    "Graph",
+    "BFS",
+    "Topological Sort"
+  ],
+  "description": "Find all root labels that result in a minimum height tree for a given undirected graph.",
+  "target": null,
+  "pseudocode": "1. Initialize degrees for all nodes\n2. Add leaves (degree 1) to queue\n3. While nodes > 2:\n4.   Remove current leaves from graph\n5.   Decrement neighbors and add new leaves to queue\n6. Return remaining nodes in queue",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize degrees: {0:1, 1:2, 2:1, 3:1}",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 0,
+          "left": 1,
+          "right": null
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": 2,
+          "right": 3
+        },
+        {
+          "id": 2,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        0,
+        2,
+        3
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Queue initialized with leaf nodes [0, 2, 3]",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 0,
+          "left": 1,
+          "right": null
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": 2,
+          "right": 3
+        },
+        {
+          "id": 2,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        0,
+        2,
+        3
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Remove leaves 0, 2, 3 from the graph",
+      "treeNodes": [
+        {
+          "id": 1,
+          "val": 1,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        1
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Only node 1 remains as the root for minimum height",
+      "treeNodes": [
+        {
+          "id": 1,
+          "val": 1,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        1
+      ]
+    }
+  ]
+}

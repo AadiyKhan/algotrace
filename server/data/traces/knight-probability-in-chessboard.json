@@ -1,0 +1,115 @@
+{
+  "title": "Knight Probability in Chessboard",
+  "difficulty": "Medium",
+  "type": "matrix",
+  "tags": [
+    "Dynamic Programming",
+    "Matrix"
+  ],
+  "description": "Calculate the probability that a knight remains on the board after K moves.",
+  "target": 1,
+  "pseudocode": "1: dp = new matrix(n, n, 1)\n2: for step = 1 to k:\n3:   newDp = new matrix(n, n, 0)\n4:   for r, c in cells:\n5:     for dr, dc in knightMoves:\n6:       if (r+dr, c+dc) is on board:\n7:         newDp[r+dr][c+dc] += dp[r][c] / 8\n8:   dp = newDp\n9: return sum(dp)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize 3x3 DP table with probability 1.0 (starting position [1,1])",
+      "matrix": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Starting move 1 iteration",
+      "i": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Initialize next state matrix with zeros",
+      "matrix": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Knight at [1,1] has valid moves to [0,3] (invalid), [3,0] (invalid), etc. Valid: [0,3] no, [2,3] no. For 3x3, most moves go off-board.",
+      "curr": [
+        1,
+        1
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Distribute probability 1/8 to each of the 8 possible moves if within bounds",
+      "matrix": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Update dp table for move 1",
+      "matrix": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "codeLine": 9,
+      "note": "Sum of probabilities is 0 as all moves from [1,1] in 3x3 lead off-board"
+    }
+  ]
+}

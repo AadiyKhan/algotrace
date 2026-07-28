@@ -1,0 +1,70 @@
+{
+  "title": "Symmetric Tree",
+  "difficulty": "Easy",
+  "type": "tree",
+  "tags": [
+    "Tree",
+    "DFS",
+    "BFS"
+  ],
+  "description": "Determine if a binary tree is a mirror of itself (symmetric around its center).",
+  "pseudocode": "function isSymmetric(root) {\n  if (!root) return true;\n  return check(root.left, root.right);\n}\nfunction check(n1, n2) {\n  if (!n1 && !n2) return true;\n  if (!n1 || !n2 || n1.val !== n2.val) return false;\n  return check(n1.left, n2.right) && check(n1.right, n2.left);\n}",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Initialize check on root left and right children.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": 3,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 2,
+          "left": null,
+          "right": 3
+        },
+        {
+          "id": 3,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Comparing left child (2) and right child (2). Values match.",
+      "visited": [
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Recursively check outer children (left.left vs right.right).",
+      "visited": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Reached leaf nodes (null), returning true for this branch.",
+      "visited": [
+        1,
+        2,
+        3
+      ]
+    }
+  ]
+}

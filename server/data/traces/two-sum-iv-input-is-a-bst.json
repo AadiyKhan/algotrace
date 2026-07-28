@@ -1,0 +1,100 @@
+{
+  "title": "Two Sum IV - Input is a BST",
+  "difficulty": "Easy",
+  "type": "tree",
+  "tags": [
+    "Tree",
+    "BST",
+    "Two Pointers",
+    "Hash Set"
+  ],
+  "description": "Determine if there exist two nodes in the BST such that their values sum to a given target.",
+  "target": 9,
+  "pseudocode": "1. function findTarget(root, k, set = new Set()):\n2.   if (!root) return false\n3.   if (set.has(k - root.val)) return true\n4.   set.add(root.val)\n5.   return findTarget(root.left, k, set) || findTarget(root.right, k, set)",
+  "steps": [
+    {
+      "codeLine": 4,
+      "note": "Root 5 is not in set. Add 5 to set.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 5,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 3,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 6,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        0
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Traverse left. 3 is not in set. Add 3 to set.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 5,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 3,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 6,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Traverse right. Target is 9. 9 - 6 = 3. 3 is in set!",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 5,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 3,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 6,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        0,
+        1,
+        2
+      ]
+    }
+  ]
+}

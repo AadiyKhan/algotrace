@@ -1,0 +1,57 @@
+{
+  "title": "Concatenated Words",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "String",
+    "Dynamic Programming",
+    "Trie"
+  ],
+  "description": "Find all words in a given list that are formed by concatenating at least two shorter words from the same list.",
+  "target": null,
+  "pseudocode": "1. Set = new Set(words)\n2. results = []\n3. function canForm(word, set):\n4.   for i = 1 to word.length:\n5.     prefix = word.substring(0, i)\n6.     suffix = word.substring(i)\n7.     if set.has(prefix) and (set.has(suffix) or canForm(suffix, set)):\n8.       return true\n9.   return false\n10. for word in words:\n11.   if canForm(word, set): results.push(word)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize dictionary set for O(1) lookups: {'cat', 'dog', 'catdog'}",
+      "array": [
+        "cat",
+        "dog",
+        "catdog"
+      ]
+    },
+    {
+      "codeLine": 10,
+      "note": "Checking word: 'cat'",
+      "i": "cat"
+    },
+    {
+      "codeLine": 4,
+      "note": "Attempt to split 'cat', no combination of 2+ words found",
+      "i": "cat"
+    },
+    {
+      "codeLine": 10,
+      "note": "Checking word: 'catdog'",
+      "i": "catdog"
+    },
+    {
+      "codeLine": 4,
+      "note": "Split 'catdog' at index 3: prefix='cat', suffix='dog'",
+      "i": "catdog"
+    },
+    {
+      "codeLine": 7,
+      "note": "Both 'cat' and 'dog' exist in set. 'catdog' is a concatenated word.",
+      "i": "catdog"
+    },
+    {
+      "codeLine": 11,
+      "note": "Adding 'catdog' to results.",
+      "array": [
+        "catdog"
+      ]
+    }
+  ]
+}

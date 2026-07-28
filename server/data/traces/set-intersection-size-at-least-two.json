@@ -1,0 +1,113 @@
+{
+  "title": "Set Intersection Size At Least Two",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Greedy",
+    "Sorting"
+  ],
+  "description": "Find the minimum size of a set that intersects with every interval [start, end] in at least two points.",
+  "target": null,
+  "pseudocode": "1. intervals.sort((a, b) => a[1] - b[1] || b[0] - a[0]);\n2. let p1 = -1, p2 = -1, ans = 0;\n3. for (let [start, end] of intervals) {\n4.   if (start > p2) { ans += 2; p1 = end - 1; p2 = end; }\n5.   else if (start > p1) { ans += 1; p1 = p2; p2 = end; }\n6. }",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Sort intervals by end time ascending, then by start time descending.",
+      "array": [
+        [
+          1,
+          3
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          4
+        ]
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Initialize trackers p1 and p2 to -1.",
+      "array": [
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          4
+        ]
+      ],
+      "i": -1,
+      "j": -1
+    },
+    {
+      "codeLine": 4,
+      "note": "Processing [1, 2]: start(1) > p2(-1) is true. Add 2 points, set p1=1, p2=2.",
+      "array": [
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          4
+        ]
+      ],
+      "i": 1,
+      "j": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Processing [1, 3]: start(1) > p1(1) is false. Skip (1 is already covered by p1, p2).",
+      "array": [
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          4
+        ]
+      ],
+      "i": 1,
+      "j": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Processing [2, 4]: start(2) > p1(1) is true. Add 1 point, update p1=2, p2=4.",
+      "array": [
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          4
+        ]
+      ],
+      "i": 2,
+      "j": 4
+    }
+  ]
+}

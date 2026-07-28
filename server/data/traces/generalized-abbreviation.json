@@ -1,0 +1,60 @@
+{
+  "title": "Generalized Abbreviation",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Backtracking",
+    "String",
+    "Bit Manipulation"
+  ],
+  "description": "Generate all possible generalized abbreviations of a word.",
+  "target": "word: 'abc'",
+  "pseudocode": "1: function backtrack(idx, current, count) {\n2:   if (idx === word.length) {\n3:     res.push(current + (count || ''));\n4:     return;\n5:   }\n6:   backtrack(idx + 1, current, count + 1); // Abbreviate\n7:   backtrack(idx + 1, current + (count || '') + word[idx], 0); // Keep\n8: }",
+  "steps": [
+    {
+      "codeLine": 6,
+      "note": "Start abbreviating: skip 'a'",
+      "i": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Abbreviate 'b'",
+      "i": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Abbreviate 'c', count is now 3",
+      "i": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Base case reached, push '3'",
+      "i": 3
+    },
+    {
+      "codeLine": 7,
+      "note": "Backtrack, keep 'c' instead of abbreviating",
+      "i": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Base case reached, push '2c'",
+      "i": 3
+    },
+    {
+      "codeLine": 7,
+      "note": "Backtrack, keep 'b' instead of abbreviating",
+      "i": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Abbreviate 'c'",
+      "i": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Base case reached, push 'a1'",
+      "i": 3
+    }
+  ]
+}

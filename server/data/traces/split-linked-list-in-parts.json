@@ -1,0 +1,203 @@
+{
+  "title": "Split Linked List In Parts",
+  "difficulty": "Medium",
+  "type": "linked-list",
+  "tags": [
+    "Linked List"
+  ],
+  "description": "Split a linked list into k consecutive linked list parts, where the size of each part should be as equal as possible.",
+  "target": 3,
+  "pseudocode": "1. Calculate list length n\n2. width = floor(n / k), rem = n % k\n3. curr = head\n4. For i from 0 to k-1:\n5.   Start new part\n6.   For j from 0 to width + (i < rem ? 1 : 0) - 1:\n7.     prev = curr, curr = curr.next\n8.   prev.next = null",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Calculate total length of list (1->2->3->4->5), n=5",
+      "nodes": [
+        {
+          "val": 1,
+          "next": 1
+        },
+        {
+          "val": 2,
+          "next": 2
+        },
+        {
+          "val": 3,
+          "next": 3
+        },
+        {
+          "val": 4,
+          "next": 4
+        },
+        {
+          "val": 5,
+          "next": null
+        }
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "width = 5/3 = 1, rem = 5%3 = 2",
+      "nodes": [
+        {
+          "val": 1,
+          "next": 1
+        },
+        {
+          "val": 2,
+          "next": 2
+        },
+        {
+          "val": 3,
+          "next": 3
+        },
+        {
+          "val": 4,
+          "next": 4
+        },
+        {
+          "val": 5,
+          "next": null
+        }
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Part 0: size = 1 + 1 = 2. Traverse nodes 1 and 2.",
+      "nodes": [
+        {
+          "val": 1,
+          "next": 1
+        },
+        {
+          "val": 2,
+          "next": 2
+        },
+        {
+          "val": 3,
+          "next": 3
+        },
+        {
+          "val": 4,
+          "next": 4
+        },
+        {
+          "val": 5,
+          "next": null
+        }
+      ],
+      "i": 0,
+      "curr": 2
+    },
+    {
+      "codeLine": 8,
+      "note": "Break link after node 2.",
+      "nodes": [
+        {
+          "val": 1,
+          "next": 1
+        },
+        {
+          "val": 2,
+          "next": null
+        },
+        {
+          "val": 3,
+          "next": 3
+        },
+        {
+          "val": 4,
+          "next": 4
+        },
+        {
+          "val": 5,
+          "next": null
+        }
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Part 1: size = 1 + 1 = 2. Traverse nodes 3 and 4.",
+      "nodes": [
+        {
+          "val": 1,
+          "next": 1
+        },
+        {
+          "val": 2,
+          "next": null
+        },
+        {
+          "val": 3,
+          "next": 3
+        },
+        {
+          "val": 4,
+          "next": 4
+        },
+        {
+          "val": 5,
+          "next": null
+        }
+      ],
+      "i": 1,
+      "curr": 4
+    },
+    {
+      "codeLine": 8,
+      "note": "Break link after node 4.",
+      "nodes": [
+        {
+          "val": 1,
+          "next": 1
+        },
+        {
+          "val": 2,
+          "next": null
+        },
+        {
+          "val": 3,
+          "next": 3
+        },
+        {
+          "val": 4,
+          "next": null
+        },
+        {
+          "val": 5,
+          "next": null
+        }
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Part 2: size = 1 + 0 = 1. Traverse node 5.",
+      "nodes": [
+        {
+          "val": 1,
+          "next": 1
+        },
+        {
+          "val": 2,
+          "next": null
+        },
+        {
+          "val": 3,
+          "next": 3
+        },
+        {
+          "val": 4,
+          "next": null
+        },
+        {
+          "val": 5,
+          "next": null
+        }
+      ],
+      "i": 2,
+      "curr": 5
+    }
+  ]
+}

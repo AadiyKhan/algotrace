@@ -1,0 +1,270 @@
+{
+  "title": "Binary Tree Level Order Traversal II",
+  "difficulty": "Medium",
+  "type": "tree",
+  "tags": [
+    "Tree",
+    "Breadth-First Search",
+    "Binary Tree"
+  ],
+  "description": "Return the bottom-up level order traversal of a binary tree's nodes values.",
+  "target": null,
+  "pseudocode": "1. queue = [root]\n2. result = []\n3. while queue is not empty:\n4.   level = []\n5.   for i in range(len(queue)):\n6.     node = queue.pop(0)\n7.     level.push(node.val)\n8.     if node.left: queue.push(node.left)\n9.     if node.right: queue.push(node.right)\n10.  result.unshift(level)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize queue with root node [3]",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 3,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 9,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 20,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 3,
+          "val": 15,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 7,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Process level 0: pop 3",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 3,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 9,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 20,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 3,
+          "val": 15,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 7,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 10,
+      "note": "Add [3] to front of result",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 3,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 9,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 20,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 3,
+          "val": 15,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 7,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Process level 1: pop 9, then 20",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 3,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 9,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 20,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 3,
+          "val": 15,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 7,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 10,
+      "note": "Add [9, 20] to front of result: [[9, 20], [3]]",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 3,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 9,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 20,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 3,
+          "val": 15,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 7,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Process level 2: pop 15, then 7",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 3,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 9,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 20,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 3,
+          "val": 15,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 7,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 3
+    },
+    {
+      "codeLine": 10,
+      "note": "Add [15, 7] to front of result: [[15, 7], [9, 20], [3]]",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 3,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 9,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 20,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 3,
+          "val": 15,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 7,
+          "left": null,
+          "right": null
+        }
+      ]
+    }
+  ]
+}

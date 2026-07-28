@@ -1,0 +1,206 @@
+{
+  "title": "Distinct Subsequences",
+  "difficulty": "Hard",
+  "type": "matrix",
+  "tags": [
+    "Dynamic Programming",
+    "String"
+  ],
+  "description": "Given two strings s and t, return the number of distinct subsequences of s which equals t.",
+  "target": 3,
+  "pseudocode": "1. m, n = s.length, t.length\n2. dp = array[m+1][n+1] filled with 0\n3. for i from 0 to m: dp[i][0] = 1\n4. for i from 1 to m:\n5.   for j from 1 to n:\n6.     if s[i-1] == t[j-1]:\n7.       dp[i][j] = dp[i-1][j-1] + dp[i-1][j]\n8.     else:\n9.       dp[i][j] = dp[i-1][j]",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Initialize DP table with size (m+1)x(n+1)",
+      "matrix": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Base case: empty t is a subsequence of any prefix of s",
+      "matrix": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Compare s[0] ('r') and t[0] ('r'), match found",
+      "i": 1,
+      "j": 1,
+      "matrix": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Add diagonal and top values for match",
+      "i": 1,
+      "j": 1,
+      "matrix": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Calculate dp[2][1] for s[1] ('a') and t[0] ('r'), no match",
+      "i": 2,
+      "j": 1,
+      "matrix": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0
+        ],
+        [
+          1,
+          1,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Calculate dp[3][1] for s[2] ('b') and t[0] ('r'), no match",
+      "i": 3,
+      "j": 1,
+      "matrix": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0
+        ],
+        [
+          1,
+          1,
+          0
+        ],
+        [
+          1,
+          1,
+          0
+        ]
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Calculate dp[3][2] for s[2] ('b') and t[1] ('a'), match found",
+      "i": 3,
+      "j": 2,
+      "matrix": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ]
+      ]
+    }
+  ]
+}

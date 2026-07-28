@@ -1,0 +1,105 @@
+{
+  "title": "Reconstruct Itinerary",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Graph",
+    "DFS",
+    "Eulerian Path"
+  ],
+  "description": "Given a list of airline tickets, reconstruct the itinerary starting from 'JFK' using all tickets exactly once in lexicographical order.",
+  "pseudocode": "1. Build adjacency list of sorted destinations\n2. Define DFS function(airport)\n3. While adj[airport] has destinations: pop next dest, DFS(next)\n4. Add airport to result list after visiting all neighbors\n5. Reverse result list",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Built adjacency list: {JFK: [ATL, SFO], ATL: [SFO], SFO: [ATL]}",
+      "visited": []
+    },
+    {
+      "codeLine": 3,
+      "note": "DFS from JFK: visit ATL",
+      "i": "JFK",
+      "visited": [
+        "JFK"
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "DFS from ATL: visit SFO",
+      "i": "ATL",
+      "visited": [
+        "JFK",
+        "ATL"
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "DFS from SFO: visit ATL",
+      "i": "SFO",
+      "visited": [
+        "JFK",
+        "ATL",
+        "SFO"
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Backtrack from ATL, add to path",
+      "visited": [
+        "JFK",
+        "ATL",
+        "SFO",
+        "ATL"
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Backtrack from SFO, add to path",
+      "visited": [
+        "JFK",
+        "ATL",
+        "SFO",
+        "ATL",
+        "SFO"
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Backtrack from ATL, add to path",
+      "visited": [
+        "JFK",
+        "ATL",
+        "SFO",
+        "ATL",
+        "SFO",
+        "ATL"
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Backtrack from JFK, add to path",
+      "visited": [
+        "JFK",
+        "ATL",
+        "SFO",
+        "ATL",
+        "SFO",
+        "ATL",
+        "JFK"
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Reverse path: [JFK, ATL, SFO, ATL, SFO, ATL, JFK]",
+      "visited": [
+        "JFK",
+        "ATL",
+        "SFO",
+        "ATL",
+        "SFO",
+        "ATL",
+        "JFK"
+      ]
+    }
+  ]
+}

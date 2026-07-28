@@ -1,0 +1,72 @@
+{
+  "title": "Convex Polygon",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Math",
+    "Geometry"
+  ],
+  "description": "Determine if a given set of points forms a convex polygon by checking the cross product orientation of consecutive edges.",
+  "target": null,
+  "pseudocode": "1: n = points.length\n2: prevCross = 0\n3: for i from 0 to n-1:\n4:   p1 = points[i], p2 = points[(i+1)%n], p3 = points[(i+2)%n]\n5:   cp = (p2.x - p1.x)*(p3.y - p2.y) - (p2.y - p1.y)*(p3.x - p2.x)\n6:   if cp != 0:\n7:     if cp * prevCross < 0: return False\n8:     prevCross = cp\n9: return True",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize points array length n = 4.",
+      "array": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Start iteration for i = 0.",
+      "i": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Calculate cross product for vertices (0,0), (0,1), (1,1).",
+      "i": 0
+    },
+    {
+      "codeLine": 8,
+      "note": "Cross product is 1, set prevCross to 1.",
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Move to iteration i = 1.",
+      "i": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Calculate cross product for vertices (0,1), (1,1), (1,0).",
+      "i": 1
+    },
+    {
+      "codeLine": 8,
+      "note": "Cross product is 1, sign matches prevCross.",
+      "i": 1
+    },
+    {
+      "codeLine": 9,
+      "note": "Completed all vertices, polygon is convex.",
+      "i": 3
+    }
+  ]
+}

@@ -1,0 +1,179 @@
+{
+  "title": "Find All Duplicates in an Array",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Hash Table"
+  ],
+  "description": "Given an integer array nums of length n where all the integers are in the range [1, n] and each integer appears once or twice, return an array of all the integers that appears twice.",
+  "target": null,
+  "pseudocode": "1. result = []\n2. for i from 0 to length(nums) - 1:\n3.   index = abs(nums[i]) - 1\n4.   if nums[index] < 0:\n5.     result.push(abs(nums[i]))\n6.   else:\n7.     nums[index] = -nums[index]",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Initialize result array and start iteration at index 0.",
+      "array": [
+        4,
+        3,
+        2,
+        7,
+        8,
+        2,
+        3,
+        1
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Calculate index 3 (abs(4)-1).",
+      "array": [
+        4,
+        3,
+        2,
+        7,
+        8,
+        2,
+        3,
+        1
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 7,
+      "note": "Flip the value at index 3 to negative.",
+      "array": [
+        4,
+        3,
+        2,
+        -7,
+        8,
+        2,
+        3,
+        1
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Move to index 5.",
+      "array": [
+        4,
+        3,
+        2,
+        -7,
+        8,
+        2,
+        3,
+        1
+      ],
+      "i": 5
+    },
+    {
+      "codeLine": 3,
+      "note": "Calculate index 1 (abs(2)-1).",
+      "array": [
+        4,
+        3,
+        2,
+        -7,
+        8,
+        2,
+        3,
+        1
+      ],
+      "i": 5
+    },
+    {
+      "codeLine": 4,
+      "note": "Value at index 1 is 3 (positive), continue.",
+      "array": [
+        4,
+        3,
+        2,
+        -7,
+        8,
+        2,
+        3,
+        1
+      ],
+      "i": 5
+    },
+    {
+      "codeLine": 7,
+      "note": "Flip the value at index 1 to negative.",
+      "array": [
+        4,
+        -3,
+        2,
+        -7,
+        8,
+        2,
+        3,
+        1
+      ],
+      "i": 5
+    },
+    {
+      "codeLine": 2,
+      "note": "Move to index 6.",
+      "array": [
+        4,
+        -3,
+        2,
+        -7,
+        8,
+        2,
+        3,
+        1
+      ],
+      "i": 6
+    },
+    {
+      "codeLine": 3,
+      "note": "Calculate index 2 (abs(3)-1).",
+      "array": [
+        4,
+        -3,
+        2,
+        -7,
+        8,
+        2,
+        3,
+        1
+      ],
+      "i": 6
+    },
+    {
+      "codeLine": 4,
+      "note": "Value at index 2 is 2 (positive), continue.",
+      "array": [
+        4,
+        -3,
+        2,
+        -7,
+        8,
+        2,
+        3,
+        1
+      ],
+      "i": 6
+    },
+    {
+      "codeLine": 7,
+      "note": "Flip value at index 2 to negative.",
+      "array": [
+        4,
+        -3,
+        -2,
+        -7,
+        8,
+        2,
+        3,
+        1
+      ],
+      "i": 6
+    }
+  ]
+}

@@ -1,0 +1,96 @@
+{
+  "title": "Most Common Word",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "String",
+    "Hash Table"
+  ],
+  "description": "Find the most frequent word in a paragraph that is not in the list of banned words.",
+  "target": "ball",
+  "pseudocode": "1. words = paragraph.split(/[^a-zA-Z]+/)\n2. bannedSet = new Set(banned)\n3. counts = {}\n4. for word in words:\n5.   if word not in bannedSet:\n6.     counts[word] = (counts[word] || 0) + 1\n7. return word with max count",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Normalize paragraph by splitting into words",
+      "array": [
+        "bob",
+        "hit",
+        "ball",
+        "ball",
+        "hit"
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Initialize banned set",
+      "array": [
+        "bob",
+        "hit",
+        "ball",
+        "ball",
+        "hit"
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Iterate through words",
+      "i": 0,
+      "array": [
+        "bob",
+        "hit",
+        "ball",
+        "ball",
+        "hit"
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Skip 'hit' as it is banned",
+      "i": 1,
+      "array": [
+        "bob",
+        "hit",
+        "ball",
+        "ball",
+        "hit"
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Count 'ball'",
+      "i": 2,
+      "array": [
+        "bob",
+        "hit",
+        "ball",
+        "ball",
+        "hit"
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Increment count for 'ball'",
+      "i": 3,
+      "array": [
+        "bob",
+        "hit",
+        "ball",
+        "ball",
+        "hit"
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Return most frequent: ball",
+      "array": [
+        "bob",
+        "hit",
+        "ball",
+        "ball",
+        "hit"
+      ]
+    }
+  ]
+}

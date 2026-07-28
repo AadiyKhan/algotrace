@@ -1,0 +1,93 @@
+{
+  "title": "Find The Derangement Of An Array",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Math",
+    "Dynamic Programming"
+  ],
+  "description": "Calculate the number of permutations where no element appears in its original position (derangement).",
+  "target": 3,
+  "pseudocode": "1. if n == 1 return 0\n2. if n == 2 return 1\n3. prev2 = 0\n4. prev1 = 1\n5. for i from 3 to n:\n6.   curr = (i - 1) * (prev1 + prev2)\n7.   prev2 = prev1\n8.   prev1 = curr\n9. return curr",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize n=3",
+      "array": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Initialize prev2 for n=1",
+      "array": [
+        0,
+        0,
+        0
+      ],
+      "i": "N/A"
+    },
+    {
+      "codeLine": 4,
+      "note": "Initialize prev1 for n=2",
+      "array": [
+        0,
+        0,
+        0
+      ],
+      "i": "N/A"
+    },
+    {
+      "codeLine": 5,
+      "note": "Start loop for i=3",
+      "array": [
+        0,
+        0,
+        0
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 6,
+      "note": "Calculate derangement: (3-1) * (1 + 0) = 2",
+      "array": [
+        0,
+        0,
+        2
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 7,
+      "note": "Update prev2 to old prev1",
+      "array": [
+        0,
+        0,
+        2
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 8,
+      "note": "Update prev1 to current result",
+      "array": [
+        0,
+        0,
+        2
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 9,
+      "note": "Return final result 2",
+      "array": [
+        0,
+        0,
+        2
+      ]
+    }
+  ]
+}

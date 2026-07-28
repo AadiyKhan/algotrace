@@ -1,0 +1,98 @@
+{
+  "title": "Sum of Distances in Tree",
+  "difficulty": "Hard",
+  "type": "tree",
+  "tags": [
+    "Tree",
+    "DFS",
+    "Dynamic Programming"
+  ],
+  "description": "Calculate the sum of distances from each node to all other nodes in an undirected tree.",
+  "target": null,
+  "pseudocode": "1. Build adjacency list\n2. DFS 1: Count nodes in subtree (count[i]) and sum distances for root (res[0])\n3. DFS 2: Calculate sum of distances for all other nodes using parent results\n4. return res",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Building adjacency list for tree: 0-1, 0-2",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 0,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 2,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": []
+    },
+    {
+      "codeLine": 2,
+      "note": "DFS 1: Subtree count: count[1]=1, count[2]=1, count[0]=3",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 0,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 2,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        1,
+        2,
+        0
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "DFS 2: Propagating distances. For node 1: res[1] = res[0] - count[1] + (N - count[1]) = 2 - 1 + 2 = 3",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 0,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 2,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        0,
+        1,
+        2
+      ]
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "title": "Global And Local Inversions",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Math"
+  ],
+  "description": "Check if the number of global inversions is equal to the number of local inversions in an array.",
+  "target": true,
+  "pseudocode": "let maxSoFar = 0;\nfor (let i = 0; i < nums.length - 2; i++) {\n  maxSoFar = Math.max(maxSoFar, nums[i]);\n  if (maxSoFar > nums[i + 2]) return false;\n}\nreturn true;",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize maxSoFar to 0 to track the maximum element seen so far.",
+      "array": [
+        1,
+        0,
+        2
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Start loop at i = 0. Compare nums[i] with nums[i+2].",
+      "array": [
+        1,
+        0,
+        2
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Update maxSoFar: max(0, 1) = 1.",
+      "array": [
+        1,
+        0,
+        2
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Check if maxSoFar (1) > nums[i + 2] (2). 1 > 2 is false. Continue.",
+      "array": [
+        1,
+        0,
+        2
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "End of loop, condition i < n-2 (0 < 1) met. Loop terminates.",
+      "array": [
+        1,
+        0,
+        2
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Return true as no condition maxSoFar > nums[i+2] was met.",
+      "array": [
+        1,
+        0,
+        2
+      ]
+    }
+  ]
+}

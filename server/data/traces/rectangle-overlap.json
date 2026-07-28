@@ -1,0 +1,68 @@
+{
+  "title": "Rectangle Overlap",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Math"
+  ],
+  "description": "Check if two axis-aligned rectangles overlap by comparing their coordinates.",
+  "target": null,
+  "pseudocode": "1. return !(rec1[2] <= rec2[0] || rec1[0] >= rec2[2] || rec1[3] <= rec2[1] || rec1[1] >= rec2[3]);",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Checking if rectangle 1 is completely to the left, right, above, or below rectangle 2.",
+      "array": [
+        [
+          0,
+          0,
+          2,
+          2
+        ],
+        [
+          1,
+          1,
+          3,
+          3
+        ]
+      ]
+    },
+    {
+      "codeLine": 1,
+      "note": "Comparing coordinates: rec1_x2(2) > rec2_x1(1) and rec1_y2(2) > rec2_y1(1) and rec1_x1(0) < rec2_x2(3) and rec1_y1(0) < rec2_y2(3).",
+      "array": [
+        [
+          0,
+          0,
+          2,
+          2
+        ],
+        [
+          1,
+          1,
+          3,
+          3
+        ]
+      ]
+    },
+    {
+      "codeLine": 1,
+      "note": "All conditions for overlap are met, returning true.",
+      "array": [
+        [
+          0,
+          0,
+          2,
+          2
+        ],
+        [
+          1,
+          1,
+          3,
+          3
+        ]
+      ]
+    }
+  ]
+}

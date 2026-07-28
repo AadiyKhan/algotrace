@@ -1,0 +1,154 @@
+{
+  "title": "Sum Root to Leaf Numbers",
+  "difficulty": "Medium",
+  "type": "tree",
+  "tags": [
+    "Tree",
+    "DFS",
+    "Binary Tree"
+  ],
+  "description": "Calculate the sum of all root-to-leaf numbers, where each root-to-leaf path represents a number.",
+  "target": null,
+  "pseudocode": "1: function dfs(node, currentSum) {\n2:   if (!node) return 0;\n3:   currentSum = currentSum * 10 + node.val;\n4:   if (!node.left && !node.right) return currentSum;\n5:   return dfs(node.left, currentSum) + dfs(node.right, currentSum);\n6: }",
+  "steps": [
+    {
+      "codeLine": 3,
+      "note": "Starting DFS at root node (1), currentSum becomes 1.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        0
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Traversing to left child (2), currentSum becomes 1 * 10 + 2 = 12.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Node (2) is a leaf, returning 12.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Traversing to right child (3), currentSum becomes 1 * 10 + 3 = 13.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        0,
+        2
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Node (3) is a leaf, returning 13. Total sum = 12 + 13 = 25.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        0,
+        2
+      ]
+    }
+  ]
+}

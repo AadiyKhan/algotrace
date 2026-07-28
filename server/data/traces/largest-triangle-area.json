@@ -1,0 +1,84 @@
+{
+  "title": "Largest Triangle Area",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Math",
+    "Geometry"
+  ],
+  "description": "Find the largest triangle area possible from a set of points using the Shoelace formula.",
+  "target": null,
+  "pseudocode": "1. maxArea = 0\n2. for i = 0 to n-3:\n3.   for j = i+1 to n-2:\n4.     for k = j+1 to n-1:\n5.       area = 0.5 * abs(x1(y2-y3) + x2(y3-y1) + x3(y1-y2))\n6.       maxArea = max(maxArea, area)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize maxArea to 0.",
+      "array": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          2
+        ]
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Outer loop i set to 0.",
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Middle loop j set to 1.",
+      "i": 0,
+      "j": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Inner loop k set to 2.",
+      "i": 0,
+      "j": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Calculate area of triangle formed by indices 0, 1, and 2.",
+      "i": 0,
+      "j": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Area is 0.5, update maxArea to 0.5.",
+      "i": 0,
+      "j": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Inner loop k moves to 3.",
+      "i": 0,
+      "j": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Calculate area of triangle formed by indices 0, 1, and 3.",
+      "i": 0,
+      "j": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Area is 1.0, update maxArea to 1.0.",
+      "i": 0,
+      "j": 1
+    }
+  ]
+}

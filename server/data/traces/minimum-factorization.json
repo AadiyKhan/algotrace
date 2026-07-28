@@ -1,0 +1,101 @@
+{
+  "title": "Minimum Factorization",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Math",
+    "Greedy"
+  ],
+  "description": "Given a positive integer a, find the smallest positive integer b whose multiplication of digits equals a.",
+  "target": 48,
+  "pseudocode": "1. let res = 0, mul = 1\n2. for i = 9 down to 2:\n3.   while a % i == 0:\n4.     res = res + i * mul\n5.     mul = mul * 10\n6.     a = a / i\n7. if a > 1 return 0\n8. return res",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Starting loop with i=9, a=48",
+      "array": [
+        0
+      ],
+      "i": 9
+    },
+    {
+      "codeLine": 3,
+      "note": "48 is not divisible by 9, decrement i",
+      "array": [
+        0
+      ],
+      "i": 8
+    },
+    {
+      "codeLine": 3,
+      "note": "48 is divisible by 8, enter while loop",
+      "array": [
+        0
+      ],
+      "i": 8
+    },
+    {
+      "codeLine": 4,
+      "note": "res = 0 + 8 * 1 = 8",
+      "array": [
+        8
+      ],
+      "i": 8
+    },
+    {
+      "codeLine": 6,
+      "note": "a = 48 / 8 = 6",
+      "array": [
+        8
+      ],
+      "i": 8
+    },
+    {
+      "codeLine": 3,
+      "note": "6 is not divisible by 8, exit while loop",
+      "array": [
+        8
+      ],
+      "i": 7
+    },
+    {
+      "codeLine": 3,
+      "note": "6 is not divisible by 7, decrement i",
+      "array": [
+        8
+      ],
+      "i": 6
+    },
+    {
+      "codeLine": 3,
+      "note": "6 is divisible by 6, enter while loop",
+      "array": [
+        8
+      ],
+      "i": 6
+    },
+    {
+      "codeLine": 4,
+      "note": "res = 8 + 6 * 10 = 68",
+      "array": [
+        68
+      ],
+      "i": 6
+    },
+    {
+      "codeLine": 6,
+      "note": "a = 6 / 6 = 1",
+      "array": [
+        68
+      ],
+      "i": 6
+    },
+    {
+      "codeLine": 8,
+      "note": "Loop finished, return 68",
+      "array": [
+        68
+      ]
+    }
+  ]
+}

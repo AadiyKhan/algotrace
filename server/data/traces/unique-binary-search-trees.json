@@ -1,0 +1,107 @@
+{
+  "title": "Unique Binary Search Trees",
+  "difficulty": "Medium",
+  "type": "tree",
+  "tags": [
+    "Dynamic Programming",
+    "Tree",
+    "Math"
+  ],
+  "description": "Given an integer n, return the number of structurally unique BSTs that store nodes 1 to n.",
+  "target": 3,
+  "pseudocode": "function numTrees(n) {\n  let G = new Array(n + 1).fill(0);\n  G[0] = 1; G[1] = 1;\n  for (let i = 2; i <= n; i++) {\n    for (let j = 1; j <= i; j++) {\n      G[i] += G[j - 1] * G[i - j];\n    }\n  }\n  return G[n];\n}",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Initialize DP table G with size 4, setting base cases.",
+      "array": [
+        1,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Start outer loop for i = 2.",
+      "i": 2,
+      "array": [
+        1,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Inner loop j = 1: G[2] += G[0] * G[1] = 1 * 1 = 1.",
+      "i": 2,
+      "j": 1,
+      "array": [
+        1,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Inner loop j = 2: G[2] += G[1] * G[0] = 1 * 1 = 1 + 1 = 2.",
+      "i": 2,
+      "j": 2,
+      "array": [
+        1,
+        1,
+        2,
+        0
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Outer loop i = 3.",
+      "i": 3,
+      "array": [
+        1,
+        1,
+        2,
+        0
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Inner loop j = 1: G[3] += G[0] * G[2] = 1 * 2 = 2.",
+      "i": 3,
+      "j": 1,
+      "array": [
+        1,
+        1,
+        2,
+        2
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Inner loop j = 2: G[3] += G[1] * G[1] = 1 * 1 = 2 + 1 = 3.",
+      "i": 3,
+      "j": 2,
+      "array": [
+        1,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Inner loop j = 3: G[3] += G[2] * G[0] = 2 * 1 = 3 + 2 = 5.",
+      "i": 3,
+      "j": 3,
+      "array": [
+        1,
+        1,
+        2,
+        5
+      ]
+    }
+  ]
+}

@@ -1,0 +1,82 @@
+{
+  "title": "Pascal's Triangle II",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Dynamic Programming"
+  ],
+  "description": "Return the kth row of Pascal's triangle (0-indexed).",
+  "target": 3,
+  "pseudocode": "1: let row = new Array(k + 1).fill(1)\n2: for (let i = 1; i < k; i++) {\n3:   for (let j = i; j > 0; j--) {\n4:     row[j] = row[j] + row[j - 1]\n5:   }\n6: }",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize row array with 1s for k=3: [1, 1, 1, 1]",
+      "array": [
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Start outer loop i=1",
+      "array": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Update row[1] = row[1] + row[0] = 1 + 1 = 2",
+      "array": [
+        1,
+        2,
+        1,
+        1
+      ],
+      "i": 1,
+      "j": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Outer loop i=2",
+      "array": [
+        1,
+        2,
+        1,
+        1
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Update row[2] = row[2] + row[1] = 1 + 2 = 3",
+      "array": [
+        1,
+        2,
+        3,
+        1
+      ],
+      "i": 2,
+      "j": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Update row[1] = row[1] + row[0] = 2 + 1 = 3",
+      "array": [
+        1,
+        3,
+        3,
+        1
+      ],
+      "i": 2,
+      "j": 1
+    }
+  ]
+}

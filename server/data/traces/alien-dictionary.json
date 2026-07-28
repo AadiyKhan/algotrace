@@ -1,0 +1,102 @@
+{
+  "title": "Alien Dictionary",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Graph",
+    "Topological Sort",
+    "DFS"
+  ],
+  "description": "Find the lexicographical order of characters in an alien dictionary given a sorted list of words.",
+  "pseudocode": "1. Build adjacency list graph from adjacent words\n2. Calculate in-degree of each character\n3. Queue all characters with in-degree 0\n4. While queue not empty, pop char and append to result\n5. For each neighbor, decrement in-degree, push if 0",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Building graph: 'wrt' -> 'wrf' implies 't' -> 'f'",
+      "array": [
+        "w",
+        "r",
+        "t",
+        "f"
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Calculating in-degrees: w:0, r:1, t:1, f:2",
+      "array": [
+        "w",
+        "r",
+        "t",
+        "f"
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Queue initialized with characters having in-degree 0: ['w']",
+      "visited": [
+        "w"
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Pop 'w', add to result: 'w'",
+      "visited": [
+        "w"
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Decrement 'r' in-degree to 0, push 'r' to queue",
+      "visited": [
+        "w",
+        "r"
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Pop 'r', add to result: 'wr'",
+      "visited": [
+        "w",
+        "r"
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Decrement 't' in-degree to 0, push 't' to queue",
+      "visited": [
+        "w",
+        "r",
+        "t"
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Pop 't', add to result: 'wrt'",
+      "visited": [
+        "w",
+        "r",
+        "t"
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Decrement 'f' in-degree to 0, push 'f' to queue",
+      "visited": [
+        "w",
+        "r",
+        "t",
+        "f"
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Pop 'f', add to result: 'wrtf'",
+      "visited": [
+        "w",
+        "r",
+        "t",
+        "f"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "title": "Maximum Sum Of 3 Non Overlapping Subarrays",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Dynamic Programming",
+    "Sliding Window"
+  ],
+  "description": "Find three non-overlapping subarrays of length k with the maximum sum.",
+  "target": 1,
+  "pseudocode": "1. Calculate window sums of length k\n2. Compute left[i] as index of max sum window in [0...i]\n3. Compute right[i] as index of max sum window in [i...n-k]\n4. Iterate middle window from k to n-2k\n5. Update result if sum(left[mid-k], mid, right[mid+k]) is greater",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize window sums for array [1,2,1,2,6,7,5,1] with k=2",
+      "array": [
+        3,
+        3,
+        3,
+        8,
+        13,
+        12,
+        6
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Compute best left indices",
+      "array": [
+        0,
+        0,
+        0,
+        3,
+        4,
+        4,
+        4
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Compute best right indices",
+      "array": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        5,
+        5
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Checking middle window starting at index 2",
+      "i": 2,
+      "array": [
+        1,
+        2,
+        1,
+        2,
+        6,
+        7,
+        5,
+        1
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Found max sum combination at indices [0, 2, 4]",
+      "i": 2,
+      "array": [
+        0,
+        2,
+        4
+      ]
+    }
+  ]
+}

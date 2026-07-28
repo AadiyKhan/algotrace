@@ -1,0 +1,80 @@
+{
+  "title": "Reverse Vowels of a String",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Two Pointers",
+    "String"
+  ],
+  "description": "Reverse only the vowels in a given string.",
+  "target": null,
+  "pseudocode": "1. vowels = 'aeiouAEIOU'\n2. i = 0, j = s.length - 1\n3. while i < j:\n4.   if s[i] not in vowels: i++\n5.   else if s[j] not in vowels: j--\n6.   else: swap(s[i], s[j]); i++; j--",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Initialize pointers at both ends of the string.",
+      "array": [
+        "h",
+        "e",
+        "l",
+        "l",
+        "o"
+      ],
+      "i": 0,
+      "j": 4
+    },
+    {
+      "codeLine": 4,
+      "note": "'h' is not a vowel, increment i.",
+      "array": [
+        "h",
+        "e",
+        "l",
+        "l",
+        "o"
+      ],
+      "i": 1,
+      "j": 4
+    },
+    {
+      "codeLine": 6,
+      "note": "Both 'e' and 'o' are vowels, swap them.",
+      "array": [
+        "h",
+        "o",
+        "l",
+        "l",
+        "e"
+      ],
+      "i": 1,
+      "j": 4
+    },
+    {
+      "codeLine": 6,
+      "note": "Swap complete, move pointers inward.",
+      "array": [
+        "h",
+        "o",
+        "l",
+        "l",
+        "e"
+      ],
+      "i": 2,
+      "j": 3
+    },
+    {
+      "codeLine": 3,
+      "note": "Loop terminates as i is no longer less than j.",
+      "array": [
+        "h",
+        "o",
+        "l",
+        "l",
+        "e"
+      ],
+      "i": 2,
+      "j": 3
+    }
+  ]
+}

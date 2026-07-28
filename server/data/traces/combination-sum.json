@@ -1,0 +1,95 @@
+{
+  "title": "Combination Sum",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Backtracking"
+  ],
+  "description": "Find all unique combinations in candidates that sum to the target.",
+  "target": 7,
+  "pseudocode": "1. result = []\n2. function backtrack(remaining, path, start):\n3.   if remaining == 0: result.push(path); return\n4.   if remaining < 0: return\n5.   for i = start to candidates.length - 1:\n6.     path.push(candidates[i])\n7.     backtrack(remaining - candidates[i], path, i)\n8.     path.pop()",
+  "steps": [
+    {
+      "codeLine": 5,
+      "note": "Starting recursion at index 0, candidates [2, 3]",
+      "array": [
+        2,
+        3
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Push 2 to path. remaining = 5",
+      "array": [
+        2,
+        3
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 7,
+      "note": "Recursive call with remaining 5",
+      "array": [
+        2,
+        3
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Push 2 again. remaining = 3",
+      "array": [
+        2,
+        3
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Push 2 again. remaining = 1",
+      "array": [
+        2,
+        3
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "1 - 2 < 0, backtrack",
+      "array": [
+        2,
+        3
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 8,
+      "note": "Pop 2, move to next candidate index",
+      "array": [
+        2,
+        3
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Push 3 to path. remaining = 0",
+      "array": [
+        2,
+        3
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Target reached, added [2, 2, 3] to results",
+      "array": [
+        2,
+        3
+      ],
+      "i": 1
+    }
+  ]
+}

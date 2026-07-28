@@ -1,0 +1,71 @@
+{
+  "title": "Reverse Only Letters",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "String",
+    "Two Pointers"
+  ],
+  "description": "Reverse a string such that only English letters are swapped.",
+  "target": null,
+  "pseudocode": "1: let chars = s.split('')\n2: let left = 0, right = chars.length - 1\n3: while (left < right) {\n4:   if (!isLetter(chars[left])) left++\n5:   else if (!isLetter(chars[right])) right--\n6:   else swap(chars, left++, right--)\n7: }",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize character array from string 'a-bC'",
+      "array": [
+        "a",
+        "-",
+        "b",
+        "C"
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Set pointers at ends",
+      "array": [
+        "a",
+        "-",
+        "b",
+        "C"
+      ],
+      "i": 0,
+      "j": 3
+    },
+    {
+      "codeLine": 6,
+      "note": "Swap 'a' and 'C'",
+      "array": [
+        "C",
+        "-",
+        "b",
+        "a"
+      ],
+      "i": 1,
+      "j": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Skip non-letter at index 1",
+      "array": [
+        "C",
+        "-",
+        "b",
+        "a"
+      ],
+      "i": 2,
+      "j": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Loop terminates",
+      "array": [
+        "C",
+        "-",
+        "b",
+        "a"
+      ]
+    }
+  ]
+}

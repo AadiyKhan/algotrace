@@ -1,0 +1,81 @@
+{
+  "title": "Unique Word Abbreviation",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Hash Table",
+    "String",
+    "Design"
+  ],
+  "description": "Determine if a word's abbreviation is unique within a dictionary based on specific rules.",
+  "target": "deer",
+  "pseudocode": "1. map = new Map()\n2. for word in dictionary:\n3.   abbr = word[0] + (len-2) + word[len-1]\n4.   map.set(abbr, map.get(abbr) || new Set()).add(word)\n5. function isUnique(word):\n6.   abbr = getAbbr(word)\n7.   if !map.has(abbr) return true\n8.   words = map.get(abbr)\n9.   return words.size === 1 && words.has(word)",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Initializing map with dictionary: ['deer', 'door', 'cake']",
+      "array": [
+        "deer",
+        "door",
+        "cake"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Abbreviating 'deer' to 'd2r'",
+      "array": [
+        "deer",
+        "door",
+        "cake"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Adding 'd2r' -> {'deer'} to map",
+      "array": [
+        "deer",
+        "door",
+        "cake"
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Abbreviating 'door' to 'd2r'",
+      "array": [
+        "deer",
+        "door",
+        "cake"
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Updating 'd2r' -> {'deer', 'door'} in map",
+      "array": [
+        "deer",
+        "door",
+        "cake"
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Checking uniqueness for 'deer'",
+      "array": [
+        "deer",
+        "door",
+        "cake"
+      ]
+    },
+    {
+      "codeLine": 9,
+      "note": "Abbr 'd2r' has 2 words {'deer', 'door'}, return false",
+      "array": [
+        "deer",
+        "door",
+        "cake"
+      ]
+    }
+  ]
+}

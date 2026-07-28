@@ -1,0 +1,84 @@
+{
+  "title": "Split Concatenated Strings",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "String",
+    "Greedy"
+  ],
+  "description": "Given a list of strings, concatenate them in a loop and split to find the lexicographically largest string.",
+  "target": "lexicographically largest",
+  "pseudocode": "1. For each string, find the lexicographically larger of s and reverse(s)\n2. For each string i, try splitting it at every possible index\n3. Construct candidate string: currentSuffix + remainingStrings + currentPrefix\n4. Update result if candidate is larger",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Pre-process strings to be lexicographically largest (ab -> ba)",
+      "array": [
+        "ba",
+        "c"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Splitting string 'ba' at index 1",
+      "array": [
+        "ba",
+        "c"
+      ],
+      "i": 0,
+      "j": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Construct candidate: 'a' + 'c' + 'b' = 'acb'",
+      "array": [
+        "ba",
+        "c"
+      ],
+      "i": 0,
+      "j": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Max string updated to 'acb'",
+      "array": [
+        "ba",
+        "c"
+      ],
+      "i": 0,
+      "j": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Splitting string 'c' at index 0",
+      "array": [
+        "ba",
+        "c"
+      ],
+      "i": 1,
+      "j": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Construct candidate: '' + 'ba' + 'c' = 'bac'",
+      "array": [
+        "ba",
+        "c"
+      ],
+      "i": 1,
+      "j": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Max string updated to 'bac' since 'bac' > 'acb'",
+      "array": [
+        "ba",
+        "c"
+      ],
+      "i": 1,
+      "j": 0
+    }
+  ]
+}

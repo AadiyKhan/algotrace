@@ -1,0 +1,65 @@
+{
+  "title": "Sum Of Digits In The Minimum Number",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Math"
+  ],
+  "description": "Find the minimum value in an array, then calculate the sum of its digits. If the sum is odd, return 0; otherwise, return 1.",
+  "target": null,
+  "pseudocode": "1. minVal = Math.min(...nums)\n2. sum = 0\n3. while minVal > 0:\n4.   sum += minVal % 10\n5.   minVal = Math.floor(minVal / 10)\n6. return sum % 2 === 0 ? 1 : 0",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Finding the minimum value in [34, 23, 1, 7].",
+      "array": [
+        34,
+        23,
+        1,
+        7
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Starting digit summation for minVal 1.",
+      "array": [
+        34,
+        23,
+        1,
+        7
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Adding 1 to sum (sum = 1).",
+      "array": [
+        34,
+        23,
+        1,
+        7
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Dividing minVal by 10, now 0.",
+      "array": [
+        34,
+        23,
+        1,
+        7
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Checking parity: 1 % 2 is not 0, returning 0.",
+      "array": [
+        34,
+        23,
+        1,
+        7
+      ]
+    }
+  ]
+}

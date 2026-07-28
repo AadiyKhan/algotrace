@@ -1,0 +1,153 @@
+{
+  "title": "Construct Binary Tree From Inorder And Postorder Traversal",
+  "difficulty": "Medium",
+  "type": "tree",
+  "tags": [
+    "Tree",
+    "Array",
+    "Depth-First Search",
+    "Binary Tree"
+  ],
+  "description": "Reconstruct a binary tree given its inorder and postorder traversal arrays.",
+  "target": null,
+  "pseudocode": "1. map = new Map(); for (i=0; i<inorder.length; i++) map.set(inorder[i], i);\n2. function build(inStart, inEnd, postStart, postEnd) {\n3. if (inStart > inEnd) return null;\n4. val = postorder[postEnd]; root = new Node(val);\n5. rootIndex = map.get(val);\n6. root.left = build(inStart, rootIndex - 1, postStart, postStart + (rootIndex - inStart) - 1);\n7. root.right = build(rootIndex + 1, inEnd, postStart + (rootIndex - inStart), postEnd - 1);\n8. return root; }",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize map for quick lookup: {9:0, 3:1, 15:2, 20:3, 7:4}",
+      "treeNodes": []
+    },
+    {
+      "codeLine": 4,
+      "note": "Root is last element of postorder: 20",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 20,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Build left subtree of 20 with inorder [9, 3, 15] and postorder [9, 15, 3]",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 20,
+          "left": 1,
+          "right": null
+        },
+        {
+          "id": 1,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Build left child of 3: 9",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 20,
+          "left": 1,
+          "right": null
+        },
+        {
+          "id": 1,
+          "val": 3,
+          "left": 2,
+          "right": 3
+        },
+        {
+          "id": 2,
+          "val": 9,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 15,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Build right subtree of 20: 7",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 20,
+          "left": 1,
+          "right": 4
+        },
+        {
+          "id": 1,
+          "val": 3,
+          "left": 2,
+          "right": 3
+        },
+        {
+          "id": 2,
+          "val": 9,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 15,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 7,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Tree construction complete",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 20,
+          "left": 1,
+          "right": 4
+        },
+        {
+          "id": 1,
+          "val": 3,
+          "left": 2,
+          "right": 3
+        },
+        {
+          "id": 2,
+          "val": 9,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 15,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 7,
+          "left": null,
+          "right": null
+        }
+      ]
+    }
+  ]
+}

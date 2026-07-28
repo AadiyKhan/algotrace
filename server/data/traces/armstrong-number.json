@@ -1,0 +1,74 @@
+{
+  "title": "Armstrong Number",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Math",
+    "Number Theory"
+  ],
+  "description": "Determine if a k-digit number is equal to the sum of its own digits each raised to the power of k.",
+  "target": 153,
+  "pseudocode": "1: let k = n.toString().length\n2: let sum = 0\n3: let temp = n\n4: while (temp > 0) {\n5:   let digit = temp % 10\n6:   sum += Math.pow(digit, k)\n7:   temp = Math.floor(temp / 10)\n8: }\n9: return sum === n",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Calculate k (number of digits in 153)",
+      "i": "k = 3"
+    },
+    {
+      "codeLine": 3,
+      "note": "Initialize temp variable",
+      "i": "temp = 153"
+    },
+    {
+      "codeLine": 5,
+      "note": "Extract last digit (3)",
+      "i": "digit = 3"
+    },
+    {
+      "codeLine": 6,
+      "note": "Add 3^3 (27) to sum",
+      "i": "sum = 27"
+    },
+    {
+      "codeLine": 7,
+      "note": "Remove last digit from temp",
+      "i": "temp = 15"
+    },
+    {
+      "codeLine": 5,
+      "note": "Extract last digit (5)",
+      "i": "digit = 5"
+    },
+    {
+      "codeLine": 6,
+      "note": "Add 5^3 (125) to sum",
+      "i": "sum = 152"
+    },
+    {
+      "codeLine": 7,
+      "note": "Remove last digit from temp",
+      "i": "temp = 1"
+    },
+    {
+      "codeLine": 5,
+      "note": "Extract last digit (1)",
+      "i": "digit = 1"
+    },
+    {
+      "codeLine": 6,
+      "note": "Add 1^3 (1) to sum",
+      "i": "sum = 153"
+    },
+    {
+      "codeLine": 7,
+      "note": "Temp becomes 0, exit loop",
+      "i": "temp = 0"
+    },
+    {
+      "codeLine": 9,
+      "note": "Compare sum (153) with n (153)",
+      "i": "result = true"
+    }
+  ]
+}

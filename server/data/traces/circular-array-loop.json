@@ -1,0 +1,123 @@
+{
+  "title": "Circular Array Loop",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Two Pointers"
+  ],
+  "description": "Determine if there is a cycle in a circular array where all movements are in the same direction and the cycle length > 1.",
+  "target": null,
+  "pseudocode": "1. for i in range(nums.length):\n2.   slow = fast = i\n3.   while direction_matches(nums[fast], nums[next(fast)]):\n4.     slow = next(slow)\n5.     fast = next(next(fast))\n6.     if slow == fast:\n7.       if slow == next(slow): return false\n8.       return true\n9. return false",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Starting traversal from index 0.",
+      "array": [
+        2,
+        -1,
+        1,
+        2,
+        2
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Initialize slow and fast pointers at 0.",
+      "array": [
+        2,
+        -1,
+        1,
+        2,
+        2
+      ],
+      "i": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Slow moves one step: (0 + 2) % 5 = 2.",
+      "array": [
+        2,
+        -1,
+        1,
+        2,
+        2
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Fast moves two steps: (0 + 2) % 5 = 2; (2 + 1) % 5 = 3.",
+      "array": [
+        2,
+        -1,
+        1,
+        2,
+        2
+      ],
+      "curr": 3
+    },
+    {
+      "codeLine": 4,
+      "note": "Slow moves one step: (2 + 1) % 5 = 3.",
+      "array": [
+        2,
+        -1,
+        1,
+        2,
+        2
+      ],
+      "curr": 3
+    },
+    {
+      "codeLine": 5,
+      "note": "Fast moves two steps: (3 + 2) % 5 = 0; (0 + 2) % 5 = 2.",
+      "array": [
+        2,
+        -1,
+        1,
+        2,
+        2
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Slow moves one step: (3 + 2) % 5 = 0.",
+      "array": [
+        2,
+        -1,
+        1,
+        2,
+        2
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Fast moves two steps: (2 + 1) % 5 = 3; (3 + 2) % 5 = 0.",
+      "array": [
+        2,
+        -1,
+        1,
+        2,
+        2
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Slow and fast meet at index 0. Cycle detected.",
+      "array": [
+        2,
+        -1,
+        1,
+        2,
+        2
+      ],
+      "curr": 0
+    }
+  ]
+}

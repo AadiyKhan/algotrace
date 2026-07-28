@@ -1,0 +1,84 @@
+{
+  "title": "Count Subarrays With More Ones Than Zeros",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "Prefix Sum"
+  ],
+  "description": "Count the number of subarrays where the count of 1s is greater than the count of 0s.",
+  "target": null,
+  "pseudocode": "1: let count = 0, balance = 0\n2: let map = {0: 1}\n3: for i from 0 to nums.length - 1:\n4:   balance += (nums[i] == 1 ? 1 : -1)\n5:   count += sum of frequencies in map where key < balance\n6:   map[balance] = (map[balance] || 0) + 1",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize balance and count",
+      "array": [
+        1,
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Process index 0: balance becomes 1",
+      "array": [
+        1,
+        0,
+        1
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Count subarrays ending at 0: balance is 1, map {0:1} has key 0 < 1. Count = 1",
+      "array": [
+        1,
+        0,
+        1
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Process index 1: balance becomes 0",
+      "array": [
+        1,
+        0,
+        1
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Count subarrays ending at 1: balance is 0, no keys < 0. Count = 1",
+      "array": [
+        1,
+        0,
+        1
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Process index 2: balance becomes 1",
+      "array": [
+        1,
+        0,
+        1
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Count subarrays ending at 2: balance is 1, key 0 < 1. Count = 1 + 2 = 3",
+      "array": [
+        1,
+        0,
+        1
+      ],
+      "i": 2
+    }
+  ]
+}

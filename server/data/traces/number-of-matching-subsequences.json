@@ -1,0 +1,70 @@
+{
+  "title": "Number of Matching Subsequences",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "String",
+    "Hash Table",
+    "Trie"
+  ],
+  "description": "Count how many strings in words are subsequences of s using bucketed pointers.",
+  "target": "s = 'abcde', words = ['a', 'bb', 'ace']",
+  "pseudocode": "1: heads = array of 26 buckets\n2: for word in words: heads[word[0]].push({word, index: 0})\n3: count = 0\n4: for char in s:\n5:   old_bucket = heads[char]\n6:   heads[char] = []\n7:   for {word, index} in old_bucket:\n8:     if index + 1 == word.length: count++\n9:     else: heads[word[index + 1]].push({word, index + 1})",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Initialize buckets with first characters: 'a' -> [('a', 0), ('ace', 0)], 'b' -> [('bb', 0)]",
+      "array": [
+        "a",
+        "bb",
+        "ace"
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Processing 'a' from s. Moving ('a', 0) and ('ace', 0) to next state.",
+      "i": 0
+    },
+    {
+      "codeLine": 8,
+      "note": "Subsequence 'a' completed. count = 1.",
+      "i": 0
+    },
+    {
+      "codeLine": 9,
+      "note": "Moving 'ace' to 'c' bucket, index becomes 1.",
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Processing 'b' from s. Moving ('bb', 0) to 'b' bucket, index becomes 1.",
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Processing 'c' from s. Moving ('ace', 1) to next state.",
+      "i": 2
+    },
+    {
+      "codeLine": 9,
+      "note": "Moving 'ace' index 1 to 'e' bucket, index becomes 2.",
+      "i": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Processing 'd' from s. No words in bucket.",
+      "i": 3
+    },
+    {
+      "codeLine": 4,
+      "note": "Processing 'e' from s. 'ace' reached index 2.",
+      "i": 4
+    },
+    {
+      "codeLine": 8,
+      "note": "Subsequence 'ace' completed. count = 2.",
+      "i": 4
+    }
+  ]
+}

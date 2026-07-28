@@ -1,0 +1,55 @@
+{
+  "title": "Design Circular Deque",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Design",
+    "Queue"
+  ],
+  "description": "Implement a double-ended queue with a fixed capacity using a circular array structure.",
+  "target": 3,
+  "pseudocode": "1: function insertFront(val) { \n2:   if (isFull()) return false;\n3:   front = (front - 1 + capacity) % capacity;\n4:   arr[front] = val;\n5:   size++;\n6: }\n7: function deleteLast() {\n8:   if (isEmpty()) return false;\n9:   rear = (rear - 1 + capacity) % capacity;\n10:  size--;\n11: }",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize deque with capacity 3. Front is at 0, Rear is at 0.",
+      "array": [
+        null,
+        null,
+        null
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Insert 5 at front. Front moves from 0 to 2 (circular index).",
+      "array": [
+        null,
+        null,
+        5
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Value 5 placed at index 2.",
+      "array": [
+        null,
+        null,
+        5
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 9,
+      "note": "Delete last element. Rear moves from 0 to 2.",
+      "array": [
+        null,
+        null,
+        null
+      ],
+      "i": 2
+    }
+  ]
+}

@@ -1,0 +1,138 @@
+{
+  "title": "Implement Trie (Prefix Tree)",
+  "difficulty": "Medium",
+  "type": "tree",
+  "tags": [
+    "Trie",
+    "String",
+    "Design"
+  ],
+  "description": "Implement a trie data structure to support insert, search, and startsWith operations.",
+  "pseudocode": "1. node = root\n2. for char in word:\n3.   if not node.children[char]: node.children[char] = new Node()\n4.   node = node.children[char]\n5. node.isEndOfWord = true",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize traversal at the root node.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": "root",
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Processing first character 'a' of word 'at'.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": "root",
+          "left": 1,
+          "right": null
+        },
+        {
+          "id": 1,
+          "val": "a",
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Character 'a' not found, creating new node.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": "root",
+          "left": 1,
+          "right": null
+        },
+        {
+          "id": 1,
+          "val": "a",
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Moving to node 'a'.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": "root",
+          "left": 1,
+          "right": null
+        },
+        {
+          "id": 1,
+          "val": "a",
+          "left": 2,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": "t",
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Processing second character 't'.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": "root",
+          "left": 1,
+          "right": null
+        },
+        {
+          "id": 1,
+          "val": "a",
+          "left": 2,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": "t",
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Marking node 't' as end of word.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": "root",
+          "left": 1,
+          "right": null
+        },
+        {
+          "id": 1,
+          "val": "a",
+          "left": 2,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": "t (end)",
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 2
+    }
+  ]
+}

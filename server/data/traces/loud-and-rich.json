@@ -1,0 +1,68 @@
+{
+  "title": "Loud And Rich",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Graph",
+    "DFS",
+    "Topological Sort"
+  ],
+  "description": "Find the person with the least amount of money in each person's reach (subtree) in a directed acyclic graph.",
+  "target": null,
+  "pseudocode": "1. Build adjacency list from richer relations\n2. Initialize answer array with self indices\n3. Define dfs(person):\n4.   For neighbor in adj[person]:\n5.     res = dfs(neighbor)\n6.     If quiet[res] < quiet[ans[person]]:\n7.       ans[person] = res\n8.   Return ans[person]",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Build graph: 1->0 (1 is richer than 0)",
+      "array": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Initialize answers: ans[0]=0, ans[1]=1",
+      "array": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Start DFS from node 1",
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Visit neighbor 0 of node 1",
+      "i": 1,
+      "curr": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "DFS(0) returns 0",
+      "i": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Compare quietness: quiet[0] vs quiet[1]",
+      "i": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "If quiet[0] < quiet[1], update ans[1] = 0",
+      "array": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Return final answer for node 1",
+      "array": [
+        0,
+        0
+      ]
+    }
+  ]
+}

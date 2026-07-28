@@ -1,0 +1,92 @@
+{
+  "title": "Hamming Distance",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Bit Manipulation"
+  ],
+  "description": "Calculate the number of positions at which the corresponding bits are different between two integers.",
+  "target": 2,
+  "pseudocode": "1. xor = x ^ y\n2. count = 0\n3. while xor > 0:\n4.   if (xor & 1) == 1:\n5.     count++\n6.   xor >>= 1",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "XORing 1 (0001) and 4 (0100) results in 5 (0101).",
+      "array": [
+        1,
+        4
+      ],
+      "i": "xor=5"
+    },
+    {
+      "codeLine": 2,
+      "note": "Initialize count to 0.",
+      "array": [
+        1,
+        4
+      ],
+      "i": "xor=5",
+      "j": "count=0"
+    },
+    {
+      "codeLine": 4,
+      "note": "Last bit is 1, increment count.",
+      "array": [
+        1,
+        4
+      ],
+      "i": "xor=5",
+      "j": "count=1"
+    },
+    {
+      "codeLine": 6,
+      "note": "Shift right, xor becomes 2 (0010).",
+      "array": [
+        1,
+        4
+      ],
+      "i": "xor=2",
+      "j": "count=1"
+    },
+    {
+      "codeLine": 4,
+      "note": "Last bit is 0, count remains 1.",
+      "array": [
+        1,
+        4
+      ],
+      "i": "xor=2",
+      "j": "count=1"
+    },
+    {
+      "codeLine": 6,
+      "note": "Shift right, xor becomes 1 (0001).",
+      "array": [
+        1,
+        4
+      ],
+      "i": "xor=1",
+      "j": "count=1"
+    },
+    {
+      "codeLine": 4,
+      "note": "Last bit is 1, increment count.",
+      "array": [
+        1,
+        4
+      ],
+      "i": "xor=1",
+      "j": "count=2"
+    },
+    {
+      "codeLine": 6,
+      "note": "Shift right, xor becomes 0. Loop terminates.",
+      "array": [
+        1,
+        4
+      ],
+      "i": "xor=0",
+      "j": "count=2"
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "title": "Sum of Square Numbers",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Math",
+    "Two Pointers",
+    "Binary Search"
+  ],
+  "description": "Given a non-negative integer c, decide whether there are two integers a and b such that a^2 + b^2 = c.",
+  "target": 5,
+  "pseudocode": "1. let left = 0\n2. let right = floor(sqrt(c))\n3. while left <= right:\n4.   let sum = left*left + right*right\n5.   if sum == c: return true\n6.   if sum < c: left++\n7.   else: right--\n8. return false",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize left pointer to 0",
+      "i": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Initialize right pointer to sqrt(5) floor = 2",
+      "j": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Check if left <= right (0 <= 2)",
+      "i": 0,
+      "j": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Calculate sum = 0^2 + 2^2 = 4",
+      "i": 0,
+      "j": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "4 < 5, increment left pointer",
+      "i": 1,
+      "j": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Check if left <= right (1 <= 2)",
+      "i": 1,
+      "j": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Calculate sum = 1^2 + 2^2 = 5",
+      "i": 1,
+      "j": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "5 == 5, found match, return true",
+      "i": 1,
+      "j": 2
+    }
+  ]
+}

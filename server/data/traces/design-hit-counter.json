@@ -1,0 +1,51 @@
+{
+  "title": "Design Hit Counter",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Design",
+    "Queue"
+  ],
+  "description": "Design a hit counter which counts the number of hits received in the past 5 minutes (300 seconds).",
+  "target": 300,
+  "pseudocode": "1: function hit(timestamp) {\n2:   hits.push(timestamp);\n3: }\n4: function getHits(timestamp) {\n5:   while (hits[0] <= timestamp - 300) {\n6:     hits.shift();\n7:   }\n8:   return hits.length;\n9: }",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Registering hit at timestamp 1",
+      "array": [
+        1
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Registering hit at timestamp 200",
+      "array": [
+        1,
+        200
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Checking expiration for hits at timestamp 400",
+      "array": [
+        1,
+        200
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Removing expired hit at timestamp 1",
+      "array": [
+        200
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Returning current hit count",
+      "array": [
+        200
+      ]
+    }
+  ]
+}

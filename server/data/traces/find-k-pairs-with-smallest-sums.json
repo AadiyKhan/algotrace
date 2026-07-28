@@ -1,0 +1,110 @@
+{
+  "title": "Find K Pairs With Smallest Sums",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Heap",
+    "Priority Queue"
+  ],
+  "description": "Find k pairs (u, v) with the smallest sums, where u comes from nums1 and v comes from nums2.",
+  "target": 3,
+  "pseudocode": "1: minHeap = new PriorityQueue();\n2: for i from 0 to min(k, nums1.length):\n3:   minHeap.push([nums1[i] + nums2[0], i, 0]);\n4: while result.length < k and minHeap not empty:\n5:   [sum, i, j] = minHeap.pop();\n6:   result.push([nums1[i], nums2[j]]);\n7:   if j + 1 < nums2.length:\n8:     minHeap.push([nums1[i] + nums2[j+1], i, j+1]);",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Initializing heap with first element of nums1 paired with index 0 of nums2",
+      "array": [
+        1,
+        7,
+        11
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Pushing [1+2, 0, 0] into heap",
+      "array": [
+        1,
+        7,
+        11
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Pop smallest sum: [3, 0, 0]",
+      "array": [
+        1,
+        7,
+        11
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Add [1, 2] to results",
+      "array": [
+        1,
+        7,
+        11
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Push next index from nums2: [1+4, 0, 1]",
+      "array": [
+        1,
+        7,
+        11
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Pop next smallest: [5, 0, 1]",
+      "array": [
+        1,
+        7,
+        11
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Add [1, 4] to results",
+      "array": [
+        1,
+        7,
+        11
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Push next index from nums2: [1+6, 0, 2]",
+      "array": [
+        1,
+        7,
+        11
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Pop next smallest: [7, 0, 2]",
+      "array": [
+        1,
+        7,
+        11
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Add [1, 6] to results. K reached.",
+      "array": [
+        1,
+        7,
+        11
+      ]
+    }
+  ]
+}

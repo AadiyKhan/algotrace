@@ -1,0 +1,78 @@
+{
+  "title": "Similar String Groups",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "String",
+    "Union-Find",
+    "Graph"
+  ],
+  "description": "Determine the number of connected components in a group of strings where two strings are similar if they can be made equal by swapping at most two letters.",
+  "pseudocode": "1. groups = n\n2. parent = [0...n-1]\n3. for i = 0 to n-1: for j = i+1 to n-1:\n4. if isSimilar(strs[i], strs[j]) and union(i, j): groups--\n5. return groups",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize union-find structure with 3 groups for input ['tars', 'rats', 'arts']",
+      "array": [
+        "tars",
+        "rats",
+        "arts"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Comparing 'tars' and 'rats': they are similar (swap t and r). Union them.",
+      "array": [
+        "tars",
+        "rats",
+        "arts"
+      ],
+      "i": 0,
+      "j": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Groups count decremented to 2. Unioned index 0 and 1.",
+      "array": [
+        "tars",
+        "rats",
+        "arts"
+      ],
+      "i": 0,
+      "j": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Comparing 'tars' and 'arts': they are similar (swap t and a). Union them.",
+      "array": [
+        "tars",
+        "rats",
+        "arts"
+      ],
+      "i": 0,
+      "j": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Groups count decremented to 1. All strings connected.",
+      "array": [
+        "tars",
+        "rats",
+        "arts"
+      ],
+      "i": 0,
+      "j": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Final number of connected groups is 1.",
+      "array": [
+        "tars",
+        "rats",
+        "arts"
+      ]
+    }
+  ]
+}

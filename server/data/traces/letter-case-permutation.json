@@ -1,0 +1,114 @@
+{
+  "title": "Letter Case Permutation",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Backtracking",
+    "Bit Manipulation",
+    "String"
+  ],
+  "description": "Given a string, generate all possible permutations by toggling the case of each letter.",
+  "target": "a1b2",
+  "pseudocode": "function solve(s, i, current, results) {\n  if (i === s.length) { results.push(current); return; }\n  if (isNaN(s[i])) {\n    solve(s, i + 1, current + s[i].toLowerCase(), results);\n    solve(s, i + 1, current + s[i].toUpperCase(), results);\n  } else {\n    solve(s, i + 1, current + s[i], results);\n  }\n}",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize recursion with i=0 and empty string",
+      "array": [
+        "a",
+        "1",
+        "b",
+        "2"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Character 'a' is a letter, branch to lowercase",
+      "array": [
+        "a",
+        "1",
+        "b",
+        "2"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Move to index 1",
+      "array": [
+        "a",
+        "1",
+        "b",
+        "2"
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "Character '1' is a digit, skip to next index",
+      "array": [
+        "a",
+        "1",
+        "b",
+        "2"
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Move to index 2",
+      "array": [
+        "a",
+        "1",
+        "b",
+        "2"
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Character 'b' is a letter, branch to lowercase",
+      "array": [
+        "a",
+        "1",
+        "b",
+        "2"
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 2,
+      "note": "Move to index 3",
+      "array": [
+        "a",
+        "1",
+        "b",
+        "2"
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 7,
+      "note": "Character '2' is a digit, move to index 4",
+      "array": [
+        "a",
+        "1",
+        "b",
+        "2"
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 2,
+      "note": "Base case reached, adding result a1b2 to list",
+      "array": [
+        "a",
+        "1",
+        "b",
+        "2"
+      ],
+      "i": 4
+    }
+  ]
+}

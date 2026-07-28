@@ -1,0 +1,70 @@
+{
+  "title": "Score of Parentheses",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Stack",
+    "String"
+  ],
+  "description": "Calculate the score of a balanced parentheses string where () has score 1, AB has score A+B, and (A) has score 2*A.",
+  "target": "(()())",
+  "pseudocode": "1: let stack = [0]\n2: for char in s:\n3:   if char == '(':\n4:     stack.push(0)\n5:   else:\n6:     let v = stack.pop()\n7:     stack[stack.length - 1] += Math.max(2 * v, 1)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize stack with 0 to track the base score.",
+      "array": [
+        0
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Encounter '(', push a new 0 to the stack.",
+      "array": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Encounter '(', push a new 0 to the stack.",
+      "array": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Encounter ')', pop 0, update previous layer with max(2*0, 1) = 1.",
+      "array": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Encounter '(', push a new 0 to the stack.",
+      "array": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Encounter ')', pop 0, update previous layer with max(2*0, 1) = 1.",
+      "array": [
+        0,
+        2
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Encounter ')', pop 2, update base with max(2*2, 1) = 4.",
+      "array": [
+        4
+      ]
+    }
+  ]
+}

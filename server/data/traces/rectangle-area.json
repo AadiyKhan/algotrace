@@ -1,0 +1,51 @@
+{
+  "title": "Rectangle Area",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Math",
+    "Geometry"
+  ],
+  "description": "Calculate the total area covered by two rectilinear rectangles in a 2D plane.",
+  "target": 30,
+  "pseudocode": "1. area1 = (ax2-ax1) * (ay2-ay1)\n2. area2 = (bx2-bx1) * (by2-by1)\n3. overlapW = max(0, min(ax2, bx2) - max(ax1, bx1))\n4. overlapH = max(0, min(ay2, by2) - max(ay1, by1))\n5. return area1 + area2 - (overlapW * overlapH)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Calculate area of first rectangle: (0,0) to (2,2) = 4",
+      "array": [
+        0,
+        0,
+        2,
+        2
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Calculate area of second rectangle: (1,1) to (3,3) = 4",
+      "array": [
+        1,
+        1,
+        3,
+        3
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Calculate overlap width: min(2,3) - max(0,1) = 1",
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Calculate overlap height: min(2,3) - max(0,1) = 1",
+      "j": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Total area = 4 + 4 - (1*1) = 7",
+      "array": [
+        7
+      ]
+    }
+  ]
+}

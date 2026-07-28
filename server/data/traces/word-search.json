@@ -1,0 +1,185 @@
+{
+  "title": "Word Search",
+  "difficulty": "Medium",
+  "type": "matrix",
+  "tags": [
+    "Array",
+    "Backtracking",
+    "Matrix"
+  ],
+  "description": "Determine if a word exists in a grid of characters by moving to adjacent cells.",
+  "target": "ABCC",
+  "pseudocode": "1. for r in rows, c in cols: \n2. if dfs(r, c, 0): return true \n3. dfs(r, c, index): \n4. if index == word.len: return true \n5. if out of bounds or board[r][c] != word[index] or visited: return false \n6. mark visited \n7. if dfs(r+1, c, index+1) or dfs(r-1, c, index+1) or dfs(r, c+1, index+1) or dfs(r, c-1, index+1): return true \n8. backtrack: unmark visited",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Starting search at (0, 0)",
+      "matrix": [
+        [
+          "A",
+          "B"
+        ],
+        [
+          "C",
+          "D"
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Match found at (0,0), index 0",
+      "matrix": [
+        [
+          "A",
+          "B"
+        ],
+        [
+          "C",
+          "D"
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Checking neighbor (0, 1) for 'B'",
+      "matrix": [
+        [
+          "A",
+          "B"
+        ],
+        [
+          "C",
+          "D"
+        ]
+      ],
+      "curr": [
+        0,
+        1
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Checking neighbor (1, 1) for 'C'",
+      "matrix": [
+        [
+          "A",
+          "B"
+        ],
+        [
+          "C",
+          "D"
+        ]
+      ],
+      "curr": [
+        1,
+        1
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Neighbor (1, 0) matches 'C', index 3",
+      "matrix": [
+        [
+          "A",
+          "B"
+        ],
+        [
+          "C",
+          "D"
+        ]
+      ],
+      "curr": [
+        1,
+        0
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Word found",
+      "matrix": [
+        [
+          "A",
+          "B"
+        ],
+        [
+          "C",
+          "D"
+        ]
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ]
+    }
+  ]
+}

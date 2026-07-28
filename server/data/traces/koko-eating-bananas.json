@@ -1,0 +1,162 @@
+{
+  "title": "Koko Eating Bananas",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Binary Search"
+  ],
+  "description": "Find the minimum integer k such that Koko can eat all bananas within h hours.",
+  "target": 8,
+  "pseudocode": "let left = 1, right = Math.max(...piles);\nwhile (left < right) {\n  let mid = Math.floor((left + right) / 2);\n  let hours = 0;\n  for (let p of piles) hours += Math.ceil(p / mid);\n  if (hours <= h) right = mid;\n  else left = mid + 1;\n}\nreturn left;",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize binary search range [1, 11] for piles [3, 6, 7, 11] and h = 8.",
+      "array": [
+        3,
+        6,
+        7,
+        11
+      ],
+      "i": 1,
+      "j": 11
+    },
+    {
+      "codeLine": 3,
+      "note": "Calculate mid = 6. Check if Koko can eat all bananas in 8 hours at speed 6.",
+      "array": [
+        3,
+        6,
+        7,
+        11
+      ],
+      "i": 6
+    },
+    {
+      "codeLine": 5,
+      "note": "Hours needed at speed 6: ceil(3/6)+ceil(6/6)+ceil(7/6)+ceil(11/6) = 1+1+2+2 = 6 hours.",
+      "array": [
+        3,
+        6,
+        7,
+        11
+      ],
+      "i": 6
+    },
+    {
+      "codeLine": 6,
+      "note": "Hours 6 <= 8, so set right = 6 to look for a smaller speed.",
+      "array": [
+        3,
+        6,
+        7,
+        11
+      ],
+      "i": 1,
+      "j": 6
+    },
+    {
+      "codeLine": 3,
+      "note": "Calculate mid = 3. Check if speed 3 works.",
+      "array": [
+        3,
+        6,
+        7,
+        11
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 5,
+      "note": "Hours needed at speed 3: ceil(3/3)+ceil(6/3)+ceil(7/3)+ceil(11/3) = 1+2+3+4 = 10 hours.",
+      "array": [
+        3,
+        6,
+        7,
+        11
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 7,
+      "note": "Hours 10 > 8, set left = 4.",
+      "array": [
+        3,
+        6,
+        7,
+        11
+      ],
+      "i": 4,
+      "j": 6
+    },
+    {
+      "codeLine": 3,
+      "note": "Calculate mid = 5. Check if speed 5 works.",
+      "array": [
+        3,
+        6,
+        7,
+        11
+      ],
+      "i": 5
+    },
+    {
+      "codeLine": 5,
+      "note": "Hours needed at speed 5: ceil(3/5)+ceil(6/5)+ceil(7/5)+ceil(11/5) = 1+2+2+3 = 8 hours.",
+      "array": [
+        3,
+        6,
+        7,
+        11
+      ],
+      "i": 5
+    },
+    {
+      "codeLine": 6,
+      "note": "Hours 8 <= 8, set right = 5.",
+      "array": [
+        3,
+        6,
+        7,
+        11
+      ],
+      "i": 4,
+      "j": 5
+    },
+    {
+      "codeLine": 3,
+      "note": "Calculate mid = 4. Check if speed 4 works.",
+      "array": [
+        3,
+        6,
+        7,
+        11
+      ],
+      "i": 4
+    },
+    {
+      "codeLine": 5,
+      "note": "Hours needed at speed 4: ceil(3/4)+ceil(6/4)+ceil(7/4)+ceil(11/4) = 1+2+2+3 = 8 hours.",
+      "array": [
+        3,
+        6,
+        7,
+        11
+      ],
+      "i": 4
+    },
+    {
+      "codeLine": 6,
+      "note": "Hours 8 <= 8, set right = 4.",
+      "array": [
+        3,
+        6,
+        7,
+        11
+      ],
+      "i": 4,
+      "j": 4
+    }
+  ]
+}

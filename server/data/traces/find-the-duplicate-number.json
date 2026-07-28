@@ -1,0 +1,115 @@
+{
+  "title": "Find The Duplicate Number",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Two Pointers",
+    "Binary Search"
+  ],
+  "description": "Given an array of integers nums containing n + 1 integers where each integer is in the range [1, n] inclusive, find the duplicate number using Floyd's Cycle Detection.",
+  "pseudocode": "1. slow = nums[0]\n2. fast = nums[0]\n3. do { slow = nums[slow]; fast = nums[nums[fast]] } while (slow != fast)\n4. slow = nums[0]\n5. while (slow != fast) { slow = nums[slow]; fast = nums[fast] }\n6. return slow",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize slow pointer at index 0 (value 1)",
+      "array": [
+        1,
+        3,
+        4,
+        2,
+        2
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Initialize fast pointer at index 0 (value 1)",
+      "array": [
+        1,
+        3,
+        4,
+        2,
+        2
+      ],
+      "i": 0,
+      "j": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Move slow one step and fast two steps",
+      "array": [
+        1,
+        3,
+        4,
+        2,
+        2
+      ],
+      "i": 1,
+      "j": 4
+    },
+    {
+      "codeLine": 3,
+      "note": "Cycle detected: slow and fast meet at value 2 (index 3)",
+      "array": [
+        1,
+        3,
+        4,
+        2,
+        2
+      ],
+      "i": 3,
+      "j": 3
+    },
+    {
+      "codeLine": 4,
+      "note": "Reset slow to start to find the entrance of the cycle",
+      "array": [
+        1,
+        3,
+        4,
+        2,
+        2
+      ],
+      "i": 0,
+      "j": 3
+    },
+    {
+      "codeLine": 5,
+      "note": "Move both pointers at same speed",
+      "array": [
+        1,
+        3,
+        4,
+        2,
+        2
+      ],
+      "i": 1,
+      "j": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Pointers meet at index 3, which is the duplicate value 2",
+      "array": [
+        1,
+        3,
+        4,
+        2,
+        2
+      ],
+      "i": 3,
+      "j": 3
+    },
+    {
+      "codeLine": 6,
+      "note": "Return the duplicate value 2",
+      "array": [
+        1,
+        3,
+        4,
+        2,
+        2
+      ]
+    }
+  ]
+}

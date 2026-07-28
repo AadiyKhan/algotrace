@@ -1,0 +1,209 @@
+{
+  "title": "Populating Next Right Pointers in Each Node",
+  "difficulty": "Medium",
+  "type": "tree",
+  "tags": [
+    "Tree",
+    "Breadth-First Search",
+    "Binary Tree"
+  ],
+  "description": "Populate each node's next pointer to point to its next right node in a perfect binary tree.",
+  "pseudocode": "1: let leftmost = root\n2: while leftmost.left:\n3:   let curr = leftmost\n4:   while curr:\n5:     curr.left.next = curr.right\n6:     if curr.next: curr.right.next = curr.next.left\n7:     curr = curr.next\n8:   leftmost = leftmost.left",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize leftmost pointer to root node (ID 0).",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2,
+          "next": null
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": 3,
+          "right": 4,
+          "next": null
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": 5,
+          "right": 6,
+          "next": null
+        },
+        {
+          "id": 3,
+          "val": 4,
+          "left": null,
+          "right": null,
+          "next": null
+        },
+        {
+          "id": 4,
+          "val": 5,
+          "left": null,
+          "right": null,
+          "next": null
+        },
+        {
+          "id": 5,
+          "val": 6,
+          "left": null,
+          "right": null,
+          "next": null
+        },
+        {
+          "id": 6,
+          "val": 7,
+          "left": null,
+          "right": null,
+          "next": null
+        }
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Connect node 2's left child (4) to node 2's right child (5).",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": 3,
+          "right": 4,
+          "next": 2
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": 5,
+          "right": 6,
+          "next": null
+        },
+        {
+          "id": 3,
+          "val": 4,
+          "left": null,
+          "right": null,
+          "next": 4
+        },
+        {
+          "id": 4,
+          "val": 5,
+          "left": null,
+          "right": null,
+          "next": 5
+        },
+        {
+          "id": 5,
+          "val": 6,
+          "left": null,
+          "right": null,
+          "next": 6
+        },
+        {
+          "id": 6,
+          "val": 7,
+          "left": null,
+          "right": null,
+          "next": null
+        }
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Connect node 2's right child (5) to node 3's left child (6).",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": 5,
+          "right": 6
+        },
+        {
+          "id": 3,
+          "val": 4,
+          "next": 4
+        },
+        {
+          "id": 4,
+          "val": 5,
+          "next": 5
+        },
+        {
+          "id": 5,
+          "val": 6,
+          "next": 6
+        },
+        {
+          "id": 6,
+          "val": 7
+        }
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Move to the next level of the tree.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": 5,
+          "right": 6
+        },
+        {
+          "id": 3,
+          "val": 4,
+          "next": 4
+        },
+        {
+          "id": 4,
+          "val": 5,
+          "next": 5
+        },
+        {
+          "id": 5,
+          "val": 6,
+          "next": 6
+        },
+        {
+          "id": 6,
+          "val": 7
+        }
+      ]
+    }
+  ]
+}

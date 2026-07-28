@@ -1,0 +1,215 @@
+{
+  "title": "Find Duplicate Subtrees",
+  "difficulty": "Medium",
+  "type": "tree",
+  "tags": [
+    "Tree",
+    "Hash Table",
+    "DFS"
+  ],
+  "description": "Given the root of a binary tree, return all duplicate subtrees.",
+  "target": null,
+  "pseudocode": "1. map = new Map(), res = []\n2. function serialize(node) {\n3.   if (!node) return '#'\n4.   key = node.val + ',' + serialize(node.left) + ',' + serialize(node.right)\n5.   map.set(key, (map.get(key) || 0) + 1)\n6.   if (map.get(key) === 2) res.push(node)\n7.   return key\n8. }",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Starting traversal at root (1)",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": 3,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 2,
+          "left": 3,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": []
+    },
+    {
+      "codeLine": 4,
+      "note": "Serializing leaf node (3)",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": 3,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 2,
+          "left": 3,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        3
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Storing structure '3,#,#' in map",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": 3,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 2,
+          "left": 3,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        3
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Serializing subtree at node (2)",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": 3,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 2,
+          "left": 3,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        3,
+        1
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "First instance of '2,3,#,#,#' found",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": 3,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 2,
+          "left": 3,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        3,
+        1
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Duplicate subtree '2,3,#,#,#' detected at right child",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": 3,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 2,
+          "left": 3,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        3,
+        1,
+        2
+      ]
+    }
+  ]
+}

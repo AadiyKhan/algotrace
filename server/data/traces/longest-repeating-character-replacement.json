@@ -1,0 +1,105 @@
+{
+  "title": "Longest Repeating Character Replacement",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Sliding Window",
+    "Hash Table"
+  ],
+  "description": "Find the length of the longest substring containing the same letter after replacing at most k characters.",
+  "target": 2,
+  "pseudocode": "1: let maxFreq = 0, start = 0, res = 0\n2: let counts = {}\n3: for (let end = 0; end < s.length; end++) {\n4:   counts[s[end]] = (counts[s[end]] || 0) + 1\n5:   maxFreq = Math.max(maxFreq, counts[s[end]])\n6:   if ((end - start + 1) - maxFreq > k) {\n7:     counts[s[start]]--\n8:     start++\n9:   }\n10:  res = Math.max(res, end - start + 1)\n11: }",
+  "steps": [
+    {
+      "codeLine": 3,
+      "note": "Initialize sliding window with string 'AABAB', k=1",
+      "array": [
+        "A",
+        "A",
+        "B",
+        "A",
+        "B"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Expand window, A is most frequent (count: 1)",
+      "array": [
+        "A",
+        "A",
+        "B",
+        "A",
+        "B"
+      ],
+      "i": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Expand window, A is most frequent (count: 2)",
+      "array": [
+        "A",
+        "A",
+        "B",
+        "A",
+        "B"
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Window size 3, maxFreq 2. (3-2) <= 1, no shrink needed",
+      "array": [
+        "A",
+        "A",
+        "B",
+        "A",
+        "B"
+      ],
+      "i": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Window size 4, maxFreq 2. (4-2) > 1, shrink window",
+      "array": [
+        "A",
+        "A",
+        "B",
+        "A",
+        "B"
+      ],
+      "i": 3,
+      "prev": 0,
+      "curr": 3
+    },
+    {
+      "codeLine": 8,
+      "note": "Start pointer moves to 1",
+      "array": [
+        "A",
+        "A",
+        "B",
+        "A",
+        "B"
+      ],
+      "i": 3,
+      "prev": 1
+    },
+    {
+      "codeLine": 10,
+      "note": "Max length updated to 3",
+      "array": [
+        "A",
+        "A",
+        "B",
+        "A",
+        "B"
+      ],
+      "i": 3
+    }
+  ]
+}

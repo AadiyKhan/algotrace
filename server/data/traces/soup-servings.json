@@ -1,0 +1,71 @@
+{
+  "title": "Soup Servings",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Dynamic Programming",
+    "Math",
+    "Probability"
+  ],
+  "description": "Calculate the probability of serving soup A first, plus half the probability of serving both A and B at the same time.",
+  "target": 50,
+  "pseudocode": "1. if n > 4800 return 1\n2. memo = {}\n3. function serve(a, b):\n4.   if a <= 0 and b <= 0 return 0.5\n5.   if a <= 0 return 1\n6.   if b <= 0 return 0\n7.   if memo[a,b] return memo[a,b]\n8.   memo[a,b] = 0.25 * (serve(a-100, b) + serve(a-75, b-25) + serve(a-50, b-50) + serve(a-25, b-75))\n9.   return memo[a,b]",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Check if n is large enough to approximate to 1",
+      "array": [
+        50,
+        50
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Start recursive call with serve(50, 50)",
+      "array": [
+        50,
+        50
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Calculate probability: 0.25 * (serve(-50, 50) + serve(-25, 25) + serve(0, 0) + serve(25, -25))",
+      "array": [
+        50,
+        50
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "serve(0, 0) returns 0.5",
+      "array": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "serve(-50, 50) returns 1.0",
+      "array": [
+        -50,
+        50
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "serve(25, -25) returns 0.0",
+      "array": [
+        25,
+        -25
+      ]
+    },
+    {
+      "codeLine": 9,
+      "note": "Final probability calculation for n=50 returns 0.625",
+      "array": [
+        50,
+        50
+      ]
+    }
+  ]
+}

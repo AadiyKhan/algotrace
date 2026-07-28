@@ -1,0 +1,151 @@
+{
+  "title": "Robot Room Cleaner",
+  "difficulty": "Hard",
+  "type": "matrix",
+  "tags": [
+    "Backtracking",
+    "DFS",
+    "Matrix"
+  ],
+  "description": "Clean all reachable cells in a grid using a robot with limited sensor capabilities.",
+  "target": null,
+  "pseudocode": "1. function backtrack(cell, direction):\n2.   robot.clean()\n3.   visited.add(cell)\n4.   for i in 0..3:\n5.     newDir = (direction + i) % 4\n6.     nextCell = getNext(cell, newDir)\n7.     if nextCell not in visited and robot.move():\n8.       backtrack(nextCell, newDir)\n9.       robot.backtrack()\n10.    robot.turnRight()",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Robot cleans current cell [0,0]",
+      "matrix": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Robot moves to [0,1]",
+      "matrix": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "curr": [
+        0,
+        1
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Recurse on new cell",
+      "matrix": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "curr": [
+        0,
+        1
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "codeLine": 9,
+      "note": "Backtrack to previous position [0,0]",
+      "matrix": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "codeLine": 10,
+      "note": "Turn to explore next direction",
+      "matrix": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ]
+    }
+  ]
+}

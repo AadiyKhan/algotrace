@@ -1,0 +1,140 @@
+{
+  "title": "Sliding Window Maximum",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Sliding Window",
+    "Monotonic Queue"
+  ],
+  "description": "Find the maximum element in every sliding window of size k in an array.",
+  "target": 3,
+  "pseudocode": "1. deque = []\n2. result = []\n3. for i from 0 to n-1:\n4.   while deque and nums[deque[last]] < nums[i]: pop last\n5.   deque.push(i)\n6.   if deque[0] == i - k: pop first\n7.   if i >= k - 1: result.push(nums[deque[0]])",
+  "steps": [
+    {
+      "codeLine": 3,
+      "note": "Initialize loop, i = 0",
+      "array": [
+        1,
+        3,
+        -1
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Deque is empty, skip popping",
+      "array": [
+        1,
+        3,
+        -1
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Push index 0 into deque",
+      "array": [
+        1,
+        3,
+        -1
+      ],
+      "i": 0,
+      "visited": [
+        0
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Move to i = 1",
+      "array": [
+        1,
+        3,
+        -1
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "nums[0] (1) < nums[1] (3), pop index 0",
+      "array": [
+        1,
+        3,
+        -1
+      ],
+      "i": 1,
+      "visited": []
+    },
+    {
+      "codeLine": 5,
+      "note": "Push index 1 into deque",
+      "array": [
+        1,
+        3,
+        -1
+      ],
+      "i": 1,
+      "visited": [
+        1
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Window size k=3 reached, add max 3 to result",
+      "array": [
+        1,
+        3,
+        -1
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Move to i = 2",
+      "array": [
+        1,
+        3,
+        -1
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "nums[1] (3) > nums[2] (-1), keep index 1",
+      "array": [
+        1,
+        3,
+        -1
+      ],
+      "i": 2,
+      "visited": [
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Push index 2 into deque",
+      "array": [
+        1,
+        3,
+        -1
+      ],
+      "i": 2,
+      "visited": [
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Current window max is nums[1] = 3",
+      "array": [
+        1,
+        3,
+        -1
+      ],
+      "i": 2
+    }
+  ]
+}

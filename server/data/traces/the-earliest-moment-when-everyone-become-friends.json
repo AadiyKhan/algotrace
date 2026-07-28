@@ -1,0 +1,90 @@
+{
+  "title": "The Earliest Moment When Everyone Become Friends",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Union-Find",
+    "Graph"
+  ],
+  "description": "Find the earliest time when all n people are connected in a social network using Disjoint Set Union (DSU).",
+  "target": 1,
+  "pseudocode": "1: sort logs by timestamp\n2: parent = [0, 1, 2]\n3: count = 3\n4: for log in logs:\n5:   rootA = find(log.u)\n6:   rootB = find(log.v)\n7:   if rootA != rootB:\n8:     union(rootA, rootB)\n9:     count--\n10:    if count == 1: return log.timestamp",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Initialize parent array for 3 people (0, 1, 2)",
+      "array": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Process log [0, 1, 2]: find root of 0 and 1",
+      "array": [
+        0,
+        1,
+        2
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 8,
+      "note": "Union 0 and 1; person 0 now points to 1",
+      "array": [
+        1,
+        1,
+        2
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 9,
+      "note": "Decrement count of disjoint sets to 2",
+      "array": [
+        1,
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Process log [1, 0, 2]: find root of 0 and 2",
+      "array": [
+        1,
+        1,
+        2
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 8,
+      "note": "Union 0 and 2; person 1 now points to 2",
+      "array": [
+        2,
+        2,
+        2
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 9,
+      "note": "Decrement count of disjoint sets to 1",
+      "array": [
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "codeLine": 10,
+      "note": "Count is 1, return the current timestamp",
+      "array": [
+        2,
+        2,
+        2
+      ]
+    }
+  ]
+}

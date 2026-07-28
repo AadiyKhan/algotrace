@@ -1,0 +1,106 @@
+{
+  "title": "Reverse String",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Two Pointers",
+    "String"
+  ],
+  "description": "Reverse a string in-place using two pointers.",
+  "target": null,
+  "pseudocode": "1. let left = 0, right = s.length - 1\n2. while (left < right) {\n3.   [s[left], s[right]] = [s[right], s[left]]\n4.   left++\n5.   right--\n6. }",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize left at 0 and right at index 4.",
+      "array": [
+        "h",
+        "e",
+        "l",
+        "l",
+        "o"
+      ],
+      "i": 0,
+      "j": 4
+    },
+    {
+      "codeLine": 3,
+      "note": "Swap 'h' and 'o'.",
+      "array": [
+        "o",
+        "e",
+        "l",
+        "l",
+        "h"
+      ],
+      "i": 0,
+      "j": 4
+    },
+    {
+      "codeLine": 4,
+      "note": "Increment left pointer.",
+      "array": [
+        "o",
+        "e",
+        "l",
+        "l",
+        "h"
+      ],
+      "i": 1,
+      "j": 4
+    },
+    {
+      "codeLine": 5,
+      "note": "Decrement right pointer.",
+      "array": [
+        "o",
+        "e",
+        "l",
+        "l",
+        "h"
+      ],
+      "i": 1,
+      "j": 3
+    },
+    {
+      "codeLine": 3,
+      "note": "Swap 'e' and 'l'.",
+      "array": [
+        "o",
+        "l",
+        "l",
+        "e",
+        "h"
+      ],
+      "i": 1,
+      "j": 3
+    },
+    {
+      "codeLine": 4,
+      "note": "Increment left pointer.",
+      "array": [
+        "o",
+        "l",
+        "l",
+        "e",
+        "h"
+      ],
+      "i": 2,
+      "j": 3
+    },
+    {
+      "codeLine": 5,
+      "note": "Decrement right pointer. Loop terminates as left is not less than right.",
+      "array": [
+        "o",
+        "l",
+        "l",
+        "e",
+        "h"
+      ],
+      "i": 2,
+      "j": 2
+    }
+  ]
+}

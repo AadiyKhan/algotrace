@@ -1,0 +1,84 @@
+{
+  "title": "Number of Atoms",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "String",
+    "Stack",
+    "HashMap"
+  ],
+  "description": "Parse a chemical formula string and return the count of each atom in a lexicographically sorted map.",
+  "target": "K4(ON(SO3)2)2",
+  "pseudocode": "1. stack = [Map()]\n2. for i = 0 to length - 1:\n3.   if char is '(': stack.push(Map())\n4.   else if char is ')': pop top map, multiply counts by number, merge into new top\n5.   else if char is uppercase: parse atom name and count, update top map\n6. return sorted keys and counts",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize empty stack with a base map.",
+      "array": []
+    },
+    {
+      "codeLine": 2,
+      "note": "Processing 'K' at index 0.",
+      "i": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Parsed 'K', count 1. Added to map.",
+      "array": [
+        "K:1"
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Processing '4' at index 1.",
+      "i": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Updated 'K' count to 4.",
+      "array": [
+        "K:4"
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Processing '(' at index 2.",
+      "i": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Pushed new map for parentheses scope.",
+      "array": [
+        "K:4",
+        "{}"
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Processing 'O' at index 3.",
+      "i": 3
+    },
+    {
+      "codeLine": 5,
+      "note": "Added 'O' to inner map.",
+      "array": [
+        "K:4",
+        "O:1"
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Processing ')' at index 7.",
+      "i": 7
+    },
+    {
+      "codeLine": 4,
+      "note": "Multiply counts inside by 2 and merge into outer map.",
+      "array": [
+        "K:4",
+        "O:2",
+        "N:2"
+      ]
+    }
+  ]
+}

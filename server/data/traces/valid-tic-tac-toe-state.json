@@ -1,0 +1,134 @@
+{
+  "title": "Valid Tic Tac Toe State",
+  "difficulty": "Medium",
+  "type": "matrix",
+  "tags": [
+    "Array",
+    "String",
+    "Matrix"
+  ],
+  "description": "Given a 3x3 Tic Tac Toe board, determine if the state is reachable in a valid game.",
+  "pseudocode": "1. countX = 0, countO = 0\n2. For each cell in board: count chars\n3. If countO > countX or countX > countO + 1: return false\n4. winX = checkWin(board, 'X'), winO = checkWin(board, 'O')\n5. If winX and winO: return false\n6. If winX and countX == countO: return false\n7. If winO and countX > countO: return false\n8. return true",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Counting X's and O's in the board",
+      "matrix": [
+        [
+          "X",
+          "O",
+          "X"
+        ],
+        [
+          "O",
+          "X",
+          "O"
+        ],
+        [
+          "X",
+          " ",
+          " "
+        ]
+      ],
+      "i": "X: 3, O: 2"
+    },
+    {
+      "codeLine": 3,
+      "note": "Validating counts: countX = 3, countO = 2. Condition X == O + 1 holds.",
+      "matrix": [
+        [
+          "X",
+          "O",
+          "X"
+        ],
+        [
+          "O",
+          "X",
+          "O"
+        ],
+        [
+          "X",
+          " ",
+          " "
+        ]
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Checking win conditions for X and O",
+      "matrix": [
+        [
+          "X",
+          "O",
+          "X"
+        ],
+        [
+          "O",
+          "X",
+          "O"
+        ],
+        [
+          "X",
+          " ",
+          " "
+        ]
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          0
+        ]
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "winX is true, winO is false. Valid state.",
+      "matrix": [
+        [
+          "X",
+          "O",
+          "X"
+        ],
+        [
+          "O",
+          "X",
+          "O"
+        ],
+        [
+          "X",
+          " ",
+          " "
+        ]
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Returning true: state is valid",
+      "matrix": [
+        [
+          "X",
+          "O",
+          "X"
+        ],
+        [
+          "O",
+          "X",
+          "O"
+        ],
+        [
+          "X",
+          " ",
+          " "
+        ]
+      ]
+    }
+  ]
+}

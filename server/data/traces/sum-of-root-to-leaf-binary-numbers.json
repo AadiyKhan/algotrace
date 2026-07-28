@@ -1,0 +1,171 @@
+{
+  "title": "Sum of Root To Leaf Binary Numbers",
+  "difficulty": "Easy",
+  "type": "tree",
+  "tags": [
+    "Tree",
+    "DFS",
+    "Binary Tree"
+  ],
+  "description": "Calculate the sum of all numbers represented by root-to-leaf binary paths.",
+  "target": 22,
+  "pseudocode": "1: function dfs(node, currentSum) {\n2:   currentSum = (currentSum << 1) | node.val;\n3:   if (!node.left && !node.right) return currentSum;\n4:   return (node.left ? dfs(node.left, currentSum) : 0) + (node.right ? dfs(node.right, currentSum) : 0);\n5: }",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Starting DFS at root (1)",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 0,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 1,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": "0"
+    },
+    {
+      "codeLine": 2,
+      "note": "Traversing left child (0), currentSum becomes 1",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 0,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 1,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": "1"
+    },
+    {
+      "codeLine": 3,
+      "note": "Reached leaf (0), returning binary 10 (decimal 2)",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 0,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 1,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Traversing right child (1), currentSum becomes 3",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 0,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 1,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": "2"
+    },
+    {
+      "codeLine": 3,
+      "note": "Reached leaf (1), returning binary 11 (decimal 3)",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 0,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 1,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Summing results: 2 + 3 = 5",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 0,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 1,
+          "left": null,
+          "right": null
+        }
+      ]
+    }
+  ]
+}

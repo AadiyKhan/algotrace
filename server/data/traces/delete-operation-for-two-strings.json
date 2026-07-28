@@ -1,0 +1,268 @@
+{
+  "title": "Delete Operation for Two Strings",
+  "difficulty": "Medium",
+  "type": "matrix",
+  "tags": [
+    "Dynamic Programming",
+    "String"
+  ],
+  "description": "Find the minimum number of steps to make two strings equal by deleting characters.",
+  "target": 2,
+  "pseudocode": "1. m = word1.length, n = word2.length\n2. dp = matrix(m+1, n+1, 0)\n3. for i = 1 to m:\n4.   for j = 1 to n:\n5.     if word1[i-1] == word2[j-1]:\n6.       dp[i][j] = dp[i-1][j-1] + 1\n7.     else:\n8.       dp[i][j] = max(dp[i-1][j], dp[i][j-1])\n9. result = (m + n) - (2 * dp[m][n])",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Initialize DP table for 'sea' and 'eat' (size 4x4)",
+      "matrix": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Compare 's' and 'e', no match",
+      "i": 1,
+      "j": 1,
+      "matrix": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Update dp[1][1] = 0",
+      "i": 1,
+      "j": 1,
+      "matrix": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Compare 's' and 'a', no match",
+      "i": 1,
+      "j": 2,
+      "matrix": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Compare 'e' and 'e', match found",
+      "i": 2,
+      "j": 1,
+      "matrix": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Update dp[2][1] = dp[1][0] + 1 = 1",
+      "i": 2,
+      "j": 1,
+      "matrix": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Final DP table showing LCS length 2",
+      "matrix": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          1,
+          1
+        ],
+        [
+          0,
+          1,
+          1,
+          2
+        ]
+      ],
+      "curr": [
+        3,
+        3
+      ]
+    },
+    {
+      "codeLine": 9,
+      "note": "Result = (3 + 3) - (2 * 2) = 2",
+      "matrix": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          1,
+          1
+        ],
+        [
+          0,
+          1,
+          1,
+          2
+        ]
+      ]
+    }
+  ]
+}

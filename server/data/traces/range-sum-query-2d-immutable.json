@@ -1,0 +1,97 @@
+{
+  "title": "Range Sum Query 2D - Immutable",
+  "difficulty": "Medium",
+  "type": "matrix",
+  "tags": [
+    "Array",
+    "Design",
+    "Matrix",
+    "Prefix Sum"
+  ],
+  "description": "Calculate the sum of elements in a rectangle defined by (row1, col1) and (row2, col2) using a 2D prefix sum array for O(1) query time.",
+  "pseudocode": "1. pre[i+1][j+1] = matrix[i][j] + pre[i][j+1] + pre[i+1][j] - pre[i][j]\n2. sum = pre[r2+1][c2+1] - pre[r1][c2+1] - pre[r2+1][c1] + pre[r1][c1]",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize prefix sum matrix with padding to handle boundary conditions.",
+      "matrix": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          3,
+          3,
+          4
+        ],
+        [
+          0,
+          8,
+          12,
+          16
+        ],
+        [
+          0,
+          11,
+          17,
+          23
+        ]
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Query sum for rectangle (1,1) to (2,2): Result = 16 - 3 - 4 + 3 = 12.",
+      "matrix": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          3,
+          3,
+          4
+        ],
+        [
+          0,
+          8,
+          12,
+          16
+        ],
+        [
+          0,
+          11,
+          17,
+          23
+        ]
+      ],
+      "curr": [
+        2,
+        2
+      ],
+      "visited": [
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          2
+        ]
+      ]
+    }
+  ]
+}

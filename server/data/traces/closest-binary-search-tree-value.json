@@ -1,0 +1,237 @@
+{
+  "title": "Closest Binary Search Tree Value",
+  "difficulty": "Easy",
+  "type": "tree",
+  "tags": [
+    "Tree",
+    "Binary Search Tree",
+    "Binary Search"
+  ],
+  "description": "Find the value in the BST that is closest to the given target.",
+  "target": 3.7,
+  "pseudocode": "1. closest = root.val\n2. while root is not null:\n3.   if abs(target - root.val) < abs(target - closest):\n4.     closest = root.val\n5.   if target < root.val:\n6.     root = root.left\n7.   else:\n8.     root = root.right\n9. return closest",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize closest with root value.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 4,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 2,
+          "val": 5,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Check if 4 is closer than 4 to 3.7. No.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 4,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 2,
+          "val": 5,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "3.7 > 4 is false, go to right child.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 4,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 2,
+          "val": 5,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Compare distance: |3.7 - 2| (1.7) vs |3.7 - 4| (0.3). 4 is still closer.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 4,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 2,
+          "val": 5,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 8,
+      "note": "3.7 > 2, move to right child.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 4,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 2,
+          "val": 5,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 4
+    },
+    {
+      "codeLine": 3,
+      "note": "Compare distance: |3.7 - 3| (0.7) vs |3.7 - 4| (0.3). 4 is still closer.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 4,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 2,
+          "val": 5,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 4
+    }
+  ]
+}

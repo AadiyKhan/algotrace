@@ -1,0 +1,101 @@
+{
+  "title": "Bulls and Cows",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "Counting"
+  ],
+  "description": "Count bulls (matching position and digit) and cows (matching digit but wrong position) between secret and guess.",
+  "target": "1807",
+  "pseudocode": "1. bulls = 0, cows = 0, secretCount = new Array(10).fill(0), guessCount = new Array(10).fill(0)\n2. for i = 0 to secret.length - 1:\n3.   if secret[i] == guess[i]: bulls++\n4.   else: secretCount[secret[i]]++, guessCount[guess[i]]++\n5. for d = 0 to 9: cows += min(secretCount[d], guessCount[d])",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize counters for bulls, cows, and digit frequency maps.",
+      "array": [
+        1,
+        8,
+        0,
+        7
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Starting loop. i=0, compare '1' and '7'. No match.",
+      "i": 0,
+      "array": [
+        1,
+        8,
+        0,
+        7
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Increment digit frequency counts for non-matching digits.",
+      "i": 0,
+      "array": [
+        1,
+        8,
+        0,
+        7
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "i=1, compare '8' and '8'. Match found!",
+      "i": 1,
+      "array": [
+        1,
+        8,
+        0,
+        7
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Increment bulls count.",
+      "i": 1,
+      "array": [
+        1,
+        8,
+        0,
+        7
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "i=2, compare '0' and '1'. No match.",
+      "i": 2,
+      "array": [
+        1,
+        8,
+        0,
+        7
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Increment digit frequency counts for '0' and '1'.",
+      "i": 2,
+      "array": [
+        1,
+        8,
+        0,
+        7
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Calculate cows by taking the minimum of frequencies for each digit.",
+      "array": [
+        1,
+        8,
+        0,
+        7
+      ]
+    }
+  ]
+}

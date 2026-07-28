@@ -1,0 +1,131 @@
+{
+  "title": "Longest Mountain in Array",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Two Pointers"
+  ],
+  "description": "Find the length of the longest subarray that forms a mountain.",
+  "target": null,
+  "pseudocode": "1: let maxLen = 0, i = 1\n2: while i < arr.length - 1:\n3:   if arr[i-1] < arr[i] > arr[i+1]:\n4:     let left = i - 1, right = i + 1\n5:     while left > 0 && arr[left-1] < arr[left]: left--\n6:     while right < arr.length - 1 && arr[right+1] < arr[right]: right++\n7:     maxLen = Math.max(maxLen, right - left + 1)\n8:     i = right\n9:   i++",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize maxLen and i",
+      "array": [
+        2,
+        1,
+        4,
+        7,
+        3,
+        2
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Check if index 1 is a peak (1 is not > 2 and 4)",
+      "array": [
+        2,
+        1,
+        4,
+        7,
+        3,
+        2
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 9,
+      "note": "Move to index 2",
+      "array": [
+        2,
+        1,
+        4,
+        7,
+        3,
+        2
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Check if index 2 is a peak (4 > 1 and 4 < 7). Not a peak.",
+      "array": [
+        2,
+        1,
+        4,
+        7,
+        3,
+        2
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 9,
+      "note": "Move to index 3",
+      "array": [
+        2,
+        1,
+        4,
+        7,
+        3,
+        2
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 3,
+      "note": "Check if index 3 is a peak (7 > 4 and 7 > 3). Found a peak!",
+      "array": [
+        2,
+        1,
+        4,
+        7,
+        3,
+        2
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 5,
+      "note": "Expand left: arr[2]=4 > arr[1]=1. left becomes 1.",
+      "array": [
+        2,
+        1,
+        4,
+        7,
+        3,
+        2
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 6,
+      "note": "Expand right: arr[4]=3 < arr[3]=7, arr[5]=2 < arr[4]=3. right becomes 5.",
+      "array": [
+        2,
+        1,
+        4,
+        7,
+        3,
+        2
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 7,
+      "note": "Calculate length: 5 - 1 + 1 = 5. maxLen = 5.",
+      "array": [
+        2,
+        1,
+        4,
+        7,
+        3,
+        2
+      ],
+      "i": 3
+    }
+  ]
+}

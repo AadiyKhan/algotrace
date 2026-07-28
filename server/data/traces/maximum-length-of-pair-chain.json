@@ -1,0 +1,147 @@
+{
+  "title": "Maximum Length of Pair Chain",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Dynamic Programming",
+    "Greedy",
+    "Sorting"
+  ],
+  "description": "Find the maximum length of a chain of pairs [a, b] where pair [c, d] can follow [a, b] if b < c.",
+  "target": null,
+  "pseudocode": "1. pairs.sort((a, b) => a[1] - b[1]);\n2. let count = 0, currEnd = -Infinity;\n3. for (let pair of pairs) {\n4.   if (pair[0] > currEnd) {\n5.     count++;\n6.     currEnd = pair[1];\n7.   }\n8. }",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Sort pairs by their second element: [[1, 2], [3, 4], [2, 3]] -> [[1, 2], [2, 3], [3, 4]]",
+      "array": [
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          4
+        ]
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Initialize count to 0 and currEnd to -Infinity",
+      "array": [
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          4
+        ]
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Check if 1 > -Infinity: True. Increment count.",
+      "array": [
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Update currEnd to 2",
+      "array": [
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Check if 2 > 2: False. Skip pair [2, 3].",
+      "array": [
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Check if 3 > 2: True. Increment count.",
+      "array": [
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Update currEnd to 4",
+      "array": [
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "i": 2
+    }
+  ]
+}

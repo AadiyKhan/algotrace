@@ -1,0 +1,104 @@
+{
+  "title": "Increasing Triplet Subsequence",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Greedy"
+  ],
+  "description": "Find if there exists a triplet (i, j, k) such that i < j < k and nums[i] < nums[j] < nums[k].",
+  "target": true,
+  "pseudocode": "1. first = Infinity, second = Infinity\n2. for num in nums:\n3.   if num <= first: first = num\n4.   else if num <= second: second = num\n5.   else: return true\n6. return false",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize first and second as Infinity.",
+      "array": [
+        2,
+        1,
+        5,
+        0,
+        4,
+        6
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "num=2: 2 <= first(Inf), set first = 2",
+      "array": [
+        2,
+        1,
+        5,
+        0,
+        4,
+        6
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "num=1: 1 <= first(2), set first = 1",
+      "array": [
+        2,
+        1,
+        5,
+        0,
+        4,
+        6
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "num=5: 5 > first(1) and 5 <= second(Inf), set second = 5",
+      "array": [
+        2,
+        1,
+        5,
+        0,
+        4,
+        6
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "num=0: 0 <= first(1), set first = 0",
+      "array": [
+        2,
+        1,
+        5,
+        0,
+        4,
+        6
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 4,
+      "note": "num=4: 4 > first(0) and 4 <= second(5), set second = 4",
+      "array": [
+        2,
+        1,
+        5,
+        0,
+        4,
+        6
+      ],
+      "i": 4
+    },
+    {
+      "codeLine": 5,
+      "note": "num=6: 6 > first(0) and 6 > second(4), triplet found!",
+      "array": [
+        2,
+        1,
+        5,
+        0,
+        4,
+        6
+      ],
+      "i": 5
+    }
+  ]
+}

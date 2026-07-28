@@ -1,0 +1,80 @@
+{
+  "title": "First Missing Positive",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Hashing"
+  ],
+  "description": "Find the smallest missing positive integer in an unsorted array.",
+  "target": null,
+  "pseudocode": "1. for i = 0 to n-1: while nums[i] > 0 and nums[i] <= n and nums[nums[i]-1] != nums[i]: swap(nums[i], nums[nums[i]-1])\n2. for i = 0 to n-1: if nums[i] != i + 1: return i + 1\n3. return n + 1",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initial state: swapping nums[0] (3) into index 2.",
+      "array": [
+        3,
+        4,
+        -1,
+        1
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 1,
+      "note": "Swapped 3 to index 2: array is [-1, 4, 3, 1].",
+      "array": [
+        -1,
+        4,
+        3,
+        1
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 1,
+      "note": "Moving to i=1, nums[1] is 4. Swapping 4 to index 3.",
+      "array": [
+        -1,
+        1,
+        3,
+        4
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 1,
+      "note": "After swapping 4, nums[1] is 1. Swapping 1 to index 0.",
+      "array": [
+        1,
+        -1,
+        3,
+        4
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Checking for missing positive. Index 0 is correct (1).",
+      "array": [
+        1,
+        -1,
+        3,
+        4
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Index 1 should be 2, but found -1. Returning 2.",
+      "array": [
+        1,
+        -1,
+        3,
+        4
+      ],
+      "i": 1
+    }
+  ]
+}

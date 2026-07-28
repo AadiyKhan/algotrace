@@ -1,0 +1,119 @@
+{
+  "title": "Set Mismatch",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "Math"
+  ],
+  "description": "Find the duplicate number and the missing number in an array of size n containing numbers from 1 to n.",
+  "target": null,
+  "pseudocode": "1: let n = nums.length\n2: let set = new Set()\n3: let duplicate, missing\n4: for num of nums {\n5:   if (set.has(num)) duplicate = num\n6:   set.add(num)\n7: }\n8: for i from 1 to n {\n9:   if (!set.has(i)) missing = i\n10: }",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize n based on array length",
+      "array": [
+        1,
+        2,
+        2,
+        4
+      ],
+      "i": null
+    },
+    {
+      "codeLine": 4,
+      "note": "Start iterating through the array",
+      "array": [
+        1,
+        2,
+        2,
+        4
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Add 1 to set",
+      "array": [
+        1,
+        2,
+        2,
+        4
+      ],
+      "visited": [
+        1
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Add 2 to set",
+      "array": [
+        1,
+        2,
+        2,
+        4
+      ],
+      "visited": [
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Duplicate found: 2",
+      "array": [
+        1,
+        2,
+        2,
+        4
+      ],
+      "visited": [
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Add 4 to set",
+      "array": [
+        1,
+        2,
+        2,
+        4
+      ],
+      "visited": [
+        1,
+        2,
+        4
+      ]
+    },
+    {
+      "codeLine": 9,
+      "note": "Checking for missing number 3",
+      "array": [
+        1,
+        2,
+        2,
+        4
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 10,
+      "note": "Missing number 3 found",
+      "array": [
+        1,
+        2,
+        2,
+        4
+      ],
+      "visited": [
+        1,
+        2,
+        4
+      ]
+    }
+  ]
+}

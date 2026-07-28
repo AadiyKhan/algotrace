@@ -1,0 +1,110 @@
+{
+  "title": "Length Of Longest Fibonacci Subsequence",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Dynamic Programming"
+  ],
+  "description": "Find the length of the longest subsequence that is Fibonacci-like. A sequence is Fibonacci-like if x1 + x2 = x3, x2 + x3 = x4, etc.",
+  "target": 5,
+  "pseudocode": "1. let n = arr.length\n2. let dp = new Map()\n3. let maxLen = 0\n4. for j from 0 to n-1\n5.   for i from 0 to j-1\n6.     let prev = arr[j] - arr[i]\n7.     let k = map.get(prev)\n8.     if k < i\n9.       len = (dp.get(k + ',' + i) || 2) + 1\n10.      dp.set(i + ',' + j, len)\n11.      maxLen = Math.max(maxLen, len)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize array: [1, 2, 3, 4, 5, 8]",
+      "array": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        8
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Check i=1 (val 2), j=2 (val 3). Prev = 3-2 = 1. Found at index 0.",
+      "array": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        8
+      ],
+      "i": 1,
+      "j": 2
+    },
+    {
+      "codeLine": 9,
+      "note": "Fibonacci sequence [1, 2, 3] formed. Length = 3.",
+      "array": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        8
+      ],
+      "i": 1,
+      "j": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Check i=2 (val 3), j=3 (val 4). Prev = 4-3 = 1. Found at index 0 (k=0). k < i is true.",
+      "array": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        8
+      ],
+      "i": 2,
+      "j": 3
+    },
+    {
+      "codeLine": 6,
+      "note": "Check i=3 (val 4), j=4 (val 5). Prev = 5-4 = 1. Found at index 0.",
+      "array": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        8
+      ],
+      "i": 3,
+      "j": 4
+    },
+    {
+      "codeLine": 6,
+      "note": "Check i=4 (val 5), j=5 (val 8). Prev = 8-5 = 3. Found at index 2 (k=2). k < i is true.",
+      "array": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        8
+      ],
+      "i": 4,
+      "j": 5
+    },
+    {
+      "codeLine": 9,
+      "note": "Extending sequence [1, 2, 3] or [3, 5, 8]. Max sequence [1, 2, 3, 5, 8] detected.",
+      "array": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        8
+      ],
+      "i": 4,
+      "j": 5
+    }
+  ]
+}

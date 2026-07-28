@@ -1,0 +1,111 @@
+{
+  "title": "Fibonacci Number",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Math",
+    "Dynamic Programming"
+  ],
+  "description": "Calculate the nth Fibonacci number using an iterative approach.",
+  "target": 4,
+  "pseudocode": "1. let a = 0, b = 1\n2. for i = 2 to n:\n3.   let temp = a + b\n4.   a = b\n5.   b = temp\n6. return b",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize variables a and b",
+      "array": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Start loop at i=2",
+      "array": [
+        0,
+        1
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Calculate next Fibonacci number: 0 + 1 = 1",
+      "array": [
+        0,
+        1,
+        1
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Update a to previous b",
+      "array": [
+        1,
+        1,
+        1
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Update b to current sum",
+      "array": [
+        1,
+        1,
+        1
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 2,
+      "note": "Increment i to 3",
+      "array": [
+        1,
+        1,
+        2
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 3,
+      "note": "Calculate next Fibonacci: 1 + 1 = 2",
+      "array": [
+        1,
+        1,
+        2
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 4,
+      "note": "Update a to 1",
+      "array": [
+        1,
+        2,
+        2
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 5,
+      "note": "Update b to 2",
+      "array": [
+        1,
+        2,
+        2
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 6,
+      "note": "Return final value 3 (for n=4)",
+      "array": [
+        1,
+        2,
+        3
+      ]
+    }
+  ]
+}

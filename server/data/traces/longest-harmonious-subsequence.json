@@ -1,0 +1,55 @@
+{
+  "title": "Longest Harmonious Subsequence",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "Sorting"
+  ],
+  "description": "Find the length of the longest harmonious subsequence where the difference between its maximum and minimum values is exactly 1.",
+  "target": 1,
+  "pseudocode": "1. map = new Map();\n2. for (let x of nums) map.set(x, (map.get(x) || 0) + 1);\n3. let maxLen = 0;\n4. for (let [key, val] of map) {\n5.   if (map.has(key + 1)) {\n6.     maxLen = Math.max(maxLen, val + map.get(key + 1));\n7.   }\n8. }",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize an empty hash map to store frequencies.",
+      "array": [
+        1,
+        3,
+        2,
+        2
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Count frequencies: 1:1, 3:1, 2:2.",
+      "array": [
+        1,
+        3,
+        2,
+        2
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Checking key 1. Map has key 2 (1+1).",
+      "i": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Update maxLen: 1 (count of 1) + 2 (count of 2) = 3.",
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Checking key 3. Map does not have key 4.",
+      "i": 3
+    },
+    {
+      "codeLine": 4,
+      "note": "Checking key 2. Map does not have key 3.",
+      "i": 2
+    }
+  ]
+}

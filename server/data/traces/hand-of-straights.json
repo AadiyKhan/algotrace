@@ -1,0 +1,74 @@
+{
+  "title": "Hand of Straights",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "Greedy",
+    "Sorting"
+  ],
+  "description": "Determine if a hand can be rearranged into groups of size W where each group consists of consecutive numbers.",
+  "target": 3,
+  "pseudocode": "1. If hand.length % groupSize !== 0 return false\n2. Count frequencies in a Map\n3. Sort unique keys\n4. For each key, if count > 0:\n5.   For i from 0 to groupSize-1:\n6.     If map[key+i] is 0 return false\n7.     map[key+i]--",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Count frequencies: {1:1, 2:2, 3:2, 4:1}",
+      "array": [
+        1,
+        2,
+        2,
+        3,
+        3,
+        4
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Sorted keys: [1, 2, 3, 4]",
+      "array": [
+        1,
+        2,
+        2,
+        3,
+        3,
+        4
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Start group with smallest key 1",
+      "i": 0
+    },
+    {
+      "codeLine": 7,
+      "note": "Decrement counts for [1, 2, 3]",
+      "array": [
+        0,
+        1,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Start group with next smallest key 2",
+      "i": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "Decrement counts for [2, 3, 4]",
+      "array": [
+        0,
+        0,
+        0,
+        1,
+        2,
+        3
+      ]
+    }
+  ]
+}

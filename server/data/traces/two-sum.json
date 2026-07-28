@@ -1,0 +1,165 @@
+{
+  "title": "Two Sum",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Hash Table"
+  ],
+  "description": "Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.",
+  "target": 6,
+  "pseudocode": "map = new Map()\nfor i = 0 to nums.length - 1:\n  diff = target - nums[i]\n  if map.has(diff):\n    return [map.get(diff), i]\n  map.set(nums[i], i)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize an empty hash map to store seen numbers and their indices.",
+      "array": [
+        3,
+        2,
+        4
+      ],
+      "i": null,
+      "curr": null
+    },
+    {
+      "codeLine": 2,
+      "note": "Loop iteration i = 0, current element is nums[0] = 3.",
+      "array": [
+        3,
+        2,
+        4
+      ],
+      "i": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Calculate diff = target - nums[0] = 6 - 3 = 3.",
+      "array": [
+        3,
+        2,
+        4
+      ],
+      "i": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Check if diff (3) exists in hash map. Map is currently empty, so return false.",
+      "array": [
+        3,
+        2,
+        4
+      ],
+      "i": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Add nums[0] = 3 with index 0 to map { 3: 0 }.",
+      "array": [
+        3,
+        2,
+        4
+      ],
+      "i": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Loop iteration i = 1, current element is nums[1] = 2.",
+      "array": [
+        3,
+        2,
+        4
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Calculate diff = target - nums[1] = 6 - 2 = 4.",
+      "array": [
+        3,
+        2,
+        4
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Check if diff (4) exists in hash map. Not found.",
+      "array": [
+        3,
+        2,
+        4
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Add nums[1] = 2 with index 1 to map { 3: 0, 2: 1 }.",
+      "array": [
+        3,
+        2,
+        4
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Loop iteration i = 2, current element is nums[2] = 4.",
+      "array": [
+        3,
+        2,
+        4
+      ],
+      "i": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Calculate diff = target - nums[2] = 6 - 4 = 2.",
+      "array": [
+        3,
+        2,
+        4
+      ],
+      "i": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Check if diff (2) exists in hash map. Found 2 at index 1!",
+      "array": [
+        3,
+        2,
+        4
+      ],
+      "i": 2,
+      "curr": 2,
+      "visited": [
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Return result indices [1, 2].",
+      "array": [
+        3,
+        2,
+        4
+      ],
+      "i": 2,
+      "curr": 2,
+      "visited": [
+        1,
+        2
+      ]
+    }
+  ]
+}

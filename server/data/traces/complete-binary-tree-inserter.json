@@ -1,0 +1,81 @@
+{
+  "title": "Complete Binary Tree Inserter",
+  "difficulty": "Medium",
+  "type": "tree",
+  "tags": [
+    "Tree",
+    "Breadth-First Search",
+    "Design"
+  ],
+  "description": "Insert a node into a complete binary tree and maintain the complete binary tree property.",
+  "target": 3,
+  "pseudocode": "1. queue = [root]\n2. while queue[0].left and queue[0].right: \n3.   node = queue.shift()\n4.   queue.push(node.left, node.right)\n5. parent = queue[0]\n6. if not parent.left: parent.left = new Node(val)\n7. else: parent.right = new Node(val)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize BFS queue with root node (1).",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Queue is [1], so parent is 1. Inserting target 2.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Parent 1 has no left child, insert 2 as left.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": null
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Next insert 3. Queue updated to [1, 2]. Parent is 1.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ]
+    }
+  ]
+}

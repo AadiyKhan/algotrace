@@ -1,0 +1,57 @@
+{
+  "title": "Beautiful Array",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Divide and Conquer",
+    "Math"
+  ],
+  "description": "Construct an array such that for any i < j, there is no k where i < k < j and 2*nums[k] = nums[i] + nums[j].",
+  "target": 4,
+  "pseudocode": "function beautifulArray(n) {\n  let res = [1];\n  while (res.length < n) {\n    let temp = [];\n    for (let x of res) if (2 * x - 1 <= n) temp.push(2 * x - 1);\n    for (let x of res) if (2 * x <= n) temp.push(2 * x);\n    res = temp;\n  }\n  return res;\n}",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Initialize result array with 1.",
+      "array": [
+        1
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "First iteration: append odd values (2*x-1 <= 4).",
+      "array": [
+        1
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Append odds: 2(1)-1 = 1. Wait, res is already [1].",
+      "array": [
+        1,
+        3
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Second iteration: append even values (2*x <= 4).",
+      "array": [
+        1,
+        3,
+        2,
+        4
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Update result array to the beautiful permutation.",
+      "array": [
+        1,
+        3,
+        2,
+        4
+      ]
+    }
+  ]
+}

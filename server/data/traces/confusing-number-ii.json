@@ -1,0 +1,55 @@
+{
+  "title": "Confusing Number II",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Math",
+    "Backtracking",
+    "Recursion"
+  ],
+  "description": "Find the count of confusing numbers in the range [1, N]. A confusing number is a number that becomes a different number when rotated 180 degrees.",
+  "target": 20,
+  "pseudocode": "1. map = {0:0, 1:1, 6:9, 8:8, 9:6}\n2. count = 0\n3. dfs(currentNum):\n4.   if isConfusing(currentNum): count++\n5.   for digit in map.keys():\n6.     nextNum = currentNum * 10 + digit\n7.     if nextNum <= N and nextNum > 0: dfs(nextNum)",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Initialize count to 0 and map of valid rotating digits.",
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Start DFS with seed digit 1.",
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Check if 1 is a confusing number. (1 rotated is 1, not confusing).",
+      "i": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Build next number by appending 6: 16.",
+      "i": 16
+    },
+    {
+      "codeLine": 4,
+      "note": "Check if 16 is confusing. (16 rotated is 91, which is valid and different). count increments to 1.",
+      "i": 16
+    },
+    {
+      "codeLine": 6,
+      "note": "Build next number by appending 8: 18.",
+      "i": 18
+    },
+    {
+      "codeLine": 4,
+      "note": "Check if 18 is confusing. (18 rotated is 81, which is valid and different). count increments to 2.",
+      "i": 18
+    },
+    {
+      "codeLine": 7,
+      "note": "Exhausted options for N=20. Final count is 2.",
+      "i": 2
+    }
+  ]
+}

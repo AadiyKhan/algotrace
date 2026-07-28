@@ -1,0 +1,166 @@
+{
+  "title": "Binary Tree Upside Down",
+  "difficulty": "Medium",
+  "type": "tree",
+  "tags": [
+    "Tree",
+    "DFS",
+    "Recursion"
+  ],
+  "description": "Given a binary tree where all right nodes are either leaf nodes with a sibling or empty, flip it upside down and turn it into a left-skewed tree.",
+  "target": null,
+  "pseudocode": "1: function upsideDown(root) {\n2:   if (!root || !root.left) return root;\n3:   let newRoot = upsideDown(root.left);\n4:   root.left.left = root.right;\n5:   root.left.right = root;\n6:   root.left = null;\n7:   root.right = null;\n8:   return newRoot;\n9: }",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize recursion with root [1, 2, 3]",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Recursively call for left child (node 2)",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        0
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Node 2 is reached, base case triggered",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Linking: node 2's left child becomes node 1's right child (node 3)",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": 2,
+          "right": 0
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Linking: node 2's right child becomes node 1",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": 2,
+          "right": 0
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Return new root (node 2)",
+      "treeNodes": [
+        {
+          "id": 1,
+          "val": 2,
+          "left": 2,
+          "right": 0
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 0,
+          "val": 1,
+          "left": null,
+          "right": null
+        }
+      ]
+    }
+  ]
+}

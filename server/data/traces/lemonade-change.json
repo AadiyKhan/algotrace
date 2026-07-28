@@ -1,0 +1,57 @@
+{
+  "title": "Lemonade Change",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Greedy"
+  ],
+  "description": "Determine if you can provide correct change to every customer given $5, $10, and $20 bills, starting with no money.",
+  "target": null,
+  "pseudocode": "1. five = 0, ten = 0\n2. for bill in bills:\n3.   if bill == 5: five++\n4.   else if bill == 10:\n5.     if five < 1: return false\n6.     five--, ten++\n7.   else:\n8.     if ten > 0 and five > 0: ten--, five--\n9.     else if five >= 3: five -= 3\n10.    else: return false",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize bill counters.",
+      "array": [
+        5,
+        5,
+        20
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Customer pays $5, increment five counter.",
+      "array": [
+        5,
+        5,
+        20
+      ],
+      "i": 0,
+      "prev": "five: 1, ten: 0"
+    },
+    {
+      "codeLine": 3,
+      "note": "Customer pays $5, increment five counter.",
+      "array": [
+        5,
+        5,
+        20
+      ],
+      "i": 1,
+      "prev": "five: 2, ten: 0"
+    },
+    {
+      "codeLine": 8,
+      "note": "Customer pays $20, need $15 change. Use one $10 and one $5.",
+      "array": [
+        5,
+        5,
+        20
+      ],
+      "i": 2,
+      "prev": "five: 1, ten: 0"
+    }
+  ]
+}

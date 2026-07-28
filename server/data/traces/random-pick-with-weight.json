@@ -1,0 +1,68 @@
+{
+  "title": "Random Pick with Weight",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Binary Search",
+    "Prefix Sum",
+    "Random"
+  ],
+  "description": "Pick an index proportional to its weight by using prefix sums and binary search.",
+  "target": "Random value",
+  "pseudocode": "1: prefixSums = []\n2: total = 0\n3: for w in weights: total += w; prefixSums.push(total)\n4: target = random(1, total)\n5: low = 0, high = prefixSums.length - 1\n6: while low < high:\n7:   mid = (low + high) // 2\n8:   if target > prefixSums[mid]: low = mid + 1\n9:   else: high = mid\n10: return low",
+  "steps": [
+    {
+      "codeLine": 3,
+      "note": "Constructing prefix sum array [1, 4]",
+      "array": [
+        1,
+        4
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Generated random target value: 3",
+      "array": [
+        1,
+        4
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Binary search: range [0, 1]",
+      "array": [
+        1,
+        4
+      ],
+      "i": 0,
+      "j": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "Calculate mid: 0",
+      "array": [
+        1,
+        4
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 8,
+      "note": "Target 3 > prefixSums[0] (1), move low to 1",
+      "array": [
+        1,
+        4
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 10,
+      "note": "Loop ends, return index 1",
+      "array": [
+        1,
+        4
+      ]
+    }
+  ]
+}

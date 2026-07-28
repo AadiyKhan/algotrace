@@ -1,0 +1,153 @@
+{
+  "title": "Remove Duplicate Letters",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "String",
+    "Stack",
+    "Greedy"
+  ],
+  "description": "Given a string s, remove duplicate letters so that every letter appears once and the result is the smallest in lexicographical order.",
+  "target": "bcabc",
+  "pseudocode": "1. count frequencies of all chars\n2. for char in s:\n3.   decrement count[char]\n4.   if char in stack: continue\n5.   while stack and char < stack.top and count[stack.top] > 0:\n6.     visited[stack.pop()] = false\n7.   stack.push(char)\n8.   visited[char] = true",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize frequencies: a:2, b:2, c:1",
+      "array": [
+        "b",
+        "c",
+        "a",
+        "b",
+        "c"
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Process 'b'",
+      "array": [
+        "b"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 7,
+      "note": "Push 'b' to stack",
+      "array": [
+        "b"
+      ],
+      "visited": [
+        "b"
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Process 'c'",
+      "array": [
+        "b",
+        "c"
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "Push 'c' to stack",
+      "array": [
+        "b",
+        "c"
+      ],
+      "visited": [
+        "b",
+        "c"
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Process 'a'",
+      "array": [
+        "b",
+        "c",
+        "a"
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Stack top 'c' > 'a' and count['c'] > 0, pop 'c'",
+      "array": [
+        "b",
+        "a"
+      ],
+      "visited": [
+        "b",
+        "a"
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Stack top 'b' > 'a' and count['b'] > 0, pop 'b'",
+      "array": [
+        "a"
+      ],
+      "visited": [
+        "a"
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Push 'a' to stack",
+      "array": [
+        "a"
+      ],
+      "visited": [
+        "a"
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Process 'b'",
+      "array": [
+        "a",
+        "b"
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 7,
+      "note": "Push 'b' to stack",
+      "array": [
+        "a",
+        "b"
+      ],
+      "visited": [
+        "a",
+        "b"
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Process 'c'",
+      "array": [
+        "a",
+        "b",
+        "c"
+      ],
+      "i": 4
+    },
+    {
+      "codeLine": 7,
+      "note": "Push 'c' to stack",
+      "array": [
+        "a",
+        "b",
+        "c"
+      ],
+      "visited": [
+        "a",
+        "b",
+        "c"
+      ]
+    }
+  ]
+}

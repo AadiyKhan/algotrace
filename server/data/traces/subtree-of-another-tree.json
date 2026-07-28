@@ -1,0 +1,167 @@
+{
+  "title": "Subtree of Another Tree",
+  "difficulty": "Easy",
+  "type": "tree",
+  "tags": [
+    "Tree",
+    "DFS",
+    "Binary Tree"
+  ],
+  "description": "Check if tree t is a subtree of tree s.",
+  "pseudocode": "function isSubtree(s, t) {\n  if (!s) return false;\n  if (isSameTree(s, t)) return true;\n  return isSubtree(s.left, t) || isSubtree(s.right, t);\n}\nfunction isSameTree(p, q) {\n  if (!p && !q) return true;\n  if (!p || !q || p.val !== q.val) return false;\n  return isSameTree(p.left, q.left) && isSameTree(p.right, q.right);\n}",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Checking root of s (3) against t (4).",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 3,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 4,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 2,
+          "val": 5,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 2,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "isSameTree(3, 4) is false.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 3,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 4,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 2,
+          "val": 5,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 2,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Traversing to left child of s (node 4).",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 3,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 4,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 2,
+          "val": 5,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 2,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "isSameTree(4, 4) matches node structure.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 3,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 4,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 2,
+          "val": 5,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 2,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 1,
+      "visited": [
+        1,
+        3,
+        4
+      ]
+    }
+  ]
+}

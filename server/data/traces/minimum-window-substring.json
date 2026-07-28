@@ -1,0 +1,99 @@
+{
+  "title": "Minimum Window Substring",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Hash Table",
+    "String",
+    "Sliding Window"
+  ],
+  "description": "Find the minimum window substring in s that contains all characters in t.",
+  "target": "BANC",
+  "pseudocode": "1. map = freq of t\n2. l=0, r=0, count=t.len\n3. while r < s.len:\n4.   if map[s[r]] > 0: count--\n5.   map[s[r]]--\n6.   r++\n7.   while count == 0:\n8.     update minWindow\n9.     if map[s[l]] == 0: count++\n10.    map[s[l]]++\n11.    l++",
+  "steps": [
+    {
+      "codeLine": 3,
+      "note": "Starting sliding window with s='ADOBEC', t='ABC'",
+      "array": [
+        "A",
+        "D",
+        "O",
+        "B",
+        "E",
+        "C"
+      ],
+      "i": 0,
+      "j": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Found 'A', decrement count",
+      "array": [
+        "A",
+        "D",
+        "O",
+        "B",
+        "E",
+        "C"
+      ],
+      "i": 0,
+      "j": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Expanding right pointer",
+      "array": [
+        "A",
+        "D",
+        "O",
+        "B",
+        "E",
+        "C"
+      ],
+      "i": 0,
+      "j": 4
+    },
+    {
+      "codeLine": 7,
+      "note": "Window 'ADOB' contains all chars",
+      "array": [
+        "A",
+        "D",
+        "O",
+        "B",
+        "E",
+        "C"
+      ],
+      "i": 0,
+      "j": 4
+    },
+    {
+      "codeLine": 8,
+      "note": "Minimum window updated to 'ADOB'",
+      "array": [
+        "A",
+        "D",
+        "O",
+        "B",
+        "E",
+        "C"
+      ],
+      "i": 0,
+      "j": 4
+    },
+    {
+      "codeLine": 11,
+      "note": "Shrinking left pointer",
+      "array": [
+        "A",
+        "D",
+        "O",
+        "B",
+        "E",
+        "C"
+      ],
+      "i": 1,
+      "j": 4
+    }
+  ]
+}

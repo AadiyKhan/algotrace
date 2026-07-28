@@ -1,0 +1,77 @@
+{
+  "title": "Remove Boxes",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Dynamic Programming"
+  ],
+  "description": "Remove boxes of the same color to maximize points, where points are gained by (k * k) for k consecutive boxes.",
+  "target": 23,
+  "pseudocode": "1. memo = {}\n2. function solve(l, r, k):\n3.   if l > r: return 0\n4.   if memo[l][r][k] exists: return memo[l][r][k]\n5.   res = (k+1)^2 + solve(l+1, r, 0)\n6.   for i from l+1 to r:\n7.     if boxes[i] == boxes[l]:\n8.       res = max(res, solve(l+1, i-1, 0) + solve(i, r, k+1))\n9.   memo[l][r][k] = res\n10.  return res",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Starting recursion with boxes [1, 3, 2, 2, 2], solve(0, 4, 0)",
+      "array": [
+        1,
+        3,
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Removing box at index 0 (val 1), gaining 1*1 points",
+      "array": [
+        3,
+        2,
+        2,
+        2
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Evaluating group of 2s starting at index 2",
+      "array": [
+        2,
+        2,
+        2
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 8,
+      "note": "Merging box at index 2 with subsequent 2s, k becomes 2",
+      "array": [
+        2,
+        2,
+        2
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Calculating points for 3 boxes of color 2 (3*3 = 9)",
+      "array": [
+        2,
+        2,
+        2
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 9,
+      "note": "Final DP state computed, memoizing result for the range",
+      "array": [
+        1,
+        3,
+        2,
+        2,
+        2
+      ]
+    }
+  ]
+}

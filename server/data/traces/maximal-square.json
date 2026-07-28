@@ -1,0 +1,132 @@
+{
+  "title": "Maximal Square",
+  "difficulty": "Medium",
+  "type": "matrix",
+  "tags": [
+    "Array",
+    "Dynamic Programming",
+    "Matrix"
+  ],
+  "description": "Find the area of the largest square containing only 1s in a binary matrix.",
+  "target": 4,
+  "pseudocode": "1. dp = Array(rows + 1, cols + 1).fill(0)\n2. maxSide = 0\n3. for i from 1 to rows:\n4.   for j from 1 to cols:\n5.     if matrix[i-1][j-1] == '1':\n6.       dp[i][j] = min(dp[i-1][j], dp[i][j-1], dp[i-1][j-1]) + 1\n7.       maxSide = max(maxSide, dp[i][j])\n8. return maxSide * maxSide",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize DP table with zeros",
+      "matrix": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Start iterating through the matrix (row 1, col 1)",
+      "i": 1,
+      "j": 1,
+      "matrix": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Calculate square side at [1,1]",
+      "i": 1,
+      "j": 1,
+      "matrix": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Calculate square side at [2,2]",
+      "i": 2,
+      "j": 2,
+      "matrix": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          1
+        ],
+        [
+          0,
+          1,
+          2
+        ]
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Update maxSide to 2",
+      "i": 2,
+      "j": 2
+    },
+    {
+      "codeLine": 8,
+      "note": "Return maxSide squared (2 * 2 = 4)",
+      "matrix": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          1
+        ],
+        [
+          0,
+          1,
+          2
+        ]
+      ]
+    }
+  ]
+}

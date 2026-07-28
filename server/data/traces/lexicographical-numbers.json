@@ -1,0 +1,121 @@
+{
+  "title": "Lexicographical Numbers",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Depth-First Search",
+    "Trie"
+  ],
+  "description": "Given an integer n, return 1 to n in lexicographical order.",
+  "target": 13,
+  "pseudocode": "1. function dfs(curr, n, result):\n2.   if curr > n: return\n3.   result.push(curr)\n4.   for i from 0 to 9:\n5.     if curr * 10 + i <= n: dfs(curr * 10 + i, n, result)\n6.     else: break\n7. for i from 1 to 9: dfs(i, n, result)",
+  "steps": [
+    {
+      "codeLine": 7,
+      "note": "Starting DFS with i=1",
+      "array": [],
+      "i": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Push 1 to result",
+      "array": [
+        1
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Recursive call with 1*10+0 = 10",
+      "array": [
+        1
+      ],
+      "curr": 10
+    },
+    {
+      "codeLine": 3,
+      "note": "Push 10 to result",
+      "array": [
+        1,
+        10
+      ],
+      "curr": 10
+    },
+    {
+      "codeLine": 5,
+      "note": "Recursive call with 10*10+0 > 13, returns",
+      "array": [
+        1,
+        10
+      ],
+      "curr": 10
+    },
+    {
+      "codeLine": 5,
+      "note": "Recursive call with 1*10+1 = 11",
+      "array": [
+        1,
+        10,
+        11
+      ],
+      "curr": 11
+    },
+    {
+      "codeLine": 3,
+      "note": "Push 11 to result",
+      "array": [
+        1,
+        10,
+        11
+      ],
+      "curr": 11
+    },
+    {
+      "codeLine": 5,
+      "note": "Recursive call with 1*10+2 = 12",
+      "array": [
+        1,
+        10,
+        11,
+        12
+      ],
+      "curr": 12
+    },
+    {
+      "codeLine": 3,
+      "note": "Push 12 to result",
+      "array": [
+        1,
+        10,
+        11,
+        12
+      ],
+      "curr": 12
+    },
+    {
+      "codeLine": 5,
+      "note": "Recursive call with 1*10+3 = 13",
+      "array": [
+        1,
+        10,
+        11,
+        12,
+        13
+      ],
+      "curr": 13
+    },
+    {
+      "codeLine": 3,
+      "note": "Push 13 to result",
+      "array": [
+        1,
+        10,
+        11,
+        12,
+        13
+      ],
+      "curr": 13
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "title": "IPO",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Greedy",
+    "Heap"
+  ],
+  "description": "Select at most k distinct projects to maximize capital using a max-heap for profits and a min-heap for capital constraints.",
+  "target": 2,
+  "pseudocode": "1. Store projects as (capital, profit) pairs\n2. Sort projects by capital\n3. Use max-heap to store profits of affordable projects\n4. Repeat k times:\n5. Add all affordable projects to max-heap\n6. Pop max profit from max-heap and add to capital",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Sort projects by capital requirement: [[0,1], [1,2], [1,3]]",
+      "array": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Capital is 0. Project [0,1] is affordable. Add profit 1 to max-heap.",
+      "array": [
+        1
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Pop profit 1 from max-heap. New capital = 0 + 1 = 1.",
+      "array": [
+        1
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Capital is 1. Projects [1,2] and [1,3] are affordable. Add profits 2 and 3 to max-heap.",
+      "array": [
+        2,
+        3
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Pop max profit 3 from max-heap. New capital = 1 + 3 = 4.",
+      "array": [
+        2
+      ],
+      "i": 2
+    }
+  ]
+}

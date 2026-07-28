@@ -1,0 +1,146 @@
+{
+  "title": "Rectangle Area II",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Sweep Line",
+    "Segment Tree"
+  ],
+  "description": "Calculate the total area covered by a list of rectangles using a sweep-line algorithm.",
+  "target": 6,
+  "pseudocode": "1. events = sorted_events(rectangles)\n2. active_y = []\n3. total_area = 0\n4. prev_x = events[0].x\n5. for x, type, y1, y2 in events:\n6.   total_area += (x - prev_x) * calculate_y_span(active_y)\n7.   update_active_y(active_y, type, y1, y2)\n8.   prev_x = x",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Sorting vertical edges of rectangles: [[0,0,2,2], [1,1,3,3]]",
+      "array": [
+        [
+          0,
+          1,
+          0,
+          2
+        ],
+        [
+          0,
+          -1,
+          0,
+          2
+        ],
+        [
+          1,
+          1,
+          1,
+          3
+        ],
+        [
+          1,
+          -1,
+          1,
+          3
+        ]
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Processing first x=0 event, add rectangle bottom edge",
+      "array": [
+        0,
+        2
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Total area remains 0 as width is 0",
+      "array": [
+        0,
+        2
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Add y-interval [0, 2] to active set",
+      "array": [
+        0,
+        2
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Processing x=1 event",
+      "array": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Calculate area: width(1-0) * height(2) = 2",
+      "array": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 7,
+      "note": "Add second rectangle y-interval [1, 3], active set is now [0, 3]",
+      "array": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Processing x=2 event",
+      "array": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 6,
+      "note": "Calculate area: width(2-1) * height(3) = 3. Total Area = 2 + 3 = 5",
+      "array": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Processing x=3 event",
+      "array": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "i": 4
+    },
+    {
+      "codeLine": 6,
+      "note": "Calculate area: width(3-2) * height(2) = 1. Total Area = 5 + 1 = 6",
+      "array": [
+        0,
+        1,
+        2,
+        3
+      ]
+    }
+  ]
+}

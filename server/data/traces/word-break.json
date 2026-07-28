@@ -1,0 +1,128 @@
+{
+  "title": "Word Break",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Dynamic Programming",
+    "String"
+  ],
+  "description": "Determine if a string can be segmented into a space-separated sequence of dictionary words.",
+  "target": "leetcode",
+  "pseudocode": "1. dp = new Array(s.length + 1).fill(false)\n2. dp[0] = true\n3. for (let i = 1; i <= s.length; i++) {\n4.   for (let j = 0; j < i; j++) {\n5.     if (dp[j] && wordSet.has(s.substring(j, i))) {\n6.       dp[i] = true\n7.       break\n8.     }\n9.   }\n10. }",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize DP table of size s.length + 1 with false.",
+      "array": [
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Start outer loop for string length index i = 1.",
+      "array": [
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Inner loop j = 0. substring(0,1) is 'l'. Not in wordSet.",
+      "array": [
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "i": 1,
+      "j": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Move to i = 4. Checking substring(0,4) 'leet'.",
+      "array": [
+        true,
+        false,
+        false,
+        false,
+        true,
+        false,
+        false,
+        false,
+        false
+      ],
+      "i": 4
+    },
+    {
+      "codeLine": 5,
+      "note": "dp[0] is true and 'leet' is in wordSet. Set dp[4] to true.",
+      "array": [
+        true,
+        false,
+        false,
+        false,
+        true,
+        false,
+        false,
+        false,
+        false
+      ],
+      "i": 4,
+      "j": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Move to i = 8. Checking substring(4,8) 'code'.",
+      "array": [
+        true,
+        false,
+        false,
+        false,
+        true,
+        false,
+        false,
+        false,
+        true
+      ],
+      "i": 8
+    },
+    {
+      "codeLine": 5,
+      "note": "dp[4] is true and 'code' is in wordSet. Set dp[8] to true.",
+      "array": [
+        true,
+        false,
+        false,
+        false,
+        true,
+        false,
+        false,
+        false,
+        true
+      ],
+      "i": 8,
+      "j": 4
+    }
+  ]
+}

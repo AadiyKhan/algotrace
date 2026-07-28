@@ -1,0 +1,102 @@
+{
+  "title": "Non-Decreasing Array",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array"
+  ],
+  "description": "Determine if an array can be modified to become non-decreasing by changing at most one element.",
+  "target": null,
+  "pseudocode": "1. count = 0\n2. for i = 0 to length - 2:\n3.   if nums[i] > nums[i + 1]:\n4.     count++\n5.     if count > 1: return false\n6.     if i > 0 and nums[i - 1] > nums[i + 1]:\n7.       nums[i + 1] = nums[i]\n8.     else:\n9.       nums[i] = nums[i + 1]",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize modification counter to 0.",
+      "array": [
+        4,
+        2,
+        3
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Start loop at index 0.",
+      "array": [
+        4,
+        2,
+        3
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Check if 4 > 2. It is.",
+      "array": [
+        4,
+        2,
+        3
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Increment count to 1.",
+      "array": [
+        4,
+        2,
+        3
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Check if i > 0. It is not.",
+      "array": [
+        4,
+        2,
+        3
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 9,
+      "note": "Modify nums[0] to 2.",
+      "array": [
+        2,
+        2,
+        3
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Next iteration i = 1.",
+      "array": [
+        2,
+        2,
+        3
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Check if 2 > 3. It is false.",
+      "array": [
+        2,
+        2,
+        3
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Loop ends. Array is non-decreasing.",
+      "array": [
+        2,
+        2,
+        3
+      ],
+      "i": 1
+    }
+  ]
+}

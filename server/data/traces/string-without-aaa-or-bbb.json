@@ -1,0 +1,109 @@
+{
+  "title": "String Without AAA or BBB",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "String",
+    "Greedy"
+  ],
+  "description": "Construct a string using A and B such that no three consecutive characters are identical.",
+  "target": "A: 2, B: 3",
+  "pseudocode": "1: while A > 0 or B > 0:\n2:   if (A > B and last != 'AA') or (B <= A and last != 'BB'):\n3:     res += 'A'; A--\n4:   else:\n5:     res += 'B'; B--",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize counts: A=2, B=3, result=''",
+      "array": []
+    },
+    {
+      "codeLine": 2,
+      "note": "B > A, append B",
+      "array": [
+        "B"
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Decrement B to 2",
+      "array": [
+        "B"
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "A == B, append A",
+      "array": [
+        "B",
+        "A"
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Decrement A to 1",
+      "array": [
+        "B",
+        "A"
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "B > A, append B",
+      "array": [
+        "B",
+        "A",
+        "B"
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Decrement B to 1",
+      "array": [
+        "B",
+        "A",
+        "B"
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "A == B, append A",
+      "array": [
+        "B",
+        "A",
+        "B",
+        "A"
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Decrement A to 0",
+      "array": [
+        "B",
+        "A",
+        "B",
+        "A"
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Only B left, append B",
+      "array": [
+        "B",
+        "A",
+        "B",
+        "A",
+        "B"
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Decrement B to 0, finish",
+      "array": [
+        "B",
+        "A",
+        "B",
+        "A",
+        "B"
+      ]
+    }
+  ]
+}

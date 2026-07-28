@@ -1,0 +1,91 @@
+{
+  "title": "Bold Words in String",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "String"
+  ],
+  "description": "Wrap bold tags around all occurrences of words from a dictionary within a given string.",
+  "target": "S = 'abccba', words = ['ab', 'ba']",
+  "pseudocode": "1. mask = array of size S.length filled with false\n2. for word in words:\n3.   start = S.indexOf(word)\n4.   while start != -1:\n5.     for i from start to start + word.length - 1: mask[i] = true\n6.     start = S.indexOf(word, start + 1)\n7. res = ''\n8. for i from 0 to S.length:\n9.   if mask[i] and (i == 0 or !mask[i-1]): res += '<b>'\n10.  res += S[i]\n11.  if mask[i] and (i == S.length - 1 or !mask[i+1]): res += '</b>'",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize mask array for 'abccba' (length 6)",
+      "array": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Mark indices for 'ab' at index 0",
+      "array": [
+        true,
+        true,
+        false,
+        false,
+        false,
+        false
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Mark indices for 'ba' at index 4",
+      "array": [
+        true,
+        true,
+        false,
+        false,
+        true,
+        true
+      ],
+      "i": 4
+    },
+    {
+      "codeLine": 8,
+      "note": "Constructing result string with tags",
+      "array": [
+        true,
+        true,
+        false,
+        false,
+        true,
+        true
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 9,
+      "note": "Start bold tag at index 0",
+      "array": [
+        true,
+        true,
+        false,
+        false,
+        true,
+        true
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 11,
+      "note": "Close bold tag at index 1",
+      "array": [
+        true,
+        true,
+        false,
+        false,
+        true,
+        true
+      ],
+      "i": 1
+    }
+  ]
+}

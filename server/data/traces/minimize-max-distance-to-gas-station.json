@@ -1,0 +1,74 @@
+{
+  "title": "Minimize Max Distance to Gas Station",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Binary Search"
+  ],
+  "description": "Find the minimum possible value of the maximum distance between adjacent gas stations after adding k stations.",
+  "target": 0.5,
+  "pseudocode": "1. low = 0, high = stations[n-1] - stations[0]\n2. while high - low > 1e-6:\n3.   mid = (low + high) / 2\n4.   count = 0\n5.   for i = 0 to n-2:\n6.     count += floor((stations[i+1] - stations[i]) / mid)\n7.   if count <= k: high = mid\n8.   else: low = mid",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize binary search range. Stations: [0, 10], k=1.",
+      "array": [
+        0,
+        10
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Pick midpoint distance.",
+      "array": [
+        0,
+        10
+      ],
+      "i": 5
+    },
+    {
+      "codeLine": 6,
+      "note": "Check if adding stations at mid=5.0 fits k=1. (10-0)/5 - 1 = 1.",
+      "array": [
+        0,
+        10
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "Count <= k is true, narrow search space to [0, 5].",
+      "array": [
+        0,
+        10
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "New midpoint is 2.5.",
+      "array": [
+        0,
+        10
+      ],
+      "i": 2.5
+    },
+    {
+      "codeLine": 6,
+      "note": "Check if mid=2.5 fits k=1. (10-0)/2.5 - 1 = 3. 3 > 1.",
+      "array": [
+        0,
+        10
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 8,
+      "note": "Count > k, adjust low to 2.5.",
+      "array": [
+        0,
+        10
+      ]
+    }
+  ]
+}

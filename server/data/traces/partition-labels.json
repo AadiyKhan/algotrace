@@ -1,0 +1,116 @@
+{
+  "title": "Partition Labels",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "Two Pointers",
+    "Greedy"
+  ],
+  "description": "Partition a string into as many parts as possible so that each letter appears in at most one part.",
+  "target": "S = 'ababcbacadefegdehijhklij'",
+  "pseudocode": "1. last = {}\n2. for i, char in enumerate(S): last[char] = i\n3. anchor = 0, j = 0, res = []\n4. for i, char in enumerate(S):\n5.   j = max(j, last[char])\n6.   if i == j:\n7.     res.append(i - anchor + 1)\n8.     anchor = i + 1",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Precompute the last occurrence index of each character",
+      "array": [
+        "a",
+        "b",
+        "a",
+        "b",
+        "c",
+        "b",
+        "a",
+        "c",
+        "a",
+        "d",
+        "e",
+        "f",
+        "e",
+        "g",
+        "d",
+        "e",
+        "h",
+        "i",
+        "j",
+        "h",
+        "k",
+        "l",
+        "i",
+        "j"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Processing 'a' at index 0, j updated to last occurrence 8",
+      "array": [
+        "a",
+        "b",
+        "a",
+        "b",
+        "c",
+        "b",
+        "a",
+        "c",
+        "a",
+        "d"
+      ],
+      "i": 0,
+      "j": 8
+    },
+    {
+      "codeLine": 5,
+      "note": "Processing 'b' at index 1, j remains 8",
+      "array": [
+        "a",
+        "b",
+        "a",
+        "b",
+        "c",
+        "b",
+        "a",
+        "c",
+        "a",
+        "d"
+      ],
+      "i": 1,
+      "j": 8
+    },
+    {
+      "codeLine": 6,
+      "note": "i (8) == j (8), found partition boundary",
+      "array": [
+        "a",
+        "b",
+        "a",
+        "b",
+        "c",
+        "b",
+        "a",
+        "c",
+        "a"
+      ],
+      "i": 8,
+      "j": 8
+    },
+    {
+      "codeLine": 7,
+      "note": "Result array gets length 9",
+      "array": [
+        "a",
+        "b",
+        "a",
+        "b",
+        "c",
+        "b",
+        "a",
+        "c",
+        "a"
+      ],
+      "i": 8
+    }
+  ]
+}

@@ -1,0 +1,94 @@
+{
+  "title": "Rabbits in Forest",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "Math",
+    "Greedy"
+  ],
+  "description": "Calculate the minimum number of rabbits in a forest given their responses to 'how many other rabbits have the same color as you'.",
+  "target": null,
+  "pseudocode": "1. countMap = {}\n2. totalRabbits = 0\n3. for each answer in answers:\n4.   groupSize = answer + 1\n5.   countMap[answer] = (countMap[answer] || 0) + 1\n6.   if countMap[answer] == 1:\n7.     totalRabbits += groupSize\n8.   else if countMap[answer] == groupSize:\n9.     countMap[answer] = 0\n10. return totalRabbits",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize countMap to track occurrences of each answer.",
+      "array": [
+        1,
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Process first rabbit with answer 1. Group size is 1+1=2.",
+      "array": [
+        1,
+        1,
+        2
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 7,
+      "note": "First rabbit of this color group found. Add group size 2 to total.",
+      "array": [
+        1,
+        1,
+        2
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Process second rabbit with answer 1.",
+      "array": [
+        1,
+        1,
+        2
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 8,
+      "note": "Group is full (2 rabbits). Reset count for answer 1.",
+      "array": [
+        1,
+        1,
+        2
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Process third rabbit with answer 2. Group size is 2+1=3.",
+      "array": [
+        1,
+        1,
+        2
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 7,
+      "note": "First rabbit of this color group found. Add group size 3 to total.",
+      "array": [
+        1,
+        1,
+        2
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 10,
+      "note": "Total rabbits calculated: 5.",
+      "array": [
+        1,
+        1,
+        2
+      ]
+    }
+  ]
+}

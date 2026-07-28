@@ -1,0 +1,109 @@
+{
+  "title": "Max Points on a Line",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Math",
+    "Geometry",
+    "Hash Table"
+  ],
+  "description": "Given an array of points, return the maximum number of points that lie on the same straight line.",
+  "target": null,
+  "pseudocode": "1. maxPoints = 0\n2. for i = 0 to n-1:\n3.   map = {}\n4.   for j = i + 1 to n-1:\n5.     slope = getSlope(points[i], points[j])\n6.     map[slope] = (map[slope] || 0) + 1\n7.     maxPoints = max(maxPoints, map[slope] + 1)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize maxPoints to 0.",
+      "array": [
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          4,
+          1
+        ]
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Start outer loop i=0 at point [1, 1].",
+      "i": 0,
+      "array": [
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          4,
+          1
+        ]
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Compare point [1, 1] with [2, 2]. Slope is 1.",
+      "i": 0,
+      "j": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Store slope 1 in map. Count is 1.",
+      "i": 0,
+      "j": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "Update maxPoints to 2.",
+      "i": 0,
+      "j": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Compare point [1, 1] with [3, 3]. Slope is 1.",
+      "i": 0,
+      "j": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Update slope 1 in map. Count is 2.",
+      "i": 0,
+      "j": 2
+    },
+    {
+      "codeLine": 7,
+      "note": "Update maxPoints to 3.",
+      "i": 0,
+      "j": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Compare point [1, 1] with [4, 1]. Slope is 0.",
+      "i": 0,
+      "j": 3
+    },
+    {
+      "codeLine": 6,
+      "note": "Store slope 0 in map. Count is 1.",
+      "i": 0,
+      "j": 3
+    }
+  ]
+}

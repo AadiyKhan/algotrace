@@ -1,0 +1,50 @@
+{
+  "title": "Uncommon Words From Two Sentences",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "String"
+  ],
+  "description": "Find words that appear exactly once in one sentence and not at all in the other.",
+  "pseudocode": "1. words = (s1 + ' ' + s2).split(' ')\n2. count = {}\n3. for word in words:\n4.   count[word] = (count[word] || 0) + 1\n5. result = []\n6. for word in count:\n7.   if count[word] == 1: result.push(word)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Combined sentences into an array of words: ['apple', 'apple', 'banana']",
+      "array": [
+        "apple",
+        "apple",
+        "banana"
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Counting occurrences: 'apple' appears twice",
+      "array": [
+        "apple",
+        "apple",
+        "banana"
+      ],
+      "i": "apple"
+    },
+    {
+      "codeLine": 4,
+      "note": "Counting occurrences: 'banana' appears once",
+      "array": [
+        "apple",
+        "apple",
+        "banana"
+      ],
+      "i": "banana"
+    },
+    {
+      "codeLine": 7,
+      "note": "Filtering words that appear exactly once",
+      "array": [
+        "banana"
+      ]
+    }
+  ]
+}

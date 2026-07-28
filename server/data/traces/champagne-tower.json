@@ -1,0 +1,89 @@
+{
+  "title": "Champagne Tower",
+  "difficulty": "Medium",
+  "type": "matrix",
+  "tags": [
+    "Dynamic Programming",
+    "Simulation"
+  ],
+  "description": "Calculate how much champagne is in the (queryRow, queryGlass) glass after pouring 'poured' amount of champagne into the top glass.",
+  "target": "queryRow: 1, queryGlass: 1",
+  "pseudocode": "1: tower = new Array(queryRow + 1).fill(0).map((_, i) => new Array(i + 1).fill(0))\n2: tower[0][0] = poured\n3: for i from 0 to queryRow:\n4:   for j from 0 to i:\n5:     if tower[i][j] > 1:\n6:       overflow = (tower[i][j] - 1) / 2\n7:       tower[i+1][j] += overflow\n8:       tower[i+1][j+1] += overflow\n9:       tower[i][j] = 1\n10: return min(1, tower[queryRow][queryGlass])",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Initialize top glass with 2 units.",
+      "matrix": [
+        [
+          2
+        ],
+        [
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Check if top glass overflows.",
+      "matrix": [
+        [
+          2
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "i": 0,
+      "j": 0
+    },
+    {
+      "codeLine": 7,
+      "note": "Distribute overflow to row 1, index 0.",
+      "matrix": [
+        [
+          1
+        ],
+        [
+          0.5,
+          0
+        ]
+      ],
+      "i": 0,
+      "j": 0
+    },
+    {
+      "codeLine": 8,
+      "note": "Distribute overflow to row 1, index 1.",
+      "matrix": [
+        [
+          1
+        ],
+        [
+          0.5,
+          0.5
+        ]
+      ],
+      "i": 0,
+      "j": 0
+    },
+    {
+      "codeLine": 10,
+      "note": "Return value at row 1, glass 1.",
+      "matrix": [
+        [
+          1
+        ],
+        [
+          0.5,
+          0.5
+        ]
+      ],
+      "curr": [
+        1,
+        1
+      ]
+    }
+  ]
+}

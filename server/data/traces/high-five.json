@@ -1,0 +1,64 @@
+{
+  "title": "High Five",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "Sorting"
+  ],
+  "description": "Calculate the average of the top five scores for each student.",
+  "target": 5,
+  "pseudocode": "1. Map<int, List<int>> scores\n2. For each [id, score] in items:\n3.   scores[id].push(score)\n4. For id in scores:\n5.   scores[id].sort(descending)\n6.   avg = sum(scores[id].slice(0, 5)) / 5\n7.   result.push([id, avg])",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Processing entry [1, 90]",
+      "array": [
+        [
+          1,
+          90
+        ]
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Processing entry [1, 95]",
+      "array": [
+        [
+          1,
+          90
+        ],
+        [
+          1,
+          95
+        ]
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Sorting scores for student 1",
+      "array": [
+        [
+          1,
+          95
+        ],
+        [
+          1,
+          90
+        ]
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Calculating average for student 1",
+      "array": [
+        [
+          1,
+          92
+        ]
+      ],
+      "i": 1
+    }
+  ]
+}

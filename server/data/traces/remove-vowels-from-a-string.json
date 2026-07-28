@@ -1,0 +1,98 @@
+{
+  "title": "Remove Vowels from a String",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "String",
+    "Array"
+  ],
+  "description": "Given a string, remove all the vowels from it and return the result.",
+  "target": "aeiou",
+  "pseudocode": "1. result = []\n2. vowels = 'aeiou'\n3. for char in s:\n4.   if char not in vowels:\n5.     result.append(char)\n6. return ''.join(result)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize result array.",
+      "array": []
+    },
+    {
+      "codeLine": 3,
+      "note": "Iterate to first char 'a'.",
+      "array": [
+        "a"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "'a' is a vowel, skip.",
+      "array": [
+        "a"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Move to char 'b'.",
+      "array": [
+        "a",
+        "b"
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "'b' is not a vowel.",
+      "array": [
+        "a",
+        "b"
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Append 'b' to result.",
+      "array": [
+        "b"
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Move to char 'c'.",
+      "array": [
+        "a",
+        "b",
+        "c"
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "'c' is not a vowel.",
+      "array": [
+        "a",
+        "b",
+        "c"
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Append 'c' to result.",
+      "array": [
+        "b",
+        "c"
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Return 'bc'.",
+      "array": [
+        "b",
+        "c"
+      ]
+    }
+  ]
+}

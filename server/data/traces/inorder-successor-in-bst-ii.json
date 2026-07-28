@@ -1,0 +1,113 @@
+{
+  "title": "Inorder Successor in BST II",
+  "difficulty": "Medium",
+  "type": "tree",
+  "tags": [
+    "Tree",
+    "Binary Search Tree"
+  ],
+  "description": "Given a node in a BST, find the inorder successor of that node.",
+  "pseudocode": "1: if node.right is not null:\n2:   curr = node.right\n3:   while curr.left is not null: curr = curr.left\n4:   return curr\n5: while node.parent is not null and node == node.parent.right:\n6:   node = node.parent\n7: return node.parent",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Checking if the node has a right subtree.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 2,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Node has no right child, moving up to find the first parent that is a left child.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 2,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Node 1 is the left child of Node 0, terminating loop.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 2,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "Returning the parent as the inorder successor.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 2,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 0
+    }
+  ]
+}

@@ -1,0 +1,242 @@
+{
+  "title": "The Maze",
+  "difficulty": "Medium",
+  "type": "matrix",
+  "tags": [
+    "Matrix",
+    "DFS",
+    "BFS"
+  ],
+  "description": "Determine if a ball can reach a destination in a maze, rolling until it hits a wall.",
+  "target": [
+    4,
+    6
+  ],
+  "pseudocode": "1. queue = [start]\n2. visited = {start}\n3. while queue not empty:\n4.   curr = queue.shift()\n5.   for each direction (dx, dy):\n6.     next = roll(curr, dx, dy)\n7.     if next == destination: return true\n8.     if next not in visited: visited.add(next), queue.push(next)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize queue with starting position [0, 4]",
+      "matrix": [
+        [
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          1,
+          0,
+          1,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "curr": [
+        0,
+        4
+      ],
+      "visited": [
+        [
+          0,
+          4
+        ]
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Roll in direction (1, 0) - moving down until hitting a wall at [4, 4]",
+      "matrix": [
+        [
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          1,
+          0,
+          1,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "curr": [
+        4,
+        4
+      ],
+      "visited": [
+        [
+          0,
+          4
+        ],
+        [
+          4,
+          4
+        ]
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Roll in direction (0, -1) from [4, 4] until hitting wall at [4, 0]",
+      "matrix": [
+        [
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          1,
+          0,
+          1,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "curr": [
+        4,
+        0
+      ],
+      "visited": [
+        [
+          0,
+          4
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          4,
+          0
+        ]
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Check if destination reached. Continuing exploration...",
+      "matrix": [
+        [
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          1,
+          0,
+          1,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "curr": [
+        4,
+        0
+      ],
+      "visited": [
+        [
+          0,
+          4
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          4,
+          0
+        ]
+      ]
+    }
+  ]
+}

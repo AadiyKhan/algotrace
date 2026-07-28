@@ -1,0 +1,99 @@
+{
+  "title": "Distinct Subsequences II",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Dynamic Programming",
+    "String"
+  ],
+  "description": "Given a string s, return the number of distinct non-empty subsequences of s. Since the answer may be very large, return it modulo 10^9 + 7.",
+  "target": "aba",
+  "pseudocode": "1. dp = [0] * (n + 1)\n2. dp[0] = 1\n3. last = {}\n4. for i from 1 to n:\n5.   dp[i] = dp[i-1] * 2\n6.   char = s[i-1]\n7.   if char in last:\n8.     dp[i] -= dp[last[char]-1]\n9.   last[char] = i\n10. return dp[n] - 1",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Initialize dp table. dp[0] = 1 (empty subsequence).",
+      "array": [
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Process 'a': dp[1] = dp[0] * 2 = 2.",
+      "array": [
+        1,
+        2,
+        0,
+        0
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 9,
+      "note": "Update last seen index for 'a'.",
+      "array": [
+        1,
+        2,
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Process 'b': dp[2] = dp[1] * 2 = 4.",
+      "array": [
+        1,
+        2,
+        4,
+        0
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 9,
+      "note": "Update last seen index for 'b'.",
+      "array": [
+        1,
+        2,
+        4,
+        0
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Process 'a': dp[3] = dp[2] * 2 = 8.",
+      "array": [
+        1,
+        2,
+        4,
+        8
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 8,
+      "note": "Subtract duplicate count: dp[3] = 8 - dp[0] = 7.",
+      "array": [
+        1,
+        2,
+        4,
+        7
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 10,
+      "note": "Final result is dp[3] - 1 = 6.",
+      "array": [
+        1,
+        2,
+        4,
+        7
+      ]
+    }
+  ]
+}

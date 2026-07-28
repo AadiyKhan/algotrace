@@ -1,0 +1,66 @@
+{
+  "title": "Longest Word in Dictionary",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "String",
+    "Trie",
+    "Hash Set"
+  ],
+  "description": "Find the longest word in the dictionary that can be built one character at a time by other words in the dictionary.",
+  "target": "w",
+  "pseudocode": "1. words.sort();\n2. set = new Set(words);\n3. longest = '';\n4. for word in words:\n5.   if (word.length > 1):\n6.     prefix = word.substring(0, length - 1);\n7.     if (set.has(prefix)):\n8.       if (word.length > longest.length) longest = word;",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Sort words to handle lexicographical order: ['a', 'ap', 'app', 'apply']",
+      "array": [
+        "a",
+        "ap",
+        "app",
+        "apply"
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Insert all words into a Set for O(1) lookup",
+      "array": [
+        "a",
+        "ap",
+        "app",
+        "apply"
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Check 'a'",
+      "i": "a"
+    },
+    {
+      "codeLine": 4,
+      "note": "Check 'ap', prefix 'a' exists",
+      "i": "ap"
+    },
+    {
+      "codeLine": 8,
+      "note": "Update longest to 'ap'",
+      "i": "ap"
+    },
+    {
+      "codeLine": 4,
+      "note": "Check 'app', prefix 'ap' exists",
+      "i": "app"
+    },
+    {
+      "codeLine": 8,
+      "note": "Update longest to 'app'",
+      "i": "app"
+    },
+    {
+      "codeLine": 4,
+      "note": "Check 'apply', prefix 'appl' does not exist",
+      "i": "apply"
+    }
+  ]
+}

@@ -1,0 +1,95 @@
+{
+  "title": "Contains Duplicate III",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Sliding Window",
+    "Ordered Set"
+  ],
+  "description": "Determine if there are two indices i and j such that abs(nums[i] - nums[j]) <= t and abs(i - j) <= k.",
+  "target": "t=0, k=2",
+  "pseudocode": "1. buckets = {}\n2. for i in range(len(nums)):\n3.   bucket = nums[i] // (t + 1)\n4.   if bucket in buckets: return True\n5.   if bucket - 1 in buckets and abs(nums[i] - buckets[bucket - 1]) <= t: return True\n6.   if bucket + 1 in buckets and abs(nums[i] - buckets[bucket + 1]) <= t: return True\n7.   buckets[bucket] = nums[i]\n8.   if i >= k: del buckets[nums[i - k] // (t + 1)]",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Initialize loop, process nums[0] = 1",
+      "array": [
+        1,
+        5,
+        9
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Calculate bucket for 1 (t=1, size=1)",
+      "array": [
+        1,
+        5,
+        9
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 7,
+      "note": "Store 1 in bucket 1",
+      "array": [
+        1,
+        5,
+        9
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Process nums[1] = 5",
+      "array": [
+        1,
+        5,
+        9
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 8,
+      "note": "Bucket check passes, no duplicate found",
+      "array": [
+        1,
+        5,
+        9
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "Store 5 in bucket 5",
+      "array": [
+        1,
+        5,
+        9
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Process nums[2] = 2 (Suppose input is [1, 5, 2])",
+      "array": [
+        1,
+        5,
+        2
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Check neighboring buckets, difference condition not met",
+      "array": [
+        1,
+        5,
+        2
+      ],
+      "i": 2
+    }
+  ]
+}

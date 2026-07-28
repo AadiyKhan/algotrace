@@ -1,0 +1,104 @@
+{
+  "title": "Sort List",
+  "difficulty": "Medium",
+  "type": "linked-list",
+  "tags": [
+    "Linked List",
+    "Sort",
+    "Divide and Conquer"
+  ],
+  "description": "Sort a linked list in O(n log n) time using constant space complexity.",
+  "target": null,
+  "pseudocode": "1. If head is null or next is null, return head\n2. Find middle using slow/fast pointers\n3. Split the list into two halves\n4. Recursively sort left and right\n5. Merge the two sorted halves",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize linked list: [4, 2, 1, 3]",
+      "nodes": [
+        {
+          "val": 4,
+          "next": 1
+        },
+        {
+          "val": 2,
+          "next": 2
+        },
+        {
+          "val": 1,
+          "next": 3
+        },
+        {
+          "val": 3,
+          "next": null
+        }
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Find middle using slow/fast. Slow stops at index 1 (val 2)",
+      "nodes": [
+        {
+          "val": 4,
+          "next": 1
+        },
+        {
+          "val": 2,
+          "next": 2
+        },
+        {
+          "val": 1,
+          "next": 3
+        },
+        {
+          "val": 3,
+          "next": null
+        }
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Split into [4, 2] and [1, 3]",
+      "nodes": [
+        {
+          "val": 4,
+          "next": 1
+        },
+        {
+          "val": 2,
+          "next": null
+        },
+        {
+          "val": 1,
+          "next": 3
+        },
+        {
+          "val": 3,
+          "next": null
+        }
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Merge sorted halves [2, 4] and [1, 3] into [1, 2, 3, 4]",
+      "nodes": [
+        {
+          "val": 1,
+          "next": 1
+        },
+        {
+          "val": 2,
+          "next": 2
+        },
+        {
+          "val": 3,
+          "next": 3
+        },
+        {
+          "val": 4,
+          "next": null
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,230 @@
+{
+  "title": "Length of Last Word",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "String"
+  ],
+  "description": "Given a string s consisting of words and spaces, return the length of the last word in the string.",
+  "target": 5,
+  "pseudocode": "1. i = s.length - 1\n2. length = 0\n3. while i >= 0 and s[i] == ' ': i--\n4. while i >= 0 and s[i] != ' ': \n5.   length++\n6.   i--\n7. return length",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize pointer i to the end of the string.",
+      "array": [
+        "H",
+        "e",
+        "l",
+        "l",
+        "o",
+        " ",
+        "W",
+        "o",
+        "r",
+        "l",
+        "d"
+      ],
+      "i": 10
+    },
+    {
+      "codeLine": 3,
+      "note": "String doesn't end in space, skip trailing spaces check.",
+      "array": [
+        "H",
+        "e",
+        "l",
+        "l",
+        "o",
+        " ",
+        "W",
+        "o",
+        "r",
+        "l",
+        "d"
+      ],
+      "i": 10
+    },
+    {
+      "codeLine": 5,
+      "note": "Counting letters of the last word 'd'.",
+      "array": [
+        "H",
+        "e",
+        "l",
+        "l",
+        "o",
+        " ",
+        "W",
+        "o",
+        "r",
+        "l",
+        "d"
+      ],
+      "i": 10
+    },
+    {
+      "codeLine": 6,
+      "note": "Move pointer left.",
+      "array": [
+        "H",
+        "e",
+        "l",
+        "l",
+        "o",
+        " ",
+        "W",
+        "o",
+        "r",
+        "l",
+        "d"
+      ],
+      "i": 9
+    },
+    {
+      "codeLine": 5,
+      "note": "Counting letters of the last word 'l'.",
+      "array": [
+        "H",
+        "e",
+        "l",
+        "l",
+        "o",
+        " ",
+        "W",
+        "o",
+        "r",
+        "l",
+        "d"
+      ],
+      "i": 9
+    },
+    {
+      "codeLine": 6,
+      "note": "Move pointer left.",
+      "array": [
+        "H",
+        "e",
+        "l",
+        "l",
+        "o",
+        " ",
+        "W",
+        "o",
+        "r",
+        "l",
+        "d"
+      ],
+      "i": 8
+    },
+    {
+      "codeLine": 5,
+      "note": "Counting letters of the last word 'r'.",
+      "array": [
+        "H",
+        "e",
+        "l",
+        "l",
+        "o",
+        " ",
+        "W",
+        "o",
+        "r",
+        "l",
+        "d"
+      ],
+      "i": 8
+    },
+    {
+      "codeLine": 6,
+      "note": "Move pointer left.",
+      "array": [
+        "H",
+        "e",
+        "l",
+        "l",
+        "o",
+        " ",
+        "W",
+        "o",
+        "r",
+        "l",
+        "d"
+      ],
+      "i": 7
+    },
+    {
+      "codeLine": 5,
+      "note": "Counting letters of the last word 'o'.",
+      "array": [
+        "H",
+        "e",
+        "l",
+        "l",
+        "o",
+        " ",
+        "W",
+        "o",
+        "r",
+        "l",
+        "d"
+      ],
+      "i": 7
+    },
+    {
+      "codeLine": 6,
+      "note": "Move pointer left.",
+      "array": [
+        "H",
+        "e",
+        "l",
+        "l",
+        "o",
+        " ",
+        "W",
+        "o",
+        "r",
+        "l",
+        "d"
+      ],
+      "i": 6
+    },
+    {
+      "codeLine": 5,
+      "note": "Counting letters of the last word 'W'.",
+      "array": [
+        "H",
+        "e",
+        "l",
+        "l",
+        "o",
+        " ",
+        "W",
+        "o",
+        "r",
+        "l",
+        "d"
+      ],
+      "i": 6
+    },
+    {
+      "codeLine": 7,
+      "note": "Return total length 5.",
+      "array": [
+        "H",
+        "e",
+        "l",
+        "l",
+        "o",
+        " ",
+        "W",
+        "o",
+        "r",
+        "l",
+        "d"
+      ],
+      "i": 5
+    }
+  ]
+}

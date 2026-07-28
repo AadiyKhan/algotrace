@@ -1,0 +1,126 @@
+{
+  "title": "Odd Even Linked List",
+  "difficulty": "Medium",
+  "type": "linked-list",
+  "tags": [
+    "Linked List"
+  ],
+  "description": "Given the head of a singly linked list, group all the nodes with odd indices together followed by the nodes with even indices.",
+  "target": null,
+  "pseudocode": "1. if (!head || !head.next) return head;\n2. odd = head;\n3. even = head.next;\n4. evenHead = even;\n5. while (even && even.next) {\n6.   odd.next = even.next;\n7.   odd = odd.next;\n8.   even.next = odd.next;\n9.   even = even.next;\n10. }\n11. odd.next = evenHead;\n12. return head;",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Initialize odd pointer at head",
+      "nodes": [
+        {
+          "val": 1,
+          "next": 1
+        },
+        {
+          "val": 2,
+          "next": 2
+        },
+        {
+          "val": 3,
+          "next": 3
+        },
+        {
+          "val": 4,
+          "next": null
+        }
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Initialize even pointer at head.next",
+      "nodes": [
+        {
+          "val": 1,
+          "next": 1
+        },
+        {
+          "val": 2,
+          "next": 2
+        },
+        {
+          "val": 3,
+          "next": 3
+        },
+        {
+          "val": 4,
+          "next": null
+        }
+      ],
+      "curr": 0,
+      "i": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Move odd pointer to skip even node",
+      "nodes": [
+        {
+          "val": 1,
+          "next": 2
+        },
+        {
+          "val": 2,
+          "next": 2
+        },
+        {
+          "val": 3,
+          "next": 3
+        },
+        {
+          "val": 4,
+          "next": null
+        }
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Move even pointer to skip odd node",
+      "nodes": [
+        {
+          "val": 1,
+          "next": 2
+        },
+        {
+          "val": 2,
+          "next": 3
+        },
+        {
+          "val": 3,
+          "next": 3
+        },
+        {
+          "val": 4,
+          "next": null
+        }
+      ]
+    },
+    {
+      "codeLine": 11,
+      "note": "Connect end of odd list to evenHead",
+      "nodes": [
+        {
+          "val": 1,
+          "next": 2
+        },
+        {
+          "val": 3,
+          "next": 1
+        },
+        {
+          "val": 2,
+          "next": 3
+        },
+        {
+          "val": 4,
+          "next": null
+        }
+      ]
+    }
+  ]
+}

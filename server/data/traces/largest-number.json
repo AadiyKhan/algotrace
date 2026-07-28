@@ -1,0 +1,59 @@
+{
+  "title": "Largest Number",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "String",
+    "Sorting"
+  ],
+  "description": "Given a list of non-negative integers, arrange them such that they form the largest possible number.",
+  "target": "9534330",
+  "pseudocode": "1. strs = nums.map(String)\n2. strs.sort((a, b) => (b + a) - (a + b))\n3. if (strs[0] === '0') return '0'\n4. return strs.join('')",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Convert all integers to strings for lexicographical comparison.",
+      "array": [
+        "3",
+        "30",
+        "34",
+        "5",
+        "9"
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Sort using custom comparator (b+a vs a+b). 9 comes first.",
+      "array": [
+        "9",
+        "3",
+        "30",
+        "34",
+        "5"
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Compare '34' and '3'. '343' > '334', so 34 moves ahead.",
+      "array": [
+        "9",
+        "5",
+        "34",
+        "3",
+        "30"
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Join the sorted string array to form the largest number.",
+      "array": [
+        "9",
+        "5",
+        "34",
+        "3",
+        "30"
+      ]
+    }
+  ]
+}

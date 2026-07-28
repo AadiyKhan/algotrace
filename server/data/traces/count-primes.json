@@ -1,0 +1,168 @@
+{
+  "title": "Count Primes",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Math",
+    "Array"
+  ],
+  "description": "Count the number of prime numbers less than a non-negative number, n.",
+  "target": 10,
+  "pseudocode": "1: let isPrime = new Array(n).fill(true);\n2: isPrime[0] = isPrime[1] = false;\n3: for (let i = 2; i * i < n; i++) {\n4:   if (isPrime[i]) {\n5:     for (let j = i * i; j < n; j += i) {\n6:       isPrime[j] = false;\n7:     }\n8:   }\n9: }\n10: return isPrime.filter(Boolean).length;",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize array of size 10 with true",
+      "array": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Mark 0 and 1 as non-prime",
+      "array": [
+        false,
+        false,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Start sieve loop at i = 2",
+      "i": 2,
+      "array": [
+        false,
+        false,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Mark multiples of 2 starting from 4 as false",
+      "i": 2,
+      "j": 4,
+      "array": [
+        false,
+        false,
+        true,
+        true,
+        false,
+        true,
+        false,
+        true,
+        false,
+        true
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Mark next multiple of 2 (6)",
+      "i": 2,
+      "j": 6,
+      "array": [
+        false,
+        false,
+        true,
+        true,
+        false,
+        true,
+        false,
+        true,
+        false,
+        true
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Mark next multiple of 2 (8)",
+      "i": 2,
+      "j": 8,
+      "array": [
+        false,
+        false,
+        true,
+        true,
+        false,
+        true,
+        false,
+        true,
+        false,
+        true
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Increment i to 3",
+      "i": 3,
+      "array": [
+        false,
+        false,
+        true,
+        true,
+        false,
+        true,
+        false,
+        true,
+        false,
+        false
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Mark multiples of 3 starting from 9",
+      "i": 3,
+      "j": 9,
+      "array": [
+        false,
+        false,
+        true,
+        true,
+        false,
+        true,
+        false,
+        true,
+        false,
+        false
+      ]
+    },
+    {
+      "codeLine": 10,
+      "note": "Count remaining true values (2, 3, 5, 7)",
+      "array": [
+        false,
+        false,
+        true,
+        true,
+        false,
+        true,
+        false,
+        true,
+        false,
+        false
+      ]
+    }
+  ]
+}

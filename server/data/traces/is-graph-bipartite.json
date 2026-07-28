@@ -1,0 +1,88 @@
+{
+  "title": "Is Graph Bipartite",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Graph",
+    "BFS",
+    "DFS"
+  ],
+  "description": "Determine if an undirected graph can be colored with two colors such that no two adjacent nodes have the same color.",
+  "target": null,
+  "pseudocode": "1. colors = new Array(n).fill(0)\n2. for i in 0 to n-1:\n3.   if colors[i] == 0:\n4.     queue = [i], colors[i] = 1\n5.     while queue not empty:\n6.       u = queue.shift()\n7.       for v in adj[u]:\n8.         if colors[v] == 0:\n9.           colors[v] = -colors[u], queue.push(v)\n10.        else if colors[v] == colors[u]: return false",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize color array with 0 (uncolored)",
+      "array": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Start coloring node 0 with color 1",
+      "array": [
+        1,
+        0,
+        0,
+        0
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Process node 0, check neighbors 1 and 3",
+      "array": [
+        1,
+        0,
+        0,
+        0
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 9,
+      "note": "Color neighbor 1 with -1",
+      "array": [
+        1,
+        -1,
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 9,
+      "note": "Color neighbor 3 with -1",
+      "array": [
+        1,
+        -1,
+        0,
+        -1
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Process neighbor 1, check neighbor 2",
+      "array": [
+        1,
+        -1,
+        0,
+        -1
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 9,
+      "note": "Color neighbor 2 with 1",
+      "array": [
+        1,
+        -1,
+        1,
+        -1
+      ]
+    }
+  ]
+}

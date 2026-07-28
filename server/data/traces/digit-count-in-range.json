@@ -1,0 +1,79 @@
+{
+  "title": "Digit Count in Range",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Math",
+    "Recursion",
+    "Digit DP"
+  ],
+  "description": "Count the occurrences of a specific digit 'd' in all integers from 0 to n.",
+  "target": 1,
+  "pseudocode": "1: function countDigit(n, d) {\n2:   let count = 0, factor = 1;\n3:   while (factor <= n) {\n4:     let lower = n % factor;\n5:     let curr = Math.floor(n / factor) % 10;\n6:     let higher = Math.floor(n / (factor * 10));\n7:     if (curr < d) count += higher * factor;\n8:     else if (curr == d) count += higher * factor + lower + 1;\n9:     else count += (higher + 1) * factor;\n10:    factor *= 10;\n11:  }\n12:  return count;\n13: }",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Initialize variables for n=13, d=1.",
+      "array": [
+        13
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "First iteration: factor = 1.",
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Calculate lower part: 13 % 1 = 0.",
+      "i": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Calculate current digit: floor(13/1) % 10 = 3.",
+      "i": 3
+    },
+    {
+      "codeLine": 6,
+      "note": "Calculate higher part: floor(13/10) = 1.",
+      "i": 1
+    },
+    {
+      "codeLine": 9,
+      "note": "Since curr(3) > d(1), count increases by (1+1)*1 = 2.",
+      "i": 2
+    },
+    {
+      "codeLine": 10,
+      "note": "Increment factor to 10.",
+      "i": 10
+    },
+    {
+      "codeLine": 4,
+      "note": "Second iteration: lower = 13 % 10 = 3.",
+      "i": 3
+    },
+    {
+      "codeLine": 5,
+      "note": "Calculate current digit: floor(13/10) % 10 = 1.",
+      "i": 1
+    },
+    {
+      "codeLine": 8,
+      "note": "Since curr(1) == d(1), count increases by 0*10 + 3 + 1 = 4. Total = 6.",
+      "i": 6
+    },
+    {
+      "codeLine": 10,
+      "note": "Increment factor to 100.",
+      "i": 100
+    },
+    {
+      "codeLine": 12,
+      "note": "Return final count: 6.",
+      "array": [
+        6
+      ]
+    }
+  ]
+}

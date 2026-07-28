@@ -1,0 +1,89 @@
+{
+  "title": "Find Anagram Mappings",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Hash Table"
+  ],
+  "description": "Given two lists A and B where B is an anagram of A, return an index mapping array P such that A[i] = B[P[i]].",
+  "target": null,
+  "pseudocode": "1. map = new Map();\n2. for (let i = 0; i < B.length; i++) map.set(B[i], i);\n3. let res = [];\n4. for (let i = 0; i < A.length; i++) res.push(map.get(A[i]));\n5. return res;",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize an empty Map to store values and their indices in B.",
+      "array": [
+        12,
+        28,
+        46
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Mapping values of B to their indices: 50 -> 0, 12 -> 1, 32 -> 2.",
+      "i": 0,
+      "array": [
+        12,
+        28,
+        46
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Mapping index 1 of B.",
+      "i": 1,
+      "array": [
+        12,
+        28,
+        46
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Mapping index 2 of B.",
+      "i": 2,
+      "array": [
+        12,
+        28,
+        46
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Looking up A[0]=12 in map, found index 1.",
+      "i": 0,
+      "array": [
+        1
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Looking up A[1]=28 in map, found index 0.",
+      "i": 1,
+      "array": [
+        1,
+        0
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Looking up A[2]=46 in map, found index 2.",
+      "i": 2,
+      "array": [
+        1,
+        0,
+        2
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Return the final mapping array.",
+      "array": [
+        1,
+        0,
+        2
+      ]
+    }
+  ]
+}

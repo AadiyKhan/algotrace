@@ -1,0 +1,92 @@
+{
+  "title": "Subsets II",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Backtracking"
+  ],
+  "description": "Find all possible subsets of an array that may contain duplicates.",
+  "target": null,
+  "pseudocode": "1. nums.sort()\n2. result = []\n3. backtrack(start, path)\n4. if path is complete, add to result\n5. for i from start to nums.length - 1\n6. if i > start and nums[i] == nums[i-1], continue\n7. path.push(nums[i])\n8. backtrack(i + 1, path)\n9. path.pop()",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Sort input to handle duplicates: [1, 2, 2]",
+      "array": [
+        1,
+        2,
+        2
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Start iteration at index 0",
+      "array": [
+        1,
+        2,
+        2
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 7,
+      "note": "Include 1 in current subset",
+      "array": [
+        1,
+        2,
+        2
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 8,
+      "note": "Recurse with subset [1]",
+      "array": [
+        1,
+        2,
+        2
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Check duplicate: nums[1] is 2, not equal to nums[0]",
+      "array": [
+        1,
+        2,
+        2
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "Include 2, current subset [1, 2]",
+      "array": [
+        1,
+        2,
+        2
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Check duplicate at index 2: nums[2] == nums[1] (both are 2), skip",
+      "array": [
+        1,
+        2,
+        2
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 9,
+      "note": "Backtrack and pop 2",
+      "array": [
+        1,
+        2,
+        2
+      ]
+    }
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "title": "Maximum Width Ramp",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Stack",
+    "Two Pointers"
+  ],
+  "description": "Find the maximum width ramp (j - i) such that nums[i] <= nums[j].",
+  "target": null,
+  "pseudocode": "1. stack = []\n2. for i from 0 to n-1:\n3.   if stack is empty or nums[i] < nums[stack.top]:\n4.     stack.push(i)\n5. for j from n-1 down to 0:\n6.   while stack and nums[stack.top] <= nums[j]:\n7.     maxWidth = max(maxWidth, j - stack.pop())",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Initialize stack with decreasing indices",
+      "array": [
+        6,
+        0,
+        8,
+        2
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Push index 0 (val 6) onto stack",
+      "array": [
+        6,
+        0,
+        8,
+        2
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Push index 1 (val 0) onto stack as 0 < 6",
+      "array": [
+        6,
+        0,
+        8,
+        2
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Start backward pass from j=3",
+      "array": [
+        6,
+        0,
+        8,
+        2
+      ],
+      "i": null,
+      "j": 3
+    },
+    {
+      "codeLine": 7,
+      "note": "Found ramp: nums[1] (0) <= nums[3] (2). Width = 3 - 1 = 2",
+      "array": [
+        6,
+        0,
+        8,
+        2
+      ],
+      "i": null,
+      "j": 3
+    },
+    {
+      "codeLine": 7,
+      "note": "Found ramp: nums[0] (6) <= nums[2] (8). Width = 2 - 0 = 2",
+      "array": [
+        6,
+        0,
+        8,
+        2
+      ],
+      "i": null,
+      "j": 2
+    }
+  ]
+}

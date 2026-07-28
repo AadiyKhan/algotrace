@@ -1,0 +1,90 @@
+{
+  "title": "Valid Mountain Array",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Two Pointers"
+  ],
+  "description": "Check if an array strictly increases then strictly decreases.",
+  "pseudocode": "1. i = 0\n2. while i + 1 < n and arr[i] < arr[i+1]: i++\n3. if i == 0 or i == n - 1: return false\n4. while i + 1 < n and arr[i] > arr[i+1]: i++\n5. return i == n - 1",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize index i to 0.",
+      "array": [
+        0,
+        3,
+        2,
+        1
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Ascend the mountain: 0 < 3.",
+      "array": [
+        0,
+        3,
+        2,
+        1
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Next is 2, which is not > 3. Loop terminates.",
+      "array": [
+        0,
+        3,
+        2,
+        1
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Check if peak is at boundaries. i is 1, not 0 or 3.",
+      "array": [
+        0,
+        3,
+        2,
+        1
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Descend: 3 > 2.",
+      "array": [
+        0,
+        3,
+        2,
+        1
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Descend: 2 > 1.",
+      "array": [
+        0,
+        3,
+        2,
+        1
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 5,
+      "note": "Final check: i is 3, n-1 is 3. Return true.",
+      "array": [
+        0,
+        3,
+        2,
+        1
+      ],
+      "i": 3
+    }
+  ]
+}

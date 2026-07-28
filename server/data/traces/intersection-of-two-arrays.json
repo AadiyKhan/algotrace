@@ -1,0 +1,87 @@
+{
+  "title": "Intersection of Two Arrays",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "Two Pointers"
+  ],
+  "description": "Given two integer arrays, return an array of their unique intersection.",
+  "target": null,
+  "pseudocode": "1. set1 = new Set(nums1)\n2. result = new Set()\n3. for num in nums2:\n4.   if set1.has(num):\n5.     result.add(num)\n6. return Array.from(result)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize a set with elements from nums1",
+      "array": [
+        1,
+        2,
+        2,
+        1
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Initialize an empty result set",
+      "array": []
+    },
+    {
+      "codeLine": 3,
+      "note": "Iterate through nums2",
+      "array": [
+        2,
+        2
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Check if 2 is in set1",
+      "array": [
+        2,
+        2
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Add 2 to result set",
+      "array": [
+        2
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Iterate to next element in nums2",
+      "array": [
+        2,
+        2
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Check if 2 is in set1",
+      "array": [
+        2,
+        2
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "2 is already in result, set handles uniqueness",
+      "array": [
+        2
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Convert result set to array and return",
+      "array": [
+        2
+      ]
+    }
+  ]
+}

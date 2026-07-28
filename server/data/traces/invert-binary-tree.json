@@ -1,0 +1,134 @@
+{
+  "title": "Invert Binary Tree",
+  "difficulty": "Easy",
+  "type": "tree",
+  "tags": [
+    "Tree",
+    "Recursion",
+    "Binary Tree"
+  ],
+  "description": "Invert a binary tree by swapping the left and right children of every node.",
+  "pseudocode": "1. function invertTree(root) {\n2.   if (!root) return null;\n3.   let temp = root.left;\n4.   root.left = invertTree(root.right);\n5.   root.right = invertTree(temp);\n6.   return root;\n7. }",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize invertTree with root (val: 4)",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 4,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 7,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Store left child (val: 2) in temp",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 4,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 7,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Set left child to result of invertTree(right) (val: 7)",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 4,
+          "left": 2,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 7,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Set right child to result of invertTree(temp) (val: 2)",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 4,
+          "left": 2,
+          "right": 1
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 7,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Return the inverted root node",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 4,
+          "left": 2,
+          "right": 1
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 7,
+          "left": null,
+          "right": null
+        }
+      ]
+    }
+  ]
+}

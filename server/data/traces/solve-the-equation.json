@@ -1,0 +1,44 @@
+{
+  "title": "Solve the Equation",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Math",
+    "String",
+    "Simulation"
+  ],
+  "description": "Solve a linear equation with one variable 'x' and return the result as 'x=#'.",
+  "target": "x=2",
+  "pseudocode": "1: function solveEquation(equation) {\n2:   let [lhs, rhs] = equation.split('=');\n3:   let [coeffL, constL] = parse(lhs);\n4:   let [coeffR, constR] = parse(rhs);\n5:   let x = (constR - constL) / (coeffL - coeffR);\n6:   return x === 0 ? 'x=0' : 'x=' + x;\n7: }",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Split equation into left and right sides: 'x+5' and '3x+1'",
+      "array": [
+        "x+5",
+        "3x+1"
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Parse left side: coeff=1, const=5",
+      "i": 1,
+      "j": 5
+    },
+    {
+      "codeLine": 4,
+      "note": "Parse right side: coeff=3, const=1",
+      "i": 3,
+      "j": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Calculate x: (1 - 5) / (1 - 3) = -4 / -2 = 2",
+      "i": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Return the result formatted as x=2"
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "title": "Baseball Game",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Stack",
+    "Simulation"
+  ],
+  "description": "Calculate the final score of a baseball game based on a series of operations on a score list.",
+  "pseudocode": "let record = [];\nfor (let op of ops) {\n  if (op === '+') {\n    record.push(record[record.length - 1] + record[record.length - 2]);\n  } else if (op === 'D') {\n    record.push(record[record.length - 1] * 2);\n  } else if (op === 'C') {\n    record.pop();\n  } else {\n    record.push(Number(op));\n  }\n}",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize an empty score record.",
+      "array": []
+    },
+    {
+      "codeLine": 4,
+      "note": "Operation '5': Push 5 onto the record.",
+      "array": [
+        5
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Operation '2': Push 2 onto the record.",
+      "array": [
+        5,
+        2
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Operation 'C': Remove the last score.",
+      "array": [
+        5
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Operation 'D': Double the last score (5 * 2 = 10).",
+      "array": [
+        5,
+        10
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Operation '+': Sum the last two scores (5 + 10 = 15).",
+      "array": [
+        5,
+        10,
+        15
+      ]
+    }
+  ]
+}

@@ -1,0 +1,89 @@
+{
+  "title": "Swapping Nodes In A Linked List",
+  "difficulty": "Medium",
+  "type": "linked-list",
+  "tags": [
+    "Linked List",
+    "Two Pointers"
+  ],
+  "description": "Swap the values of the k-th node from the beginning and the k-th node from the end of a linked list.",
+  "target": 2,
+  "pseudocode": "1. p1 = head, p2 = head\n2. for i = 1 to k-1: p1 = p1.next\n3. first = p1, ptr = p1\n4. while ptr.next != null: ptr = ptr.next, p2 = p2.next\n5. temp = first.val, first.val = p2.val, p2.val = temp",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize pointers p1 and p2 at the head.",
+      "nodes": [
+        {
+          "val": 1,
+          "next": 1
+        },
+        {
+          "val": 2,
+          "next": 2
+        },
+        {
+          "val": 3,
+          "next": null
+        }
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Move p1 to the k-th node (index 1, value 2).",
+      "nodes": [
+        {
+          "val": 1,
+          "next": 1
+        },
+        {
+          "val": 2,
+          "next": 2
+        },
+        {
+          "val": 3,
+          "next": null
+        }
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Move p2 and ptr until ptr reaches the end.",
+      "nodes": [
+        {
+          "val": 1,
+          "next": 1
+        },
+        {
+          "val": 2,
+          "next": 2
+        },
+        {
+          "val": 3,
+          "next": null
+        }
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Swap values of first node (2) and second node (2).",
+      "nodes": [
+        {
+          "val": 1,
+          "next": 1
+        },
+        {
+          "val": 2,
+          "next": 2
+        },
+        {
+          "val": 3,
+          "next": null
+        }
+      ]
+    }
+  ]
+}

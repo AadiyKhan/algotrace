@@ -1,0 +1,73 @@
+{
+  "title": "Reverse Words in a String III",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "String",
+    "Two Pointers"
+  ],
+  "description": "Reverse the order of characters in each word within a sentence while still preserving whitespace and initial word order.",
+  "target": null,
+  "pseudocode": "1. let arr = s.split('');\n2. let start = 0;\n3. for (let end = 0; end <= arr.length; end++) {\n4.   if (end === arr.length || arr[end] === ' ') {\n5.     let left = start, right = end - 1;\n6.     while (left < right) {\n7.       [arr[left], arr[right]] = [arr[right], arr[left]];\n8.       left++; right--;\n9.     }\n10.    start = end + 1;\n11.  }\n12. }",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize char array from string 'ab cd'",
+      "array": [
+        "a",
+        "b",
+        " ",
+        "c",
+        "d"
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Start loop, end points to index 0",
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Iterate until space found at index 2",
+      "i": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Reverse word 'ab' (indices 0 to 1)",
+      "i": 2
+    },
+    {
+      "codeLine": 7,
+      "note": "Swap 'a' and 'b'",
+      "array": [
+        "b",
+        "a",
+        " ",
+        "c",
+        "d"
+      ]
+    },
+    {
+      "codeLine": 10,
+      "note": "Reset start to index 3",
+      "i": 3
+    },
+    {
+      "codeLine": 4,
+      "note": "Iterate until end of array",
+      "i": 5
+    },
+    {
+      "codeLine": 7,
+      "note": "Swap 'c' and 'd'",
+      "array": [
+        "b",
+        "a",
+        " ",
+        "d",
+        "c"
+      ]
+    }
+  ]
+}

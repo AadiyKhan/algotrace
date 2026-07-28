@@ -1,0 +1,260 @@
+{
+  "title": "Divide Two Integers",
+  "difficulty": "Medium",
+  "type": null,
+  "tags": [
+    "Math",
+    "Bit Manipulation"
+  ],
+  "description": "Given two integers, `dividend` and `divisor`, divide two integers without using multiplication, division, and modulo operators. The integer division should truncate toward zero. Handle potential overflow cases like `MIN_INT / -1`.",
+  "pseudocode": "1. function divide(dividend, divisor):\n2.    // Handle overflow edge case for standard integer range\n3.    if dividend === -2147483648 && divisor === -1: return 2147483647;\n4.\n5.    // Determine the sign of the result\n6.    const is_negative = (dividend < 0) !== (divisor < 0);\n7.\n8.    // Work with absolute values to simplify calculations\n9.    let abs_dividend = Math.abs(dividend);\n10.   let abs_divisor = Math.abs(divisor);\n11.\n12.   let quotient = 0;\n13.\n14.   // Repeatedly subtract the largest possible multiple of abs_divisor from abs_dividend\n15.   while (abs_dividend >= abs_divisor) {\n16.       let temp_divisor = abs_divisor;\n17.       let multiple = 1;\n18.       // Find the largest multiple of temp_divisor (abs_divisor * 2^k) that is <= abs_dividend\n19.       // Condition `abs_dividend - temp_divisor >= temp_divisor` prevents `temp_divisor << 1` overflow\n20.       while (abs_dividend - temp_divisor >= temp_divisor) {\n21.           temp_divisor <<= 1; // Double temp_divisor\n22.           multiple <<= 1;    // Double the multiple\n23.       }\n24.       // Subtract the found multiple from abs_dividend\n25.       abs_dividend -= temp_divisor;\n26.       // Add the corresponding multiple to the quotient\n27.       quotient += multiple;\n28.   }\n29.\n30.   // Apply the determined sign to the quotient\n31.   return is_negative ? -quotient : quotient;",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Start `divide` function with `dividend = 10`, `divisor = 3`.",
+      "i": 10,
+      "j": 3,
+      "quotient": 0,
+      "is_negative": false
+    },
+    {
+      "codeLine": 3,
+      "note": "Check for `MIN_INT / -1` overflow case. Not applicable here.",
+      "i": 10,
+      "j": 3,
+      "quotient": 0,
+      "is_negative": false
+    },
+    {
+      "codeLine": 6,
+      "note": "Determine if the result should be negative. `(10 < 0)` is false, `(3 < 0)` is false. `false !== false` is false. So, `is_negative` is false.",
+      "i": 10,
+      "j": 3,
+      "quotient": 0,
+      "is_negative": false
+    },
+    {
+      "codeLine": 9,
+      "note": "Set `abs_dividend` to absolute value of `dividend`. `Math.abs(10)` is 10.",
+      "i": 10,
+      "j": 3,
+      "quotient": 0,
+      "is_negative": false,
+      "abs_dividend": 10
+    },
+    {
+      "codeLine": 10,
+      "note": "Set `abs_divisor` to absolute value of `divisor`. `Math.abs(3)` is 3.",
+      "i": 10,
+      "j": 3,
+      "quotient": 0,
+      "is_negative": false,
+      "abs_dividend": 10,
+      "abs_divisor": 3
+    },
+    {
+      "codeLine": 12,
+      "note": "Initialize `quotient` to 0.",
+      "i": 10,
+      "j": 3,
+      "quotient": 0,
+      "is_negative": false,
+      "abs_dividend": 10,
+      "abs_divisor": 3
+    },
+    {
+      "codeLine": 15,
+      "note": "Outer `while` loop: `abs_dividend (10)` >= `abs_divisor (3)` is true. Enter loop.",
+      "i": 10,
+      "j": 3,
+      "quotient": 0,
+      "is_negative": false,
+      "abs_dividend": 10,
+      "abs_divisor": 3
+    },
+    {
+      "codeLine": 16,
+      "note": "Initialize `temp_divisor` with `abs_divisor` (3).",
+      "i": 10,
+      "j": 3,
+      "quotient": 0,
+      "is_negative": false,
+      "abs_dividend": 10,
+      "abs_divisor": 3,
+      "temp_divisor": 3
+    },
+    {
+      "codeLine": 17,
+      "note": "Initialize `multiple` with 1.",
+      "i": 10,
+      "j": 3,
+      "quotient": 0,
+      "is_negative": false,
+      "abs_dividend": 10,
+      "abs_divisor": 3,
+      "temp_divisor": 3,
+      "multiple": 1
+    },
+    {
+      "codeLine": 20,
+      "note": "Inner `while` loop: `abs_dividend (10) - temp_divisor (3)` (which is 7) >= `temp_divisor (3)` is true (7 >= 3). Double `temp_divisor` and `multiple`.",
+      "i": 10,
+      "j": 3,
+      "quotient": 0,
+      "is_negative": false,
+      "abs_dividend": 10,
+      "abs_divisor": 3,
+      "temp_divisor": 3,
+      "multiple": 1
+    },
+    {
+      "codeLine": 21,
+      "note": "`temp_divisor` becomes `3 << 1` (6).",
+      "i": 10,
+      "j": 3,
+      "quotient": 0,
+      "is_negative": false,
+      "abs_dividend": 10,
+      "abs_divisor": 3,
+      "temp_divisor": 6,
+      "multiple": 1
+    },
+    {
+      "codeLine": 22,
+      "note": "`multiple` becomes `1 << 1` (2).",
+      "i": 10,
+      "j": 3,
+      "quotient": 0,
+      "is_negative": false,
+      "abs_dividend": 10,
+      "abs_divisor": 3,
+      "temp_divisor": 6,
+      "multiple": 2
+    },
+    {
+      "codeLine": 20,
+      "note": "Inner `while` loop: `abs_dividend (10) - temp_divisor (6)` (which is 4) >= `temp_divisor (6)` is false (4 >= 6). Exit inner loop.",
+      "i": 10,
+      "j": 3,
+      "quotient": 0,
+      "is_negative": false,
+      "abs_dividend": 10,
+      "abs_divisor": 3,
+      "temp_divisor": 6,
+      "multiple": 2
+    },
+    {
+      "codeLine": 25,
+      "note": "Subtract `temp_divisor (6)` from `abs_dividend (10)`. `abs_dividend` becomes 4.",
+      "i": 10,
+      "j": 3,
+      "quotient": 0,
+      "is_negative": false,
+      "abs_dividend": 4,
+      "abs_divisor": 3,
+      "temp_divisor": 6,
+      "multiple": 2
+    },
+    {
+      "codeLine": 26,
+      "note": "Add `multiple (2)` to `quotient (0)`. `quotient` becomes 2.",
+      "i": 10,
+      "j": 3,
+      "quotient": 2,
+      "is_negative": false,
+      "abs_dividend": 4,
+      "abs_divisor": 3,
+      "temp_divisor": 6,
+      "multiple": 2
+    },
+    {
+      "codeLine": 15,
+      "note": "Outer `while` loop: `abs_dividend (4)` >= `abs_divisor (3)` is true. Enter loop.",
+      "i": 4,
+      "j": 3,
+      "quotient": 2,
+      "is_negative": false,
+      "abs_dividend": 4,
+      "abs_divisor": 3
+    },
+    {
+      "codeLine": 16,
+      "note": "Initialize `temp_divisor` with `abs_divisor` (3).",
+      "i": 4,
+      "j": 3,
+      "quotient": 2,
+      "is_negative": false,
+      "abs_dividend": 4,
+      "abs_divisor": 3,
+      "temp_divisor": 3
+    },
+    {
+      "codeLine": 17,
+      "note": "Initialize `multiple` with 1.",
+      "i": 4,
+      "j": 3,
+      "quotient": 2,
+      "is_negative": false,
+      "abs_dividend": 4,
+      "abs_divisor": 3,
+      "temp_divisor": 3,
+      "multiple": 1
+    },
+    {
+      "codeLine": 20,
+      "note": "Inner `while` loop: `abs_dividend (4) - temp_divisor (3)` (which is 1) >= `temp_divisor (3)` is false (1 >= 3). Exit inner loop.",
+      "i": 4,
+      "j": 3,
+      "quotient": 2,
+      "is_negative": false,
+      "abs_dividend": 4,
+      "abs_divisor": 3,
+      "temp_divisor": 3,
+      "multiple": 1
+    },
+    {
+      "codeLine": 25,
+      "note": "Subtract `temp_divisor (3)` from `abs_dividend (4)`. `abs_dividend` becomes 1.",
+      "i": 4,
+      "j": 3,
+      "quotient": 2,
+      "is_negative": false,
+      "abs_dividend": 1,
+      "abs_divisor": 3,
+      "temp_divisor": 3,
+      "multiple": 1
+    },
+    {
+      "codeLine": 26,
+      "note": "Add `multiple (1)` to `quotient (2)`. `quotient` becomes 3.",
+      "i": 4,
+      "j": 3,
+      "quotient": 3,
+      "is_negative": false,
+      "abs_dividend": 1,
+      "abs_divisor": 3,
+      "temp_divisor": 3,
+      "multiple": 1
+    },
+    {
+      "codeLine": 15,
+      "note": "Outer `while` loop: `abs_dividend (1)` >= `abs_divisor (3)` is false. Exit outer loop.",
+      "i": 1,
+      "j": 3,
+      "quotient": 3,
+      "is_negative": false,
+      "abs_dividend": 1,
+      "abs_divisor": 3
+    },
+    {
+      "codeLine": 31,
+      "note": "`is_negative` is false, so return `quotient` (3).",
+      "i": 1,
+      "j": 3,
+      "quotient": 3,
+      "is_negative": false,
+      "abs_dividend": 1,
+      "abs_divisor": 3
+    }
+  ]
+}

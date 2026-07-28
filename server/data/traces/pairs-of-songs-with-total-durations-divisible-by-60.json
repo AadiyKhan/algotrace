@@ -1,0 +1,108 @@
+{
+  "title": "Pairs of Songs With Total Durations Divisible by 60",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Math",
+    "Hash Table"
+  ],
+  "description": "Find the number of pairs of songs (i, j) such that (time[i] + time[j]) % 60 == 0.",
+  "target": 60,
+  "pseudocode": "1. count = 0\n2. remainders = new Array(60).fill(0)\n3. for time in times:\n4.   rem = time % 60\n5.   target = (60 - rem) % 60\n6.   count += remainders[target]\n7.   remainders[rem]++",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize count to 0 and remainder frequency map.",
+      "array": [
+        30,
+        20,
+        150
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Process first song (30). Remainder is 30.",
+      "array": [
+        30,
+        20,
+        150
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Target for 30 is (60 - 30) % 60 = 30. remainders[30] is 0.",
+      "array": [
+        30,
+        20,
+        150
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Update remainders[30] to 1.",
+      "array": [
+        30,
+        20,
+        150
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Process second song (20). Remainder is 20.",
+      "array": [
+        30,
+        20,
+        150
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Target for 20 is 40. remainders[40] is 0.",
+      "array": [
+        30,
+        20,
+        150
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Update remainders[20] to 1.",
+      "array": [
+        30,
+        20,
+        150
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Process third song (150). 150 % 60 = 30.",
+      "array": [
+        30,
+        20,
+        150
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Target for 30 is 30. remainders[30] is 1. Add 1 to count.",
+      "array": [
+        30,
+        20,
+        150
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Update remainders[30] to 2.",
+      "array": [
+        30,
+        20,
+        150
+      ]
+    }
+  ]
+}

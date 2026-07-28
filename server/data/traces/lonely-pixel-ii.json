@@ -1,0 +1,91 @@
+{
+  "title": "Lonely Pixel II",
+  "difficulty": "Medium",
+  "type": "matrix",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "Matrix"
+  ],
+  "description": "Find the number of black pixels 'B' that are part of a column that contains exactly N black pixels, where that row also contains exactly N black pixels and matches other rows with N black pixels.",
+  "target": 1,
+  "pseudocode": "1. Count black pixels in each row and column\n2. Iterate through each cell (i, j)\n3. Check if cell is 'B' and satisfies row/column count == N\n4. Verify row pattern matches other valid rows",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize row counts: [1, 1], col counts: [1, 1, 0]",
+      "matrix": [
+        [
+          "B",
+          "B",
+          "W"
+        ],
+        [
+          "B",
+          "B",
+          "W"
+        ]
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Checking cell at (0, 0)",
+      "matrix": [
+        [
+          "B",
+          "B",
+          "W"
+        ],
+        [
+          "B",
+          "B",
+          "W"
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Row 0 count is 2, Col 0 count is 2. Does not equal N=1.",
+      "matrix": [
+        [
+          "B",
+          "B",
+          "W"
+        ],
+        [
+          "B",
+          "B",
+          "W"
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Proceeding to next cell",
+      "matrix": [
+        [
+          "B",
+          "B",
+          "W"
+        ],
+        [
+          "B",
+          "B",
+          "W"
+        ]
+      ],
+      "curr": [
+        0,
+        1
+      ]
+    }
+  ]
+}

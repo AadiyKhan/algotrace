@@ -1,0 +1,62 @@
+{
+  "title": "Course Schedule",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Graph",
+    "DFS",
+    "Topological Sort"
+  ],
+  "description": "Determine if you can finish all courses given prerequisites using cycle detection in a directed graph.",
+  "target": null,
+  "pseudocode": "1. build adjacency list from prerequisites\n2. state array: 0=unvisited, 1=visiting, 2=visited\n3. for each course i: if state[i] == 0 and hasCycle(i) return false\n4. return true\n5. function hasCycle(node):\n6. state[node] = 1\n7. for neighbor in adj[node]:\n8. if state[neighbor] == 1: return true\n9. if state[neighbor] == 0 and hasCycle(neighbor): return true\n10. state[node] = 2; return false",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Build adjacency list: 0 -> [1], 1 -> [0] (Cycle)",
+      "array": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Start DFS from course 0",
+      "i": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Mark course 0 as visiting (1)",
+      "array": [
+        1,
+        0
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Visit neighbor of 0, which is 1",
+      "curr": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Mark course 1 as visiting (1)",
+      "array": [
+        1,
+        1
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Visit neighbor of 1, which is 0",
+      "curr": 0
+    },
+    {
+      "codeLine": 8,
+      "note": "Node 0 is already in state 1, cycle detected!",
+      "visited": [
+        0,
+        1
+      ]
+    }
+  ]
+}

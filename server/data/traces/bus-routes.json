@@ -1,0 +1,63 @@
+{
+  "title": "Bus Routes",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "BFS",
+    "Graph"
+  ],
+  "description": "Find the minimum number of buses to travel from source to target using BFS on bus routes.",
+  "target": 6,
+  "pseudocode": "1. map = Map<stop, List<busIndex>>\n2. queue = [source], visitedBuses = Set()\n3. count = 0\n4. while queue not empty:\n5.   count++\n6.   for size of queue:\n7.     curr = queue.pop()\n8.     for bus in map[curr]:\n9.       if bus not in visitedBuses:\n10.        visitedBuses.add(bus)\n11.        for stop in routes[bus]:\n12.          if stop == target: return count\n13.          queue.push(stop)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Building graph: Mapping stops to bus indices.",
+      "array": [
+        1,
+        2,
+        7
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Starting BFS from stop 1.",
+      "i": 0,
+      "visited": []
+    },
+    {
+      "codeLine": 5,
+      "note": "Incrementing bus count to 1.",
+      "i": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "Processing stop 1, taking bus 0.",
+      "curr": 1
+    },
+    {
+      "codeLine": 11,
+      "note": "Adding connected stops [2, 7] to queue.",
+      "array": [
+        2,
+        7
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Incrementing bus count to 2.",
+      "i": 2
+    },
+    {
+      "codeLine": 11,
+      "note": "Processing bus from stop 7, reaching target 6.",
+      "curr": 7
+    },
+    {
+      "codeLine": 12,
+      "note": "Target reached, returning total bus count.",
+      "i": 2
+    }
+  ]
+}

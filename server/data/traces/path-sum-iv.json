@@ -1,0 +1,179 @@
+{
+  "title": "Path Sum IV",
+  "difficulty": "Medium",
+  "type": "tree",
+  "tags": [
+    "Tree",
+    "DFS",
+    "Math"
+  ],
+  "description": "Calculate the sum of all paths from the root to the leaves in a tree represented by a list of integers (depth, position, value).",
+  "pseudocode": "function pathSum(nums) {\n  let map = new Map();\n  for (let n of nums) map.set(Math.floor(n / 10), n % 10);\n  let sum = 0;\n  function dfs(pos, currentSum) {\n    let depth = Math.floor(pos / 10), val = pos % 10;\n    let left = (depth + 1) * 10 + (2 * val - 1), right = (depth + 1) * 10 + (2 * val);\n    currentSum += map.get(pos);\n    if (!map.has(left) && !map.has(right)) sum += currentSum;\n    if (map.has(left)) dfs(left, currentSum);\n    if (map.has(right)) dfs(right, currentSum);\n  }\n  dfs(11, 0);\n  return sum;\n}",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Mapping input [113, 215, 221] to a Map: {11:3, 21:5, 22:1}",
+      "treeNodes": [
+        {
+          "id": 11,
+          "val": 3,
+          "left": 21,
+          "right": 22
+        },
+        {
+          "id": 21,
+          "val": 5,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 22,
+          "val": 1,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 11,
+      "note": "Starting DFS at root (11) with currentSum 0",
+      "treeNodes": [
+        {
+          "id": 11,
+          "val": 3,
+          "left": 21,
+          "right": 22
+        },
+        {
+          "id": 21,
+          "val": 5,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 22,
+          "val": 1,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        11
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Traversing to left child (21), currentSum becomes 3 + 5 = 8",
+      "treeNodes": [
+        {
+          "id": 11,
+          "val": 3,
+          "left": 21,
+          "right": 22
+        },
+        {
+          "id": 21,
+          "val": 5,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 22,
+          "val": 1,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        11,
+        21
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Leaf node reached at 21, adding currentSum 8 to total",
+      "treeNodes": [
+        {
+          "id": 11,
+          "val": 3,
+          "left": 21,
+          "right": 22
+        },
+        {
+          "id": 21,
+          "val": 5,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 22,
+          "val": 1,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        11,
+        21
+      ]
+    },
+    {
+      "codeLine": 10,
+      "note": "Traversing to right child (22), currentSum becomes 3 + 1 = 4",
+      "treeNodes": [
+        {
+          "id": 11,
+          "val": 3,
+          "left": 21,
+          "right": 22
+        },
+        {
+          "id": 21,
+          "val": 5,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 22,
+          "val": 1,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        11,
+        21,
+        22
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Leaf node reached at 22, adding currentSum 4 to total (Total = 12)",
+      "treeNodes": [
+        {
+          "id": 11,
+          "val": 3,
+          "left": 21,
+          "right": 22
+        },
+        {
+          "id": 21,
+          "val": 5,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 22,
+          "val": 1,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        11,
+        21,
+        22
+      ]
+    }
+  ]
+}

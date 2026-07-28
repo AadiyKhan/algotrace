@@ -1,0 +1,216 @@
+{
+  "title": "Convert Binary Search Tree to Sorted Doubly Linked List",
+  "difficulty": "Medium",
+  "type": "tree",
+  "tags": [
+    "Tree",
+    "DFS",
+    "Linked List",
+    "BST"
+  ],
+  "description": "Convert a BST to a circular sorted doubly linked list in-place.",
+  "target": null,
+  "pseudocode": "1: let first = null, last = null\n2: function traverse(node) {\n3:   if (!node) return\n4:   traverse(node.left)\n5:   if (last) { last.right = node; node.left = last }\n6:   else { first = node }\n7:   last = node\n8:   traverse(node.right)\n9: }\n10: traverse(root)\n11: first.left = last; last.right = first",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize first and last pointers to null.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 2,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Traverse to the leftmost node (val: 1).",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 2,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        1
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Process node 1: set as first.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 2,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Update last to node 1.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 2,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Process node 2: link last (node 1) to node 2.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 2,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": null,
+          "right": 0
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Traverse to right subtree (val: 3).",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 2,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": null,
+          "right": 0
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        1,
+        0,
+        2
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Process node 3: link last (node 2) to node 3.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 2,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": null,
+          "right": 0
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": 0,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 11,
+      "note": "Make list circular by connecting first (1) and last (3).",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 2,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": 2,
+          "right": 0
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": 0,
+          "right": 1
+        }
+      ]
+    }
+  ]
+}

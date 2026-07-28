@@ -1,0 +1,97 @@
+{
+  "title": "Partition Equal Subset Sum",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Dynamic Programming"
+  ],
+  "description": "Determine if the array can be partitioned into two subsets such that the sum of elements in both subsets is equal.",
+  "target": 5,
+  "pseudocode": "1. sum = total of nums; \n2. if sum % 2 != 0 return false; \n3. target = sum / 2; \n4. dp = array of size target+1 filled with false; \n5. dp[0] = true; \n6. for num in nums: \n7.   for i from target down to num: \n8.     dp[i] = dp[i] || dp[i - num]",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Calculate total sum of [1, 2, 3, 4] = 10",
+      "array": [
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Target sum is 10 / 2 = 5",
+      "array": [
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Initialize DP table of size 6 with false, dp[0] is true",
+      "array": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Processing number 1",
+      "i": 1,
+      "array": [
+        1,
+        1,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Processing number 2",
+      "i": 2,
+      "array": [
+        1,
+        1,
+        1,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Processing number 3",
+      "i": 3,
+      "array": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Target 5 reached, returning true",
+      "array": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    }
+  ]
+}

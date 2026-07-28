@@ -1,0 +1,112 @@
+{
+  "title": "Most Stones Removed With Same Row or Column",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Graph",
+    "DFS",
+    "Union Find"
+  ],
+  "description": "Remove the maximum number of stones such that each stone removed shares a row or column with another stone remaining on the grid.",
+  "target": 3,
+  "pseudocode": "1. visited = new Set()\n2. for stone in stones:\n3.   if stone not in visited:\n4.     dfs(stone)\n5.     count++\n6. return stones.length - count",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize visited set to keep track of processed stones.",
+      "array": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Start iteration at first stone [0,0].",
+      "i": 0,
+      "array": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "DFS traverses all connected stones sharing rows or columns.",
+      "visited": [
+        0,
+        1,
+        2
+      ],
+      "array": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Increment component count after completing DFS.",
+      "i": 1,
+      "array": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Total stones (3) - 1 component = 2 stones can be removed.",
+      "array": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ]
+    }
+  ]
+}

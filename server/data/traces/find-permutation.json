@@ -1,0 +1,63 @@
+{
+  "title": "DI String Match",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Two Pointers",
+    "Greedy"
+  ],
+  "description": "Given a string S containing only 'I' (increase) and 'D' (decrease), return any permutation A such that A[i] < A[i+1] if S[i] == 'I', and A[i] > A[i+1] if S[i] == 'D'.",
+  "target": "ID",
+  "pseudocode": "let low = 0, high = n;\nlet res = [];\nfor (let char of S) {\n  if (char === 'I') res.push(low++);\n  else res.push(high--);\n}\nres.push(low);",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize low pointer at 0 and high pointer at n (length of string 'ID' is 2).",
+      "array": [],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Processing first character 'I'.",
+      "array": [
+        0
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Char is 'I', push low (0) and increment low to 1.",
+      "array": [
+        0
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Processing second character 'D'.",
+      "array": [
+        0
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Char is 'D', push high (2) and decrement high to 1.",
+      "array": [
+        0,
+        2
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Loop finished, push remaining low (1) to array.",
+      "array": [
+        0,
+        2,
+        1
+      ]
+    }
+  ]
+}

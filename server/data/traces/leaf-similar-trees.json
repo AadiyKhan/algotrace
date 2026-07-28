@@ -1,0 +1,145 @@
+{
+  "title": "Leaf-Similar Trees",
+  "difficulty": "Easy",
+  "type": "tree",
+  "tags": [
+    "Tree",
+    "DFS"
+  ],
+  "description": "Determine if two binary trees are leaf-similar by comparing their sequences of leaf values.",
+  "pseudocode": "function getLeaves(root, leaves) {\n  if (!root) return;\n  if (!root.left && !root.right) leaves.push(root.val);\n  getLeaves(root.left, leaves);\n  getLeaves(root.right, leaves);\n}\nconst leaves1 = [], leaves2 = [];\ngetLeaves(root1, leaves1);\ngetLeaves(root2, leaves2);\nreturn JSON.stringify(leaves1) === JSON.stringify(leaves2);",
+  "steps": [
+    {
+      "codeLine": 8,
+      "note": "Initializing leaf arrays for both trees.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 3,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 2,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 1,
+      "note": "Traversing tree 1, node 3.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 3,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 2,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        0
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Reached leaf node 1 in tree 1.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 3,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 2,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Reached leaf node 2 in tree 1.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 3,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 2,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 10,
+      "note": "Comparison: leaves1 = [1, 2], leaves2 = [1, 2]. Trees are leaf-similar.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 3,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 2,
+          "left": null,
+          "right": null
+        }
+      ]
+    }
+  ]
+}

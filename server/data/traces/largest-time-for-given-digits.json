@@ -1,0 +1,96 @@
+{
+  "title": "Largest Time for Given Digits",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Math",
+    "Permutation"
+  ],
+  "description": "Given an array of 4 digits, return the largest 24-hour time that can be made.",
+  "target": null,
+  "pseudocode": "1: maxTime = -1\n2: permutations = getPermutations(arr)\n3: for p in permutations:\n4:   h = p[0]*10 + p[1]\n5:   m = p[2]*10 + p[3]\n6:   if h < 24 and m < 60:\n7:     maxTime = max(maxTime, h * 60 + m)\n8: return format(maxTime)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize maxTime to -1 to represent no valid time found yet.",
+      "array": [
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Generate all possible permutations of the digits [1, 2, 3, 4].",
+      "array": [
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Iterate through the first permutation: [1, 2, 3, 4].",
+      "i": 0,
+      "array": [
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Calculate hour h = 1*10 + 2 = 12.",
+      "array": [
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Calculate minutes m = 3*10 + 4 = 34.",
+      "array": [
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Check if 12 < 24 and 34 < 60. Condition met.",
+      "array": [
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Update maxTime to 12:34 (754 minutes).",
+      "array": [
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "After checking all permutations, return formatted string 12:34.",
+      "array": [
+        1,
+        2,
+        3,
+        4
+      ]
+    }
+  ]
+}

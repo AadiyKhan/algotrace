@@ -1,0 +1,224 @@
+{
+  "title": "Maximum Distance In Arrays",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Greedy"
+  ],
+  "description": "Find the maximum distance between two integers in two different arrays, where distance is defined as |arrays[i][last] - arrays[j][first]|.",
+  "target": null,
+  "pseudocode": "1. min_val = arrays[0][0], max_val = arrays[0][last]\n2. max_dist = 0\n3. for i from 1 to arrays.length - 1:\n4.   max_dist = max(max_dist, abs(arrays[i][last] - min_val), abs(max_val - arrays[i][0]))\n5.   min_val = min(min_val, arrays[i][0])\n6.   max_val = max(max_val, arrays[i][last])\n7. return max_dist",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize min_val and max_val with the first array.",
+      "array": [
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          1,
+          2,
+          3
+        ]
+      ],
+      "i": null
+    },
+    {
+      "codeLine": 3,
+      "note": "Start iteration from the second array.",
+      "array": [
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          1,
+          2,
+          3
+        ]
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Calculate max distance with index 1: |5 - 1| = 4, |3 - 4| = 1.",
+      "array": [
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          1,
+          2,
+          3
+        ]
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Update global min_val (min(1, 4) = 1).",
+      "array": [
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          1,
+          2,
+          3
+        ]
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Update global max_val (max(3, 5) = 5).",
+      "array": [
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          1,
+          2,
+          3
+        ]
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Move to the third array.",
+      "array": [
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          1,
+          2,
+          3
+        ]
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Calculate max distance with index 2: |3 - 1| = 2, |5 - 1| = 4.",
+      "array": [
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          1,
+          2,
+          3
+        ]
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Update global min_val (min(1, 1) = 1).",
+      "array": [
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          1,
+          2,
+          3
+        ]
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Update global max_val (max(5, 3) = 5).",
+      "array": [
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          1,
+          2,
+          3
+        ]
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 7,
+      "note": "Return max distance: 4.",
+      "array": [
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          1,
+          2,
+          3
+        ]
+      ],
+      "i": 2
+    }
+  ]
+}

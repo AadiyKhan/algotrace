@@ -1,0 +1,67 @@
+{
+  "title": "Number Of Days In A Month",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Math"
+  ],
+  "description": "Given a year and a month, return the number of days in that month, accounting for leap years.",
+  "target": null,
+  "pseudocode": "1: function getDays(year, month) {\n2:   let daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];\n3:   if (month === 2 && ((year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0))) {\n4:     return 29;\n5:   }\n6:   return daysInMonth[month - 1];\n7: }",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Initialize days count array for standard year.",
+      "array": [
+        31,
+        28,
+        31,
+        30,
+        31,
+        30,
+        31,
+        31,
+        30,
+        31,
+        30,
+        31
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Checking leap year condition for February (month 2) in year 2024.",
+      "array": [
+        31,
+        28,
+        31,
+        30,
+        31,
+        30,
+        31,
+        31,
+        30,
+        31,
+        30,
+        31
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Year 2024 is a leap year, return 29.",
+      "array": [
+        31,
+        28,
+        31,
+        30,
+        31,
+        30,
+        31,
+        31,
+        30,
+        31,
+        30,
+        31
+      ]
+    }
+  ]
+}

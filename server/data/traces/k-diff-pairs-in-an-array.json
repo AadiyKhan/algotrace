@@ -1,0 +1,74 @@
+{
+  "title": "K-diff Pairs in an Array",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "Two Pointers",
+    "Sorting"
+  ],
+  "description": "Find the number of unique k-diff pairs in an array where a pair is (nums[i], nums[j]) such that |nums[i] - nums[j]| == k.",
+  "target": 2,
+  "pseudocode": "1. map = new Map();\n2. for num of nums: map.set(num, (map.get(num) || 0) + 1);\n3. count = 0;\n4. for [key, val] of map:\n5. if (k > 0 && map.has(key + k)) count++;\n6. else if (k === 0 && val > 1) count++;",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize empty frequency map",
+      "array": [
+        1,
+        2,
+        3,
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Populate frequency map: {1: 2, 2: 2, 3: 1}",
+      "array": [
+        1,
+        2,
+        3,
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Checking key 1: map.has(1+2) is true, count becomes 1",
+      "array": [
+        1,
+        2,
+        3,
+        1,
+        2
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Checking key 2: map.has(2+2) is false",
+      "array": [
+        1,
+        2,
+        3,
+        1,
+        2
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Checking key 3: map.has(3+2) is false",
+      "array": [
+        1,
+        2,
+        3,
+        1,
+        2
+      ],
+      "i": 3
+    }
+  ]
+}

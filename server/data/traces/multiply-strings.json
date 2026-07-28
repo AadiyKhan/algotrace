@@ -1,0 +1,95 @@
+{
+  "title": "Multiply Strings",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Math",
+    "String"
+  ],
+  "description": "Multiply two non-negative integers represented as strings.",
+  "target": "6",
+  "pseudocode": "1. let res = new Array(n + m).fill(0)\n2. for i = n - 1 down to 0:\n3.   for j = m - 1 down to 0:\n4.     let mul = (num1[i]) * (num2[j])\n5.     let sum = mul + res[i + j + 1]\n6.     res[i + j + 1] = sum % 10\n7.     res[i + j] += Math.floor(sum / 10)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize result array of size len1 + len2 with zeros.",
+      "array": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Start outer loop i = 0 for num1 = '2'.",
+      "array": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Start inner loop j = 0 for num2 = '3'.",
+      "array": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "i": 0,
+      "j": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Calculate product 2 * 3 = 6.",
+      "array": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "i": 0,
+      "j": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Add product to existing value at res[i+j+1].",
+      "array": [
+        0,
+        0,
+        0,
+        6
+      ],
+      "i": 0,
+      "j": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Update res[i+j+1] with modulo 10.",
+      "array": [
+        0,
+        0,
+        0,
+        6
+      ],
+      "i": 0,
+      "j": 0
+    },
+    {
+      "codeLine": 7,
+      "note": "Add carry to res[i+j], resulting in final array.",
+      "array": [
+        0,
+        0,
+        0,
+        6
+      ],
+      "i": 0,
+      "j": 0
+    }
+  ]
+}

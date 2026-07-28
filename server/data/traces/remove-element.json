@@ -1,0 +1,192 @@
+{
+  "title": "Remove Element",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Two Pointers"
+  ],
+  "description": "Given an integer array nums and an integer val, remove all occurrences of val in nums in-place. The relative order of the elements may be changed. The function should return the number of elements in nums which are not equal to val.",
+  "target": 3,
+  "pseudocode": "function removeElement(nums, val):\n  1. k = 0\n  2. for i from 0 to length(nums) - 1:\n  3.   if nums[i] != val:\n  4.     nums[k] = nums[i]\n  5.     k = k + 1\n  6. return k",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize 'k' to 0. This pointer will track the position where the next non-`val` element should be placed, and ultimately, be the count of non-`val` elements.",
+      "array": [
+        3,
+        2,
+        2,
+        3
+      ],
+      "k": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Start iterating through the array with pointer 'i' from the beginning.",
+      "array": [
+        3,
+        2,
+        2,
+        3
+      ],
+      "i": 0,
+      "k": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Check if nums[i] (3) is not equal to val (3). It is equal, so we skip the assignment and effectively 'remove' it.",
+      "array": [
+        3,
+        2,
+        2,
+        3
+      ],
+      "i": 0,
+      "k": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Increment 'i' and continue to the next element.",
+      "array": [
+        3,
+        2,
+        2,
+        3
+      ],
+      "i": 1,
+      "k": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Check if nums[i] (2) is not equal to val (3). It is not equal.",
+      "array": [
+        3,
+        2,
+        2,
+        3
+      ],
+      "i": 1,
+      "k": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Since nums[i] (2) is not val, assign nums[i] to nums[k]. This moves the valid element to the front of the array.",
+      "array": [
+        2,
+        2,
+        2,
+        3
+      ],
+      "i": 1,
+      "k": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Increment 'k'. It now points to the next available slot for a non-val element, and also represents one valid element found.",
+      "array": [
+        2,
+        2,
+        2,
+        3
+      ],
+      "i": 1,
+      "k": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Increment 'i' and continue to the next element.",
+      "array": [
+        2,
+        2,
+        2,
+        3
+      ],
+      "i": 2,
+      "k": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Check if nums[i] (2) is not equal to val (3). It is not equal.",
+      "array": [
+        2,
+        2,
+        2,
+        3
+      ],
+      "i": 2,
+      "k": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Assign nums[i] (2) to nums[k] (nums[1]). The element is already 2, so the array content appears unchanged.",
+      "array": [
+        2,
+        2,
+        2,
+        3
+      ],
+      "i": 2,
+      "k": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Increment 'k'. Two valid elements have now been placed.",
+      "array": [
+        2,
+        2,
+        2,
+        3
+      ],
+      "i": 2,
+      "k": 2
+    },
+    {
+      "codeLine": 2,
+      "note": "Increment 'i' and continue to the next element.",
+      "array": [
+        2,
+        2,
+        2,
+        3
+      ],
+      "i": 3,
+      "k": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Check if nums[i] (3) is not equal to val (3). It is equal, so we skip the assignment.",
+      "array": [
+        2,
+        2,
+        2,
+        3
+      ],
+      "i": 3,
+      "k": 2
+    },
+    {
+      "codeLine": 2,
+      "note": "Increment 'i'. The loop condition (i < length(nums)) is now false, so the loop terminates.",
+      "array": [
+        2,
+        2,
+        2,
+        3
+      ],
+      "i": 4,
+      "k": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "The loop has finished. Return 'k', which is the count of elements not equal to 'val'. The first 'k' elements of the array contain the desired result.",
+      "array": [
+        2,
+        2,
+        2,
+        3
+      ],
+      "k": 2
+    }
+  ]
+}

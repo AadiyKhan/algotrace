@@ -1,0 +1,84 @@
+{
+  "title": "Range Addition",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Prefix Sum"
+  ],
+  "description": "Given length n and updates where each update is [start, end, inc], perform all updates and return the modified array.",
+  "target": 5,
+  "pseudocode": "1. res = new Array(length).fill(0)\n2. for each update [start, end, val] in updates:\n3.   res[start] += val\n4.   if end + 1 < length: res[end + 1] -= val\n5. sum = 0\n6. for i in range(length):\n7.   sum += res[i]\n8.   res[i] = sum",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize result array of length 5 with zeros",
+      "array": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Apply first update [1, 3, 2]: add 2 at index 1",
+      "array": [
+        0,
+        2,
+        0,
+        0,
+        0
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Apply first update [1, 3, 2]: subtract 2 at index 4",
+      "array": [
+        0,
+        2,
+        0,
+        0,
+        -2
+      ],
+      "i": 4
+    },
+    {
+      "codeLine": 7,
+      "note": "Running prefix sum calculation at index 0",
+      "array": [
+        0,
+        2,
+        0,
+        0,
+        -2
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 8,
+      "note": "Running prefix sum calculation at index 1",
+      "array": [
+        0,
+        2,
+        2,
+        2,
+        0
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 8,
+      "note": "Finished prefix sum propagation",
+      "array": [
+        0,
+        2,
+        2,
+        2,
+        0
+      ]
+    }
+  ]
+}

@@ -1,0 +1,132 @@
+{
+  "title": "Arithmetic Slices II - Subsequence",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Dynamic Programming"
+  ],
+  "description": "Count the number of arithmetic subsequences of length at least 3 in the given array.",
+  "pseudocode": "1. let n = nums.length; let count = 0;\n2. let dp = new Array(n).fill(0).map(() => new Map());\n3. for (let i = 0; i < n; i++) {\n4.   for (let j = 0; j < i; j++) {\n5.     let diff = nums[i] - nums[j];\n6.     let countAtJ = dp[j].get(diff) || 0;\n7.     count += countAtJ;\n8.     dp[i].set(diff, (dp[i].get(diff) || 0) + countAtJ + 1);\n9.   }\n10. }",
+  "steps": [
+    {
+      "codeLine": 3,
+      "note": "Starting outer loop at i=1",
+      "array": [
+        2,
+        4,
+        6
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Inner loop i=1, j=0. Comparing 4 and 2",
+      "array": [
+        2,
+        4,
+        6
+      ],
+      "i": 1,
+      "j": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "diff = 4 - 2 = 2",
+      "array": [
+        2,
+        4,
+        6
+      ],
+      "i": 1,
+      "j": 0
+    },
+    {
+      "codeLine": 8,
+      "note": "dp[1] updated for diff 2: count 1",
+      "array": [
+        2,
+        4,
+        6
+      ],
+      "i": 1,
+      "j": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Moving to i=2",
+      "array": [
+        2,
+        4,
+        6
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Inner loop i=2, j=0. Comparing 6 and 2",
+      "array": [
+        2,
+        4,
+        6
+      ],
+      "i": 2,
+      "j": 0
+    },
+    {
+      "codeLine": 8,
+      "note": "dp[2] updated for diff 4: count 1",
+      "array": [
+        2,
+        4,
+        6
+      ],
+      "i": 2,
+      "j": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Inner loop i=2, j=1. Comparing 6 and 4",
+      "array": [
+        2,
+        4,
+        6
+      ],
+      "i": 2,
+      "j": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "diff = 6 - 4 = 2",
+      "array": [
+        2,
+        4,
+        6
+      ],
+      "i": 2,
+      "j": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "Found arithmetic subsequence! Total count = 1",
+      "array": [
+        2,
+        4,
+        6
+      ],
+      "i": 2,
+      "j": 1
+    },
+    {
+      "codeLine": 8,
+      "note": "dp[2] updated for diff 2: count 2",
+      "array": [
+        2,
+        4,
+        6
+      ],
+      "i": 2,
+      "j": 1
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "title": "Integer to English Words",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Math",
+    "String",
+    "Recursion"
+  ],
+  "description": "Convert a non-negative integer to its English words representation.",
+  "target": "123",
+  "pseudocode": "1. function helper(num) {\n2.   if (num == 0) return '';\n3.   if (num < 20) return below20[num] + ' ';\n4.   if (num < 100) return tens[Math.floor(num/10)] + ' ' + helper(num % 10);\n5.   return below20[Math.floor(num/100)] + ' Hundred ' + helper(num % 100);\n6. }\n7. function numberToWords(num) {\n8.   if (num == 0) return 'Zero';\n9.   let res = '';\n10.  for (let i = 0; i < 4; i++) {\n11.    if (num % 1000 != 0) res = helper(num % 1000) + thousands[i] + ' ' + res;\n12.    num = Math.floor(num / 1000);\n13.  }\n14.  return res.trim();\n15. }",
+  "steps": [
+    {
+      "codeLine": 8,
+      "note": "Initialize result string. Num is 123.",
+      "array": [
+        123
+      ]
+    },
+    {
+      "codeLine": 10,
+      "note": "Start loop for chunks of 1000. i = 0.",
+      "i": 0,
+      "array": [
+        123
+      ]
+    },
+    {
+      "codeLine": 11,
+      "note": "Process 123. Helper returns 'One Hundred Twenty Three '.",
+      "i": 0,
+      "array": [
+        123
+      ]
+    },
+    {
+      "codeLine": 12,
+      "note": "num becomes 0.",
+      "i": 0,
+      "array": [
+        0
+      ]
+    },
+    {
+      "codeLine": 14,
+      "note": "Return trimmed string.",
+      "array": [
+        0
+      ]
+    }
+  ]
+}

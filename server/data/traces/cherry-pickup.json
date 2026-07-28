@@ -1,0 +1,84 @@
+{
+  "title": "Cherry Pickup",
+  "difficulty": "Hard",
+  "type": "matrix",
+  "tags": [
+    "Dynamic Programming",
+    "Matrix"
+  ],
+  "description": "Find the maximum cherries collected by moving from (0,0) to (N-1,N-1) and back to (0,0) in a grid.",
+  "target": null,
+  "pseudocode": "1: N = grid.length\n2: dp = new Array(N).fill(0).map(() => new Array(N).fill(-1))\n3: for t from 0 to 2*N-2:\n4:   for i1 from max(0, t-N+1) to min(N-1, t):\n5:     for i2 from max(0, t-N+1) to min(N-1, t):\n6:       // calculate max cherries at current state",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize grid size N=2.",
+      "matrix": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Initialize DP table for state (i1, i2) where t is step count.",
+      "matrix": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Start iteration t=0 (start position).",
+      "curr": [
+        0,
+        0
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Evaluating paths at step t=1.",
+      "i": 1,
+      "visited": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Final step t=2, reaching bottom-right corner.",
+      "curr": [
+        1,
+        1
+      ],
+      "matrix": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ]
+    }
+  ]
+}

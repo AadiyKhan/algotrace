@@ -1,0 +1,47 @@
+{
+  "title": "One Edit Distance",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "String",
+    "Two Pointers"
+  ],
+  "description": "Determine if two strings are exactly one edit distance apart.",
+  "target": true,
+  "pseudocode": "1. if abs(len(s) - len(t)) > 1 return false\n2. for i in range(min(len(s), len(t))):\n3.   if s[i] != t[i]:\n4.     if len(s) == len(t): return s[i+1:] == t[i+1:]\n5.     if len(s) < len(t): return s[i:] == t[i+1:]\n6.     return s[i+1:] == t[i:]\n7. return abs(len(s) - len(t)) == 1",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Check length difference between 'ab' and 'acb'. Difference is 1, continue.",
+      "array": [
+        "a",
+        "b"
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Start loop at index i=0.",
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "s[0] == 'a', t[0] == 'a'. Matches.",
+      "i": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Increment i to 1.",
+      "i": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "s[1] ('b') != t[1] ('c'). Mismatch found.",
+      "i": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "len(s) < len(t) (2 < 3). Check if 'b' == 'b'. Returns true.",
+      "i": 1
+    }
+  ]
+}

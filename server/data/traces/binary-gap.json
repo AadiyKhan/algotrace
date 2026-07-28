@@ -1,0 +1,132 @@
+{
+  "title": "Binary Gap",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Math",
+    "Bit Manipulation"
+  ],
+  "description": "Find the longest distance between two consecutive 1s in the binary representation of an integer.",
+  "target": 2,
+  "pseudocode": "1: binary = n.toString(2)\n2: maxGap = 0, last = -1\n3: for i = 0 to binary.length - 1:\n4:   if binary[i] == '1':\n5:     if last != -1: maxGap = max(maxGap, i - last)\n6:     last = i",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Convert 22 to binary string: '10110'",
+      "array": [
+        1,
+        0,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Initialize maxGap and last index",
+      "array": [
+        1,
+        0,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "codeLine": 4,
+      "i": 0,
+      "note": "Found '1' at index 0",
+      "array": [
+        1,
+        0,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "codeLine": 6,
+      "i": 0,
+      "note": "Update last index to 0",
+      "array": [
+        1,
+        0,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "codeLine": 4,
+      "i": 1,
+      "note": "Current is '0', skip",
+      "array": [
+        1,
+        0,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "codeLine": 5,
+      "i": 2,
+      "note": "Found '1' at index 2, gap is 2 - 0 = 2",
+      "array": [
+        1,
+        0,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "codeLine": 6,
+      "i": 2,
+      "note": "Update last index to 2",
+      "array": [
+        1,
+        0,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "codeLine": 5,
+      "i": 3,
+      "note": "Found '1' at index 3, gap is 3 - 2 = 1, maxGap remains 2",
+      "array": [
+        1,
+        0,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "codeLine": 6,
+      "i": 3,
+      "note": "Update last index to 3",
+      "array": [
+        1,
+        0,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "codeLine": 4,
+      "i": 4,
+      "note": "Current is '0', finish loop",
+      "array": [
+        1,
+        0,
+        1,
+        1,
+        0
+      ]
+    }
+  ]
+}

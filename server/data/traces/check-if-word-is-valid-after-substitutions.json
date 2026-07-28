@@ -1,0 +1,85 @@
+{
+  "title": "Check If Word Is Valid After Substitutions",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Stack",
+    "String"
+  ],
+  "description": "Determine if a string is valid by repeatedly removing 'abc' from it.",
+  "target": null,
+  "pseudocode": "1. stack = []\n2. for char in s:\n3.   if char == 'c' and stack[-2:] == ['a', 'b']:\n4.     stack.pop(); stack.pop()\n5.   else: stack.push(char)\n6. return stack.length == 0",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Start processing 'aabcbc'",
+      "array": []
+    },
+    {
+      "codeLine": 5,
+      "note": "Push 'a'",
+      "array": [
+        "a"
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Push 'a'",
+      "array": [
+        "a",
+        "a"
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Push 'b'",
+      "array": [
+        "a",
+        "a",
+        "b"
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Peek 'c', match found",
+      "array": [
+        "a",
+        "a",
+        "b"
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Pop 'b' and 'a'",
+      "array": [
+        "a"
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Push 'b'",
+      "array": [
+        "a",
+        "b"
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Peek 'c', match found",
+      "array": [
+        "a",
+        "b"
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Pop 'b' and 'a'",
+      "array": []
+    },
+    {
+      "codeLine": 6,
+      "note": "Stack empty, returning true",
+      "array": []
+    }
+  ]
+}

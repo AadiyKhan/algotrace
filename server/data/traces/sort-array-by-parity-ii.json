@@ -1,0 +1,86 @@
+{
+  "title": "Sort Array By Parity II",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Two Pointers"
+  ],
+  "description": "Given an array of integers, half are even and half are odd. Sort the array so that when i is even, nums[i] is even, and when i is odd, nums[i] is odd.",
+  "target": null,
+  "pseudocode": "1: let even = 0, odd = 1\n2: while even < n and odd < n:\n3:   if nums[even] % 2 == 0: even += 2\n4:   else if nums[odd] % 2 != 0: odd += 2\n5:   else: swap(nums[even], nums[odd])",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize even pointer at 0 and odd pointer at 1.",
+      "array": [
+        4,
+        2,
+        5,
+        7
+      ],
+      "i": 0,
+      "j": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "nums[0] is 4 (even), increment even pointer.",
+      "array": [
+        4,
+        2,
+        5,
+        7
+      ],
+      "i": 2,
+      "j": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "nums[2] is 5 (odd), check odd pointer.",
+      "array": [
+        4,
+        2,
+        5,
+        7
+      ],
+      "i": 2,
+      "j": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "nums[1] is 2 (even), mismatch found at odd pointer.",
+      "array": [
+        4,
+        2,
+        5,
+        7
+      ],
+      "i": 2,
+      "j": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Swap nums[2] and nums[1].",
+      "array": [
+        4,
+        5,
+        2,
+        7
+      ],
+      "i": 2,
+      "j": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Even pointer exceeds bounds, loop terminates.",
+      "array": [
+        4,
+        5,
+        2,
+        7
+      ],
+      "i": 4,
+      "j": 1
+    }
+  ]
+}

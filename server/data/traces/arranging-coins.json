@@ -1,0 +1,70 @@
+{
+  "title": "Arranging Coins",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Math",
+    "Binary Search"
+  ],
+  "description": "Find the maximum number of full rows of coins that can be formed given n coins.",
+  "target": 5,
+  "pseudocode": "1. low = 1, high = n\n2. while low <= high:\n3.   mid = low + (high - low) / 2\n4.   coinsNeeded = mid * (mid + 1) / 2\n5.   if coinsNeeded == n: return mid\n6.   if coinsNeeded < n: low = mid + 1\n7.   else: high = mid - 1\n8. return high",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize binary search range [1, 5]",
+      "i": 1,
+      "j": 5
+    },
+    {
+      "codeLine": 3,
+      "note": "Calculate mid: (1+5)/2 = 3",
+      "i": 3
+    },
+    {
+      "codeLine": 4,
+      "note": "Calculate coinsNeeded: 3 * 4 / 2 = 6",
+      "i": 3
+    },
+    {
+      "codeLine": 7,
+      "note": "coinsNeeded (6) > n (5), search lower half",
+      "i": 3,
+      "j": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Calculate new mid: (1+2)/2 = 1",
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Calculate coinsNeeded: 1 * 2 / 2 = 1",
+      "i": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "coinsNeeded (1) < n (5), search upper half",
+      "i": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Calculate new mid: (2+2)/2 = 2",
+      "i": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Calculate coinsNeeded: 2 * 3 / 2 = 3",
+      "i": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "coinsNeeded (3) < n (5), low becomes 3",
+      "i": 3
+    },
+    {
+      "codeLine": 8,
+      "note": "Loop ends, return high (2). Result is 2 rows."
+    }
+  ]
+}

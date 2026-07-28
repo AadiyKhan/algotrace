@@ -1,0 +1,746 @@
+{
+  "title": "Remove Nth Node From End Of List",
+  "difficulty": "Medium",
+  "type": "linked-list",
+  "tags": [
+    "Linked List",
+    "Two Pointers"
+  ],
+  "description": "Given the head of a linked list, remove the n-th node from the end of the list and return its head. The solution uses a two-pointer approach with a dummy node to handle edge cases like removing the head.",
+  "pseudocode": "1. function removeNthFromEnd(head, n):\n2.   dummy = new ListNode(0);\n3.   dummy.next = head;\n4.   slow = dummy;\n5.   fast = dummy;\n6.\n7.   // Move fast pointer n steps ahead\n8.   for i from 0 to n-1:\n9.     fast = fast.next;\n10.\n11.  // Move both pointers until fast reaches the end\n12.  while fast.next is not null:\n13.    slow = slow.next;\n14.    fast = fast.next;\n15.\n16.  // Remove the Nth node from the end\n17.  slow.next = slow.next.next;\n18.\n19.  return dummy.next;",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Create a dummy node with value 0. This node simplifies handling edge cases like removing the head.",
+      "nodes": [
+        {
+          "id": 0,
+          "val": "dummy",
+          "next": null
+        }
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Link the dummy node to the head of the original list.",
+      "nodes": [
+        {
+          "id": 0,
+          "val": "dummy",
+          "next": 1
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "next": 2
+        },
+        {
+          "id": 2,
+          "val": 2,
+          "next": 3
+        },
+        {
+          "id": 3,
+          "val": 3,
+          "next": 4
+        },
+        {
+          "id": 4,
+          "val": 4,
+          "next": 5
+        },
+        {
+          "id": 5,
+          "val": 5,
+          "next": null
+        }
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Initialize the 'slow' pointer to the dummy node.",
+      "nodes": [
+        {
+          "id": 0,
+          "val": "dummy",
+          "next": 1
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "next": 2
+        },
+        {
+          "id": 2,
+          "val": 2,
+          "next": 3
+        },
+        {
+          "id": 3,
+          "val": 3,
+          "next": 4
+        },
+        {
+          "id": 4,
+          "val": 4,
+          "next": 5
+        },
+        {
+          "id": 5,
+          "val": 5,
+          "next": null
+        }
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Initialize the 'fast' pointer to the dummy node.",
+      "nodes": [
+        {
+          "id": 0,
+          "val": "dummy",
+          "next": 1
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "next": 2
+        },
+        {
+          "id": 2,
+          "val": 2,
+          "next": 3
+        },
+        {
+          "id": 3,
+          "val": 3,
+          "next": 4
+        },
+        {
+          "id": 4,
+          "val": 4,
+          "next": 5
+        },
+        {
+          "id": 5,
+          "val": 5,
+          "next": null
+        }
+      ],
+      "curr": 0,
+      "prev": 0
+    },
+    {
+      "codeLine": 8,
+      "note": "Starting the loop to move the 'fast' pointer 'n' steps ahead. 'n' is 2. (i=0)",
+      "nodes": [
+        {
+          "id": 0,
+          "val": "dummy",
+          "next": 1
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "next": 2
+        },
+        {
+          "id": 2,
+          "val": 2,
+          "next": 3
+        },
+        {
+          "id": 3,
+          "val": 3,
+          "next": 4
+        },
+        {
+          "id": 4,
+          "val": 4,
+          "next": 5
+        },
+        {
+          "id": 5,
+          "val": 5,
+          "next": null
+        }
+      ],
+      "curr": 0,
+      "prev": 0,
+      "i": 0
+    },
+    {
+      "codeLine": 9,
+      "note": "Move 'fast' pointer one step forward. It is now at node 1.",
+      "nodes": [
+        {
+          "id": 0,
+          "val": "dummy",
+          "next": 1
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "next": 2
+        },
+        {
+          "id": 2,
+          "val": 2,
+          "next": 3
+        },
+        {
+          "id": 3,
+          "val": 3,
+          "next": 4
+        },
+        {
+          "id": 4,
+          "val": 4,
+          "next": 5
+        },
+        {
+          "id": 5,
+          "val": 5,
+          "next": null
+        }
+      ],
+      "curr": 0,
+      "prev": 1,
+      "i": 0
+    },
+    {
+      "codeLine": 8,
+      "note": "Continue loop for 'n' steps. (i=1)",
+      "nodes": [
+        {
+          "id": 0,
+          "val": "dummy",
+          "next": 1
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "next": 2
+        },
+        {
+          "id": 2,
+          "val": 2,
+          "next": 3
+        },
+        {
+          "id": 3,
+          "val": 3,
+          "next": 4
+        },
+        {
+          "id": 4,
+          "val": 4,
+          "next": 5
+        },
+        {
+          "id": 5,
+          "val": 5,
+          "next": null
+        }
+      ],
+      "curr": 0,
+      "prev": 1,
+      "i": 1
+    },
+    {
+      "codeLine": 9,
+      "note": "Move 'fast' pointer one more step forward. It is now at node 2. 'fast' is now 'n' (2) steps ahead of 'slow'.",
+      "nodes": [
+        {
+          "id": 0,
+          "val": "dummy",
+          "next": 1
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "next": 2
+        },
+        {
+          "id": 2,
+          "val": 2,
+          "next": 3
+        },
+        {
+          "id": 3,
+          "val": 3,
+          "next": 4
+        },
+        {
+          "id": 4,
+          "val": 4,
+          "next": 5
+        },
+        {
+          "id": 5,
+          "val": 5,
+          "next": null
+        }
+      ],
+      "curr": 0,
+      "prev": 2,
+      "i": 1
+    },
+    {
+      "codeLine": 12,
+      "note": "Check if 'fast.next' is null. 'fast' is at node 2, 'fast.next' is node 3, which is not null. Enter the loop.",
+      "nodes": [
+        {
+          "id": 0,
+          "val": "dummy",
+          "next": 1
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "next": 2
+        },
+        {
+          "id": 2,
+          "val": 2,
+          "next": 3
+        },
+        {
+          "id": 3,
+          "val": 3,
+          "next": 4
+        },
+        {
+          "id": 4,
+          "val": 4,
+          "next": 5
+        },
+        {
+          "id": 5,
+          "val": 5,
+          "next": null
+        }
+      ],
+      "curr": 0,
+      "prev": 2
+    },
+    {
+      "codeLine": 13,
+      "note": "Move 'slow' pointer one step forward. It is now at node 1.",
+      "nodes": [
+        {
+          "id": 0,
+          "val": "dummy",
+          "next": 1
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "next": 2
+        },
+        {
+          "id": 2,
+          "val": 2,
+          "next": 3
+        },
+        {
+          "id": 3,
+          "val": 3,
+          "next": 4
+        },
+        {
+          "id": 4,
+          "val": 4,
+          "next": 5
+        },
+        {
+          "id": 5,
+          "val": 5,
+          "next": null
+        }
+      ],
+      "curr": 1,
+      "prev": 2
+    },
+    {
+      "codeLine": 14,
+      "note": "Move 'fast' pointer one step forward. It is now at node 3.",
+      "nodes": [
+        {
+          "id": 0,
+          "val": "dummy",
+          "next": 1
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "next": 2
+        },
+        {
+          "id": 2,
+          "val": 2,
+          "next": 3
+        },
+        {
+          "id": 3,
+          "val": 3,
+          "next": 4
+        },
+        {
+          "id": 4,
+          "val": 4,
+          "next": 5
+        },
+        {
+          "id": 5,
+          "val": 5,
+          "next": null
+        }
+      ],
+      "curr": 1,
+      "prev": 3
+    },
+    {
+      "codeLine": 12,
+      "note": "Check if 'fast.next' is null. 'fast' is at node 3, 'fast.next' is node 4, which is not null. Continue loop.",
+      "nodes": [
+        {
+          "id": 0,
+          "val": "dummy",
+          "next": 1
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "next": 2
+        },
+        {
+          "id": 2,
+          "val": 2,
+          "next": 3
+        },
+        {
+          "id": 3,
+          "val": 3,
+          "next": 4
+        },
+        {
+          "id": 4,
+          "val": 4,
+          "next": 5
+        },
+        {
+          "id": 5,
+          "val": 5,
+          "next": null
+        }
+      ],
+      "curr": 1,
+      "prev": 3
+    },
+    {
+      "codeLine": 13,
+      "note": "Move 'slow' pointer one step forward. It is now at node 2.",
+      "nodes": [
+        {
+          "id": 0,
+          "val": "dummy",
+          "next": 1
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "next": 2
+        },
+        {
+          "id": 2,
+          "val": 2,
+          "next": 3
+        },
+        {
+          "id": 3,
+          "val": 3,
+          "next": 4
+        },
+        {
+          "id": 4,
+          "val": 4,
+          "next": 5
+        },
+        {
+          "id": 5,
+          "val": 5,
+          "next": null
+        }
+      ],
+      "curr": 2,
+      "prev": 3
+    },
+    {
+      "codeLine": 14,
+      "note": "Move 'fast' pointer one step forward. It is now at node 4.",
+      "nodes": [
+        {
+          "id": 0,
+          "val": "dummy",
+          "next": 1
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "next": 2
+        },
+        {
+          "id": 2,
+          "val": 2,
+          "next": 3
+        },
+        {
+          "id": 3,
+          "val": 3,
+          "next": 4
+        },
+        {
+          "id": 4,
+          "val": 4,
+          "next": 5
+        },
+        {
+          "id": 5,
+          "val": 5,
+          "next": null
+        }
+      ],
+      "curr": 2,
+      "prev": 4
+    },
+    {
+      "codeLine": 12,
+      "note": "Check if 'fast.next' is null. 'fast' is at node 4, 'fast.next' is node 5, which is not null. Continue loop.",
+      "nodes": [
+        {
+          "id": 0,
+          "val": "dummy",
+          "next": 1
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "next": 2
+        },
+        {
+          "id": 2,
+          "val": 2,
+          "next": 3
+        },
+        {
+          "id": 3,
+          "val": 3,
+          "next": 4
+        },
+        {
+          "id": 4,
+          "val": 4,
+          "next": 5
+        },
+        {
+          "id": 5,
+          "val": 5,
+          "next": null
+        }
+      ],
+      "curr": 2,
+      "prev": 4
+    },
+    {
+      "codeLine": 13,
+      "note": "Move 'slow' pointer one step forward. It is now at node 3.",
+      "nodes": [
+        {
+          "id": 0,
+          "val": "dummy",
+          "next": 1
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "next": 2
+        },
+        {
+          "id": 2,
+          "val": 2,
+          "next": 3
+        },
+        {
+          "id": 3,
+          "val": 3,
+          "next": 4
+        },
+        {
+          "id": 4,
+          "val": 4,
+          "next": 5
+        },
+        {
+          "id": 5,
+          "val": 5,
+          "next": null
+        }
+      ],
+      "curr": 3,
+      "prev": 4
+    },
+    {
+      "codeLine": 14,
+      "note": "Move 'fast' pointer one step forward. It is now at node 5 (the last node).",
+      "nodes": [
+        {
+          "id": 0,
+          "val": "dummy",
+          "next": 1
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "next": 2
+        },
+        {
+          "id": 2,
+          "val": 2,
+          "next": 3
+        },
+        {
+          "id": 3,
+          "val": 3,
+          "next": 4
+        },
+        {
+          "id": 4,
+          "val": 4,
+          "next": 5
+        },
+        {
+          "id": 5,
+          "val": 5,
+          "next": null
+        }
+      ],
+      "curr": 3,
+      "prev": 5
+    },
+    {
+      "codeLine": 12,
+      "note": "Check if 'fast.next' is null. 'fast' is at node 5, 'fast.next' is null. Exit the loop. 'slow' is now at node 3, which is the node *before* the 2nd node from the end (node 4).",
+      "nodes": [
+        {
+          "id": 0,
+          "val": "dummy",
+          "next": 1
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "next": 2
+        },
+        {
+          "id": 2,
+          "val": 2,
+          "next": 3
+        },
+        {
+          "id": 3,
+          "val": 3,
+          "next": 4
+        },
+        {
+          "id": 4,
+          "val": 4,
+          "next": 5
+        },
+        {
+          "id": 5,
+          "val": 5,
+          "next": null
+        }
+      ],
+      "curr": 3,
+      "prev": 5
+    },
+    {
+      "codeLine": 17,
+      "note": "Remove the Nth node from the end. 'slow.next' (node 4) is skipped by making 'slow.next' point to 'slow.next.next' (node 5). Node 4 is now effectively removed from the list.",
+      "nodes": [
+        {
+          "id": 0,
+          "val": "dummy",
+          "next": 1
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "next": 2
+        },
+        {
+          "id": 2,
+          "val": 2,
+          "next": 3
+        },
+        {
+          "id": 3,
+          "val": 3,
+          "next": 5
+        },
+        {
+          "id": 4,
+          "val": 4,
+          "next": null,
+          "removed": true
+        },
+        {
+          "id": 5,
+          "val": 5,
+          "next": null
+        }
+      ],
+      "curr": 3
+    },
+    {
+      "codeLine": 19,
+      "note": "Return the head of the modified list, which is 'dummy.next' (node 1). The list is now 1 -> 2 -> 3 -> 5.",
+      "nodes": [
+        {
+          "id": 0,
+          "val": "dummy",
+          "next": 1
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "next": 2
+        },
+        {
+          "id": 2,
+          "val": 2,
+          "next": 3
+        },
+        {
+          "id": 3,
+          "val": 3,
+          "next": 5
+        },
+        {
+          "id": 4,
+          "val": 4,
+          "next": null,
+          "removed": true
+        },
+        {
+          "id": 5,
+          "val": 5,
+          "next": null
+        }
+      ]
+    }
+  ]
+}

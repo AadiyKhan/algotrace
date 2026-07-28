@@ -1,0 +1,102 @@
+{
+  "title": "Gray Code",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Math",
+    "Backtracking",
+    "Bit Manipulation"
+  ],
+  "description": "Generate a sequence of n-bit gray codes where each adjacent pair differs by exactly one bit.",
+  "target": 2,
+  "pseudocode": "1. result = [0]\n2. for i in range(n):\n3.   for j in range(len(result) - 1, -1, -1):\n4.     result.push(result[j] | (1 << i))",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize result list with 0.",
+      "array": [
+        0
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Start outer loop for n=2 bits.",
+      "array": [
+        0
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Iterate backwards through existing result.",
+      "array": [
+        0
+      ],
+      "i": 0,
+      "j": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Append 0 | (1 << 0) = 1 to result.",
+      "array": [
+        0,
+        1
+      ],
+      "i": 0,
+      "j": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Move to next bit position.",
+      "array": [
+        0,
+        1
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Iterate backwards starting from index 1.",
+      "array": [
+        0,
+        1
+      ],
+      "i": 1,
+      "j": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Append 1 | (1 << 1) = 3 to result.",
+      "array": [
+        0,
+        1,
+        3
+      ],
+      "i": 1,
+      "j": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Move to index 0.",
+      "array": [
+        0,
+        1,
+        3
+      ],
+      "i": 1,
+      "j": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Append 0 | (1 << 1) = 2 to result.",
+      "array": [
+        0,
+        1,
+        3,
+        2
+      ],
+      "i": 1,
+      "j": 0
+    }
+  ]
+}

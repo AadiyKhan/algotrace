@@ -1,0 +1,84 @@
+{
+  "title": "Contiguous Array",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "Prefix Sum"
+  ],
+  "description": "Find the maximum length of a contiguous subarray with an equal number of 0s and 1s.",
+  "target": 0,
+  "pseudocode": "1. let map = {0: -1}, count = 0, maxLen = 0\n2. for i = 0 to nums.length - 1:\n3.   count += (nums[i] == 1 ? 1 : -1)\n4.   if map has count: maxLen = max(maxLen, i - map[count])\n5.   else: map[count] = i",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize map with 0: -1 to handle subarrays starting from index 0",
+      "array": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Processing index 0 (val 0): count becomes -1",
+      "array": [
+        0,
+        1,
+        0
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Count -1 not in map, add it: map[-1] = 0",
+      "array": [
+        0,
+        1,
+        0
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Processing index 1 (val 1): count becomes 0",
+      "array": [
+        0,
+        1,
+        0
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Count 0 exists in map (index -1): maxLen = max(0, 1 - (-1)) = 2",
+      "array": [
+        0,
+        1,
+        0
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Processing index 2 (val 0): count becomes -1",
+      "array": [
+        0,
+        1,
+        0
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Count -1 exists in map (index 0): maxLen = max(2, 2 - 0) = 2",
+      "array": [
+        0,
+        1,
+        0
+      ],
+      "i": 2
+    }
+  ]
+}

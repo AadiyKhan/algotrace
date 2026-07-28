@@ -1,0 +1,125 @@
+{
+  "title": "Lowest Common Ancestor of a Binary Tree",
+  "difficulty": "Medium",
+  "type": "tree",
+  "tags": [
+    "Tree",
+    "DFS",
+    "Recursion"
+  ],
+  "description": "Find the lowest common ancestor (LCA) of two given nodes in a binary tree.",
+  "target": "p=4, q=5",
+  "pseudocode": "1. function findLCA(root, p, q) {\n2.   if (!root || root === p || root === q) return root;\n3.   let left = findLCA(root.left, p, q);\n4.   let right = findLCA(root.right, p, q);\n5.   if (left && right) return root;\n6.   return left ? left : right;\n7. }",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Starting recursion at root node 3.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 3,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 5,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 2,
+          "val": 1,
+          "left": 5,
+          "right": 6
+        },
+        {
+          "id": 3,
+          "val": 6,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 5,
+          "val": 0,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 6,
+          "val": 8,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Traversing left to node 5.",
+      "visited": [
+        0
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Node 5 matches p, returning node 5 to parent.",
+      "visited": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Traversing right to node 1.",
+      "visited": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Traversing left from 1 to 0.",
+      "visited": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Node 0 is null/leaf, returning null.",
+      "visited": [
+        0,
+        1,
+        2,
+        5
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Left is 5, right is null. Returning 5 to root.",
+      "visited": [
+        0,
+        1,
+        2,
+        5
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Both left (5) and right (null) evaluated. Final LCA is 3.",
+      "visited": [
+        0,
+        1,
+        2,
+        5
+      ]
+    }
+  ]
+}

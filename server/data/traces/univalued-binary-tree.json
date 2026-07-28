@@ -1,0 +1,99 @@
+{
+  "title": "Univalued Binary Tree",
+  "difficulty": "Easy",
+  "type": "tree",
+  "tags": [
+    "Tree",
+    "DFS",
+    "Recursion"
+  ],
+  "description": "Determine if every node in a binary tree has the same value.",
+  "target": 1,
+  "pseudocode": "1. val = root.val\n2. check(node):\n3.   if !node return true\n4.   if node.val != val return false\n5.   return check(node.left) && check(node.right)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize reference value with root value",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 2,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Checking left child (1 == 1)",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 2,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 1,
+      "visited": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Checking right child (2 != 1), returning false",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 2,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 2,
+      "visited": [
+        0,
+        1,
+        2
+      ]
+    }
+  ]
+}

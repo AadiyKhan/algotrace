@@ -1,0 +1,134 @@
+{
+  "title": "Student Attendance Record I",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "String"
+  ],
+  "description": "Check if a student is eligible for an award based on 'A' (absent) count < 2 and no three consecutive 'L' (late) records.",
+  "target": null,
+  "pseudocode": "1: let absentCount = 0\n2: let lateCount = 0\n3: for (let i = 0; i < s.length; i++) {\n4:   if (s[i] === 'A') absentCount++\n5:   if (s[i] === 'L') lateCount++\n6:   else lateCount = 0\n7:   if (absentCount >= 2 || lateCount >= 3) return false\n8: }\n9: return true",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize absentCount to 0",
+      "array": [
+        "P",
+        "L",
+        "A",
+        "L"
+      ],
+      "i": null
+    },
+    {
+      "codeLine": 3,
+      "note": "Start iteration at index 0",
+      "array": [
+        "P",
+        "L",
+        "A",
+        "L"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Current char is 'P', reset lateCount",
+      "array": [
+        "P",
+        "L",
+        "A",
+        "L"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Move to index 1",
+      "array": [
+        "P",
+        "L",
+        "A",
+        "L"
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Current char is 'L', increment lateCount to 1",
+      "array": [
+        "P",
+        "L",
+        "A",
+        "L"
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Move to index 2",
+      "array": [
+        "P",
+        "L",
+        "A",
+        "L"
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Current char is 'A', increment absentCount to 1",
+      "array": [
+        "P",
+        "L",
+        "A",
+        "L"
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Current char not 'L', reset lateCount to 0",
+      "array": [
+        "P",
+        "L",
+        "A",
+        "L"
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Move to index 3",
+      "array": [
+        "P",
+        "L",
+        "A",
+        "L"
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 5,
+      "note": "Current char is 'L', increment lateCount to 1",
+      "array": [
+        "P",
+        "L",
+        "A",
+        "L"
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 9,
+      "note": "Finished loop, return true",
+      "array": [
+        "P",
+        "L",
+        "A",
+        "L"
+      ],
+      "i": 3
+    }
+  ]
+}

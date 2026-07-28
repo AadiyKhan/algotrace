@@ -1,0 +1,149 @@
+{
+  "title": "Word Search II",
+  "difficulty": "Hard",
+  "type": "matrix",
+  "tags": [
+    "Backtracking",
+    "Trie",
+    "Matrix"
+  ],
+  "description": "Find all words from a list that exist in an m x n board using a Trie for optimization.",
+  "target": [
+    "oath",
+    "eat"
+  ],
+  "pseudocode": "1. Build Trie from words\n2. For each cell (r, c) in board:\n3.   dfs(r, c, node)\n4. If node.word exists, add to results\n5. Mark cell visited and recurse neighbors\n6. Backtrack: unmark cell",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Building Trie from ['oath', 'eat']",
+      "matrix": [
+        [
+          "o",
+          "a"
+        ],
+        [
+          "e",
+          "t"
+        ]
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Starting DFS from board[0][0] ('o')",
+      "matrix": [
+        [
+          "o",
+          "a"
+        ],
+        [
+          "e",
+          "t"
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Moving to adjacent cell board[0][1] ('a')",
+      "matrix": [
+        [
+          "o",
+          "a"
+        ],
+        [
+          "e",
+          "t"
+        ]
+      ],
+      "curr": [
+        0,
+        1
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Found prefix 'oa', continuing to 't'",
+      "matrix": [
+        [
+          "o",
+          "a"
+        ],
+        [
+          "e",
+          "t"
+        ]
+      ],
+      "curr": [
+        1,
+        1
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Found word 'oat' in Trie",
+      "matrix": [
+        [
+          "o",
+          "a"
+        ],
+        [
+          "e",
+          "t"
+        ]
+      ],
+      "curr": [
+        1,
+        1
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Backtracking: unmarking visited cells",
+      "matrix": [
+        [
+          "o",
+          "a"
+        ],
+        [
+          "e",
+          "t"
+        ]
+      ],
+      "visited": []
+    }
+  ]
+}

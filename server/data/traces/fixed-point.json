@@ -1,0 +1,133 @@
+{
+  "title": "Fixed Point",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Binary Search"
+  ],
+  "description": "Find the smallest index i such that arr[i] == i in a sorted array of distinct integers.",
+  "target": "arr[i] == i",
+  "pseudocode": "function findFixedPoint(arr) {\n  let left = 0;\n  let right = arr.length - 1;\n  let result = -1;\n  while (left <= right) {\n    let mid = Math.floor((left + right) / 2);\n    if (arr[mid] === mid) {\n      result = mid;\n      right = mid - 1;\n    } else if (arr[mid] < mid) {\n      left = mid + 1;\n    } else {\n      right = mid - 1;\n    }\n  }\n  return result;\n}",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Initialize left pointer to 0.",
+      "array": [
+        -10,
+        -5,
+        0,
+        3,
+        7
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Initialize right pointer to 4.",
+      "array": [
+        -10,
+        -5,
+        0,
+        3,
+        7
+      ],
+      "j": 4
+    },
+    {
+      "codeLine": 5,
+      "note": "Calculate mid index: (0+4)/2 = 2.",
+      "array": [
+        -10,
+        -5,
+        0,
+        3,
+        7
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Check if arr[2] == 2. arr[2] is 0, so 0 != 2.",
+      "array": [
+        -10,
+        -5,
+        0,
+        3,
+        7
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 9,
+      "note": "Since arr[2] (0) < 2, search right half: left = mid + 1 = 3.",
+      "array": [
+        -10,
+        -5,
+        0,
+        3,
+        7
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 5,
+      "note": "Calculate mid index: (3+4)/2 = 3.",
+      "array": [
+        -10,
+        -5,
+        0,
+        3,
+        7
+      ],
+      "curr": 3
+    },
+    {
+      "codeLine": 6,
+      "note": "Check if arr[3] == 3. arr[3] is 3, match found.",
+      "array": [
+        -10,
+        -5,
+        0,
+        3,
+        7
+      ],
+      "curr": 3
+    },
+    {
+      "codeLine": 7,
+      "note": "Store result = 3.",
+      "array": [
+        -10,
+        -5,
+        0,
+        3,
+        7
+      ],
+      "curr": 3
+    },
+    {
+      "codeLine": 8,
+      "note": "Narrow search range: right = mid - 1 = 2.",
+      "array": [
+        -10,
+        -5,
+        0,
+        3,
+        7
+      ],
+      "j": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Loop condition left <= right (3 <= 2) is false. Exit loop.",
+      "array": [
+        -10,
+        -5,
+        0,
+        3,
+        7
+      ]
+    }
+  ]
+}

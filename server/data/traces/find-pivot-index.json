@@ -1,0 +1,122 @@
+{
+  "title": "Find Pivot Index",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Prefix Sum"
+  ],
+  "description": "Find the leftmost index where the sum of numbers to the left equals the sum of numbers to the right.",
+  "target": null,
+  "pseudocode": "1. totalSum = sum(nums)\n2. leftSum = 0\n3. for i from 0 to nums.length - 1:\n4.   if leftSum == (totalSum - leftSum - nums[i]): return i\n5.   leftSum += nums[i]\n6. return -1",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Calculate total sum of array: 1 + 7 + 3 + 6 = 17",
+      "array": [
+        1,
+        7,
+        3,
+        6
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Initialize leftSum to 0",
+      "array": [
+        1,
+        7,
+        3,
+        6
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Check i=0: leftSum=0, rightSum=17-0-1=16. 0 != 16.",
+      "array": [
+        1,
+        7,
+        3,
+        6
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Update leftSum to 0 + 1 = 1",
+      "array": [
+        1,
+        7,
+        3,
+        6
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Check i=1: leftSum=1, rightSum=17-1-7=9. 1 != 9.",
+      "array": [
+        1,
+        7,
+        3,
+        6
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Update leftSum to 1 + 7 = 8",
+      "array": [
+        1,
+        7,
+        3,
+        6
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Check i=2: leftSum=8, rightSum=17-8-3=6. 8 != 6.",
+      "array": [
+        1,
+        7,
+        3,
+        6
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Update leftSum to 8 + 3 = 11",
+      "array": [
+        1,
+        7,
+        3,
+        6
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Check i=3: leftSum=11, rightSum=17-11-6=0. 11 != 0.",
+      "array": [
+        1,
+        7,
+        3,
+        6
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 6,
+      "note": "Loop finished, no pivot found. Return -1.",
+      "array": [
+        1,
+        7,
+        3,
+        6
+      ]
+    }
+  ]
+}

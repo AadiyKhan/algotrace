@@ -1,0 +1,87 @@
+{
+  "title": "Delete Columns to Make Sorted III",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Dynamic Programming"
+  ],
+  "description": "Find the minimum number of columns to delete to make the remaining columns lexicographically non-decreasing.",
+  "target": 1,
+  "pseudocode": "1. dp = new Array(cols).fill(1)\n2. for j = 1 to cols - 1:\n3.   for i = 0 to j - 1:\n4.     if all rows[r][i] <= rows[r][j]:\n5.       dp[j] = max(dp[j], dp[i] + 1)\n6. return cols - max(dp)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize DP array where dp[j] is the length of the longest sorted sequence ending at column j.",
+      "array": [
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Start processing column j=1.",
+      "array": [
+        1,
+        1,
+        1
+      ],
+      "i": 0,
+      "j": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Compare column 0 and column 1. They are sorted, so we update dp[1].",
+      "array": [
+        1,
+        2,
+        1
+      ],
+      "i": 0,
+      "j": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Move to column j=2.",
+      "array": [
+        1,
+        2,
+        1
+      ],
+      "i": 0,
+      "j": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Compare column 0 and column 2. Not sorted, dp[2] remains 1.",
+      "array": [
+        1,
+        2,
+        1
+      ],
+      "i": 0,
+      "j": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Compare column 1 and column 2. Not sorted, dp[2] remains 1.",
+      "array": [
+        1,
+        2,
+        1
+      ],
+      "i": 1,
+      "j": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Result is total columns (3) minus max(dp) (2), which is 1.",
+      "array": [
+        1,
+        2,
+        1
+      ]
+    }
+  ]
+}

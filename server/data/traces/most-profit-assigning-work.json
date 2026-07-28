@@ -1,0 +1,88 @@
+{
+  "title": "Most Profit Assigning Work",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Two Pointers",
+    "Sorting",
+    "Greedy"
+  ],
+  "description": "Assign jobs to workers to maximize total profit, where each worker can only take a job if their ability is greater than or equal to the job difficulty.",
+  "target": 100,
+  "pseudocode": "1. jobs = zip(difficulty, profit).sort()\n2. worker.sort()\n3. maxProfit = 0, currMax = 0, j = 0\n4. for w in worker:\n5.   while j < jobs.length and jobs[j].diff <= w:\n6.     currMax = max(currMax, jobs[j].profit)\n7.     j++\n8.   maxProfit += currMax",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Sorted jobs by difficulty: [[2,10], [4,20], [6,30]]",
+      "array": [
+        10,
+        20,
+        30
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Processing first worker with ability 3",
+      "array": [
+        10,
+        20,
+        30
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 5,
+      "note": "Worker ability 3 can do job [2,10]",
+      "array": [
+        10,
+        20,
+        30
+      ],
+      "j": 1,
+      "curr": 10
+    },
+    {
+      "codeLine": 8,
+      "note": "Total profit updated to 10",
+      "array": [
+        10,
+        20,
+        30
+      ],
+      "i": 10
+    },
+    {
+      "codeLine": 4,
+      "note": "Processing second worker with ability 5",
+      "array": [
+        10,
+        20,
+        30
+      ],
+      "i": 5
+    },
+    {
+      "codeLine": 5,
+      "note": "Worker ability 5 can do job [4,20]",
+      "array": [
+        10,
+        20,
+        30
+      ],
+      "j": 2,
+      "curr": 20
+    },
+    {
+      "codeLine": 8,
+      "note": "Total profit updated to 10 + 20 = 30",
+      "array": [
+        10,
+        20,
+        30
+      ],
+      "i": 30
+    }
+  ]
+}

@@ -1,0 +1,115 @@
+{
+  "title": "Predict The Winner",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Dynamic Programming",
+    "Minimax",
+    "Game Theory"
+  ],
+  "description": "Determine if Player 1 can win the game given an array of scores, where players can pick from either end of the array.",
+  "pseudocode": "1. n = nums.length\n2. dp = array of size n, initialized to nums\n3. for len = 2 to n:\n4.   for i = 0 to n - len:\n5.     j = i + len - 1\n6.     dp[i] = max(nums[i] - dp[i+1], nums[j] - dp[i])",
+  "target": 0,
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize n = 3 for nums = [1, 5, 2]",
+      "array": [
+        1,
+        5,
+        2
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Initialize dp table with scores: [1, 5, 2]",
+      "array": [
+        1,
+        5,
+        2
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Outer loop: length = 2",
+      "array": [
+        1,
+        5,
+        2
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Inner loop: i = 0, j = 1",
+      "i": 0,
+      "j": 1,
+      "array": [
+        1,
+        5,
+        2
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "dp[0] = max(1 - 5, 5 - 1) = 4",
+      "i": 0,
+      "array": [
+        4,
+        5,
+        2
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Inner loop: i = 1, j = 2",
+      "i": 1,
+      "j": 2,
+      "array": [
+        4,
+        5,
+        2
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "dp[1] = max(5 - 2, 2 - 5) = 3",
+      "i": 1,
+      "array": [
+        4,
+        3,
+        2
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Outer loop: length = 3",
+      "array": [
+        4,
+        3,
+        2
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Inner loop: i = 0, j = 2",
+      "i": 0,
+      "j": 2,
+      "array": [
+        4,
+        3,
+        2
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "dp[0] = max(1 - 3, 2 - 4) = -2",
+      "i": 0,
+      "array": [
+        -2,
+        3,
+        2
+      ]
+    }
+  ]
+}

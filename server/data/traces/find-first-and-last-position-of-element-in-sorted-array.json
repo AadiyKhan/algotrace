@@ -1,0 +1,377 @@
+{
+  "title": "Find First And Last Position Of Element In Sorted Array",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Binary Search"
+  ],
+  "description": "Given a sorted array of integers `nums` and a target value, find the starting and ending position of the given target value. If the target is not found in the array, return `[-1, -1]`.",
+  "target": 8,
+  "pseudocode": "function searchRange(nums, target):\n1    first = findFirst(nums, target)\n2    if first == -1:\n3        return [-1, -1]\n4    last = findLast(nums, target)\n5    return [first, last]\n\nfunction findFirst(nums, target):\n6    low = 0\n7    high = nums.length - 1\n8    ans = -1\n9    while low <= high:\n10       mid = Math.floor(low + (high - low) / 2)\n11       if nums[mid] == target:\n12           ans = mid\n13           high = mid - 1 // Try to find an even earlier occurrence\n14       else if nums[mid] < target:\n15           low = mid + 1\n16       else: // nums[mid] > target\n17           high = mid - 1\n18   return ans\n\nfunction findLast(nums, target):\n19   low = 0\n20   high = nums.length - 1\n21   ans = -1\n22   while low <= high:\n23       mid = Math.floor(low + (high - low) / 2)\n24       if nums[mid] == target:\n25           ans = mid\n26           low = mid + 1 // Try to find an even later occurrence\n27       else if nums[mid] < target:\n28           low = mid + 1\n29       else: // nums[mid] > target\n30           high = mid - 1\n31   return ans",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Start `searchRange` function. Call `findFirst` to locate the leftmost occurrence of the target.",
+      "array": [
+        5,
+        7,
+        7,
+        8,
+        8,
+        10
+      ],
+      "low": null,
+      "high": null,
+      "mid": null,
+      "ans": null
+    },
+    {
+      "codeLine": 6,
+      "note": "Initialize `low`, `high` pointers for binary search in `findFirst`, and `ans` to -1.",
+      "array": [
+        5,
+        7,
+        7,
+        8,
+        8,
+        10
+      ],
+      "low": 0,
+      "high": 5,
+      "mid": null,
+      "ans": -1
+    },
+    {
+      "codeLine": 10,
+      "note": "Calculate mid: `(0 + 5) / 2 = 2`. `nums[2] = 7`.",
+      "array": [
+        5,
+        7,
+        7,
+        8,
+        8,
+        10
+      ],
+      "low": 0,
+      "high": 5,
+      "mid": 2,
+      "ans": -1
+    },
+    {
+      "codeLine": 14,
+      "note": "`7 < 8`, so the target must be in the right half. Adjust `low` to `mid + 1`.",
+      "array": [
+        5,
+        7,
+        7,
+        8,
+        8,
+        10
+      ],
+      "low": 3,
+      "high": 5,
+      "mid": 2,
+      "ans": -1
+    },
+    {
+      "codeLine": 10,
+      "note": "Calculate mid: `(3 + 5) / 2 = 4`. `nums[4] = 8`.",
+      "array": [
+        5,
+        7,
+        7,
+        8,
+        8,
+        10
+      ],
+      "low": 3,
+      "high": 5,
+      "mid": 4,
+      "ans": -1
+    },
+    {
+      "codeLine": 11,
+      "note": "`8 == 8`. Found a potential first occurrence at `mid=4`. Store it in `ans` and try to find an even earlier one by moving `high` to `mid - 1`.",
+      "array": [
+        5,
+        7,
+        7,
+        8,
+        8,
+        10
+      ],
+      "low": 3,
+      "high": 3,
+      "mid": 4,
+      "ans": 4
+    },
+    {
+      "codeLine": 10,
+      "note": "Calculate mid: `(3 + 3) / 2 = 3`. `nums[3] = 8`.",
+      "array": [
+        5,
+        7,
+        7,
+        8,
+        8,
+        10
+      ],
+      "low": 3,
+      "high": 3,
+      "mid": 3,
+      "ans": 4
+    },
+    {
+      "codeLine": 11,
+      "note": "`8 == 8`. Found an earlier potential first occurrence at `mid=3`. Update `ans` and move `high` to `mid - 1`.",
+      "array": [
+        5,
+        7,
+        7,
+        8,
+        8,
+        10
+      ],
+      "low": 3,
+      "high": 2,
+      "mid": 3,
+      "ans": 3
+    },
+    {
+      "codeLine": 9,
+      "note": "Loop condition `low <= high` (`3 <= 2`) is false. Exit `findFirst` loop.",
+      "array": [
+        5,
+        7,
+        7,
+        8,
+        8,
+        10
+      ],
+      "low": 3,
+      "high": 2,
+      "mid": null,
+      "ans": 3
+    },
+    {
+      "codeLine": 18,
+      "note": "`findFirst` returns `ans`, which is `3`.",
+      "array": [
+        5,
+        7,
+        7,
+        8,
+        8,
+        10
+      ],
+      "low": null,
+      "high": null,
+      "mid": null,
+      "ans": null,
+      "first": 3
+    },
+    {
+      "codeLine": 2,
+      "note": "`first` is `3`, which is not -1. Proceed to find the last occurrence.",
+      "array": [
+        5,
+        7,
+        7,
+        8,
+        8,
+        10
+      ],
+      "low": null,
+      "high": null,
+      "mid": null,
+      "ans": null,
+      "first": 3
+    },
+    {
+      "codeLine": 4,
+      "note": "Call `findLast` to locate the rightmost occurrence of the target.",
+      "array": [
+        5,
+        7,
+        7,
+        8,
+        8,
+        10
+      ],
+      "low": null,
+      "high": null,
+      "mid": null,
+      "ans": null,
+      "first": 3
+    },
+    {
+      "codeLine": 19,
+      "note": "Initialize `low`, `high` pointers for binary search in `findLast`, and `ans` to -1.",
+      "array": [
+        5,
+        7,
+        7,
+        8,
+        8,
+        10
+      ],
+      "low": 0,
+      "high": 5,
+      "mid": null,
+      "ans": -1
+    },
+    {
+      "codeLine": 23,
+      "note": "Calculate mid: `(0 + 5) / 2 = 2`. `nums[2] = 7`.",
+      "array": [
+        5,
+        7,
+        7,
+        8,
+        8,
+        10
+      ],
+      "low": 0,
+      "high": 5,
+      "mid": 2,
+      "ans": -1
+    },
+    {
+      "codeLine": 27,
+      "note": "`7 < 8`, so the target must be in the right half. Adjust `low` to `mid + 1`.",
+      "array": [
+        5,
+        7,
+        7,
+        8,
+        8,
+        10
+      ],
+      "low": 3,
+      "high": 5,
+      "mid": 2,
+      "ans": -1
+    },
+    {
+      "codeLine": 23,
+      "note": "Calculate mid: `(3 + 5) / 2 = 4`. `nums[4] = 8`.",
+      "array": [
+        5,
+        7,
+        7,
+        8,
+        8,
+        10
+      ],
+      "low": 3,
+      "high": 5,
+      "mid": 4,
+      "ans": -1
+    },
+    {
+      "codeLine": 24,
+      "note": "`8 == 8`. Found a potential last occurrence at `mid=4`. Store it in `ans` and try to find a later one by moving `low` to `mid + 1`.",
+      "array": [
+        5,
+        7,
+        7,
+        8,
+        8,
+        10
+      ],
+      "low": 5,
+      "high": 5,
+      "mid": 4,
+      "ans": 4
+    },
+    {
+      "codeLine": 23,
+      "note": "Calculate mid: `(5 + 5) / 2 = 5`. `nums[5] = 10`.",
+      "array": [
+        5,
+        7,
+        7,
+        8,
+        8,
+        10
+      ],
+      "low": 5,
+      "high": 5,
+      "mid": 5,
+      "ans": 4
+    },
+    {
+      "codeLine": 29,
+      "note": "`10 > 8`, so the target must be in the left half. Adjust `high` to `mid - 1`.",
+      "array": [
+        5,
+        7,
+        7,
+        8,
+        8,
+        10
+      ],
+      "low": 5,
+      "high": 4,
+      "mid": 5,
+      "ans": 4
+    },
+    {
+      "codeLine": 22,
+      "note": "Loop condition `low <= high` (`5 <= 4`) is false. Exit `findLast` loop.",
+      "array": [
+        5,
+        7,
+        7,
+        8,
+        8,
+        10
+      ],
+      "low": 5,
+      "high": 4,
+      "mid": null,
+      "ans": 4
+    },
+    {
+      "codeLine": 31,
+      "note": "`findLast` returns `ans`, which is `4`.",
+      "array": [
+        5,
+        7,
+        7,
+        8,
+        8,
+        10
+      ],
+      "low": null,
+      "high": null,
+      "mid": null,
+      "ans": null,
+      "first": 3,
+      "last": 4
+    },
+    {
+      "codeLine": 5,
+      "note": "Return the final result `[first, last]` which is `[3, 4]`.",
+      "array": [
+        5,
+        7,
+        7,
+        8,
+        8,
+        10
+      ],
+      "low": null,
+      "high": null,
+      "mid": null,
+      "ans": null,
+      "first": 3,
+      "last": 4,
+      "result": [
+        3,
+        4
+      ]
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "title": "Least Operators to Express Number",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Dynamic Programming",
+    "Math",
+    "Recursion"
+  ],
+  "description": "Given target and x, express target using the minimum number of operators (/, *, +, -) and x.",
+  "target": 3,
+  "pseudocode": "function solve(target, x) {\n  if (target === 0) return 0;\n  if (target === 1) return 1;\n  let res = 0;\n  let power = 0;\n  let val = x;\n  while (val < target) {\n    val *= x;\n    power++;\n  }\n  if (val === target) return power;\n  let left = solve(target - (val / x), x) + power;\n  let right = solve(val - target, x) + power;\n  return Math.min(left, right) + 1;\n}",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Starting recursion with target 3 and x 2",
+      "i": "target: 3"
+    },
+    {
+      "codeLine": 7,
+      "note": "Finding the largest power of x less than or equal to target",
+      "i": "power: 1, val: 4"
+    },
+    {
+      "codeLine": 11,
+      "note": "Recursive call: express difference between target and powers",
+      "i": "left path: solve(3 - 2) + 1"
+    },
+    {
+      "codeLine": 12,
+      "note": "Recursive call: express difference between power and target",
+      "i": "right path: solve(4 - 3) + 1"
+    },
+    {
+      "codeLine": 13,
+      "note": "Choosing the minimum of paths and returning",
+      "i": "result: 3"
+    }
+  ]
+}

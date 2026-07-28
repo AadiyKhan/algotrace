@@ -1,0 +1,94 @@
+{
+  "title": "Interval List Intersections",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Two Pointers"
+  ],
+  "description": "Find the intersection of two lists of closed intervals.",
+  "target": null,
+  "pseudocode": "1. i = 0, j = 0, res = []\n2. while i < firstList.length and j < secondList.length:\n3.   start = max(firstList[i][0], secondList[j][0])\n4.   end = min(firstList[i][1], secondList[j][1])\n5.   if start <= end: res.push([start, end])\n6.   if firstList[i][1] < secondList[j][1]: i++\n7.   else: j++",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize pointers i=0, j=0 for lists A=[[0,2],[5,10]] and B=[[1,5],[8,12]]",
+      "array": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Calculate overlap start: max(0, 1) = 1",
+      "i": 0,
+      "j": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Calculate overlap end: min(2, 5) = 2",
+      "i": 0,
+      "j": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Overlap [1, 2] found, adding to results",
+      "i": 0,
+      "j": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "2 < 5 is true, increment i to move past firstList[0]",
+      "i": 1,
+      "j": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Calculate overlap start: max(5, 1) = 5",
+      "i": 1,
+      "j": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Calculate overlap end: min(10, 5) = 5",
+      "i": 1,
+      "j": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Overlap [5, 5] found, adding to results",
+      "i": 1,
+      "j": 0
+    },
+    {
+      "codeLine": 7,
+      "note": "firstList[1][1] (10) > secondList[0][1] (5), increment j",
+      "i": 1,
+      "j": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Calculate overlap start: max(5, 8) = 8",
+      "i": 1,
+      "j": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Calculate overlap end: min(10, 12) = 10",
+      "i": 1,
+      "j": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Overlap [8, 10] found, adding to results",
+      "i": 1,
+      "j": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "10 < 12 is true, increment i, loop ends",
+      "i": 2,
+      "j": 1
+    }
+  ]
+}

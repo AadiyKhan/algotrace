@@ -1,0 +1,49 @@
+{
+  "title": "Encode and Decode TinyURL",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Hash Table",
+    "Design"
+  ],
+  "description": "Design a TinyURL encoder and decoder using a hash map to store long URLs.",
+  "target": "tinyurl.com/1",
+  "pseudocode": "1: map = new Map()\n2: id = 0\n3: function encode(longUrl) {\n4:   key = 'tinyurl.com/' + id++\n5:   map.set(key, longUrl)\n6:   return key\n7: }\n8: function decode(shortUrl) {\n9:   return map.get(shortUrl)\n10: }",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize the storage map.",
+      "array": []
+    },
+    {
+      "codeLine": 4,
+      "note": "Encode 'google.com' by assigning it a new key.",
+      "array": [
+        "tinyurl.com/0: google.com"
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Store the mapping in the hash map.",
+      "array": [
+        "tinyurl.com/0: google.com"
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Encode 'leetcode.com' by assigning it the next available key.",
+      "array": [
+        "tinyurl.com/0: google.com",
+        "tinyurl.com/1: leetcode.com"
+      ]
+    },
+    {
+      "codeLine": 9,
+      "note": "Decode 'tinyurl.com/1' by looking it up in the map.",
+      "array": [
+        "tinyurl.com/0: google.com",
+        "tinyurl.com/1: leetcode.com"
+      ]
+    }
+  ]
+}

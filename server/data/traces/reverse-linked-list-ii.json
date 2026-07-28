@@ -1,0 +1,137 @@
+{
+  "title": "Reverse Linked List II",
+  "difficulty": "Medium",
+  "type": "linked-list",
+  "tags": [
+    "Linked List"
+  ],
+  "description": "Reverse a sub-segment of a linked list from position m to n.",
+  "target": "m=2, n=4",
+  "pseudocode": "1. dummy = {val: 0, next: head}\n2. prev = dummy\n3. for i = 1 to m-1: prev = prev.next\n4. curr = prev.next\n5. for i = 1 to n-m:\n6.   temp = curr.next\n7.   curr.next = temp.next\n8.   temp.next = prev.next\n9.   prev.next = temp",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize dummy node pointing to head.",
+      "nodes": [
+        {
+          "val": 0,
+          "next": 1
+        },
+        {
+          "val": 1,
+          "next": 2
+        },
+        {
+          "val": 2,
+          "next": 3
+        },
+        {
+          "val": 3,
+          "next": 4
+        },
+        {
+          "val": 4,
+          "next": 5
+        },
+        {
+          "val": 5,
+          "next": null
+        }
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Move prev to the node before position m.",
+      "nodes": [
+        {
+          "val": 0,
+          "next": 1
+        },
+        {
+          "val": 1,
+          "next": 2
+        },
+        {
+          "val": 2,
+          "next": 3
+        },
+        {
+          "val": 3,
+          "next": 4
+        },
+        {
+          "val": 4,
+          "next": 5
+        },
+        {
+          "val": 5,
+          "next": null
+        }
+      ],
+      "prev": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Start reversing: move node at pos 3 to after prev.",
+      "nodes": [
+        {
+          "val": 0,
+          "next": 1
+        },
+        {
+          "val": 1,
+          "next": 3
+        },
+        {
+          "val": 3,
+          "next": 2
+        },
+        {
+          "val": 2,
+          "next": 4
+        },
+        {
+          "val": 4,
+          "next": 5
+        },
+        {
+          "val": 5,
+          "next": null
+        }
+      ],
+      "prev": 1,
+      "curr": 2
+    },
+    {
+      "codeLine": 9,
+      "note": "Final state after reversing sub-segment 2 to 4.",
+      "nodes": [
+        {
+          "val": 0,
+          "next": 1
+        },
+        {
+          "val": 1,
+          "next": 4
+        },
+        {
+          "val": 4,
+          "next": 3
+        },
+        {
+          "val": 3,
+          "next": 2
+        },
+        {
+          "val": 2,
+          "next": 5
+        },
+        {
+          "val": 5,
+          "next": null
+        }
+      ],
+      "prev": 1
+    }
+  ]
+}

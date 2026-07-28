@@ -1,0 +1,67 @@
+{
+  "title": "Repeated String Match",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "String",
+    "String Matching"
+  ],
+  "description": "Find the minimum number of times string a must be repeated such that string b is a substring of it.",
+  "target": "abcd",
+  "pseudocode": "1. count = 1; \n2. currentA = a; \n3. while (currentA.length < b.length) { \n4.   currentA += a; \n5.   count++; \n6. } \n7. if (currentA.includes(b)) return count; \n8. if ((currentA + a).includes(b)) return count + 1; \n9. return -1;",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize repeat count to 1",
+      "i": "count = 1"
+    },
+    {
+      "codeLine": 2,
+      "note": "Set current string to 'a'",
+      "array": [
+        "a",
+        "b",
+        "c",
+        "d"
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Check if current string length is less than target length",
+      "i": "count = 1"
+    },
+    {
+      "codeLine": 4,
+      "note": "Append 'a' to current string",
+      "array": [
+        "a",
+        "b",
+        "c",
+        "d",
+        "a",
+        "b",
+        "c",
+        "d"
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Increment count",
+      "i": "count = 2"
+    },
+    {
+      "codeLine": 7,
+      "note": "Check if target is a substring",
+      "array": [
+        "a",
+        "b",
+        "c",
+        "d",
+        "a",
+        "b",
+        "c",
+        "d"
+      ]
+    }
+  ]
+}

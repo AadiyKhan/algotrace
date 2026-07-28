@@ -1,0 +1,142 @@
+{
+  "title": "Kill Process",
+  "difficulty": "Medium",
+  "type": "tree",
+  "tags": [
+    "Tree",
+    "Hash Table"
+  ],
+  "description": "Given processes with parent relationships, kill a process and all its descendants.",
+  "target": 5,
+  "pseudocode": "1. Build adjacency list map from parent array\n2. Initialize queue with killPid\n3. While queue is not empty:\n4.   curr = queue.pop()\n5.   result.push(curr)\n6.   for child in map[curr]:\n7.     queue.push(child)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Building adjacency map: {3: [5], 0: [3, 1], 1: [3, 1]}",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 0,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 3,
+          "left": 3,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 5,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": []
+    },
+    {
+      "codeLine": 2,
+      "note": "Initialize queue with target process 5",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 0,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 3,
+          "left": 3,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 5,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": []
+    },
+    {
+      "codeLine": 4,
+      "note": "Pop 5 from queue",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 0,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 3,
+          "left": 3,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 5,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        3
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Add 5 to results",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 0,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 3,
+          "left": 3,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 5,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        3
+      ]
+    }
+  ]
+}

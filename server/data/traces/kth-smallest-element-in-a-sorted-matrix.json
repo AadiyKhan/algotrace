@@ -1,0 +1,226 @@
+{
+  "title": "Kth Smallest Element in a Sorted Matrix",
+  "difficulty": "Medium",
+  "type": "matrix",
+  "tags": [
+    "Matrix",
+    "Binary Search",
+    "Heap"
+  ],
+  "description": "Find the kth smallest element in an n x n matrix where each row and column is sorted in ascending order.",
+  "target": 8,
+  "pseudocode": "1. low = matrix[0][0], high = matrix[n-1][n-1]\n2. while low < high:\n3.   mid = low + (high - low) // 2\n4.   count = countLessEqual(matrix, mid)\n5.   if count < k: low = mid + 1\n6.   else: high = mid\n7. return low",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize binary search range between top-left (1) and bottom-right (15).",
+      "matrix": [
+        [
+          1,
+          5,
+          9
+        ],
+        [
+          10,
+          11,
+          13
+        ],
+        [
+          12,
+          13,
+          15
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Calculate mid: (1 + 15) // 2 = 8.",
+      "matrix": [
+        [
+          1,
+          5,
+          9
+        ],
+        [
+          10,
+          11,
+          13
+        ],
+        [
+          12,
+          13,
+          15
+        ]
+      ],
+      "i": 8
+    },
+    {
+      "codeLine": 4,
+      "note": "Count elements <= 8. Found: 1, 5 (Count = 2).",
+      "matrix": [
+        [
+          1,
+          5,
+          9
+        ],
+        [
+          10,
+          11,
+          13
+        ],
+        [
+          12,
+          13,
+          15
+        ]
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Count (2) < k (8). Set low = mid + 1 = 9.",
+      "matrix": [
+        [
+          1,
+          5,
+          9
+        ],
+        [
+          10,
+          11,
+          13
+        ],
+        [
+          12,
+          13,
+          15
+        ]
+      ],
+      "i": 9
+    },
+    {
+      "codeLine": 3,
+      "note": "Calculate mid: (9 + 15) // 2 = 12.",
+      "matrix": [
+        [
+          1,
+          5,
+          9
+        ],
+        [
+          10,
+          11,
+          13
+        ],
+        [
+          12,
+          13,
+          15
+        ]
+      ],
+      "i": 12
+    },
+    {
+      "codeLine": 4,
+      "note": "Count elements <= 12. Found: 1, 5, 9, 10, 11, 12 (Count = 6).",
+      "matrix": [
+        [
+          1,
+          5,
+          9
+        ],
+        [
+          10,
+          11,
+          13
+        ],
+        [
+          12,
+          13,
+          15
+        ]
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          0
+        ]
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Count (6) >= k (8) is false, narrowing range.",
+      "matrix": [
+        [
+          1,
+          5,
+          9
+        ],
+        [
+          10,
+          11,
+          13
+        ],
+        [
+          12,
+          13,
+          15
+        ]
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Binary search concludes. Return 13.",
+      "matrix": [
+        [
+          1,
+          5,
+          9
+        ],
+        [
+          10,
+          11,
+          13
+        ],
+        [
+          12,
+          13,
+          15
+        ]
+      ]
+    }
+  ]
+}

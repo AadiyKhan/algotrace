@@ -1,0 +1,124 @@
+{
+  "title": "Shortest Palindrome",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "String",
+    "KMP",
+    "String Matching"
+  ],
+  "description": "Find the shortest palindrome by adding characters in front of a string.",
+  "target": "aacecaaa",
+  "pseudocode": "1. temp = s + '#' + reverse(s)\n2. lps = new Array(temp.length).fill(0)\n3. for i = 1 to temp.length - 1:\n4.   j = lps[i-1]\n5.   while j > 0 and temp[i] != temp[j]: j = lps[j-1]\n6.   if temp[i] == temp[j]: j++\n7.   lps[i] = j\n8. return reverse(s.substring(lps.last)) + s",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Concatenate s, a separator, and reversed s to use KMP failure function.",
+      "array": [
+        "a",
+        "a",
+        "c",
+        "e",
+        "c",
+        "a",
+        "a",
+        "#",
+        "a",
+        "a",
+        "c",
+        "e",
+        "c",
+        "a",
+        "a"
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Initialize LPS array to track longest prefix which is also a suffix.",
+      "array": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        2,
+        0,
+        1,
+        2,
+        0,
+        0,
+        0,
+        1,
+        2
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Match found at index 1: 'a' == 'a', increment j.",
+      "array": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        2,
+        0,
+        1,
+        2,
+        0,
+        0,
+        0,
+        1,
+        2
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "LPS value calculated for position.",
+      "array": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        2,
+        0,
+        1,
+        2,
+        0,
+        0,
+        0,
+        1,
+        2
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 8,
+      "note": "Calculate prefix to prepend based on last LPS value.",
+      "array": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        2,
+        0,
+        1,
+        2,
+        0,
+        0,
+        0,
+        1,
+        2
+      ],
+      "i": 14
+    }
+  ]
+}

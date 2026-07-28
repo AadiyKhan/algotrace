@@ -1,0 +1,117 @@
+{
+  "title": "Palindrome Linked List",
+  "difficulty": "Easy",
+  "type": "linked-list",
+  "tags": [
+    "Linked List",
+    "Two Pointers",
+    "Stack",
+    "Recursion"
+  ],
+  "description": "Determine if a singly linked list is a palindrome.",
+  "pseudocode": "1. Find middle of list using slow/fast pointers\n2. Reverse the second half of the list\n3. Compare first half and reversed second half\n4. Return true if all values match",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize slow and fast pointers to find the middle.",
+      "nodes": [
+        {
+          "val": 1,
+          "next": 1
+        },
+        {
+          "val": 2,
+          "next": 2
+        },
+        {
+          "val": 2,
+          "next": 3
+        },
+        {
+          "val": 1,
+          "next": null
+        }
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 1,
+      "note": "Slow moves to index 1, fast moves to index 2.",
+      "nodes": [
+        {
+          "val": 1,
+          "next": 1
+        },
+        {
+          "val": 2,
+          "next": 2
+        },
+        {
+          "val": 2,
+          "next": 3
+        },
+        {
+          "val": 1,
+          "next": null
+        }
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Reverse the second half: 2->1 becomes 1->2.",
+      "nodes": [
+        {
+          "val": 1,
+          "next": 1
+        },
+        {
+          "val": 2,
+          "next": 3
+        },
+        {
+          "val": 1,
+          "next": null
+        }
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Compare head (1) with reversed second half head (1).",
+      "nodes": [
+        {
+          "val": 1,
+          "next": 1
+        },
+        {
+          "val": 2,
+          "next": 3
+        },
+        {
+          "val": 1,
+          "next": null
+        }
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "All elements match, return true.",
+      "nodes": [
+        {
+          "val": 1,
+          "next": 1
+        },
+        {
+          "val": 2,
+          "next": 3
+        },
+        {
+          "val": 1,
+          "next": null
+        }
+      ]
+    }
+  ]
+}

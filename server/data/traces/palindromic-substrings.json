@@ -1,0 +1,82 @@
+{
+  "title": "Palindromic Substrings",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "String",
+    "Dynamic Programming"
+  ],
+  "description": "Count the total number of palindromic substrings in a given string.",
+  "pseudocode": "1. count = 0\n2. for i from 0 to n-1:\n3.   expand(i, i)\n4.   expand(i, i+1)\n5. function expand(l, r):\n6.   while l >= 0 and r < n and s[l] == s[r]:\n7.     count++\n8.     l--, r++",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize count to 0.",
+      "array": [
+        "a",
+        "b",
+        "a"
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Expand around center index 0 (a). Palindrome found: 'a'.",
+      "array": [
+        "a",
+        "b",
+        "a"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Expand around center 0, 1 (ab). No palindrome.",
+      "array": [
+        "a",
+        "b",
+        "a"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Expand around center index 1 (b). Palindrome found: 'b'.",
+      "array": [
+        "a",
+        "b",
+        "a"
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Expand around center 1, 2 (ba). No palindrome.",
+      "array": [
+        "a",
+        "b",
+        "a"
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Expand around center index 2 (a). Palindrome found: 'a'.",
+      "array": [
+        "a",
+        "b",
+        "a"
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Expand around center 0, 2 ('aba'). Palindrome found: 'aba'.",
+      "array": [
+        "a",
+        "b",
+        "a"
+      ],
+      "i": 0
+    }
+  ]
+}

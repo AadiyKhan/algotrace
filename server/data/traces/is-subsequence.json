@@ -1,0 +1,155 @@
+{
+  "title": "Is Subsequence",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Two Pointers",
+    "String",
+    "Dynamic Programming"
+  ],
+  "description": "Determine if string s is a subsequence of string t.",
+  "target": "s = 'abc', t = 'ahbgdc'",
+  "pseudocode": "1: let i = 0, j = 0\n2: while i < s.length && j < t.length\n3:   if s[i] === t[j]\n4:     i++\n5:   j++\n6: return i === s.length",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize pointers i and j to 0",
+      "array": [
+        "a",
+        "h",
+        "b",
+        "g",
+        "d",
+        "c"
+      ],
+      "i": 0,
+      "j": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Compare s[0] ('a') with t[0] ('a'). Match found.",
+      "array": [
+        "a",
+        "h",
+        "b",
+        "g",
+        "d",
+        "c"
+      ],
+      "i": 0,
+      "j": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Increment i to 1",
+      "array": [
+        "a",
+        "h",
+        "b",
+        "g",
+        "d",
+        "c"
+      ],
+      "i": 1,
+      "j": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Increment j to 1",
+      "array": [
+        "a",
+        "h",
+        "b",
+        "g",
+        "d",
+        "c"
+      ],
+      "i": 1,
+      "j": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Compare s[1] ('b') with t[1] ('h'). No match.",
+      "array": [
+        "a",
+        "h",
+        "b",
+        "g",
+        "d",
+        "c"
+      ],
+      "i": 1,
+      "j": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Increment j to 2",
+      "array": [
+        "a",
+        "h",
+        "b",
+        "g",
+        "d",
+        "c"
+      ],
+      "i": 1,
+      "j": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Compare s[1] ('b') with t[2] ('b'). Match found.",
+      "array": [
+        "a",
+        "h",
+        "b",
+        "g",
+        "d",
+        "c"
+      ],
+      "i": 1,
+      "j": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Increment i to 2",
+      "array": [
+        "a",
+        "h",
+        "b",
+        "g",
+        "d",
+        "c"
+      ],
+      "i": 2,
+      "j": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Increment j to 3",
+      "array": [
+        "a",
+        "h",
+        "b",
+        "g",
+        "d",
+        "c"
+      ],
+      "i": 2,
+      "j": 3
+    },
+    {
+      "codeLine": 6,
+      "note": "Loop finishes, return true as i equals s.length",
+      "array": [
+        "a",
+        "h",
+        "b",
+        "g",
+        "d",
+        "c"
+      ],
+      "i": 3,
+      "j": 6
+    }
+  ]
+}

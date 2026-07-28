@@ -1,0 +1,114 @@
+{
+  "title": "Partition to K Equal Sum Subsets",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Dynamic Programming",
+    "Backtracking",
+    "Recursion"
+  ],
+  "description": "Determine if an array can be partitioned into k subsets with equal sum.",
+  "target": 5,
+  "pseudocode": "1. target = sum(nums) / k\n2. sort(nums, desc)\n3. function backtrack(idx, currentSum, k):\n4.   if k == 1 return true\n5.   if currentSum == target: return backtrack(0, 0, k-1)\n6.   for i from idx to n:\n7.     if !used[i] and currentSum + nums[i] <= target:\n8.       used[i] = true\n9.       if backtrack(i + 1, currentSum + nums[i], k): return true\n10.      used[i] = false\n11. return false",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Calculate target sum: (4+3+2+1) / 2 = 5.",
+      "array": [
+        4,
+        3,
+        2,
+        1
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Start backtracking. Attempt to fill first subset.",
+      "array": [
+        4,
+        3,
+        2,
+        1
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 8,
+      "note": "Include 4 in subset. currentSum = 4.",
+      "array": [
+        4,
+        3,
+        2,
+        1
+      ],
+      "visited": [
+        0
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Check next element 3: 4 + 3 > 5. Skip.",
+      "array": [
+        4,
+        3,
+        2,
+        1
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "Check next element 1: 4 + 1 == 5. Match found.",
+      "array": [
+        4,
+        3,
+        2,
+        1
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 8,
+      "note": "Include 1. currentSum = 5. Subset complete.",
+      "array": [
+        4,
+        3,
+        2,
+        1
+      ],
+      "visited": [
+        0,
+        3
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Target met, recurse for k-1 (k=1).",
+      "array": [
+        4,
+        3,
+        2,
+        1
+      ],
+      "visited": [
+        0,
+        3
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "k is 1, return true.",
+      "array": [
+        4,
+        3,
+        2,
+        1
+      ],
+      "visited": [
+        0,
+        3
+      ]
+    }
+  ]
+}

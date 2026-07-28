@@ -1,0 +1,71 @@
+{
+  "title": "Plus One Linked List",
+  "difficulty": "Medium",
+  "type": "linked-list",
+  "tags": [
+    "Linked List",
+    "Math"
+  ],
+  "description": "Given a non-negative integer represented as a linked list, add one to the integer.",
+  "target": 1,
+  "pseudocode": "1. Find the rightmost node not equal to 9\n2. If no such node exists, create a new node with value 1, set next to head\n3. Increment the found node's value by 1\n4. Set all nodes to the right of the found node to 0",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Traversing to find the rightmost node not equal to 9 in [1, 2, 9]",
+      "nodes": [
+        {
+          "val": 1,
+          "next": 1
+        },
+        {
+          "val": 2,
+          "next": 2
+        },
+        {
+          "val": 9,
+          "next": null
+        }
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Found 2 at index 1, incrementing to 3",
+      "nodes": [
+        {
+          "val": 1,
+          "next": 1
+        },
+        {
+          "val": 3,
+          "next": 2
+        },
+        {
+          "val": 9,
+          "next": null
+        }
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Setting all nodes to the right of index 1 to 0",
+      "nodes": [
+        {
+          "val": 1,
+          "next": 1
+        },
+        {
+          "val": 3,
+          "next": 2
+        },
+        {
+          "val": 0,
+          "next": null
+        }
+      ],
+      "curr": 2
+    }
+  ]
+}

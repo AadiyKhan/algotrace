@@ -1,0 +1,86 @@
+{
+  "title": "Maximum Average Subarray II",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Binary Search"
+  ],
+  "description": "Find the maximum average value of a subarray of at least length k.",
+  "target": 4,
+  "pseudocode": "1. low = min(nums), high = max(nums)\n2. while high - low > 1e-5:\n3.   mid = (low + high) / 2\n4.   if check(mid): low = mid\n5.   else: high = mid\n6. return low",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize binary search bounds with min and max of array [1, 12, -5, -6, 50, 3].",
+      "array": [
+        1,
+        12,
+        -5,
+        -6,
+        50,
+        3
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Binary search loop starts; mid calculation checks if average is possible.",
+      "array": [
+        1,
+        12,
+        -5,
+        -6,
+        50,
+        3
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Calculating midpoint between low and high.",
+      "array": [
+        1,
+        12,
+        -5,
+        -6,
+        50,
+        3
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Check function verifies if a subarray of length >= k exists with average >= mid.",
+      "array": [
+        1,
+        12,
+        -5,
+        -6,
+        50,
+        3
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Adjusting bounds based on whether the average is achievable.",
+      "array": [
+        1,
+        12,
+        -5,
+        -6,
+        50,
+        3
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Return the calculated maximum average value.",
+      "array": [
+        1,
+        12,
+        -5,
+        -6,
+        50,
+        3
+      ]
+    }
+  ]
+}

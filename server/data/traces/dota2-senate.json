@@ -1,0 +1,55 @@
+{
+  "title": "Dota2 Senate",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Greedy",
+    "Queue"
+  ],
+  "description": "Senators in a round-robin process ban each other to secure victory for their party.",
+  "target": null,
+  "pseudocode": "1. queueR = [indices of R]; queueD = [indices of D]\n2. while (queueR and queueD):\n3.   r = queueR.shift(); d = queueD.shift()\n4.   if r < d: queueR.push(r + n)\n5.   else: queueD.push(d + n)\n6. return queueR ? \"Radiant\" : \"Dire\"",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize queues with indices. Input: 'RD', n=2.",
+      "array": [
+        "R",
+        "D"
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Pop R index 0 and D index 1.",
+      "array": [
+        "R",
+        "D"
+      ],
+      "i": 0,
+      "j": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "0 < 1, so R wins this round and gets pushed to the back.",
+      "array": [
+        "D"
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 2,
+      "note": "Only R remains in queue.",
+      "array": [
+        "R"
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Radiant wins.",
+      "array": [
+        "R"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "title": "Remove 9",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Math",
+    "Base Conversion"
+  ],
+  "description": "Find the n-th positive integer that does not contain the digit 9 by treating numbers as base-9 digits.",
+  "target": 10,
+  "pseudocode": "function remove9(n) {\n  let res = '';\n  while (n > 0) {\n    res = (n % 9) + res;\n    n = Math.floor(n / 9);\n  }\n  return parseInt(res);\n}",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Initialize result string as empty.",
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Calculate 10 % 9 = 1, append to result.",
+      "array": [
+        "1"
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Update n: 10 / 9 = 1.",
+      "array": [
+        "1"
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Calculate 1 % 9 = 1, append to result.",
+      "array": [
+        "1",
+        "1"
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Update n: 1 / 9 = 0, loop terminates.",
+      "array": [
+        "1",
+        "1"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 7,
+      "note": "Return 11 as the 10th number without digit 9.",
+      "array": [
+        1,
+        1
+      ]
+    }
+  ]
+}

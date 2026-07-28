@@ -1,0 +1,181 @@
+{
+  "title": "H-Index",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Sorting",
+    "Counting Sort"
+  ],
+  "description": "Given an array of citations, return the h-index (the maximum value h such that the researcher has published at least h papers that have each cited at least h times).",
+  "target": null,
+  "pseudocode": "1. citations.sort((a, b) => b - a);\n2. let h = 0;\n3. for (let i = 0; i < citations.length; i++) {\n4.   if (citations[i] >= i + 1) {\n5.     h = i + 1;\n6.   } else {\n7.     break;\n8.   }\n9. }\n10. return h;",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Sort citations in descending order: [3, 0, 6, 1, 5] -> [6, 5, 3, 1, 0]",
+      "array": [
+        6,
+        5,
+        3,
+        1,
+        0
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Start loop, i = 0",
+      "array": [
+        6,
+        5,
+        3,
+        1,
+        0
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Check if citations[0] (6) >= i+1 (1). True.",
+      "array": [
+        6,
+        5,
+        3,
+        1,
+        0
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Update h to 1",
+      "array": [
+        6,
+        5,
+        3,
+        1,
+        0
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Next iteration, i = 1",
+      "array": [
+        6,
+        5,
+        3,
+        1,
+        0
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Check if citations[1] (5) >= i+1 (2). True.",
+      "array": [
+        6,
+        5,
+        3,
+        1,
+        0
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Update h to 2",
+      "array": [
+        6,
+        5,
+        3,
+        1,
+        0
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Next iteration, i = 2",
+      "array": [
+        6,
+        5,
+        3,
+        1,
+        0
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Check if citations[2] (3) >= i+1 (3). True.",
+      "array": [
+        6,
+        5,
+        3,
+        1,
+        0
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Update h to 3",
+      "array": [
+        6,
+        5,
+        3,
+        1,
+        0
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Next iteration, i = 3",
+      "array": [
+        6,
+        5,
+        3,
+        1,
+        0
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 4,
+      "note": "Check if citations[3] (1) >= i+1 (4). False.",
+      "array": [
+        6,
+        5,
+        3,
+        1,
+        0
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 7,
+      "note": "Break loop",
+      "array": [
+        6,
+        5,
+        3,
+        1,
+        0
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 10,
+      "note": "Return h = 3",
+      "array": [
+        6,
+        5,
+        3,
+        1,
+        0
+      ]
+    }
+  ]
+}

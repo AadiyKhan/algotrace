@@ -1,0 +1,62 @@
+{
+  "title": "All Oone Data Structure",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Hash Table",
+    "Doubly Linked List",
+    "Design"
+  ],
+  "description": "Design a data structure that tracks the count of strings and returns one with the min or max frequency in O(1).",
+  "target": null,
+  "pseudocode": "1. inc(key): update frequency map and move key in DLL of buckets\n2. dec(key): update frequency map and move key or remove if count 0\n3. getMax(): return tail.keys.any()\n4. getMin(): return head.keys.any()",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Increment 'A'. Create bucket frequency 1, add 'A'.",
+      "array": [
+        "A:1"
+      ],
+      "i": "A",
+      "j": 1
+    },
+    {
+      "codeLine": 1,
+      "note": "Increment 'B'. Create bucket frequency 1, add 'B'.",
+      "array": [
+        "A:1",
+        "B:1"
+      ],
+      "i": "B",
+      "j": 1
+    },
+    {
+      "codeLine": 1,
+      "note": "Increment 'A'. Move 'A' to bucket frequency 2.",
+      "array": [
+        "A:2",
+        "B:1"
+      ],
+      "i": "A",
+      "j": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Get max. Tail bucket is frequency 2, returning 'A'.",
+      "array": [
+        "A:2",
+        "B:1"
+      ],
+      "i": "A"
+    },
+    {
+      "codeLine": 4,
+      "note": "Get min. Head bucket is frequency 1, returning 'B'.",
+      "array": [
+        "A:2",
+        "B:1"
+      ],
+      "i": "B"
+    }
+  ]
+}

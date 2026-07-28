@@ -1,0 +1,54 @@
+{
+  "title": "Minimum Add to Make Parentheses Valid",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "String",
+    "Stack",
+    "Greedy"
+  ],
+  "description": "Find the minimum number of parentheses to add to make the string valid.",
+  "target": null,
+  "pseudocode": "1: let open = 0, add = 0\n2: for char of s:\n3:   if char == '(':\n4:     open++\n5:   else if open > 0:\n6:     open--\n7:   else:\n8:     add++\n9: return open + add",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize open and add counters to 0",
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Found '(', increment open",
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "open is now 1",
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Found ')', check if open > 0",
+      "i": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Decrement open to 0",
+      "i": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Found ')', open is 0",
+      "i": 2
+    },
+    {
+      "codeLine": 8,
+      "note": "Increment add to 1",
+      "i": 2
+    },
+    {
+      "codeLine": 9,
+      "note": "Return open(0) + add(1) = 1"
+    }
+  ]
+}

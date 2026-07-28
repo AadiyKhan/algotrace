@@ -1,0 +1,65 @@
+{
+  "title": "Unique Morse Code Words",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "String",
+    "Hash Table"
+  ],
+  "description": "Transform a list of words into Morse code and count the number of unique transformations.",
+  "target": 2,
+  "pseudocode": "1. morse = [\"-.-\", \"---\", ...]\n2. transformations = new Set()\n3. for word in words:\n4.   code = \"\"\n5.   for char in word:\n6.     code += morse[char.charCodeAt(0) - 97]\n7.   transformations.add(code)\n8. return transformations.size",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Initialize an empty Set to store unique transformations.",
+      "array": []
+    },
+    {
+      "codeLine": 3,
+      "note": "Processing first word: 'gin'",
+      "i": 0,
+      "array": [
+        "gin",
+        "zen"
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Mapping 'g', 'i', 'n' to morse: '--.', '..', '-.'",
+      "i": 0
+    },
+    {
+      "codeLine": 7,
+      "note": "Added '--..--.' to transformations set.",
+      "array": [
+        "--..--."
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Processing second word: 'zen'",
+      "i": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Mapping 'z', 'e', 'n' to morse: '--..', '.', '-.'",
+      "i": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "Added '--..--.' to transformations set (already exists, no change).",
+      "array": [
+        "--..--."
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Return size of set: 1.",
+      "array": [
+        "--..--."
+      ]
+    }
+  ]
+}

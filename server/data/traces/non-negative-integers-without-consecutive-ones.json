@@ -1,0 +1,76 @@
+{
+  "title": "Non-Negative Integers without Consecutive Ones",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Dynamic Programming",
+    "Bit Manipulation"
+  ],
+  "description": "Find the count of non-negative integers less than or equal to n, whose binary representations do not contain consecutive ones.",
+  "target": 5,
+  "pseudocode": "1: binary = n.toString(2)\n2: dp = new Array(binary.length).fill(0)\n3: dp[0] = 1, dp[1] = 2\n4: for i from 2 to binary.length-1:\n5:   dp[i] = dp[i-1] + dp[i-2]\n6: result = 0, prev_bit = 0\n7: for i from binary.length-1 down to 0:\n8:   if (binary[bit_pos] == '1'):\n9:     result += dp[bit_pos]\n10:    if (prev_bit == 1) return result\n11:    prev_bit = 1\n12: return result + 1",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Convert n=5 to binary string '101'",
+      "array": [
+        1,
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Initialize DP table for lengths",
+      "array": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Calculate Fibonacci-like sequence for bit patterns",
+      "array": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Iterate bits from left to right. bit_pos = 2 (msb)",
+      "i": 2
+    },
+    {
+      "codeLine": 8,
+      "note": "Bit is 1, add dp[2] (3) to result",
+      "i": 2
+    },
+    {
+      "codeLine": 9,
+      "note": "Result becomes 3",
+      "i": 2
+    },
+    {
+      "codeLine": 7,
+      "note": "Next bit_pos = 1",
+      "i": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "Next bit_pos = 0",
+      "i": 0
+    },
+    {
+      "codeLine": 8,
+      "note": "Bit is 1, add dp[0] (1) to result. Result = 4",
+      "i": 0
+    },
+    {
+      "codeLine": 12,
+      "note": "Return result + 1 = 5",
+      "i": 0
+    }
+  ]
+}

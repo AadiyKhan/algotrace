@@ -1,0 +1,76 @@
+{
+  "title": "Freedom Trail",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "String",
+    "Dynamic Programming",
+    "Breadth-First Search"
+  ],
+  "description": "Find the minimum number of steps to spell a keyword by rotating a ring.",
+  "target": "gd",
+  "pseudocode": "1. ringIndices = map(char -> list of positions)\n2. dp = array of size ring.length filled with 0\n3. for each char in key:\n4.   new_dp = infinity\n5.   for next_pos in ringIndices[char]:\n6.     for prev_pos in dp:\n7.       dist = min(abs(next_pos - prev_pos), ring.len - abs(next_pos - prev_pos))\n8.       new_dp[next_pos] = min(new_dp, dp[prev_pos] + dist + 1)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Map characters 'g' and 'd' to indices in 'god'",
+      "array": [
+        "g",
+        "o",
+        "d"
+      ],
+      "i": "g: [0], o: [1], d: [2]"
+    },
+    {
+      "codeLine": 3,
+      "note": "Processing first character 'g', current position 0",
+      "array": [
+        0,
+        0,
+        0
+      ],
+      "i": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 7,
+      "note": "Calculate distance for 'g' (1 step)",
+      "array": [
+        1,
+        0,
+        0
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Processing second character 'd', target index 2",
+      "array": [
+        1,
+        0,
+        0
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 7,
+      "note": "Calculate distance from 0 to 2: min(|2-0|, 3-|2-0|) = 1",
+      "array": [
+        1,
+        0,
+        2
+      ],
+      "i": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 8,
+      "note": "Total steps: 1 (to 'g') + 1 (to 'd') + 2 (button presses) = 4",
+      "array": [
+        1,
+        0,
+        2
+      ]
+    }
+  ]
+}

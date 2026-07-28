@@ -1,0 +1,49 @@
+{
+  "title": "K-th Smallest in Lexicographical Order",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Math",
+    "Trie"
+  ],
+  "description": "Find the k-th smallest lexicographical integer in the range [1, n].",
+  "target": 5,
+  "pseudocode": "1. curr = 1, k = k - 1\n2. while k > 0:\n3.   steps = countSteps(n, curr, curr + 1)\n4.   if steps <= k:\n5.     curr++, k -= steps\n6.   else:\n7.     curr *= 10, k -= 1",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize current pointer to 1 and decrement k.",
+      "i": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Count numbers between 1 and 2 in the range [1, 13].",
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Steps (10) > k (4), so we go deeper into the current prefix.",
+      "i": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "Move to child: 1 -> 10. Decrement k.",
+      "i": 10
+    },
+    {
+      "codeLine": 3,
+      "note": "Count nodes under 10. Only 10 itself fits in range [1, 13].",
+      "i": 10
+    },
+    {
+      "codeLine": 4,
+      "note": "Steps (1) <= k (3), jump to next sibling.",
+      "i": 10
+    },
+    {
+      "codeLine": 5,
+      "note": "Move to sibling 11. k becomes 2.",
+      "i": 11
+    }
+  ]
+}

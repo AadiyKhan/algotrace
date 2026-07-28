@@ -1,0 +1,64 @@
+{
+  "title": "Read N Characters Given Read4 II - Call Multiple Times",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "String",
+    "Simulation"
+  ],
+  "description": "Read characters from a file using a read4 buffer API, handling multiple calls where data may remain in a buffer between calls.",
+  "pseudocode": "1: while i < n:\n2:   if bufPtr == bufCnt:\n3:     bufCnt = read4(internalBuf)\n4:     bufPtr = 0\n5:     if bufCnt == 0: break\n6:   buf[i++] = internalBuf[bufPtr++]",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Buffer is empty, need to call read4 to refill.",
+      "array": [
+        null,
+        null,
+        null
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "read4 fills internal buffer with 4 characters ('a', 'b', 'c', 'd').",
+      "array": [
+        "a",
+        "b",
+        "c"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Copy 'a' to output buffer at index 0.",
+      "array": [
+        "a",
+        null,
+        null
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Copy 'b' to output buffer at index 1.",
+      "array": [
+        "a",
+        "b",
+        null
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Copy 'c' to output buffer at index 2.",
+      "array": [
+        "a",
+        "b",
+        "c"
+      ],
+      "i": 3
+    }
+  ]
+}

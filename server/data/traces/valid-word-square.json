@@ -1,0 +1,187 @@
+{
+  "title": "Valid Word Square",
+  "difficulty": "Easy",
+  "type": "matrix",
+  "tags": [
+    "Array",
+    "Matrix"
+  ],
+  "description": "Check if a list of words forms a valid word square by checking if the kth row and kth column are identical.",
+  "pseudocode": "for (let i = 0; i < words.length; i++) {\n  for (let j = 0; j < words[i].length; j++) {\n    if (j >= words.length || i >= (words[j]?.length || 0) || words[i][j] !== words[j][i]) return false;\n  }\n}",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize loop for row index i=0.",
+      "matrix": [
+        [
+          "a",
+          "b"
+        ],
+        [
+          "b",
+          "c"
+        ]
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Initialize loop for column index j=0.",
+      "matrix": [
+        [
+          "a",
+          "b"
+        ],
+        [
+          "b",
+          "c"
+        ]
+      ],
+      "i": 0,
+      "j": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Check if words[0][0] == words[0][0]. Match 'a' == 'a'.",
+      "matrix": [
+        [
+          "a",
+          "b"
+        ],
+        [
+          "b",
+          "c"
+        ]
+      ],
+      "i": 0,
+      "j": 0,
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Increment j to 1.",
+      "matrix": [
+        [
+          "a",
+          "b"
+        ],
+        [
+          "b",
+          "c"
+        ]
+      ],
+      "i": 0,
+      "j": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Check if words[0][1] == words[1][0]. Match 'b' == 'b'.",
+      "matrix": [
+        [
+          "a",
+          "b"
+        ],
+        [
+          "b",
+          "c"
+        ]
+      ],
+      "i": 0,
+      "j": 1,
+      "curr": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 1,
+      "note": "Increment i to 1.",
+      "matrix": [
+        [
+          "a",
+          "b"
+        ],
+        [
+          "b",
+          "c"
+        ]
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Initialize j to 0.",
+      "matrix": [
+        [
+          "a",
+          "b"
+        ],
+        [
+          "b",
+          "c"
+        ]
+      ],
+      "i": 1,
+      "j": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Check if words[1][0] == words[0][1]. Match 'b' == 'b'.",
+      "matrix": [
+        [
+          "a",
+          "b"
+        ],
+        [
+          "b",
+          "c"
+        ]
+      ],
+      "i": 1,
+      "j": 0,
+      "curr": [
+        1,
+        0
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Increment j to 1.",
+      "matrix": [
+        [
+          "a",
+          "b"
+        ],
+        [
+          "b",
+          "c"
+        ]
+      ],
+      "i": 1,
+      "j": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Check if words[1][1] == words[1][1]. Match 'c' == 'c'.",
+      "matrix": [
+        [
+          "a",
+          "b"
+        ],
+        [
+          "b",
+          "c"
+        ]
+      ],
+      "i": 1,
+      "j": 1,
+      "curr": [
+        1,
+        1
+      ]
+    }
+  ]
+}

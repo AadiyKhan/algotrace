@@ -1,0 +1,230 @@
+{
+  "title": "Number of Valid Subarrays",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Stack",
+    "Monotonic Stack"
+  ],
+  "description": "Given an array of integers, return the number of non-empty subarrays such that the leftmost element of the subarray is not larger than other elements in the subarray.",
+  "target": null,
+  "pseudocode": "1. count = 0\n2. stack = []\n3. for num in nums:\n4.   while stack and stack.top > num:\n5.     stack.pop()\n6.   stack.push(num)\n7.   count += stack.length\n8. return count",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize count to 0",
+      "array": [
+        1,
+        4,
+        2,
+        5,
+        3
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Processing element 1",
+      "array": [
+        1,
+        4,
+        2,
+        5,
+        3
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Push 1 to stack",
+      "array": [
+        1,
+        4,
+        2,
+        5,
+        3
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 7,
+      "note": "Count increases by stack size (1)",
+      "array": [
+        1,
+        4,
+        2,
+        5,
+        3
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Processing element 4",
+      "array": [
+        1,
+        4,
+        2,
+        5,
+        3
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Push 4 to stack",
+      "array": [
+        1,
+        4,
+        2,
+        5,
+        3
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "Count increases by stack size (2), total = 3",
+      "array": [
+        1,
+        4,
+        2,
+        5,
+        3
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Processing element 2",
+      "array": [
+        1,
+        4,
+        2,
+        5,
+        3
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "4 > 2, pop 4",
+      "array": [
+        1,
+        4,
+        2,
+        5,
+        3
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Push 2 to stack",
+      "array": [
+        1,
+        4,
+        2,
+        5,
+        3
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 7,
+      "note": "Count increases by stack size (2), total = 5",
+      "array": [
+        1,
+        4,
+        2,
+        5,
+        3
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Processing element 5",
+      "array": [
+        1,
+        4,
+        2,
+        5,
+        3
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 6,
+      "note": "Push 5 to stack",
+      "array": [
+        1,
+        4,
+        2,
+        5,
+        3
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 7,
+      "note": "Count increases by stack size (3), total = 8",
+      "array": [
+        1,
+        4,
+        2,
+        5,
+        3
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 3,
+      "note": "Processing element 3",
+      "array": [
+        1,
+        4,
+        2,
+        5,
+        3
+      ],
+      "i": 4
+    },
+    {
+      "codeLine": 4,
+      "note": "5 > 3, pop 5",
+      "array": [
+        1,
+        4,
+        2,
+        5,
+        3
+      ],
+      "i": 4
+    },
+    {
+      "codeLine": 6,
+      "note": "Push 3 to stack",
+      "array": [
+        1,
+        4,
+        2,
+        5,
+        3
+      ],
+      "i": 4
+    },
+    {
+      "codeLine": 7,
+      "note": "Count increases by stack size (3), total = 11",
+      "array": [
+        1,
+        4,
+        2,
+        5,
+        3
+      ],
+      "i": 4
+    }
+  ]
+}

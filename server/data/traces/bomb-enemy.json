@@ -1,0 +1,131 @@
+{
+  "title": "Bomb Enemy",
+  "difficulty": "Medium",
+  "type": "matrix",
+  "tags": [
+    "Matrix",
+    "Dynamic Programming"
+  ],
+  "description": "Calculate the maximum enemies you can kill by placing a bomb in an empty cell.",
+  "pseudocode": "1. rows = grid.length, cols = grid[0].length\n2. maxKills = 0\n3. for r in rows, c in cols:\n4. if grid[r][c] == '0':\n5. count = calculateKills(r, c)\n6. maxKills = max(maxKills, count)\n7. return maxKills",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize grid dimensions: 2x2",
+      "matrix": [
+        [
+          "0",
+          "E"
+        ],
+        [
+          "W",
+          "0"
+        ]
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Checking first empty cell at [0, 0]",
+      "matrix": [
+        [
+          "0",
+          "E"
+        ],
+        [
+          "W",
+          "0"
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Calculate kills for [0, 0]: 1 enemy to the right, 0 vertical",
+      "matrix": [
+        [
+          "0",
+          "E"
+        ],
+        [
+          "W",
+          "0"
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "maxKills updated to 1",
+      "matrix": [
+        [
+          "0",
+          "E"
+        ],
+        [
+          "W",
+          "0"
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Checking second empty cell at [1, 1]",
+      "matrix": [
+        [
+          "0",
+          "E"
+        ],
+        [
+          "W",
+          "0"
+        ]
+      ],
+      "curr": [
+        1,
+        1
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Calculate kills for [1, 1]: 0 enemies found",
+      "matrix": [
+        [
+          "0",
+          "E"
+        ],
+        [
+          "W",
+          "0"
+        ]
+      ],
+      "curr": [
+        1,
+        1
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Final maxKills is 1",
+      "matrix": [
+        [
+          "0",
+          "E"
+        ],
+        [
+          "W",
+          "0"
+        ]
+      ]
+    }
+  ]
+}

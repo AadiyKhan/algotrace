@@ -1,0 +1,117 @@
+{
+  "title": "Fruit Into Baskets",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "Sliding Window"
+  ],
+  "description": "Find the length of the longest subarray that contains at most two distinct types of fruits (represented by integers).",
+  "target": null,
+  "pseudocode": "1. map = {}\n2. left = 0, maxLen = 0\n3. for right = 0 to fruits.length - 1:\n4.   map[fruits[right]] = (map[fruits[right]] || 0) + 1\n5.   while map.size > 2:\n6.     map[fruits[left]]--\n7.     if map[fruits[left]] == 0: map.delete(fruits[left])\n8.     left++\n9.   maxLen = max(maxLen, right - left + 1)",
+  "steps": [
+    {
+      "codeLine": 3,
+      "note": "Initialize sliding window with fruits [1, 2, 1, 3]",
+      "array": [
+        1,
+        2,
+        1,
+        3
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Add fruit 1 at index 0. Map: {1:1}",
+      "array": [
+        1,
+        2,
+        1,
+        3
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Add fruit 2 at index 1. Map: {1:1, 2:1}",
+      "array": [
+        1,
+        2,
+        1,
+        3
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Add fruit 1 at index 2. Map: {1:2, 2:1}",
+      "array": [
+        1,
+        2,
+        1,
+        3
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Add fruit 3 at index 3. Map: {1:2, 2:1, 3:1}",
+      "array": [
+        1,
+        2,
+        1,
+        3
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 5,
+      "note": "Map size > 2. Need to shrink window from left.",
+      "array": [
+        1,
+        2,
+        1,
+        3
+      ],
+      "i": 3,
+      "prev": 0
+    },
+    {
+      "codeLine": 8,
+      "note": "Remove fruit 1 at index 0. Map: {1:1, 2:1, 3:1}",
+      "array": [
+        1,
+        2,
+        1,
+        3
+      ],
+      "i": 3,
+      "prev": 1
+    },
+    {
+      "codeLine": 8,
+      "note": "Remove fruit 2 at index 1. Map: {1:1, 3:1}. Window valid.",
+      "array": [
+        1,
+        2,
+        1,
+        3
+      ],
+      "i": 3,
+      "prev": 2
+    },
+    {
+      "codeLine": 9,
+      "note": "Final maxLen calculated as 2.",
+      "array": [
+        1,
+        2,
+        1,
+        3
+      ],
+      "i": 3
+    }
+  ]
+}

@@ -1,0 +1,92 @@
+{
+  "title": "Orderly Queue",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "String",
+    "Math",
+    "Sorting"
+  ],
+  "description": "Return the lexicographically smallest string possible by applying the move: take the first character and append it to the end of the string (if k=1), or sort the string (if k>1).",
+  "target": "k = 1",
+  "pseudocode": "if k > 1: return s.split('').sort().join('')\nres = s\nfor i in range(len(s)):\n  s = s[1:] + s[0]\n  if s < res: res = s\nreturn res",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "k is 1, so we must perform cyclic shifts to find the minimum.",
+      "array": [
+        "c",
+        "b",
+        "a"
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Initialize result with original string.",
+      "array": [
+        "c",
+        "b",
+        "a"
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Shift: Move 'c' to the end.",
+      "array": [
+        "b",
+        "a",
+        "c"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Compare 'bac' with 'cba', 'bac' is smaller.",
+      "array": [
+        "b",
+        "a",
+        "c"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Shift: Move 'b' to the end.",
+      "array": [
+        "a",
+        "c",
+        "b"
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Compare 'acb' with 'bac', 'acb' is smaller.",
+      "array": [
+        "a",
+        "c",
+        "b"
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Shift: Move 'a' to the end.",
+      "array": [
+        "c",
+        "b",
+        "a"
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Compare 'cba' with 'acb', 'acb' is smaller. Return result.",
+      "array": [
+        "a",
+        "c",
+        "b"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,115 @@
+{
+  "title": "Print Binary Tree",
+  "difficulty": "Medium",
+  "type": "tree",
+  "tags": [
+    "Tree",
+    "DFS",
+    "Binary Tree"
+  ],
+  "description": "Construct a 0-indexed m x n matrix representing the structure of a binary tree.",
+  "target": null,
+  "pseudocode": "1. height = getHeight(root)\n2. width = 2^(height + 1) - 1\n3. res = new Array(height).fill(null).map(() => new Array(width).fill(''))\n4. fill(root, 0, 0, width - 1, res)\n5. function fill(node, depth, left, right, res):\n6.   mid = (left + right) / 2\n7.   res[depth][mid] = node.val\n8.   if node.left: fill(node.left, depth + 1, left, mid - 1, res)\n9.   if node.right: fill(node.right, depth + 1, mid + 1, right, res)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Calculate tree height (root at depth 0, 2 levels total)",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Initialize 2x3 matrix with empty strings",
+      "matrix": [
+        [
+          "",
+          "",
+          ""
+        ],
+        [
+          "",
+          "",
+          ""
+        ]
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Root (1) placed at (0, 1)",
+      "matrix": [
+        [
+          "",
+          "1",
+          ""
+        ],
+        [
+          "",
+          "",
+          ""
+        ]
+      ],
+      "curr": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Recurse left for node 2 at (1, 0)",
+      "matrix": [
+        [
+          "",
+          "1",
+          ""
+        ],
+        [
+          "2",
+          "",
+          ""
+        ]
+      ],
+      "curr": [
+        1,
+        0
+      ]
+    },
+    {
+      "codeLine": 9,
+      "note": "Recurse right for node 3 at (1, 2)",
+      "matrix": [
+        [
+          "",
+          "1",
+          ""
+        ],
+        [
+          "2",
+          "",
+          "3"
+        ]
+      ],
+      "curr": [
+        1,
+        2
+      ]
+    }
+  ]
+}

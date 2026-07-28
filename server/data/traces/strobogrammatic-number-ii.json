@@ -1,0 +1,58 @@
+{
+  "title": "Strobogrammatic Number II",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Recursion",
+    "Math"
+  ],
+  "description": "Find all strobogrammatic numbers of length n.",
+  "target": 2,
+  "pseudocode": "1. function helper(n, finalLen) {\n2.   if (n == 0) return [''];\n3.   if (n == 1) return ['0', '1', '8'];\n4.   let prev = helper(n - 2, finalLen);\n5.   let res = [];\n6.   for (let s of prev) {\n7.     if (n != finalLen) res.push('0' + s + '0');\n8.     res.push('1' + s + '1', '6' + s + '9', '8' + s + '8', '9' + s + '6');\n9.   }\n10.  return res;\n11. }",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Starting recursion for n = 2",
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Recursive call for n = 0",
+      "i": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Base case n=0 reached, returning ['']",
+      "array": [
+        ""
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Iterating through prev results to build n=2",
+      "array": [
+        ""
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Adding combinations for n=2 excluding leading zero",
+      "array": [
+        "11",
+        "69",
+        "88",
+        "96"
+      ]
+    },
+    {
+      "codeLine": 10,
+      "note": "Final result for n=2 returned",
+      "array": [
+        "11",
+        "69",
+        "88",
+        "96"
+      ]
+    }
+  ]
+}

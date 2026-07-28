@@ -1,0 +1,107 @@
+{
+  "title": "Climbing Stairs",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Dynamic Programming",
+    "Math",
+    "Memoization"
+  ],
+  "description": "You are climbing a staircase. It takes n steps to reach the top. Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?",
+  "target": 4,
+  "pseudocode": "function climbStairs(n):\n  if n <= 2 return n\n  dp = array of size n + 1\n  dp[1] = 1, dp[2] = 2\n  for i = 3 to n:\n    dp[i] = dp[i - 1] + dp[i - 2]\n  return dp[n]",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Start function climbStairs with target n = 4.",
+      "array": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Check condition n <= 2. Since 4 > 2, proceed to DP initialization.",
+      "array": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Initialize base cases: 1 way to reach step 1, 2 ways to reach step 2.",
+      "array": [
+        0,
+        1,
+        2,
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Start loop at i = 3 to calculate ways for step 3.",
+      "array": [
+        0,
+        1,
+        2,
+        0,
+        0
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 5,
+      "note": "Calculate dp[3] = dp[2] + dp[1] = 2 + 1 = 3.",
+      "array": [
+        0,
+        1,
+        2,
+        3,
+        0
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 4,
+      "note": "Increment loop counter to i = 4.",
+      "array": [
+        0,
+        1,
+        2,
+        3,
+        0
+      ],
+      "i": 4
+    },
+    {
+      "codeLine": 5,
+      "note": "Calculate dp[4] = dp[3] + dp[2] = 3 + 2 = 5.",
+      "array": [
+        0,
+        1,
+        2,
+        3,
+        5
+      ],
+      "i": 4
+    },
+    {
+      "codeLine": 6,
+      "note": "Return dp[4] = 5. There are 5 distinct ways to climb 4 stairs.",
+      "array": [
+        0,
+        1,
+        2,
+        3,
+        5
+      ]
+    }
+  ]
+}

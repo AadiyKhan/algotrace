@@ -1,0 +1,72 @@
+{
+  "title": "Maximum Sum Circular Subarray",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Dynamic Programming"
+  ],
+  "description": "Find the maximum possible sum of a non-empty subarray of a circular array.",
+  "target": null,
+  "pseudocode": "1. maxSoFar = nums[0], curMax = 0, minSoFar = nums[0], curMin = 0, total = 0\n2. for x in nums:\n3.   curMax = max(x, curMax + x)\n4.   maxSoFar = max(maxSoFar, curMax)\n5.   curMin = min(x, curMin + x)\n6.   minSoFar = min(minSoFar, curMin)\n7.   total += x\n8. return maxSoFar > 0 ? max(maxSoFar, total - minSoFar) : maxSoFar",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize variables with first element 1",
+      "array": [
+        1,
+        -2,
+        3
+      ],
+      "i": null
+    },
+    {
+      "codeLine": 3,
+      "note": "Iteration 1: curMax becomes 1",
+      "array": [
+        1,
+        -2,
+        3
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Iteration 2: curMin becomes -2",
+      "array": [
+        1,
+        -2,
+        3
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Iteration 3: curMax becomes 3",
+      "array": [
+        1,
+        -2,
+        3
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 7,
+      "note": "Total sum calculated",
+      "array": [
+        1,
+        -2,
+        3
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Result is max(3, 2 - (-2)) = 4",
+      "array": [
+        1,
+        -2,
+        3
+      ]
+    }
+  ]
+}

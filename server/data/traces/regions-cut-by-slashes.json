@@ -1,0 +1,217 @@
+{
+  "title": "Regions Cut By Slashes",
+  "difficulty": "Medium",
+  "type": "matrix",
+  "tags": [
+    "Array",
+    "Graph",
+    "DFS",
+    "Union Find"
+  ],
+  "description": "Calculate the number of regions in an N x N grid formed by slashes, backslashes, and spaces.",
+  "target": 2,
+  "pseudocode": "1. scale grid to 3x3 per cell\n2. fill 1 for slashes, 0 for spaces\n3. count connected components of 0s using DFS\n4. return count",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Scale grid /1/ to 3x3 blocks. Cell (0,1) with '/' becomes diagonal.",
+      "matrix": [
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Start DFS from (0,0) to find first region.",
+      "matrix": [
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ]
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "DFS complete for first region. Count = 1.",
+      "matrix": [
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ]
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "curr": [
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Start DFS from (1,2) to find second region.",
+      "matrix": [
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ]
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          2
+        ]
+      ],
+      "curr": [
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "All components visited. Total regions = 2.",
+      "matrix": [
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ]
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          2
+        ]
+      ]
+    }
+  ]
+}

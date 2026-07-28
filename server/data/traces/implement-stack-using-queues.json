@@ -1,0 +1,50 @@
+{
+  "title": "Implement Stack Using Queues",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Queue",
+    "Stack",
+    "Design"
+  ],
+  "description": "Implement a last-in-first-out (LIFO) stack using only two queues. The implemented stack should support all operations of a normal stack (push, pop, top, and empty).",
+  "target": null,
+  "pseudocode": "1. queue.push(x)\n2. for (i = 0; i < queue.length - 1; i++) {\n3.   queue.push(queue.shift())\n4. }",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Push 1 into the queue.",
+      "array": [
+        1
+      ],
+      "i": null
+    },
+    {
+      "codeLine": 1,
+      "note": "Push 2 into the queue. Queue is [1, 2].",
+      "array": [
+        1,
+        2
+      ],
+      "i": null
+    },
+    {
+      "codeLine": 2,
+      "note": "Start loop to rotate elements. Move 1 to back.",
+      "array": [
+        1,
+        2
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Shift 1 and push to back. Queue becomes [2, 1].",
+      "array": [
+        2,
+        1
+      ],
+      "i": 0
+    }
+  ]
+}

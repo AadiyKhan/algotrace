@@ -1,0 +1,69 @@
+{
+  "title": "Snakes and Ladders",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Breadth-First Search",
+    "Graph",
+    "Array"
+  ],
+  "description": "Find the minimum number of moves to reach the end of an N x N snakes and ladders board.",
+  "target": 36,
+  "pseudocode": "1. queue = [1], dist = {1: 0}\n2. while queue is not empty:\n3.   curr = queue.shift()\n4.   for next in (curr + 1 to curr + 6):\n5.     dest = board[next] != -1 ? board[next] : next\n6.     if dest not in dist:\n7.       dist[dest] = dist[curr] + 1\n8.       queue.push(dest)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize BFS queue with start position 1.",
+      "array": [
+        -1,
+        -1,
+        15,
+        -1,
+        -1,
+        -1
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Pop current position 1 from queue.",
+      "array": [
+        -1,
+        -1,
+        15,
+        -1,
+        -1,
+        -1
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Examine possible moves from 1: rolls 2 through 6.",
+      "i": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Roll lands on 2, which is a ladder to 15.",
+      "i": 2,
+      "curr": 15
+    },
+    {
+      "codeLine": 7,
+      "note": "Update distance for position 15.",
+      "i": 2,
+      "visited": [
+        1,
+        15
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Push 15 to the queue to continue exploration.",
+      "i": 2,
+      "visited": [
+        1,
+        15
+      ]
+    }
+  ]
+}

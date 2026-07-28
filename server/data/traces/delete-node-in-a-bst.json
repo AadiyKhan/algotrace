@@ -1,0 +1,130 @@
+{
+  "title": "Delete Node in a BST",
+  "difficulty": "Medium",
+  "type": "tree",
+  "tags": [
+    "Tree",
+    "Binary Search Tree",
+    "Recursion"
+  ],
+  "description": "Given a root node reference of a BST and a key, delete the node with the given key in the BST. Return the root node reference.",
+  "target": 3,
+  "pseudocode": "1: if !root return null\n2: if key < root.val: root.left = delete(root.left, key)\n3: else if key > root.val: root.right = delete(root.right, key)\n4: else:\n5:   if !root.left: return root.right\n6:   if !root.right: return root.left\n7:   temp = findMin(root.right)\n8:   root.val = temp.val\n9:   root.right = delete(root.right, temp.val)\n10: return root",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Start at root node 5.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 5,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 3,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 6,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Key 3 < root 5, recurse to left child.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 5,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 3,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 6,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        0
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Found node 3. It has no children, so proceed to delete.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 5,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 3,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 6,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Node 3 has no left child, return right child (null).",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 5,
+          "left": null,
+          "right": 2
+        },
+        {
+          "id": 2,
+          "val": 6,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 10,
+      "note": "Return updated root.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 5,
+          "left": null,
+          "right": 2
+        },
+        {
+          "id": 2,
+          "val": 6,
+          "left": null,
+          "right": null
+        }
+      ]
+    }
+  ]
+}

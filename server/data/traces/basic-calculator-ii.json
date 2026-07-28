@@ -1,0 +1,87 @@
+{
+  "title": "Basic Calculator II",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Math",
+    "Stack",
+    "String"
+  ],
+  "description": "Evaluate a mathematical expression string containing non-negative integers, +, -, *, and / operators.",
+  "target": null,
+  "pseudocode": "1. let stack = [], num = 0, op = '+';\n2. for (let i = 0; i < s.length; i++) {\n3.   if (isDigit(s[i])) num = num * 10 + parseInt(s[i]);\n4.   if (!isDigit(s[i]) && s[i] !== ' ' || i === s.length - 1) {\n5.     if (op === '+') stack.push(num);\n6.     else if (op === '-') stack.push(-num);\n7.     else if (op === '*') stack.push(stack.pop() * num);\n8.     else if (op === '/') stack.push(Math.trunc(stack.pop() / num));\n9.     op = s[i]; num = 0;\n10.  }\n11. }\n12. return stack.reduce((a, b) => a + b, 0);",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Initialize variables with s = '3+2*2'",
+      "array": [
+        3,
+        2,
+        2
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Read '3', update num = 3",
+      "array": [
+        3,
+        2,
+        2
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Encountered '+', push 3 to stack",
+      "array": [
+        3
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Read '2', update num = 2",
+      "array": [
+        3,
+        2
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 9,
+      "note": "Encountered '*', update op to '*'",
+      "array": [
+        3,
+        2
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 3,
+      "note": "Read '2', update num = 2",
+      "array": [
+        3,
+        2
+      ],
+      "i": 4
+    },
+    {
+      "codeLine": 7,
+      "note": "Execute '* ': pop 2, multiply by 2, push 4",
+      "array": [
+        3,
+        4
+      ],
+      "i": 4
+    },
+    {
+      "codeLine": 12,
+      "note": "Final sum of stack [3, 4] = 7",
+      "array": [
+        3,
+        4
+      ]
+    }
+  ]
+}

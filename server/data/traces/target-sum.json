@@ -1,0 +1,96 @@
+{
+  "title": "Target Sum",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Dynamic Programming",
+    "Backtracking"
+  ],
+  "description": "Assign plus and minus signs to each integer in the array to make the sum equal to a target value.",
+  "target": 3,
+  "pseudocode": "1: function findTargetSumWays(nums, target):\n2:   total = sum(nums)\n3:   if (target > total) return 0\n4:   subsetSum = (total + target) / 2\n5:   dp = array of size subsetSum + 1, init 0\n6:   dp[0] = 1\n7:   for num in nums:\n8:     for i from subsetSum down to num:\n9:       dp[i] += dp[i - num]",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Calculate total sum of the array [1, 1, 1, 1, 1]. Total = 5.",
+      "array": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Calculate subsetSum target: (5 + 3) / 2 = 4.",
+      "array": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Initialize DP table of size 5 with 0s, set dp[0] to 1.",
+      "array": [
+        1,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Processing first element (num=1).",
+      "array": [
+        1,
+        1,
+        0,
+        0,
+        0
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 9,
+      "note": "Updating DP table for num=1. dp[1] becomes 1.",
+      "array": [
+        1,
+        1,
+        0,
+        0,
+        0
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "Processing second element (num=1).",
+      "array": [
+        1,
+        2,
+        1,
+        0,
+        0
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 9,
+      "note": "Updating DP table: dp[2]+=dp[1], dp[1]+=dp[0].",
+      "array": [
+        1,
+        2,
+        1,
+        0,
+        0
+      ],
+      "i": 2
+    }
+  ]
+}

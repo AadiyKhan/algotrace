@@ -1,0 +1,86 @@
+{
+  "title": "Maximum Binary Tree",
+  "difficulty": "Medium",
+  "type": "tree",
+  "tags": [
+    "Tree",
+    "Array",
+    "Divide and Conquer"
+  ],
+  "description": "Construct a maximum binary tree from an integer array where the root is the max element and subtrees are built from the left and right subarrays.",
+  "target": null,
+  "pseudocode": "1. function construct(nums) {\n2.   if (nums.length === 0) return null;\n3.   let maxVal = Math.max(...nums);\n4.   let idx = nums.indexOf(maxVal);\n5.   let node = {val: maxVal, left: null, right: null};\n6.   node.left = construct(nums.slice(0, idx));\n7.   node.right = construct(nums.slice(idx + 1));\n8.   return node;\n9. }",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize construction with array [3, 2, 1]",
+      "treeNodes": []
+    },
+    {
+      "codeLine": 3,
+      "note": "Find max value 3 at index 0",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Recursively process left subarray []",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Recursively process right subarray [2, 1]. Max is 2 at index 0.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 3,
+          "left": null,
+          "right": 1
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": 2
+        }
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Process remaining subarray [1]. Max is 1.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 3,
+          "left": null,
+          "right": 1
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": 2
+        },
+        {
+          "id": 2,
+          "val": 1,
+          "left": null,
+          "right": null
+        }
+      ]
+    }
+  ]
+}

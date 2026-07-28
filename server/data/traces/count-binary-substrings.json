@@ -1,0 +1,69 @@
+{
+  "title": "Count Binary Substrings",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "String",
+    "Array"
+  ],
+  "description": "Count the number of non-empty substrings that have the same number of 0's and 1's, and all the 0's and all the 1's in these substrings are grouped consecutively.",
+  "target": null,
+  "pseudocode": "1. prevGroup = 0, currGroup = 1, total = 0\n2. for i = 1 to s.length - 1:\n3.   if s[i] == s[i-1]: currGroup++\n4.   else: total += min(prevGroup, currGroup); prevGroup = currGroup; currGroup = 1\n5. total += min(prevGroup, currGroup)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize groups and total count.",
+      "array": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "i": null
+    },
+    {
+      "codeLine": 3,
+      "note": "Found same digit, increment currGroup.",
+      "array": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Digit changed. Add min(0, 2) to total, reset groups.",
+      "array": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Found same digit, increment currGroup.",
+      "array": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 5,
+      "note": "Final count: add min(2, 2) to total.",
+      "array": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "i": 3
+    }
+  ]
+}

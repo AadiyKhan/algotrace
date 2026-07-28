@@ -1,0 +1,68 @@
+{
+  "title": "Tallest Billboard",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Dynamic Programming"
+  ],
+  "description": "Find the maximum possible height of two equal-height billboards using a given set of rods.",
+  "target": 6,
+  "pseudocode": "dp = {0: 0}\nfor rod in rods:\n  new_dp = dp.copy()\n  for diff, h in dp.items():\n    new_dp[diff + rod] = max(new_dp.get(diff + rod, 0), h + rod)\n    new_dp[abs(diff - rod)] = max(new_dp.get(abs(diff - rod), 0), h + min(diff, rod))\n  dp = new_dp\nreturn dp[0]",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize DP map with difference 0 having height 0",
+      "array": [
+        1,
+        2
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Processing rod 1",
+      "array": [
+        1,
+        2
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Add rod 1 to diff 0: new_dp[1] = 1, new_dp[1] = 0",
+      "array": [
+        1,
+        2
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Processing rod 2",
+      "array": [
+        1,
+        2
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Update DP map with rod 2",
+      "array": [
+        1,
+        2
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 7,
+      "note": "Return value at diff 0",
+      "array": [
+        1,
+        2
+      ],
+      "i": 2
+    }
+  ]
+}

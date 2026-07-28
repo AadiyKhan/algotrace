@@ -1,0 +1,130 @@
+{
+  "title": "Magic Squares In Grid",
+  "difficulty": "Medium",
+  "type": "matrix",
+  "tags": [
+    "Array",
+    "Matrix",
+    "Math"
+  ],
+  "description": "Count the number of 3x3 magic squares in a given grid.",
+  "pseudocode": "1. for r = 0 to rows - 3:\n2.   for c = 0 to cols - 3:\n3.     if isMagic(grid, r, c):\n4.       count++",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Starting row iteration",
+      "matrix": [
+        [
+          4,
+          3,
+          8,
+          4
+        ],
+        [
+          9,
+          5,
+          1,
+          9
+        ],
+        [
+          2,
+          7,
+          6,
+          2
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Checking 3x3 grid starting at (0,0)",
+      "matrix": [
+        [
+          4,
+          3,
+          8,
+          4
+        ],
+        [
+          9,
+          5,
+          1,
+          9
+        ],
+        [
+          2,
+          7,
+          6,
+          2
+        ]
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          2
+        ]
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Magic square found, increment count",
+      "matrix": [
+        [
+          4,
+          3,
+          8,
+          4
+        ],
+        [
+          9,
+          5,
+          1,
+          9
+        ],
+        [
+          2,
+          7,
+          6,
+          2
+        ]
+      ],
+      "i": 0,
+      "j": 0
+    }
+  ]
+}

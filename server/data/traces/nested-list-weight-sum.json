@@ -1,0 +1,141 @@
+{
+  "title": "Nested List Weight Sum",
+  "difficulty": "Medium",
+  "type": "tree",
+  "tags": [
+    "Tree",
+    "DFS",
+    "Recursion"
+  ],
+  "description": "Calculate the sum of all integers in a nested list, weighted by their depth.",
+  "target": null,
+  "pseudocode": "function depthSum(list, depth = 1) {\n  let sum = 0;\n  for (let item of list) {\n    if (Number.isInteger(item)) {\n      sum += item * depth;\n    } else {\n      sum += depthSum(item, depth + 1);\n    }\n  }\n  return sum;\n}",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize DFS with root list [[1,1], 2, [1,1]] at depth 1.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": null,
+          "children": [
+            1,
+            2,
+            3
+          ]
+        },
+        {
+          "id": 1,
+          "val": null,
+          "children": [
+            4,
+            5
+          ]
+        },
+        {
+          "id": 2,
+          "val": 2,
+          "children": []
+        },
+        {
+          "id": 3,
+          "val": null,
+          "children": [
+            6,
+            7
+          ]
+        },
+        {
+          "id": 4,
+          "val": 1,
+          "children": []
+        },
+        {
+          "id": 5,
+          "val": 1,
+          "children": []
+        },
+        {
+          "id": 6,
+          "val": 1,
+          "children": []
+        },
+        {
+          "id": 7,
+          "val": 1,
+          "children": []
+        }
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Processing item [1,1] at depth 1: recurse.",
+      "visited": [
+        1
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Inside nested list, process 1 at depth 2: sum = 2.",
+      "visited": [
+        1,
+        4
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Process 1 at depth 2: sum = 4.",
+      "visited": [
+        1,
+        4,
+        5
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Back to root, process integer 2 at depth 1: sum = 4 + 2 = 6.",
+      "visited": [
+        1,
+        4,
+        5,
+        2
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Process item [1,1] at depth 1: recurse.",
+      "visited": [
+        1,
+        4,
+        5,
+        2,
+        3
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Inside nested list, process 1 at depth 2: sum = 6 + 2 = 8.",
+      "visited": [
+        1,
+        4,
+        5,
+        2,
+        3,
+        6
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Process 1 at depth 2: sum = 8 + 2 = 10.",
+      "visited": [
+        1,
+        4,
+        5,
+        2,
+        3,
+        6,
+        7
+      ]
+    }
+  ]
+}

@@ -1,0 +1,98 @@
+{
+  "title": "Implement Magic Dictionary",
+  "difficulty": "Medium",
+  "type": "tree",
+  "tags": [
+    "Trie",
+    "Hash Table",
+    "String"
+  ],
+  "description": "Design a dictionary that can search if a word exists by changing exactly one character.",
+  "target": "hello",
+  "pseudocode": "1. Build Trie from dict\n2. For search(word):\n3. dfs(node, index, diffCount)\n4. If diffCount == 1 and node.isEnd and index == length, return true\n5. If diffCount > 1, return false\n6. For each char c in node.children:\n7. If c == word[index], dfs(child, index+1, diffCount)\n8. Else, dfs(child, index+1, diffCount+1)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Building Trie with ['hello']",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": "root",
+          "left": 1,
+          "right": null
+        },
+        {
+          "id": 1,
+          "val": "h",
+          "left": 2,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": "e",
+          "left": 3,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": "l",
+          "left": 4,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": "l",
+          "left": 5,
+          "right": null
+        },
+        {
+          "id": 5,
+          "val": "o",
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Searching 'hallo': start DFS from root",
+      "curr": 0,
+      "i": 0
+    },
+    {
+      "codeLine": 7,
+      "note": "Match 'h' at index 0",
+      "curr": 1,
+      "i": 1
+    },
+    {
+      "codeLine": 8,
+      "note": "Mismatch 'a' vs 'e', increment diffCount to 1",
+      "curr": 2,
+      "i": 2
+    },
+    {
+      "codeLine": 7,
+      "note": "Match 'l' at index 2",
+      "curr": 3,
+      "i": 3
+    },
+    {
+      "codeLine": 7,
+      "note": "Match 'l' at index 3",
+      "curr": 4,
+      "i": 4
+    },
+    {
+      "codeLine": 7,
+      "note": "Match 'o' at index 4",
+      "curr": 5,
+      "i": 5
+    },
+    {
+      "codeLine": 4,
+      "note": "diffCount is 1 and index is 5, return True",
+      "curr": 5
+    }
+  ]
+}

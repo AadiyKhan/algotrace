@@ -1,0 +1,229 @@
+{
+  "title": "Transpose Matrix",
+  "difficulty": "Easy",
+  "type": "matrix",
+  "tags": [
+    "Array",
+    "Matrix"
+  ],
+  "description": "Given a 2D integer array matrix, return the transpose of matrix. The transpose of a matrix is the matrix flipped over its main diagonal.",
+  "pseudocode": "let res = new Array(cols).fill(0).map(() => new Array(rows).fill(0));\nfor (let i = 0; i < rows; i++) {\n  for (let j = 0; j < cols; j++) {\n    res[j][i] = matrix[i][j];\n  }\n}",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize result matrix with dimensions swapped (cols x rows).",
+      "matrix": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Start outer loop i=0.",
+      "i": 0,
+      "matrix": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Start inner loop j=0.",
+      "i": 0,
+      "j": 0,
+      "matrix": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Assign matrix[0][0] to res[0][0].",
+      "i": 0,
+      "j": 0,
+      "matrix": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Inner loop j=1.",
+      "i": 0,
+      "j": 1,
+      "matrix": [
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Assign matrix[0][1] to res[1][0].",
+      "i": 0,
+      "j": 1,
+      "matrix": [
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Outer loop i=1.",
+      "i": 1,
+      "matrix": [
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Inner loop j=0.",
+      "i": 1,
+      "j": 0,
+      "matrix": [
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Assign matrix[1][0] to res[0][1].",
+      "i": 1,
+      "j": 0,
+      "matrix": [
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Inner loop j=1.",
+      "i": 1,
+      "j": 1,
+      "matrix": [
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Assign matrix[1][1] to res[1][1].",
+      "i": 1,
+      "j": 1,
+      "matrix": [
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          0,
+          0
+        ]
+      ]
+    }
+  ]
+}

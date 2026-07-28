@@ -1,0 +1,171 @@
+{
+  "title": "Parse Lisp Expression",
+  "difficulty": "Hard",
+  "type": "tree",
+  "tags": [
+    "Tree",
+    "Recursion",
+    "Hash Table"
+  ],
+  "description": "Evaluate a Lisp-style expression string using a scope-based evaluation system.",
+  "target": 15,
+  "pseudocode": "1: function evaluate(exp, scope) {\n2:   if (isNumber(exp)) return parseInt(exp);\n3:   if (isVariable(exp)) return scope[exp];\n4:   if (exp[1] === 'a') return evaluate(addArgs) + evaluate(addArgs);\n5:   if (exp[1] === 'm') return Math.max(evaluate(multArgs), evaluate(multArgs));\n6:   if (exp[1] === 'l') {\n7:      newScope = { ...scope };\n8:      while(hasPairs) updateScope(newScope);\n9:      return evaluate(finalExpr, newScope);\n10:  }\n11: }",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize evaluation of expression '(add 5 10)'",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": "add",
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 5,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 10,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        0
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Detected 'add' function, evaluating left child",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": "add",
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 5,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 10,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Resolved constant 5",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": "add",
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 5,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 10,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Evaluating right child",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": "add",
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 5,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 10,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Resolved constant 10",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": "add",
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 5,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 10,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Final sum 5 + 10 = 15",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 15,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        0
+      ]
+    }
+  ]
+}

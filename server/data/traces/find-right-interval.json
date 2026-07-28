@@ -1,0 +1,102 @@
+{
+  "title": "Find Right Interval",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Binary Search",
+    "Sorting"
+  ],
+  "description": "Given an array of intervals, find the right interval for each interval i. The right interval is an interval j such that start[j] >= end[i] and start[j] is minimized.",
+  "target": null,
+  "pseudocode": "1. map = create map of start times to original indices\n2. sortedStarts = sorted array of all start times\n3. for i = 0 to intervals.length - 1:\n4.   target = intervals[i].end\n5.   idx = binarySearch(sortedStarts, target)\n6.   result[i] = (idx < sortedStarts.length) ? map[sortedStarts[idx]] : -1",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Map intervals [[3,4], [2,3], [1,2]] to indices: {3:0, 2:1, 1:2}",
+      "array": [
+        [
+          3,
+          4
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          1,
+          2
+        ]
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Create sorted start array: [1, 2, 3]",
+      "array": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Start iteration at i = 0",
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Target for interval [3,4] is end 4",
+      "i": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Binary search for 4 in [1, 2, 3]. No value >= 4 found.",
+      "i": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Result for index 0 is -1",
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Next iteration i = 1",
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Target for interval [2,3] is end 3",
+      "i": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Binary search for 3 in [1, 2, 3] finds 3 at index 2",
+      "i": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Result for index 1 is map[3] = 0",
+      "i": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Next iteration i = 2",
+      "i": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Target for interval [1,2] is end 2",
+      "i": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Binary search for 2 in [1, 2, 3] finds 2 at index 1",
+      "i": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Result for index 2 is map[2] = 1",
+      "i": 2
+    }
+  ]
+}

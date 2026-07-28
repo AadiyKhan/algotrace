@@ -1,0 +1,59 @@
+{
+  "title": "Squirrel Simulation",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Math"
+  ],
+  "description": "Calculate the minimum distance for a squirrel to collect all nuts, accounting for the first nut picked.",
+  "target": 12,
+  "pseudocode": "1. total_dist = 0\n2. max_diff = -infinity\n3. for nut in nuts:\n4.   dist_to_nut = abs(nut[0]-tree[0]) + abs(nut[1]-tree[1])\n5.   total_dist += dist_to_nut * 2\n6.   dist_to_squirrel = abs(nut[0]-squirrel[0]) + abs(nut[1]-squirrel[1])\n7.   max_diff = max(max_diff, dist_to_nut - dist_to_squirrel)\n8. return total_dist - max_diff",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize total distance and max_diff",
+      "array": [
+        2,
+        2
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Calculate distance from tree to nut [2,2]",
+      "array": [
+        2,
+        2
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Add round trip distance (4 * 2 = 8) to total",
+      "array": [
+        2,
+        2
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 7,
+      "note": "Calculate benefit of starting at this nut vs tree",
+      "array": [
+        2,
+        2
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 8,
+      "note": "Return total distance minus the best starting benefit",
+      "array": [
+        2,
+        2
+      ],
+      "i": 0
+    }
+  ]
+}

@@ -1,0 +1,89 @@
+{
+  "title": "Detect Capital",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "String"
+  ],
+  "description": "Determine if the usage of capitals in a word is right (all caps, no caps, or only first letter cap).",
+  "target": null,
+  "pseudocode": "1. count = 0\n2. for char in word:\n3.   if char is uppercase: count++\n4. return count == 0 || count == word.length || (count == 1 && word[0] is uppercase)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize count of uppercase letters to 0",
+      "array": [
+        "F",
+        "l",
+        "a",
+        "g"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Iterate through the word",
+      "array": [
+        "F",
+        "l",
+        "a",
+        "g"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Found 'F' (uppercase), increment count",
+      "array": [
+        "F",
+        "l",
+        "a",
+        "g"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Next character 'l'",
+      "array": [
+        "F",
+        "l",
+        "a",
+        "g"
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Next character 'a'",
+      "array": [
+        "F",
+        "l",
+        "a",
+        "g"
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 2,
+      "note": "Next character 'g'",
+      "array": [
+        "F",
+        "l",
+        "a",
+        "g"
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 4,
+      "note": "Count is 1 and first char is uppercase; returning true",
+      "array": [
+        "F",
+        "l",
+        "a",
+        "g"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "title": "Unique Binary Search Trees II",
+  "difficulty": "Medium",
+  "type": "tree",
+  "tags": [
+    "Dynamic Programming",
+    "Tree",
+    "Backtracking"
+  ],
+  "description": "Generate all structurally unique BSTs that store nodes 1 to n.",
+  "target": 2,
+  "pseudocode": "1: function generateTrees(n) {\n2:   return build(1, n);\n3: }\n4: function build(start, end) {\n5:   if (start > end) return [null];\n6:   let res = [];\n7:   for (let i = start; i <= end; i++) {\n8:     let left = build(start, i - 1);\n9:     let right = build(i + 1, end);\n10:    for (let l of left) {\n11:      for (let r of right) {\n12:        let node = {val: i, left: l, right: r};\n13:        res.push(node);\n14:      }\n15:    }\n16:  }\n17:  return res;\n18: }",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Starting generation for n=2",
+      "treeNodes": []
+    },
+    {
+      "codeLine": 7,
+      "note": "Rooting at 1, left subtrees are empty, right are {2}",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": null,
+          "right": 1
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Rooting at 2, left subtrees are {1}, right are empty",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 2,
+          "left": 1,
+          "right": null
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": null,
+          "right": null
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "title": "Maximize Sum Of Array After K Negations",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Greedy",
+    "Sorting"
+  ],
+  "description": "Given an array and an integer k, negate the smallest values k times to maximize the final sum.",
+  "target": 5,
+  "pseudocode": "1: Sort array in ascending order\n2: Loop i from 0 to array.length - 1\n3: If k > 0 and array[i] < 0:\n4:   array[i] = -array[i]\n5:   k = k - 1\n6: Sort array again to find the new smallest value\n7: If k is odd, negate the smallest element",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Sort array to easily find the smallest negative numbers.",
+      "array": [
+        -4,
+        -2,
+        3
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "First element is negative, k > 0, so negate it.",
+      "array": [
+        4,
+        -2,
+        3
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Apply negation.",
+      "array": [
+        4,
+        -2,
+        3
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Second element is negative, k > 0, so negate it.",
+      "array": [
+        4,
+        2,
+        3
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Resort to ensure the smallest element is at index 0.",
+      "array": [
+        2,
+        3,
+        4
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 7,
+      "note": "k is 0, no further negations required.",
+      "array": [
+        2,
+        3,
+        4
+      ],
+      "i": 2
+    }
+  ]
+}

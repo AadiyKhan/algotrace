@@ -1,0 +1,92 @@
+{
+  "title": "Kth Largest Element In An Array",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Sorting",
+    "Heap",
+    "Quickselect"
+  ],
+  "description": "Find the kth largest element in an unsorted array using the Quickselect algorithm.",
+  "target": 2,
+  "pseudocode": "1. function quickselect(arr, k):\n2.   pivot = arr[last]\n3.   partition into left (smaller) and right (larger)\n4.   if k <= right.length: return quickselect(right, k)\n5.   else if k == right.length + 1: return pivot\n6.   else: return quickselect(left, k - right.length - 1)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize Quickselect with array [3, 2, 1, 5, 6, 4] and k=2",
+      "array": [
+        3,
+        2,
+        1,
+        5,
+        6,
+        4
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Select last element 4 as pivot",
+      "array": [
+        3,
+        2,
+        1,
+        5,
+        6,
+        4
+      ],
+      "i": 5
+    },
+    {
+      "codeLine": 3,
+      "note": "Partition: elements > 4 (5, 6) moved to right, others to left",
+      "array": [
+        3,
+        2,
+        1,
+        4,
+        5,
+        6
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "k=2 is <= right.length (2), recurse into right side [5, 6]",
+      "array": [
+        5,
+        6
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Select 6 as pivot",
+      "array": [
+        5,
+        6
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Partition: elements > 6 are empty, elements < 6 is [5]",
+      "array": [
+        5,
+        6
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "k=2, right.length=0. Recurse into left side",
+      "array": [
+        5
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Pivot 5 matches k position, return 5",
+      "array": [
+        5
+      ]
+    }
+  ]
+}

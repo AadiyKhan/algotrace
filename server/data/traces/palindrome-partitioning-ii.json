@@ -1,0 +1,95 @@
+{
+  "title": "Palindrome Partitioning II",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Dynamic Programming",
+    "String"
+  ],
+  "description": "Given a string s, partition s such that every substring of the partition is a palindrome. Return the minimum cuts needed for a palindrome partitioning of s.",
+  "target": 1,
+  "pseudocode": "1. n = s.length\n2. dp = new Array(n).fill(0)\n3. isPal = Array(n).fill(0).map(() => Array(n).fill(false))\n4. for i from 0 to n-1:\n5.   minCut = i\n6.   for j from 0 to i:\n7.     if s[j] == s[i] and (i-j < 2 or isPal[j+1][i-1]):\n8.       isPal[j][i] = true\n9.       minCut = (j == 0) ? 0 : Math.min(minCut, dp[j-1] + 1)\n10.  dp[i] = minCut",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Initialize dp array where dp[i] is min cuts for s[0...i]. For 'aba', [0, 0, 0].",
+      "array": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Processing index i=0 ('a'). Palindrome by default.",
+      "i": 0,
+      "array": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 9,
+      "note": "i=0, j=0: 'a' is palindrome, minCut = 0.",
+      "i": 0,
+      "j": 0,
+      "array": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Processing index i=1 ('ab').",
+      "i": 1,
+      "array": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "codeLine": 9,
+      "note": "i=1, j=1: 'b' is palindrome, minCut = dp[0] + 1 = 1.",
+      "i": 1,
+      "j": 1,
+      "array": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Processing index i=2 ('aba').",
+      "i": 2,
+      "array": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "i=2, j=0: 'aba' is palindrome. Since j=0, minCut becomes 0.",
+      "i": 2,
+      "j": 0,
+      "array": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "codeLine": 10,
+      "note": "Final DP state. Min cuts for 'aba' is 0.",
+      "array": [
+        0,
+        1,
+        0
+      ]
+    }
+  ]
+}

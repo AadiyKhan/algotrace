@@ -1,0 +1,172 @@
+{
+  "title": "Number of Segments in a String",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "String"
+  ],
+  "description": "Count the number of segments in a string, where a segment is defined as a contiguous sequence of non-space characters.",
+  "pseudocode": "1. count = 0\n2. for i from 0 to length - 1:\n3.   if (s[i] != ' ' && (i == 0 || s[i-1] == ' '))\n4.     count++\n5. return count",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize count to 0.",
+      "array": [
+        "H",
+        "e",
+        "l",
+        "l",
+        "o",
+        " ",
+        "w",
+        "o",
+        "r",
+        "l",
+        "d"
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Starting loop at index 0.",
+      "i": 0,
+      "array": [
+        "H",
+        "e",
+        "l",
+        "l",
+        "o",
+        " ",
+        "w",
+        "o",
+        "r",
+        "l",
+        "d"
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "s[0] is 'H', index is 0. Condition met.",
+      "i": 0,
+      "array": [
+        "H",
+        "e",
+        "l",
+        "l",
+        "o",
+        " ",
+        "w",
+        "o",
+        "r",
+        "l",
+        "d"
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Increment count to 1.",
+      "i": 0,
+      "array": [
+        "H",
+        "e",
+        "l",
+        "l",
+        "o",
+        " ",
+        "w",
+        "o",
+        "r",
+        "l",
+        "d"
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Looping through 'e', 'l', 'l', 'o'. Conditions for count++ not met.",
+      "i": 4,
+      "array": [
+        "H",
+        "e",
+        "l",
+        "l",
+        "o",
+        " ",
+        "w",
+        "o",
+        "r",
+        "l",
+        "d"
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "At index 5, character is space. Skip.",
+      "i": 5,
+      "array": [
+        "H",
+        "e",
+        "l",
+        "l",
+        "o",
+        " ",
+        "w",
+        "o",
+        "r",
+        "l",
+        "d"
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "At index 6, character is 'w', previous was space. Condition met.",
+      "i": 6,
+      "array": [
+        "H",
+        "e",
+        "l",
+        "l",
+        "o",
+        " ",
+        "w",
+        "o",
+        "r",
+        "l",
+        "d"
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Increment count to 2.",
+      "i": 6,
+      "array": [
+        "H",
+        "e",
+        "l",
+        "l",
+        "o",
+        " ",
+        "w",
+        "o",
+        "r",
+        "l",
+        "d"
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Return final count: 2.",
+      "array": [
+        "H",
+        "e",
+        "l",
+        "l",
+        "o",
+        " ",
+        "w",
+        "o",
+        "r",
+        "l",
+        "d"
+      ]
+    }
+  ]
+}

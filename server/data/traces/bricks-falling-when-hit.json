@@ -1,0 +1,114 @@
+{
+  "title": "Bricks Falling When Hit",
+  "difficulty": "Hard",
+  "type": "matrix",
+  "tags": [
+    "Array",
+    "Union Find",
+    "Matrix"
+  ],
+  "description": "Determine how many bricks fall when a hit removes a brick at a given position in a grid.",
+  "target": null,
+  "pseudocode": "1. Initialize DSU with grid size\n2. Union all bricks that are stable (connected to ceiling)\n3. Iterate hits in reverse\n4. For each hit, check if it reconnects to stable component\n5. Count newly added bricks to the stable component",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize DSU with grid size for a 2x2 grid",
+      "matrix": [
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Union stable bricks (top row) with each other",
+      "matrix": [
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Process hit at (1, 1) in reverse; temporarily place brick back",
+      "matrix": [
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "curr": [
+        1,
+        1
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Check neighbors of (1, 1) to see if they are part of a stable component",
+      "matrix": [
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "curr": [
+        1,
+        1
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Count bricks attached to stable component, result is 1",
+      "matrix": [
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "i": 1
+    }
+  ]
+}

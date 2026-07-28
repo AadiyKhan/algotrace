@@ -1,0 +1,122 @@
+{
+  "title": "Best Time to Buy and Sell Stock",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Dynamic Programming"
+  ],
+  "description": "Find the maximum profit from buying and selling a stock given an array of daily prices.",
+  "target": 5,
+  "pseudocode": "1. minPrice = Infinity\n2. maxProfit = 0\n3. for i = 0 to prices.length - 1:\n4.   if prices[i] < minPrice: minPrice = prices[i]\n5.   else if prices[i] - minPrice > maxProfit: maxProfit = prices[i] - minPrice\n6. return maxProfit",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize minPrice to Infinity",
+      "array": [
+        7,
+        1,
+        5,
+        3
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Start iteration at index 0 (price 7)",
+      "array": [
+        7,
+        1,
+        5,
+        3
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "7 < Infinity, update minPrice to 7",
+      "array": [
+        7,
+        1,
+        5,
+        3
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Move to index 1 (price 1)",
+      "array": [
+        7,
+        1,
+        5,
+        3
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "1 < 7, update minPrice to 1",
+      "array": [
+        7,
+        1,
+        5,
+        3
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Move to index 2 (price 5)",
+      "array": [
+        7,
+        1,
+        5,
+        3
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "5 - 1 = 4, update maxProfit to 4",
+      "array": [
+        7,
+        1,
+        5,
+        3
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Move to index 3 (price 3)",
+      "array": [
+        7,
+        1,
+        5,
+        3
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 5,
+      "note": "3 - 1 = 2, 2 is not greater than 4, no change",
+      "array": [
+        7,
+        1,
+        5,
+        3
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 6,
+      "note": "Loop ends, return maxProfit 4",
+      "array": [
+        7,
+        1,
+        5,
+        3
+      ]
+    }
+  ]
+}

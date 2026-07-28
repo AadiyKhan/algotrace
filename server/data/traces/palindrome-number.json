@@ -1,0 +1,130 @@
+{
+  "title": "Palindrome Number",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Math",
+    "Two Pointers"
+  ],
+  "description": "Given an integer x, return true if x is a palindrome, and false otherwise.",
+  "target": 1221,
+  "pseudocode": "function isPalindrome(x) {\n  if (x < 0) return false;\n  const s = String(x);\n  let i = 0, j = s.length - 1;\n  while (i < j) {\n    if (s[i] !== s[j]) return false;\n    i++;\n    j--;\n  }\n  return true;\n}",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Check if x is non-negative and convert 1221 to array of digits.",
+      "array": [
+        1,
+        2,
+        2,
+        1
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Initialize left pointer i = 0 and right pointer j = 3.",
+      "array": [
+        1,
+        2,
+        2,
+        1
+      ],
+      "i": 0,
+      "j": 3
+    },
+    {
+      "codeLine": 5,
+      "note": "Check while condition i (0) < j (3). Loop continues.",
+      "array": [
+        1,
+        2,
+        2,
+        1
+      ],
+      "i": 0,
+      "j": 3
+    },
+    {
+      "codeLine": 6,
+      "note": "Compare s[i] (1) with s[j] (1). They are equal.",
+      "array": [
+        1,
+        2,
+        2,
+        1
+      ],
+      "i": 0,
+      "j": 3
+    },
+    {
+      "codeLine": 7,
+      "note": "Move pointers: increment i to 1, decrement j to 2.",
+      "array": [
+        1,
+        2,
+        2,
+        1
+      ],
+      "i": 1,
+      "j": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Check while condition i (1) < j (2). Loop continues.",
+      "array": [
+        1,
+        2,
+        2,
+        1
+      ],
+      "i": 1,
+      "j": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Compare s[i] (2) with s[j] (2). They are equal.",
+      "array": [
+        1,
+        2,
+        2,
+        1
+      ],
+      "i": 1,
+      "j": 2
+    },
+    {
+      "codeLine": 7,
+      "note": "Move pointers: increment i to 2, decrement j to 1.",
+      "array": [
+        1,
+        2,
+        2,
+        1
+      ],
+      "i": 2,
+      "j": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Check while condition i (2) < j (1). Condition fails, loop ends.",
+      "array": [
+        1,
+        2,
+        2,
+        1
+      ],
+      "i": 2,
+      "j": 1
+    },
+    {
+      "codeLine": 10,
+      "note": "All matching digits confirmed. Return true.",
+      "array": [
+        1,
+        2,
+        2,
+        1
+      ]
+    }
+  ]
+}

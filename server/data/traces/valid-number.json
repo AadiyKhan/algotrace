@@ -1,0 +1,78 @@
+{
+  "title": "Valid Number",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "String",
+    "Math"
+  ],
+  "description": "Determine if a given string is a valid number by tracking state flags for digits, decimals, and exponents.",
+  "target": "2e10",
+  "pseudocode": "1. seenDigit = false, seenExp = false, seenDot = false\n2. for char in s:\n3.   if char is digit: seenDigit = true\n4.   else if char is dot: if seenDot or seenExp: return false; seenDot = true\n5.   else if char is exp: if seenExp or not seenDigit: return false; seenExp = true; seenDigit = false\n6.   else: return false\n7. return seenDigit",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize state flags: seenDigit=false, seenExp=false, seenDot=false",
+      "array": [
+        "2",
+        "e",
+        "1",
+        "0"
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Process '2': It is a digit, set seenDigit to true.",
+      "array": [
+        "2",
+        "e",
+        "1",
+        "0"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Process 'e': It is an exponent. seenExp becomes true, seenDigit resets to false.",
+      "array": [
+        "2",
+        "e",
+        "1",
+        "0"
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Process '1': It is a digit, seenDigit becomes true.",
+      "array": [
+        "2",
+        "e",
+        "1",
+        "0"
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Process '0': It is a digit, seenDigit remains true.",
+      "array": [
+        "2",
+        "e",
+        "1",
+        "0"
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 7,
+      "note": "Loop finished, seenDigit is true. Return true.",
+      "array": [
+        "2",
+        "e",
+        "1",
+        "0"
+      ]
+    }
+  ]
+}

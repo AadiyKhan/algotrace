@@ -1,0 +1,104 @@
+{
+  "title": "Split Array Largest Sum",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Binary Search",
+    "Dynamic Programming",
+    "Greedy"
+  ],
+  "description": "Split an array into m non-empty continuous subarrays such that the largest sum among these subarrays is minimized.",
+  "target": 2,
+  "pseudocode": "1. low = max(nums), high = sum(nums)\n2. while low < high:\n3.   mid = (low + high) // 2\n4.   if canSplit(nums, m, mid):\n5.     high = mid\n6.   else:\n7.     low = mid + 1\n8. return low",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize binary search range: [max(7,2,5,10,8)=10, sum(7,2,5,10,8)=32]",
+      "array": [
+        7,
+        2,
+        5,
+        10,
+        8
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Calculate mid = (10 + 32) // 2 = 21",
+      "array": [
+        7,
+        2,
+        5,
+        10,
+        8
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Check if can split into 2 subarrays with max sum 21. True (e.g., [7,2,5], [10,8])",
+      "array": [
+        7,
+        2,
+        5,
+        10,
+        8
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Set high = 21, search range now [10, 21]",
+      "array": [
+        7,
+        2,
+        5,
+        10,
+        8
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Calculate mid = (10 + 21) // 2 = 15",
+      "array": [
+        7,
+        2,
+        5,
+        10,
+        8
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Check if can split into 2 subarrays with max sum 15. False (need at least 3: [7,2,5], [10], [8])",
+      "array": [
+        7,
+        2,
+        5,
+        10,
+        8
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Set low = 15 + 1 = 16, search range now [16, 21]",
+      "array": [
+        7,
+        2,
+        5,
+        10,
+        8
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Final binary search result converges at 18",
+      "array": [
+        7,
+        2,
+        5,
+        10,
+        8
+      ]
+    }
+  ]
+}

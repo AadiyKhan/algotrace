@@ -1,0 +1,165 @@
+{
+  "title": "Recover Binary Search Tree",
+  "difficulty": "Medium",
+  "type": "tree",
+  "tags": [
+    "Tree",
+    "DFS",
+    "BST"
+  ],
+  "description": "Recover a binary search tree where two nodes have been swapped by mistake using Morris Traversal.",
+  "target": null,
+  "pseudocode": "1. prev = null, first = null, second = null\n2. curr = root\n3. while curr != null:\n4.   if curr.left == null:\n5.     if prev and prev.val > curr.val:\n6.       if !first: first = prev; second = curr\n7.       else: second = curr\n8.     prev = curr; curr = curr.right\n9.   else:\n10.    temp = curr.left\n11.    while temp.right and temp.right != curr: temp = temp.right\n12.    if !temp.right:\n13.      temp.right = curr; curr = curr.left\n14.    else:\n15.      temp.right = null\n16.      if prev and prev.val > curr.val:\n17.        if !first: first = prev; second = curr\n18.        else: second = curr\n19.      prev = curr; curr = curr.right",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Initialize traversal at root (Node 3). Tree: 3(L:1, R:4), 1(L:null, R:2). Node 1 and 3 are swapped.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 3,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": null,
+          "right": 3
+        },
+        {
+          "id": 2,
+          "val": 4,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 2,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 13,
+      "note": "Creating thread to inorder predecessor 1 from 3.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 3,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": null,
+          "right": 3
+        },
+        {
+          "id": 2,
+          "val": 4,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 2,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "At Node 1. Prev is null. No violation.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 3,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": null,
+          "right": 3
+        },
+        {
+          "id": 2,
+          "val": 4,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 2,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 16,
+      "note": "At Node 3. Prev(1) < Curr(3). No violation.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 3,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": null,
+          "right": 3
+        },
+        {
+          "id": 2,
+          "val": 4,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 2,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 16,
+      "note": "At Node 2 (was 3). Prev(3) > Curr(2). First violation detected: first=3, second=2.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 3,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": null,
+          "right": 3
+        },
+        {
+          "id": 2,
+          "val": 4,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 2,
+          "left": null,
+          "right": null
+        }
+      ]
+    }
+  ]
+}

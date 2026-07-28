@@ -1,0 +1,79 @@
+{
+  "title": "Convert a Number to Hexadecimal",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Math",
+    "Bit Manipulation"
+  ],
+  "description": "Convert an integer to its hexadecimal string representation without using any built-in library functions.",
+  "target": 26,
+  "pseudocode": "1. hex = ['0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f']\n2. if num == 0 return '0'\n3. res = ''\n4. while num != 0:\n5.   res = hex[num & 0xF] + res\n6.   num = (num >>> 4)\n7. return res",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize hexadecimal lookup table",
+      "array": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "a",
+        "b",
+        "c",
+        "d",
+        "e",
+        "f"
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Initialize empty result string",
+      "array": []
+    },
+    {
+      "codeLine": 5,
+      "note": "Get last 4 bits of 26 (1010 in binary, which is 10/a)",
+      "array": [
+        "a"
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Unsigned shift 26 by 4 bits to get 1",
+      "array": [
+        "a"
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Get last 4 bits of 1 (which is 1)",
+      "array": [
+        "1",
+        "a"
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Shift 1 by 4 bits results in 0, terminating loop",
+      "array": [
+        "1",
+        "a"
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Return final hex string",
+      "array": [
+        "1",
+        "a"
+      ]
+    }
+  ]
+}

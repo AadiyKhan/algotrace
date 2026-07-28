@@ -1,0 +1,59 @@
+{
+  "title": "Count and Say",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "String",
+    "Recursion"
+  ],
+  "description": "Generate the nth term of the count-and-say sequence.",
+  "target": 3,
+  "pseudocode": "1. result = '1'\n2. for i = 1 to n-1:\n3.   next = ''\n4.   count = 1\n5.   for j = 1 to length(result):\n6.     if result[j] == result[j-1] count++\n7.     else: next += count + result[j-1]; count = 1\n8.   next += count + result[last]\n9.   result = next",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize result with '1'.",
+      "array": [
+        1
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Start loop for i=1.",
+      "i": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Process result '1'. Loop finishes for current i.",
+      "i": 1,
+      "j": 0
+    },
+    {
+      "codeLine": 8,
+      "note": "Append count and value to get '11'.",
+      "array": [
+        1,
+        1
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Start loop for i=2.",
+      "i": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Compare result[1] with result[0]. Count becomes 2.",
+      "i": 2,
+      "j": 1
+    },
+    {
+      "codeLine": 8,
+      "note": "Append count and value to get '21'.",
+      "array": [
+        2,
+        1
+      ]
+    }
+  ]
+}

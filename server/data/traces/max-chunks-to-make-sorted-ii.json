@@ -1,0 +1,122 @@
+{
+  "title": "Max Chunks To Make Sorted II",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Stack",
+    "Sorting"
+  ],
+  "description": "Partition an array into the maximum number of chunks such that when each chunk is sorted and concatenated, the whole array is sorted.",
+  "target": null,
+  "pseudocode": "1: let stack = []\n2: for x in arr:\n3:   let maxVal = x\n4:   while stack.length > 0 and stack[stack.length - 1] > x:\n5:     maxVal = Math.max(maxVal, stack.pop())\n6:   stack.push(maxVal)\n7: return stack.length",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Starting iteration with x = 2",
+      "array": [
+        2,
+        1,
+        3,
+        4,
+        4
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Stack is empty, push 2",
+      "array": [
+        2,
+        1,
+        3,
+        4,
+        4
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Processing x = 1. Since 1 < 2, we must merge",
+      "array": [
+        2,
+        1,
+        3,
+        4,
+        4
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Pop 2, maxVal becomes 2",
+      "array": [
+        2,
+        1,
+        3,
+        4,
+        4
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Push 2 back to stack",
+      "array": [
+        2,
+        1,
+        3,
+        4,
+        4
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Processing x = 3. 3 > 2, push 3",
+      "array": [
+        2,
+        1,
+        3,
+        4,
+        4
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 2,
+      "note": "Processing x = 4. 4 > 3, push 4",
+      "array": [
+        2,
+        1,
+        3,
+        4,
+        4
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 2,
+      "note": "Processing x = 4. 4 == 4, push 4",
+      "array": [
+        2,
+        1,
+        3,
+        4,
+        4
+      ],
+      "i": 4
+    },
+    {
+      "codeLine": 7,
+      "note": "Final stack [2, 3, 4, 4], length is 4",
+      "array": [
+        2,
+        1,
+        3,
+        4,
+        4
+      ]
+    }
+  ]
+}

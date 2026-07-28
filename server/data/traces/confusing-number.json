@@ -1,0 +1,44 @@
+{
+  "title": "Confusing Number",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Math"
+  ],
+  "description": "Determine if a number becomes a different valid number when rotated 180 degrees.",
+  "target": 89,
+  "pseudocode": "1. map = {0:0, 1:1, 6:9, 8:8, 9:6}\n2. original = n, rotated = 0\n3. while n > 0:\n4.   digit = n % 10\n5.   if digit not in map: return false\n6.   rotated = rotated * 10 + map[digit]\n7.   n = floor(n / 10)\n8. return rotated != original",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Initialize original number as 89 and rotated as 0.",
+      "i": 89
+    },
+    {
+      "codeLine": 4,
+      "note": "Get last digit: 89 % 10 = 9.",
+      "i": 89
+    },
+    {
+      "codeLine": 6,
+      "note": "Map 9 to 6. Rotated becomes 6.",
+      "i": 8
+    },
+    {
+      "codeLine": 4,
+      "note": "Get next digit: 8 % 10 = 8.",
+      "i": 8
+    },
+    {
+      "codeLine": 6,
+      "note": "Map 8 to 8. Rotated becomes 68.",
+      "i": 0
+    },
+    {
+      "codeLine": 8,
+      "note": "Check if 68 != 89. Returns true.",
+      "i": 0
+    }
+  ]
+}

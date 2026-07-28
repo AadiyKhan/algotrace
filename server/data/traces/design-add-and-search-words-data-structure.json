@@ -1,0 +1,123 @@
+{
+  "title": "Design Add and Search Words Data Structure",
+  "difficulty": "Medium",
+  "type": "tree",
+  "tags": [
+    "Trie",
+    "Backtracking",
+    "String"
+  ],
+  "description": "Design a data structure that supports adding new words and searching for words which may contain dots '.' where a dot can match any letter.",
+  "pseudocode": "function search(node, word, index) {\n  if (index === word.length) return node.isEnd;\n  char = word[index];\n  if (char === '.') {\n    for (let child of node.children) {\n      if (search(child, word, index + 1)) return true;\n    }\n  } else {\n    if (!node.children[char]) return false;\n    return search(node.children[char], word, index + 1);\n  }\n  return false;\n}",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Start search at root with word 'a.c'",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": "root",
+          "left": 1,
+          "right": null
+        },
+        {
+          "id": 1,
+          "val": "a",
+          "left": 2,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": "c",
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Character at index 1 is '.', checking all children of node 'a'",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": "root",
+          "left": 1,
+          "right": null
+        },
+        {
+          "id": 1,
+          "val": "a",
+          "left": 2,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": "c",
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 1,
+      "visited": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Matched '.' with node 'c' at index 1",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": "root",
+          "left": 1,
+          "right": null
+        },
+        {
+          "id": 1,
+          "val": "a",
+          "left": 2,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": "c",
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 2,
+      "visited": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Reached end of word, checking isEnd property",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": "root",
+          "left": 1,
+          "right": null
+        },
+        {
+          "id": 1,
+          "val": "a",
+          "left": 2,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": "c",
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 2
+    }
+  ]
+}

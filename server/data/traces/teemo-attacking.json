@@ -1,0 +1,56 @@
+{
+  "title": "Teemo Attacking",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Simulation"
+  ],
+  "description": "Calculate total poisoning time given attack time points and duration.",
+  "target": 2,
+  "pseudocode": "1. total = 0\n2. for i = 0 to timeSeries.length - 2:\n3.   total += min(timeSeries[i+1] - timeSeries[i], duration)\n4. total += duration\n5. return total",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize total duration to 0.",
+      "array": [
+        1,
+        4
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Start loop for index 0.",
+      "array": [
+        1,
+        4
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Calculate min(4 - 1, 2) which is 2. Add to total.",
+      "array": [
+        1,
+        4
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Add final duration to total (total = 2 + 2 = 4).",
+      "array": [
+        1,
+        4
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Return final result: 4.",
+      "array": [
+        1,
+        4
+      ]
+    }
+  ]
+}

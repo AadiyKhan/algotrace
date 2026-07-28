@@ -1,0 +1,113 @@
+{
+  "title": "Best Time to Buy and Sell Stock with Cooldown",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Dynamic Programming"
+  ],
+  "description": "Find the maximum profit from stock prices with a 1-day cooldown after selling.",
+  "target": 3,
+  "pseudocode": "1: hold = -Infinity, sell = 0, rest = 0\n2: for price in prices:\n3:   prevSell = sell\n4:   sell = hold + price\n5:   hold = max(hold, rest - price)\n6:   rest = max(rest, prevSell)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize DP states: hold represents buying, sell represents selling, rest represents cooldown.",
+      "array": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Processing price = 1",
+      "array": [
+        1,
+        2,
+        3
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Sell at 1: hold + 1 = -Infinity",
+      "array": [
+        1,
+        2,
+        3
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Hold at 1: max(-Inf, 0 - 1) = -1",
+      "array": [
+        1,
+        2,
+        3
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Processing price = 2",
+      "array": [
+        1,
+        2,
+        3
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Sell at 2: hold + 2 = 1",
+      "array": [
+        1,
+        2,
+        3
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Hold at 2: max(-1, 0 - 2) = -1",
+      "array": [
+        1,
+        2,
+        3
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Processing price = 3",
+      "array": [
+        1,
+        2,
+        3
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Sell at 3: hold + 3 = 2",
+      "array": [
+        1,
+        2,
+        3
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Hold at 3: max(-1, 0 - 3) = -1",
+      "array": [
+        1,
+        2,
+        3
+      ],
+      "i": 2
+    }
+  ]
+}

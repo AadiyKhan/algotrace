@@ -1,0 +1,184 @@
+{
+  "title": "Longest Substring With At Most Two Distinct Characters",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "Sliding Window"
+  ],
+  "description": "Find the length of the longest substring that contains at most two distinct characters.",
+  "target": 3,
+  "pseudocode": "1. map = {}, left = 0, maxLen = 0\n2. for right = 0 to n-1:\n3.   map[s[right]] = (map[s[right]] || 0) + 1\n4.   while map.size > 2:\n5.     map[s[left]]--\n6.     if map[s[left]] == 0: delete map[s[left]]\n7.     left++\n8.   maxLen = max(maxLen, right - left + 1)",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Initialize window: s = 'eceba', right = 0 ('e')",
+      "array": [
+        "e",
+        "c",
+        "e",
+        "b",
+        "a"
+      ],
+      "i": 0,
+      "j": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Add 'e' to map: {'e': 1}",
+      "array": [
+        "e",
+        "c",
+        "e",
+        "b",
+        "a"
+      ],
+      "i": 0,
+      "j": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Move right to 1 ('c')",
+      "array": [
+        "e",
+        "c",
+        "e",
+        "b",
+        "a"
+      ],
+      "i": 0,
+      "j": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Add 'c' to map: {'e': 1, 'c': 1}",
+      "array": [
+        "e",
+        "c",
+        "e",
+        "b",
+        "a"
+      ],
+      "i": 0,
+      "j": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Move right to 2 ('e')",
+      "array": [
+        "e",
+        "c",
+        "e",
+        "b",
+        "a"
+      ],
+      "i": 0,
+      "j": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Update 'e' count: {'e': 2, 'c': 1}",
+      "array": [
+        "e",
+        "c",
+        "e",
+        "b",
+        "a"
+      ],
+      "i": 0,
+      "j": 2
+    },
+    {
+      "codeLine": 2,
+      "note": "Move right to 3 ('b')",
+      "array": [
+        "e",
+        "c",
+        "e",
+        "b",
+        "a"
+      ],
+      "i": 0,
+      "j": 3
+    },
+    {
+      "codeLine": 3,
+      "note": "Add 'b': {'e': 2, 'c': 1, 'b': 1}. Size > 2",
+      "array": [
+        "e",
+        "c",
+        "e",
+        "b",
+        "a"
+      ],
+      "i": 0,
+      "j": 3
+    },
+    {
+      "codeLine": 5,
+      "note": "Decrement 'e' at left=0: {'e': 1, 'c': 1, 'b': 1}",
+      "array": [
+        "e",
+        "c",
+        "e",
+        "b",
+        "a"
+      ],
+      "i": 0,
+      "j": 3
+    },
+    {
+      "codeLine": 7,
+      "note": "Move left to 1",
+      "array": [
+        "e",
+        "c",
+        "e",
+        "b",
+        "a"
+      ],
+      "i": 1,
+      "j": 3
+    },
+    {
+      "codeLine": 5,
+      "note": "Decrement 'c' at left=1: {'e': 1, 'c': 0, 'b': 1}",
+      "array": [
+        "e",
+        "c",
+        "e",
+        "b",
+        "a"
+      ],
+      "i": 1,
+      "j": 3
+    },
+    {
+      "codeLine": 6,
+      "note": "Remove 'c': {'e': 1, 'b': 1}",
+      "array": [
+        "e",
+        "c",
+        "e",
+        "b",
+        "a"
+      ],
+      "i": 1,
+      "j": 3
+    },
+    {
+      "codeLine": 7,
+      "note": "Move left to 2",
+      "array": [
+        "e",
+        "c",
+        "e",
+        "b",
+        "a"
+      ],
+      "i": 2,
+      "j": 3
+    }
+  ]
+}

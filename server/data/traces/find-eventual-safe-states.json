@@ -1,0 +1,121 @@
+{
+  "title": "Find Eventual Safe States",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Graph",
+    "DFS",
+    "Topological Sort"
+  ],
+  "description": "Find all safe nodes in a directed graph where a safe node leads only to terminal nodes or other safe nodes.",
+  "target": [
+    2,
+    4,
+    5,
+    6
+  ],
+  "pseudocode": "1. color = new Array(n).fill(0) // 0: unvisited, 1: visiting, 2: safe\n2. function dfs(node) {\n3.   if (color[node] !== 0) return color[node] === 2\n4.   color[node] = 1\n5.   for (neighbor of graph[node]) {\n6.     if (!dfs(neighbor)) return false\n7.   }\n8.   color[node] = 2\n9.   return true\n10. }\n11. for (i = 0; i < n; i++) if (dfs(i)) result.push(i)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize color array to track state of nodes (0: unknown, 1: visiting, 2: safe).",
+      "array": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 11,
+      "note": "Starting DFS from node 0.",
+      "i": 0,
+      "array": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Node 0 points to node 1. Visiting 1.",
+      "i": 0,
+      "curr": 1,
+      "array": [
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Node 1 points to node 2. Node 2 is a terminal node.",
+      "i": 0,
+      "curr": 2,
+      "array": [
+        1,
+        1,
+        2,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "DFS backtracked. Node 1 is safe.",
+      "i": 0,
+      "curr": 1,
+      "array": [
+        1,
+        2,
+        2,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "DFS backtracked. Node 0 is safe.",
+      "i": 0,
+      "curr": 0,
+      "array": [
+        2,
+        2,
+        2,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 11,
+      "note": "Continuing to other nodes...",
+      "i": 1,
+      "array": [
+        2,
+        2,
+        2,
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ]
+}

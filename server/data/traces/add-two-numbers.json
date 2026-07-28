@@ -1,0 +1,462 @@
+{
+  "title": "Add Two Numbers",
+  "difficulty": "Medium",
+  "type": "linked-list",
+  "tags": [
+    "Linked List",
+    "Math",
+    "Recursion"
+  ],
+  "description": "Add two non-negative integers stored in reverse order as linked lists and return the sum as a linked list.",
+  "pseudocode": "function addTwoNumbers(l1, l2):\n  dummy = new ListNode(0)\n  curr = dummy, carry = 0\n  while l1 != null or l2 != null or carry != 0:\n    v1 = l1 ? l1.val : 0\n    v2 = l2 ? l2.val : 0\n    sum = v1 + v2 + carry\n    carry = Math.floor(sum / 10)\n    curr.next = new ListNode(sum % 10)\n    curr = curr.next\n    l1 = l1 ? l1.next : null\n    l2 = l2 ? l2.next : null\n  return dummy.next",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Initialize dummy head for result list and carry = 0. Input lists: L1 = 2 -> 4, L2 = 5 -> 6.",
+      "nodes": [
+        {
+          "val": 2,
+          "next": 1
+        },
+        {
+          "val": 4,
+          "next": null
+        },
+        {
+          "val": 5,
+          "next": 3
+        },
+        {
+          "val": 6,
+          "next": null
+        }
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Check loop condition: l1 (val 2) and l2 (val 5) are both not null.",
+      "nodes": [
+        {
+          "val": 2,
+          "next": 1
+        },
+        {
+          "val": 4,
+          "next": null
+        },
+        {
+          "val": 5,
+          "next": 3
+        },
+        {
+          "val": 6,
+          "next": null
+        }
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Calculate sum = v1 (2) + v2 (5) + carry (0) = 7.",
+      "nodes": [
+        {
+          "val": 2,
+          "next": 1
+        },
+        {
+          "val": 4,
+          "next": null
+        },
+        {
+          "val": 5,
+          "next": 3
+        },
+        {
+          "val": 6,
+          "next": null
+        }
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Calculate carry = floor(7 / 10) = 0.",
+      "nodes": [
+        {
+          "val": 2,
+          "next": 1
+        },
+        {
+          "val": 4,
+          "next": null
+        },
+        {
+          "val": 5,
+          "next": 3
+        },
+        {
+          "val": 6,
+          "next": null
+        }
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Create new node with val = 7 % 10 = 7 and append to result list.",
+      "nodes": [
+        {
+          "val": 2,
+          "next": 1
+        },
+        {
+          "val": 4,
+          "next": null
+        },
+        {
+          "val": 5,
+          "next": 3
+        },
+        {
+          "val": 6,
+          "next": null
+        },
+        {
+          "val": 7,
+          "next": null
+        }
+      ],
+      "curr": 4
+    },
+    {
+      "codeLine": 10,
+      "note": "Advance l1 to 4 and l2 to 6.",
+      "nodes": [
+        {
+          "val": 2,
+          "next": 1
+        },
+        {
+          "val": 4,
+          "next": null
+        },
+        {
+          "val": 5,
+          "next": 3
+        },
+        {
+          "val": 6,
+          "next": null
+        },
+        {
+          "val": 7,
+          "next": null
+        }
+      ],
+      "curr": 4
+    },
+    {
+      "codeLine": 3,
+      "note": "Check loop condition: l1 (val 4) and l2 (val 6) are both not null.",
+      "nodes": [
+        {
+          "val": 2,
+          "next": 1
+        },
+        {
+          "val": 4,
+          "next": null
+        },
+        {
+          "val": 5,
+          "next": 3
+        },
+        {
+          "val": 6,
+          "next": null
+        },
+        {
+          "val": 7,
+          "next": null
+        }
+      ],
+      "curr": 4
+    },
+    {
+      "codeLine": 6,
+      "note": "Calculate sum = v1 (4) + v2 (6) + carry (0) = 10.",
+      "nodes": [
+        {
+          "val": 2,
+          "next": 1
+        },
+        {
+          "val": 4,
+          "next": null
+        },
+        {
+          "val": 5,
+          "next": 3
+        },
+        {
+          "val": 6,
+          "next": null
+        },
+        {
+          "val": 7,
+          "next": null
+        }
+      ],
+      "curr": 4
+    },
+    {
+      "codeLine": 7,
+      "note": "Calculate carry = floor(10 / 10) = 1.",
+      "nodes": [
+        {
+          "val": 2,
+          "next": 1
+        },
+        {
+          "val": 4,
+          "next": null
+        },
+        {
+          "val": 5,
+          "next": 3
+        },
+        {
+          "val": 6,
+          "next": null
+        },
+        {
+          "val": 7,
+          "next": null
+        }
+      ],
+      "curr": 4
+    },
+    {
+      "codeLine": 8,
+      "note": "Create new node with val = 10 % 10 = 0 and append to result list.",
+      "nodes": [
+        {
+          "val": 2,
+          "next": 1
+        },
+        {
+          "val": 4,
+          "next": null
+        },
+        {
+          "val": 5,
+          "next": 3
+        },
+        {
+          "val": 6,
+          "next": null
+        },
+        {
+          "val": 7,
+          "next": 5
+        },
+        {
+          "val": 0,
+          "next": null
+        }
+      ],
+      "curr": 5
+    },
+    {
+      "codeLine": 10,
+      "note": "Advance l1 and l2 (both reach null).",
+      "nodes": [
+        {
+          "val": 2,
+          "next": 1
+        },
+        {
+          "val": 4,
+          "next": null
+        },
+        {
+          "val": 5,
+          "next": 3
+        },
+        {
+          "val": 6,
+          "next": null
+        },
+        {
+          "val": 7,
+          "next": 5
+        },
+        {
+          "val": 0,
+          "next": null
+        }
+      ],
+      "curr": 5
+    },
+    {
+      "codeLine": 3,
+      "note": "Check loop condition: l1 and l2 are null, but carry (1) != 0.",
+      "nodes": [
+        {
+          "val": 2,
+          "next": 1
+        },
+        {
+          "val": 4,
+          "next": null
+        },
+        {
+          "val": 5,
+          "next": 3
+        },
+        {
+          "val": 6,
+          "next": null
+        },
+        {
+          "val": 7,
+          "next": 5
+        },
+        {
+          "val": 0,
+          "next": null
+        }
+      ],
+      "curr": 5
+    },
+    {
+      "codeLine": 6,
+      "note": "Calculate sum = v1 (0) + v2 (0) + carry (1) = 1.",
+      "nodes": [
+        {
+          "val": 2,
+          "next": 1
+        },
+        {
+          "val": 4,
+          "next": null
+        },
+        {
+          "val": 5,
+          "next": 3
+        },
+        {
+          "val": 6,
+          "next": null
+        },
+        {
+          "val": 7,
+          "next": 5
+        },
+        {
+          "val": 0,
+          "next": null
+        }
+      ],
+      "curr": 5
+    },
+    {
+      "codeLine": 7,
+      "note": "Calculate carry = floor(1 / 10) = 0.",
+      "nodes": [
+        {
+          "val": 2,
+          "next": 1
+        },
+        {
+          "val": 4,
+          "next": null
+        },
+        {
+          "val": 5,
+          "next": 3
+        },
+        {
+          "val": 6,
+          "next": null
+        },
+        {
+          "val": 7,
+          "next": 5
+        },
+        {
+          "val": 0,
+          "next": null
+        }
+      ],
+      "curr": 5
+    },
+    {
+      "codeLine": 8,
+      "note": "Create final node with val = 1 % 10 = 1 and append to result list.",
+      "nodes": [
+        {
+          "val": 2,
+          "next": 1
+        },
+        {
+          "val": 4,
+          "next": null
+        },
+        {
+          "val": 5,
+          "next": 3
+        },
+        {
+          "val": 6,
+          "next": null
+        },
+        {
+          "val": 7,
+          "next": 5
+        },
+        {
+          "val": 0,
+          "next": 6
+        },
+        {
+          "val": 1,
+          "next": null
+        }
+      ],
+      "curr": 6
+    },
+    {
+      "codeLine": 11,
+      "note": "Loop finishes. Return head of result list (7 -> 0 -> 1 representing 107).",
+      "nodes": [
+        {
+          "val": 2,
+          "next": 1
+        },
+        {
+          "val": 4,
+          "next": null
+        },
+        {
+          "val": 5,
+          "next": 3
+        },
+        {
+          "val": 6,
+          "next": null
+        },
+        {
+          "val": 7,
+          "next": 5
+        },
+        {
+          "val": 0,
+          "next": 6
+        },
+        {
+          "val": 1,
+          "next": null
+        }
+      ],
+      "curr": 4
+    }
+  ]
+}

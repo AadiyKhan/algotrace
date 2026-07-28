@@ -1,0 +1,65 @@
+{
+  "title": "Valid Square",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Math",
+    "Geometry"
+  ],
+  "description": "Determine if four given points can form a square.",
+  "target": null,
+  "pseudocode": "1. Calculate squared distances between all pairs of points\n2. Store distances in a list\n3. Sort the distances\n4. A square exists if the 4 smallest distances (sides) are equal and > 0, and the 2 largest distances (diagonals) are equal and > 0",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Calculating distances for points: [0,0], [1,1], [1,0], [0,1]",
+      "array": [
+        0,
+        0,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Squared distances: [1, 1, 1, 1, 2, 2]",
+      "array": [
+        1,
+        1,
+        1,
+        1,
+        2,
+        2
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Sorted distances: [1, 1, 1, 1, 2, 2]",
+      "array": [
+        1,
+        1,
+        1,
+        1,
+        2,
+        2
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Check sides (indices 0-3) are equal and > 0, and diagonals (indices 4-5) are equal and > 0. Valid square identified.",
+      "array": [
+        1,
+        1,
+        1,
+        1,
+        2,
+        2
+      ]
+    }
+  ]
+}

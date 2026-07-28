@@ -1,0 +1,136 @@
+{
+  "title": "Random Pick Index",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "Reservoir Sampling"
+  ],
+  "description": "Given an array of integers, randomly pick the index of a given target value. Each index must have an equal probability of being chosen.",
+  "target": 3,
+  "pseudocode": "1. count = 0\n2. result = -1\n3. for i from 0 to array.length - 1:\n4.   if array[i] == target:\n5.     count = count + 1\n6.     if Math.random() < (1 / count):\n7.       result = i\n8. return result",
+  "steps": [
+    {
+      "codeLine": 3,
+      "note": "Starting iteration at index 0",
+      "array": [
+        1,
+        3,
+        2,
+        3
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Checking if array[0] (1) == 3",
+      "array": [
+        1,
+        3,
+        2,
+        3
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Moving to index 1",
+      "array": [
+        1,
+        3,
+        2,
+        3
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Found target at index 1",
+      "array": [
+        1,
+        3,
+        2,
+        3
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Incrementing count to 1",
+      "array": [
+        1,
+        3,
+        2,
+        3
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Random check passes (1/1), setting result to 1",
+      "array": [
+        1,
+        3,
+        2,
+        3
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Moving to index 2",
+      "array": [
+        1,
+        3,
+        2,
+        3
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Moving to index 3",
+      "array": [
+        1,
+        3,
+        2,
+        3
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 4,
+      "note": "Found target at index 3",
+      "array": [
+        1,
+        3,
+        2,
+        3
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 5,
+      "note": "Incrementing count to 2",
+      "array": [
+        1,
+        3,
+        2,
+        3
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 6,
+      "note": "Random check (1/2) determines if we update result to 3",
+      "array": [
+        1,
+        3,
+        2,
+        3
+      ],
+      "i": 3
+    }
+  ]
+}

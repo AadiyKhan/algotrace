@@ -1,0 +1,80 @@
+{
+  "title": "Maximum XOR of Two Numbers in an Array",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Bit Manipulation",
+    "Trie"
+  ],
+  "description": "Find the maximum XOR result of two numbers in an array.",
+  "target": null,
+  "pseudocode": "1. max = 0, mask = 0\n2. for i from 31 down to 0:\n3.   mask |= (1 << i)\n4.   prefixes = set()\n5.   for num in nums:\n6.     prefixes.add(num & mask)\n7.   greedy = max | (1 << i)\n8.   for p in prefixes:\n9.     if (greedy ^ p) in prefixes:\n10.      max = greedy\n11.      break",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize max and mask to 0.",
+      "array": [
+        3,
+        10,
+        5,
+        25
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Update mask for bit 3 (last bit for 0-31 range in small case).",
+      "array": [
+        3,
+        10,
+        5,
+        25
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 5,
+      "note": "Calculate prefixes for current mask.",
+      "array": [
+        3,
+        10,
+        5,
+        25
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 7,
+      "note": "Test greedy potential max.",
+      "array": [
+        3,
+        10,
+        5,
+        25
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 9,
+      "note": "Check if XOR target exists in prefix set.",
+      "array": [
+        3,
+        10,
+        5,
+        25
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 10,
+      "note": "Update max found so far.",
+      "array": [
+        3,
+        10,
+        5,
+        25
+      ],
+      "i": 3
+    }
+  ]
+}

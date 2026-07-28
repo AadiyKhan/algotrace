@@ -1,0 +1,58 @@
+{
+  "title": "Campus Bikes",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Greedy",
+    "Sorting"
+  ],
+  "description": "Assign bikes to workers such that each worker gets a bike and the sum of Manhattan distances is minimized.",
+  "target": null,
+  "pseudocode": "1. Collect all (distance, worker, bike) triples.\n2. Sort triples by distance, then worker, then bike.\n3. Iterate and assign if worker/bike are available.\n4. Return result array.",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Triples: (dist, worker, bike) for W0(0,0), B0(0,1), B1(1,1)",
+      "array": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Sorted triples: [(1, 0, 0), (2, 0, 1)]",
+      "array": [
+        0,
+        0
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Assign bike 0 to worker 0",
+      "array": [
+        0,
+        -1
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Worker 0 already assigned, skip",
+      "array": [
+        0,
+        -1
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Final assignment returned",
+      "array": [
+        0,
+        -1
+      ]
+    }
+  ]
+}

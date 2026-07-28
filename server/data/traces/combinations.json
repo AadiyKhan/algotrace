@@ -1,0 +1,101 @@
+{
+  "title": "Combinations",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Backtracking",
+    "Array"
+  ],
+  "description": "Given two integers n and k, return all possible combinations of k numbers chosen from the range [1, n].",
+  "target": 2,
+  "pseudocode": "1: function backtrack(start, current) {\n2:   if (current.length === k) {\n3:     res.push([...current]);\n4:     return;\n5:   }\n6:   for (let i = start; i <= n; i++) {\n7:     current.push(i);\n8:     backtrack(i + 1, current);\n9:     current.pop();\n10:  }\n11: }",
+  "steps": [
+    {
+      "codeLine": 6,
+      "note": "Starting combination loop with start=1",
+      "array": [],
+      "i": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "Push 1 to current",
+      "array": [
+        1
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 8,
+      "note": "Recursive call with start=2",
+      "array": [
+        1
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 7,
+      "note": "Push 2 to current",
+      "array": [
+        1,
+        2
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 2,
+      "note": "Base case reached: current.length == k",
+      "array": [
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Added [1, 2] to results",
+      "array": [
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 9,
+      "note": "Backtrack: pop 2",
+      "array": [
+        1
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Continue loop at i=3",
+      "array": [
+        1
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 7,
+      "note": "Push 3 to current",
+      "array": [
+        1,
+        3
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 2,
+      "note": "Base case reached",
+      "array": [
+        1,
+        3
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Added [1, 3] to results",
+      "array": [
+        1,
+        3
+      ]
+    }
+  ]
+}

@@ -1,0 +1,174 @@
+{
+  "title": "Intersection of Two Linked Lists",
+  "difficulty": "Easy",
+  "type": "linked-list",
+  "tags": [
+    "Linked List",
+    "Two Pointers"
+  ],
+  "description": "Find the node at which the intersection of two singly linked lists begins.",
+  "pseudocode": "1: let pA = headA, pB = headB;\n2: while (pA !== pB) {\n3:   pA = (pA === null) ? headB : pA.next;\n4:   pB = (pB === null) ? headA : pB.next;\n5: }\n6: return pA;",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize two pointers at the heads of both lists.",
+      "nodes": [
+        {
+          "val": 1,
+          "next": 1
+        },
+        {
+          "val": 2,
+          "next": 2
+        },
+        {
+          "val": 8,
+          "next": 3
+        },
+        {
+          "val": 4,
+          "next": null
+        },
+        {
+          "val": 5,
+          "next": 2
+        }
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Pointers start traversal. List A: 1->2->8->4, List B: 5->8->4",
+      "nodes": [
+        {
+          "val": 1,
+          "next": 1
+        },
+        {
+          "val": 2,
+          "next": 2
+        },
+        {
+          "val": 8,
+          "next": 3
+        },
+        {
+          "val": 4,
+          "next": null
+        },
+        {
+          "val": 5,
+          "next": 2
+        }
+      ],
+      "curr": "A:0, B:4"
+    },
+    {
+      "codeLine": 3,
+      "note": "pA moves to index 1 (val 2). pB moves to index 2 (val 8).",
+      "nodes": [
+        {
+          "val": 1,
+          "next": 1
+        },
+        {
+          "val": 2,
+          "next": 2
+        },
+        {
+          "val": 8,
+          "next": 3
+        },
+        {
+          "val": 4,
+          "next": null
+        },
+        {
+          "val": 5,
+          "next": 2
+        }
+      ],
+      "curr": "A:1, B:2"
+    },
+    {
+      "codeLine": 4,
+      "note": "pA moves to index 2 (val 8). pB moves to index 3 (val 4).",
+      "nodes": [
+        {
+          "val": 1,
+          "next": 1
+        },
+        {
+          "val": 2,
+          "next": 2
+        },
+        {
+          "val": 8,
+          "next": 3
+        },
+        {
+          "val": 4,
+          "next": null
+        },
+        {
+          "val": 5,
+          "next": 2
+        }
+      ],
+      "curr": "A:2, B:3"
+    },
+    {
+      "codeLine": 5,
+      "note": "pA moves to index 3 (val 4). pB moves to index 0 (switched to headA).",
+      "nodes": [
+        {
+          "val": 1,
+          "next": 1
+        },
+        {
+          "val": 2,
+          "next": 2
+        },
+        {
+          "val": 8,
+          "next": 3
+        },
+        {
+          "val": 4,
+          "next": null
+        },
+        {
+          "val": 5,
+          "next": 2
+        }
+      ],
+      "curr": "A:3, B:0"
+    },
+    {
+      "codeLine": 6,
+      "note": "Pointers converge at the intersection node (val 8).",
+      "nodes": [
+        {
+          "val": 1,
+          "next": 1
+        },
+        {
+          "val": 2,
+          "next": 2
+        },
+        {
+          "val": 8,
+          "next": 3
+        },
+        {
+          "val": 4,
+          "next": null
+        },
+        {
+          "val": 5,
+          "next": 2
+        }
+      ],
+      "curr": "A:2, B:2"
+    }
+  ]
+}

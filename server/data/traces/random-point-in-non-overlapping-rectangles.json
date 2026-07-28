@@ -1,0 +1,85 @@
+{
+  "title": "Random Point In Non-Overlapping Rectangles",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Binary Search",
+    "Math",
+    "Randomized"
+  ],
+  "description": "Pick a random point inside one of the given non-overlapping rectangles with probability proportional to the area.",
+  "target": null,
+  "pseudocode": "1. totalArea = sum(areas)\n2. weights = cumulativeSum(areas)\n3. rand = Math.random() * totalArea\n4. index = binarySearch(weights, rand)\n5. rect = rects[index]\n6. x = randInt(rect.x1, rect.x2)\n7. y = randInt(rect.y1, rect.y2)\n8. return [x, y]",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Calculate areas: R0 (1x1=1), R1 (2x2=4). Total area = 5.",
+      "array": [
+        1,
+        4
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Create cumulative weights for sampling.",
+      "array": [
+        1,
+        5
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Generate random value between 0 and 5. Let's say 2.5.",
+      "array": [
+        1,
+        5
+      ],
+      "i": "2.5"
+    },
+    {
+      "codeLine": 4,
+      "note": "Binary search finds index 1 because 2.5 > 1.",
+      "array": [
+        1,
+        5
+      ],
+      "i": "1"
+    },
+    {
+      "codeLine": 5,
+      "note": "Select rectangle at index 1.",
+      "array": [
+        1,
+        5
+      ],
+      "i": "1"
+    },
+    {
+      "codeLine": 6,
+      "note": "Pick random x-coordinate within R1 bounds.",
+      "array": [
+        1,
+        5
+      ],
+      "i": "1"
+    },
+    {
+      "codeLine": 7,
+      "note": "Pick random y-coordinate within R1 bounds.",
+      "array": [
+        1,
+        5
+      ],
+      "i": "1"
+    },
+    {
+      "codeLine": 8,
+      "note": "Return final point [x, y].",
+      "array": [
+        1,
+        5
+      ]
+    }
+  ]
+}

@@ -1,0 +1,110 @@
+{
+  "title": "Decode Ways",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "String",
+    "Dynamic Programming"
+  ],
+  "description": "Determine the number of ways to decode a string of digits into letters (1='A', 26='Z').",
+  "target": "226",
+  "pseudocode": "function numDecodings(s) {\n  let n = s.length;\n  let dp = new Array(n + 1).fill(0);\n  dp[0] = 1;\n  dp[1] = s[0] === '0' ? 0 : 1;\n  for (let i = 2; i <= n; i++) {\n    let oneDigit = parseInt(s.substring(i - 1, i));\n    let twoDigits = parseInt(s.substring(i - 2, i));\n    if (oneDigit > 0) dp[i] += dp[i - 1];\n    if (twoDigits >= 10 && twoDigits <= 26) dp[i] += dp[i - 2];\n  }\n  return dp[n];\n}",
+  "steps": [
+    {
+      "codeLine": 3,
+      "note": "Initialize DP array of size 4 with zeros",
+      "array": [
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Base case: empty string has 1 way",
+      "array": [
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Base case: first digit '2' is valid, 1 way",
+      "array": [
+        1,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Start loop for i=2",
+      "i": 2,
+      "array": [
+        1,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 9,
+      "note": "Single digit '2' is > 0, add dp[1] to dp[2]",
+      "i": 2,
+      "array": [
+        1,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "codeLine": 10,
+      "note": "Two digits '22' is between 10-26, add dp[0] to dp[2]",
+      "i": 2,
+      "array": [
+        1,
+        1,
+        2,
+        0
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Continue loop for i=3",
+      "i": 3,
+      "array": [
+        1,
+        1,
+        2,
+        0
+      ]
+    },
+    {
+      "codeLine": 9,
+      "note": "Single digit '6' is > 0, add dp[2] to dp[3]",
+      "i": 3,
+      "array": [
+        1,
+        1,
+        2,
+        2
+      ]
+    },
+    {
+      "codeLine": 10,
+      "note": "Two digits '26' is between 10-26, add dp[1] to dp[3]",
+      "i": 3,
+      "array": [
+        1,
+        1,
+        2,
+        3
+      ]
+    }
+  ]
+}

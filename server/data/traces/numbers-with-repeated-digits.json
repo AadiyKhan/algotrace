@@ -1,0 +1,48 @@
+{
+  "title": "Numbers With Repeated Digits",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Math",
+    "Dynamic Programming"
+  ],
+  "description": "Find the count of positive integers <= n that have at least one repeated digit.",
+  "target": 20,
+  "pseudocode": "1. function countNumbersWithDupDigits(n) {\n2.   let s = n.toString().split('');\n3.   let total = n - countUnique(n);\n4.   return total;\n5. }",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Convert n=20 to string array: ['2', '0']",
+      "array": [
+        2,
+        0
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Calculate count of unique numbers up to 20: 1..9 (9) + 10, 12, 13, 14, 15, 16, 17, 18, 19 (9). Total unique = 18.",
+      "array": [
+        2,
+        0
+      ],
+      "i": 18
+    },
+    {
+      "codeLine": 3,
+      "note": "Subtract unique count from total (20 - 18 = 2). The repeated numbers are 11 and 22 is out of range, but wait, 11 is the only one in range.",
+      "array": [
+        2,
+        0
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Return the final count of numbers with at least one repeated digit.",
+      "array": [
+        2,
+        0
+      ]
+    }
+  ]
+}

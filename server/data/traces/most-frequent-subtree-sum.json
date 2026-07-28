@@ -1,0 +1,146 @@
+{
+  "title": "Most Frequent Subtree Sum",
+  "difficulty": "Medium",
+  "type": "tree",
+  "tags": [
+    "Tree",
+    "Hash Table",
+    "DFS"
+  ],
+  "description": "Find the subtree sum(s) that occur most frequently in the binary tree.",
+  "pseudocode": "function getSum(node) {\n  if (!node) return 0;\n  let s = node.val + getSum(node.left) + getSum(node.right);\n  counts[s] = (counts[s] || 0) + 1;\n  maxFreq = Math.max(maxFreq, counts[s]);\n  return s;\n}",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Base case: null node returns 0 sum.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 5,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": -3,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Calculating subtree sum for node with val 2.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 5,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": -3,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        1
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Updating count for sum 2.",
+      "visited": [
+        1
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Calculating subtree sum for node with val -3.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 5,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": -3,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Updating count for sum -3.",
+      "visited": [
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Calculating root subtree sum: 5 + 2 + (-3) = 4.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 5,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": -3,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        1,
+        2,
+        0
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Updating count for sum 4.",
+      "visited": [
+        1,
+        2,
+        0
+      ]
+    }
+  ]
+}

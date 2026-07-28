@@ -1,0 +1,92 @@
+{
+  "title": "Verify Preorder Sequence in Binary Search Tree",
+  "difficulty": "Medium",
+  "type": "tree",
+  "tags": [
+    "Stack",
+    "Tree",
+    "Binary Search Tree"
+  ],
+  "description": "Determine if a given array is the preorder traversal sequence of a Binary Search Tree using a monotonic stack.",
+  "target": null,
+  "pseudocode": "1: let stack = [], low = -infinity\n2: for val in preorder:\n3:   if val < low: return false\n4:   while stack.length > 0 && val > stack[stack.length - 1]:\n5:     low = stack.pop()\n6:   stack.push(val)\n7: return true",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize stack and low threshold.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 5,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 6,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Process first element 5.",
+      "i": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Push 5 to stack.",
+      "visited": [
+        5
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Process second element 2.",
+      "i": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "2 < 5, push 2 to stack.",
+      "visited": [
+        5,
+        2
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Process third element 6.",
+      "i": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "6 > 2, pop 2 from stack, set low = 2.",
+      "visited": [
+        5
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "6 > 5, pop 5 from stack, set low = 5.",
+      "visited": []
+    },
+    {
+      "codeLine": 6,
+      "note": "Push 6 to stack.",
+      "visited": [
+        6
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Finished loop, return true."
+    }
+  ]
+}

@@ -1,0 +1,171 @@
+{
+  "title": "The Maze II",
+  "difficulty": "Medium",
+  "type": "matrix",
+  "tags": [
+    "Graph",
+    "BFS",
+    "Dijkstra"
+  ],
+  "description": "Find the shortest distance for a ball to stop at the destination in a maze. The ball rolls until it hits a wall.",
+  "target": [
+    4,
+    3
+  ],
+  "pseudocode": "1. Initialize distance matrix with infinity\n2. Push [startRow, startCol, 0] to priority queue\n3. While queue is not empty:\n4.   Pop current [r, c, dist]\n5.   For each direction (dx, dy):\n6.     Roll until hitting a wall or boundary\n7.     If new dist < existing dist, update and push to queue",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize distances to infinity",
+      "matrix": [
+        [
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          1,
+          0,
+          1,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "visited": []
+    },
+    {
+      "codeLine": 4,
+      "note": "Start at [0, 0] with distance 0",
+      "curr": [
+        0,
+        0
+      ],
+      "matrix": [
+        [
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        [
+          1,
+          1,
+          0,
+          1,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Rolling down from [0,0], stops at [4,0]",
+      "curr": [
+        4,
+        0
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ],
+        [
+          4,
+          0
+        ]
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Rolling right from [0,0], stops at [0,1]",
+      "curr": [
+        0,
+        1
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ],
+        [
+          4,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Found shortest path to destination [4, 3]",
+      "curr": [
+        4,
+        3
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ],
+        [
+          4,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          4,
+          3
+        ]
+      ]
+    }
+  ]
+}

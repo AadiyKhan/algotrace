@@ -1,0 +1,87 @@
+{
+  "title": "Peeking Iterator",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Design",
+    "Iterator"
+  ],
+  "description": "Design an iterator that supports the peek operation in addition to the next and hasNext operations.",
+  "target": null,
+  "pseudocode": "1: function peek() {\n2:   if (this.nextElement === null) {\n3:     this.nextElement = this.iterator.next();\n4:   }\n5:   return this.nextElement;\n6: }\n7: function next() {\n8:   let res = this.peek();\n9:   this.nextElement = null;\n10:  return res;\n11: }",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Calling peek() on iterator with elements [1, 2, 3]",
+      "array": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "nextElement is null, need to fetch from iterator",
+      "array": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Fetching next element from iterator: 1",
+      "array": [
+        1,
+        2,
+        3
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Returning peeked element: 1",
+      "array": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Calling next()",
+      "array": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Calling peek internally to get current value",
+      "array": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "codeLine": 9,
+      "note": "Clearing nextElement cache",
+      "array": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "codeLine": 10,
+      "note": "Returning 1 and advancing internal iterator state",
+      "array": [
+        1,
+        2,
+        3
+      ]
+    }
+  ]
+}

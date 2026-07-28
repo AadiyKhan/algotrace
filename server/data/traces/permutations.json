@@ -1,0 +1,100 @@
+{
+  "title": "Permutations",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Backtracking"
+  ],
+  "description": "Generate all possible permutations of an array of distinct integers.",
+  "target": null,
+  "pseudocode": "1. function backtrack(path, used):\n2.   if path.length == nums.length: result.push([...path])\n3.   for i from 0 to nums.length - 1:\n4.     if !used[i]:\n5.       used[i] = true, path.push(nums[i])\n6.       backtrack(path, used)\n7.       path.pop(), used[i] = false",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize backtrack with empty path.",
+      "array": [
+        1,
+        2
+      ],
+      "i": null
+    },
+    {
+      "codeLine": 3,
+      "note": "First iteration, i=0, picking 1.",
+      "array": [
+        1,
+        2
+      ],
+      "i": 0,
+      "visited": [
+        0
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Path becomes [1].",
+      "array": [
+        1,
+        2
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Inner iteration, i=1, picking 2.",
+      "array": [
+        1,
+        2
+      ],
+      "i": 1,
+      "visited": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Path complete: [1, 2]. Add to result.",
+      "array": [
+        1,
+        2
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "Backtrack, pop 2. Used[1] = false.",
+      "array": [
+        1,
+        2
+      ],
+      "i": 1,
+      "visited": [
+        0
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Backtrack, pop 1. Used[0] = false.",
+      "array": [
+        1,
+        2
+      ],
+      "i": 0,
+      "visited": []
+    },
+    {
+      "codeLine": 3,
+      "note": "Outer iteration, i=1, picking 2.",
+      "array": [
+        1,
+        2
+      ],
+      "i": 1,
+      "visited": [
+        1
+      ]
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "title": "Poor Pigs",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Math",
+    "Dynamic Programming",
+    "Combinatorics"
+  ],
+  "description": "Find the minimum number of pigs to find the poisoned bucket in minutesToDie given buckets, minutesToDie, and minutesToTest.",
+  "target": 5,
+  "pseudocode": "1: rounds = Math.floor(minutesToTest / minutesToDie)\n2: pigs = 0\n3: while (Math.pow(rounds + 1, pigs) < buckets) {\n4:   pigs++\n5: }\n6: return pigs",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Calculate how many tests can be performed per pig (rounds + 1 states).",
+      "i": 2
+    },
+    {
+      "codeLine": 2,
+      "note": "Initialize pigs counter to 0.",
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Check if current number of pigs can cover 5 buckets (rounds + 1 = 3).",
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Increment pigs to 1 (3^1 = 3 < 5).",
+      "i": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Check if 1 pig can cover 5 buckets.",
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Increment pigs to 2 (3^2 = 9 >= 5).",
+      "i": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Condition 9 < 5 is false, exit loop.",
+      "i": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Return 2 pigs.",
+      "i": 2
+    }
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "title": "Convert To Base 2",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Math",
+    "Bit Manipulation"
+  ],
+  "description": "Convert a given decimal integer to its binary representation as an array of bits.",
+  "target": 6,
+  "pseudocode": "1. result = []\n2. if n == 0 return [0]\n3. while n > 0:\n4.   result.unshift(n % 2)\n5.   n = Math.floor(n / 2)\n6. return result",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize empty array",
+      "array": []
+    },
+    {
+      "codeLine": 3,
+      "note": "Start loop, n=6",
+      "array": []
+    },
+    {
+      "codeLine": 4,
+      "note": "6 % 2 is 0, add to front",
+      "array": [
+        0
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "n becomes 6 / 2 = 3",
+      "array": [
+        0
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "3 % 2 is 1, add to front",
+      "array": [
+        1,
+        0
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "n becomes 3 / 2 = 1",
+      "array": [
+        1,
+        0
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "1 % 2 is 1, add to front",
+      "array": [
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "n becomes 1 / 2 = 0",
+      "array": [
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Loop terminates, return result",
+      "array": [
+        1,
+        1,
+        0
+      ]
+    }
+  ]
+}

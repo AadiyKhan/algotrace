@@ -1,0 +1,87 @@
+{
+  "title": "Find the Difference",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "Bit Manipulation"
+  ],
+  "description": "Given two strings s and t, find the letter that was added in t.",
+  "target": "e",
+  "pseudocode": "1. result = 0\n2. for char in s: result ^= charCode(char)\n3. for char in t: result ^= charCode(char)\n4. return String.fromCharCode(result)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize result to 0",
+      "array": [
+        "a",
+        "b",
+        "c"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "XORing characters of s ('a', 'b', 'c')",
+      "array": [
+        "a",
+        "b",
+        "c"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "XORing 'b' into result",
+      "array": [
+        "a",
+        "b",
+        "c"
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "XORing 'c' into result",
+      "array": [
+        "a",
+        "b",
+        "c"
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "XORing characters of t ('a', 'b', 'c', 'e')",
+      "array": [
+        "a",
+        "b",
+        "c",
+        "e"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Processing 'e', the unique difference",
+      "array": [
+        "a",
+        "b",
+        "c",
+        "e"
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 4,
+      "note": "Resulting char code converted to 'e'",
+      "array": [
+        "a",
+        "b",
+        "c",
+        "e"
+      ]
+    }
+  ]
+}

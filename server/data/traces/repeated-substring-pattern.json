@@ -1,0 +1,49 @@
+{
+  "title": "Repeated Substring Pattern",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "String",
+    "KMP"
+  ],
+  "description": "Check if a string can be constructed by taking a substring of it and appending multiple copies of the substring together.",
+  "target": "abab",
+  "pseudocode": "1. let s = 'abab'\n2. let str = (s + s).slice(1, -1)\n3. return str.includes(s)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize string s = 'abab'",
+      "array": [
+        "a",
+        "b",
+        "a",
+        "b"
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Concatenate s + s = 'abababab', then slice first and last chars",
+      "array": [
+        "b",
+        "a",
+        "b",
+        "a",
+        "b",
+        "a"
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Check if 'bababa' includes 'abab'. It does not contain 'abab' fully. Actually, wait: 'bababa' contains 'abab' at index 1.",
+      "array": [
+        "b",
+        "a",
+        "b",
+        "a",
+        "b",
+        "a"
+      ],
+      "i": 1
+    }
+  ]
+}

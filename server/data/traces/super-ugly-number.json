@@ -1,0 +1,82 @@
+{
+  "title": "Super Ugly Number",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Math",
+    "Dynamic Programming"
+  ],
+  "description": "Find the nth super ugly number given a list of primes. A super ugly number is a positive integer whose all prime factors are in the given list of primes.",
+  "target": 12,
+  "pseudocode": "1. let ugly = [1]\n2. let pointers = new Array(primes.length).fill(0)\n3. while (ugly.length < n) {\n4.   let next = min(primes[i] * ugly[pointers[i]])\n5.   ugly.push(next)\n6.   for (i) if (next == primes[i] * ugly[pointers[i]]) pointers[i]++\n7. }",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize ugly sequence with 1",
+      "array": [
+        1
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Initialize pointers for primes [2, 7]",
+      "array": [
+        1
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Calculate next ugly number: min(2*1, 7*1) = 2",
+      "array": [
+        1
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Append 2 to ugly sequence",
+      "array": [
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Update pointer for prime 2",
+      "array": [
+        1,
+        2
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Calculate next ugly number: min(2*2, 7*1) = 4",
+      "array": [
+        1,
+        2,
+        4
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Append 4 to ugly sequence",
+      "array": [
+        1,
+        2,
+        4
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Update pointer for prime 2",
+      "array": [
+        1,
+        2,
+        4
+      ],
+      "i": 2
+    }
+  ]
+}

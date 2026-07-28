@@ -1,0 +1,85 @@
+{
+  "title": "Design Compressed String Iterator",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Design",
+    "String",
+    "Iterator"
+  ],
+  "description": "Design an iterator to decode a compressed string like 'L1e2t1c1o1d1e1'.",
+  "target": "e",
+  "pseudocode": "1. function next():\n2. if !hasNext() return ' ';\n3. char = chars[ptr];\n4. counts[ptr]--;\n5. if counts[ptr] == 0: ptr++;\n6. return char;",
+  "steps": [
+    {
+      "codeLine": 3,
+      "note": "Retrieve character 'L' at current pointer index 0.",
+      "array": [
+        "L",
+        "e",
+        "t"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Decrement count for 'L' from 1 to 0.",
+      "array": [
+        "L",
+        "e",
+        "t"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Count is 0, advance pointer to next compressed segment.",
+      "array": [
+        "L",
+        "e",
+        "t"
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Return character 'L'.",
+      "array": [
+        "L",
+        "e",
+        "t"
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Retrieve character 'e' at current pointer index 1.",
+      "array": [
+        "L",
+        "e",
+        "t"
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Decrement count for 'e' from 2 to 1.",
+      "array": [
+        "L",
+        "e",
+        "t"
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Return character 'e'.",
+      "array": [
+        "L",
+        "e",
+        "t"
+      ],
+      "i": 1
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "title": "Number of Islands II",
+  "difficulty": "Hard",
+  "type": "matrix",
+  "tags": [
+    "Array",
+    "Union-Find",
+    "Matrix"
+  ],
+  "description": "Given a 2D grid initialized with 0s and a list of operations (row, col) to turn cells into 1s, count the number of islands after each operation.",
+  "pseudocode": "1. initialize parent map, count = 0\n2. for each operation (r, c):\n3.   if cell (r, c) is already 1, continue\n4.   mark (r, c) as 1, count++\n5.   for each neighbor (nr, nc):\n6.     if neighbor is 1 and find(nr, nc) != find(r, c):\n7.       union(nr, nc, r, c), count--\n8.   add count to results",
+  "steps": [
+    {
+      "codeLine": 4,
+      "note": "Turn (0,0) to 1. Islands: 1",
+      "matrix": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Turn (1,1) to 1. Islands: 2",
+      "matrix": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "curr": [
+        1,
+        1
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Turn (0,1) to 1. Connects (0,0) and (1,1). Islands: 1",
+      "matrix": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "curr": [
+        0,
+        1
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ]
+    }
+  ]
+}

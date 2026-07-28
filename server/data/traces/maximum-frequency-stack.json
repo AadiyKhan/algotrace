@@ -1,0 +1,54 @@
+{
+  "title": "Maximum Frequency Stack",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Stack",
+    "Hash Table",
+    "Design"
+  ],
+  "description": "Design a stack-like data structure that pushes elements and pops the most frequent element.",
+  "pseudocode": "1: freqMap[val]++\n2: maxFreq = Math.max(maxFreq, freqMap[val])\n3: group[freqMap[val]].push(val)\n4: val = group[maxFreq].pop()\n5: freqMap[val]--\n6: if group[maxFreq].length == 0: maxFreq--",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Push 5: freqMap[5] becomes 1.",
+      "array": [
+        5
+      ]
+    },
+    {
+      "codeLine": 1,
+      "note": "Push 7: freqMap[7] becomes 1.",
+      "array": [
+        5,
+        7
+      ]
+    },
+    {
+      "codeLine": 1,
+      "note": "Push 5: freqMap[5] becomes 2.",
+      "array": [
+        5,
+        7,
+        5
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Pop: Max frequency is 2. Element 5 is popped.",
+      "array": [
+        5,
+        7
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Update: freqMap[5] becomes 1. Max frequency drops to 1.",
+      "array": [
+        5,
+        7
+      ]
+    }
+  ]
+}

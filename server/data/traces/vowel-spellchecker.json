@@ -1,0 +1,61 @@
+{
+  "title": "Vowel Spellchecker",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "String",
+    "Hash Table"
+  ],
+  "description": "Spellcheck queries against a dictionary, prioritizing exact matches, case-insensitive matches, and vowel-insensitive matches.",
+  "target": [
+    "ktE"
+  ],
+  "pseudocode": "1. exact = new Set(wordlist)\n2. cap = new Map()\n3. vow = new Map()\n4. for word in wordlist:\n5.   lower = word.toLowerCase()\n6.   devowel = lower.replace(/[aeiou]/g, '*')\n7.   if (!cap.has(lower)) cap.set(lower, word)\n8.   if (!vow.has(devowel)) vow.set(devowel, word)\n9. for q in queries:\n10.  if exact.has(q) return q\n11.  if cap.has(q.toLowerCase()) return cap.get(q.toLowerCase())\n12.  if vow.has(q.toLowerCase().replace(/[aeiou]/g, '*')) return vow.get(devowel)\n13. return ''",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize exact match set.",
+      "array": [
+        "KiTe",
+        "kite",
+        "hare"
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Processing word 'KiTe'.",
+      "i": 0
+    },
+    {
+      "codeLine": 7,
+      "note": "Mapping 'kite' to 'KiTe' in cap map.",
+      "i": 0
+    },
+    {
+      "codeLine": 8,
+      "note": "Mapping 'k*t*' to 'KiTe' in vowel map.",
+      "i": 0
+    },
+    {
+      "codeLine": 9,
+      "note": "Processing query 'ktE'.",
+      "i": 0
+    },
+    {
+      "codeLine": 10,
+      "note": "Check exact: 'ktE' not in set.",
+      "i": 0
+    },
+    {
+      "codeLine": 11,
+      "note": "Check case-insensitive: 'kte' not in map.",
+      "i": 0
+    },
+    {
+      "codeLine": 12,
+      "note": "Check vowel-insensitive: 'kt*' matches 'KiTe'.",
+      "i": 0
+    }
+  ]
+}

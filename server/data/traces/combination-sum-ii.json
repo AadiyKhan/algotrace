@@ -1,0 +1,111 @@
+{
+  "title": "Combination Sum II",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Backtracking"
+  ],
+  "description": "Find all unique combinations in candidates that sum to target, where each number may only be used once.",
+  "target": 8,
+  "pseudocode": "candidates.sort();\nfunction backtrack(start, target, path) {\n  if (target === 0) return res.push([...path]);\n  for (let i = start; i < candidates.length; i++) {\n    if (i > start && candidates[i] === candidates[i-1]) continue;\n    if (candidates[i] > target) break;\n    path.push(candidates[i]);\n    backtrack(i + 1, target - candidates[i], path);\n    path.pop();\n  }\n}",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Sort candidates: [1, 1, 2, 5, 6, 7, 10]",
+      "array": [
+        1,
+        1,
+        2,
+        5,
+        6,
+        7,
+        10
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Start backtrack at index 0, target 8, path [1]",
+      "array": [
+        1,
+        1,
+        2,
+        5,
+        6,
+        7,
+        10
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 8,
+      "note": "Push 1, recurse with target 7 from index 1",
+      "array": [
+        1,
+        1,
+        2,
+        5,
+        6,
+        7,
+        10
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Skipping index 1 (duplicate of index 0)",
+      "array": [
+        1,
+        1,
+        2,
+        5,
+        6,
+        7,
+        10
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Push 2, target 5, path [1, 2]",
+      "array": [
+        1,
+        1,
+        2,
+        5,
+        6,
+        7,
+        10
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Push 5, target 0. Combination [1, 2, 5] found.",
+      "array": [
+        1,
+        1,
+        2,
+        5,
+        6,
+        7,
+        10
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 9,
+      "note": "Backtrack, pop 5, pop 2, try next branch",
+      "array": [
+        1,
+        1,
+        2,
+        5,
+        6,
+        7,
+        10
+      ],
+      "i": 4
+    }
+  ]
+}

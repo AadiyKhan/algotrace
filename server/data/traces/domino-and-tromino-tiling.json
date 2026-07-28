@@ -1,0 +1,83 @@
+{
+  "title": "Domino and Tromino Tiling",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Dynamic Programming"
+  ],
+  "description": "Find the number of ways to tile a 2 x N board using 2x1 dominoes and L-shaped trominoes.",
+  "target": 4,
+  "pseudocode": "1: dp = new Array(N + 1).fill(0)\n2: dp[0] = 1, dp[1] = 1, dp[2] = 2\n3: for i from 3 to N:\n4:   dp[i] = (2 * dp[i-1] + dp[i-3]) % MOD",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize DP array for N=4",
+      "array": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Set base cases dp[0]=1, dp[1]=1, dp[2]=2",
+      "array": [
+        1,
+        1,
+        2,
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Loop start: i = 3",
+      "i": 3,
+      "array": [
+        1,
+        1,
+        2,
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Calculate dp[3] = 2*dp[2] + dp[0] = 2*2 + 1 = 5",
+      "i": 3,
+      "array": [
+        1,
+        1,
+        2,
+        5,
+        0
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Loop iteration: i = 4",
+      "i": 4,
+      "array": [
+        1,
+        1,
+        2,
+        5,
+        0
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Calculate dp[4] = 2*dp[3] + dp[1] = 2*5 + 1 = 11",
+      "i": 4,
+      "array": [
+        1,
+        1,
+        2,
+        5,
+        11
+      ]
+    }
+  ]
+}

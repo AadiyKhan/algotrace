@@ -1,0 +1,64 @@
+{
+  "title": "Android Unlock Patterns",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Backtracking",
+    "Recursion"
+  ],
+  "description": "Calculate total number of valid patterns from length m to n on a 3x3 grid, skipping keys require intermediate keys to be visited.",
+  "target": 3,
+  "pseudocode": "1. jump[1][3] = 2; jump[1][7] = 4; jump[1][9] = 5; \n2. function backtrack(curr, count, visited): \n3.   if count > n: return 0\n4.   total = (count >= m ? 1 : 0)\n5.   visited[curr] = true\n6.   for next from 1 to 9:\n7.     if !visited[next] && (jump[curr][next] == 0 || visited[jump[curr][next]]):\n8.       total += backtrack(next, count + 1, visited)\n9.   visited[curr] = false\n10.  return total",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Starting recursion with pattern length 1 at node 1",
+      "visited": [
+        1
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Exploring neighbors of node 1",
+      "i": 2,
+      "visited": [
+        1
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Checking if node 2 is valid (no jump required)",
+      "i": 2,
+      "visited": [
+        1
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Recursing to node 2",
+      "i": 2,
+      "visited": [
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Pattern length 2 reached, count as valid",
+      "i": 2,
+      "visited": [
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 9,
+      "note": "Backtracking from node 2",
+      "i": 2,
+      "visited": [
+        1
+      ]
+    }
+  ]
+}

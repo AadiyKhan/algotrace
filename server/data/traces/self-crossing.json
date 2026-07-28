@@ -1,0 +1,46 @@
+{
+  "title": "Self Crossing",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Math"
+  ],
+  "description": "Determine if a path of lines crosses itself given lengths of moves in cardinal directions.",
+  "pseudocode": "for (let i = 3; i < x.length; i++) {\n  if (x[i] >= x[i - 2] && x[i - 1] <= x[i - 3]) return true;\n  if (i >= 4 && x[i - 1] === x[i - 3] && x[i] + x[i - 4] >= x[i - 2]) return true;\n  if (i >= 5 && x[i - 1] <= x[i - 3] && x[i - 1] + x[i - 5] >= x[i - 3] && x[i - 2] > x[i - 4] && x[i] + x[i - 4] >= x[i - 2]) return true;\n}",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize loop at index 3 for sequence [2, 1, 1, 2]",
+      "array": [
+        2,
+        1,
+        1,
+        2
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 2,
+      "note": "Check first crossing condition: x[3] >= x[1] and x[2] <= x[0]",
+      "array": [
+        2,
+        1,
+        1,
+        2
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 2,
+      "note": "Condition 2 >= 1 (True) and 1 <= 2 (True). Crossing detected.",
+      "array": [
+        2,
+        1,
+        1,
+        2
+      ],
+      "i": 3
+    }
+  ]
+}

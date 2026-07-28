@@ -1,0 +1,51 @@
+{
+  "title": "Find Duplicate File in System",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "String"
+  ],
+  "description": "Group duplicate file paths by their content using a hash map.",
+  "pseudocode": "1. map = new Map()\n2. for path in paths:\n3.   parts = path.split(' ')\n4.   dir = parts[0]\n5.   for i = 1 to parts.length - 1:\n6.     file = parts[i]\n7.     content = file.split('(')[1]\n8.     name = file.split('(')[0]\n9.     fullPath = dir + '/' + name\n10.    map.get(content).push(fullPath)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize empty hash map to store content as keys and file paths as values.",
+      "array": []
+    },
+    {
+      "codeLine": 3,
+      "note": "Split input string into directory and individual files.",
+      "i": 0,
+      "array": [
+        "root/a",
+        "1.txt(abcd)",
+        "2.txt(efgh)"
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Extract content 'abcd' from the first file.",
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 10,
+      "note": "Store 'root/a/1.txt' under key 'abcd' in map.",
+      "i": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "Extract content 'efgh' from the second file.",
+      "i": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 10,
+      "note": "Store 'root/a/2.txt' under key 'efgh' in map.",
+      "i": 2
+    }
+  ]
+}

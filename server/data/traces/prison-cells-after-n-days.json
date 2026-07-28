@@ -1,0 +1,117 @@
+{
+  "title": "Prison Cells After N Days",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "Math"
+  ],
+  "description": "Calculate the state of prison cells after N days, where a cell becomes 1 if its neighbors were both 1 or both 0, otherwise 0.",
+  "target": 7,
+  "pseudocode": "1. seen = map()\n2. for i = 0 to N-1:\n3.   if cells in seen: return seen[N % i]\n4.   seen[i] = cells.copy()\n5.   new_cells = [0] * 8\n6.   for j = 1 to 6: new_cells[j] = cells[j-1] == cells[j+1] ? 1 : 0\n7.   cells = new_cells\n8. return cells",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Starting day 0, cells = [0,1,0,1,1,0,0,1]",
+      "array": [
+        0,
+        1,
+        0,
+        1,
+        1,
+        0,
+        0,
+        1
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Calculate new state for day 1",
+      "array": [
+        0,
+        1,
+        0,
+        1,
+        1,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Applying transformation: cell j is 1 if neighbors are equal",
+      "array": [
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "j": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "Update cells to [0, 0, 1, 1, 0, 0, 0, 0]",
+      "array": [
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Next day iteration",
+      "array": [
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Finalizing logic after N cycles",
+      "array": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0
+      ],
+      "j": 6
+    },
+    {
+      "codeLine": 8,
+      "note": "Return final state",
+      "array": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0
+      ]
+    }
+  ]
+}

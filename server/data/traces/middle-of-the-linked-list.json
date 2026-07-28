@@ -1,0 +1,208 @@
+{
+  "title": "Middle of the Linked List",
+  "difficulty": "Easy",
+  "type": "linked-list",
+  "tags": [
+    "Linked List",
+    "Two Pointers"
+  ],
+  "description": "Find the middle node of a singly linked list. If there are two middle nodes, return the second middle node.",
+  "pseudocode": "1. let slow = head\n2. let fast = head\n3. while fast != null && fast.next != null:\n4.   slow = slow.next\n5.   fast = fast.next.next\n6. return slow",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize slow pointer at the head.",
+      "nodes": [
+        {
+          "val": 1,
+          "next": 1
+        },
+        {
+          "val": 2,
+          "next": 2
+        },
+        {
+          "val": 3,
+          "next": 3
+        },
+        {
+          "val": 4,
+          "next": 4
+        },
+        {
+          "val": 5,
+          "next": null
+        }
+      ],
+      "curr": 0,
+      "i": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Initialize fast pointer at the head.",
+      "nodes": [
+        {
+          "val": 1,
+          "next": 1
+        },
+        {
+          "val": 2,
+          "next": 2
+        },
+        {
+          "val": 3,
+          "next": 3
+        },
+        {
+          "val": 4,
+          "next": 4
+        },
+        {
+          "val": 5,
+          "next": null
+        }
+      ],
+      "curr": 0,
+      "j": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Move slow one step.",
+      "nodes": [
+        {
+          "val": 1,
+          "next": 1
+        },
+        {
+          "val": 2,
+          "next": 2
+        },
+        {
+          "val": 3,
+          "next": 3
+        },
+        {
+          "val": 4,
+          "next": 4
+        },
+        {
+          "val": 5,
+          "next": null
+        }
+      ],
+      "curr": 1,
+      "i": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Move fast two steps.",
+      "nodes": [
+        {
+          "val": 1,
+          "next": 1
+        },
+        {
+          "val": 2,
+          "next": 2
+        },
+        {
+          "val": 3,
+          "next": 3
+        },
+        {
+          "val": 4,
+          "next": 4
+        },
+        {
+          "val": 5,
+          "next": null
+        }
+      ],
+      "curr": 2,
+      "j": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Move slow one step.",
+      "nodes": [
+        {
+          "val": 1,
+          "next": 1
+        },
+        {
+          "val": 2,
+          "next": 2
+        },
+        {
+          "val": 3,
+          "next": 3
+        },
+        {
+          "val": 4,
+          "next": 4
+        },
+        {
+          "val": 5,
+          "next": null
+        }
+      ],
+      "curr": 2,
+      "i": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Move fast two steps to the end.",
+      "nodes": [
+        {
+          "val": 1,
+          "next": 1
+        },
+        {
+          "val": 2,
+          "next": 2
+        },
+        {
+          "val": 3,
+          "next": 3
+        },
+        {
+          "val": 4,
+          "next": 4
+        },
+        {
+          "val": 5,
+          "next": null
+        }
+      ],
+      "curr": 4,
+      "j": 4
+    },
+    {
+      "codeLine": 6,
+      "note": "Fast has reached the end, return slow (middle).",
+      "nodes": [
+        {
+          "val": 1,
+          "next": 1
+        },
+        {
+          "val": 2,
+          "next": 2
+        },
+        {
+          "val": 3,
+          "next": 3
+        },
+        {
+          "val": 4,
+          "next": 4
+        },
+        {
+          "val": 5,
+          "next": null
+        }
+      ],
+      "curr": 2
+    }
+  ]
+}

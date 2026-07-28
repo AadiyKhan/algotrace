@@ -1,0 +1,74 @@
+{
+  "title": "Valid Word Abbreviation",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "String",
+    "Two Pointers"
+  ],
+  "description": "Determine if a word matches a given abbreviation by iterating through both simultaneously.",
+  "target": "word: 'internationalization', abbr: 'i12iz4n'",
+  "pseudocode": "1. i = 0, j = 0\n2. while j < abbr.length\n3. if isDigit(abbr[j])\n4. if abbr[j] == '0' return false\n5. num = 0\n6. while isDigit(abbr[j])\n7. num = num * 10 + abbr[j++]\n8. i += num\n9. else if word[i] == abbr[j++]\n10. i++\n11. else return false\n12. return i == word.length",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize pointers i and j to 0.",
+      "i": 0,
+      "j": 0
+    },
+    {
+      "codeLine": 9,
+      "note": "Match characters 'i' and 'i'.",
+      "i": 1,
+      "j": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Parse numeric abbreviation '12'.",
+      "i": 1,
+      "j": 2
+    },
+    {
+      "codeLine": 8,
+      "note": "Skip 12 characters in word.",
+      "i": 13,
+      "j": 3
+    },
+    {
+      "codeLine": 9,
+      "note": "Match characters 'i' and 'i'.",
+      "i": 14,
+      "j": 4
+    },
+    {
+      "codeLine": 9,
+      "note": "Match characters 'z' and 'z'.",
+      "i": 15,
+      "j": 5
+    },
+    {
+      "codeLine": 6,
+      "note": "Parse numeric abbreviation '4'.",
+      "i": 15,
+      "j": 6
+    },
+    {
+      "codeLine": 8,
+      "note": "Skip 4 characters in word.",
+      "i": 19,
+      "j": 7
+    },
+    {
+      "codeLine": 9,
+      "note": "Match characters 'n' and 'n'.",
+      "i": 20,
+      "j": 8
+    },
+    {
+      "codeLine": 12,
+      "note": "Final check: i equals word length.",
+      "i": 20,
+      "j": 8
+    }
+  ]
+}

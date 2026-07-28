@@ -1,0 +1,176 @@
+{
+  "title": "The Maze III",
+  "difficulty": "Hard",
+  "type": "matrix",
+  "tags": [
+    "Matrix",
+    "Graph",
+    "Dijkstra",
+    "BFS"
+  ],
+  "description": "Find the shortest path for a ball to reach the hole, represented by distance and lexicographical order of moves.",
+  "target": "hole",
+  "pseudocode": "1: pq.push({dist: 0, path: '', r, c})\n2: while pq not empty:\n3:   curr = pq.pop()\n4:   if curr is hole return curr.path\n5:   for dir in [u, d, l, r]:\n6:     roll until wall or hole\n7:     if newDist < dist[r][c]:\n8:       pq.push({newDist, newPath, r, c})",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize priority queue with ball start position.",
+      "matrix": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Pop start position [0, 0].",
+      "matrix": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Exploring downward move.",
+      "matrix": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ],
+      "visited": [
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ]
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Ball rolls to [2, 0] (wall hit).",
+      "matrix": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "curr": [
+        2,
+        0
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Update distance and push to queue.",
+      "matrix": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "curr": [
+        2,
+        0
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Reached hole at [2, 2]. Return shortest path string.",
+      "matrix": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "curr": [
+        2,
+        2
+      ]
+    }
+  ]
+}

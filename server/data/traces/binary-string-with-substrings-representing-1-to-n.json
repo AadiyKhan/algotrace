@@ -1,0 +1,63 @@
+{
+  "title": "Binary String With Substrings Representing 1 To N",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "String",
+    "Binary"
+  ],
+  "description": "Check if all integers from 1 to n appear as binary substrings in s.",
+  "target": 3,
+  "pseudocode": "1. for i = n down to 1:\n2.   binary = i.toString(2)\n3.   if (!s.includes(binary)) return false\n4. return true",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Starting loop with i = 3 (n = 3, s = '0110')",
+      "i": 3
+    },
+    {
+      "codeLine": 2,
+      "note": "Converting 3 to binary: '11'",
+      "i": 3
+    },
+    {
+      "codeLine": 3,
+      "note": "Checking if '11' is in '0110'",
+      "i": 3
+    },
+    {
+      "codeLine": 1,
+      "note": "Decrementing i to 2",
+      "i": 2
+    },
+    {
+      "codeLine": 2,
+      "note": "Converting 2 to binary: '10'",
+      "i": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Checking if '10' is in '0110'",
+      "i": 2
+    },
+    {
+      "codeLine": 1,
+      "note": "Decrementing i to 1",
+      "i": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Converting 1 to binary: '1'",
+      "i": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Checking if '1' is in '0110'",
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "All substrings found, returning true"
+    }
+  ]
+}

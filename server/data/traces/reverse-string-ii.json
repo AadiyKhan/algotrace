@@ -1,0 +1,98 @@
+{
+  "title": "Reverse String II",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "String",
+    "Two Pointers"
+  ],
+  "description": "Reverse the first k characters for every 2k characters in the string.",
+  "target": 2,
+  "pseudocode": "1: function reverseStr(s, k) {\n2:   let arr = s.split('');\n3:   for (let i = 0; i < arr.length; i += 2 * k) {\n4:     let start = i;\n5:     let end = Math.min(i + k - 1, arr.length - 1);\n6:     while (start < end) {\n7:       [arr[start], arr[end]] = [arr[end], arr[start]];\n8:       start++; end--;\n9:     }\n10:  }\n11:  return arr.join('');\n12: }",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Initialize array from string 'abcdefg' with k=2",
+      "array": [
+        "a",
+        "b",
+        "c",
+        "d",
+        "e",
+        "f",
+        "g"
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Start loop at i=0",
+      "array": [
+        "a",
+        "b",
+        "c",
+        "d",
+        "e",
+        "f",
+        "g"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 7,
+      "note": "Swap index 0 and 1",
+      "array": [
+        "b",
+        "a",
+        "c",
+        "d",
+        "e",
+        "f",
+        "g"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Jump i by 2k (4)",
+      "array": [
+        "b",
+        "a",
+        "c",
+        "d",
+        "e",
+        "f",
+        "g"
+      ],
+      "i": 4
+    },
+    {
+      "codeLine": 7,
+      "note": "Swap index 4 and 5",
+      "array": [
+        "b",
+        "a",
+        "c",
+        "d",
+        "f",
+        "e",
+        "g"
+      ],
+      "i": 4
+    },
+    {
+      "codeLine": 3,
+      "note": "Jump i by 4 (8). Loop ends.",
+      "array": [
+        "b",
+        "a",
+        "c",
+        "d",
+        "f",
+        "e",
+        "g"
+      ],
+      "i": 8
+    }
+  ]
+}

@@ -1,0 +1,99 @@
+{
+  "title": "Combination Sum III",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Backtracking"
+  ],
+  "description": "Find all valid combinations of k numbers that sum up to n such that only numbers from 1 to 9 are used.",
+  "target": 7,
+  "pseudocode": "function backtrack(start, k, target, currentPath) {\n  if (currentPath.length === k && target === 0) return result.push([...currentPath]);\n  for (let i = start; i <= 9; i++) {\n    if (i > target) break;\n    currentPath.push(i);\n    backtrack(i + 1, k, target - i, currentPath);\n    currentPath.pop();\n  }\n}",
+  "steps": [
+    {
+      "codeLine": 3,
+      "note": "Starting backtracking with start=1, k=2, target=7",
+      "array": [],
+      "i": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Push 1 to currentPath",
+      "array": [
+        1
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Recursive call: start=2, k=2, target=6",
+      "array": [
+        1
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Push 2 to currentPath",
+      "array": [
+        1,
+        2
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Recursive call: start=3, k=2, target=4",
+      "array": [
+        1,
+        2
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 5,
+      "note": "Push 3 to currentPath",
+      "array": [
+        1,
+        2,
+        3
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 7,
+      "note": "Pop 3 from path, backtracking",
+      "array": [
+        1,
+        2
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 5,
+      "note": "Push 6 to currentPath (1+6=7)",
+      "array": [
+        1,
+        6
+      ],
+      "i": 6
+    },
+    {
+      "codeLine": 2,
+      "note": "Target reached, solution found [1, 6]",
+      "array": [
+        1,
+        6
+      ],
+      "i": 6
+    },
+    {
+      "codeLine": 7,
+      "note": "Pop 6 from path, complete",
+      "array": [
+        1
+      ],
+      "i": 6
+    }
+  ]
+}

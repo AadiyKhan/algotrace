@@ -1,0 +1,250 @@
+{
+  "title": "Maximum Length of Repeated Subarray",
+  "difficulty": "Medium",
+  "type": "matrix",
+  "tags": [
+    "Array",
+    "Dynamic Programming"
+  ],
+  "description": "Find the length of the longest common subarray between two integer arrays using dynamic programming.",
+  "target": 3,
+  "pseudocode": "1. let dp = matrix[n+1][m+1] initialized to 0\n2. for i = 1 to n:\n3.   for j = 1 to m:\n4.     if nums1[i-1] == nums2[j-1]:\n5.       dp[i][j] = dp[i-1][j-1] + 1\n6.       maxLen = max(maxLen, dp[i][j])",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize a DP matrix of size (n+1) x (m+1) with zeros.",
+      "matrix": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Compare nums1[0] (1) with nums2[0] (1). Match found.",
+      "matrix": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "i": 1,
+      "j": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Update dp[1][1] = dp[0][0] + 1 = 1.",
+      "matrix": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "curr": [
+        1,
+        1
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Compare nums1[1] (2) with nums2[1] (2). Match found.",
+      "matrix": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          2,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "i": 2,
+      "j": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Update dp[2][2] = dp[1][1] + 1 = 2.",
+      "matrix": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          2,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "curr": [
+        2,
+        2
+      ],
+      "prev": [
+        1,
+        1
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Compare nums1[2] (3) with nums2[2] (3). Match found.",
+      "matrix": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          2,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          3
+        ]
+      ],
+      "i": 3,
+      "j": 3
+    },
+    {
+      "codeLine": 5,
+      "note": "Update dp[3][3] = dp[2][2] + 1 = 3.",
+      "matrix": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          2,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          3
+        ]
+      ],
+      "curr": [
+        3,
+        3
+      ],
+      "prev": [
+        2,
+        2
+      ]
+    }
+  ]
+}

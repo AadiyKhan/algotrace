@@ -1,0 +1,103 @@
+{
+  "title": "Permutations II",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Backtracking",
+    "Array"
+  ],
+  "description": "Generate all unique permutations of an array that may contain duplicates.",
+  "target": null,
+  "pseudocode": "1. nums.sort()\n2. backtrack(path, visited):\n3. if path.length == nums.length: res.push(path)\n4. for i = 0 to nums.length - 1:\n5. if visited[i] or (i > 0 && nums[i] == nums[i-1] && !visited[i-1]): continue\n6. visited[i] = true\n7. backtrack(path + nums[i], visited)\n8. visited[i] = false",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Sort the array to handle duplicates: [1, 1, 2]",
+      "array": [
+        1,
+        1,
+        2
+      ],
+      "visited": []
+    },
+    {
+      "codeLine": 4,
+      "note": "Start backtracking at index 0",
+      "array": [
+        1,
+        1,
+        2
+      ],
+      "i": 0,
+      "visited": [
+        0
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Path [1], recurse to index 1",
+      "array": [
+        1,
+        1,
+        2
+      ],
+      "i": 1,
+      "visited": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Skip index 1 because it's a duplicate of index 0 and index 0 is not visited",
+      "array": [
+        1,
+        1,
+        2
+      ],
+      "i": 1,
+      "visited": [
+        0
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Move to index 2, path [1, 2]",
+      "array": [
+        1,
+        1,
+        2
+      ],
+      "i": 2,
+      "visited": [
+        0,
+        2
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Full permutation found: [1, 1, 2]",
+      "array": [
+        1,
+        1,
+        2
+      ],
+      "visited": [
+        0,
+        2
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Backtrack, unmark visited",
+      "array": [
+        1,
+        1,
+        2
+      ],
+      "visited": [
+        0
+      ]
+    }
+  ]
+}

@@ -1,0 +1,91 @@
+{
+  "title": "Grid Illumination",
+  "difficulty": "Hard",
+  "matrix": "matrix",
+  "tags": [
+    "Array",
+    "Hash Table"
+  ],
+  "description": "Turn on lamps in a grid and check if a cell is illuminated, then turn off lamps in adjacent cells.",
+  "pseudocode": "1. Store lamp counts in row, col, diag, anti-diag maps\n2. For each lamp, increment maps\n3. For each query (r, c):\n4.   Check if r, c, diag, or anti-diag > 0\n5.   If yes, turn off lamps in (r,c) and neighbors",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Initializing lamps at (0,0) and (1,1)",
+      "matrix": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Querying cell (0,0)",
+      "matrix": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Cell (0,0) is illuminated by lamp at (0,0)",
+      "matrix": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Turning off lamps at (0,0) and neighbors",
+      "matrix": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    }
+  ]
+}

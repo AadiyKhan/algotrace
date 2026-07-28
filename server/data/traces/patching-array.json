@@ -1,0 +1,113 @@
+{
+  "title": "Patching Array",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Greedy"
+  ],
+  "description": "Determine the minimum number of patches required to make all numbers in [1, n] reachable as sums of a subset.",
+  "target": 6,
+  "pseudocode": "1. reach = 1, patches = 0, i = 0\n2. while reach <= n:\n3.   if i < nums.length and nums[i] <= reach:\n4.     reach += nums[i], i++\n5.   else:\n6.     reach += reach, patches++",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize variables: reach is the smallest sum we cannot yet form.",
+      "array": [
+        1,
+        5
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Check if reach (1) <= n (6). Condition true.",
+      "array": [
+        1,
+        5
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "nums[0] (1) <= reach (1). Condition true.",
+      "array": [
+        1,
+        5
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Update reach to 2, move index i to 1.",
+      "array": [
+        1,
+        5
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Check if reach (2) <= n (6). Condition true.",
+      "array": [
+        1,
+        5
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "nums[1] (5) > reach (2). Condition false.",
+      "array": [
+        1,
+        5
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Patch needed: Add reach (2) to array. New reach = 4.",
+      "array": [
+        1,
+        5
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Check if reach (4) <= n (6). Condition true.",
+      "array": [
+        1,
+        5
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "nums[1] (5) > reach (4). Condition false.",
+      "array": [
+        1,
+        5
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Patch needed: Add reach (4) to array. New reach = 8.",
+      "array": [
+        1,
+        5
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Check if reach (8) <= n (6). Condition false. Terminate.",
+      "array": [
+        1,
+        5
+      ],
+      "i": 1
+    }
+  ]
+}

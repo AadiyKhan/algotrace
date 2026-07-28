@@ -1,0 +1,115 @@
+{
+  "title": "Employee Free Time",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Heap",
+    "Sorting"
+  ],
+  "description": "Find the common free time intervals for all employees given their individual work schedules.",
+  "pseudocode": "1. Flatten all schedules into a single list of intervals.\n2. Sort intervals by start time.\n3. Merge overlapping intervals.\n4. Identify gaps between merged intervals as free time.",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Flattened intervals: [[1, 3], [2, 4], [6, 7], [8, 9]]",
+      "array": [
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          6,
+          7
+        ],
+        [
+          8,
+          9
+        ]
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Sorting by start time ensures intervals are ordered sequentially.",
+      "array": [
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          6,
+          7
+        ],
+        [
+          8,
+          9
+        ]
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Merging [1, 3] and [2, 4] into [1, 4].",
+      "array": [
+        [
+          1,
+          4
+        ],
+        [
+          6,
+          7
+        ],
+        [
+          8,
+          9
+        ]
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Gap found between [1, 4] and [6, 7]. Free time: [4, 6].",
+      "array": [
+        [
+          1,
+          4
+        ],
+        [
+          6,
+          7
+        ],
+        [
+          8,
+          9
+        ]
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Gap found between [6, 7] and [8, 9]. Free time: [7, 8].",
+      "array": [
+        [
+          1,
+          4
+        ],
+        [
+          6,
+          7
+        ],
+        [
+          8,
+          9
+        ]
+      ],
+      "i": 2
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "title": "Online Election",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Binary Search",
+    "Hash Map"
+  ],
+  "description": "Find the leader of an election at a given time using binary search on precomputed winner snapshots.",
+  "target": 12,
+  "pseudocode": "1. map = {}, maxVotes = 0, currentLeader = -1\n2. winners = []\n3. for i in range(len(persons)):\n4.   map[persons[i]]++\n5.   if map[persons[i]] >= maxVotes:\n6.     maxVotes = map[persons[i]], currentLeader = persons[i]\n7.   winners.push(currentLeader)\n8. idx = binarySearch(times, target)\n9. return winners[idx]",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize tracking variables",
+      "array": []
+    },
+    {
+      "codeLine": 3,
+      "note": "Process first vote at time 0: Person 0 leads",
+      "i": 0,
+      "array": [
+        0
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Store winner at time 0",
+      "array": [
+        0
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Process second vote at time 5: Person 1 leads",
+      "i": 1,
+      "array": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Store winner at time 5",
+      "array": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Process third vote at time 10: Person 0 ties for lead",
+      "i": 2,
+      "array": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Store winner at time 10",
+      "array": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Binary search for time 12 in [0, 5, 10]",
+      "i": 2
+    },
+    {
+      "codeLine": 9,
+      "note": "Return winner at index 2",
+      "array": [
+        0,
+        1,
+        0
+      ]
+    }
+  ]
+}

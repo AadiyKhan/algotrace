@@ -1,0 +1,116 @@
+{
+  "title": "Binary Subarrays With Sum",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "Prefix Sum",
+    "Sliding Window"
+  ],
+  "description": "Given a binary array nums and an integer goal, return the number of non-empty subarrays with a sum equal to goal.",
+  "target": 2,
+  "pseudocode": "1. count = 0, currentSum = 0, prefixSums = {0: 1}\n2. for num in nums:\n3.   currentSum += num\n4.   if (currentSum - goal) in prefixSums:\n5.     count += prefixSums[currentSum - goal]\n6.   prefixSums[currentSum] = (prefixSums[currentSum] || 0) + 1",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize count, currentSum, and frequency map.",
+      "array": [
+        1,
+        0,
+        1
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "First element: currentSum becomes 1.",
+      "array": [
+        1,
+        0,
+        1
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Check if (1 - 2) exists in map. Not found.",
+      "array": [
+        1,
+        0,
+        1
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Add currentSum 1 to map.",
+      "array": [
+        1,
+        0,
+        1
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Second element: currentSum remains 1.",
+      "array": [
+        1,
+        0,
+        1
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Check (1 - 2). Not found.",
+      "array": [
+        1,
+        0,
+        1
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Update map: {0:1, 1:2}.",
+      "array": [
+        1,
+        0,
+        1
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Third element: currentSum becomes 2.",
+      "array": [
+        1,
+        0,
+        1
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Check (2 - 2) = 0. Exists! count becomes 1.",
+      "array": [
+        1,
+        0,
+        1
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Final map update.",
+      "array": [
+        1,
+        0,
+        1
+      ],
+      "i": 2
+    }
+  ]
+}

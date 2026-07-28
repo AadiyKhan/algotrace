@@ -1,0 +1,130 @@
+{
+  "title": "Construct Binary Search Tree From Preorder Traversal",
+  "difficulty": "Medium",
+  "type": "tree",
+  "tags": [
+    "Tree",
+    "Binary Search Tree",
+    "Recursion",
+    "Preorder Traversal"
+  ],
+  "description": "Construct the root of a BST from a preorder traversal array using a recursion approach with bounds.",
+  "target": null,
+  "pseudocode": "1: function bstFromPreorder(preorder, min, max, index) {\n2:   if (index >= preorder.length || preorder[index] < min || preorder[index] > max) return null;\n3:   let root = new TreeNode(preorder[index++]);\n4:   root.left = bstFromPreorder(preorder, min, root.val, index);\n5:   root.right = bstFromPreorder(preorder, root.val, max, index);\n6:   return root;\n7: }",
+  "steps": [
+    {
+      "codeLine": 3,
+      "note": "Initialize root node with value 8",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 8,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Recursively build left subtree for values < 8",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 8,
+          "left": 1,
+          "right": null
+        },
+        {
+          "id": 1,
+          "val": 5,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Insert 1 into left subtree",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 8,
+          "left": 1,
+          "right": null
+        },
+        {
+          "id": 1,
+          "val": 5,
+          "left": 2,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 1,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Recursively build right subtree for values > 8",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 8,
+          "left": 1,
+          "right": 3
+        },
+        {
+          "id": 1,
+          "val": 5,
+          "left": 2,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 10,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Tree construction complete",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 8,
+          "left": 1,
+          "right": 3
+        },
+        {
+          "id": 1,
+          "val": 5,
+          "left": 2,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 10,
+          "left": null,
+          "right": null
+        }
+      ]
+    }
+  ]
+}

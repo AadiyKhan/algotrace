@@ -1,0 +1,59 @@
+{
+  "title": "Flip Game",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "String",
+    "Array"
+  ],
+  "description": "Find all possible states of the string after flipping two consecutive '++' into '--'.",
+  "target": "++",
+  "pseudocode": "function generatePossibleNextMoves(s) {\n  let res = [];\n  for (let i = 0; i < s.length - 1; i++) {\n    if (s[i] === '+' && s[i+1] === '+') {\n      res.push(s.substring(0, i) + '--' + s.substring(i + 2));\n    }\n  }\n  return res;\n}",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Initialize empty result list.",
+      "i": null
+    },
+    {
+      "codeLine": 3,
+      "note": "Start loop at index 0.",
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Check if s[0] and s[1] are '++'.",
+      "i": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Found '++' at index 0, generate new state '--+'.",
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Increment i to 1.",
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Check if s[1] and s[2] are '++'.",
+      "i": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Found '++' at index 1, generate new state '+--'.",
+      "i": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Increment i to 2, loop terminates.",
+      "i": 2
+    },
+    {
+      "codeLine": 7,
+      "note": "Return result list: ['--+', '+--'].",
+      "i": 2
+    }
+  ]
+}

@@ -1,0 +1,114 @@
+{
+  "title": "Contains Duplicate II",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "Sliding Window"
+  ],
+  "description": "Given an integer array nums and an integer k, return true if there are two distinct indices i and j in the array such that nums[i] == nums[j] and abs(i - j) <= k.",
+  "target": 3,
+  "pseudocode": "1. map = new Map()\n2. for i = 0 to nums.length - 1:\n3.   if map.has(nums[i]) and i - map.get(nums[i]) <= k:\n4.     return true\n5.   map.set(nums[i], i)\n6. return false",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Initialize loop at index 0, nums = [1, 2, 3, 1], k = 3",
+      "array": [
+        1,
+        2,
+        3,
+        1
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Add 1 to map at index 0",
+      "array": [
+        1,
+        2,
+        3,
+        1
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Move to index 1",
+      "array": [
+        1,
+        2,
+        3,
+        1
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Add 2 to map at index 1",
+      "array": [
+        1,
+        2,
+        3,
+        1
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Move to index 2",
+      "array": [
+        1,
+        2,
+        3,
+        1
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Add 3 to map at index 2",
+      "array": [
+        1,
+        2,
+        3,
+        1
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 2,
+      "note": "Move to index 3",
+      "array": [
+        1,
+        2,
+        3,
+        1
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 3,
+      "note": "Found duplicate 1 at index 3. Check distance: 3 - 0 = 3, which is <= k",
+      "array": [
+        1,
+        2,
+        3,
+        1
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 4,
+      "note": "Return true as distance condition met",
+      "array": [
+        1,
+        2,
+        3,
+        1
+      ],
+      "i": 3
+    }
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "title": "Word Squares",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Trie",
+    "Backtracking",
+    "String"
+  ],
+  "description": "Given a list of unique words, find all sequences of words that form a square where the kth row and kth column are identical.",
+  "target": [
+    "ball",
+    "area",
+    "lead",
+    "lady",
+    "wall"
+  ],
+  "pseudocode": "1. Build a Trie from all words\n2. Function solve(index, currentSquare):\n3.   If index == length, add currentSquare to results\n4.   prefix = buildPrefix(currentSquare, index)\n5.   For word in trie.search(prefix):\n6.     solve(index + 1, currentSquare + [word])",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Building Trie with words: ball, area, lead, lady, wall",
+      "array": [
+        "ball",
+        "area",
+        "lead",
+        "lady",
+        "wall"
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Starting backtracking with first word 'ball'",
+      "array": [
+        "ball"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Prefix for second row at index 1 is 'a' (from ball[1])",
+      "array": [
+        "ball",
+        "area"
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Recursive call with index 2, prefix 'le' (from ball[2], area[2])",
+      "array": [
+        "ball",
+        "area",
+        "lead"
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Prefix for index 3 is 'ldy' (from ball[3], area[3], lead[3])",
+      "array": [
+        "ball",
+        "area",
+        "lead",
+        "lady"
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 3,
+      "note": "Square complete: [ball, area, lead, lady]",
+      "array": [
+        "ball",
+        "area",
+        "lead",
+        "lady"
+      ]
+    }
+  ]
+}

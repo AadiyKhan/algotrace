@@ -1,0 +1,70 @@
+{
+  "title": "Bag of Tokens",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Two Pointers",
+    "Greedy",
+    "Sorting"
+  ],
+  "description": "Maximize your score by playing tokens face up (cost power) or face down (gain power).",
+  "target": 100,
+  "pseudocode": "1. tokens.sort((a,b) => a-b)\n2. while left <= right:\n3.   if power >= tokens[left]: power -= tokens[left++], score++\n4.   else if score > 0: power += tokens[right--], score--\n5.   else: break",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Sort tokens: [100, 200]",
+      "array": [
+        100,
+        200
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Power 100 >= token 100. Spend power, gain score.",
+      "array": [
+        100,
+        200
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Score is now 1, power is 0. Move left pointer.",
+      "array": [
+        100,
+        200
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Power 0 < token 200. Score > 0, so trade score for power.",
+      "array": [
+        100,
+        200
+      ],
+      "i": 1,
+      "j": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Power becomes 200, score becomes 0. Move right pointer.",
+      "array": [
+        100,
+        200
+      ],
+      "i": 1,
+      "j": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Pointers cross, loop ends.",
+      "array": [
+        100,
+        200
+      ]
+    }
+  ]
+}

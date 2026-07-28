@@ -1,0 +1,136 @@
+{
+  "title": "Number of Distinct Islands",
+  "difficulty": "Medium",
+  "type": "matrix",
+  "tags": [
+    "Matrix",
+    "DFS",
+    "Hash Set"
+  ],
+  "description": "Count the number of distinct islands in a binary matrix. Islands are considered the same if one can be translated to match the other.",
+  "pseudocode": "1. Set shapes = new Set()\n2. For r in rows, c in cols:\n3.   If grid[r][c] == 1:\n4.     path = []\n5.     dfs(r, c, 'o', path)\n6.     shapes.add(path.join(','))\n7. return shapes.size\n\n8. dfs(r, c, dir, path):\n9.   if out of bounds or grid[r][c] == 0: return\n10.  grid[r][c] = 0\n11.  path.push(dir)\n12.  dfs(r+1, c, 'D', path)\n13.  dfs(r-1, c, 'U', path)\n14.  dfs(r, c+1, 'R', path)\n15.  dfs(r, c-1, 'L', path)\n16.  path.push('B')",
+  "steps": [
+    {
+      "codeLine": 3,
+      "note": "Found island at [0,0]. Starting DFS traversal.",
+      "matrix": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 10,
+      "note": "Marking [0,0] as visited (0).",
+      "matrix": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "codeLine": 14,
+      "note": "Moving Right to [0,1].",
+      "matrix": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "curr": [
+        0,
+        1
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "codeLine": 10,
+      "note": "Marking [0,1] as visited.",
+      "matrix": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "curr": [
+        0,
+        1
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Island exploration complete. Adding path 'o,R,B,B' to set.",
+      "matrix": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ]
+    }
+  ]
+}

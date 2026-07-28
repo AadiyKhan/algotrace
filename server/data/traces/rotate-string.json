@@ -1,0 +1,58 @@
+{
+  "title": "Rotate String",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "String",
+    "Array"
+  ],
+  "description": "Check if string goal is a rotation of string s.",
+  "target": "true",
+  "pseudocode": "1. if s.length !== goal.length return false\n2. combined = s + s\n3. return combined.includes(goal)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Check lengths of 'abcde' and 'cdeab'. Both are 5.",
+      "array": [
+        "a",
+        "b",
+        "c",
+        "d",
+        "e"
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Concatenate s with itself: 'abcdeabcde'.",
+      "array": [
+        "a",
+        "b",
+        "c",
+        "d",
+        "e",
+        "a",
+        "b",
+        "c",
+        "d",
+        "e"
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Search for 'cdeab' within 'abcdeabcde'. Found at index 2.",
+      "array": [
+        "a",
+        "b",
+        "c",
+        "d",
+        "e",
+        "a",
+        "b",
+        "c",
+        "d",
+        "e"
+      ],
+      "i": 2
+    }
+  ]
+}

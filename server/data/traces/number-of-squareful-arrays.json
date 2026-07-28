@@ -1,0 +1,106 @@
+{
+  "title": "Number of Squareful Arrays",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Backtracking",
+    "Math"
+  ],
+  "description": "Find the number of permutations where every pair of adjacent elements sums to a perfect square.",
+  "target": null,
+  "pseudocode": "1. sort(nums)\n2. dfs(path, used)\n3. if path.length == nums.length: count++\n4. for i from 0 to nums.length-1:\n5. if used[i] or (i > 0 and nums[i] == nums[i-1] and !used[i-1]): continue\n6. if path empty or isSquare(path.last + nums[i]):\n7. used[i] = true, path.push(nums[i])\n8. dfs(path, used)\n9. path.pop(), used[i] = false",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Sort input to handle duplicates: [1, 8, 17]",
+      "array": [
+        1,
+        8,
+        17
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Start DFS, trying first element 1",
+      "array": [
+        1,
+        8,
+        17
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 7,
+      "note": "Path: [1], used: [true, false, false]",
+      "array": [
+        1,
+        8,
+        17
+      ],
+      "visited": [
+        0
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Check 1+8=9 (square), add 8 to path",
+      "array": [
+        1,
+        8,
+        17
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "Path: [1, 8], used: [true, true, false]",
+      "array": [
+        1,
+        8,
+        17
+      ],
+      "visited": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Check 8+17=25 (square), add 17 to path",
+      "array": [
+        1,
+        8,
+        17
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Complete permutation [1, 8, 17] found",
+      "array": [
+        1,
+        8,
+        17
+      ],
+      "visited": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 9,
+      "note": "Backtrack, removing 17",
+      "array": [
+        1,
+        8,
+        17
+      ],
+      "visited": [
+        0,
+        1
+      ]
+    }
+  ]
+}

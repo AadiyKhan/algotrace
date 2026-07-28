@@ -1,0 +1,126 @@
+{
+  "title": "Reverse Linked List",
+  "difficulty": "Easy",
+  "type": "linked-list",
+  "tags": [
+    "Linked List",
+    "Recursion",
+    "Iteration"
+  ],
+  "description": "Reverse a singly linked list and return the new head.",
+  "target": null,
+  "pseudocode": "1. let prev = null\n2. let curr = head\n3. while curr is not null:\n4.   let nextTemp = curr.next\n5.   curr.next = prev\n6.   prev = curr\n7.   curr = nextTemp\n8. return prev",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize prev to null",
+      "nodes": [
+        {
+          "val": 1,
+          "next": 1
+        },
+        {
+          "val": 2,
+          "next": null
+        }
+      ],
+      "prev": null,
+      "curr": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Store next node (2) in nextTemp",
+      "nodes": [
+        {
+          "val": 1,
+          "next": 1
+        },
+        {
+          "val": 2,
+          "next": null
+        }
+      ],
+      "prev": null,
+      "curr": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Reverse the pointer: 1.next points to null",
+      "nodes": [
+        {
+          "val": 1,
+          "next": null
+        },
+        {
+          "val": 2,
+          "next": null
+        }
+      ],
+      "prev": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Move prev forward to current node (1)",
+      "nodes": [
+        {
+          "val": 1,
+          "next": null
+        },
+        {
+          "val": 2,
+          "next": null
+        }
+      ],
+      "prev": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 7,
+      "note": "Move curr forward to nextTemp (2)",
+      "nodes": [
+        {
+          "val": 1,
+          "next": null
+        },
+        {
+          "val": 2,
+          "next": null
+        }
+      ],
+      "prev": 0,
+      "curr": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Reverse the pointer: 2.next points to 1",
+      "nodes": [
+        {
+          "val": 1,
+          "next": null
+        },
+        {
+          "val": 2,
+          "next": 0
+        }
+      ],
+      "prev": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 8,
+      "note": "Return new head (node 2)",
+      "nodes": [
+        {
+          "val": 1,
+          "next": null
+        },
+        {
+          "val": 2,
+          "next": 0
+        }
+      ],
+      "prev": 1
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "title": "Find Median from Data Stream",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Heap",
+    "Design",
+    "Data Stream"
+  ],
+  "description": "Maintain a median of a stream of numbers using two heaps (max-heap for lower half, min-heap for upper half).",
+  "pseudocode": "1. Add num to lower heap\n2. Move largest of lower to upper heap\n3. Balance sizes: if upper > lower, move back\n4. If lower.size > upper.size return lower.peek()\n5. Else return (lower.peek() + upper.peek()) / 2",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Add 5 to lower heap (max-heap)",
+      "array": [
+        5
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Move 5 to upper heap (min-heap) to maintain order",
+      "array": [
+        5
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Balance heaps: upper heap is size 1, lower 0. Move 5 back.",
+      "array": [
+        5
+      ]
+    },
+    {
+      "codeLine": 1,
+      "note": "Add 10 to lower heap",
+      "array": [
+        5,
+        10
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Move 10 (max of lower) to upper heap",
+      "array": [
+        5,
+        10
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Lower size (1) == Upper size (1), median is average",
+      "array": [
+        5,
+        10
+      ]
+    }
+  ]
+}

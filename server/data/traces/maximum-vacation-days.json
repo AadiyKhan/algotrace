@@ -1,0 +1,57 @@
+{
+  "title": "Maximum Vacation Days",
+  "difficulty": "Hard",
+  "type": "matrix",
+  "tags": [
+    "Dynamic Programming",
+    "Graph"
+  ],
+  "description": "Find the maximum vacation days you can take given flight connectivity and vacation days available at each city.",
+  "pseudocode": "1. dp = Array(N).fill(-1); dp[0] = 0;\n2. for week in 0 to K-1:\n3.   next_dp = Array(N).fill(-1);\n4.   for curr in 0 to N-1:\n5.     if dp[curr] == -1: continue;\n6.     for next in 0 to N-1:\n7.       if curr == next or flights[curr][next] == 1:\n8.         next_dp[next] = max(next_dp[next], dp[curr] + days[next][week]);\n9.   dp = next_dp;",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize DP array. Only city 0 is reachable at week 0.",
+      "matrix": [
+        [
+          0,
+          -1
+        ]
+      ],
+      "i": "dp"
+    },
+    {
+      "codeLine": 2,
+      "note": "Starting week 0 iteration.",
+      "matrix": [
+        [
+          0,
+          -1
+        ]
+      ],
+      "i": "week 0"
+    },
+    {
+      "codeLine": 8,
+      "note": "From city 0, check flights to city 1. City 1 is reachable.",
+      "matrix": [
+        [
+          1,
+          3
+        ]
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 9,
+      "note": "Update DP state for end of week 0.",
+      "matrix": [
+        [
+          1,
+          3
+        ]
+      ],
+      "i": "dp updated"
+    }
+  ]
+}

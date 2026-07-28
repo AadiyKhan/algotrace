@@ -1,0 +1,181 @@
+{
+  "title": "Binary Tree Longest Consecutive Sequence",
+  "difficulty": "Medium",
+  "type": "tree",
+  "tags": [
+    "Tree",
+    "DFS"
+  ],
+  "description": "Find the length of the longest consecutive sequence path in a binary tree.",
+  "pseudocode": "1. function dfs(node, parent, length) {\n2.   if (!node) return length;\n3.   currLen = (node.val == parent.val + 1) ? length + 1 : 1;\n4.   maxLen = Math.max(maxLen, currLen);\n5.   dfs(node.left, node, currLen);\n6.   dfs(node.right, node, currLen);\n7. }",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Starting DFS at root node 1",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 0,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Root node, length is 1",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 0,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        0
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Moving to left child 2 (consecutive to 1)",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 0,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 1,
+      "visited": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Node 2 is 1+1, length becomes 2",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 0,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Moving to right child 0 (not consecutive to 1)",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 0,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 2,
+      "visited": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Node 0 is not 1+1, length resets to 1",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 0,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        0,
+        1,
+        2
+      ]
+    }
+  ]
+}

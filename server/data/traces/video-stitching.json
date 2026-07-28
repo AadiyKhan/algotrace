@@ -1,0 +1,128 @@
+{
+  "title": "Video Stitching",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Dynamic Programming",
+    "Greedy"
+  ],
+  "description": "Find the minimum number of clips to cover the interval [0, time].",
+  "target": 5,
+  "pseudocode": "1. clips.sort((a,b) => a[0]-b[0])\n2. maxReach = 0, lastEnd = 0, count = 0\n3. for clip of clips:\n4.   if clip[0] > maxReach: return -1\n5.   if clip[0] > lastEnd:\n6.     count++, lastEnd = maxReach\n7.   maxReach = Math.max(maxReach, clip[1])\n8.   if maxReach >= time: return count + 1",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Sort clips by start time.",
+      "array": [
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          2,
+          5
+        ]
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Initialize tracking variables.",
+      "array": [
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          2,
+          5
+        ]
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 7,
+      "note": "Process first clip [0,2], maxReach becomes 2.",
+      "array": [
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          2,
+          5
+        ]
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 7,
+      "note": "Process second clip [0,4], maxReach becomes 4.",
+      "array": [
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          2,
+          5
+        ]
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Process third clip [2,5]. 2 > lastEnd(0), count increments to 1, lastEnd becomes 4.",
+      "array": [
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          2,
+          5
+        ]
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 8,
+      "note": "maxReach(5) >= time(5), return count + 1 = 2.",
+      "array": [
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          2,
+          5
+        ]
+      ],
+      "i": 2
+    }
+  ]
+}

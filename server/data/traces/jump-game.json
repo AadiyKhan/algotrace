@@ -1,0 +1,87 @@
+{
+  "title": "Jump Game",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Greedy",
+    "Dynamic Programming"
+  ],
+  "description": "Determine if you can reach the last index starting from the first index, where each element represents the max jump length.",
+  "target": true,
+  "pseudocode": "1: let maxReach = 0\n2: for i = 0 to nums.length - 1:\n3:   if i > maxReach: return false\n4:   maxReach = max(maxReach, i + nums[i])\n5: return true",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize maxReach to track the furthest index we can jump to.",
+      "array": [
+        2,
+        3,
+        1,
+        1,
+        4
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "At index 0, we can jump 2 steps. maxReach becomes 2.",
+      "array": [
+        2,
+        3,
+        1,
+        1,
+        4
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "At index 1, maxReach is 2, 1+3=4. maxReach becomes 4.",
+      "array": [
+        2,
+        3,
+        1,
+        1,
+        4
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "At index 2, maxReach is 4, 2+1=3. maxReach stays 4.",
+      "array": [
+        2,
+        3,
+        1,
+        1,
+        4
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "At index 3, maxReach is 4, 3+1=4. maxReach stays 4.",
+      "array": [
+        2,
+        3,
+        1,
+        1,
+        4
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 5,
+      "note": "Loop finished, index 4 reached, return true.",
+      "array": [
+        2,
+        3,
+        1,
+        1,
+        4
+      ],
+      "i": 4
+    }
+  ]
+}

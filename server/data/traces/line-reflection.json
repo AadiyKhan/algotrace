@@ -1,0 +1,126 @@
+{
+  "title": "Line Reflection",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "Math"
+  ],
+  "description": "Determine if there exists a vertical line that reflects a set of points.",
+  "target": null,
+  "pseudocode": "1. Find minX and maxX, calculate sum = minX + maxX\n2. Store all points in a Set of strings 'x,y'\n3. For each point (x, y):\n4.   targetX = sum - x\n5.   If (!set.has(targetX, y)) return false\n6. Return true",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Find minX (-1) and maxX (1). sum = 0.",
+      "array": [
+        [
+          -1,
+          1
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Populate hash set with points.",
+      "array": [
+        [
+          -1,
+          1
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Check reflection for (-1, 1): targetX = 0 - (-1) = 1. (1, 1) exists.",
+      "i": -1,
+      "array": [
+        [
+          -1,
+          1
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Check reflection for (0, 1): targetX = 0 - 0 = 0. (0, 1) exists.",
+      "i": 0,
+      "array": [
+        [
+          -1,
+          1
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Check reflection for (1, 1): targetX = 0 - 1 = -1. (-1, 1) exists.",
+      "i": 1,
+      "array": [
+        [
+          -1,
+          1
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "All points reflected successfully.",
+      "array": [
+        [
+          -1,
+          1
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ]
+    }
+  ]
+}

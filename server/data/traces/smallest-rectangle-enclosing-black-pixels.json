@@ -1,0 +1,119 @@
+{
+  "title": "Smallest Rectangle Enclosing Black Pixels",
+  "difficulty": "Hard",
+  "type": "matrix",
+  "tags": [
+    "Array",
+    "Binary Search",
+    "Matrix"
+  ],
+  "description": "Find the area of the smallest axis-aligned rectangle that encloses all '1's in a binary matrix.",
+  "target": 1,
+  "pseudocode": "1. find min/max row and col containing 1\n2. top = binarySearch(0, x, checkRow)\n3. bottom = binarySearch(x, rows-1, checkRow)\n4. left = binarySearch(0, y, checkCol)\n5. right = binarySearch(y, cols-1, checkCol)\n6. return (bottom - top + 1) * (right - left + 1)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Starting at seed point (0, 1) where image[0][1] == 1.",
+      "matrix": [
+        [
+          "0",
+          "1",
+          "0"
+        ],
+        [
+          "1",
+          "1",
+          "1"
+        ]
+      ],
+      "curr": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Binary search for the topmost row containing a 1. Range [0, 0].",
+      "matrix": [
+        [
+          "0",
+          "1",
+          "0"
+        ],
+        [
+          "1",
+          "1",
+          "1"
+        ]
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Binary search for the bottommost row containing a 1. Range [0, 1].",
+      "matrix": [
+        [
+          "0",
+          "1",
+          "0"
+        ],
+        [
+          "1",
+          "1",
+          "1"
+        ]
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Binary search for the leftmost column containing a 1. Range [0, 1].",
+      "matrix": [
+        [
+          "0",
+          "1",
+          "0"
+        ],
+        [
+          "1",
+          "1",
+          "1"
+        ]
+      ],
+      "j": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Binary search for the rightmost column containing a 1. Range [1, 2].",
+      "matrix": [
+        [
+          "0",
+          "1",
+          "0"
+        ],
+        [
+          "1",
+          "1",
+          "1"
+        ]
+      ],
+      "j": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Calculation: (1 - 0 + 1) * (2 - 0 + 1) = 2 * 3 = 6.",
+      "matrix": [
+        [
+          "0",
+          "1",
+          "0"
+        ],
+        [
+          "1",
+          "1",
+          "1"
+        ]
+      ]
+    }
+  ]
+}

@@ -1,0 +1,129 @@
+{
+  "title": "Remove Duplicates from Sorted List",
+  "difficulty": "Easy",
+  "type": "linked-list",
+  "tags": [
+    "Linked List"
+  ],
+  "description": "Remove all duplicate elements from a sorted linked list such that each element appears only once.",
+  "pseudocode": "1. current = head\n2. while current != null && current.next != null:\n3.   if current.val == current.next.val:\n4.     current.next = current.next.next\n5.   else:\n6.     current = current.next",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize current pointer at the head node.",
+      "nodes": [
+        {
+          "val": 1,
+          "next": 1
+        },
+        {
+          "val": 1,
+          "next": 2
+        },
+        {
+          "val": 2,
+          "next": null
+        }
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Check if current and next exist.",
+      "nodes": [
+        {
+          "val": 1,
+          "next": 1
+        },
+        {
+          "val": 1,
+          "next": 2
+        },
+        {
+          "val": 2,
+          "next": null
+        }
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Comparing current(1) and next(1). They are equal.",
+      "nodes": [
+        {
+          "val": 1,
+          "next": 1
+        },
+        {
+          "val": 1,
+          "next": 2
+        },
+        {
+          "val": 2,
+          "next": null
+        }
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Duplicate found, skipping the next node.",
+      "nodes": [
+        {
+          "val": 1,
+          "next": 2
+        },
+        {
+          "val": 2,
+          "next": null
+        }
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Check if current and next exist again.",
+      "nodes": [
+        {
+          "val": 1,
+          "next": 2
+        },
+        {
+          "val": 2,
+          "next": null
+        }
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Comparing current(1) and next(2). They are different.",
+      "nodes": [
+        {
+          "val": 1,
+          "next": 2
+        },
+        {
+          "val": 2,
+          "next": null
+        }
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Move current pointer forward.",
+      "nodes": [
+        {
+          "val": 1,
+          "next": 2
+        },
+        {
+          "val": 2,
+          "next": null
+        }
+      ],
+      "curr": 1
+    }
+  ]
+}

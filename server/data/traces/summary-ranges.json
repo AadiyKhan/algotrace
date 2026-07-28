@@ -1,0 +1,155 @@
+{
+  "title": "Summary Ranges",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array"
+  ],
+  "description": "Given a sorted integer array without duplicates, return the smallest sorted list of ranges that cover all the numbers in the array exactly.",
+  "pseudocode": "1. let res = [], i = 0\n2. while i < nums.length:\n3.   let start = nums[i]\n4.   while i + 1 < nums.length && nums[i+1] == nums[i] + 1:\n5.     i++\n6.   if start != nums[i]: res.push(start + \"->\" + nums[i])\n7.   else: res.push(start.toString())\n8.   i++",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize result array and index i to 0",
+      "array": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        7
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Set start to nums[0], which is 0",
+      "array": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        7
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Increment i as sequence is consecutive (0->1->2)",
+      "array": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        7
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Range 0->2 identified",
+      "array": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        7
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 8,
+      "note": "Move to next element at index 3",
+      "array": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        7
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 3,
+      "note": "Set start to nums[3], which is 4",
+      "array": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        7
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 5,
+      "note": "Increment i as 4->5 is consecutive",
+      "array": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        7
+      ],
+      "i": 4
+    },
+    {
+      "codeLine": 6,
+      "note": "Range 4->5 identified",
+      "array": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        7
+      ],
+      "i": 4
+    },
+    {
+      "codeLine": 8,
+      "note": "Move to next element at index 5",
+      "array": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        7
+      ],
+      "i": 5
+    },
+    {
+      "codeLine": 3,
+      "note": "Set start to nums[5], which is 7",
+      "array": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        7
+      ],
+      "i": 5
+    },
+    {
+      "codeLine": 7,
+      "note": "Start equals nums[5], add single number 7",
+      "array": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        7
+      ],
+      "i": 5
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "title": "Three Equal Parts",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Math",
+    "Binary Search"
+  ],
+  "description": "Partition an array into three parts with equal binary values.",
+  "target": null,
+  "pseudocode": "1. count = sum(arr)\n2. if count % 3 != 0 return [-1, -1]\n3. if count == 0 return [0, 2]\n4. target = count / 3\n5. find indices of each part's start\n6. compare trailing zeros and values\n7. if match return [i, j+1]",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Calculate total number of 1s in the array [1,0,1,0,1].",
+      "array": [
+        1,
+        0,
+        1,
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Total 1s is 3, so each part must contain exactly 1 one.",
+      "array": [
+        1,
+        0,
+        1,
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Identify start indices of segments containing 1s: 0, 2, 4.",
+      "array": [
+        1,
+        0,
+        1,
+        0,
+        1
+      ],
+      "i": 0,
+      "j": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Verify segments: [1,0], [1,0], [1] followed by matching trailing zeros.",
+      "array": [
+        1,
+        0,
+        1,
+        0,
+        1
+      ],
+      "i": 0,
+      "j": 2
+    },
+    {
+      "codeLine": 7,
+      "note": "Valid partition found at indices [0, 3].",
+      "array": [
+        1,
+        0,
+        1,
+        0,
+        1
+      ]
+    }
+  ]
+}

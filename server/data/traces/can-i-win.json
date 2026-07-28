@@ -1,0 +1,86 @@
+{
+  "title": "Can I Win",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Math",
+    "Dynamic Programming",
+    "Bitmask",
+    "Memoization"
+  ],
+  "description": "Determine if the first player can win the game given a pool of integers 1..maxChoosableInteger to reach a target sum.",
+  "target": 5,
+  "pseudocode": "1. memo = {}\n2. function canWin(desiredTotal, mask):\n3.   if memo[mask] != null: return memo[mask]\n4.   for i from 1 to maxChoosableInteger:\n5.     if not (mask & (1 << (i-1))):\n6.       if i >= desiredTotal or not canWin(desiredTotal - i, mask | (1 << (i-1))):\n7.         return memo[mask] = true\n8.   return memo[mask] = false",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Starting recursion with desiredTotal 5 and empty mask 0.",
+      "array": [
+        1,
+        2,
+        3
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Trying to pick integer 1.",
+      "array": [
+        1,
+        2,
+        3
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Recursively calling canWin with target 4 and mask 1.",
+      "array": [
+        1,
+        2,
+        3
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Inside sub-call, trying to pick 2 (mask 100 in binary index).",
+      "array": [
+        1,
+        2,
+        3
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Target remaining is 2. Picking 3 exceeds target.",
+      "array": [
+        1,
+        2,
+        3
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 7,
+      "note": "Found winning move, marking mask 110 as true.",
+      "array": [
+        1,
+        2,
+        3
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 8,
+      "note": "Base case logic completed, returning result for target 5.",
+      "array": [
+        1,
+        2,
+        3
+      ]
+    }
+  ]
+}

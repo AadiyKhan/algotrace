@@ -1,0 +1,104 @@
+{
+  "title": "Moves to Make Chessboard",
+  "difficulty": "Hard",
+  "type": "matrix",
+  "tags": [
+    "Array",
+    "Math",
+    "Matrix"
+  ],
+  "description": "Calculate the minimum number of moves to transform an N x N binary matrix into a valid chessboard.",
+  "pseudocode": "1. checkBoard(board, n)\n2. rowSum = sum(board[i])\n3. colSum = sum(board[i][0])\n4. rowDiff = sum(abs(board[i][0] - (i % 2)))\n5. colDiff = sum(abs(board[0][i] - (i % 2)))\n6. return minMoves(rowDiff, colDiff)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize N=2, input matrix [[0,1],[1,0]]",
+      "matrix": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Check row parity: sum of row 0 is 1, row 1 is 1. Valid.",
+      "matrix": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Calculate row difference for pattern 0,1: board[0][0] is 0 (match), board[1][0] is 1 (match). Diff = 0.",
+      "matrix": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Calculate col difference for pattern 0,1: board[0][0] is 0 (match), board[0][1] is 1 (match). Diff = 0.",
+      "matrix": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "j": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Result is 0: board is already a valid chessboard.",
+      "matrix": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ]
+    }
+  ]
+}

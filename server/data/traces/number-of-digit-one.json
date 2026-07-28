@@ -1,0 +1,71 @@
+{
+  "title": "Number of Digit One",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Math",
+    "Dynamic Programming"
+  ],
+  "description": "Count the total number of digit 1 appearing in all non-negative integers less than or equal to n.",
+  "target": 13,
+  "pseudocode": "function countDigitOne(n) {\n  let count = 0;\n  for (let m = 1; m <= n; m *= 10) {\n    let a = Math.floor(n / (m * 10)), b = n % (m * 10);\n    count += a * m + Math.min(Math.max(b - m + 1, 0), m);\n  }\n  return count;\n}",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Initialize count to 0, start loop with m=1",
+      "array": [
+        13
+      ],
+      "i": "m=1"
+    },
+    {
+      "codeLine": 3,
+      "note": "Calculate a (higher digits) and b (remainder)",
+      "array": [
+        13
+      ],
+      "i": "m=1",
+      "curr": "a=1, b=3"
+    },
+    {
+      "codeLine": 4,
+      "note": "Update count: a*m + min(max(b-m+1, 0), m) = 1*1 + min(max(3, 0), 1) = 1+1 = 2",
+      "array": [
+        13
+      ],
+      "i": "m=1"
+    },
+    {
+      "codeLine": 2,
+      "note": "Next iteration m=10",
+      "array": [
+        13
+      ],
+      "i": "m=10"
+    },
+    {
+      "codeLine": 3,
+      "note": "Calculate a and b for m=10",
+      "array": [
+        13
+      ],
+      "i": "m=10",
+      "curr": "a=0, b=3"
+    },
+    {
+      "codeLine": 4,
+      "note": "Update count: 2 + (0*10 + min(max(3-10+1, 0), 10)) = 2 + 0 = 2",
+      "array": [
+        13
+      ],
+      "i": "m=10"
+    },
+    {
+      "codeLine": 6,
+      "note": "Return total count of 6 (the number of 1s in 1, 10, 11, 12, 13)",
+      "array": [
+        13
+      ]
+    }
+  ]
+}

@@ -1,0 +1,83 @@
+{
+  "title": "Design Twitter",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Hash Table",
+    "Linked List",
+    "Design",
+    "Heap"
+  ],
+  "description": "Design a simplified version of Twitter where users can post tweets, follow/unfollow users, and get the 10 most recent tweets in their news feed.",
+  "pseudocode": "1. postTweet(userId, tweetId): tweets.unshift({userId, tweetId})\n2. follow(followerId, followeeId): following[followerId].add(followeeId)\n3. getNewsFeed(userId): \n4.   feed = []\n5.   for tweet in tweets:\n6.     if tweet.userId == userId or following[userId].has(tweet.userId):\n7.       feed.push(tweet.tweetId)\n8.       if feed.length == 10: break",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "User 1 posts tweet 5",
+      "array": [
+        5
+      ]
+    },
+    {
+      "codeLine": 1,
+      "note": "User 2 posts tweet 6",
+      "array": [
+        6,
+        5
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "User 1 follows User 2",
+      "array": [
+        6,
+        5
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "User 1 requests feed",
+      "array": [
+        6,
+        5
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Checking tweet 6 (posted by User 2, followed by User 1)",
+      "array": [
+        6,
+        5
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 7,
+      "note": "Adding tweet 6 to feed",
+      "array": [
+        6,
+        5
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Checking tweet 5 (posted by User 1)",
+      "array": [
+        6,
+        5
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "Adding tweet 5 to feed",
+      "array": [
+        6,
+        5
+      ],
+      "i": 1
+    }
+  ]
+}

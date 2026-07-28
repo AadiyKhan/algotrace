@@ -1,0 +1,180 @@
+{
+  "title": "N-Queens",
+  "difficulty": "Hard",
+  "type": "matrix",
+  "tags": [
+    "Backtracking",
+    "Matrix"
+  ],
+  "description": "Place n queens on an n x n chessboard such that no two queens attack each other.",
+  "target": 4,
+  "pseudocode": "1. solve(row, board) { \n2. if (row == n) add board to results; \n3. for (col = 0; col < n; col++) { \n4. if (isSafe(row, col)) { \n5. board[row][col] = 1; \n6. solve(row + 1, board); \n7. board[row][col] = 0; \n8. } } }",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize solver at row 0.",
+      "matrix": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Place queen at (0, 0).",
+      "matrix": [
+        [
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Move to next row, find safe spot at (1, 2).",
+      "matrix": [
+        [
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "curr": [
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Backtrack from (1, 2) because row 2 cannot place a queen.",
+      "matrix": [
+        [
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "curr": [
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Place queen at (0, 1) and attempt solution.",
+      "matrix": [
+        [
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0
+        ]
+      ],
+      "curr": [
+        3,
+        2
+      ]
+    }
+  ]
+}

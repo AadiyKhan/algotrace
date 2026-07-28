@@ -1,0 +1,95 @@
+{
+  "title": "Brick Wall",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Hash Table"
+  ],
+  "description": "Find the vertical line that crosses the fewest bricks by counting edge frequencies.",
+  "target": null,
+  "pseudocode": "1. map = {}\n2. maxEdges = 0\n3. for row in wall:\n4.   edgePos = 0\n5.   for i in 0 to row.length - 2:\n6.     edgePos += row[i]\n7.     map[edgePos] = (map[edgePos] || 0) + 1\n8.     maxEdges = max(maxEdges, map[edgePos])\n9. return wall.length - maxEdges",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize edge frequency map.",
+      "array": [
+        1,
+        2,
+        2,
+        1
+      ],
+      "i": null
+    },
+    {
+      "codeLine": 5,
+      "note": "Processing row 1: [1, 2, 2, 1]. First edge at index 1.",
+      "array": [
+        1,
+        2,
+        2,
+        1
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "Edge at 1 found. map = {1: 1}.",
+      "array": [
+        1,
+        2,
+        2,
+        1
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Next edge in row 1 at 1 + 2 = 3.",
+      "array": [
+        1,
+        2,
+        2,
+        1
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 7,
+      "note": "Edge at 3 found. map = {1: 1, 3: 1}.",
+      "array": [
+        1,
+        2,
+        2,
+        1
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 5,
+      "note": "Processing row 2: [3, 1, 2]. Edge at index 3.",
+      "array": [
+        3,
+        1,
+        2
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 7,
+      "note": "Edge at 3 found. map = {1: 1, 3: 2}. maxEdges updated to 2.",
+      "array": [
+        3,
+        1,
+        2
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 9,
+      "note": "Final answer: wall height (2) - maxEdges (2) = 0.",
+      "array": [],
+      "i": null
+    }
+  ]
+}

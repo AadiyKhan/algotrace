@@ -1,0 +1,81 @@
+{
+  "title": "Divisor Game",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Math",
+    "Dynamic Programming",
+    "Game Theory"
+  ],
+  "description": "Alice and Bob take turns playing a game, with Alice starting first. On each turn, a player chooses x such that 0 < x < n and n % x == 0, then replaces n with n - x. The player who cannot make a move loses.",
+  "target": 3,
+  "pseudocode": "1. dp = new Array(n + 1).fill(false)\n2. for i from 2 to n:\n3.   for j from 1 to sqrt(i):\n4.     if i % j == 0 and !dp[i - j]:\n5.       dp[i] = true\n6.       break\n7. return dp[n]",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize DP table for n=3",
+      "array": [
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Start outer loop for i=2",
+      "i": 2,
+      "array": [
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Check divisor j=1 for i=2: 2%1==0 and !dp[1] is true",
+      "i": 2,
+      "j": 1,
+      "array": [
+        false,
+        false,
+        true,
+        false
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Outer loop for i=3",
+      "i": 3,
+      "array": [
+        false,
+        false,
+        true,
+        false
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Check divisor j=1 for i=3: 3%1==0 but !dp[2] is false",
+      "i": 3,
+      "j": 1,
+      "array": [
+        false,
+        false,
+        true,
+        false
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Return dp[3] which is false (Bob wins for n=3)",
+      "array": [
+        false,
+        false,
+        true,
+        false
+      ]
+    }
+  ]
+}

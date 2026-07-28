@@ -1,0 +1,92 @@
+{
+  "title": "Stone Game",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Math",
+    "Dynamic Programming",
+    "Game Theory"
+  ],
+  "description": "Alice and Bob play a game with piles of stones. Since the total number of stones is even and Alice goes first, she can always win by choosing all even or all odd indexed piles.",
+  "pseudocode": "1: let n = piles.length\n2: let dp = new Array(n).fill(0)\n3: for i from n-1 down to 0:\n4:   for j from i + 1 to n - 1:\n5:     dp[j] = max(piles[i] - dp[j], piles[j] - dp[j-1])\n6: return dp[n-1] > 0",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize variables for piles [5, 3, 4, 5].",
+      "array": [
+        5,
+        3,
+        4,
+        5
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Initialize DP array to track score differences.",
+      "array": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Start outer loop at i = 3.",
+      "i": 3,
+      "array": [
+        0,
+        0,
+        0,
+        5
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Calculate DP for i = 2, j = 3.",
+      "i": 2,
+      "j": 3,
+      "array": [
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Calculate DP for i = 1, j = 2.",
+      "i": 1,
+      "j": 2,
+      "array": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Calculate DP for i = 0, j = 3.",
+      "i": 0,
+      "j": 3,
+      "array": [
+        0,
+        0,
+        1,
+        3
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Result dp[3] = 3, which is greater than 0, Alice wins.",
+      "array": [
+        0,
+        0,
+        1,
+        3
+      ]
+    }
+  ]
+}

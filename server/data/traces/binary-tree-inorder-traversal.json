@@ -1,0 +1,123 @@
+{
+  "title": "Binary Tree Inorder Traversal",
+  "difficulty": "Easy",
+  "type": "tree",
+  "tags": [
+    "Tree",
+    "DFS",
+    "Recursion"
+  ],
+  "description": "Perform an inorder traversal (left, root, right) of a binary tree.",
+  "pseudocode": "1: function inorder(node, res) {\n2:   if (!node) return;\n3:   inorder(node.left, res);\n4:   res.push(node.val);\n5:   inorder(node.right, res);\n6: }",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Starting traversal at root (1)",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": []
+    },
+    {
+      "codeLine": 3,
+      "note": "Traversing to left child (2)",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        1
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Visiting node (2), adding to result",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        1,
+        0
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Traversing back to root (1) and then right child (3)",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        1,
+        0,
+        2
+      ]
+    }
+  ]
+}

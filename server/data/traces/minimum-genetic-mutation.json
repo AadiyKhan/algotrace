@@ -1,0 +1,69 @@
+{
+  "title": "Minimum Genetic Mutation",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Breadth-First Search",
+    "String",
+    "Graph"
+  ],
+  "description": "Find the minimum mutations to transform start gene to end gene using a bank of valid mutations.",
+  "target": "AACCGGTT",
+  "pseudocode": "1: queue = [[start, 0]]\n2: visited = {start}\n3: while queue not empty:\n4:   curr, dist = queue.shift()\n5:   if curr == end: return dist\n6:   for each gene in bank:\n7:     if diff(curr, gene) == 1 and gene not in visited:\n8:       visited.add(gene)\n9:       queue.push([gene, dist + 1])",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize BFS queue with start gene 'AACCGGTT' at distance 0.",
+      "array": [
+        "AACCGGTT"
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Queue is not empty, process 'AACCGGTT'.",
+      "i": "AACCGGTT"
+    },
+    {
+      "codeLine": 6,
+      "note": "Iterate through bank to find genes with 1-character difference.",
+      "visited": [
+        "AACCGGTT"
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Found 'AACCGGTA' in bank, 1 diff from 'AACCGGTT'. Adding to queue.",
+      "array": [
+        "AACCGGTT",
+        "AACCGGTA"
+      ],
+      "visited": [
+        "AACCGGTT",
+        "AACCGGTA"
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Dequeue 'AACCGGTA', distance is 1.",
+      "i": "AACCGGTA"
+    },
+    {
+      "codeLine": 5,
+      "note": "Check if 'AACCGGTA' matches target 'AACCGGTT'. No.",
+      "i": "AACCGGTA"
+    },
+    {
+      "codeLine": 7,
+      "note": "Found 'AACCGGAA' in bank, 1 diff from 'AACCGGTA'. Adding to queue.",
+      "array": [
+        "AACCGGTA",
+        "AACCGGAA"
+      ],
+      "visited": [
+        "AACCGGTT",
+        "AACCGGTA",
+        "AACCGGAA"
+      ]
+    }
+  ]
+}

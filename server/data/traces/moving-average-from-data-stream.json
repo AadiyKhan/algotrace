@@ -1,0 +1,187 @@
+{
+  "title": "Moving Average from Data Stream",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Design",
+    "Queue",
+    "Array"
+  ],
+  "description": "Calculate the moving average of all integers in a sliding window of size k.",
+  "target": 3,
+  "pseudocode": "1: function next(val) {\n2:   sum += val;\n3:   queue.push(val);\n4:   if (queue.length > size) {\n5:     sum -= queue.shift();\n6:   }\n7:   return sum / queue.length;\n8: }",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Calling next(1) with window size 3",
+      "array": []
+    },
+    {
+      "codeLine": 2,
+      "note": "Add 1 to sum (sum=1)",
+      "array": [
+        1
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Push 1 to queue",
+      "array": [
+        1
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Queue size 1 <= 3, skip removal",
+      "array": [
+        1
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Return average 1/1 = 1.0",
+      "array": [
+        1
+      ]
+    },
+    {
+      "codeLine": 1,
+      "note": "Calling next(10) with window size 3",
+      "array": [
+        1,
+        10
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Add 10 to sum (sum=11)",
+      "array": [
+        1,
+        10
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Push 10 to queue",
+      "array": [
+        1,
+        10
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Queue size 2 <= 3, skip removal",
+      "array": [
+        1,
+        10
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Return average 11/2 = 5.5",
+      "array": [
+        1,
+        10
+      ]
+    },
+    {
+      "codeLine": 1,
+      "note": "Calling next(3) with window size 3",
+      "array": [
+        1,
+        10,
+        3
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Add 3 to sum (sum=14)",
+      "array": [
+        1,
+        10,
+        3
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Push 3 to queue",
+      "array": [
+        1,
+        10,
+        3
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Queue size 3 <= 3, skip removal",
+      "array": [
+        1,
+        10,
+        3
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Return average 14/3 = 4.66",
+      "array": [
+        1,
+        10,
+        3
+      ]
+    },
+    {
+      "codeLine": 1,
+      "note": "Calling next(5) with window size 3",
+      "array": [
+        10,
+        3,
+        5
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Add 5 to sum (sum=19)",
+      "array": [
+        10,
+        3,
+        5
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Push 5 to queue",
+      "array": [
+        10,
+        3,
+        5
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Queue size 4 > 3, proceed to shift",
+      "array": [
+        10,
+        3,
+        5
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Remove 1 from queue, sum becomes 18",
+      "array": [
+        10,
+        3,
+        5
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Return average 18/3 = 6.0",
+      "array": [
+        10,
+        3,
+        5
+      ]
+    }
+  ]
+}

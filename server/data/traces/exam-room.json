@@ -1,0 +1,59 @@
+{
+  "title": "Exam Room",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Design",
+    "Heap",
+    "Ordered Set"
+  ],
+  "description": "Design a system where students enter an exam room and sit in the seat that maximizes the distance to the closest person.",
+  "target": 10,
+  "pseudocode": "1. If seats are empty, sit at 0\n2. Find interval with max distance to nearest neighbor\n3. If multiple, pick smallest index\n4. Update list of occupied seats",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "First student arrives, occupies seat 0.",
+      "array": [
+        0
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Second student arrives, occupies seat 9 (furthest from 0).",
+      "array": [
+        0,
+        9
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Third student arrives, max distance is between 0 and 9, sits at 4.",
+      "array": [
+        0,
+        4,
+        9
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Fourth student arrives, max distance between 0 and 4 is 2.",
+      "array": [
+        0,
+        2,
+        4,
+        9
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Final state of occupied seats.",
+      "array": [
+        0,
+        2,
+        4,
+        9
+      ]
+    }
+  ]
+}

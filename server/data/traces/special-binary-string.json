@@ -1,0 +1,101 @@
+{
+  "title": "Special Binary String",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "String",
+    "Recursion",
+    "Greedy"
+  ],
+  "description": "Transform a special binary string to be lexicographically largest by swapping non-adjacent special binary substrings.",
+  "target": null,
+  "pseudocode": "1. count = 0, i = 0, res = []\n2. for j = 0 to S.length:\n3.   count += (S[j] == '1' ? 1 : -1)\n4.   if count == 0:\n5.     res.push('1' + makeLargest(S.substring(i + 1, j)) + '0')\n6.     i = j + 1\n7. res.sort((a, b) => b.localeCompare(a))\n8. return res.join('')",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize variables to process string S = '11011000'",
+      "array": [
+        1,
+        1,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "First special substring identified: '110100' (indices 0-5)",
+      "array": [
+        1,
+        1,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Recursive call on inner part '10', resulting in '110100'",
+      "array": [
+        1,
+        1,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Remaining string is '00', identified as special substring '00'",
+      "array": [
+        1,
+        1,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0
+      ],
+      "i": 6
+    },
+    {
+      "codeLine": 7,
+      "note": "Sorting the substrings ['110100', '00'] lexicographically descending",
+      "array": [
+        1,
+        1,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Final result: '11010000'",
+      "array": [
+        1,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ]
+}

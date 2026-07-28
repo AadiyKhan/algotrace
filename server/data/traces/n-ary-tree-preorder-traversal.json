@@ -1,0 +1,180 @@
+{
+  "title": "N-ary Tree Preorder Traversal",
+  "difficulty": "Easy",
+  "type": "tree",
+  "tags": [
+    "Tree",
+    "DFS",
+    "Recursion"
+  ],
+  "description": "Traverse an N-ary tree in preorder (root, then children left to right).",
+  "pseudocode": "1. result = []\n2. traverse(root):\n3.   if !root: return\n4.   result.push(root.val)\n5.   for child in root.children:\n6.     traverse(child)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize result array",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "children": [
+            1,
+            2
+          ]
+        },
+        {
+          "id": 1,
+          "val": 3,
+          "children": []
+        },
+        {
+          "id": 2,
+          "val": 2,
+          "children": []
+        }
+      ],
+      "visited": []
+    },
+    {
+      "codeLine": 4,
+      "note": "Visit root node (1)",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "children": [
+            1,
+            2
+          ]
+        },
+        {
+          "id": 1,
+          "val": 3,
+          "children": []
+        },
+        {
+          "id": 2,
+          "val": 2,
+          "children": []
+        }
+      ],
+      "visited": [
+        0
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Iterate to first child (3)",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "children": [
+            1,
+            2
+          ]
+        },
+        {
+          "id": 1,
+          "val": 3,
+          "children": []
+        },
+        {
+          "id": 2,
+          "val": 2,
+          "children": []
+        }
+      ],
+      "visited": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Recursively traverse child (3)",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "children": [
+            1,
+            2
+          ]
+        },
+        {
+          "id": 1,
+          "val": 3,
+          "children": []
+        },
+        {
+          "id": 2,
+          "val": 2,
+          "children": []
+        }
+      ],
+      "visited": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Iterate to second child (2)",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "children": [
+            1,
+            2
+          ]
+        },
+        {
+          "id": 1,
+          "val": 3,
+          "children": []
+        },
+        {
+          "id": 2,
+          "val": 2,
+          "children": []
+        }
+      ],
+      "visited": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Recursively traverse child (2)",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "children": [
+            1,
+            2
+          ]
+        },
+        {
+          "id": 1,
+          "val": 3,
+          "children": []
+        },
+        {
+          "id": 2,
+          "val": 2,
+          "children": []
+        }
+      ],
+      "visited": [
+        0,
+        1,
+        2
+      ]
+    }
+  ]
+}

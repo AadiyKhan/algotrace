@@ -1,0 +1,126 @@
+{
+  "title": "Insert into a Binary Search Tree",
+  "difficulty": "Medium",
+  "type": "tree",
+  "tags": [
+    "Tree",
+    "Binary Search Tree",
+    "Recursion"
+  ],
+  "description": "Insert a value into a BST while maintaining the BST property.",
+  "target": 5,
+  "pseudocode": "1. if node is null return new Node(val)\n2. if val < node.val \n3. node.left = insert(node.left, val)\n4. else \n5. node.right = insert(node.right, val)\n6. return node",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Start at root (4). Since 5 > 4, go right.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 4,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 7,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Moving to right child (7). Since 5 < 7, go left.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 4,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 7,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Left child of 7 is null. Create new node with value 5.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 4,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 7,
+          "left": 3,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 5,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 3
+    },
+    {
+      "codeLine": 6,
+      "note": "Return node structure back up the recursion stack.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 4,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 7,
+          "left": 3,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 5,
+          "left": null,
+          "right": null
+        }
+      ]
+    }
+  ]
+}

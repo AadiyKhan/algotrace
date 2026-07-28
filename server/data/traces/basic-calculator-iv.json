@@ -1,0 +1,59 @@
+{
+  "title": "Basic Calculator IV",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Math",
+    "String",
+    "Stack",
+    "Hash Table"
+  ],
+  "description": "Evaluate an algebraic expression with variables and addition/subtraction/multiplication.",
+  "target": null,
+  "pseudocode": "1. Parse expression into tokens\n2. Use a stack for sub-expressions and operator precedence\n3. Evaluate multiplication first, then addition/subtraction\n4. Map variables to values, return sorted algebraic representation",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Parsing expression 'e + 8 - a * 5' into tokens",
+      "array": [
+        "e",
+        "+",
+        "8",
+        "-",
+        "a",
+        "*",
+        "5"
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Pushing 'e' and '+' onto stack",
+      "array": [
+        "e",
+        "+"
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Performing multiplication: a * 5",
+      "array": [
+        "e",
+        "+",
+        "8",
+        "-",
+        "5*a"
+      ],
+      "i": 4
+    },
+    {
+      "codeLine": 4,
+      "note": "Final evaluation result: -5*a + e + 8",
+      "array": [
+        "-5*a",
+        "e",
+        "8"
+      ]
+    }
+  ]
+}

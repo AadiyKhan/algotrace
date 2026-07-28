@@ -1,0 +1,101 @@
+{
+  "title": "Minimum Path Sum",
+  "difficulty": "Medium",
+  "type": "matrix",
+  "tags": [
+    "Array",
+    "Dynamic Programming",
+    "Matrix"
+  ],
+  "description": "Find a path from top-left to bottom-right of a grid which minimizes the sum of all numbers along its path.",
+  "target": null,
+  "pseudocode": "1. for i in 0..m-1: for j in 0..n-1:\n2.   if i==0 and j>0: grid[i][j] += grid[i][j-1]\n3.   else if i>0 and j==0: grid[i][j] += grid[i-1][j]\n4.   else if i>0 and j>0: grid[i][j] += min(grid[i-1][j], grid[i][j-1])\n5. return grid[m-1][n-1]",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize traversal at top-left [0,0]",
+      "matrix": [
+        [
+          1,
+          3
+        ],
+        [
+          1,
+          5
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Move to [0,1], add previous column value",
+      "matrix": [
+        [
+          1,
+          4
+        ],
+        [
+          1,
+          5
+        ]
+      ],
+      "curr": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Move to [1,0], add previous row value",
+      "matrix": [
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          5
+        ]
+      ],
+      "curr": [
+        1,
+        0
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Move to [1,1], add min(top, left) to current",
+      "matrix": [
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          6
+        ]
+      ],
+      "curr": [
+        1,
+        1
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Return final value at bottom-right",
+      "matrix": [
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          6
+        ]
+      ]
+    }
+  ]
+}

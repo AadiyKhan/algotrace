@@ -1,0 +1,60 @@
+{
+  "title": "Widest Pair Of Indices With Equal Range Sum",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Hash Map",
+    "Prefix Sum"
+  ],
+  "description": "Find the maximum distance (j - i) between two indices such that the sum of elements in subarray nums1[0...i] equals nums2[0...j].",
+  "target": null,
+  "pseudocode": "1. map = {0: -1}\n2. sum1 = 0, sum2 = 0, maxDist = 0\n3. for i = 0 to n-1:\n4.   sum1 += nums1[i], sum2 += nums2[i]\n5.   diff = sum1 - sum2\n6.   if diff in map:\n7.     maxDist = max(maxDist, i - map[diff])\n8.   else:\n9.     map[diff] = i",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize hash map with sum 0 at index -1",
+      "array": [
+        1,
+        2
+      ],
+      "i": -1
+    },
+    {
+      "codeLine": 4,
+      "note": "Calculate sums for index 0: sum1=1, sum2=0, diff=1",
+      "array": [
+        1,
+        2
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 9,
+      "note": "Store diff 1 in map at index 0",
+      "array": [
+        1,
+        2
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Calculate sums for index 1: sum1=3, sum2=2, diff=1",
+      "array": [
+        1,
+        2
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "Diff 1 exists in map, maxDist = 1 - 0 = 1",
+      "array": [
+        1,
+        2
+      ],
+      "i": 1
+    }
+  ]
+}

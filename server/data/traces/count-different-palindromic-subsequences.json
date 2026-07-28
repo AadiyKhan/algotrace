@@ -1,0 +1,103 @@
+{
+  "title": "Count Different Palindromic Subsequences",
+  "difficulty": "Hard",
+  "type": "matrix",
+  "tags": [
+    "Dynamic Programming",
+    "String"
+  ],
+  "description": "Given a string, find the number of different non-empty palindromic subsequences.",
+  "target": null,
+  "pseudocode": "1. n = s.length\n2. dp = new Array(n).fill(0).map(() => new Array(n).fill(0))\n3. for i from n-1 to 0:\n4.   dp[i][i] = 1\n5.   for j from i+1 to n-1:\n6.     if s[i] == s[j]:\n7.       dp[i][j] = dp[i+1][j-1] * 2 + (inner_logic)\n8.     else:\n9.       dp[i][j] = dp[i+1][j] + dp[i][j-1] - dp[i+1][j-1]",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Initialize DP table for string 'aba'",
+      "matrix": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Base case: single characters are palindromes",
+      "matrix": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ]
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Check s[0] ('a') == s[2] ('a')",
+      "matrix": [
+        [
+          1,
+          0,
+          5
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ]
+      ],
+      "i": 0,
+      "j": 2
+    },
+    {
+      "codeLine": 9,
+      "note": "Calculating dp[0][1] for 'ab'",
+      "matrix": [
+        [
+          1,
+          2,
+          5
+        ],
+        [
+          0,
+          1,
+          2
+        ],
+        [
+          0,
+          0,
+          1
+        ]
+      ],
+      "i": 0,
+      "j": 1
+    }
+  ]
+}

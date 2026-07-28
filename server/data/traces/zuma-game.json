@@ -1,0 +1,72 @@
+{
+  "title": "Zuma Game",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "String",
+    "Recursion",
+    "Memoization"
+  ],
+  "description": "Remove balls from the board by inserting balls from hand to form sequences of 3 or more.",
+  "target": 2,
+  "pseudocode": "1. function findMinStep(board, hand):\n2.   if board is empty: return 0\n3.   for i in range(len(board)):\n4.     for j in range(len(hand)):\n5.       if can_insert(hand[j], board[i]):\n6.         newBoard = remove_matches(board + hand[j])\n7.         res = findMinStep(newBoard, hand - hand[j])\n8.         min_steps = min(min_steps, 1 + res)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initial state: board is 'WRR', hand is 'W'.",
+      "array": [
+        "W",
+        "R",
+        "R"
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Insert 'W' at index 0 to match with existing 'W'.",
+      "array": [
+        "W",
+        "W",
+        "R",
+        "R"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Sequence 'WW' is incomplete, keep processing.",
+      "array": [
+        "W",
+        "W",
+        "R",
+        "R"
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Insert 'W' at index 1 to form 'WWR'. Still no clear.",
+      "array": [
+        "W",
+        "W",
+        "R",
+        "R"
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Backtrack: Try different insertion point.",
+      "array": [
+        "W",
+        "R",
+        "R",
+        "W"
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Optimal path found: clearing board requires 1 ball.",
+      "array": []
+    }
+  ]
+}

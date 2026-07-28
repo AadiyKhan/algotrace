@@ -1,0 +1,81 @@
+{
+  "title": "Verifying an Alien Dictionary",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "String",
+    "Hash Table"
+  ],
+  "description": "Check if a sequence of words is sorted lexicographically according to a custom alien alphabet.",
+  "target": "order: 'hlabcdefgijkmnopqrstuvwxyz'",
+  "pseudocode": "1. map = new Map();\n2. for (i = 0; i < order.length; i++) map.set(order[i], i);\n3. for (i = 0; i < words.length - 1; i++) {\n4.   word1 = words[i], word2 = words[i+1];\n5.   for (j = 0; j < Math.min(word1.length, word2.length); j++) {\n6.     if (word1[j] !== word2[j]) {\n7.       if (map.get(word1[j]) > map.get(word2[j])) return false;\n8.       break;\n9.     }\n10.  }\n11. }",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize dictionary mapping characters to their alien rank.",
+      "array": [
+        "h",
+        "l",
+        "a",
+        "b",
+        "c",
+        "d",
+        "e",
+        "f",
+        "g",
+        "i",
+        "j",
+        "k",
+        "m",
+        "n",
+        "o",
+        "p",
+        "q",
+        "r",
+        "s",
+        "t",
+        "u",
+        "v",
+        "w",
+        "x",
+        "y",
+        "z"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Compare 'hello' and 'leetcode'.",
+      "array": [
+        "hello",
+        "leetcode"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Comparing 'h' and 'l'. 'h' is rank 0, 'l' is rank 1.",
+      "i": 0,
+      "j": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Characters differ, compare their ranks.",
+      "i": 0,
+      "j": 0
+    },
+    {
+      "codeLine": 7,
+      "note": "Rank 0 < 1, order is correct for this pair.",
+      "i": 0,
+      "j": 0
+    },
+    {
+      "codeLine": 8,
+      "note": "Break inner loop and move to next word pair.",
+      "i": 0,
+      "j": 0
+    }
+  ]
+}

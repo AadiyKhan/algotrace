@@ -1,0 +1,61 @@
+{
+  "title": "IP to CIDR",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Math",
+    "Bit Manipulation"
+  ],
+  "description": "Convert an IP address and a range count into a list of CIDR blocks.",
+  "target": 5,
+  "pseudocode": "1. Convert IP string to integer\n2. While count > 0:\n3.   Find largest power of 2 (k) such that 2^k divides ip and 2^k <= count\n4.   Convert ip to CIDR string with mask (32 - k)\n5.   Add to result\n6.   ip += 2^k, count -= 2^k",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Converting 255.0.0.7 to integer representation.",
+      "array": [
+        4278190087
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Starting loop with count 5.",
+      "i": 5
+    },
+    {
+      "codeLine": 3,
+      "note": "Finding largest power of 2 that divides IP 4278190087. Found 1 (2^0).",
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Formatting IP to CIDR: 255.0.0.7/32.",
+      "array": [
+        "255.0.0.7/32"
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Incrementing IP by 1 and decrementing count to 4.",
+      "i": 4
+    },
+    {
+      "codeLine": 3,
+      "note": "Finding largest power of 2 for remaining count 4. Found 4 (2^2).",
+      "i": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Formatting IP to CIDR: 255.0.0.8/30.",
+      "array": [
+        "255.0.0.7/32",
+        "255.0.0.8/30"
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Incrementing IP by 4 and decrementing count to 0.",
+      "i": 0
+    }
+  ]
+}

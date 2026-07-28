@@ -1,0 +1,45 @@
+{
+  "title": "Number Complement",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Bit Manipulation"
+  ],
+  "description": "Find the complement of an integer's binary representation.",
+  "target": 5,
+  "pseudocode": "1. mask = ~0\n2. while (num & mask) != 0:\n3.   mask <<= 1\n4. return ~mask & ~num",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize mask as all ones (binary -1).",
+      "array": [
+        5,
+        -1
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Check if mask bits align beyond num's highest bit.",
+      "array": [
+        5,
+        -1
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Shift mask left to isolate bits of num (mask becomes ...11111000).",
+      "array": [
+        5,
+        -8
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Apply NOT mask and NOT num to flip bits of 5 (101) to get 2 (010).",
+      "array": [
+        5,
+        2
+      ]
+    }
+  ]
+}

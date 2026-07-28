@@ -1,0 +1,72 @@
+{
+  "title": "Valid Palindrome II",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "String",
+    "Two Pointers",
+    "Greedy"
+  ],
+  "description": "Determine if a string can be a palindrome after deleting at most one character.",
+  "target": "abca",
+  "pseudocode": "1. left = 0, right = s.length - 1\n2. while left < right:\n3.   if s[left] == s[right]: left++, right--\n4.   else: return check(left+1, right) || check(left, right-1)\n5. return true",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize pointers at the start and end of the string.",
+      "array": [
+        "a",
+        "b",
+        "c",
+        "a"
+      ],
+      "i": 0,
+      "j": 3
+    },
+    {
+      "codeLine": 3,
+      "note": "s[0] == s[3] ('a' == 'a'), move pointers inward.",
+      "array": [
+        "a",
+        "b",
+        "c",
+        "a"
+      ],
+      "i": 1,
+      "j": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "s[1] != s[2] ('b' != 'c'), mismatch found.",
+      "array": [
+        "a",
+        "b",
+        "c",
+        "a"
+      ],
+      "i": 1,
+      "j": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Try skipping index 1 or index 2 to see if result is palindrome.",
+      "array": [
+        "a",
+        "b",
+        "c",
+        "a"
+      ],
+      "i": 1,
+      "j": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "After removing 'b', result 'aca' is a palindrome. Return true.",
+      "array": [
+        "a",
+        "c",
+        "a"
+      ]
+    }
+  ]
+}

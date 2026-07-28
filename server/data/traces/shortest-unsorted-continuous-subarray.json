@@ -1,0 +1,70 @@
+{
+  "title": "Shortest Unsorted Continuous Subarray",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Two Pointers",
+    "Sorting",
+    "Greedy"
+  ],
+  "description": "Find the shortest continuous subarray that, if sorted, would make the entire array sorted.",
+  "target": null,
+  "pseudocode": "1. min = Infinity, max = -Infinity\n2. Find max element where nums[i] < max, set end\n3. Find min element where nums[i] > min, set start\n4. Return end - start + 1",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize variables for tracking max and min boundaries.",
+      "array": [
+        2,
+        6,
+        4,
+        8,
+        10,
+        9,
+        15
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Traversing forward to find the last element smaller than current max (index 5, value 9).",
+      "array": [
+        2,
+        6,
+        4,
+        8,
+        10,
+        9,
+        15
+      ],
+      "i": 5
+    },
+    {
+      "codeLine": 3,
+      "note": "Traversing backward to find the first element larger than current min (index 1, value 6).",
+      "array": [
+        2,
+        6,
+        4,
+        8,
+        10,
+        9,
+        15
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Calculating subarray length: end(5) - start(1) + 1 = 5.",
+      "array": [
+        2,
+        6,
+        4,
+        8,
+        10,
+        9,
+        15
+      ]
+    }
+  ]
+}

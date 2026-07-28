@@ -1,0 +1,140 @@
+{
+  "title": "Perfect Rectangle",
+  "difficulty": "Hard",
+  "type": "matrix",
+  "tags": [
+    "Array",
+    "Geometry",
+    "Sweep Line"
+  ],
+  "description": "Determine if a collection of rectangles forms a perfect rectangle covering a single area without gaps or overlaps.",
+  "pseudocode": "1: corners = new Set()\n2: area = 0\n3: minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity\n4: for each rect in rectangles:\n5:   area += (x2-x1)*(y2-y1)\n6:   minX = min(minX, x1), minY = min(minY, y1), maxX = max(maxX, x2), maxY = max(maxY, y2)\n7:   toggle corner in set (x1,y1), (x1,y2), (x2,y1), (x2,y2)\n8: return area == (maxX-minX)*(maxY-minY) && corners.size == 4",
+  "steps": [
+    {
+      "codeLine": 4,
+      "note": "Initialize boundaries and total area calculation.",
+      "matrix": [
+        [
+          1,
+          1,
+          2,
+          2
+        ],
+        [
+          1,
+          2,
+          2,
+          3
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Calculating area of first rectangle: 1*1 = 1.",
+      "matrix": [
+        [
+          1,
+          1,
+          2,
+          2
+        ],
+        [
+          1,
+          2,
+          2,
+          3
+        ]
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Toggling corners of first rectangle into the set.",
+      "matrix": [
+        [
+          1,
+          1,
+          2,
+          2
+        ],
+        [
+          1,
+          2,
+          2,
+          3
+        ]
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Calculating area of second rectangle: 1*1 = 1, total area = 2.",
+      "matrix": [
+        [
+          1,
+          1,
+          2,
+          2
+        ],
+        [
+          1,
+          2,
+          2,
+          3
+        ]
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ]
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Checking if total area matches bounding box and only 4 unique corners remain.",
+      "matrix": [
+        [
+          1,
+          1,
+          2,
+          2
+        ],
+        [
+          1,
+          2,
+          2,
+          3
+        ]
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ]
+      ]
+    }
+  ]
+}

@@ -1,0 +1,109 @@
+{
+  "title": "Reverse Words In A String II",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Two Pointers",
+    "String"
+  ],
+  "description": "Given a character array s, reverse the order of the words.",
+  "pseudocode": "1. reverse(s, 0, s.length - 1)\n2. start = 0\n3. for end = 0 to s.length\n4.   if end == s.length or s[end] == ' ':\n5.     reverse(s, start, end - 1)\n6.     start = end + 1",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Reverse the entire array: ['t', 'h', 'e', ' ', 's', 'k', 'y'] -> ['y', 'k', 's', ' ', 'e', 'h', 't']",
+      "array": [
+        "y",
+        "k",
+        "s",
+        " ",
+        "e",
+        "h",
+        "t"
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Initialize start pointer at 0",
+      "array": [
+        "y",
+        "k",
+        "s",
+        " ",
+        "e",
+        "h",
+        "t"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Looping, reach space at index 3",
+      "array": [
+        "y",
+        "k",
+        "s",
+        " ",
+        "e",
+        "h",
+        "t"
+      ],
+      "j": 3
+    },
+    {
+      "codeLine": 5,
+      "note": "Reverse first word 'yks' -> 'sky'",
+      "array": [
+        "s",
+        "k",
+        "y",
+        " ",
+        "e",
+        "h",
+        "t"
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Update start to 4",
+      "array": [
+        "s",
+        "k",
+        "y",
+        " ",
+        "e",
+        "h",
+        "t"
+      ],
+      "i": 4
+    },
+    {
+      "codeLine": 4,
+      "note": "Reached end of string, index 7",
+      "array": [
+        "s",
+        "k",
+        "y",
+        " ",
+        "e",
+        "h",
+        "t"
+      ],
+      "j": 7
+    },
+    {
+      "codeLine": 5,
+      "note": "Reverse second word 'eht' -> 'the'",
+      "array": [
+        "s",
+        "k",
+        "y",
+        " ",
+        "t",
+        "h",
+        "e"
+      ]
+    }
+  ]
+}

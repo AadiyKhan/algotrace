@@ -1,0 +1,147 @@
+{
+  "title": "Restore IP Addresses",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "String",
+    "Backtracking"
+  ],
+  "description": "Restore all possible valid IP addresses that can be formed from a given string.",
+  "target": "255.255.11.135",
+  "pseudocode": "1: function backtrack(start, segments):\n2:   if segments.length == 4:\n3:     if start == s.length: results.push(segments.join('.'))\n4:     return\n5:   for len from 1 to 3:\n6:     if start + len > s.length: continue\n7:     sub = s.substring(start, start + len)\n8:     if isValid(sub):\n9:       backtrack(start + len, segments + [sub])",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Starting recursion with index 0 and empty segments",
+      "array": [
+        2,
+        5,
+        5,
+        1,
+        1,
+        1,
+        3,
+        5
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Taking first segment length 3: '255'",
+      "array": [
+        2,
+        5,
+        5,
+        1,
+        1,
+        1,
+        3,
+        5
+      ],
+      "i": "255"
+    },
+    {
+      "codeLine": 9,
+      "note": "Recursively calling for index 3",
+      "array": [
+        2,
+        5,
+        5,
+        1,
+        1,
+        1,
+        3,
+        5
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 5,
+      "note": "Taking second segment length 3: '255'",
+      "array": [
+        2,
+        5,
+        5,
+        1,
+        1,
+        1,
+        3,
+        5
+      ],
+      "i": "255"
+    },
+    {
+      "codeLine": 9,
+      "note": "Recursively calling for index 6",
+      "array": [
+        2,
+        5,
+        5,
+        1,
+        1,
+        1,
+        3,
+        5
+      ],
+      "i": 6
+    },
+    {
+      "codeLine": 5,
+      "note": "Taking third segment length 1: '1'",
+      "array": [
+        2,
+        5,
+        5,
+        1,
+        1,
+        1,
+        3,
+        5
+      ],
+      "i": "1"
+    },
+    {
+      "codeLine": 9,
+      "note": "Recursively calling for index 7",
+      "array": [
+        2,
+        5,
+        5,
+        1,
+        1,
+        1,
+        3,
+        5
+      ],
+      "i": 7
+    },
+    {
+      "codeLine": 5,
+      "note": "Taking fourth segment length 2: '35'",
+      "array": [
+        2,
+        5,
+        5,
+        1,
+        1,
+        1,
+        3,
+        5
+      ],
+      "i": "35"
+    },
+    {
+      "codeLine": 3,
+      "note": "All segments valid, adding to results: 255.255.1.35",
+      "array": [
+        2,
+        5,
+        5,
+        1,
+        1,
+        1,
+        3,
+        5
+      ]
+    }
+  ]
+}

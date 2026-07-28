@@ -1,0 +1,129 @@
+{
+  "title": "Surface Area of 3D Shapes",
+  "difficulty": "Hard",
+  "type": "matrix",
+  "tags": [
+    "Array",
+    "Math",
+    "Geometry",
+    "Matrix"
+  ],
+  "description": "Calculate the total surface area of a 3D shape represented by a grid of stacks.",
+  "pseudocode": "let area = 0;\nfor (let i = 0; i < n; i++) {\n  for (let j = 0; j < n; j++) {\n    if (grid[i][j] > 0) area += grid[i][j] * 4 + 2;\n    if (i > 0) area -= Math.min(grid[i][j], grid[i-1][j]) * 2;\n    if (j > 0) area -= Math.min(grid[i][j], grid[i][j-1]) * 2;\n  }\n}",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize area to 0.",
+      "matrix": [
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          4
+        ]
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Process grid[0][0]=1. area += 1*4 + 2 = 6.",
+      "matrix": [
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "i": 0,
+      "j": 0,
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Process grid[0][1]=2. area += 2*4 + 2 = 10. Total area = 16.",
+      "matrix": [
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "i": 0,
+      "j": 1,
+      "curr": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Subtract overlapping sides between grid[0][1] and grid[0][0]. min(2, 1)*2 = 2. Area = 14.",
+      "matrix": [
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "i": 0,
+      "j": 1,
+      "prev": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Process grid[1][0]=3. area += 3*4 + 2 = 14. Total area = 28.",
+      "matrix": [
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "i": 1,
+      "j": 0,
+      "curr": [
+        1,
+        0
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Subtract overlapping sides between grid[1][0] and grid[0][0]. min(3, 1)*2 = 2. Area = 26.",
+      "matrix": [
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "i": 1,
+      "j": 0,
+      "prev": [
+        0,
+        0
+      ]
+    }
+  ]
+}

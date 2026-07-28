@@ -1,0 +1,154 @@
+{
+  "title": "Validate Stack Sequences",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Stack",
+    "Simulation"
+  ],
+  "description": "Determine if a sequence of push/pop operations can result in the target sequence.",
+  "target": "[4,5,3,2,1]",
+  "pseudocode": "let stack = [];\nlet j = 0;\nfor (let i = 0; i < pushed.length; i++) {\n  stack.push(pushed[i]);\n  while (stack.length > 0 && stack[stack.length - 1] === popped[j]) {\n    stack.pop();\n    j++;\n  }\n}\nreturn stack.length === 0;",
+  "steps": [
+    {
+      "codeLine": 3,
+      "note": "Push 1 to stack",
+      "array": [
+        1
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Stack top 1 != popped[0] (4), continue",
+      "array": [
+        1
+      ],
+      "i": 0,
+      "j": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Push 2 to stack",
+      "array": [
+        1,
+        2
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Push 3 to stack",
+      "array": [
+        1,
+        2,
+        3
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Push 4 to stack",
+      "array": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 4,
+      "note": "Stack top 4 == popped[0] (4), pop 4",
+      "array": [
+        1,
+        2,
+        3
+      ],
+      "i": 3,
+      "j": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Popped index incremented",
+      "array": [
+        1,
+        2,
+        3
+      ],
+      "i": 3,
+      "j": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Stack top 3 != popped[1] (5), continue",
+      "array": [
+        1,
+        2,
+        3
+      ],
+      "i": 3,
+      "j": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Push 5 to stack",
+      "array": [
+        1,
+        2,
+        3,
+        5
+      ],
+      "i": 4
+    },
+    {
+      "codeLine": 4,
+      "note": "Stack top 5 == popped[1] (5), pop 5",
+      "array": [
+        1,
+        2,
+        3
+      ],
+      "i": 4,
+      "j": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Popped index incremented",
+      "array": [
+        1,
+        2,
+        3
+      ],
+      "i": 4,
+      "j": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Stack top 3 == popped[2] (3), pop 3",
+      "array": [
+        1,
+        2
+      ],
+      "i": 4,
+      "j": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Stack top 2 == popped[3] (2), pop 2",
+      "array": [
+        1
+      ],
+      "i": 4,
+      "j": 3
+    },
+    {
+      "codeLine": 4,
+      "note": "Stack top 1 == popped[4] (1), pop 1",
+      "array": [],
+      "i": 4,
+      "j": 4
+    }
+  ]
+}

@@ -1,0 +1,265 @@
+{
+  "title": "Minimum Number of Arrows to Burst Balloons",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Greedy",
+    "Sorting"
+  ],
+  "description": "Find the minimum number of arrows to burst all balloons given as intervals [start, end].",
+  "target": 2,
+  "pseudocode": "1. points.sort((a, b) => a[1] - b[1])\n2. arrows = 1\n3. end = points[0][1]\n4. for i = 1 to points.length - 1:\n5.   if points[i][0] > end:\n6.     arrows++\n7.     end = points[i][1]",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Sort balloons by their end coordinates: [[10,16], [2,8], [1,6], [7,12]] -> [[1,6], [2,8], [7,12], [10,16]]",
+      "array": [
+        [
+          1,
+          6
+        ],
+        [
+          2,
+          8
+        ],
+        [
+          7,
+          12
+        ],
+        [
+          10,
+          16
+        ]
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Initialize arrows to 1",
+      "array": [
+        [
+          1,
+          6
+        ],
+        [
+          2,
+          8
+        ],
+        [
+          7,
+          12
+        ],
+        [
+          10,
+          16
+        ]
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Set end position to the first balloon's end (6)",
+      "array": [
+        [
+          1,
+          6
+        ],
+        [
+          2,
+          8
+        ],
+        [
+          7,
+          12
+        ],
+        [
+          10,
+          16
+        ]
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Start loop from second balloon (index 1)",
+      "i": 1,
+      "array": [
+        [
+          1,
+          6
+        ],
+        [
+          2,
+          8
+        ],
+        [
+          7,
+          12
+        ],
+        [
+          10,
+          16
+        ]
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Check if balloon 2 starts after current end (2 > 6 is false)",
+      "i": 1,
+      "array": [
+        [
+          1,
+          6
+        ],
+        [
+          2,
+          8
+        ],
+        [
+          7,
+          12
+        ],
+        [
+          10,
+          16
+        ]
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Move to next balloon (index 2)",
+      "i": 2,
+      "array": [
+        [
+          1,
+          6
+        ],
+        [
+          2,
+          8
+        ],
+        [
+          7,
+          12
+        ],
+        [
+          10,
+          16
+        ]
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Check if balloon 3 starts after current end (7 > 6 is true)",
+      "i": 2,
+      "array": [
+        [
+          1,
+          6
+        ],
+        [
+          2,
+          8
+        ],
+        [
+          7,
+          12
+        ],
+        [
+          10,
+          16
+        ]
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Increment arrows to 2",
+      "i": 2,
+      "array": [
+        [
+          1,
+          6
+        ],
+        [
+          2,
+          8
+        ],
+        [
+          7,
+          12
+        ],
+        [
+          10,
+          16
+        ]
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Update end position to 12",
+      "i": 2,
+      "array": [
+        [
+          1,
+          6
+        ],
+        [
+          2,
+          8
+        ],
+        [
+          7,
+          12
+        ],
+        [
+          10,
+          16
+        ]
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Move to last balloon (index 3)",
+      "i": 3,
+      "array": [
+        [
+          1,
+          6
+        ],
+        [
+          2,
+          8
+        ],
+        [
+          7,
+          12
+        ],
+        [
+          10,
+          16
+        ]
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Check if balloon 4 starts after current end (10 > 12 is false)",
+      "i": 3,
+      "array": [
+        [
+          1,
+          6
+        ],
+        [
+          2,
+          8
+        ],
+        [
+          7,
+          12
+        ],
+        [
+          10,
+          16
+        ]
+      ]
+    }
+  ]
+}

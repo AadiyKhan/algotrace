@@ -1,0 +1,113 @@
+{
+  "title": "24 Game",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Backtracking",
+    "Math"
+  ],
+  "description": "Determine if 24 can be reached using 4 cards with operations +, -, *, /.",
+  "target": 24,
+  "pseudocode": "1. function solve(nums):\n2.   if length == 1: return abs(nums[0] - 24) < 1e-6\n3.   for i in range(len(nums)):\n4.     for j in range(len(nums)):\n5.       if i != j:\n6.         next_nums = [nums[k] for k if k != i, j]\n7.         for op in [a+b, a-b, b-a, a*b, a/b, b/a]:\n8.           if solve(next_nums + [op]): return true\n9.   return false",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initial call with cards [4, 1, 8, 7]",
+      "array": [
+        4,
+        1,
+        8,
+        7
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Picking indices i=0 (val 4) and j=1 (val 1)",
+      "array": [
+        4,
+        1,
+        8,
+        7
+      ],
+      "i": 0,
+      "j": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "Applying addition 4 + 1 = 5",
+      "array": [
+        5,
+        8,
+        7
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Recursive call with [5, 8, 7]",
+      "array": [
+        5,
+        8,
+        7
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Picking indices i=0 (val 5) and j=1 (val 8)",
+      "array": [
+        5,
+        8,
+        7
+      ],
+      "i": 0,
+      "j": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "Applying addition 5 + 8 = 13",
+      "array": [
+        13,
+        7
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Picking indices i=0 (val 13) and j=1 (val 7)",
+      "array": [
+        13,
+        7
+      ],
+      "i": 0,
+      "j": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "Applying multiplication 13 * 7 = 91 (Backtrack)",
+      "array": [
+        91
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Backtracking: Applying subtraction 8 - 5 = 3",
+      "array": [
+        3,
+        7
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Applying multiplication 3 * 8 = 24. Success!",
+      "array": [
+        24
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Target reached: 24 is found",
+      "array": [
+        24
+      ]
+    }
+  ]
+}

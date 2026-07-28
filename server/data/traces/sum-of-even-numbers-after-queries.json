@@ -1,0 +1,90 @@
+{
+  "title": "Sum Of Even Numbers After Queries",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Simulation"
+  ],
+  "description": "Given an array of integers nums and an array of queries, for each query, update nums and return the sum of all even values in the array.",
+  "target": null,
+  "pseudocode": "1. sum = nums.filter(x => x % 2 === 0).reduce((a, b) => a + b, 0)\n2. for (let [val, i] of queries) {\n3.   if (nums[i] % 2 === 0) sum -= nums[i]\n4.   nums[i] += val\n5.   if (nums[i] % 2 === 0) sum += nums[i]\n6.   res.push(sum)\n7. }",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Calculate initial sum of even numbers: [1, 2, 3, 4] -> 2 + 4 = 6",
+      "array": [
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Processing query [1, 0]: nums[0] is 1 (odd), no change to sum.",
+      "array": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Update nums[0] += 1 -> 2",
+      "array": [
+        2,
+        2,
+        3,
+        4
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "nums[0] is now 2 (even), add to sum: 6 + 2 = 8",
+      "array": [
+        2,
+        2,
+        3,
+        4
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Processing query [-3, 1]: nums[1] is 2 (even), remove from sum: 8 - 2 = 6",
+      "array": [
+        2,
+        2,
+        3,
+        4
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Update nums[1] += -3 -> -1",
+      "array": [
+        2,
+        -1,
+        3,
+        4
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "nums[1] is -1 (odd), sum remains 6",
+      "array": [
+        2,
+        -1,
+        3,
+        4
+      ],
+      "i": 1
+    }
+  ]
+}

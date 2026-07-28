@@ -1,0 +1,74 @@
+{
+  "title": "Optimal Account Balancing",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Backtracking",
+    "Bitmask",
+    "Depth-First Search"
+  ],
+  "description": "Find the minimum number of transactions to settle all debts among a group of people.",
+  "target": 0,
+  "pseudocode": "1. balance = getBalances(transactions)\n2. debt = balance.filter(x => x != 0)\n3. function dfs(idx):\n4.   if idx == debt.length: return 0\n5.   if debt[idx] == 0: return dfs(idx + 1)\n6.   res = Infinity\n7.   for i = idx + 1 to debt.length:\n8.     if debt[i] * debt[idx] < 0:\n9.       debt[i] += debt[idx]\n10.      res = min(res, 1 + dfs(idx + 1))\n11.      debt[i] -= debt[idx]\n12.  return res",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Calculate net balances: [10, -5, -5] (Person 0 owes 10, Person 1 and 2 get 5 each)",
+      "array": [
+        10,
+        -5,
+        -5
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Start DFS from index 0",
+      "array": [
+        10,
+        -5,
+        -5
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 7,
+      "note": "Try settling person 0 with person 1",
+      "array": [
+        10,
+        5,
+        -5
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 10,
+      "note": "Recursive call to DFS(1)",
+      "array": [
+        0,
+        5,
+        -5
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "Try settling remaining debt with person 2",
+      "array": [
+        0,
+        0,
+        0
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 12,
+      "note": "All debts settled, return 2 transactions",
+      "array": [
+        0,
+        0,
+        0
+      ]
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "title": "Cat and Mouse",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Graph",
+    "Minimax",
+    "Game Theory"
+  ],
+  "description": "Determine if the mouse can escape, the cat can catch the mouse, or if it results in a draw in a graph-based game.",
+  "target": 0,
+  "pseudocode": "1. MOUSE_MOVE = 1, CAT_MOVE = 2\n2. If mouse reaches 0, mouse wins (1)\n3. If cat reaches mouse, cat wins (2)\n4. Use memoization to track states (mouse, cat, turn)\n5. If state repeats, it is a draw (0)\n6. Recursively explore moves",
+  "steps": [
+    {
+      "codeLine": 4,
+      "note": "Initialize game state: Mouse at 1, Cat at 2, Turn is Mouse",
+      "i": 1,
+      "j": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Mouse moves to node 3",
+      "i": 3,
+      "j": 2,
+      "curr": 3
+    },
+    {
+      "codeLine": 6,
+      "note": "Cat moves to node 3 to intercept mouse",
+      "i": 3,
+      "j": 3,
+      "curr": 3
+    },
+    {
+      "codeLine": 3,
+      "note": "Cat catches mouse at node 3, return cat wins",
+      "i": 3,
+      "j": 3
+    }
+  ]
+}

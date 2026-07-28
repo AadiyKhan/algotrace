@@ -1,0 +1,75 @@
+{
+  "title": "Find And Replace Pattern",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "String",
+    "Hash Table"
+  ],
+  "description": "Return a list of words that match a given pattern where each character maps to a unique character.",
+  "target": "pattern: 'abb', words: ['abc', 'deq']",
+  "pseudocode": "1. function match(word, pattern) {\n2.   let m1 = {}, m2 = {};\n3.   for (let i = 0; i < word.length; ++i) {\n4.     if (!m1[word[i]]) m1[word[i]] = pattern[i];\n5.     if (!m2[pattern[i]]) m2[pattern[i]] = word[i];\n6.     if (m1[word[i]] !== pattern[i] || m2[pattern[i]] !== word[i]) return false;\n7.   }\n8.   return true;\n9. }",
+  "steps": [
+    {
+      "codeLine": 3,
+      "note": "Starting comparison for word 'abc' against 'abb', i=0",
+      "array": [
+        "a",
+        "b",
+        "c"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Mapping word 'a' to pattern 'a'",
+      "array": [
+        "a",
+        "b",
+        "c"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Moving to i=1",
+      "array": [
+        "a",
+        "b",
+        "c"
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Mapping word 'b' to pattern 'b'",
+      "array": [
+        "a",
+        "b",
+        "c"
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Moving to i=2",
+      "array": [
+        "a",
+        "b",
+        "c"
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Check fails: word 'c' maps to 'b', but pattern 'b' is already mapped to 'b'",
+      "array": [
+        "a",
+        "b",
+        "c"
+      ],
+      "i": 2
+    }
+  ]
+}

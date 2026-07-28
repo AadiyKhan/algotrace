@@ -1,0 +1,117 @@
+{
+  "title": "Coin Change II",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Dynamic Programming"
+  ],
+  "description": "Find the number of combinations that make up a given amount using a list of coin denominations.",
+  "target": 5,
+  "pseudocode": "1. dp = array of size (amount + 1) filled with 0\n2. dp[0] = 1\n3. for coin in coins:\n4.   for i from coin to amount:\n5.     dp[i] = dp[i] + dp[i - coin]",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize DP table with 0s for target 5",
+      "array": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Processing coin 1",
+      "array": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "i": "coin=1"
+    },
+    {
+      "codeLine": 5,
+      "note": "Updating DP for coin 1 at index 1",
+      "array": [
+        1,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Updating DP for coin 1 at index 5",
+      "array": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "i": 5
+    },
+    {
+      "codeLine": 3,
+      "note": "Processing coin 2",
+      "array": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "i": "coin=2"
+    },
+    {
+      "codeLine": 5,
+      "note": "Updating DP for coin 2 at index 2 (1+1)",
+      "array": [
+        1,
+        1,
+        2,
+        1,
+        1,
+        1
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Updating DP for coin 2 at index 4 (1+2)",
+      "array": [
+        1,
+        1,
+        2,
+        2,
+        3,
+        1
+      ],
+      "i": 4
+    },
+    {
+      "codeLine": 5,
+      "note": "Final DP table after processing coin 2",
+      "array": [
+        1,
+        1,
+        2,
+        2,
+        3,
+        3
+      ],
+      "i": 5
+    }
+  ]
+}

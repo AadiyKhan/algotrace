@@ -1,0 +1,112 @@
+{
+  "title": "Longest Repeating Substring",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "String",
+    "Binary Search",
+    "Rolling Hash"
+  ],
+  "description": "Find the length of the longest repeating substring in a given string s.",
+  "target": null,
+  "pseudocode": "1. low = 1, high = n - 1\n2. while low <= high:\n3.   mid = (low + high) / 2\n4.   if search(mid):\n5.     res = mid, low = mid + 1\n6.   else: high = mid - 1\n7. return res",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize binary search range for string 'banana'",
+      "array": [
+        "b",
+        "a",
+        "n",
+        "a",
+        "n",
+        "a"
+      ],
+      "i": "low=1",
+      "j": "high=5"
+    },
+    {
+      "codeLine": 3,
+      "note": "Calculate mid length to check",
+      "array": [
+        "b",
+        "a",
+        "n",
+        "a",
+        "n",
+        "a"
+      ],
+      "i": "mid=3"
+    },
+    {
+      "codeLine": 4,
+      "note": "Check if any substring of length 3 repeats",
+      "array": [
+        "b",
+        "a",
+        "n",
+        "a",
+        "n",
+        "a"
+      ],
+      "visited": [
+        "ban",
+        "ana",
+        "nan",
+        "ana"
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Found 'ana' repeats, increase search range",
+      "array": [
+        "b",
+        "a",
+        "n",
+        "a",
+        "n",
+        "a"
+      ],
+      "i": "res=3, low=4"
+    },
+    {
+      "codeLine": 3,
+      "note": "Calculate new mid length 4",
+      "array": [
+        "b",
+        "a",
+        "n",
+        "a",
+        "n",
+        "a"
+      ],
+      "i": "mid=4"
+    },
+    {
+      "codeLine": 6,
+      "note": "No repeating substring of length 4, decrease range",
+      "array": [
+        "b",
+        "a",
+        "n",
+        "a",
+        "n",
+        "a"
+      ],
+      "j": "high=3"
+    },
+    {
+      "codeLine": 7,
+      "note": "Return final result",
+      "array": [
+        "b",
+        "a",
+        "n",
+        "a",
+        "n",
+        "a"
+      ],
+      "i": "res=3"
+    }
+  ]
+}

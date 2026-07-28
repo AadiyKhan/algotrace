@@ -1,0 +1,51 @@
+{
+  "title": "Ransom Note",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Hash Table",
+    "String",
+    "Counting"
+  ],
+  "description": "Determine if you can construct the ransomNote using the letters from magazine.",
+  "target": "true",
+  "pseudocode": "1. map = new Map();\n2. for (char of magazine) map.set(char, (map.get(char) || 0) + 1);\n3. for (char of ransomNote) {\n4.   if (!map.get(char)) return false;\n5.   map.set(char, map.get(char) - 1);\n6. }\n7. return true;",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize empty character frequency map.",
+      "array": []
+    },
+    {
+      "codeLine": 2,
+      "note": "Populate map with magazine 'aa'.",
+      "array": [
+        "a:2"
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Start iterating through ransomNote 'a'.",
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Check if 'a' exists in map and count > 0.",
+      "i": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Decrement count of 'a' in map.",
+      "array": [
+        "a:1"
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "All characters processed, return true.",
+      "array": [
+        "a:1"
+      ]
+    }
+  ]
+}

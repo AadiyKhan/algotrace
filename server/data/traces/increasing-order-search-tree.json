@@ -1,0 +1,172 @@
+{
+  "title": "Increasing Order Search Tree",
+  "difficulty": "Easy",
+  "type": "tree",
+  "tags": [
+    "Tree",
+    "DFS",
+    "Binary Search Tree"
+  ],
+  "description": "Rearrange a binary search tree in-order so that the leftmost node becomes the root and every node has no left child, only a right child.",
+  "target": null,
+  "pseudocode": "1. let dummy = new Node(0)\n2. let prev = dummy\n3. function inorder(node) {\n4.   if (!node) return\n5.   inorder(node.left)\n6.   node.left = null\n7.   prev.right = node\n8.   prev = node\n9.   inorder(node.right)\n10. }\n11. inorder(root)\n12. return dummy.right",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize dummy node to track the new tree root",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 0,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": 2,
+          "right": 3
+        },
+        {
+          "id": 2,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Traverse to the leftmost node (val 1)",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 0,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": 2,
+          "right": 3
+        },
+        {
+          "id": 2,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Relink node 1 to the right of prev",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 0,
+          "left": null,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": 3
+        },
+        {
+          "id": 2,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 7,
+      "note": "Relink node 2 to the right of node 1",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 0,
+          "left": null,
+          "right": 2
+        },
+        {
+          "id": 2,
+          "val": 1,
+          "left": null,
+          "right": 1
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": 3
+        },
+        {
+          "id": 3,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "Relink node 3 to the right of node 2",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 0,
+          "left": null,
+          "right": 2
+        },
+        {
+          "id": 2,
+          "val": 1,
+          "left": null,
+          "right": 1
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": 3
+        },
+        {
+          "id": 3,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 3
+    }
+  ]
+}

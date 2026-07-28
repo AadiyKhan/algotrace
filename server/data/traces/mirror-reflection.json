@@ -1,0 +1,32 @@
+{
+  "title": "Mirror Reflection",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Math",
+    "Geometry"
+  ],
+  "description": "Determine which receiver a laser hits in a square room with mirrors at corners.",
+  "target": null,
+  "pseudocode": "1: while (p % 2 == 0 && q % 2 == 0) { p /= 2; q /= 2; }\n2: if (p % 2 == 0) return 2;\n3: if (q % 2 == 0) return 0;\n4: return 1;",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Divide p=2, q=1 by 2 if both even. p=2, q=1 are not both even.",
+      "i": 2,
+      "j": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Check if p is even. 2 % 2 == 0 is true.",
+      "i": 2,
+      "j": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Return 2.",
+      "i": 2,
+      "j": 1
+    }
+  ]
+}

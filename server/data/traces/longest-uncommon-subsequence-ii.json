@@ -1,0 +1,87 @@
+{
+  "title": "Longest Uncommon Subsequence II",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "String",
+    "Sorting"
+  ],
+  "description": "Find the length of the longest uncommon subsequence among a list of strings. A string is an uncommon subsequence if it is not a subsequence of any other string in the list.",
+  "target": 3,
+  "pseudocode": "1. strs.sort((a, b) => b.length - a.length)\n2. for i from 0 to n-1:\n3.   isUncommon = true\n4.   for j from 0 to n-1:\n5.     if i != j and isSubsequence(strs[i], strs[j]):\n6.       isUncommon = false; break\n7.   if isUncommon: return strs[i].length\n8. return -1",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Sort strings by length descending: ['aba', 'cdc', 'eae']",
+      "array": [
+        "aba",
+        "cdc",
+        "eae"
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Start iteration for i=0 (strs[0] = 'aba')",
+      "array": [
+        "aba",
+        "cdc",
+        "eae"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Compare 'aba' with 'cdc' (j=1)",
+      "array": [
+        "aba",
+        "cdc",
+        "eae"
+      ],
+      "i": 0,
+      "j": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "'aba' is not a subsequence of 'cdc'",
+      "array": [
+        "aba",
+        "cdc",
+        "eae"
+      ],
+      "i": 0,
+      "j": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Compare 'aba' with 'eae' (j=2)",
+      "array": [
+        "aba",
+        "cdc",
+        "eae"
+      ],
+      "i": 0,
+      "j": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "'aba' is not a subsequence of 'eae'",
+      "array": [
+        "aba",
+        "cdc",
+        "eae"
+      ],
+      "i": 0,
+      "j": 2
+    },
+    {
+      "codeLine": 7,
+      "note": "isUncommon is true, return length 3",
+      "array": [
+        "aba",
+        "cdc",
+        "eae"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "title": "Number of Music Playlists",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Dynamic Programming",
+    "Math",
+    "Combinatorics"
+  ],
+  "description": "Find the number of possible playlists of length goal given n unique songs, where each song must be played at least once and no song can be played again until k other songs have been played.",
+  "pseudocode": "dp[i][j] = number of playlists of length i using j unique songs\nfor i from 1 to goal:\n  for j from 1 to n:\n    dp[i][j] = dp[i-1][j-1] * (n - (j - 1)) + dp[i-1][j] * max(0, j - k)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize DP table for goal=3, n=2, k=0.",
+      "array": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Start outer loop i=1 (playlist length).",
+      "i": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Calculate dp[1][1] (1 song in list, 1 unique used): 2 choices.",
+      "array": [
+        0,
+        2,
+        0,
+        0
+      ],
+      "j": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Transition for dp[2][2]: using a new song.",
+      "array": [
+        0,
+        2,
+        2,
+        0
+      ],
+      "i": 2,
+      "j": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Final calculation for goal=3, n=2, k=0.",
+      "array": [
+        0,
+        2,
+        2,
+        2
+      ],
+      "i": 3,
+      "j": 2
+    }
+  ]
+}

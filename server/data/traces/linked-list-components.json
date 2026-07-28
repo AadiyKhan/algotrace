@@ -1,0 +1,202 @@
+{
+  "title": "Linked List Components",
+  "difficulty": "Medium",
+  "type": "linked-list",
+  "tags": [
+    "Linked List",
+    "Hash Table"
+  ],
+  "description": "Find the number of connected components in the linked list that are present in the given subset G.",
+  "target": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "pseudocode": "1. set = new Set(G)\n2. count = 0, isConnected = false\n3. while head:\n4.   if set.has(head.val):\n5.     if !isConnected:\n6.       count++, isConnected = true\n7.   else:\n8.     isConnected = false\n9.   head = head.next\n10. return count",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize set with G values [0, 1, 3]",
+      "nodes": [
+        {
+          "val": 0,
+          "next": 1
+        },
+        {
+          "val": 1,
+          "next": 2
+        },
+        {
+          "val": 2,
+          "next": 3
+        },
+        {
+          "val": 3,
+          "next": null
+        }
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Check head 0: exists in set",
+      "nodes": [
+        {
+          "val": 0,
+          "next": 1
+        },
+        {
+          "val": 1,
+          "next": 2
+        },
+        {
+          "val": 2,
+          "next": 3
+        },
+        {
+          "val": 3,
+          "next": null
+        }
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Increment count to 1",
+      "nodes": [
+        {
+          "val": 0,
+          "next": 1
+        },
+        {
+          "val": 1,
+          "next": 2
+        },
+        {
+          "val": 2,
+          "next": 3
+        },
+        {
+          "val": 3,
+          "next": null
+        }
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Check head 1: exists in set",
+      "nodes": [
+        {
+          "val": 0,
+          "next": 1
+        },
+        {
+          "val": 1,
+          "next": 2
+        },
+        {
+          "val": 2,
+          "next": 3
+        },
+        {
+          "val": 3,
+          "next": null
+        }
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Check head 2: not in set",
+      "nodes": [
+        {
+          "val": 0,
+          "next": 1
+        },
+        {
+          "val": 1,
+          "next": 2
+        },
+        {
+          "val": 2,
+          "next": 3
+        },
+        {
+          "val": 3,
+          "next": null
+        }
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 8,
+      "note": "Set isConnected to false",
+      "nodes": [
+        {
+          "val": 0,
+          "next": 1
+        },
+        {
+          "val": 1,
+          "next": 2
+        },
+        {
+          "val": 2,
+          "next": 3
+        },
+        {
+          "val": 3,
+          "next": null
+        }
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Check head 3: exists in set",
+      "nodes": [
+        {
+          "val": 0,
+          "next": 1
+        },
+        {
+          "val": 1,
+          "next": 2
+        },
+        {
+          "val": 2,
+          "next": 3
+        },
+        {
+          "val": 3,
+          "next": null
+        }
+      ],
+      "curr": 3
+    },
+    {
+      "codeLine": 6,
+      "note": "Increment count to 2",
+      "nodes": [
+        {
+          "val": 0,
+          "next": 1
+        },
+        {
+          "val": 1,
+          "next": 2
+        },
+        {
+          "val": 2,
+          "next": 3
+        },
+        {
+          "val": 3,
+          "next": null
+        }
+      ],
+      "curr": 3
+    }
+  ]
+}

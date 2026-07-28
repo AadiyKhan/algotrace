@@ -1,0 +1,110 @@
+{
+  "title": "Design Search Autocomplete System",
+  "difficulty": "Hard",
+  "type": "tree",
+  "tags": [
+    "Trie",
+    "Design",
+    "Hash Table"
+  ],
+  "description": "Implement an autocomplete system using a Trie to store sentences and their frequencies.",
+  "pseudocode": "1. function input(c):\n2. if c == '#':\n3.   updateTrie(currentBuffer, 1)\n4.   currentBuffer = ''\n5. else:\n6.   currentBuffer += c\n7.   suggestions = findTop3(currentBuffer)",
+  "steps": [
+    {
+      "codeLine": 6,
+      "note": "User types 'i', buffer becomes 'i'",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": "root",
+          "left": 1,
+          "right": null
+        },
+        {
+          "id": 1,
+          "val": "i",
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": "i"
+    },
+    {
+      "codeLine": 7,
+      "note": "Searching Trie for prefix 'i'",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": "root",
+          "left": 1,
+          "right": null
+        },
+        {
+          "id": 1,
+          "val": "i",
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "User types ' ', buffer becomes 'i '",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": "root",
+          "left": 1,
+          "right": null
+        },
+        {
+          "id": 1,
+          "val": "i",
+          "left": 2,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": " ",
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": "i "
+    },
+    {
+      "codeLine": 3,
+      "note": "User types '#', updating frequency of 'i ' in Trie",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": "root",
+          "left": 1,
+          "right": null
+        },
+        {
+          "id": 1,
+          "val": "i",
+          "left": 2,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": " ",
+          "freq": 1,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        0,
+        1,
+        2
+      ]
+    }
+  ]
+}

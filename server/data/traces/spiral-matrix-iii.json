@@ -1,0 +1,133 @@
+{
+  "title": "Spiral Matrix III",
+  "difficulty": "Medium",
+  "type": "matrix",
+  "tags": [
+    "Array",
+    "Matrix",
+    "Simulation"
+  ],
+  "description": "Walk in a spiral pattern starting from (rStart, cStart) and return coordinates of cells visited in order.",
+  "target": null,
+  "pseudocode": "1: res = []; step = 1; r, c = rStart, cStart\n2: while res.length < R * C:\n3:   for dr, dc in [[0,1],[1,0],[0,-1],[-1,0]]:\n4:     if dr, dc are horizontal: step++\n5:     for _ in range(step):\n6:       r += dr, c += dc\n7:       if 0 <= r < R and 0 <= c < C: res.push([r, c])",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize starting position (0,0) with 1x4 matrix",
+      "matrix": [
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Move East (dr=0, dc=1)",
+      "matrix": [
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "curr": [
+        0,
+        1
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Move South (dr=1, dc=0)",
+      "matrix": [
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "curr": [
+        1,
+        1
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Move West (dr=0, dc=-1)",
+      "matrix": [
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "curr": [
+        1,
+        0
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Move West again",
+      "matrix": [
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "curr": [
+        1,
+        -1
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Move North (dr=-1, dc=0)",
+      "matrix": [
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "curr": [
+        0,
+        -1
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 6,
+      "note": "Move North again",
+      "matrix": [
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "curr": [
+        -1,
+        -1
+      ],
+      "i": 3
+    }
+  ]
+}

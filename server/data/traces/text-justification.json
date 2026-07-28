@@ -1,0 +1,98 @@
+{
+  "title": "Text Justification",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "String",
+    "Simulation"
+  ],
+  "description": "Given an array of words and a width maxWidth, format the text such that each line has exactly maxWidth characters and is fully justified.",
+  "target": 16,
+  "pseudocode": "1. i = 0\n2. while i < words.length:\n3.   j = i + 1, lineLen = words[i].length\n4.   while j < words.length and lineLen + 1 + words[j].length <= maxWidth:\n5.     lineLen += 1 + words[j].length\n6.     j++\n7.   // Form line, add spaces, add to result",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize starting index i to 0.",
+      "array": [
+        "This",
+        "is",
+        "an",
+        "example"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Start a new line with 'This', calculate line length.",
+      "array": [
+        "This",
+        "is",
+        "an",
+        "example"
+      ],
+      "i": 0,
+      "j": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Check if 'is' fits in the current line (length 4+1+2 = 7 <= 16).",
+      "array": [
+        "This",
+        "is",
+        "an",
+        "example"
+      ],
+      "i": 0,
+      "j": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Update line length to include 'is'.",
+      "array": [
+        "This",
+        "is",
+        "an",
+        "example"
+      ],
+      "i": 0,
+      "j": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Check if 'an' fits (length 7+1+2 = 10 <= 16).",
+      "array": [
+        "This",
+        "is",
+        "an",
+        "example"
+      ],
+      "i": 0,
+      "j": 3
+    },
+    {
+      "codeLine": 5,
+      "note": "Update line length to include 'an'.",
+      "array": [
+        "This",
+        "is",
+        "an",
+        "example"
+      ],
+      "i": 0,
+      "j": 3
+    },
+    {
+      "codeLine": 4,
+      "note": "Check if 'example' fits (length 10+1+7 = 18 > 16). Does not fit.",
+      "array": [
+        "This",
+        "is",
+        "an",
+        "example"
+      ],
+      "i": 0,
+      "j": 3
+    }
+  ]
+}

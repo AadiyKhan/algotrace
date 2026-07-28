@@ -1,0 +1,78 @@
+{
+  "title": "Longest Absolute File Path",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "String",
+    "Stack"
+  ],
+  "description": "Find the length of the longest absolute path to a file in a file system represented by a string.",
+  "target": 16,
+  "pseudocode": "1. stack = {0: 0}\n2. maxLen = 0\n3. for line in input.split('\\n'):\n4.   depth = line.lastIndexOf('\\t') + 1\n5.   name = line.replace(/\\t/g, '')\n6.   if (name.includes('.')) maxLen = Math.max(maxLen, stack[depth] + name.length)\n7.   else stack[depth + 1] = stack[depth] + name.length + 1",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize stack map where stack[depth] stores current path length.",
+      "array": [
+        0
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Processing root folder 'dir'.",
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Depth of 'dir' is 0.",
+      "i": 0
+    },
+    {
+      "codeLine": 7,
+      "note": "Update stack: depth 1 now has length 3 (dir).",
+      "array": [
+        0,
+        4
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Processing file 'file.txt' at depth 1.",
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Depth is 1, found '.' so it's a file.",
+      "i": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Calculate path: stack[1] (4) + length of 'file.txt' (8) = 12.",
+      "i": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Processing folder 'subdir' at depth 1.",
+      "i": 2
+    },
+    {
+      "codeLine": 7,
+      "note": "Update stack: depth 2 now has length 4 + 6 + 1 = 11.",
+      "array": [
+        0,
+        4,
+        11
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Processing file 'a.txt' at depth 2.",
+      "i": 3
+    },
+    {
+      "codeLine": 6,
+      "note": "Calculate path: stack[2] (11) + length of 'a.txt' (5) = 16.",
+      "i": 3
+    }
+  ]
+}

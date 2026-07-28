@@ -1,0 +1,57 @@
+{
+  "title": "Ambiguous Coordinates",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "String",
+    "Backtracking",
+    "Math"
+  ],
+  "description": "Add decimal points and commas to a string of digits to form valid 2D coordinates.",
+  "target": "(1, 23)",
+  "pseudocode": "1. function getCandidates(s) {\n2.   res = []\n3.   for i in 1..len(s) {\n4.     left = s.slice(0, i), right = s.slice(i)\n5.     if (left.length > 1 && left.startsWith('0')) continue\n6.     if (right.endsWith('0')) continue\n7.     res.push(left + (right ? '.' + right : ''))\n8.   }\n9.   return res\n10. }",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize decomposition for string '123'",
+      "array": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Split at index 1: '1' and '23'",
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Check validity of '1' and '23'",
+      "i": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "Valid coordinate found: 1.23",
+      "i": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Split at index 2: '12' and '3'",
+      "i": 2
+    },
+    {
+      "codeLine": 7,
+      "note": "Valid coordinate found: 12.3",
+      "i": 2
+    },
+    {
+      "codeLine": 10,
+      "note": "Returning all valid combinations",
+      "array": [
+        1.23,
+        12.3
+      ]
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "title": "Smallest Range I",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Math"
+  ],
+  "description": "Given an array nums and integer k, return the smallest possible difference between the maximum and minimum values of the array after adding either -k or +k to each element.",
+  "target": 0,
+  "pseudocode": "1. minVal = min(nums)\n2. maxVal = max(nums)\n3. diff = maxVal - minVal\n4. result = max(0, diff - 2 * k)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Identify the minimum value in the array [1, 3, 6] with k=3",
+      "array": [
+        1,
+        3,
+        6
+      ],
+      "i": "minVal=1"
+    },
+    {
+      "codeLine": 2,
+      "note": "Identify the maximum value in the array",
+      "array": [
+        1,
+        3,
+        6
+      ],
+      "i": "maxVal=6"
+    },
+    {
+      "codeLine": 3,
+      "note": "Calculate initial difference: 6 - 1 = 5",
+      "array": [
+        1,
+        3,
+        6
+      ],
+      "i": "diff=5"
+    },
+    {
+      "codeLine": 4,
+      "note": "Apply k=3 adjustment: max(0, 5 - 2*3) = max(0, -1) = 0",
+      "array": [
+        1,
+        3,
+        6
+      ],
+      "i": "result=0"
+    }
+  ]
+}

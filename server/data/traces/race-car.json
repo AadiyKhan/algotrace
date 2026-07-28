@@ -1,0 +1,54 @@
+{
+  "title": "Race Car",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Dynamic Programming",
+    "Breadth-First Search"
+  ],
+  "description": "Find the minimum number of instructions to reach target position starting from 0, 1 speed.",
+  "target": 3,
+  "pseudocode": "1. queue = [[0, 1, 0]] // [pos, speed, steps]\n2. visited = new Set(['0,1'])\n3. while queue:\n4.   pos, speed, steps = queue.shift()\n5.   if pos == target: return steps\n6.   queue.push([pos + speed, speed * 2, steps + 1]) // Accelerate\n7.   if (pos + speed > target and speed > 0) or (pos + speed < target and speed < 0):\n8.     queue.push([pos, speed > 0 ? -1 : 1, steps + 1]) // Reverse",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize queue with starting position 0, speed 1, and 0 steps.",
+      "array": [
+        0
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Dequeue current state: position 0, speed 1, steps 0.",
+      "i": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Accelerate: position becomes 0+1=1, speed becomes 1*2=2, steps=1.",
+      "array": [
+        1
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Dequeue state: position 1, speed 2, steps 1.",
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Accelerate: position becomes 1+2=3, speed becomes 2*2=4, steps=2.",
+      "array": [
+        3
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Target reached: position 3 equals target 3. Return steps.",
+      "i": 2
+    }
+  ]
+}

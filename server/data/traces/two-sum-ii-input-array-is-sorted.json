@@ -1,0 +1,110 @@
+{
+  "title": "Two Sum II - Input Array Is Sorted",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Two Pointers",
+    "Binary Search"
+  ],
+  "description": "Find two numbers in a sorted array that add up to a specific target.",
+  "target": 9,
+  "pseudocode": "1: left = 0\n2: right = numbers.length - 1\n3: while left < right:\n4:   sum = numbers[left] + numbers[right]\n5:   if sum == target: return [left+1, right+1]\n6:   else if sum < target: left++\n7:   else: right--",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize left pointer at start.",
+      "array": [
+        2,
+        7,
+        11,
+        15
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Initialize right pointer at end.",
+      "array": [
+        2,
+        7,
+        11,
+        15
+      ],
+      "i": 0,
+      "j": 3
+    },
+    {
+      "codeLine": 4,
+      "note": "Calculate sum: 2 + 15 = 17.",
+      "array": [
+        2,
+        7,
+        11,
+        15
+      ],
+      "i": 0,
+      "j": 3
+    },
+    {
+      "codeLine": 7,
+      "note": "Sum 17 > target 9, decrement right pointer.",
+      "array": [
+        2,
+        7,
+        11,
+        15
+      ],
+      "i": 0,
+      "j": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Calculate sum: 2 + 11 = 13.",
+      "array": [
+        2,
+        7,
+        11,
+        15
+      ],
+      "i": 0,
+      "j": 2
+    },
+    {
+      "codeLine": 7,
+      "note": "Sum 13 > target 9, decrement right pointer.",
+      "array": [
+        2,
+        7,
+        11,
+        15
+      ],
+      "i": 0,
+      "j": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Calculate sum: 2 + 7 = 9.",
+      "array": [
+        2,
+        7,
+        11,
+        15
+      ],
+      "i": 0,
+      "j": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Target reached, return [1, 2].",
+      "array": [
+        2,
+        7,
+        11,
+        15
+      ],
+      "i": 0,
+      "j": 1
+    }
+  ]
+}

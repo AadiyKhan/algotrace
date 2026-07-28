@@ -1,0 +1,68 @@
+{
+  "title": "Palindrome Permutation II",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Hash Table",
+    "String",
+    "Backtracking"
+  ],
+  "description": "Find all distinct palindromic permutations of a given string.",
+  "target": "aabb",
+  "pseudocode": "1. count frequencies of characters\n2. check if more than one odd frequency exists\n3. build half string from characters with count/2\n4. generate permutations of half string\n5. mirror each permutation with middle char",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Count frequencies: {a: 2, b: 2}",
+      "array": [
+        "a",
+        "a",
+        "b",
+        "b"
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Check odd counts: Only 0 odd frequencies found, possible to form palindrome",
+      "array": [
+        "a",
+        "a",
+        "b",
+        "b"
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Construct half string: 'ab'",
+      "array": [
+        "a",
+        "b"
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Permutations of 'ab': 'ab', 'ba'",
+      "i": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Mirror 'ab' to 'abba'",
+      "array": [
+        "a",
+        "b",
+        "b",
+        "a"
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Mirror 'ba' to 'baab'",
+      "array": [
+        "b",
+        "a",
+        "a",
+        "b"
+      ]
+    }
+  ]
+}

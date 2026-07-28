@@ -1,0 +1,145 @@
+{
+  "title": "Number of Enclaves",
+  "difficulty": "Medium",
+  "type": "matrix",
+  "tags": [
+    "Array",
+    "DFS",
+    "Matrix"
+  ],
+  "description": "Find the number of land cells in a grid that cannot walk off the boundary of the grid.",
+  "target": 0,
+  "pseudocode": "1. for i in rows, j in cols: if on boundary and grid[i][j] == 1, dfs(i, j)\n2. for i in rows, j in cols: if grid[i][j] == 1, count++\n3. dfs(r, c): if out of bounds or grid[r][c] == 0, return\n4. grid[r][c] = 0, dfs(r+1, c), dfs(r-1, c), dfs(r, c+1), dfs(r, c-1)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Starting DFS from boundary cell [0, 0] to mark connected land as visited",
+      "matrix": [
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Marking [0, 0] as visited (set to 0) and moving to neighbors",
+      "matrix": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "curr": [
+        1,
+        0
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ]
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Marking [1, 0] as visited and moving to neighbor [1, 1]",
+      "matrix": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "curr": [
+        1,
+        1
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Marking [1, 1] as visited; all boundary-connected land now cleared",
+      "matrix": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "curr": [
+        1,
+        1
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Scanning grid for remaining land; count is 0",
+      "matrix": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ]
+    }
+  ]
+}

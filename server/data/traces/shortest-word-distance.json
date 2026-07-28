@@ -1,0 +1,109 @@
+{
+  "title": "Shortest Word Distance",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "String"
+  ],
+  "description": "Find the minimum distance between two words in a list of words.",
+  "target": "words = ['a', 'b', 'c', 'a', 'b'], word1 = 'a', word2 = 'b'",
+  "pseudocode": "1: i1 = -1, i2 = -1, minDist = Infinity\n2: for i = 0 to length - 1:\n3:   if words[i] == word1: i1 = i\n4:   if words[i] == word2: i2 = i\n5:   if i1 != -1 and i2 != -1: minDist = min(minDist, abs(i1 - i2))",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize pointers and result.",
+      "array": [
+        "a",
+        "b",
+        "c",
+        "a",
+        "b"
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Found word1 at index 0.",
+      "array": [
+        "a",
+        "b",
+        "c",
+        "a",
+        "b"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Found word2 at index 1.",
+      "array": [
+        "a",
+        "b",
+        "c",
+        "a",
+        "b"
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Calculate distance: abs(0-1) = 1. minDist = 1.",
+      "array": [
+        "a",
+        "b",
+        "c",
+        "a",
+        "b"
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Found word1 at index 3.",
+      "array": [
+        "a",
+        "b",
+        "c",
+        "a",
+        "b"
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 5,
+      "note": "Calculate distance: abs(3-1) = 2. minDist remains 1.",
+      "array": [
+        "a",
+        "b",
+        "c",
+        "a",
+        "b"
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 4,
+      "note": "Found word2 at index 4.",
+      "array": [
+        "a",
+        "b",
+        "c",
+        "a",
+        "b"
+      ],
+      "i": 4
+    },
+    {
+      "codeLine": 5,
+      "note": "Calculate distance: abs(3-4) = 1. minDist remains 1.",
+      "array": [
+        "a",
+        "b",
+        "c",
+        "a",
+        "b"
+      ],
+      "i": 4
+    }
+  ]
+}

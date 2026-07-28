@@ -1,0 +1,92 @@
+{
+  "title": "Minimum Unique Word Abbreviation",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Bit Manipulation",
+    "Backtracking"
+  ],
+  "description": "Find the shortest abbreviation for a target word that does not conflict with any word in a dictionary.",
+  "target": "apple",
+  "pseudocode": "1. generate all bitmask combinations for length of word\n2. sort masks by number of set bits (shortest length)\n3. for each mask, generate abbreviation string\n4. check if abbreviation conflicts with any word in dictionary\n5. return first valid abbreviation",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize dictionary: ['blade', 'apple'], target: 'apple'",
+      "array": [
+        "apple"
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Generating bitmasks to determine which characters to keep (1) or abbreviate (0)",
+      "array": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Testing mask 00000 (abbreviate entire word)",
+      "array": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Check conflict for '5': 'blade' is length 5, 'apple' is length 5. Conflict found.",
+      "array": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Testing mask 10001 (keep first and last: 'a3e')",
+      "array": [
+        1,
+        0,
+        0,
+        0,
+        1
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Check conflict for 'a3e': 'blade' does not match 'a3e'. No conflict.",
+      "array": [
+        1,
+        0,
+        0,
+        0,
+        1
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Returning 'a3e' as the shortest unique abbreviation.",
+      "array": [
+        1,
+        0,
+        0,
+        0,
+        1
+      ]
+    }
+  ]
+}

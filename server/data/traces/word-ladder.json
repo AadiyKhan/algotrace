@@ -1,0 +1,137 @@
+{
+  "title": "Word Ladder",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "BFS",
+    "Graph",
+    "String"
+  ],
+  "description": "Find the length of the shortest transformation sequence from beginWord to endWord, changing one letter at a time.",
+  "target": "cog",
+  "pseudocode": "1. queue = [[beginWord, 1]]\n2. visited = {beginWord}\n3. while queue not empty:\n4.   word, dist = queue.shift()\n5.   if word == endWord: return dist\n6.   for each neighbor of word in wordList:\n7.     if neighbor not in visited:\n8.       visited.add(neighbor)\n9.       queue.push([neighbor, dist + 1])",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize BFS queue with beginWord and distance 1.",
+      "array": [
+        "hit",
+        "hot",
+        "dot",
+        "dog",
+        "cog"
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Dequeue 'hit', distance 1.",
+      "array": [
+        "hit",
+        "hot",
+        "dot",
+        "dog",
+        "cog"
+      ],
+      "i": "hit"
+    },
+    {
+      "codeLine": 6,
+      "note": "Explore neighbors of 'hit' (e.g., 'hot').",
+      "array": [
+        "hit",
+        "hot",
+        "dot",
+        "dog",
+        "cog"
+      ],
+      "visited": [
+        "hit"
+      ]
+    },
+    {
+      "codeLine": 9,
+      "note": "Enqueue 'hot' with distance 2.",
+      "array": [
+        "hit",
+        "hot",
+        "dot",
+        "dog",
+        "cog"
+      ],
+      "visited": [
+        "hit",
+        "hot"
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Dequeue 'hot', distance 2. Explore neighbors.",
+      "array": [
+        "hit",
+        "hot",
+        "dot",
+        "dog",
+        "cog"
+      ],
+      "i": "hot"
+    },
+    {
+      "codeLine": 9,
+      "note": "Enqueue 'dot' and 'dog' with distance 3.",
+      "array": [
+        "hit",
+        "hot",
+        "dot",
+        "dog",
+        "cog"
+      ],
+      "visited": [
+        "hit",
+        "hot",
+        "dot",
+        "dog"
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Dequeue 'dog', distance 3. Explore neighbors.",
+      "array": [
+        "hit",
+        "hot",
+        "dot",
+        "dog",
+        "cog"
+      ],
+      "i": "dog"
+    },
+    {
+      "codeLine": 9,
+      "note": "Enqueue 'cog' with distance 4.",
+      "array": [
+        "hit",
+        "hot",
+        "dot",
+        "dog",
+        "cog"
+      ],
+      "visited": [
+        "hit",
+        "hot",
+        "dot",
+        "dog",
+        "cog"
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Found endWord 'cog', return distance 5 (or 4 depending on sequence).",
+      "array": [
+        "hit",
+        "hot",
+        "dot",
+        "dog",
+        "cog"
+      ]
+    }
+  ]
+}

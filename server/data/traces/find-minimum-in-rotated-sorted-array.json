@@ -1,0 +1,122 @@
+{
+  "title": "Find Minimum In Rotated Sorted Array",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Binary Search"
+  ],
+  "description": "Find the minimum element in a sorted array that has been rotated.",
+  "target": null,
+  "pseudocode": "1: left = 0, right = n - 1\n2: while left < right\n3:   mid = floor((left + right) / 2)\n4:   if arr[mid] > arr[right]\n5:     left = mid + 1\n6:   else\n7:     right = mid\n8: return arr[left]",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize left and right pointers",
+      "array": [
+        3,
+        4,
+        5,
+        1,
+        2
+      ],
+      "i": 0,
+      "j": 4
+    },
+    {
+      "codeLine": 3,
+      "note": "Calculate mid index",
+      "array": [
+        3,
+        4,
+        5,
+        1,
+        2
+      ],
+      "i": 0,
+      "j": 4,
+      "curr": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Compare arr[mid] (5) with arr[right] (2). 5 > 2 is true",
+      "array": [
+        3,
+        4,
+        5,
+        1,
+        2
+      ],
+      "i": 0,
+      "j": 4,
+      "curr": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Narrow search to right half",
+      "array": [
+        3,
+        4,
+        5,
+        1,
+        2
+      ],
+      "i": 3,
+      "j": 4
+    },
+    {
+      "codeLine": 3,
+      "note": "Calculate new mid",
+      "array": [
+        3,
+        4,
+        5,
+        1,
+        2
+      ],
+      "i": 3,
+      "j": 4,
+      "curr": 3
+    },
+    {
+      "codeLine": 4,
+      "note": "Compare arr[mid] (1) with arr[right] (2). 1 > 2 is false",
+      "array": [
+        3,
+        4,
+        5,
+        1,
+        2
+      ],
+      "i": 3,
+      "j": 4,
+      "curr": 3
+    },
+    {
+      "codeLine": 7,
+      "note": "Move right pointer to mid",
+      "array": [
+        3,
+        4,
+        5,
+        1,
+        2
+      ],
+      "i": 3,
+      "j": 3
+    },
+    {
+      "codeLine": 8,
+      "note": "Loop ends, return arr[3] which is 1",
+      "array": [
+        3,
+        4,
+        5,
+        1,
+        2
+      ],
+      "i": 3,
+      "j": 3
+    }
+  ]
+}

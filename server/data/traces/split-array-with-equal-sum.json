@@ -1,0 +1,101 @@
+{
+  "title": "Split Array With Equal Sum",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Prefix Sum"
+  ],
+  "description": "Determine if an array can be split into four parts with equal sum by removing three elements.",
+  "target": null,
+  "pseudocode": "1. pre = prefixSum(nums)\n2. for j from 3 to n-3:\n3.   set = {}\n4.   for i from 1 to j-2:\n5.     if pre[i-1] == pre[j-1] - pre[i]: set.add(pre[i-1])\n6.   for k from j+2 to n-2:\n6.     if pre[k-1] - pre[j] == pre[n-1] - pre[k] and set.has(pre[k-1] - pre[j]): return true",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Precompute prefix sums for the array [1, 2, 1, 2, 1, 2, 1]",
+      "array": [
+        1,
+        3,
+        4,
+        6,
+        7,
+        9,
+        10
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Outer loop j marks the second split point at index 3",
+      "array": [
+        1,
+        3,
+        4,
+        6,
+        7,
+        9,
+        10
+      ],
+      "j": 3
+    },
+    {
+      "codeLine": 4,
+      "note": "Inner loop i checks possible first split points before j",
+      "array": [
+        1,
+        3,
+        4,
+        6,
+        7,
+        9,
+        10
+      ],
+      "i": 1,
+      "j": 3
+    },
+    {
+      "codeLine": 5,
+      "note": "Found equal sums for parts, adding to hash set",
+      "array": [
+        1,
+        3,
+        4,
+        6,
+        7,
+        9,
+        10
+      ],
+      "i": 1,
+      "j": 3
+    },
+    {
+      "codeLine": 6,
+      "note": "Inner loop k checks possible third split points after j",
+      "array": [
+        1,
+        3,
+        4,
+        6,
+        7,
+        9,
+        10
+      ],
+      "j": 3,
+      "i": 5
+    },
+    {
+      "codeLine": 6,
+      "note": "Verify if sums match and exist in set, returning true",
+      "array": [
+        1,
+        3,
+        4,
+        6,
+        7,
+        9,
+        10
+      ],
+      "j": 3,
+      "i": 5
+    }
+  ]
+}

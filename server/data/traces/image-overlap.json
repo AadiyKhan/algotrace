@@ -1,0 +1,139 @@
+{
+  "title": "Image Overlap",
+  "difficulty": "Medium",
+  "type": "matrix",
+  "tags": [
+    "Array",
+    "Matrix"
+  ],
+  "description": "Find the maximum number of overlapping 1s in two binary matrices by shifting one matrix over the other.",
+  "pseudocode": "function largestOverlap(img1, img2) {\n  let n = img1.length;\n  let count = {};\n  let maxOverlap = 0;\n  for (let i = 0; i < n; i++) {\n    for (let j = 0; j < n; j++) {\n      if (img1[i][j] === 1) {\n        for (let x = 0; x < n; x++) {\n          for (let y = 0; y < n; y++) {\n            if (img2[x][y] === 1) {\n              let diff = (i - x) + \",\" + (j - y);\n              count[diff] = (count[diff] || 0) + 1;\n              maxOverlap = Math.max(maxOverlap, count[diff]);\n            }\n          }\n        }\n      }\n    }\n  }\n  return maxOverlap;\n}",
+  "steps": [
+    {
+      "codeLine": 6,
+      "note": "Starting nested loops to find coordinates of 1s in img1",
+      "matrix": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Found 1 at img1[0,0], now iterating through img2 to find 1s",
+      "matrix": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 11,
+      "note": "Found 1 at img2[0,0]. Calculating shift offset (0-0, 0-0)",
+      "matrix": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 12,
+      "note": "Stored offset '0,0' in map with count 1",
+      "matrix": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Continuing to next 1 in img1 at [0,1]",
+      "matrix": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "curr": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 11,
+      "note": "Found 1 at img2[0,0]. Calculating shift offset (0-0, 1-0)",
+      "matrix": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "curr": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 12,
+      "note": "Stored offset '0,1' in map with count 1",
+      "matrix": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "curr": [
+        0,
+        1
+      ]
+    }
+  ]
+}

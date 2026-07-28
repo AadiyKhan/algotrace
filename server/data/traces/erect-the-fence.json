@@ -1,0 +1,127 @@
+{
+  "title": "Erect the Fence",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Geometry",
+    "Convex Hull"
+  ],
+  "description": "Find all the trees that are on the perimeter of the smallest convex polygon that encompasses all given points.",
+  "pseudocode": "1. sort points by x then y\n2. build lower hull\n3. build upper hull\n4. combine and return unique points",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Sorting points: [[0,0], [1,1], [2,0], [2,2], [3,3]]",
+      "array": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          3,
+          3
+        ]
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Building lower hull: Add [0,0], [2,0]",
+      "array": [
+        [
+          0,
+          0
+        ],
+        [
+          2,
+          0
+        ]
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Adding [3,3] to lower hull",
+      "array": [
+        [
+          0,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          3
+        ]
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Building upper hull: Add [3,3], [2,2], [1,1], [0,0]",
+      "array": [
+        [
+          0,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Final set of hull points",
+      "array": [
+        [
+          0,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          1,
+          1
+        ]
+      ]
+    }
+  ]
+}

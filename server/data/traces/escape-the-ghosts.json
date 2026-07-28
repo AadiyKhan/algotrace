@@ -1,0 +1,53 @@
+{
+  "title": "Escape The Ghosts",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Math"
+  ],
+  "description": "Determine if you can reach the target coordinate (x, y) before any ghosts, given their starting positions.",
+  "target": [
+    2,
+    0
+  ],
+  "pseudocode": "1: function escapeGhosts(ghosts, target) {\n2:   let dist = Math.abs(target[0]) + Math.abs(target[1]);\n3:   for (let i = 0; i < ghosts.length; i++) {\n4:     let ghostDist = Math.abs(ghosts[i][0] - target[0]) + Math.abs(ghosts[i][1] - target[1]);\n5:     if (ghostDist <= dist) return false;\n6:   }\n7:   return true;\n8: }",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Calculate distance from origin (0,0) to target (2,0): |2| + |0| = 2.",
+      "array": [
+        2,
+        0
+      ],
+      "i": null
+    },
+    {
+      "codeLine": 3,
+      "note": "Start loop to check ghost at [1, 0].",
+      "array": [
+        2,
+        0
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Calculate distance from ghost [1, 0] to target [2, 0]: |1-2| + |0-0| = 1.",
+      "array": [
+        2,
+        0
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Compare ghost distance (1) with player distance (2). Since 1 <= 2, ghost intercepts.",
+      "array": [
+        2,
+        0
+      ],
+      "i": 0
+    }
+  ]
+}

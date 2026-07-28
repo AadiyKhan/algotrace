@@ -1,0 +1,86 @@
+{
+  "title": "Card Flipping Game",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Hash Table"
+  ],
+  "description": "Find the smallest integer on the face of a card that is not on the back of any card after flipping.",
+  "target": null,
+  "pseudocode": "1. let forbidden = new Set()\n2. for i = 0 to fronts.length - 1:\n3.   if fronts[i] == backs[i]: forbidden.add(fronts[i])\n4. let minVal = Infinity\n5. for i = 0 to fronts.length - 1:\n6.   if !forbidden.has(fronts[i]): minVal = min(minVal, fronts[i])\n7.   if !forbidden.has(backs[i]): minVal = min(minVal, backs[i])\n8. return minVal == Infinity ? 0 : minVal",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize forbidden set.",
+      "array": [
+        1,
+        2,
+        4,
+        4,
+        7
+      ],
+      "i": null
+    },
+    {
+      "codeLine": 2,
+      "note": "Identify cards with same front and back (e.g., [4, 4]).",
+      "array": [
+        1,
+        2,
+        4,
+        4,
+        7
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "4 is forbidden as front[2] == back[2].",
+      "array": [
+        1,
+        2,
+        4,
+        4,
+        7
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Checking valid values.",
+      "array": [
+        1,
+        2,
+        4,
+        4,
+        7
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "1 is not forbidden, update minVal to 1.",
+      "array": [
+        1,
+        2,
+        4,
+        4,
+        7
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 8,
+      "note": "Return minVal.",
+      "array": [
+        1,
+        2,
+        4,
+        4,
+        7
+      ],
+      "i": 4
+    }
+  ]
+}

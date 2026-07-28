@@ -1,0 +1,94 @@
+{
+  "title": "Bitwise ORs of Subarrays",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Bit Manipulation"
+  ],
+  "description": "Return the number of distinct values that can be formed by bitwise OR of all subarrays of the input array.",
+  "target": null,
+  "pseudocode": "1: res = new Set()\n2: cur = new Set()\n3: for x in arr:\n4:   next_cur = {x}\n5:   for val in cur:\n6:     next_cur.add(val | x)\n7:   cur = next_cur\n8:   res.update(cur)\n9: return res.size",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize result set 'res' to store unique OR values.",
+      "array": [
+        1,
+        2
+      ],
+      "i": null
+    },
+    {
+      "codeLine": 3,
+      "note": "Start iteration with x = 1.",
+      "array": [
+        1,
+        2
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Initialize next_cur set with the current element 1.",
+      "array": [
+        1,
+        2
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 8,
+      "note": "Add current OR results {1} to result set.",
+      "array": [
+        1,
+        2
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Iterate to next element x = 2.",
+      "array": [
+        1,
+        2
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Start next_cur with the new element 2.",
+      "array": [
+        1,
+        2
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Perform bitwise OR: 1 | 2 = 3. Add to next_cur.",
+      "array": [
+        1,
+        2
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 8,
+      "note": "Update res set with {2, 3}. Total unique values: {1, 2, 3}.",
+      "array": [
+        1,
+        2
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 9,
+      "note": "Return final size of the result set.",
+      "array": [
+        1,
+        2
+      ]
+    }
+  ]
+}

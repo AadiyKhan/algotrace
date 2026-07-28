@@ -1,0 +1,153 @@
+{
+  "title": "Max Consecutive Ones",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array"
+  ],
+  "description": "Find the maximum number of consecutive 1s in a binary array.",
+  "pseudocode": "let maxCount = 0;\nlet currentCount = 0;\nfor (let i = 0; i < nums.length; i++) {\n  if (nums[i] === 1) {\n    currentCount++;\n    maxCount = Math.max(maxCount, currentCount);\n  } else {\n    currentCount = 0;\n  }\n}",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize maxCount to 0",
+      "array": [
+        1,
+        1,
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Initialize currentCount to 0",
+      "array": [
+        1,
+        1,
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Start loop at i=0",
+      "array": [
+        1,
+        1,
+        0,
+        1
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "nums[0] is 1, increment currentCount",
+      "array": [
+        1,
+        1,
+        0,
+        1
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Update maxCount to 1",
+      "array": [
+        1,
+        1,
+        0,
+        1
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "i=1, nums[1] is 1",
+      "array": [
+        1,
+        1,
+        0,
+        1
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Increment currentCount to 2",
+      "array": [
+        1,
+        1,
+        0,
+        1
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Update maxCount to 2",
+      "array": [
+        1,
+        1,
+        0,
+        1
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "i=2, nums[2] is 0",
+      "array": [
+        1,
+        1,
+        0,
+        1
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 8,
+      "note": "Reset currentCount to 0",
+      "array": [
+        1,
+        1,
+        0,
+        1
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "i=3, nums[3] is 1",
+      "array": [
+        1,
+        1,
+        0,
+        1
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 4,
+      "note": "Increment currentCount to 1",
+      "array": [
+        1,
+        1,
+        0,
+        1
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 6,
+      "note": "maxCount remains 2",
+      "array": [
+        1,
+        1,
+        0,
+        1
+      ],
+      "i": 3
+    }
+  ]
+}

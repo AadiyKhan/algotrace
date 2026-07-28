@@ -1,0 +1,77 @@
+{
+  "title": "Guess The Word",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "String",
+    "Minimax"
+  ],
+  "description": "Guess a secret word from a list of candidates by using a feedback function that returns the number of matching characters at the same indices.",
+  "target": "secret",
+  "pseudocode": "1. candidates = wordlist\n2. while candidates is not empty:\n3.   guess = getBestGuess(candidates)\n4.   matches = guess(guess)\n5.   if matches == 6: return\n6.   candidates = filter(candidates, guess, matches)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize candidates with the full wordlist.",
+      "array": [
+        "acckzz",
+        "ccbazz",
+        "eiowzz",
+        "abcczz"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Pick a word that minimizes the maximum number of candidates remaining (Minimax strategy).",
+      "array": [
+        "acckzz",
+        "ccbazz",
+        "eiowzz",
+        "abcczz"
+      ],
+      "i": "acckzz"
+    },
+    {
+      "codeLine": 4,
+      "note": "Call master.guess() and receive feedback (e.g., 2 matches).",
+      "array": [
+        "acckzz",
+        "ccbazz",
+        "eiowzz",
+        "abcczz"
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Filter candidates: keep only those with the same feedback match count against 'acckzz'.",
+      "array": [
+        "ccbazz",
+        "abcczz"
+      ],
+      "visited": [
+        0,
+        3
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Select next best candidate from the filtered list.",
+      "array": [
+        "ccbazz",
+        "abcczz"
+      ],
+      "i": "ccbazz"
+    },
+    {
+      "codeLine": 5,
+      "note": "Matches is 6, secret word found.",
+      "array": [
+        "ccbazz"
+      ],
+      "i": "ccbazz"
+    }
+  ]
+}

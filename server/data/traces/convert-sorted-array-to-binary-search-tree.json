@@ -1,0 +1,94 @@
+{
+  "title": "Convert Sorted Array to Binary Search Tree",
+  "difficulty": "Easy",
+  "type": "tree",
+  "tags": [
+    "Array",
+    "Tree",
+    "BST",
+    "DFS"
+  ],
+  "description": "Convert a sorted array into a height-balanced binary search tree.",
+  "target": null,
+  "pseudocode": "1. function buildBST(arr, left, right) {\n2.   if (left > right) return null;\n3.   mid = Math.floor((left + right) / 2);\n4.   node = new Node(arr[mid]);\n5.   node.left = buildBST(arr, left, mid - 1);\n6.   node.right = buildBST(arr, mid + 1, right);\n7.   return node;\n8. }",
+  "steps": [
+    {
+      "codeLine": 3,
+      "note": "Root of tree: picking middle element index 1 (val: 2) from [1, 2, 3]",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 2,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Recursively building left subtree for element [1]",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 2,
+          "left": 1,
+          "right": null
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Recursively building right subtree for element [3]",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 2,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Tree construction complete",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 2,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ]
+    }
+  ]
+}

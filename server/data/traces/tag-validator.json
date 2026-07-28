@@ -1,0 +1,69 @@
+{
+  "title": "Tag Validator",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "String",
+    "Stack"
+  ],
+  "description": "Validate if a given code string follows specific tag rules (opening/closing tags, nested structure, and content rules).",
+  "pseudocode": "1. stack = []\n2. i = 0\n3. while i < code.length:\n4.   if code[i] starts with '<![': \n5.     i = find_cdata_end(code, i)\n6.   else if code[i] starts with '</': \n7.     tag = extract_tag(code, i)\n8.     if stack.pop() != tag: return false\n9.   else if code[i] starts with '<': \n10.    tag = extract_tag(code, i)\n11.    stack.push(tag)\n12. return stack.length == 0",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize empty stack to track tag names",
+      "array": [
+        "<DIV>abc</DIV>"
+      ]
+    },
+    {
+      "codeLine": 9,
+      "note": "Found opening tag <DIV>",
+      "array": [
+        "<DIV>",
+        "abc",
+        "</DIV>"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 11,
+      "note": "Push DIV to stack",
+      "array": [
+        "<DIV>",
+        "abc",
+        "</DIV>"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Found closing tag </DIV>",
+      "array": [
+        "<DIV>",
+        "abc",
+        "</DIV>"
+      ],
+      "i": 8
+    },
+    {
+      "codeLine": 8,
+      "note": "Pop DIV from stack and validate match",
+      "array": [
+        "<DIV>",
+        "abc",
+        "</DIV>"
+      ],
+      "i": 8
+    },
+    {
+      "codeLine": 12,
+      "note": "Stack is empty, return true",
+      "array": [
+        "<DIV>",
+        "abc",
+        "</DIV>"
+      ]
+    }
+  ]
+}

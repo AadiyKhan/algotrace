@@ -1,0 +1,84 @@
+{
+  "title": "Expression Add Operators",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "String",
+    "Backtracking",
+    "Recursion"
+  ],
+  "description": "Find all ways to add operators (+, -, *) between digits of a string to equal a target value.",
+  "target": 6,
+  "pseudocode": "function solve(index, currentSum, lastOperand, path) {\n  if (index === num.length) {\n    if (currentSum === target) res.push(path);\n    return;\n  }\n  for (let i = index; i < num.length; i++) {\n    let val = parseInt(num.substring(index, i + 1));\n    if (index === 0) solve(i + 1, val, val, val.toString());\n    else {\n      solve(i + 1, currentSum + val, val, path + '+' + val);\n      solve(i + 1, currentSum - val, -val, path + '-' + val);\n      solve(i + 1, currentSum - lastOperand + lastOperand * val, lastOperand * val, path + '*' + val);\n    }\n    if (num[index] === '0') break;\n  }\n}",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize recursion with index 0, sum 0, lastOperand 0, empty path.",
+      "array": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "First digit: include 1 as the start of the expression.",
+      "array": [
+        1,
+        2,
+        3
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 10,
+      "note": "Recursive call: index=1, currentSum=1, lastOperand=1, path='1'.",
+      "array": [
+        1,
+        2,
+        3
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 12,
+      "note": "Try addition: 1 + 2 = 3.",
+      "array": [
+        1,
+        2,
+        3
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 14,
+      "note": "Try multiplication: 1 + 2 * 3 = 1 + 6 = 7. (Invalid path)",
+      "array": [
+        1,
+        2,
+        3
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 12,
+      "note": "Try addition: 1 + 2 + 3 = 6. Target met!",
+      "array": [
+        1,
+        2,
+        3
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Reached end of string, valid expression '1+2+3' added to results.",
+      "array": [
+        1,
+        2,
+        3
+      ]
+    }
+  ]
+}

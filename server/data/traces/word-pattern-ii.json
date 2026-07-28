@@ -1,0 +1,53 @@
+{
+  "title": "Word Pattern II",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Backtracking",
+    "String",
+    "Hash Table"
+  ],
+  "description": "Determine if a string matches a pattern where each character maps to a non-empty substring.",
+  "target": "pattern: 'ab', s: 'redblue'",
+  "pseudocode": "1: function backtrack(pIdx, sIdx, map, used) {\n2:   if (pIdx === pattern.length) return sIdx === s.length;\n3:   char = pattern[pIdx];\n4:   if (map.has(char)) {\n5:     sub = map.get(char);\n6:     if (!s.startsWith(sub, sIdx)) return false;\n7:     return backtrack(pIdx + 1, sIdx + sub.length, map, used);\n8:   }\n9:   for (len = 1; sIdx + len <= s.length; len++) {\n10:    sub = s.substring(sIdx, sIdx + len);\n11:    if (used.has(sub)) continue;\n12:    map.set(char, sub); used.add(sub);\n13:    if (backtrack(pIdx + 1, sIdx + len, map, used)) return true;\n14:    map.delete(char); used.delete(sub);\n15:  }\n16:  return false;\n17: }",
+  "steps": [
+    {
+      "codeLine": 3,
+      "note": "Starting with pattern char 'a' at index 0.",
+      "i": 0
+    },
+    {
+      "codeLine": 10,
+      "note": "Trying mapping 'a' to 'r'.",
+      "i": 0,
+      "curr": "a -> r"
+    },
+    {
+      "codeLine": 13,
+      "note": "Recursive call for pattern char 'b' at s index 1.",
+      "i": 1
+    },
+    {
+      "codeLine": 10,
+      "note": "Trying mapping 'b' to 'e'.",
+      "i": 1,
+      "curr": "b -> e"
+    },
+    {
+      "codeLine": 2,
+      "note": "Pattern exhausted, s index not at end. Backtracking.",
+      "i": 1
+    },
+    {
+      "codeLine": 10,
+      "note": "Trying mapping 'b' to 'edblue'.",
+      "i": 1,
+      "curr": "b -> edblue"
+    },
+    {
+      "codeLine": 2,
+      "note": "Both pattern and s exhausted. Success.",
+      "i": 2
+    }
+  ]
+}

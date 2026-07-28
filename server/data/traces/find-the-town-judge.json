@@ -1,0 +1,80 @@
+{
+  "title": "Find the Town Judge",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Graph",
+    "Counting"
+  ],
+  "description": "Find the town judge who is trusted by everyone else and trusts no one.",
+  "target": 3,
+  "pseudocode": "1. trusts = [[1,3],[2,3]]\n2. scores = new Array(n+1).fill(0)\n3. for [a, b] of trusts:\n4.   scores[a]--\n5.   scores[b]++\n6. for i from 1 to n:\n7.   if scores[i] == n - 1 return i\n8. return -1",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Initialize scores array for 3 people (index 0 unused).",
+      "array": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Person 1 trusts 3, decrement score[1].",
+      "array": [
+        0,
+        -1,
+        0,
+        0
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Person 1 trusts 3, increment score[3].",
+      "array": [
+        0,
+        -1,
+        0,
+        1
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Person 2 trusts 3, decrement score[2].",
+      "array": [
+        0,
+        -1,
+        -1,
+        1
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Person 2 trusts 3, increment score[3].",
+      "array": [
+        0,
+        -1,
+        -1,
+        2
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 7,
+      "note": "Check index 3: score is 2 (n-1), match found.",
+      "array": [
+        0,
+        -1,
+        -1,
+        2
+      ],
+      "i": 3
+    }
+  ]
+}

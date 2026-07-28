@@ -1,0 +1,221 @@
+{
+  "title": "Boundary of Binary Tree",
+  "difficulty": "Medium",
+  "type": "tree",
+  "tags": [
+    "Tree",
+    "DFS"
+  ],
+  "description": "Return the boundary values of the binary tree in anti-clockwise order.",
+  "pseudocode": "1. result = [root.val]\n2. addLeftBoundary(root.left)\n3. addLeaves(root)\n4. addRightBoundary(root.right)\n5. return result",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize result with root value.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 4,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 5,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        0
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Traverse left boundary: add node 2.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 4,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 5,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Traverse leaves: add node 4, 5, and 3.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 4,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 5,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        0,
+        1,
+        3,
+        4,
+        2
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Traverse right boundary: node 3 is a leaf, skip.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 4,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 5,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        0,
+        1,
+        3,
+        4,
+        2
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Return final boundary list [1, 2, 4, 5, 3].",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 4,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 5,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        0,
+        1,
+        3,
+        4,
+        2
+      ]
+    }
+  ]
+}

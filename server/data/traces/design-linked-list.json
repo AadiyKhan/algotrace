@@ -1,0 +1,74 @@
+{
+  "title": "Design Linked List",
+  "difficulty": "Medium",
+  "type": "linked-list",
+  "tags": [
+    "Linked List",
+    "Design"
+  ],
+  "description": "Implement the MyLinkedList class to support adding at head, tail, and index.",
+  "target": null,
+  "pseudocode": "1. addAtHead(val) { \n2.   newNode = {val, next: head}; \n3.   head = newNode; \n4. } \n5. addAtTail(val) { \n6.   curr = head; \n7.   while(curr.next) curr = curr.next; \n8.   curr.next = {val, next: null}; \n9. }",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Creating a new node with value 10 to add at head.",
+      "nodes": [
+        {
+          "val": 10,
+          "next": null
+        }
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Updating head to point to the new node.",
+      "nodes": [
+        {
+          "val": 10,
+          "next": null
+        }
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Starting at head to find the tail for addAtTail(20).",
+      "nodes": [
+        {
+          "val": 10,
+          "next": null
+        }
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 7,
+      "note": "Traversal complete, curr is at the last node.",
+      "nodes": [
+        {
+          "val": 10,
+          "next": 1
+        },
+        {
+          "val": 20,
+          "next": null
+        }
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 8,
+      "note": "Linking new node 20 to the end of the list.",
+      "nodes": [
+        {
+          "val": 10,
+          "next": 1
+        },
+        {
+          "val": 20,
+          "next": null
+        }
+      ]
+    }
+  ]
+}

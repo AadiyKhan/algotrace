@@ -1,0 +1,52 @@
+{
+  "title": "Design Phone Directory",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Design",
+    "Hash Table",
+    "Linked List"
+  ],
+  "description": "Design a phone directory that initially supports maxNumbers and allows getting, checking, and releasing phone numbers.",
+  "target": 3,
+  "pseudocode": "1. Set pool = [0, 1, 2]\n2. get(): return pool.shift()\n3. check(num): return pool.includes(num)\n4. release(num): if !pool.includes(num) { pool.push(num) }",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize phone directory with 3 slots.",
+      "array": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Get a number from the directory.",
+      "array": [
+        1,
+        2
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Check if number 2 is available.",
+      "array": [
+        1,
+        2
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Release number 0 back into the directory.",
+      "array": [
+        1,
+        2,
+        0
+      ],
+      "i": 0
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "title": "Largest Palindrome Product",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Math"
+  ],
+  "description": "Find the largest palindrome made from the product of two n-digit numbers.",
+  "target": 2,
+  "pseudocode": "1: upper = 10^n - 1\n2: lower = 10^(n-1)\n3: for i from upper down to lower:\n4:   for j from i down to lower:\n5:     product = i * j\n6:     if isPalindrome(product):\n7:       return product % 1337",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Set upper bound for n=2 as 99",
+      "array": [
+        99,
+        98
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Start outer loop with i = 99",
+      "i": 99
+    },
+    {
+      "codeLine": 4,
+      "note": "Start inner loop with j = 99",
+      "i": 99,
+      "j": 99
+    },
+    {
+      "codeLine": 5,
+      "note": "Calculate product 99 * 99 = 9801",
+      "i": 99,
+      "j": 99
+    },
+    {
+      "codeLine": 6,
+      "note": "Check if 9801 is palindrome: No",
+      "i": 99,
+      "j": 99
+    },
+    {
+      "codeLine": 4,
+      "note": "Decrement j to 98",
+      "i": 99,
+      "j": 98
+    },
+    {
+      "codeLine": 5,
+      "note": "Calculate product 99 * 98 = 9702",
+      "i": 99,
+      "j": 98
+    },
+    {
+      "codeLine": 6,
+      "note": "Check if 9702 is palindrome: No",
+      "i": 99,
+      "j": 98
+    },
+    {
+      "codeLine": 4,
+      "note": "Decrement j until j = 91",
+      "i": 99,
+      "j": 91
+    },
+    {
+      "codeLine": 5,
+      "note": "Calculate product 99 * 91 = 9009",
+      "i": 99,
+      "j": 91
+    },
+    {
+      "codeLine": 6,
+      "note": "Check if 9009 is palindrome: Yes",
+      "i": 99,
+      "j": 91
+    },
+    {
+      "codeLine": 7,
+      "note": "Return 9009 % 1337 = 987",
+      "i": 99,
+      "j": 91
+    }
+  ]
+}

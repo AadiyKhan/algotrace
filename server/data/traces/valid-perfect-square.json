@@ -1,0 +1,62 @@
+{
+  "title": "Valid Perfect Square",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Math",
+    "Binary Search"
+  ],
+  "description": "Determine if a positive integer num is a perfect square using binary search.",
+  "target": 16,
+  "pseudocode": "1. low = 1, high = num\n2. while low <= high:\n3.   mid = low + (high - low) / 2\n4.   if mid * mid == num: return true\n5.   if mid * mid < num: low = mid + 1\n6.   else: high = mid - 1\n7. return false",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize binary search range [1, 16].",
+      "i": 1,
+      "j": 16
+    },
+    {
+      "codeLine": 2,
+      "note": "Enter while loop, 1 <= 16 is true.",
+      "i": 1,
+      "j": 16
+    },
+    {
+      "codeLine": 3,
+      "note": "Calculate mid = 1 + (16 - 1) / 2 = 8.",
+      "i": 1,
+      "j": 16,
+      "curr": 8
+    },
+    {
+      "codeLine": 4,
+      "note": "8 * 8 = 64. 64 != 16.",
+      "curr": 8
+    },
+    {
+      "codeLine": 6,
+      "note": "64 > 16, move high to mid - 1 = 7.",
+      "i": 1,
+      "j": 7
+    },
+    {
+      "codeLine": 2,
+      "note": "1 <= 7 is true.",
+      "i": 1,
+      "j": 7
+    },
+    {
+      "codeLine": 3,
+      "note": "Calculate mid = 1 + (7 - 1) / 2 = 4.",
+      "i": 1,
+      "j": 7,
+      "curr": 4
+    },
+    {
+      "codeLine": 4,
+      "note": "4 * 4 = 16. Match found!",
+      "curr": 4
+    }
+  ]
+}

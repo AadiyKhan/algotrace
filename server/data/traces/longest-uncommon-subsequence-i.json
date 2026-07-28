@@ -1,0 +1,40 @@
+{
+  "title": "Longest Uncommon Subsequence I",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "String",
+    "Brainteaser"
+  ],
+  "description": "Find the length of the longest uncommon subsequence of two given strings.",
+  "pseudocode": "if (a === b) return -1;\nreturn Math.max(a.length, b.length);",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Comparing string a ('aba') and string b ('cdc')",
+      "array": [
+        "a",
+        "b",
+        "a"
+      ]
+    },
+    {
+      "codeLine": 1,
+      "note": "Strings are not equal, proceeding to calculate max length",
+      "array": [
+        "a",
+        "b",
+        "a"
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Return max length: 3",
+      "array": [
+        "a",
+        "b",
+        "a"
+      ]
+    }
+  ]
+}

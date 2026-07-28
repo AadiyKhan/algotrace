@@ -1,0 +1,97 @@
+{
+  "title": "Flatten a Multilevel Doubly Linked List",
+  "difficulty": "Medium",
+  "type": "linked-list",
+  "tags": [
+    "Linked List",
+    "Depth-First Search"
+  ],
+  "description": "Flatten a multilevel doubly linked list so that all nodes appear in a single-level doubly linked list using DFS.",
+  "pseudocode": "1: function flatten(head):\n2:   curr = head\n3:   while curr:\n4:     if curr.child:\n5:       next = curr.next\n6:       child = flatten(curr.child)\n7:       curr.next = child\n8:       child.prev = curr\n9:       curr.child = null\n10:      tail = child\n11:      while tail.next: tail = tail.next\n12:      tail.next = next\n13:      if next: next.prev = tail\n14:    curr = curr.next",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Initialize curr at the head node (1).",
+      "nodes": [
+        {
+          "val": 1,
+          "next": 1,
+          "child": 2
+        },
+        {
+          "val": 2,
+          "next": null,
+          "child": null
+        }
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Node 1 has a child, entering flattening logic.",
+      "nodes": [
+        {
+          "val": 1,
+          "next": 1,
+          "child": 2
+        },
+        {
+          "val": 2,
+          "next": null,
+          "child": null
+        }
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 7,
+      "note": "Connect node 1 to its child node 2.",
+      "nodes": [
+        {
+          "val": 1,
+          "next": 1,
+          "child": null
+        },
+        {
+          "val": 2,
+          "next": null,
+          "child": null
+        }
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 14,
+      "note": "Move to the next node in the now-flattened list.",
+      "nodes": [
+        {
+          "val": 1,
+          "next": 1,
+          "child": null
+        },
+        {
+          "val": 2,
+          "next": null,
+          "child": null
+        }
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Traversal finished, list is flat.",
+      "nodes": [
+        {
+          "val": 1,
+          "next": 1,
+          "child": null
+        },
+        {
+          "val": 2,
+          "next": null,
+          "child": null
+        }
+      ],
+      "curr": null
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "title": "Campus Bikes II",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Backtracking",
+    "Bitmask",
+    "Dynamic Programming"
+  ],
+  "description": "Assign bikes to workers to minimize the total Manhattan distance using bitmask DP.",
+  "target": null,
+  "pseudocode": "1. memo = {}\n2. function solve(workerIdx, mask) {\n3.   if (workerIdx == workers.length) return 0\n4.   if (mask in memo) return memo[mask]\n5.   res = Infinity\n6.   for (bikeIdx = 0; bikeIdx < bikes.length; bikeIdx++) {\n7.     if (!(mask & (1 << bikeIdx))) {\n8.       dist = abs(w[workerIdx].x - b[bikeIdx].x) + abs(w[workerIdx].y - b[bikeIdx].y)\n9.       res = min(res, dist + solve(workerIdx + 1, mask | (1 << bikeIdx)))\n10.    }\n11.  }\n12.  return memo[mask] = res\n13. }",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize memoization table and starting worker index 0 with mask 00 (no bikes used).",
+      "i": 0,
+      "visited": []
+    },
+    {
+      "codeLine": 6,
+      "note": "Worker 0 tries bike 0 (dist 2). Current mask: 01.",
+      "i": 0,
+      "visited": [
+        0
+      ]
+    },
+    {
+      "codeLine": 9,
+      "note": "Worker 1 tries bike 1 (dist 3). Current mask: 11.",
+      "i": 1,
+      "visited": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "All workers assigned, return distance 5.",
+      "i": 2,
+      "visited": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 12,
+      "note": "Store result in memo[11] = 5.",
+      "i": 2,
+      "visited": [
+        0,
+        1
+      ]
+    }
+  ]
+}

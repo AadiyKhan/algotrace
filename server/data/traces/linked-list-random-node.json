@@ -1,0 +1,189 @@
+{
+  "title": "Linked List Random Node",
+  "difficulty": "Medium",
+  "type": "linked-list",
+  "tags": [
+    "Linked List",
+    "Reservoir Sampling",
+    "Math"
+  ],
+  "description": "Choose a random node's value from a linked list with uniform probability using reservoir sampling.",
+  "target": null,
+  "pseudocode": "1. reservoir = null\n2. for i = 0 to n-1:\n3.   if rand(0, i) == 0:\n4.     reservoir = current.val\n5.   current = current.next",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize reservoir to null and current to head.",
+      "nodes": [
+        {
+          "val": 1,
+          "next": 1
+        },
+        {
+          "val": 2,
+          "next": 2
+        },
+        {
+          "val": 3,
+          "next": null
+        }
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Start iteration at index 0.",
+      "nodes": [
+        {
+          "val": 1,
+          "next": 1
+        },
+        {
+          "val": 2,
+          "next": 2
+        },
+        {
+          "val": 3,
+          "next": null
+        }
+      ],
+      "i": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "rand(0, 0) is 0, so condition met.",
+      "nodes": [
+        {
+          "val": 1,
+          "next": 1
+        },
+        {
+          "val": 2,
+          "next": 2
+        },
+        {
+          "val": 3,
+          "next": null
+        }
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Update reservoir to current node value: 1.",
+      "nodes": [
+        {
+          "val": 1,
+          "next": 1
+        },
+        {
+          "val": 2,
+          "next": 2
+        },
+        {
+          "val": 3,
+          "next": null
+        }
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Move to index 1.",
+      "nodes": [
+        {
+          "val": 1,
+          "next": 1
+        },
+        {
+          "val": 2,
+          "next": 2
+        },
+        {
+          "val": 3,
+          "next": null
+        }
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "rand(0, 1) returned 1 (condition not met).",
+      "nodes": [
+        {
+          "val": 1,
+          "next": 1
+        },
+        {
+          "val": 2,
+          "next": 2
+        },
+        {
+          "val": 3,
+          "next": null
+        }
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Move to index 2.",
+      "nodes": [
+        {
+          "val": 1,
+          "next": 1
+        },
+        {
+          "val": 2,
+          "next": 2
+        },
+        {
+          "val": 3,
+          "next": null
+        }
+      ],
+      "i": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "rand(0, 2) is 0, so condition met.",
+      "nodes": [
+        {
+          "val": 1,
+          "next": 1
+        },
+        {
+          "val": 2,
+          "next": 2
+        },
+        {
+          "val": 3,
+          "next": null
+        }
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Update reservoir to current node value: 3.",
+      "nodes": [
+        {
+          "val": 1,
+          "next": 1
+        },
+        {
+          "val": 2,
+          "next": 2
+        },
+        {
+          "val": 3,
+          "next": null
+        }
+      ],
+      "i": 2
+    }
+  ]
+}

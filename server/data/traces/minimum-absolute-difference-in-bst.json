@@ -1,0 +1,155 @@
+{
+  "title": "Minimum Absolute Difference in BST",
+  "difficulty": "Easy",
+  "type": "tree",
+  "tags": [
+    "Tree",
+    "BST",
+    "Depth-First Search"
+  ],
+  "description": "Find the minimum absolute difference between the values of any two different nodes in the BST.",
+  "target": null,
+  "pseudocode": "1: let minDiff = Infinity, prev = null\n2: function traverse(node) {\n3:   if (!node) return\n4:   traverse(node.left)\n5:   if (prev !== null) minDiff = min(minDiff, node.val - prev)\n6:   prev = node.val\n7:   traverse(node.right)\n8: }",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Starting traversal at root (val: 4)",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 4,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 2,
+          "val": 6,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": []
+    },
+    {
+      "codeLine": 4,
+      "note": "Traversing to left child (val: 2)",
+      "visited": [
+        0
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Traversing to left child (val: 1)",
+      "visited": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Reached leaf 1. Setting prev = 1",
+      "visited": [
+        0,
+        1,
+        3
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Backtrack to 2. Difference 2-1 = 1. minDiff = 1",
+      "visited": [
+        0,
+        1,
+        3
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Setting prev = 2",
+      "visited": [
+        0,
+        1,
+        3
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Traversing to right child of 2 (val: 3)",
+      "visited": [
+        0,
+        1,
+        3,
+        4
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Diff 3-2 = 1. minDiff remains 1",
+      "visited": [
+        0,
+        1,
+        3,
+        4
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Setting prev = 3",
+      "visited": [
+        0,
+        1,
+        3,
+        4
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Backtrack to 4. Diff 4-3 = 1. minDiff remains 1",
+      "visited": [
+        0,
+        1,
+        3,
+        4
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Traversing to right child (val: 6)",
+      "visited": [
+        0,
+        1,
+        3,
+        4
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Diff 6-4 = 2. minDiff remains 1",
+      "visited": [
+        0,
+        1,
+        3,
+        4,
+        2
+      ]
+    }
+  ]
+}

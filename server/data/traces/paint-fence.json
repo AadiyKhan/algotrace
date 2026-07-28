@@ -1,0 +1,84 @@
+{
+  "title": "Paint Fence",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Dynamic Programming"
+  ],
+  "description": "Count the number of ways to paint a fence with n posts and k colors such that no more than two adjacent posts have the same color.",
+  "target": 3,
+  "pseudocode": "1. if n == 0 return 0\n2. if n == 1 return k\n3. same = 0, diff = k\n4. for i = 2 to n:\n5.   temp_same = diff\n6.   diff = (same + diff) * (k - 1)\n7.   same = temp_same\n8. return same + diff",
+  "steps": [
+    {
+      "codeLine": 3,
+      "note": "Initialize variables for n=3, k=2. same (last two same) = 0, diff (last two diff) = 2.",
+      "array": [
+        0,
+        2
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Starting loop at i=2. Store previous diff into temp_same.",
+      "array": [
+        2,
+        2
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Calculate new diff: (0 + 2) * (2 - 1) = 2.",
+      "array": [
+        2,
+        2
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 7,
+      "note": "Update same to temp_same (2).",
+      "array": [
+        2,
+        2
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "i=3. Store previous diff (2) into temp_same.",
+      "array": [
+        2,
+        2
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 6,
+      "note": "Calculate new diff: (2 + 2) * (2 - 1) = 4.",
+      "array": [
+        2,
+        4
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 7,
+      "note": "Update same to temp_same (2).",
+      "array": [
+        2,
+        4
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 8,
+      "note": "Return same + diff = 2 + 4 = 6.",
+      "array": [
+        2,
+        4
+      ]
+    }
+  ]
+}

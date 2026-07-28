@@ -1,0 +1,183 @@
+{
+  "title": "Subarray Sums Divisible By K",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "Prefix Sum"
+  ],
+  "description": "Find the total number of continuous subarrays whose sum is divisible by k.",
+  "target": 5,
+  "pseudocode": "1. count = 0, sum = 0\n2. map = {0: 1}\n3. for num in nums:\n4.   sum = (sum + num) % k\n5.   if sum < 0: sum += k\n6.   count += map[sum] || 0\n7.   map[sum] = (map[sum] || 0) + 1",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize variables count=0, sum=0",
+      "array": [
+        4,
+        5,
+        0,
+        -2,
+        -3,
+        1
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Processing 4: sum = (0 + 4) % 5 = 4",
+      "array": [
+        4,
+        5,
+        0,
+        -2,
+        -3,
+        1
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Sum 4 not in map, count remains 0",
+      "array": [
+        4,
+        5,
+        0,
+        -2,
+        -3,
+        1
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Processing 5: sum = (4 + 5) % 5 = 4",
+      "array": [
+        4,
+        5,
+        0,
+        -2,
+        -3,
+        1
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Sum 4 found in map (count 1), increment count to 1",
+      "array": [
+        4,
+        5,
+        0,
+        -2,
+        -3,
+        1
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Processing 0: sum = (4 + 0) % 5 = 4",
+      "array": [
+        4,
+        5,
+        0,
+        -2,
+        -3,
+        1
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Sum 4 found in map (count 2), increment count to 3",
+      "array": [
+        4,
+        5,
+        0,
+        -2,
+        -3,
+        1
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Processing -2: sum = (4 - 2) % 5 = 2",
+      "array": [
+        4,
+        5,
+        0,
+        -2,
+        -3,
+        1
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 6,
+      "note": "Sum 2 not in map, count remains 3",
+      "array": [
+        4,
+        5,
+        0,
+        -2,
+        -3,
+        1
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 4,
+      "note": "Processing -3: sum = (2 - 3) % 5 = -1; adjusting to 4",
+      "array": [
+        4,
+        5,
+        0,
+        -2,
+        -3,
+        1
+      ],
+      "i": 4
+    },
+    {
+      "codeLine": 6,
+      "note": "Sum 4 found in map (count 3), increment count to 6",
+      "array": [
+        4,
+        5,
+        0,
+        -2,
+        -3,
+        1
+      ],
+      "i": 4
+    },
+    {
+      "codeLine": 4,
+      "note": "Processing 1: sum = (4 + 1) % 5 = 0",
+      "array": [
+        4,
+        5,
+        0,
+        -2,
+        -3,
+        1
+      ],
+      "i": 5
+    },
+    {
+      "codeLine": 6,
+      "note": "Sum 0 found in map (count 1), increment count to 7",
+      "array": [
+        4,
+        5,
+        0,
+        -2,
+        -3,
+        1
+      ],
+      "i": 5
+    }
+  ]
+}

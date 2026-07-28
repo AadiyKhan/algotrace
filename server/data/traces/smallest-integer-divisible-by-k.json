@@ -1,0 +1,39 @@
+{
+  "title": "Smallest Integer Divisible By K",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Math",
+    "Number Theory"
+  ],
+  "description": "Find the length of the smallest positive integer N made of only 1s such that N is divisible by K.",
+  "target": 3,
+  "pseudocode": "1. remainder = 0\n2. for length = 1 to K:\n3.   remainder = (remainder * 10 + 1) % K\n4.   if remainder == 0: return length\n5. return -1",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize remainder to 0.",
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Length 1: (0 * 10 + 1) % 3 = 1.",
+      "i": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Length 2: (1 * 10 + 1) % 3 = 2.",
+      "i": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Length 3: (2 * 10 + 1) % 3 = 0. Divisible found.",
+      "i": 3
+    },
+    {
+      "codeLine": 4,
+      "note": "Remainder is 0, return length 3.",
+      "i": 3
+    }
+  ]
+}

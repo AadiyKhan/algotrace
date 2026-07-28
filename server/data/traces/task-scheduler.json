@@ -1,0 +1,59 @@
+{
+  "title": "Task Scheduler",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Greedy",
+    "Heap"
+  ],
+  "description": "Given a list of tasks and a cooldown n, find the minimum time to complete all tasks.",
+  "target": 2,
+  "pseudocode": "1. freq = count frequencies of tasks\n2. maxFreq = max(freq)\n3. idleCount = (maxFreq - 1) * n\n4. for each f in freq excluding maxFreq: idleCount -= min(maxFreq - 1, f)\n5. return tasks.length + max(0, idleCount)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Count task frequencies: A: 2, B: 1",
+      "array": [
+        2,
+        1
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Identify max frequency (A has 2)",
+      "array": [
+        2,
+        1
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Calculate initial idle slots based on cooldown n=2: (2-1) * 2 = 2",
+      "array": [
+        2,
+        1
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Subtract frequencies of other tasks: 2 - min(1, 1) = 1 idle slot remaining",
+      "array": [
+        2,
+        1
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Total time = tasks (3) + idle slots (1) = 4",
+      "array": [
+        2,
+        1
+      ],
+      "i": 2
+    }
+  ]
+}

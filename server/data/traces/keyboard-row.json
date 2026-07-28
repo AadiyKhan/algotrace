@@ -1,0 +1,106 @@
+{
+  "title": "Keyboard Row",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "String",
+    "Hash Table"
+  ],
+  "description": "Given an array of strings, return the words that can be typed using letters of only one row on an American keyboard.",
+  "target": null,
+  "pseudocode": "1. const rows = [new Set('qwertyuiop'), new Set('asdfghjkl'), new Set('zxcvbnm')];\n2. const result = [];\n3. for (let word of words) {\n4.   let rowIdx = getRow(word[0].toLowerCase());\n5.   if (isSameRow(word, rowIdx)) result.push(word);\n6. }",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize keyboard row sets.",
+      "array": [
+        "Hello",
+        "Alaska",
+        "Dad",
+        "Peace"
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Processing word: 'Hello'",
+      "array": [
+        "Hello",
+        "Alaska",
+        "Dad",
+        "Peace"
+      ],
+      "i": "Hello"
+    },
+    {
+      "codeLine": 4,
+      "note": "Determining row for 'H' (Row 1).",
+      "array": [
+        "Hello",
+        "Alaska",
+        "Dad",
+        "Peace"
+      ],
+      "i": "Hello"
+    },
+    {
+      "codeLine": 5,
+      "note": "'e' and 'l' are not in Row 1. Skip 'Hello'.",
+      "array": [
+        "Hello",
+        "Alaska",
+        "Dad",
+        "Peace"
+      ],
+      "i": "Hello"
+    },
+    {
+      "codeLine": 3,
+      "note": "Processing word: 'Alaska'",
+      "array": [
+        "Hello",
+        "Alaska",
+        "Dad",
+        "Peace"
+      ],
+      "i": "Alaska"
+    },
+    {
+      "codeLine": 4,
+      "note": "Determining row for 'A' (Row 1).",
+      "array": [
+        "Hello",
+        "Alaska",
+        "Dad",
+        "Peace"
+      ],
+      "i": "Alaska"
+    },
+    {
+      "codeLine": 5,
+      "note": "All letters are in Row 1. Add 'Alaska' to result.",
+      "array": [
+        "Alaska"
+      ],
+      "i": "Alaska"
+    },
+    {
+      "codeLine": 3,
+      "note": "Processing word: 'Dad'",
+      "array": [
+        "Alaska",
+        "Dad"
+      ],
+      "i": "Dad"
+    },
+    {
+      "codeLine": 5,
+      "note": "All letters are in Row 1. Add 'Dad' to result.",
+      "array": [
+        "Alaska",
+        "Dad"
+      ],
+      "i": "Dad"
+    }
+  ]
+}

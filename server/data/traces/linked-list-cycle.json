@@ -1,0 +1,225 @@
+{
+  "title": "Linked List Cycle",
+  "difficulty": "Easy",
+  "type": "linked-list",
+  "tags": [
+    "Linked List",
+    "Two Pointers"
+  ],
+  "description": "Determine if a linked list contains a cycle using Floyd's Tortoise and Hare algorithm.",
+  "pseudocode": "1: slow = head\n2: fast = head\n3: while fast and fast.next:\n4:   slow = slow.next\n5:   fast = fast.next.next\n6:   if slow == fast: return true\n7: return false",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize slow pointer at head.",
+      "nodes": [
+        {
+          "val": 3,
+          "next": 1
+        },
+        {
+          "val": 2,
+          "next": 2
+        },
+        {
+          "val": 0,
+          "next": 3
+        },
+        {
+          "val": -4,
+          "next": 1
+        }
+      ],
+      "prev": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Initialize fast pointer at head.",
+      "nodes": [
+        {
+          "val": 3,
+          "next": 1
+        },
+        {
+          "val": 2,
+          "next": 2
+        },
+        {
+          "val": 0,
+          "next": 3
+        },
+        {
+          "val": -4,
+          "next": 1
+        }
+      ],
+      "prev": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Slow moves one step.",
+      "nodes": [
+        {
+          "val": 3,
+          "next": 1
+        },
+        {
+          "val": 2,
+          "next": 2
+        },
+        {
+          "val": 0,
+          "next": 3
+        },
+        {
+          "val": -4,
+          "next": 1
+        }
+      ],
+      "prev": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Fast moves two steps.",
+      "nodes": [
+        {
+          "val": 3,
+          "next": 1
+        },
+        {
+          "val": 2,
+          "next": 2
+        },
+        {
+          "val": 0,
+          "next": 3
+        },
+        {
+          "val": -4,
+          "next": 1
+        }
+      ],
+      "prev": 1,
+      "curr": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Slow moves one step.",
+      "nodes": [
+        {
+          "val": 3,
+          "next": 1
+        },
+        {
+          "val": 2,
+          "next": 2
+        },
+        {
+          "val": 0,
+          "next": 3
+        },
+        {
+          "val": -4,
+          "next": 1
+        }
+      ],
+      "prev": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Fast moves two steps (back to index 1).",
+      "nodes": [
+        {
+          "val": 3,
+          "next": 1
+        },
+        {
+          "val": 2,
+          "next": 2
+        },
+        {
+          "val": 0,
+          "next": 3
+        },
+        {
+          "val": -4,
+          "next": 1
+        }
+      ],
+      "prev": 2,
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Slow moves to index 3.",
+      "nodes": [
+        {
+          "val": 3,
+          "next": 1
+        },
+        {
+          "val": 2,
+          "next": 2
+        },
+        {
+          "val": 0,
+          "next": 3
+        },
+        {
+          "val": -4,
+          "next": 1
+        }
+      ],
+      "prev": 3
+    },
+    {
+      "codeLine": 5,
+      "note": "Fast moves two steps to index 3.",
+      "nodes": [
+        {
+          "val": 3,
+          "next": 1
+        },
+        {
+          "val": 2,
+          "next": 2
+        },
+        {
+          "val": 0,
+          "next": 3
+        },
+        {
+          "val": -4,
+          "next": 1
+        }
+      ],
+      "prev": 3,
+      "curr": 3
+    },
+    {
+      "codeLine": 6,
+      "note": "Slow equals fast, cycle detected.",
+      "nodes": [
+        {
+          "val": 3,
+          "next": 1
+        },
+        {
+          "val": 2,
+          "next": 2
+        },
+        {
+          "val": 0,
+          "next": 3
+        },
+        {
+          "val": -4,
+          "next": 1
+        }
+      ],
+      "prev": 3,
+      "curr": 3
+    }
+  ]
+}

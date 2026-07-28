@@ -1,0 +1,73 @@
+{
+  "title": "Minimum Cost For Tickets",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Dynamic Programming"
+  ],
+  "description": "Calculate the minimum cost to travel on specific days given costs for 1-day, 7-day, and 30-day passes.",
+  "target": null,
+  "pseudocode": "1. dp = new Array(366).fill(0)\n2. for day = 1 to 365:\n3.   if day not in travelDays: dp[day] = dp[day-1]\n4.   else: dp[day] = min(dp[day-1] + costs[0], dp[max(0, day-7)] + costs[1], dp[max(0, day-30)] + costs[2])",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize DP table with 0s for days 0-365.",
+      "array": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Start iterating through days. Let's trace for day 1 (travel day).",
+      "i": 1,
+      "array": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Day 1 is a travel day. Calculate min cost: min(dp[0]+2, dp[0]+7, dp[0]+15) = 2.",
+      "i": 1,
+      "array": [
+        0,
+        2,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Move to day 2 (not a travel day).",
+      "i": 2,
+      "array": [
+        0,
+        2,
+        2,
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Day 2 is not in travelDays, carry forward previous cost.",
+      "i": 2,
+      "array": [
+        0,
+        2,
+        2,
+        0,
+        0
+      ]
+    }
+  ]
+}

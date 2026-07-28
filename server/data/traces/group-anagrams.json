@@ -1,0 +1,85 @@
+{
+  "title": "Group Anagrams",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "String",
+    "Sorting"
+  ],
+  "description": "Group strings that are anagrams of each other.",
+  "target": null,
+  "pseudocode": "1. let map = {}\n2. for (let str of strs) {\n3.   let key = str.split('').sort().join('');\n4.   if (!map[key]) map[key] = [];\n5.   map[key].push(str);\n6. }\n7. return Object.values(map);",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Initialize map and start processing 'eat'",
+      "array": [
+        "eat",
+        "tea",
+        "tan"
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Sorted 'eat' results in key 'aet'",
+      "array": [
+        "eat",
+        "tea",
+        "tan"
+      ],
+      "i": "aet"
+    },
+    {
+      "codeLine": 5,
+      "note": "Add 'eat' to map['aet']",
+      "array": [
+        "eat",
+        "tea",
+        "tan"
+      ],
+      "i": "aet"
+    },
+    {
+      "codeLine": 3,
+      "note": "Sorted 'tea' results in key 'aet'",
+      "array": [
+        "eat",
+        "tea",
+        "tan"
+      ],
+      "i": "aet"
+    },
+    {
+      "codeLine": 5,
+      "note": "Add 'tea' to map['aet']",
+      "array": [
+        "eat",
+        "tea",
+        "tan"
+      ],
+      "i": "aet"
+    },
+    {
+      "codeLine": 3,
+      "note": "Sorted 'tan' results in key 'ant'",
+      "array": [
+        "eat",
+        "tea",
+        "tan"
+      ],
+      "i": "ant"
+    },
+    {
+      "codeLine": 5,
+      "note": "Add 'tan' to map['ant']",
+      "array": [
+        "eat",
+        "tea",
+        "tan"
+      ],
+      "i": "ant"
+    }
+  ]
+}

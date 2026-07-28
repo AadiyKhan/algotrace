@@ -1,0 +1,266 @@
+{
+  "title": "Valid Parentheses",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "String",
+    "Stack"
+  ],
+  "description": "Determine if an input string containing only '(', ')', '{', '}', '[' and ']' is valid. A string is valid if open brackets are closed by the same type of brackets in the correct order, and every close bracket has a corresponding open bracket.",
+  "pseudocode": "1. function isValid(s) {\n2.    const stack = [];\n3.    const map = { \")\": \"(\", \"}\": \"{\", \"]\": \"[\" };\n4.\n5.    for (let i = 0; i < s.length; i++) {\n6.        const char = s[i];\n7.\n8.        if (Object.values(map).includes(char)) { // If it's an opening bracket\n9.            stack.push(char);\n10.       } else if (Object.keys(map).includes(char)) { // If it's a closing bracket\n11.           if (stack.length === 0) {\n12.               return false; // No matching opening bracket\n13.           }\n14.           const topElement = stack.pop();\n15.           if (map[char] !== topElement) {\n16.               return false; // Mismatched opening bracket\n17.           }\n18.       }\n19.   }\n20.\n21.   return stack.length === 0; // True if all brackets matched\n22. }",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Start `isValid` function for input string `s = \"([{}])\"`.",
+      "array": []
+    },
+    {
+      "codeLine": 2,
+      "note": "Initialize an empty stack to keep track of opening brackets.",
+      "array": []
+    },
+    {
+      "codeLine": 3,
+      "note": "Define a map for closing brackets to their corresponding opening brackets.",
+      "array": []
+    },
+    {
+      "codeLine": 5,
+      "note": "Start iterating through the input string. Current character `s[0]` is '('.",
+      "i": 0,
+      "array": []
+    },
+    {
+      "codeLine": 8,
+      "note": "Check if current character '(' is an opening bracket. It is.",
+      "i": 0,
+      "array": []
+    },
+    {
+      "codeLine": 9,
+      "note": "Push '(' onto the stack.",
+      "i": 0,
+      "array": [
+        "("
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Move to the next character. Current character `s[1]` is '['.",
+      "i": 1,
+      "array": [
+        "("
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Check if current character '[' is an opening bracket. It is.",
+      "i": 1,
+      "array": [
+        "("
+      ]
+    },
+    {
+      "codeLine": 9,
+      "note": "Push '[' onto the stack.",
+      "i": 1,
+      "array": [
+        "(",
+        "["
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Move to the next character. Current character `s[2]` is '{'.",
+      "i": 2,
+      "array": [
+        "(",
+        "["
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Check if current character '{' is an opening bracket. It is.",
+      "i": 2,
+      "array": [
+        "(",
+        "["
+      ]
+    },
+    {
+      "codeLine": 9,
+      "note": "Push '{' onto the stack.",
+      "i": 2,
+      "array": [
+        "(",
+        "[",
+        "{"
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Move to the next character. Current character `s[3]` is '}'.",
+      "i": 3,
+      "array": [
+        "(",
+        "[",
+        "{"
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Check if current character '}' is an opening bracket. It is not.",
+      "i": 3,
+      "array": [
+        "(",
+        "[",
+        "{"
+      ]
+    },
+    {
+      "codeLine": 10,
+      "note": "Check if current character '}' is a closing bracket. It is.",
+      "i": 3,
+      "array": [
+        "(",
+        "[",
+        "{"
+      ]
+    },
+    {
+      "codeLine": 11,
+      "note": "Check if the stack is empty. It is not (length is 3).",
+      "i": 3,
+      "array": [
+        "(",
+        "[",
+        "{"
+      ]
+    },
+    {
+      "codeLine": 14,
+      "note": "Pop the top element from the stack. Popped: '{'.",
+      "i": 3,
+      "array": [
+        "(",
+        "["
+      ]
+    },
+    {
+      "codeLine": 15,
+      "note": "Compare `map['}']` ('{') with the popped element ('{'). They match. Continue.",
+      "i": 3,
+      "array": [
+        "(",
+        "["
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Move to the next character. Current character `s[4]` is ']'.",
+      "i": 4,
+      "array": [
+        "(",
+        "["
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Check if current character ']' is an opening bracket. It is not.",
+      "i": 4,
+      "array": [
+        "(",
+        "["
+      ]
+    },
+    {
+      "codeLine": 10,
+      "note": "Check if current character ']' is a closing bracket. It is.",
+      "i": 4,
+      "array": [
+        "(",
+        "["
+      ]
+    },
+    {
+      "codeLine": 11,
+      "note": "Check if the stack is empty. It is not (length is 2).",
+      "i": 4,
+      "array": [
+        "(",
+        "["
+      ]
+    },
+    {
+      "codeLine": 14,
+      "note": "Pop the top element from the stack. Popped: '['.",
+      "i": 4,
+      "array": [
+        "("
+      ]
+    },
+    {
+      "codeLine": 15,
+      "note": "Compare `map[']']` ('[') with the popped element ('['). They match. Continue.",
+      "i": 4,
+      "array": [
+        "("
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Move to the next character. Current character `s[5]` is ')'.",
+      "i": 5,
+      "array": [
+        "("
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Check if current character ')' is an opening bracket. It is not.",
+      "i": 5,
+      "array": [
+        "("
+      ]
+    },
+    {
+      "codeLine": 10,
+      "note": "Check if current character ')' is a closing bracket. It is.",
+      "i": 5,
+      "array": [
+        "("
+      ]
+    },
+    {
+      "codeLine": 11,
+      "note": "Check if the stack is empty. It is not (length is 1).",
+      "i": 5,
+      "array": [
+        "("
+      ]
+    },
+    {
+      "codeLine": 14,
+      "note": "Pop the top element from the stack. Popped: '('.",
+      "i": 5,
+      "array": []
+    },
+    {
+      "codeLine": 15,
+      "note": "Compare `map[')']` ('(') with the popped element ('('). They match. Continue.",
+      "i": 5,
+      "array": []
+    },
+    {
+      "codeLine": 5,
+      "note": "All characters in the string have been processed. The loop finishes.",
+      "i": 6,
+      "array": []
+    },
+    {
+      "codeLine": 21,
+      "note": "Check if the stack is empty. It is empty, so all brackets are validly matched. Return `true`.",
+      "array": []
+    }
+  ]
+}

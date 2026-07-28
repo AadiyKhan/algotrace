@@ -1,0 +1,63 @@
+{
+  "title": "Scramble String",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "String",
+    "Dynamic Programming",
+    "Recursion"
+  ],
+  "description": "Determine if s2 is a scrambled version of s1 using a recursive decomposition strategy.",
+  "pseudocode": "1. function isScramble(s1, s2) {\n2.   if (s1 === s2) return true;\n3.   for (let i = 1; i < s1.length; i++) {\n4.     if (isScramble(s1.slice(0, i), s2.slice(0, i)) && isScramble(s1.slice(i), s2.slice(i))) return true;\n5.     if (isScramble(s1.slice(0, i), s2.slice(n-i)) && isScramble(s1.slice(i), s2.slice(0, n-i))) return true;\n6.   }\n7.   return false;\n8. }",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize check for s1 = 'ab', s2 = 'ba'",
+      "array": [
+        "a",
+        "b"
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Check if s1 equals s2; 'ab' != 'ba'",
+      "array": [
+        "a",
+        "b"
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Iterate split index i = 1",
+      "i": 1,
+      "array": [
+        "a",
+        "b"
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Check no-swap: isScramble('a', 'b') && isScramble('b', 'a') -> false",
+      "array": [
+        "a",
+        "b"
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Check swap: isScramble('a', 'a') && isScramble('b', 'b') -> true",
+      "array": [
+        "a",
+        "b"
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Return true: 'ba' is a scrambled version of 'ab'",
+      "array": [
+        "a",
+        "b"
+      ]
+    }
+  ]
+}

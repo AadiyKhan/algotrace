@@ -1,0 +1,71 @@
+{
+  "title": "Chalkboard XOR Game",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Math",
+    "Game Theory"
+  ],
+  "description": "Determine if Alice wins the XOR game where players remove numbers from an array. Alice wins if the XOR sum of remaining numbers is 0 or if she makes the first move such that the opponent loses.",
+  "pseudocode": "1: function xorGame(nums) {\n2:   let xorSum = 0;\n3:   for (let n of nums) xorSum ^= n;\n4:   if (xorSum === 0) return true;\n5:   return nums.length % 2 === 0;\n6: }",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Initialize xorSum to 0",
+      "array": [
+        1,
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Calculate XOR sum: 1 ^ 1 ^ 2 = 2",
+      "array": [
+        1,
+        1,
+        2
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "XOR sum is non-zero, continuing...",
+      "array": [
+        1,
+        1,
+        2
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "XOR sum is 2",
+      "array": [
+        1,
+        1,
+        2
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "XOR sum (2) is not 0, checking array length parity",
+      "array": [
+        1,
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Array length is 3 (odd). Alice loses (returns false)",
+      "array": [
+        1,
+        1,
+        2
+      ]
+    }
+  ]
+}

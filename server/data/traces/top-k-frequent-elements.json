@@ -1,0 +1,85 @@
+{
+  "title": "Top K Frequent Elements",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "Heap",
+    "Sorting"
+  ],
+  "description": "Given an integer array nums and an integer k, return the k most frequent elements.",
+  "target": 2,
+  "pseudocode": "1. count = new Map();\n2. for (let n of nums) count.set(n, (count.get(n) || 0) + 1);\n3. buckets = Array.from({length: nums.length + 1}, () => []);\n4. for (let [n, freq] of count) buckets[freq].push(n);\n5. res = [];\n6. for (let i = buckets.length - 1; i >= 0 && res.length < k; i--) {\n7.   if (buckets[i].length > 0) res.push(...buckets[i]);\n8. }",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Counting frequencies of elements: [1,1,1,2,2,3]",
+      "array": [
+        1,
+        1,
+        1,
+        2,
+        2,
+        3
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Initialize buckets array based on frequency",
+      "array": [
+        [],
+        [],
+        [],
+        [
+          1
+        ],
+        [
+          2
+        ],
+        [
+          3
+        ]
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Populating buckets where index is frequency, value is element",
+      "array": [
+        [],
+        [
+          3
+        ],
+        [
+          2
+        ],
+        [
+          1
+        ],
+        [],
+        [],
+        []
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Iterating from end of buckets to find top frequencies",
+      "i": 3
+    },
+    {
+      "codeLine": 7,
+      "note": "Adding element 1 (freq 3) to result",
+      "i": 3
+    },
+    {
+      "codeLine": 6,
+      "note": "Moving to next bucket",
+      "i": 2
+    },
+    {
+      "codeLine": 7,
+      "note": "Adding element 2 (freq 2) to result",
+      "i": 2
+    }
+  ]
+}

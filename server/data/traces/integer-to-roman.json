@@ -1,0 +1,288 @@
+{
+  "title": "Integer to Roman",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Hash Table",
+    "Math",
+    "String"
+  ],
+  "description": "Convert a given integer to its Roman numeral representation by repeatedly subtracting the largest possible standard Roman numeral values.",
+  "target": 1994,
+  "pseudocode": "1. values = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1]\n2. symbols = [\"M\", \"CM\", \"D\", \"CD\", \"C\", \"XC\", \"L\", \"XL\", \"X\", \"IX\", \"V\", \"IV\", \"I\"]\n3. result = \"\"\n4. for i from 0 to 12:\n5.   while num >= values[i]:\n6.     result += symbols[i]\n7.     num -= values[i]\n8. return result",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize values and symbols mapping arrays. Input num = 1994, result = ''",
+      "array": [
+        1000,
+        900,
+        500,
+        400,
+        100,
+        90,
+        50,
+        40,
+        10,
+        9,
+        5,
+        4,
+        1
+      ],
+      "i": 0,
+      "curr": 1994
+    },
+    {
+      "codeLine": 5,
+      "note": "Check num (1994) >= values[0] (1000). Condition holds true.",
+      "array": [
+        1000,
+        900,
+        500,
+        400,
+        100,
+        90,
+        50,
+        40,
+        10,
+        9,
+        5,
+        4,
+        1
+      ],
+      "i": 0,
+      "curr": 1994
+    },
+    {
+      "codeLine": 6,
+      "note": "Append symbol 'M' to result. Subtract 1000 from num. Remaining num = 994, result = 'M'.",
+      "array": [
+        1000,
+        900,
+        500,
+        400,
+        100,
+        90,
+        50,
+        40,
+        10,
+        9,
+        5,
+        4,
+        1
+      ],
+      "i": 0,
+      "curr": 994
+    },
+    {
+      "codeLine": 5,
+      "note": "Check num (994) >= values[0] (1000). Condition is false, move to next value.",
+      "array": [
+        1000,
+        900,
+        500,
+        400,
+        100,
+        90,
+        50,
+        40,
+        10,
+        9,
+        5,
+        4,
+        1
+      ],
+      "i": 0,
+      "curr": 994
+    },
+    {
+      "codeLine": 5,
+      "note": "Check num (994) >= values[1] (900). Condition holds true.",
+      "array": [
+        1000,
+        900,
+        500,
+        400,
+        100,
+        90,
+        50,
+        40,
+        10,
+        9,
+        5,
+        4,
+        1
+      ],
+      "i": 1,
+      "curr": 994
+    },
+    {
+      "codeLine": 6,
+      "note": "Append symbol 'CM' to result. Subtract 900 from num. Remaining num = 94, result = 'MCM'.",
+      "array": [
+        1000,
+        900,
+        500,
+        400,
+        100,
+        90,
+        50,
+        40,
+        10,
+        9,
+        5,
+        4,
+        1
+      ],
+      "i": 1,
+      "curr": 94
+    },
+    {
+      "codeLine": 5,
+      "note": "Check num (94) >= values[1] (900). False. Skip values 500, 400, 100 as num < values[i]. Move to i = 5 (90).",
+      "array": [
+        1000,
+        900,
+        500,
+        400,
+        100,
+        90,
+        50,
+        40,
+        10,
+        9,
+        5,
+        4,
+        1
+      ],
+      "i": 5,
+      "curr": 94
+    },
+    {
+      "codeLine": 5,
+      "note": "Check num (94) >= values[5] (90). Condition holds true.",
+      "array": [
+        1000,
+        900,
+        500,
+        400,
+        100,
+        90,
+        50,
+        40,
+        10,
+        9,
+        5,
+        4,
+        1
+      ],
+      "i": 5,
+      "curr": 94
+    },
+    {
+      "codeLine": 6,
+      "note": "Append symbol 'XC' to result. Subtract 90 from num. Remaining num = 4, result = 'MCMXC'.",
+      "array": [
+        1000,
+        900,
+        500,
+        400,
+        100,
+        90,
+        50,
+        40,
+        10,
+        9,
+        5,
+        4,
+        1
+      ],
+      "i": 5,
+      "curr": 4
+    },
+    {
+      "codeLine": 5,
+      "note": "Check num (4) >= values[5] (90). False. Skip values 50, 40, 10, 9, 5 as num < values[i]. Move to i = 11 (4).",
+      "array": [
+        1000,
+        900,
+        500,
+        400,
+        100,
+        90,
+        50,
+        40,
+        10,
+        9,
+        5,
+        4,
+        1
+      ],
+      "i": 11,
+      "curr": 4
+    },
+    {
+      "codeLine": 5,
+      "note": "Check num (4) >= values[11] (4). Condition holds true.",
+      "array": [
+        1000,
+        900,
+        500,
+        400,
+        100,
+        90,
+        50,
+        40,
+        10,
+        9,
+        5,
+        4,
+        1
+      ],
+      "i": 11,
+      "curr": 4
+    },
+    {
+      "codeLine": 6,
+      "note": "Append symbol 'IV' to result. Subtract 4 from num. Remaining num = 0, result = 'MCMXCIV'.",
+      "array": [
+        1000,
+        900,
+        500,
+        400,
+        100,
+        90,
+        50,
+        40,
+        10,
+        9,
+        5,
+        4,
+        1
+      ],
+      "i": 11,
+      "curr": 0
+    },
+    {
+      "codeLine": 8,
+      "note": "Num is now 0. Conversion complete, return final result 'MCMXCIV'.",
+      "array": [
+        1000,
+        900,
+        500,
+        400,
+        100,
+        90,
+        50,
+        40,
+        10,
+        9,
+        5,
+        4,
+        1
+      ],
+      "i": 12,
+      "curr": 0
+    }
+  ]
+}

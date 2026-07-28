@@ -1,0 +1,52 @@
+{
+  "title": "Stickers to Spell Word",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Dynamic Programming",
+    "Backtracking",
+    "Bitmask"
+  ],
+  "description": "Find the minimum number of stickers required to spell a target word given a list of sticker strings.",
+  "target": "cat",
+  "pseudocode": "1: memo = {}\n2: function solve(target):\n3:   if target == '': return 0\n4:   if target in memo: return memo[target]\n5:   res = infinity\n6:   for sticker in stickers:\n7:     newTarget = removeChars(target, sticker)\n8:     if newTarget != target:\n9:       res = min(res, 1 + solve(newTarget))\n10:  memo[target] = res\n11:  return res",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Starting recursion with target 'cat'.",
+      "array": [
+        "c",
+        "a",
+        "t"
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Trying sticker 'cat' (contains c, a, t).",
+      "array": [
+        "c",
+        "a",
+        "t"
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Removing characters from 'cat' using 'cat'. New target: ''.",
+      "array": []
+    },
+    {
+      "codeLine": 9,
+      "note": "Base case reached. Return 1 sticker.",
+      "array": []
+    },
+    {
+      "codeLine": 10,
+      "note": "Memoizing result for 'cat' as 1.",
+      "array": [
+        "c",
+        "a",
+        "t"
+      ]
+    }
+  ]
+}

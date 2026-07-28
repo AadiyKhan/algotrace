@@ -1,0 +1,166 @@
+{
+  "title": "House Robber III",
+  "difficulty": "Medium",
+  "type": "tree",
+  "tags": [
+    "Tree",
+    "DFS",
+    "Dynamic Programming"
+  ],
+  "description": "Find the maximum amount of money you can rob without robbing two directly connected houses in a binary tree.",
+  "pseudocode": "function rob(node) {\n  if (!node) return [0, 0];\n  const left = rob(node.left);\n  const right = rob(node.right);\n  const robCurrent = node.val + left[1] + right[1];\n  const skipCurrent = Math.max(left[0], left[1]) + Math.max(right[0], right[1]);\n  return [robCurrent, skipCurrent];\n}",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Traverse to the leftmost leaf node (ID 2).",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 3,
+          "left": 1,
+          "right": 3
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": 2
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 3,
+          "left": null,
+          "right": 4
+        },
+        {
+          "id": 4,
+          "val": 1,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Leaf node 2 returns [3, 0].",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 3,
+          "left": 1,
+          "right": 3
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": 2
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 3,
+          "left": null,
+          "right": 4
+        },
+        {
+          "id": 4,
+          "val": 1,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Node 1 calculates rob: 2+0=2, skip: max(3,0)=3. Returns [2, 3].",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 3,
+          "left": 1,
+          "right": 3
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": 2
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 3,
+          "left": null,
+          "right": 4
+        },
+        {
+          "id": 4,
+          "val": 1,
+          "left": null,
+          "right": 4
+        }
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Root node 0 aggregates results: rob 3 + skip left + skip right = 3+3+1 = 7.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 3,
+          "left": 1,
+          "right": 3
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": 2
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 3,
+          "left": null,
+          "right": 4
+        },
+        {
+          "id": 4,
+          "val": 1,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 0
+    }
+  ]
+}

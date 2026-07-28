@@ -1,0 +1,50 @@
+{
+  "title": "Binary Watch",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Backtracking",
+    "Bit Manipulation"
+  ],
+  "description": "Return all possible times a binary watch can show given a specific number of LEDs turned on.",
+  "target": 1,
+  "pseudocode": "function readBinaryWatch(turnedOn) {\n  let times = [];\n  for (let h = 0; h < 12; h++) {\n    for (let m = 0; m < 60; m++) {\n      if (countSetBits(h) + countSetBits(m) === turnedOn) {\n        times.push(`${h}:${m < 10 ? '0' + m : m}`);\n      }\n    }\n  }\n  return times;\n}",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Initialize result array.",
+      "array": []
+    },
+    {
+      "codeLine": 3,
+      "note": "Start hour loop.",
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Start minute loop.",
+      "j": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Check if bits in 0:00 equal 1.",
+      "i": 0,
+      "j": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Continue loops, checking 0:01.",
+      "i": 0,
+      "j": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Found valid time: 0:01.",
+      "i": 0,
+      "j": 1,
+      "array": [
+        "0:01"
+      ]
+    }
+  ]
+}

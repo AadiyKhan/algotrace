@@ -1,0 +1,63 @@
+{
+  "title": "Shopping Offers",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Dynamic Programming",
+    "DFS"
+  ],
+  "description": "Find the lowest price to purchase items given a list of special offers and prices.",
+  "target": 14,
+  "pseudocode": "1. function solve(needs, price, special) {\n2.   minPrice = calculateBasePrice(needs, price)\n3.   for (offer of special) {\n4.     newNeeds = tryOffer(needs, offer)\n5.     if (newNeeds != null) {\n6.       minPrice = min(minPrice, offer[n] + solve(newNeeds, price, special))\n7.     }\n8.   }\n9.   return minPrice\n10. }",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize solver with needs [2, 2], prices [3, 3], and offer [1, 1, 2].",
+      "array": [
+        2,
+        2
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Calculate base cost without offers: (2*3) + (2*3) = 12.",
+      "array": [
+        2,
+        2
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Apply special offer [1, 1, 2]. New needs: [1, 1].",
+      "array": [
+        1,
+        1
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Recursive call: calculate remaining needs [1, 1] base cost: (1*3) + (1*3) = 6.",
+      "array": [
+        1,
+        1
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Total cost with offer: 2 (offer price) + 6 (remaining) = 8.",
+      "array": [
+        1,
+        1
+      ]
+    },
+    {
+      "codeLine": 9,
+      "note": "Return min(12, 8) which is 8.",
+      "array": [
+        0,
+        0
+      ]
+    }
+  ]
+}

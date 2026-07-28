@@ -1,0 +1,144 @@
+{
+  "title": "Check Completeness of a Binary Tree",
+  "difficulty": "Medium",
+  "type": "tree",
+  "tags": [
+    "Tree",
+    "Breadth-First Search"
+  ],
+  "description": "Determine if a binary tree is complete (all levels are filled except possibly the last, and all nodes are as far left as possible).",
+  "pseudocode": "1. queue = [root], foundNull = false\n2. while queue is not empty:\n3.   node = queue.shift()\n4.   if node is null:\n5.     foundNull = true\n6.   else:\n7.     if foundNull return false\n8.     queue.push(node.left)\n9.     queue.push(node.right)\n10. return true",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize queue with root. Tree structure: 1 -> (2, 3)",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Dequeuing node 1",
+      "curr": 0,
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Queueing left child (2)",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 9,
+      "note": "Queueing right child (3)",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Dequeuing node 2",
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Dequeuing node 3",
+      "curr": 2
+    },
+    {
+      "codeLine": 10,
+      "note": "Queue empty, tree is complete",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ]
+    }
+  ]
+}

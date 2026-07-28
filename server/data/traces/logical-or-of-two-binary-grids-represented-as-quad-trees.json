@@ -1,0 +1,68 @@
+{
+  "title": "Logical OR of Two Binary Grids Represented as Quad Trees",
+  "difficulty": "Medium",
+  "type": "tree",
+  "tags": [
+    "Tree",
+    "Divide and Conquer"
+  ],
+  "description": "Compute the logical OR of two quad trees representing binary grids.",
+  "pseudocode": "function intersect(node1, node2) {\n1. if (node1.isLeaf) return node1.val ? node1 : node2;\n2. if (node2.isLeaf) return node2.val ? node2 : node1;\n3. let tl = intersect(node1.topLeft, node2.topLeft);\n4. let tr = intersect(node1.topRight, node2.topRight);\n5. let bl = intersect(node1.bottomLeft, node2.bottomLeft);\n6. let br = intersect(node1.bottomRight, node2.bottomRight);\n7. if (tl.isLeaf && tr.isLeaf && bl.isLeaf && br.isLeaf && tl.val == tr.val == bl.val == br.val) return new Node(tl.val, true);\n8. return new Node(false, false, tl, tr, bl, br);\n}",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Comparing root nodes. Neither is a leaf with val=true.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": false,
+          "isLeaf": false,
+          "topLeft": 1,
+          "topRight": 2,
+          "bottomLeft": 3,
+          "bottomRight": 4
+        },
+        {
+          "id": 5,
+          "val": true,
+          "isLeaf": false,
+          "topLeft": 6,
+          "topRight": 7,
+          "bottomLeft": 8,
+          "bottomRight": 9
+        }
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Recursively computing intersection for Top-Left quadrant.",
+      "treeNodes": [
+        {
+          "id": 1,
+          "val": true,
+          "isLeaf": true
+        },
+        {
+          "id": 6,
+          "val": false,
+          "isLeaf": true
+        }
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Merging results. Since sub-nodes are not identical, create internal node.",
+      "treeNodes": [
+        {
+          "id": 10,
+          "val": false,
+          "isLeaf": false,
+          "topLeft": 1,
+          "topRight": 2,
+          "bottomLeft": 3,
+          "bottomRight": 4
+        }
+      ]
+    }
+  ]
+}

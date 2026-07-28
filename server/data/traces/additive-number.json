@@ -1,0 +1,78 @@
+{
+  "title": "Additive Number",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "String",
+    "Backtracking"
+  ],
+  "description": "Determine if a string is an additive number (each number is the sum of the two preceding ones).",
+  "target": "11235",
+  "pseudocode": "1: function isAdditiveNumber(num) {\n2:   for (let i = 1; i < num.length; i++) {\n3:     for (let j = i + 1; j < num.length; j++) {\n4:       let n1 = num.slice(0, i), n2 = num.slice(i, j);\n5:       if (isValid(n1, n2, j, num)) return true;\n6:     }\n7:   }\n8:   return false;\n9: }",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Initialize first loop with i = 1 (split point for first number).",
+      "array": [
+        1,
+        1,
+        2,
+        3,
+        5
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Initialize second loop with j = 2 (split point for second number).",
+      "array": [
+        1,
+        1,
+        2,
+        3,
+        5
+      ],
+      "i": 1,
+      "j": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Extracted n1 = '1', n2 = '1'.",
+      "array": [
+        1,
+        1,
+        2,
+        3,
+        5
+      ],
+      "i": 1,
+      "j": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Validating sequence starting from index 2 with sum 2.",
+      "array": [
+        1,
+        1,
+        2,
+        3,
+        5
+      ],
+      "i": 1,
+      "j": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Sequence valid: 1+1=2, 1+2=3, 2+3=5.",
+      "array": [
+        1,
+        1,
+        2,
+        3,
+        5
+      ],
+      "i": 1,
+      "j": 2
+    }
+  ]
+}

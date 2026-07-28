@@ -1,0 +1,83 @@
+{
+  "title": "Numbers At Most N Given Digit Set",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Math",
+    "Dynamic Programming"
+  ],
+  "description": "Count how many positive integers less than or equal to n can be generated using the given digits.",
+  "target": 100,
+  "pseudocode": "1: let S = n.toString(), K = S.length\n2: let count = 0\n3: for i = 1 to K - 1: count += digits.length^i\n4: for i = 0 to K - 1:\n5:   for d in digits:\n6:     if d < S[i]: count += digits.length^(K - 1 - i)\n7:     else if d == S[i]: break\n8:     else: return count\n9: return count + 1",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize variables. N = 100, Digits = [1, 3, 5]. S = '100', K = 3.",
+      "array": [
+        1,
+        3,
+        5
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Add counts for numbers with fewer digits than 100 (1-digit and 2-digit numbers).",
+      "array": [
+        1,
+        3,
+        5
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Processing 3-digit numbers starting with digit 1 (index 0).",
+      "array": [
+        1,
+        3,
+        5
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 7,
+      "note": "Digit 1 matches S[0]. Continue to next position.",
+      "array": [
+        1,
+        3,
+        5
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Checking index 1. Digits [1, 3, 5] are all > S[1] (which is 0).",
+      "array": [
+        1,
+        3,
+        5
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 8,
+      "note": "No digits smaller than 0, break loop.",
+      "array": [
+        1,
+        3,
+        5
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 9,
+      "note": "Final count = (3^1 + 3^2) + 1 = 13.",
+      "array": [
+        1,
+        3,
+        5
+      ]
+    }
+  ]
+}

@@ -1,0 +1,136 @@
+{
+  "title": "Best Time to Buy and Sell Stock with Transaction Fee",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Dynamic Programming",
+    "Greedy"
+  ],
+  "description": "Find the maximum profit from buying and selling stocks with a transaction fee per transaction.",
+  "target": 2,
+  "pseudocode": "1: cash = 0\n2: hold = -prices[0]\n3: for i = 1 to n-1:\n4:   cash = max(cash, hold + prices[i] - fee)\n5:   hold = max(hold, cash - prices[i])",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize cash profit to 0",
+      "array": [
+        1,
+        3,
+        2,
+        8
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Initial hold state after buying first stock",
+      "array": [
+        1,
+        3,
+        2,
+        8
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Start iteration from index 1",
+      "array": [
+        1,
+        3,
+        2,
+        8
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Update cash: compare current cash vs selling at price 3",
+      "array": [
+        1,
+        3,
+        2,
+        8
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Update hold: compare current hold vs buying at price 3",
+      "array": [
+        1,
+        3,
+        2,
+        8
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Next index",
+      "array": [
+        1,
+        3,
+        2,
+        8
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Update cash at price 2",
+      "array": [
+        1,
+        3,
+        2,
+        8
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Update hold at price 2",
+      "array": [
+        1,
+        3,
+        2,
+        8
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Next index",
+      "array": [
+        1,
+        3,
+        2,
+        8
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 4,
+      "note": "Update cash at price 8, profit realized",
+      "array": [
+        1,
+        3,
+        2,
+        8
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 5,
+      "note": "Update hold at price 8",
+      "array": [
+        1,
+        3,
+        2,
+        8
+      ],
+      "i": 3
+    }
+  ]
+}

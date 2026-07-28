@@ -1,0 +1,157 @@
+{
+  "title": "Image Smoother",
+  "difficulty": "Easy",
+  "type": "matrix",
+  "tags": [
+    "Array",
+    "Matrix"
+  ],
+  "description": "Given a 2D integer matrix, return a matrix where each cell is the floor of the average of the 3x3 surrounding cells.",
+  "pseudocode": "for r from 0 to m-1:\n  for c from 0 to n-1:\n    sum = 0, count = 0\n    for i from r-1 to r+1:\n      for j from c-1 to c+1:\n        if 0 <= i < m and 0 <= j < n:\n          sum += img[i][j], count++\n    res[r][c] = floor(sum / count)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Starting the iteration at row 0, col 0",
+      "matrix": [
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Checking neighbors for cell (0,0). Valid neighbors: (0,0), (0,1), (1,0), (1,1)",
+      "matrix": [
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Calculating average: (1+1+1+1)/4 = 1",
+      "matrix": [
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 1,
+      "note": "Moving to row 0, col 1",
+      "matrix": [
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "curr": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Checking neighbors for cell (0,1). Valid neighbors: (0,0), (0,1), (1,0), (1,1)",
+      "matrix": [
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "curr": [
+        0,
+        1
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Calculating average: (1+1+1+1)/4 = 1",
+      "matrix": [
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "curr": [
+        0,
+        1
+      ]
+    }
+  ]
+}

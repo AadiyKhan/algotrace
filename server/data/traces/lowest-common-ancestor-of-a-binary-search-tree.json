@@ -1,0 +1,79 @@
+{
+  "title": "Lowest Common Ancestor Of A Binary Search Tree",
+  "difficulty": "Medium",
+  "type": "tree",
+  "tags": [
+    "Tree",
+    "Binary Search Tree",
+    "Recursion"
+  ],
+  "description": "Find the lowest common ancestor (LCA) node of two given nodes in a binary search tree (BST).",
+  "target": "p: 2, q: 8",
+  "pseudocode": "1: while (root) {\n2:   if (p < root.val && q < root.val) root = root.left;\n3:   else if (p > root.val && q > root.val) root = root.right;\n4:   else return root;\n5: }",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Start at the root (node 6).",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 6,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 2,
+          "val": 8,
+          "left": 5,
+          "right": 6
+        },
+        {
+          "id": 3,
+          "val": 0,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 4,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 5,
+          "val": 7,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 6,
+          "val": 9,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Both 2 and 8 are not less than 6. Check next condition.",
+      "curr": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "2 is not greater than 6, move to else block.",
+      "curr": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "LCA found at node 6 (since p < 6 < q).",
+      "curr": 0
+    }
+  ]
+}

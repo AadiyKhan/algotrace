@@ -1,0 +1,67 @@
+{
+  "title": "Longest Substring With At Least K Repeating Characters",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "String",
+    "Divide and Conquer",
+    "Sliding Window"
+  ],
+  "description": "Find the length of the longest substring where every character appears at least k times.",
+  "target": 3,
+  "pseudocode": "1. function longestSubstring(s, k) {\n2.   if (s.length < k) return 0;\n3.   let counts = {};\n4.   for (let char of s) counts[char] = (counts[char] || 0) + 1;\n5.   for (let char in counts) {\n6.     if (counts[char] < k) {\n7.       return Math.max(...s.split(char).map(sub => longestSubstring(sub, k)));\n8.     }\n9.   }\n10.  return s.length;\n11. }",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Starting execution with s = 'aaabb', k = 3",
+      "array": [
+        "a",
+        "a",
+        "a",
+        "b",
+        "b"
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Counting character frequencies: {a: 3, b: 2}",
+      "array": [
+        "a",
+        "a",
+        "a",
+        "b",
+        "b"
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Char 'b' count (2) is less than k (3). Splitting at 'b'",
+      "array": [
+        "a",
+        "a",
+        "a",
+        "b",
+        "b"
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Recursive call on substring 'aaa', length is 3",
+      "array": [
+        "a",
+        "a",
+        "a"
+      ]
+    },
+    {
+      "codeLine": 10,
+      "note": "Base case reached: all chars count >= k, returning length 3",
+      "array": [
+        "a",
+        "a",
+        "a"
+      ]
+    }
+  ]
+}

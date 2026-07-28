@@ -1,0 +1,179 @@
+{
+  "title": "Search a 2D Matrix II",
+  "difficulty": "Medium",
+  "type": "matrix",
+  "tags": [
+    "Array",
+    "Binary Search",
+    "Matrix"
+  ],
+  "description": "Efficiently search for a target value in an m x n matrix where each row and column is sorted in ascending order.",
+  "target": 5,
+  "pseudocode": "1. row = 0, col = n - 1\n2. while row < m and col >= 0:\n3.   if matrix[row][col] == target: return true\n4.   if matrix[row][col] > target: col--\n5.   else: row++\n6. return false",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize starting point at top-right corner",
+      "matrix": [
+        [
+          1,
+          4,
+          7
+        ],
+        [
+          2,
+          5,
+          8
+        ],
+        [
+          3,
+          6,
+          9
+        ]
+      ],
+      "curr": [
+        0,
+        2
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Compare current element 7 with target 5",
+      "matrix": [
+        [
+          1,
+          4,
+          7
+        ],
+        [
+          2,
+          5,
+          8
+        ],
+        [
+          3,
+          6,
+          9
+        ]
+      ],
+      "curr": [
+        0,
+        2
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "7 > 5, move left",
+      "matrix": [
+        [
+          1,
+          4,
+          7
+        ],
+        [
+          2,
+          5,
+          8
+        ],
+        [
+          3,
+          6,
+          9
+        ]
+      ],
+      "curr": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Compare current element 4 with target 5",
+      "matrix": [
+        [
+          1,
+          4,
+          7
+        ],
+        [
+          2,
+          5,
+          8
+        ],
+        [
+          3,
+          6,
+          9
+        ]
+      ],
+      "curr": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "4 < 5, move down",
+      "matrix": [
+        [
+          1,
+          4,
+          7
+        ],
+        [
+          2,
+          5,
+          8
+        ],
+        [
+          3,
+          6,
+          9
+        ]
+      ],
+      "curr": [
+        1,
+        1
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Current element 5 matches target",
+      "matrix": [
+        [
+          1,
+          4,
+          7
+        ],
+        [
+          2,
+          5,
+          8
+        ],
+        [
+          3,
+          6,
+          9
+        ]
+      ],
+      "curr": [
+        1,
+        1
+      ],
+      "visited": [
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ]
+    }
+  ]
+}

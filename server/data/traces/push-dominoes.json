@@ -1,0 +1,122 @@
+{
+  "title": "Push Dominoes",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Two Pointers",
+    "String"
+  ],
+  "description": "Given a string of dominoes, determine the final state after the forces act upon them.",
+  "pseudocode": "let forces = new Array(n).fill(0);\nfor (let i = 0, f = 0; i < n; i++) {\n  if (s[i] == 'R') f = n;\n  else if (s[i] == 'L') f = 0;\n  else f = Math.max(f - 1, 0);\n  forces[i] += f;\n}\nfor (let i = n - 1, f = 0; i >= 0; i--) {\n  if (s[i] == 'L') f = n;\n  else if (s[i] == 'R') f = 0;\n  else f = Math.max(f - 1, 0);\n  forces[i] -= f;\n}",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Initialize left-to-right forces pass.",
+      "array": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Found 'R' at index 0, set force to 5.",
+      "array": [
+        5,
+        0,
+        0,
+        0,
+        0
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Decrease force for '.' at index 1.",
+      "array": [
+        5,
+        4,
+        0,
+        0,
+        0
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Decrease force for '.' at index 2.",
+      "array": [
+        5,
+        4,
+        3,
+        0,
+        0
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Found 'L' at index 3, reset force to 0.",
+      "array": [
+        5,
+        4,
+        3,
+        0,
+        0
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 8,
+      "note": "Initialize right-to-left forces pass.",
+      "array": [
+        5,
+        4,
+        3,
+        0,
+        0
+      ],
+      "i": 4
+    },
+    {
+      "codeLine": 9,
+      "note": "Found '.' at index 4, force remains 0.",
+      "array": [
+        5,
+        4,
+        3,
+        0,
+        0
+      ],
+      "i": 4
+    },
+    {
+      "codeLine": 10,
+      "note": "Found 'L' at index 3, set force to 5.",
+      "array": [
+        5,
+        4,
+        3,
+        -5,
+        0
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 11,
+      "note": "Decrease force for '.' at index 2.",
+      "array": [
+        5,
+        4,
+        3,
+        -5,
+        -4
+      ],
+      "i": 2
+    }
+  ]
+}

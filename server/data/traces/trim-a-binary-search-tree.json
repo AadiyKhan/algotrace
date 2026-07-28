@@ -1,0 +1,117 @@
+{
+  "title": "Trim a Binary Search Tree",
+  "difficulty": "Medium",
+  "type": "tree",
+  "tags": [
+    "Tree",
+    "Binary Search Tree",
+    "Recursion"
+  ],
+  "description": "Trim a binary search tree so that all values in the tree are within the range [low, high].",
+  "target": "low: 1, high: 2",
+  "pseudocode": "1. function trimBST(root, low, high) {\n2.   if (!root) return null;\n3.   if (root.val < low) return trimBST(root.right, low, high);\n4.   if (root.val > high) return trimBST(root.left, low, high);\n5.   root.left = trimBST(root.left, low, high);\n6.   root.right = trimBST(root.right, low, high);\n7.   return root;\n8. }",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize trimBST with root (val: 1, left: 0, right: 2).",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 0,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": 0,
+          "right": 2
+        },
+        {
+          "id": 2,
+          "val": 2,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Root 1 is in range, trim left child (0).",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 0,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": 0,
+          "right": 2
+        },
+        {
+          "id": 2,
+          "val": 2,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Node 0 < low(1), return its right child (null).",
+      "treeNodes": [
+        {
+          "id": 1,
+          "val": 1,
+          "left": null,
+          "right": 2
+        },
+        {
+          "id": 2,
+          "val": 2,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Trim right child (2). 2 is in range.",
+      "treeNodes": [
+        {
+          "id": 1,
+          "val": 1,
+          "left": null,
+          "right": 2
+        },
+        {
+          "id": 2,
+          "val": 2,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Returning the pruned tree.",
+      "treeNodes": [
+        {
+          "id": 1,
+          "val": 1,
+          "left": null,
+          "right": 2
+        },
+        {
+          "id": 2,
+          "val": 2,
+          "left": null,
+          "right": null
+        }
+      ]
+    }
+  ]
+}

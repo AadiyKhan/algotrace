@@ -1,0 +1,115 @@
+{
+  "title": "Count of Smaller Numbers After Self",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Divide and Conquer",
+    "Binary Indexed Tree",
+    "Merge Sort"
+  ],
+  "description": "Given an integer array nums, return an integer array counts where counts[i] is the number of smaller elements to the right of nums[i].",
+  "target": null,
+  "pseudocode": "1. Initialize counts array with 0s\n2. Use a sorted list to keep track of seen elements\n3. Iterate backwards through nums\n4. Find the insertion index of nums[i] in the sorted list\n5. Add the index to counts\n6. Insert nums[i] into the sorted list",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize counts with zeros for input [5, 2, 6, 1]",
+      "array": [
+        5,
+        2,
+        6,
+        1
+      ],
+      "i": null
+    },
+    {
+      "codeLine": 3,
+      "note": "Start iteration from the end (index 3, value 1)",
+      "array": [
+        5,
+        2,
+        6,
+        1
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 4,
+      "note": "Insert 1 into empty sorted list. Smaller elements: 0",
+      "array": [
+        5,
+        2,
+        6,
+        1
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 3,
+      "note": "Move to index 2, value 6",
+      "array": [
+        5,
+        2,
+        6,
+        1
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "6 is greater than 1. Insertion index is 1. Smaller: 1",
+      "array": [
+        5,
+        2,
+        6,
+        1
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Move to index 1, value 2",
+      "array": [
+        5,
+        2,
+        6,
+        1
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "2 is greater than 1, less than 6. Insertion index is 1. Smaller: 1",
+      "array": [
+        5,
+        2,
+        6,
+        1
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Move to index 0, value 5",
+      "array": [
+        5,
+        2,
+        6,
+        1
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "5 is greater than 1 and 2, less than 6. Insertion index is 2. Smaller: 2",
+      "array": [
+        5,
+        2,
+        6,
+        1
+      ],
+      "i": 0
+    }
+  ]
+}

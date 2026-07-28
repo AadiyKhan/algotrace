@@ -1,0 +1,86 @@
+{
+  "title": "Goat Latin",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "String",
+    "Array"
+  ],
+  "description": "Convert a sentence to Goat Latin: append 'ma', add 'a's based on index, and handle vowel/consonant rules.",
+  "target": "I speak Goat Latin",
+  "pseudocode": "1. words = sentence.split(' ')\n2. vowels = 'aeiouAEIOU'\n3. for i, word in enumerate(words):\n4.   if word[0] in vowels:\n5.     word = word + 'ma'\n6.   else:\n7.     word = word[1:] + word[0] + 'ma'\n8.   word = word + ('a' * (i + 1))\n9.   words[i] = word\n10. return words.join(' ')",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Split the input sentence into words.",
+      "array": [
+        "I",
+        "speak"
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Start processing the first word 'I'.",
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "'I' starts with a vowel.",
+      "i": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Append 'ma' to the word.",
+      "array": [
+        "Ima",
+        "speak"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 8,
+      "note": "Append one 'a' (i+1=1).",
+      "array": [
+        "Imaa",
+        "speak"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Start processing the second word 'speak'.",
+      "i": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "'speak' starts with a consonant.",
+      "i": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "Move first letter to end and append 'ma'.",
+      "array": [
+        "Imaa",
+        "peaksma"
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 8,
+      "note": "Append two 'a's (i+1=2).",
+      "array": [
+        "Imaa",
+        "peaksmaa"
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 10,
+      "note": "Final result joined by spaces.",
+      "array": [
+        "Imaa",
+        "peaksmaa"
+      ]
+    }
+  ]
+}

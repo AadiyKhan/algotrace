@@ -1,0 +1,53 @@
+{
+  "title": "Two Sum III - Data Structure Design",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "Design"
+  ],
+  "description": "Design a class that supports adding numbers and checking if any two numbers sum to a target.",
+  "target": 10,
+  "pseudocode": "1: add(val) {\n2:   freq[val] = (freq[val] || 0) + 1\n3: }\n4: find(target) {\n5:   for num in freq {\n6:     comp = target - num\n7:     if (comp == num) return freq[num] > 1\n8:     if (comp in freq) return true\n9:   }\n10:  return false\n11: }",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Adding number 3 to the frequency map",
+      "array": [
+        3
+      ]
+    },
+    {
+      "codeLine": 1,
+      "note": "Adding number 7 to the frequency map",
+      "array": [
+        3,
+        7
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Searching for target 10",
+      "array": [
+        3,
+        7
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Iterating through keys in frequency map",
+      "i": 3
+    },
+    {
+      "codeLine": 6,
+      "note": "Calculating complement: 10 - 3 = 7",
+      "i": 3
+    },
+    {
+      "codeLine": 8,
+      "note": "Found complement 7 in map, returning true",
+      "i": 3
+    }
+  ]
+}

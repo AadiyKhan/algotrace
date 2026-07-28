@@ -1,0 +1,95 @@
+{
+  "title": "Reverse Words in a String",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "String",
+    "Two Pointers"
+  ],
+  "description": "Reverse the order of words in a given string, handling multiple spaces and leading/trailing whitespace.",
+  "target": "blue is sky the",
+  "pseudocode": "1. words = s.trim().split(/\\s+/)\n2. left = 0, right = words.length - 1\n3. while left < right:\n4.   swap(words[left], words[right])\n5.   left++, right--\n6. return words.join(' ')",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Trim and split string into an array of words",
+      "array": [
+        "the",
+        "sky",
+        "is",
+        "blue"
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Initialize two pointers at ends of the array",
+      "array": [
+        "the",
+        "sky",
+        "is",
+        "blue"
+      ],
+      "i": 0,
+      "j": 3
+    },
+    {
+      "codeLine": 4,
+      "note": "Swap words[0] and words[3]",
+      "array": [
+        "blue",
+        "sky",
+        "is",
+        "the"
+      ],
+      "i": 0,
+      "j": 3
+    },
+    {
+      "codeLine": 5,
+      "note": "Increment left and decrement right",
+      "array": [
+        "blue",
+        "sky",
+        "is",
+        "the"
+      ],
+      "i": 1,
+      "j": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Swap words[1] and words[2]",
+      "array": [
+        "blue",
+        "is",
+        "sky",
+        "the"
+      ],
+      "i": 1,
+      "j": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Increment left and decrement right, loop terminates",
+      "array": [
+        "blue",
+        "is",
+        "sky",
+        "the"
+      ],
+      "i": 2,
+      "j": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Join words with space",
+      "array": [
+        "blue",
+        "is",
+        "sky",
+        "the"
+      ]
+    }
+  ]
+}

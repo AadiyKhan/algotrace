@@ -1,0 +1,94 @@
+{
+  "title": "Nth Magical Number",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Math",
+    "Binary Search"
+  ],
+  "description": "Find the Nth magical number divisible by either A or B. We use binary search on the result range.",
+  "target": 4,
+  "pseudocode": "1. low = min(A, B), high = N * min(A, B)\n2. while low < high:\n3.   mid = low + floor((high - low) / 2)\n4.   count = floor(mid/A) + floor(mid/B) - floor(mid/lcm(A,B))\n5.   if count < N: low = mid + 1\n6.   else: high = mid\n7. return low",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize binary search bounds for A=2, B=3, N=4",
+      "array": [
+        2,
+        3,
+        4
+      ],
+      "i": "low: 2",
+      "j": "high: 8"
+    },
+    {
+      "codeLine": 3,
+      "note": "Calculate mid point of search range",
+      "array": [
+        2,
+        3,
+        4
+      ],
+      "i": "mid: 5"
+    },
+    {
+      "codeLine": 4,
+      "note": "Count multiples: floor(5/2) + floor(5/3) - floor(5/6) = 2 + 1 - 0 = 3",
+      "array": [
+        2,
+        3,
+        4
+      ],
+      "i": "count: 3"
+    },
+    {
+      "codeLine": 5,
+      "note": "Since count (3) < N (4), move low to mid + 1",
+      "array": [
+        2,
+        3,
+        4
+      ],
+      "i": "low: 6"
+    },
+    {
+      "codeLine": 3,
+      "note": "Next binary search iteration, mid = 7",
+      "array": [
+        2,
+        3,
+        4
+      ],
+      "i": "mid: 7"
+    },
+    {
+      "codeLine": 4,
+      "note": "Count multiples: floor(7/2) + floor(7/3) - floor(7/6) = 3 + 2 - 1 = 4",
+      "array": [
+        2,
+        3,
+        4
+      ],
+      "i": "count: 4"
+    },
+    {
+      "codeLine": 6,
+      "note": "Since count (4) >= N (4), set high = mid",
+      "array": [
+        2,
+        3,
+        4
+      ],
+      "j": "high: 7"
+    },
+    {
+      "codeLine": 7,
+      "note": "Binary search terminates, return 6",
+      "array": [
+        2,
+        3,
+        4
+      ]
+    }
+  ]
+}

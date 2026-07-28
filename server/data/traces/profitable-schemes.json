@@ -1,0 +1,120 @@
+{
+  "title": "Profitable Schemes",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Dynamic Programming"
+  ],
+  "description": "Find the number of ways to choose a subset of crimes that generate at least minProfit with at most n group members.",
+  "target": 5,
+  "pseudocode": "1. dp[n+1][minProfit+1] initialized to 0\n2. dp[0][0] = 1\n3. for each crime (g, p):\n4.   for i from n down to g:\n5.     for j from minProfit down to 0:\n6.       next_j = min(minProfit, j + p)\n7.       dp[i][next_j] += dp[i-g][j]",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize DP table dp[members+1][profit+1] with zeros",
+      "array": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Base case: 1 way to have 0 members and 0 profit",
+      "array": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Processing crime with group 1 and profit 2",
+      "i": 1,
+      "array": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Update DP values based on current crime constraints",
+      "i": 2,
+      "array": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0
+        ],
+        [
+          0,
+          1,
+          1
+        ]
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Final state after processing crimes",
+      "array": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0
+        ],
+        [
+          0,
+          1,
+          2
+        ]
+      ]
+    }
+  ]
+}

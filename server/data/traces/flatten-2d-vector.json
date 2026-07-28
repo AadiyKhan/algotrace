@@ -1,0 +1,80 @@
+{
+  "title": "Flatten 2D Vector",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Design",
+    "Iterator"
+  ],
+  "description": "Design an iterator to flatten a 2D vector.",
+  "pseudocode": "1: class Vector2D {\n2:   constructor(vec) {\n3:     this.data = vec;\n4:     this.row = 0;\n5:     this.col = 0;\n6:   }\n7:   next() {\n8:     let res = this.data[this.row][this.col];\n9:     this.col++;\n10:    if (this.col === this.data[this.row].length) {\n11:      this.row++;\n12:      this.col = 0;\n13:    }\n14:    return res;\n15:  }\n16: }",
+  "steps": [
+    {
+      "codeLine": 3,
+      "note": "Initialize vector: [[1, 2], [3]]",
+      "array": [
+        1,
+        2,
+        3
+      ],
+      "i": 0,
+      "j": 0
+    },
+    {
+      "codeLine": 8,
+      "note": "Next() called, returning current element at [0, 0]",
+      "array": [
+        1,
+        2,
+        3
+      ],
+      "i": 0,
+      "j": 0
+    },
+    {
+      "codeLine": 9,
+      "note": "Move col pointer to next position",
+      "array": [
+        1,
+        2,
+        3
+      ],
+      "i": 0,
+      "j": 1
+    },
+    {
+      "codeLine": 8,
+      "note": "Next() called, returning element at [0, 1]",
+      "array": [
+        1,
+        2,
+        3
+      ],
+      "i": 0,
+      "j": 1
+    },
+    {
+      "codeLine": 11,
+      "note": "End of row reached, move to row 1",
+      "array": [
+        1,
+        2,
+        3
+      ],
+      "i": 1,
+      "j": 0
+    },
+    {
+      "codeLine": 8,
+      "note": "Next() called, returning element at [1, 0]",
+      "array": [
+        1,
+        2,
+        3
+      ],
+      "i": 1,
+      "j": 0
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "title": "Flip Game II",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "String",
+    "Backtracking",
+    "Game Theory"
+  ],
+  "description": "Determine if the starting player can win the flip game by changing '++' to '--' in a string.",
+  "pseudocode": "function canWin(s) {\n  for (let i = 0; i < s.length - 1; i++) {\n    if (s[i] === '+' && s[i+1] === '+') {\n      let nextState = s.slice(0, i) + '--' + s.slice(i + 2);\n      if (!canWin(nextState)) return true;\n    }\n  }\n  return false;\n}",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Starting with s = '+++', loop i = 0",
+      "i": 0,
+      "array": [
+        "+",
+        "+",
+        "+"
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Found '++' at index 0 and 1, creating new state '--+'",
+      "i": 0,
+      "array": [
+        "-",
+        "-",
+        "+"
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Recursively call canWin('--+'), no moves available, returns false",
+      "i": 0,
+      "array": [
+        "-",
+        "-",
+        "+"
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Since recursive call returned false, current player wins",
+      "i": 0,
+      "array": [
+        "-",
+        "-",
+        "+"
+      ]
+    }
+  ]
+}

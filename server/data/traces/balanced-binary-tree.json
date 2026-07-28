@@ -1,0 +1,199 @@
+{
+  "title": "Balanced Binary Tree",
+  "difficulty": "Easy",
+  "type": "tree",
+  "tags": [
+    "Tree",
+    "DFS",
+    "Recursion"
+  ],
+  "description": "Determine if a binary tree is height-balanced (difference between depths of two subtrees is at most 1).",
+  "pseudocode": "1: function checkHeight(node) {\n2:   if (!node) return 0;\n3:   left = checkHeight(node.left);\n4:   right = checkHeight(node.right);\n5:   if (left == -1 || right == -1 || abs(left - right) > 1) return -1;\n6:   return max(left, right) + 1;\n7: }",
+  "steps": [
+    {
+      "codeLine": 3,
+      "note": "Traversing to left child of node 0 (ID 1)",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 3,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 9,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 20,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 3,
+          "val": 15,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 7,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Left leaf node 9 returns height 1",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 3,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 9,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 20,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 3,
+          "val": 15,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 7,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Traversing to right subtree root (ID 2)",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 3,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 9,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 20,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 3,
+          "val": 15,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 7,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Right subtree returns height 2",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 3,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 9,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 20,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 3,
+          "val": 15,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 7,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Root height difference |1 - 2| <= 1, tree is balanced",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 3,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 9,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 20,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 3,
+          "val": 15,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 7,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 0
+    }
+  ]
+}

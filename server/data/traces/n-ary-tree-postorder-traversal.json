@@ -1,0 +1,175 @@
+{
+  "title": "N-ary Tree Postorder Traversal",
+  "difficulty": "Easy",
+  "type": "tree",
+  "tags": [
+    "Tree",
+    "DFS",
+    "Recursion"
+  ],
+  "description": "Return the postorder traversal of an N-ary tree's nodes' values.",
+  "pseudocode": "1. function postorder(root, result = []):\n2.   if !root: return\n3.   for child in root.children:\n4.     postorder(child, result)\n5.   result.push(root.val)\n6.   return result",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize traversal on root (ID 0).",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "children": [
+            1,
+            2
+          ]
+        },
+        {
+          "id": 1,
+          "val": 3,
+          "children": []
+        },
+        {
+          "id": 2,
+          "val": 2,
+          "children": []
+        }
+      ],
+      "visited": []
+    },
+    {
+      "codeLine": 3,
+      "note": "Visiting first child (ID 1).",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "children": [
+            1,
+            2
+          ]
+        },
+        {
+          "id": 1,
+          "val": 3,
+          "children": []
+        },
+        {
+          "id": 2,
+          "val": 2,
+          "children": []
+        }
+      ],
+      "visited": []
+    },
+    {
+      "codeLine": 5,
+      "note": "Pushing child value 3 to result.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "children": [
+            1,
+            2
+          ]
+        },
+        {
+          "id": 1,
+          "val": 3,
+          "children": []
+        },
+        {
+          "id": 2,
+          "val": 2,
+          "children": []
+        }
+      ],
+      "visited": [
+        1
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Visiting second child (ID 2).",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "children": [
+            1,
+            2
+          ]
+        },
+        {
+          "id": 1,
+          "val": 3,
+          "children": []
+        },
+        {
+          "id": 2,
+          "val": 2,
+          "children": []
+        }
+      ],
+      "visited": [
+        1
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Pushing child value 2 to result.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "children": [
+            1,
+            2
+          ]
+        },
+        {
+          "id": 1,
+          "val": 3,
+          "children": []
+        },
+        {
+          "id": 2,
+          "val": 2,
+          "children": []
+        }
+      ],
+      "visited": [
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Pushing root value 1 to result.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "children": [
+            1,
+            2
+          ]
+        },
+        {
+          "id": 1,
+          "val": 3,
+          "children": []
+        },
+        {
+          "id": 2,
+          "val": 2,
+          "children": []
+        }
+      ],
+      "visited": [
+        1,
+        2,
+        0
+      ]
+    }
+  ]
+}

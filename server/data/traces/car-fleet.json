@@ -1,0 +1,130 @@
+{
+  "title": "Car Fleet",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Stack",
+    "Sorting"
+  ],
+  "description": "Determine the number of car fleets arriving at a destination. A fleet is formed if a trailing car catches up to a lead car.",
+  "target": 12,
+  "pseudocode": "1. pairs = sort(position, speed) by position descending\n2. stack = []\n3. for p, s in pairs:\n4.   time = (target - p) / s\n5.   if stack is empty or time > stack.top():\n6.     stack.push(time)\n7. return stack.length",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Pairing position [10, 8, 0, 5, 3] and speed [2, 4, 1, 1, 3] and sorting by position descending.",
+      "array": [
+        [
+          10,
+          2
+        ],
+        [
+          8,
+          4
+        ],
+        [
+          5,
+          1
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Calculate time for first car at pos 10: (12-10)/2 = 1.0",
+      "array": [
+        1
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Stack empty, push 1.0",
+      "array": [
+        1
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Calculate time for car at pos 8: (12-8)/4 = 1.0",
+      "array": [
+        1,
+        1
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "1.0 is not > 1.0, so this car joins the existing fleet.",
+      "array": [
+        1
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Calculate time for car at pos 5: (12-5)/1 = 7.0",
+      "array": [
+        1,
+        7
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "7.0 > 1.0, push 7.0 to stack.",
+      "array": [
+        1,
+        7
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Calculate time for car at pos 3: (12-3)/3 = 3.0",
+      "array": [
+        1,
+        7,
+        3
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "3.0 is not > 7.0, car joins the fleet at 7.0.",
+      "array": [
+        1,
+        7
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Calculate time for car at pos 0: (12-0)/1 = 12.0",
+      "array": [
+        1,
+        7,
+        12
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "12.0 > 7.0, push 12.0 to stack.",
+      "array": [
+        1,
+        7,
+        12
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Final fleet count is the stack size: 3",
+      "array": [
+        1,
+        7,
+        12
+      ]
+    }
+  ]
+}

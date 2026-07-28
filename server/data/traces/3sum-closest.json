@@ -1,0 +1,232 @@
+{
+  "title": "3Sum Closest",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Two Pointers",
+    "Sorting"
+  ],
+  "description": "Given an integer array nums and an integer target, find three integers in nums such that the sum is closest to target. Return the sum of the three integers.",
+  "target": 1,
+  "pseudocode": "nums.sort()\nclosestSum = nums[0] + nums[1] + nums[2]\nfor i = 0 to nums.length - 2:\n  left = i + 1, right = nums.length - 1\n  while left < right:\n    sum = nums[i] + nums[left] + nums[right]\n    if abs(target - sum) < abs(target - closestSum):\n      closestSum = sum\n    if sum < target: left++\n    else if sum > target: right--\n    else: return target\nreturn closestSum",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Sort the array in non-decreasing order: [-4, -1, 1, 2].",
+      "array": [
+        -4,
+        -1,
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Initialize closestSum with the first triplet sum: -4 + (-1) + 1 = -4.",
+      "array": [
+        -4,
+        -1,
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Start outer loop with i = 0 (nums[i] = -4).",
+      "array": [
+        -4,
+        -1,
+        1,
+        2
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Set left pointer to index 1 (val -1) and right pointer to index 3 (val 2).",
+      "array": [
+        -4,
+        -1,
+        1,
+        2
+      ],
+      "i": 0,
+      "curr": 1,
+      "prev": 3
+    },
+    {
+      "codeLine": 6,
+      "note": "Calculate current triplet sum: -4 + (-1) + 2 = -3.",
+      "array": [
+        -4,
+        -1,
+        1,
+        2
+      ],
+      "i": 0,
+      "curr": 1,
+      "prev": 3
+    },
+    {
+      "codeLine": 7,
+      "note": "|1 - (-3)| = 4, which is closer than |1 - (-4)| = 5. Update closestSum to -3.",
+      "array": [
+        -4,
+        -1,
+        1,
+        2
+      ],
+      "i": 0,
+      "curr": 1,
+      "prev": 3
+    },
+    {
+      "codeLine": 8,
+      "note": "Current sum -3 is less than target 1. Increment left pointer to index 2.",
+      "array": [
+        -4,
+        -1,
+        1,
+        2
+      ],
+      "i": 0,
+      "curr": 2,
+      "prev": 3
+    },
+    {
+      "codeLine": 6,
+      "note": "Calculate current triplet sum: -4 + 1 + 2 = -1.",
+      "array": [
+        -4,
+        -1,
+        1,
+        2
+      ],
+      "i": 0,
+      "curr": 2,
+      "prev": 3
+    },
+    {
+      "codeLine": 7,
+      "note": "|1 - (-1)| = 2, which is closer than |1 - (-3)| = 4. Update closestSum to -1.",
+      "array": [
+        -4,
+        -1,
+        1,
+        2
+      ],
+      "i": 0,
+      "curr": 2,
+      "prev": 3
+    },
+    {
+      "codeLine": 8,
+      "note": "Current sum -1 is less than target 1. Increment left pointer to index 3.",
+      "array": [
+        -4,
+        -1,
+        1,
+        2
+      ],
+      "i": 0,
+      "curr": 3,
+      "prev": 3
+    },
+    {
+      "codeLine": 5,
+      "note": "left pointer equals right pointer (3 == 3). Inner loop terminates for i = 0.",
+      "array": [
+        -4,
+        -1,
+        1,
+        2
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Move outer loop to i = 1 (nums[i] = -1).",
+      "array": [
+        -4,
+        -1,
+        1,
+        2
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Set left pointer to index 2 (val 1) and right pointer to index 3 (val 2).",
+      "array": [
+        -4,
+        -1,
+        1,
+        2
+      ],
+      "i": 1,
+      "curr": 2,
+      "prev": 3
+    },
+    {
+      "codeLine": 6,
+      "note": "Calculate current triplet sum: -1 + 1 + 2 = 2.",
+      "array": [
+        -4,
+        -1,
+        1,
+        2
+      ],
+      "i": 1,
+      "curr": 2,
+      "prev": 3
+    },
+    {
+      "codeLine": 7,
+      "note": "|1 - 2| = 1, which is closer than |1 - (-1)| = 2. Update closestSum to 2.",
+      "array": [
+        -4,
+        -1,
+        1,
+        2
+      ],
+      "i": 1,
+      "curr": 2,
+      "prev": 3
+    },
+    {
+      "codeLine": 9,
+      "note": "Current sum 2 is greater than target 1. Decrement right pointer to index 2.",
+      "array": [
+        -4,
+        -1,
+        1,
+        2
+      ],
+      "i": 1,
+      "curr": 2,
+      "prev": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "left pointer equals right pointer (2 == 2). Inner loop terminates for i = 1.",
+      "array": [
+        -4,
+        -1,
+        1,
+        2
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 11,
+      "note": "Traversal finished. Return closestSum = 2.",
+      "array": [
+        -4,
+        -1,
+        1,
+        2
+      ]
+    }
+  ]
+}

@@ -1,0 +1,142 @@
+{
+  "title": "Construct Binary Tree from String",
+  "difficulty": "Medium",
+  "type": "tree",
+  "tags": [
+    "String",
+    "Tree",
+    "Depth-First Search",
+    "Stack"
+  ],
+  "description": "Construct a binary tree from a string consisting of parenthesis and integers.",
+  "target": "4(2(3)(1))(6(5))",
+  "pseudocode": "function str2tree(s) {\n  if (!s) return null;\n  let stack = [];\n  for (let i = 0; i < s.length; i++) {\n    if (s[i] === ')') stack.pop();\n    else if (s[i] === '(') continue;\n    else {\n      let j = i;\n      while (i + 1 < s.length && !isNaN(s[i + 1]) && s[i+1] !== '(' && s[i+1] !== ')') i++;\n      let node = {val: parseInt(s.substring(j, i + 1)), left: null, right: null};\n      if (stack.length > 0) {\n        let parent = stack[stack.length - 1];\n        if (!parent.left) parent.left = node;\n        else parent.right = node;\n      }\n      stack.push(node);\n    }\n  }\n  return stack[0];\n}",
+  "steps": [
+    {
+      "codeLine": 4,
+      "note": "Start parsing string '4(2)(6)'. Create root node 4.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 4,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 11,
+      "note": "Push 4 onto stack.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 4,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Skip '('. Found next number 2.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 4,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 13,
+      "note": "Attach 2 as left child of 4.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 4,
+          "left": 1,
+          "right": null
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Found ')', pop 2 from stack.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 4,
+          "left": 1,
+          "right": null
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Found next number 6.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 4,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 6,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 15,
+      "note": "Attach 6 as right child of 4.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 4,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 6,
+          "left": null,
+          "right": null
+        }
+      ]
+    }
+  ]
+}

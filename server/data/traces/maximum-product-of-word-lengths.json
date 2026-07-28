@@ -1,0 +1,100 @@
+{
+  "title": "Maximum Product of Word Lengths",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Bit Manipulation"
+  ],
+  "description": "Find the maximum product of word lengths such that the two words do not share common letters, using bitmasks for efficiency.",
+  "target": 0,
+  "pseudocode": "1. masks = words.map(word => encode(word))\n2. maxProd = 0\n3. for i = 0 to length-1\n4.   for j = i + 1 to length-1\n5.     if (masks[i] & masks[j] === 0)\n6.       maxProd = max(maxProd, words[i].length * words[j].length)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Precomputing bitmasks for words ['abc', 'de', 'fgh']",
+      "array": [
+        "abc",
+        "de",
+        "fgh"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Starting outer loop, i = 0",
+      "array": [
+        "abc",
+        "de",
+        "fgh"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Inner loop j = 1, comparing 'abc' and 'de'",
+      "array": [
+        "abc",
+        "de",
+        "fgh"
+      ],
+      "i": 0,
+      "j": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Check overlap: 'abc' & 'de' have no common bits",
+      "array": [
+        "abc",
+        "de",
+        "fgh"
+      ],
+      "i": 0,
+      "j": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Calculate product: 3 * 2 = 6, maxProd = 6",
+      "array": [
+        "abc",
+        "de",
+        "fgh"
+      ],
+      "i": 0,
+      "j": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Inner loop j = 2, comparing 'abc' and 'fgh'",
+      "array": [
+        "abc",
+        "de",
+        "fgh"
+      ],
+      "i": 0,
+      "j": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Check overlap: 'abc' & 'fgh' have no common bits",
+      "array": [
+        "abc",
+        "de",
+        "fgh"
+      ],
+      "i": 0,
+      "j": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Calculate product: 3 * 3 = 9, maxProd = 9",
+      "array": [
+        "abc",
+        "de",
+        "fgh"
+      ],
+      "i": 0,
+      "j": 2
+    }
+  ]
+}

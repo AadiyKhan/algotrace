@@ -1,0 +1,104 @@
+{
+  "title": "Isomorphic Strings",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Hash Table",
+    "String"
+  ],
+  "description": "Determine if two strings s and t are isomorphic. Characters in s must be replaced to get t, with no two characters mapping to the same character.",
+  "target": "true",
+  "pseudocode": "1: mapS = {}, mapT = {}\n2: for i = 0 to s.length:\n3:   charS = s[i], charT = t[i]\n4:   if !mapS[charS] and !mapT[charT]:\n5:     mapS[charS] = charT, mapT[charT] = charS\n6:   else if mapS[charS] !== charT:\n7:     return false\n8: return true",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Initialize loop with s = 'egg', t = 'add'",
+      "array": [
+        "e",
+        "g",
+        "g"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Mapping 'e' to 'a'. Both maps are empty.",
+      "array": [
+        "e",
+        "g",
+        "g"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Update maps: mapS['e']='a', mapT['a']='e'",
+      "array": [
+        "e",
+        "g",
+        "g"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Next iteration i = 1",
+      "array": [
+        "e",
+        "g",
+        "g"
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Mapping 'g' to 'd'. Neither mapped yet.",
+      "array": [
+        "e",
+        "g",
+        "g"
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Update maps: mapS['g']='d', mapT['d']='g'",
+      "array": [
+        "e",
+        "g",
+        "g"
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Next iteration i = 2",
+      "array": [
+        "e",
+        "g",
+        "g"
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Check mapping for 'g'. It exists and maps to 'd'.",
+      "array": [
+        "e",
+        "g",
+        "g"
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 8,
+      "note": "Loop finishes, return true.",
+      "array": [
+        "e",
+        "g",
+        "g"
+      ],
+      "i": 2
+    }
+  ]
+}

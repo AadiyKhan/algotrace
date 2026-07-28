@@ -1,0 +1,76 @@
+{
+  "title": "Group Shifted Strings",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "String"
+  ],
+  "description": "Group strings that can be shifted to each other (e.g., 'abc' -> 'bcd').",
+  "pseudocode": "1. map = {}\n2. for str in strings:\n3.   key = ''\n4.   for i from 1 to str.length - 1:\n5.     diff = (str[i] - str[i-1] + 26) % 26\n6.     key += diff + ','\n7.   map[key].push(str)",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Processing first string: 'abc'",
+      "array": [
+        "abc",
+        "bcd"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Calculating diffs for 'abc': (b-a)=1, (c-b)=1",
+      "array": [
+        "abc",
+        "bcd"
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Key generated: '1,1,'",
+      "array": [
+        "abc",
+        "bcd"
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Processing second string: 'bcd'",
+      "array": [
+        "abc",
+        "bcd"
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Calculating diffs for 'bcd': (c-b)=1, (d-c)=1",
+      "array": [
+        "abc",
+        "bcd"
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Key generated: '1,1,'",
+      "array": [
+        "abc",
+        "bcd"
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "Both strings mapped to the same key '1,1,'",
+      "array": [
+        "abc",
+        "bcd"
+      ]
+    }
+  ]
+}

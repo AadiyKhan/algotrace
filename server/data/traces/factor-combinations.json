@@ -1,0 +1,94 @@
+{
+  "title": "Factor Combinations",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Backtracking",
+    "Math"
+  ],
+  "description": "Find all possible combinations of factors for a given number n.",
+  "target": 12,
+  "pseudocode": "1. function backtrack(n, start, path, result) {\n2.   for (let i = start; i * i <= n; i++) {\n3.     if (n % i === 0) {\n4.       path.push(i, n / i);\n5.       result.push([...path]);\n6.       path.pop();\n7.       backtrack(n / i, i, path, result);\n8.       path.pop();\n9.     }\n10.  }\n11. }",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Starting backtracking with n=12, start=2",
+      "array": []
+    },
+    {
+      "codeLine": 3,
+      "note": "Found factor i=2. 12%2==0.",
+      "array": []
+    },
+    {
+      "codeLine": 4,
+      "note": "Push 2 and 6 into path.",
+      "array": [
+        2,
+        6
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Add [2, 6] to results.",
+      "array": [
+        2,
+        6
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Recursive call with n=6, start=2",
+      "array": [
+        2,
+        6
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Found factor i=2 in recursion. 6%2==0.",
+      "array": [
+        2,
+        2,
+        3
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Add [2, 2, 3] to results.",
+      "array": [
+        2,
+        2,
+        3
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Backtrack and pop to explore further.",
+      "array": [
+        2
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Loop finishes, return to initial call.",
+      "array": []
+    },
+    {
+      "codeLine": 3,
+      "note": "Found factor i=3. 12%3==0.",
+      "array": [
+        3,
+        4
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Add [3, 4] to results.",
+      "array": [
+        3,
+        4
+      ]
+    }
+  ]
+}

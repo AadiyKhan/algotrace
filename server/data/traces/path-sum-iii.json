@@ -1,0 +1,199 @@
+{
+  "title": "Path Sum III",
+  "difficulty": "Medium",
+  "type": "tree",
+  "tags": [
+    "Tree",
+    "DFS",
+    "Prefix Sum"
+  ],
+  "description": "Find the number of paths that sum to a target value where paths can start and end anywhere but must move downwards.",
+  "target": 8,
+  "pseudocode": "1. count = 0\n2. map = {0: 1}\n3. function dfs(node, currSum):\n4.   if !node: return\n5.   currSum += node.val\n6.   count += map[currSum - target] || 0\n7.   map[currSum] = (map[currSum] || 0) + 1\n8.   dfs(node.left, currSum)\n9.   dfs(node.right, currSum)\n10.  map[currSum] -= 1",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize count to 0",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 5,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 3,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 2,
+          "val": 8,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 3,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": -2,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Enter root 5, currSum = 5",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 5,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 3,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 2,
+          "val": 8,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 3,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": -2,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "map has {0:1}, currSum 5 - 8 = -3. count remains 0.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 5,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 3,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 2,
+          "val": 8,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 3,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": -2,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 8,
+      "note": "Move to node 3, currSum = 8",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 5,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 3,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 2,
+          "val": 8,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 3,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": -2,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "map has {0:1, 5:1}, currSum 8 - 8 = 0. Found path! count = 1.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 5,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 3,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 2,
+          "val": 8,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 3,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": -2,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 1
+    }
+  ]
+}

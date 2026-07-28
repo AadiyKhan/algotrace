@@ -1,0 +1,257 @@
+{
+  "title": "Partition List",
+  "difficulty": "Medium",
+  "type": "linked-list",
+  "tags": [
+    "Linked List",
+    "Two Pointers"
+  ],
+  "description": "Partition a linked list such that all nodes less than x come before nodes greater than or equal to x.",
+  "target": 3,
+  "pseudocode": "1: let before = new ListNode(0), after = new ListNode(0)\n2: let b = before, a = after, curr = head\n3: while curr:\n4:   if curr.val < x: b.next = curr; b = b.next\n5:   else: a.next = curr; a = a.next\n6:   curr = curr.next\n7: a.next = null\n8: b.next = after.next\n9: return before.next",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize two dummy heads for before and after lists.",
+      "nodes": [
+        {
+          "val": 0,
+          "next": null
+        },
+        {
+          "val": 0,
+          "next": null
+        },
+        {
+          "val": 1,
+          "next": 4
+        },
+        {
+          "val": 4,
+          "next": 3
+        },
+        {
+          "val": 3,
+          "next": 2
+        },
+        {
+          "val": 2,
+          "next": 5
+        },
+        {
+          "val": 5,
+          "next": null
+        }
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Process 1: 1 < 3, add to before list.",
+      "nodes": [
+        {
+          "val": 0,
+          "next": 2
+        },
+        {
+          "val": 0,
+          "next": null
+        },
+        {
+          "val": 1,
+          "next": null
+        },
+        {
+          "val": 4,
+          "next": 3
+        },
+        {
+          "val": 3,
+          "next": 2
+        },
+        {
+          "val": 2,
+          "next": 5
+        },
+        {
+          "val": 5,
+          "next": null
+        }
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Process 4: 4 >= 3, add to after list.",
+      "nodes": [
+        {
+          "val": 0,
+          "next": 2
+        },
+        {
+          "val": 0,
+          "next": 3
+        },
+        {
+          "val": 1,
+          "next": null
+        },
+        {
+          "val": 4,
+          "next": null
+        },
+        {
+          "val": 3,
+          "next": 2
+        },
+        {
+          "val": 2,
+          "next": 5
+        },
+        {
+          "val": 5,
+          "next": null
+        }
+      ],
+      "curr": 3
+    },
+    {
+      "codeLine": 5,
+      "note": "Process 3: 3 >= 3, add to after list.",
+      "nodes": [
+        {
+          "val": 0,
+          "next": 2
+        },
+        {
+          "val": 0,
+          "next": 3
+        },
+        {
+          "val": 1,
+          "next": null
+        },
+        {
+          "val": 4,
+          "next": 4
+        },
+        {
+          "val": 3,
+          "next": null
+        },
+        {
+          "val": 2,
+          "next": 5
+        },
+        {
+          "val": 5,
+          "next": null
+        }
+      ],
+      "curr": 4
+    },
+    {
+      "codeLine": 4,
+      "note": "Process 2: 2 < 3, add to before list.",
+      "nodes": [
+        {
+          "val": 0,
+          "next": 2
+        },
+        {
+          "val": 0,
+          "next": 3
+        },
+        {
+          "val": 1,
+          "next": 5
+        },
+        {
+          "val": 4,
+          "next": 4
+        },
+        {
+          "val": 3,
+          "next": null
+        },
+        {
+          "val": 2,
+          "next": null
+        },
+        {
+          "val": 5,
+          "next": null
+        }
+      ],
+      "curr": 5
+    },
+    {
+      "codeLine": 5,
+      "note": "Process 5: 5 >= 3, add to after list.",
+      "nodes": [
+        {
+          "val": 0,
+          "next": 2
+        },
+        {
+          "val": 0,
+          "next": 3
+        },
+        {
+          "val": 1,
+          "next": 5
+        },
+        {
+          "val": 4,
+          "next": 4
+        },
+        {
+          "val": 3,
+          "next": 6
+        },
+        {
+          "val": 2,
+          "next": null
+        },
+        {
+          "val": 5,
+          "next": null
+        }
+      ],
+      "curr": 6
+    },
+    {
+      "codeLine": 8,
+      "note": "Connect before tail to after head.",
+      "nodes": [
+        {
+          "val": 0,
+          "next": 2
+        },
+        {
+          "val": 0,
+          "next": 3
+        },
+        {
+          "val": 1,
+          "next": 5
+        },
+        {
+          "val": 4,
+          "next": 4
+        },
+        {
+          "val": 3,
+          "next": 6
+        },
+        {
+          "val": 2,
+          "next": 3
+        },
+        {
+          "val": 5,
+          "next": null
+        }
+      ]
+    }
+  ]
+}

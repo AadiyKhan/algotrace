@@ -1,0 +1,69 @@
+{
+  "title": "Maximum Product of Three Numbers",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Math",
+    "Sorting"
+  ],
+  "description": "Find the maximum product of three numbers in an array, which can be the product of the three largest numbers or the two smallest numbers and the largest.",
+  "pseudocode": "1. sort(nums)\n2. n = nums.length\n3. option1 = nums[n-1] * nums[n-2] * nums[n-3]\n4. option2 = nums[0] * nums[1] * nums[n-1]\n5. return max(option1, option2)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Sorting the array to identify potential candidates.",
+      "array": [
+        -10,
+        -10,
+        1,
+        3,
+        5
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Determining array length.",
+      "array": [
+        -10,
+        -10,
+        1,
+        3,
+        5
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Calculating product of three largest numbers: 1 * 3 * 5 = 15.",
+      "array": [
+        -10,
+        -10,
+        1,
+        3,
+        5
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Calculating product of two smallest and one largest number: -10 * -10 * 5 = 500.",
+      "array": [
+        -10,
+        -10,
+        1,
+        3,
+        5
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Returning the maximum of 15 and 500.",
+      "array": [
+        -10,
+        -10,
+        1,
+        3,
+        5
+      ]
+    }
+  ]
+}

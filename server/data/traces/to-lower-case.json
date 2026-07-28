@@ -1,0 +1,64 @@
+{
+  "title": "To Lower Case",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "String",
+    "Array"
+  ],
+  "description": "Convert all uppercase characters in a string to lowercase.",
+  "target": null,
+  "pseudocode": "1: let res = []\n2: for i from 0 to s.length - 1:\n3:   let charCode = s.charCodeAt(i)\n4:   if charCode >= 65 && charCode <= 90:\n5:     res.push(String.fromCharCode(charCode + 32))\n6:   else:\n7:     res.push(s[i])\n8: return res.join('')",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize result array",
+      "array": []
+    },
+    {
+      "codeLine": 2,
+      "note": "Start iteration for index 0 ('H')",
+      "i": 0,
+      "array": []
+    },
+    {
+      "codeLine": 4,
+      "note": "Check if 'H' (72) is uppercase",
+      "i": 0,
+      "array": []
+    },
+    {
+      "codeLine": 5,
+      "note": "Convert 'H' to 'h' and push to array",
+      "i": 0,
+      "array": [
+        "h"
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Start iteration for index 1 ('i')",
+      "i": 1,
+      "array": [
+        "h"
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Check if 'i' (105) is uppercase",
+      "i": 1,
+      "array": [
+        "h"
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Push 'i' directly to array",
+      "i": 1,
+      "array": [
+        "h",
+        "i"
+      ]
+    }
+  ]
+}

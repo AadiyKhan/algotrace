@@ -1,0 +1,58 @@
+{
+  "title": "Minimum Cost To Hire K Workers",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Greedy",
+    "Heap"
+  ],
+  "description": "Find the minimum cost to hire k workers given quality and wage, maintaining ratio constraints.",
+  "target": 2,
+  "pseudocode": "1. Calculate ratios (wage/quality) for all workers\n2. Sort workers by ratio ascending\n3. Use max-heap to store qualities of k workers\n4. Maintain current quality sum\n5. Calculate cost = sum * current ratio\n6. Update minCost",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Calculate ratios: [10/10=1, 20/5=4, 5/2=2.5]",
+      "array": [
+        1,
+        4,
+        2.5
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Sort by ratio: (Worker 0: 1.0), (Worker 2: 2.5), (Worker 1: 4.0)",
+      "array": [
+        1,
+        2.5,
+        4
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Add first 2 workers to max-heap (Qualities: 10, 2)",
+      "array": [
+        10,
+        2
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Current quality sum = 12",
+      "i": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Cost = 12 * 2.5 = 30",
+      "i": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Min cost is 30",
+      "i": 1
+    }
+  ]
+}

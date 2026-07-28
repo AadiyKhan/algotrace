@@ -1,0 +1,87 @@
+{
+  "title": "Missing Ranges",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array"
+  ],
+  "description": "Find the missing ranges between a lower and upper bound given a sorted array of unique integers.",
+  "target": [
+    0,
+    99
+  ],
+  "pseudocode": "function findMissingRanges(nums, lower, upper) {\n  let res = [];\n  let next = lower;\n  for (let i = 0; i < nums.length; i++) {\n    if (nums[i] < next) continue;\n    if (nums[i] === next) {\n      next++;\n    } else {\n      res.push([next, nums[i] - 1]);\n      next = nums[i] + 1;\n    }\n  }\n  if (next <= upper) res.push([next, upper]);\n  return res;\n}",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Initialize result array and next expected value.",
+      "array": [
+        10,
+        15
+      ],
+      "i": null
+    },
+    {
+      "codeLine": 4,
+      "note": "Iteration 1: Compare 10 with next value 0.",
+      "array": [
+        10,
+        15
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 8,
+      "note": "nums[0] (10) > next (0), push range [0, 9].",
+      "array": [
+        10,
+        15
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 9,
+      "note": "Update next to 11.",
+      "array": [
+        10,
+        15
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Iteration 2: Compare 15 with next value 11.",
+      "array": [
+        10,
+        15
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 8,
+      "note": "nums[1] (15) > next (11), push range [11, 14].",
+      "array": [
+        10,
+        15
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 9,
+      "note": "Update next to 16.",
+      "array": [
+        10,
+        15
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 12,
+      "note": "Final check: next (16) <= upper (99), push range [16, 99].",
+      "array": [
+        10,
+        15
+      ]
+    }
+  ]
+}

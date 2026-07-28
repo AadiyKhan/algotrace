@@ -1,0 +1,115 @@
+{
+  "title": "Maximal Rectangle",
+  "difficulty": "Hard",
+  "type": "matrix",
+  "tags": [
+    "Array",
+    "Dynamic Programming",
+    "Stack",
+    "Matrix"
+  ],
+  "description": "Find the largest rectangle containing only 1s in a binary matrix.",
+  "target": 6,
+  "pseudocode": "1. heights = array of 0s\n2. maxArea = 0\n3. for row in matrix:\n4.   for col in 0 to n:\n5.     heights[col] = (matrix[row][col] == '1') ? heights[col] + 1 : 0\n6.   maxArea = max(maxArea, largestRectangleInHistogram(heights))",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize heights array for columns",
+      "matrix": [
+        [
+          "1",
+          "0"
+        ],
+        [
+          "1",
+          "1"
+        ]
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Update heights for first row: [1, 0]",
+      "matrix": [
+        [
+          "1",
+          "0"
+        ],
+        [
+          "1",
+          "1"
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Max area with heights [1, 0] is 1",
+      "matrix": [
+        [
+          "1",
+          "0"
+        ],
+        [
+          "1",
+          "1"
+        ]
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Update heights for second row: [2, 1]",
+      "matrix": [
+        [
+          "1",
+          "0"
+        ],
+        [
+          "1",
+          "1"
+        ]
+      ],
+      "curr": [
+        1,
+        0
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Calculate largest rectangle in histogram for [2, 1]",
+      "matrix": [
+        [
+          "1",
+          "0"
+        ],
+        [
+          "1",
+          "1"
+        ]
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ]
+    }
+  ]
+}

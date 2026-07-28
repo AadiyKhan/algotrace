@@ -1,0 +1,195 @@
+{
+  "title": "Minimum Falling Path Sum",
+  "difficulty": "Medium",
+  "type": "matrix",
+  "tags": [
+    "Array",
+    "Dynamic Programming",
+    "Matrix"
+  ],
+  "description": "Given an n x n array of integers, find the minimum sum of a falling path through the matrix. A falling path starts at any element in the first row and chooses one element from each row.",
+  "pseudocode": "1. for i = 1 to n-1:\n2.   for j = 0 to n-1:\n3.     matrix[i][j] += min(matrix[i-1][max(0, j-1) : min(n, j+2)])\n4. return min(matrix[n-1])",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize DP traversal starting from the second row.",
+      "matrix": [
+        [
+          2,
+          1,
+          3
+        ],
+        [
+          6,
+          5,
+          4
+        ],
+        [
+          7,
+          8,
+          9
+        ]
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Updating matrix[1][0]: 6 + min(2, 1) = 7.",
+      "matrix": [
+        [
+          2,
+          1,
+          3
+        ],
+        [
+          7,
+          5,
+          4
+        ],
+        [
+          7,
+          8,
+          9
+        ]
+      ],
+      "i": 1,
+      "j": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Updating matrix[1][1]: 5 + min(2, 1, 3) = 6.",
+      "matrix": [
+        [
+          2,
+          1,
+          3
+        ],
+        [
+          7,
+          6,
+          4
+        ],
+        [
+          7,
+          8,
+          9
+        ]
+      ],
+      "i": 1,
+      "j": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Updating matrix[1][2]: 4 + min(1, 3) = 5.",
+      "matrix": [
+        [
+          2,
+          1,
+          3
+        ],
+        [
+          7,
+          6,
+          5
+        ],
+        [
+          7,
+          8,
+          9
+        ]
+      ],
+      "i": 1,
+      "j": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Updating matrix[2][0]: 7 + min(7, 6) = 13.",
+      "matrix": [
+        [
+          2,
+          1,
+          3
+        ],
+        [
+          7,
+          6,
+          5
+        ],
+        [
+          13,
+          8,
+          9
+        ]
+      ],
+      "i": 2,
+      "j": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Updating matrix[2][1]: 8 + min(7, 6, 5) = 13.",
+      "matrix": [
+        [
+          2,
+          1,
+          3
+        ],
+        [
+          7,
+          6,
+          5
+        ],
+        [
+          13,
+          13,
+          9
+        ]
+      ],
+      "i": 2,
+      "j": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Updating matrix[2][2]: 9 + min(6, 5) = 14.",
+      "matrix": [
+        [
+          2,
+          1,
+          3
+        ],
+        [
+          7,
+          6,
+          5
+        ],
+        [
+          13,
+          13,
+          14
+        ]
+      ],
+      "i": 2,
+      "j": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Result is the minimum of the last row: min(13, 13, 14) = 13.",
+      "matrix": [
+        [
+          2,
+          1,
+          3
+        ],
+        [
+          7,
+          6,
+          5
+        ],
+        [
+          13,
+          13,
+          14
+        ]
+      ]
+    }
+  ]
+}

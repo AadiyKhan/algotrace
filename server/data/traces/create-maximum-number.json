@@ -1,0 +1,83 @@
+{
+  "title": "Create Maximum Number",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Dynamic Programming",
+    "Greedy",
+    "Stack"
+  ],
+  "description": "Create the maximum number of length k from two arrays nums1 and nums2 by maintaining relative order.",
+  "target": 3,
+  "pseudocode": "1: function maxNumber(nums1, nums2, k) {\n2:   for (let i = 0; i <= k; i++) {\n3:     let seq1 = getMax(nums1, i);\n4:     let seq2 = getMax(nums2, k - i);\n5:     let merged = merge(seq1, seq2);\n6:     res = max(res, merged);\n7:   }\n8: }",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Starting loop to determine how many elements to pick from nums1.",
+      "array": [
+        3,
+        4,
+        6,
+        5
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Extracting maximum subsequence of length 0 from nums1.",
+      "array": [],
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Extracting maximum subsequence of length 3 from nums2.",
+      "array": [
+        9,
+        1,
+        2,
+        5,
+        8,
+        3
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Merging subsequences [ ] and [9, 8, 3] to form candidate.",
+      "array": [
+        9,
+        8,
+        3
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Incrementing i to pick 1 element from nums1.",
+      "array": [
+        6
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Extracting max subsequence of length 2 from nums2.",
+      "array": [
+        9,
+        8
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Merging [6] and [9, 8] to form candidate.",
+      "array": [
+        9,
+        8,
+        6
+      ],
+      "i": 1
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "title": "Clumsy Factorial",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Math",
+    "Stack",
+    "Simulation"
+  ],
+  "description": "Calculate the clumsy factorial of n where operations follow (*, /, +, -) in sequence.",
+  "target": 10,
+  "pseudocode": "1: stack.push(n)\n2: op = 0\n3: for i from n-1 down to 1:\n4:   if op == 0: stack.push(stack.pop() * i)\n5:   else if op == 1: stack.push(Math.floor(stack.pop() / i))\n6:   else if op == 2: stack.push(i)\n7:   else: stack.push(-i)\n8:   op = (op + 1) % 4\n9: return stack.reduce((a, b) => a + b)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize stack with starting value 4",
+      "array": [
+        4
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Multiply 4 * 3",
+      "array": [
+        12
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 5,
+      "note": "Divide 12 / 2",
+      "array": [
+        6
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Push 1",
+      "array": [
+        6,
+        1
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 9,
+      "note": "Sum the stack elements: 6 + 1 = 7",
+      "array": [
+        7
+      ]
+    }
+  ]
+}

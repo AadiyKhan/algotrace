@@ -1,0 +1,155 @@
+{
+  "title": "Longest Increasing Path In A Matrix",
+  "difficulty": "Hard",
+  "type": "matrix",
+  "tags": [
+    "Matrix",
+    "DFS",
+    "Memoization",
+    "Dynamic Programming"
+  ],
+  "description": "Find the length of the longest increasing path in an m x n matrix using DFS with memoization.",
+  "target": null,
+  "pseudocode": "1: memo = new Map()\n2: for r in rows: for c in cols:\n3:   dfs(r, c)\n4: def dfs(r, c):\n5:   if memo has (r, c) return memo(r, c)\n6:   maxLen = 1\n7:   for dr, dc in neighbors:\n8:     if grid[nr][nc] > grid[r][c]:\n9:       maxLen = max(maxLen, 1 + dfs(nr, nc))\n10:  memo(r, c) = maxLen\n11:  return maxLen",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Initialize memoization table and start traversal at (0,0)",
+      "matrix": [
+        [
+          9,
+          4
+        ],
+        [
+          2,
+          1
+        ]
+      ],
+      "visited": []
+    },
+    {
+      "codeLine": 4,
+      "note": "Entering DFS at (0,0) with value 9",
+      "matrix": [
+        [
+          9,
+          4
+        ],
+        [
+          2,
+          1
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Checking neighbors of (0,0). No neighbors have value > 9.",
+      "matrix": [
+        [
+          9,
+          4
+        ],
+        [
+          2,
+          1
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 10,
+      "note": "Memoizing (0,0) = 1",
+      "matrix": [
+        [
+          9,
+          4
+        ],
+        [
+          2,
+          1
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Entering DFS at (0,1) with value 4",
+      "matrix": [
+        [
+          9,
+          4
+        ],
+        [
+          2,
+          1
+        ]
+      ],
+      "curr": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 9,
+      "note": "Neighbor (1,1) has value 1 (not > 4). Neighbor (0,0) has value 9 (> 4). Recursing.",
+      "matrix": [
+        [
+          9,
+          4
+        ],
+        [
+          2,
+          1
+        ]
+      ],
+      "curr": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 10,
+      "note": "Length of path starting at (0,1) is 1 + 1 = 2",
+      "matrix": [
+        [
+          9,
+          4
+        ],
+        [
+          2,
+          1
+        ]
+      ],
+      "curr": [
+        0,
+        1
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ]
+    }
+  ]
+}

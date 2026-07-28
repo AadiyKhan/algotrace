@@ -1,0 +1,82 @@
+{
+  "title": "Reorder List",
+  "difficulty": "Medium",
+  "type": "linked-list",
+  "tags": [
+    "Linked List",
+    "Two Pointers",
+    "Stack",
+    "Recursion"
+  ],
+  "description": "Reorder a linked list into the form L0 → Ln → L1 → Ln-1 → L2 → Ln-2 → ...",
+  "pseudocode": "1. Find middle of list using slow/fast pointers\n2. Reverse the second half of the list\n3. Merge the first and second half alternately",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Finding the middle: slow moves 1 step, fast moves 2 steps.",
+      "nodes": [
+        {
+          "val": 1,
+          "next": 1
+        },
+        {
+          "val": 2,
+          "next": 2
+        },
+        {
+          "val": 3,
+          "next": 3
+        },
+        {
+          "val": 4,
+          "next": null
+        }
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Reversed second half: [4, 3]",
+      "nodes": [
+        {
+          "val": 1,
+          "next": 1
+        },
+        {
+          "val": 2,
+          "next": null
+        },
+        {
+          "val": 4,
+          "next": 3
+        },
+        {
+          "val": 3,
+          "next": null
+        }
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Merging: 1 -> 4 -> 2 -> 3",
+      "nodes": [
+        {
+          "val": 1,
+          "next": 2
+        },
+        {
+          "val": 4,
+          "next": 1
+        },
+        {
+          "val": 2,
+          "next": 3
+        },
+        {
+          "val": 3,
+          "next": null
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "title": "Advantage Shuffle",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Greedy",
+    "Sorting"
+  ],
+  "description": "Rearrange nums1 to maximize the number of indices i such that nums1[i] > nums2[i].",
+  "target": null,
+  "pseudocode": "1. sort nums1 ascending\n2. sort nums2 with indices\n3. initialize result array\n4. use two pointers for nums1\n5. for each val in sorted nums2, compare with current nums1",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Sorted nums1: [2, 7, 11, 15]",
+      "array": [
+        2,
+        7,
+        11,
+        15
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Sorted nums2 with indices: [(1, 0), (10, 1), (11, 2), (12, 3)]",
+      "array": [
+        2,
+        7,
+        11,
+        15
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Compare 2 with 1: 2 > 1, assign 2 to result[0]",
+      "array": [
+        7,
+        11,
+        15
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Compare 7 with 10: 7 < 10, assign 7 to result[3] (last index)",
+      "array": [
+        11,
+        15
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Compare 11 with 11: 11 is not > 11, assign 11 to result[2]",
+      "array": [
+        15
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Compare 15 with 12: 15 > 12, assign 15 to result[1]",
+      "array": [],
+      "i": 3
+    }
+  ]
+}

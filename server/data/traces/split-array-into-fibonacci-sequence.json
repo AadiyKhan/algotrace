@@ -1,0 +1,74 @@
+{
+  "title": "Split Array Into Fibonacci Sequence",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Backtracking",
+    "String"
+  ],
+  "description": "Given a string of digits, split it into a Fibonacci-like sequence of at least 3 numbers.",
+  "target": null,
+  "pseudocode": "1. function backtrack(start, result):\n2.   if start == len(S) and len(result) >= 3: return result\n3.   for i in range(start, len(S)):\n4.     num = stringToLong(S[start...i])\n5.     if num > INT_MAX or (S[start] == '0' and i > start): break\n6.     if len(result) < 2 or num == result[-1] + result[-2]:\n7.       result.append(num)\n8.       if backtrack(i + 1, result): return result\n9.       result.pop()",
+  "steps": [
+    {
+      "codeLine": 3,
+      "note": "Initialize backtracking starting at index 0.",
+      "array": [
+        1,
+        1,
+        2,
+        3
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 7,
+      "note": "First number chosen: 1.",
+      "array": [
+        1
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Second number chosen: 1.",
+      "array": [
+        1,
+        1
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "Third number chosen: 2 (1+1).",
+      "array": [
+        1,
+        1,
+        2
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 7,
+      "note": "Fourth number chosen: 3 (1+2).",
+      "array": [
+        1,
+        1,
+        2,
+        3
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 2,
+      "note": "Sequence length >= 3 and end reached. Return result.",
+      "array": [
+        1,
+        1,
+        2,
+        3
+      ]
+    }
+  ]
+}

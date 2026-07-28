@@ -1,0 +1,96 @@
+{
+  "title": "Number of Distinct Islands II",
+  "difficulty": "Hard",
+  "type": "matrix",
+  "tags": [
+    "Matrix",
+    "DFS",
+    "Graph",
+    "Geometry"
+  ],
+  "description": "Count the number of distinct islands, where islands are considered the same if they are rotations or reflections of each other.",
+  "pseudocode": "1. Find all islands using DFS\n2. For each island, generate all 8 symmetries (rotations/reflections)\n3. Normalize each symmetry by shifting to (0,0)\n4. Store the lexicographically smallest normalized form in a Set\n5. Return set size",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initial grid setup with two shapes that are rotations of each other",
+      "matrix": [
+        [
+          1,
+          1,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "codeLine": 1,
+      "note": "DFS identifies the first island at [(0,0), (0,1), (1,0)]",
+      "visited": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Calculating 8 symmetries for island 1",
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Normalizing shape 1 relative to its top-left coordinate",
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 1,
+      "note": "DFS identifies the second island at [(2,2)]",
+      "visited": [
+        [
+          2,
+          2
+        ]
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Comparing normalized forms; adding unique shapes to set",
+      "curr": [
+        2,
+        2
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Final count of distinct islands",
+      "curr": [
+        2,
+        2
+      ]
+    }
+  ]
+}

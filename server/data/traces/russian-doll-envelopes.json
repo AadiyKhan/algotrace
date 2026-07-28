@@ -1,0 +1,107 @@
+{
+  "title": "Russian Doll Envelopes",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Binary Search",
+    "Dynamic Programming",
+    "Sorting"
+  ],
+  "description": "Find the maximum number of envelopes you can Russian doll (i.e., put one inside another). Sort by width ascending and height descending, then find the Longest Increasing Subsequence of heights.",
+  "pseudocode": "1. envelopes.sort((a, b) => a[0] - b[0] || b[1] - a[1]);\n2. let tails = [];\n3. for (let [w, h] of envelopes) {\n4.   let idx = binarySearch(tails, h);\n5.   if (idx === tails.length) tails.push(h);\n6.   else tails[idx] = h;\n7. }",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Sorted envelopes: [[2,3], [5,4], [6,7], [6,4]]",
+      "array": [
+        [
+          2,
+          3
+        ],
+        [
+          5,
+          4
+        ],
+        [
+          6,
+          7
+        ],
+        [
+          6,
+          4
+        ]
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Processing [2, 3]",
+      "i": 0,
+      "array": [
+        3
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Adding 3 to tails",
+      "array": [
+        3
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Processing [5, 4]",
+      "i": 1,
+      "array": [
+        3,
+        4
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Adding 4 to tails",
+      "array": [
+        3,
+        4
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Processing [6, 7]",
+      "i": 2,
+      "array": [
+        3,
+        4,
+        7
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Adding 7 to tails",
+      "array": [
+        3,
+        4,
+        7
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Processing [6, 4]",
+      "i": 3,
+      "array": [
+        3,
+        4,
+        7
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "4 replaces 4 at index 1, no change",
+      "array": [
+        3,
+        4,
+        7
+      ]
+    }
+  ]
+}

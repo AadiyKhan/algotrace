@@ -1,0 +1,76 @@
+{
+  "title": "Minimum Number Of K Consecutive Bit Flips",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Bit Manipulation",
+    "Sliding Window",
+    "Difference Array"
+  ],
+  "description": "Flip k consecutive bits until all elements are 1s, return minimum flips or -1 if impossible.",
+  "target": 3,
+  "pseudocode": "let flips = 0, currentFlip = 0;\nfor (let i = 0; i < n; i++) {\n  if (i >= k && A[i - k] == 2) currentFlip--;\n  if ((A[i] + currentFlip) % 2 == 0) {\n    if (i + k > n) return -1;\n    A[i] = 2; currentFlip++; flips++;\n  }\n}",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize flips and currentFlip tracking window state.",
+      "array": [
+        0,
+        1,
+        0
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Index 0: Need to flip because (0 + 0) % 2 == 0.",
+      "array": [
+        2,
+        1,
+        0
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Flip initiated at index 0, window size k=2.",
+      "array": [
+        2,
+        1,
+        0
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Index 1: A[1] is 1, currentFlip is 1. (1 + 1) % 2 == 0. Need flip.",
+      "array": [
+        2,
+        2,
+        0
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Attempt to flip index 1. 1 + 2 > 3, impossible.",
+      "array": [
+        2,
+        2,
+        0
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Return -1 as K-consecutive flip is impossible.",
+      "array": [
+        2,
+        2,
+        0
+      ],
+      "i": 2
+    }
+  ]
+}

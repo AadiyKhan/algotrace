@@ -1,0 +1,54 @@
+{
+  "title": "Walking Robot Simulation",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Simulation"
+  ],
+  "description": "Simulate a robot moving on a 2D plane with obstacles, returning the maximum squared Euclidean distance from the origin.",
+  "target": 25,
+  "pseudocode": "1. directions = [[0, 1], [1, 0], [0, -1], [-1, 0]]\n2. x = y = d = 0\n3. for cmd in commands:\n4.   if cmd == -1: d = (d + 1) % 4\n5.   elif cmd == -2: d = (d + 3) % 4\n6.   else:\n7.     for _ in range(cmd):\n8.       nx, ny = x + directions[d][0], y + directions[d][1]\n9.       if (nx, ny) not in obstacles: x, y = nx, ny",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize directions: North, East, South, West",
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Process command 4 (move North)",
+      "i": 0
+    },
+    {
+      "codeLine": 8,
+      "note": "Move robot to (0, 1)",
+      "i": 0
+    },
+    {
+      "codeLine": 9,
+      "note": "Update position to (0, 1)",
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Process command -1, turn right (East)",
+      "i": 1
+    },
+    {
+      "codeLine": 8,
+      "note": "Move robot to (1, 1)",
+      "i": 1
+    },
+    {
+      "codeLine": 9,
+      "note": "Update position to (1, 1)",
+      "i": 1
+    },
+    {
+      "codeLine": 9,
+      "note": "Final max squared distance (1^2 + 1^2 = 2)",
+      "i": 1
+    }
+  ]
+}

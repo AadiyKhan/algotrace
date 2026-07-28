@@ -1,0 +1,125 @@
+{
+  "title": "Design Snake Game",
+  "difficulty": "Medium",
+  "type": "matrix",
+  "tags": [
+    "Array",
+    "Design",
+    "Queue"
+  ],
+  "description": "Design a snake game where the snake moves on a grid, eats food to grow, and ends if it hits walls or itself.",
+  "target": null,
+  "pseudocode": "1. currentHead = [0, 0]\n2. snakeBody = [[0, 0]]\n3. if move == 'U', headRow -= 1\n4. if nextHead hits wall or body, return -1\n5. if nextHead == food, snake grows, score++\n6. else, remove tail, add nextHead",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize snake at top-left corner (0,0)",
+      "matrix": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Move snake to the right (0,1)",
+      "matrix": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "curr": [
+        0,
+        1
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Snake eats food at (0, 2), body grows",
+      "matrix": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "curr": [
+        0,
+        2
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ]
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Move snake, remove tail as it hasn't eaten food",
+      "matrix": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "curr": [
+        1,
+        2
+      ],
+      "visited": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ]
+      ]
+    }
+  ]
+}

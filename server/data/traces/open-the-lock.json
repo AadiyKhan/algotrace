@@ -1,0 +1,75 @@
+{
+  "title": "Open the Lock",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Breadth-First Search",
+    "Array",
+    "Graph"
+  ],
+  "description": "Find the minimum number of turns to unlock a lock starting from '0000' given a list of deadends.",
+  "target": "0202",
+  "pseudocode": "1: queue = ['0000'], visited = {'0000'}\n2: steps = 0\n3: while queue is not empty:\n4:   for i from 0 to queue.length:\n5:     curr = queue.shift()\n6:     if curr == target: return steps\n7:     for each neighbor of curr:\n8:       if neighbor not in deadends and not in visited:\n9:         visited.add(neighbor), queue.push(neighbor)\n10:  steps++",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize queue with start state '0000' and visited set.",
+      "array": [
+        "0000"
+      ],
+      "visited": [
+        "0000"
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Dequeued '0000'. Generating neighbors.",
+      "array": [
+        "0000"
+      ],
+      "curr": "0000"
+    },
+    {
+      "codeLine": 7,
+      "note": "Generating neighbor '0001' from '0000'.",
+      "array": [
+        "0001"
+      ],
+      "curr": "0000"
+    },
+    {
+      "codeLine": 9,
+      "note": "Added '0001' to queue and visited set.",
+      "array": [
+        "0001"
+      ],
+      "visited": [
+        "0000",
+        "0001"
+      ]
+    },
+    {
+      "codeLine": 10,
+      "note": "Incremented steps count to 1.",
+      "array": [
+        "0001"
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Dequeued '0001'. Searching for target.",
+      "array": [
+        "0001"
+      ],
+      "curr": "0001"
+    },
+    {
+      "codeLine": 6,
+      "note": "'0001' is not target, continue BFS.",
+      "array": [
+        "0001"
+      ],
+      "curr": "0001"
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "title": "Search In Rotated Sorted Array II",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Binary Search"
+  ],
+  "description": "Search for a target value in a rotated sorted array that may contain duplicates.",
+  "target": 0,
+  "pseudocode": "1. let left = 0, right = arr.length - 1\n2. while left <= right:\n3.   let mid = Math.floor((left + right) / 2)\n4.   if arr[mid] === target: return true\n5.   if arr[left] === arr[mid] && arr[mid] === arr[right]:\n6.     left++, right--\n7.   else if arr[left] <= arr[mid]:\n8.     if arr[left] <= target && target < arr[mid]: right = mid - 1\n9.     else: left = mid + 1\n10.  else:\n11.    if arr[mid] < target && target <= arr[right]: left = mid + 1\n12.    else: right = mid - 1\n13. return false",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize pointers at the ends of the array.",
+      "array": [
+        2,
+        5,
+        6,
+        0,
+        0,
+        1,
+        2
+      ],
+      "i": 0,
+      "j": 6
+    },
+    {
+      "codeLine": 3,
+      "note": "Calculate mid index.",
+      "array": [
+        2,
+        5,
+        6,
+        0,
+        0,
+        1,
+        2
+      ],
+      "i": 0,
+      "j": 6,
+      "curr": 3
+    },
+    {
+      "codeLine": 4,
+      "note": "Compare arr[mid] with target (0). Match found.",
+      "array": [
+        2,
+        5,
+        6,
+        0,
+        0,
+        1,
+        2
+      ],
+      "curr": 3
+    }
+  ]
+}

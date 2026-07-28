@@ -1,0 +1,86 @@
+{
+  "title": "Number of Connected Components in an Undirected Graph",
+  "difficulty": "Medium",
+  "type": "tree",
+  "tags": [
+    "Graph",
+    "DFS",
+    "Union-Find"
+  ],
+  "description": "Find the number of connected components in an undirected graph given nodes 0 to n-1 and an edge list.",
+  "target": 2,
+  "pseudocode": "1. Initialize visited array of size n to false\n2. Initialize count = 0\n3. For each node i from 0 to n-1:\n4. If !visited[i]:\n5. count++\n6. Perform DFS starting at i to mark all connected nodes as visited",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize visited array for 4 nodes",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 0
+        },
+        {
+          "id": 1,
+          "val": 1
+        },
+        {
+          "id": 2,
+          "val": 2
+        },
+        {
+          "id": 3,
+          "val": 3
+        }
+      ],
+      "visited": []
+    },
+    {
+      "codeLine": 3,
+      "note": "Starting loop at node 0",
+      "i": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Node 0 not visited, increment count",
+      "visited": [
+        0,
+        1
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "DFS marks 0 and 1 as visited",
+      "visited": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Looping to node 2",
+      "i": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Node 2 not visited, increment count",
+      "visited": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "DFS marks 2 and 3 as visited",
+      "visited": [
+        0,
+        1,
+        2,
+        3
+      ]
+    }
+  ]
+}

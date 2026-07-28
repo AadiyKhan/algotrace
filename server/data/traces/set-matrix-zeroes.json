@@ -1,0 +1,120 @@
+{
+  "title": "Set Matrix Zeroes",
+  "difficulty": "Medium",
+  "type": "matrix",
+  "tags": [
+    "Array",
+    "Matrix"
+  ],
+  "description": "If an element in an m x n matrix is 0, set its entire row and column to 0s.",
+  "pseudocode": "1. Find if first row/col have zeroes\n2. Iterate through rest of matrix; mark zeroes in first row/col\n3. Use first row/col markers to set zeroes\n4. Zero out first row/col if needed",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Initial matrix. Checking for zeroes.",
+      "matrix": [
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ]
+      ],
+      "visited": []
+    },
+    {
+      "codeLine": 2,
+      "note": "Found 0 at [1, 1]. Marking row 1 and col 1 headers.",
+      "matrix": [
+        [
+          1,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          1
+        ]
+      ],
+      "curr": [
+        1,
+        1
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Updating matrix based on first row and column markers.",
+      "matrix": [
+        [
+          1,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          1
+        ]
+      ],
+      "visited": [
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          2,
+          1
+        ]
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Final state after processing markers.",
+      "matrix": [
+        [
+          1,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          1
+        ]
+      ]
+    }
+  ]
+}

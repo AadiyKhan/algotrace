@@ -1,0 +1,61 @@
+{
+  "title": "Kth Smallest Number In Multiplication Table",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Binary Search",
+    "Math"
+  ],
+  "description": "Find the kth smallest number in an m x n multiplication table using binary search on the range of possible values.",
+  "target": 5,
+  "pseudocode": "1: low = 1, high = m * n\n2: while low < high:\n3:   mid = floor((low + high) / 2)\n4:   count = 0\n5:   for i from 1 to m:\n6:     count += min(floor(mid / i), n)\n7:   if count < k: low = mid + 1\n8:   else: high = mid\n9: return low",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize binary search range [1, 6] for 2x3 table, k=5.",
+      "array": [
+        1,
+        2,
+        3,
+        2,
+        4,
+        6
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Calculate mid = (1+6)/2 = 3.",
+      "i": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Count numbers <= 3: row 1 (1,2,3), row 2 (2). Total count = 4.",
+      "i": 4
+    },
+    {
+      "codeLine": 7,
+      "note": "4 < 5, so move low to mid + 1 = 4.",
+      "i": 4
+    },
+    {
+      "codeLine": 3,
+      "note": "Calculate mid = (4+6)/2 = 5.",
+      "i": 5
+    },
+    {
+      "codeLine": 6,
+      "note": "Count numbers <= 5: row 1 (1,2,3), row 2 (2,4). Total count = 5.",
+      "i": 5
+    },
+    {
+      "codeLine": 8,
+      "note": "5 >= 5, so move high to mid = 5.",
+      "i": 5
+    },
+    {
+      "codeLine": 9,
+      "note": "Loop ends, return low = 4.",
+      "i": 4
+    }
+  ]
+}

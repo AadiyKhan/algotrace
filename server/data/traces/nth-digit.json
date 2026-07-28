@@ -1,0 +1,85 @@
+{
+  "title": "Nth Digit",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Math"
+  ],
+  "description": "Find the nth digit of the infinite integer sequence 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, ...",
+  "target": 11,
+  "pseudocode": "1. len = 1, count = 9, start = 1\n2. while n > len * count: n -= len * count, len++, count *= 10, start *= 10\n3. start += (n - 1) / len\n4. s = start.toString()\n5. return s[(n - 1) % len]",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize parameters: len=1 (digit length), count=9 (numbers with len digits), start=1 (first number).",
+      "array": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "i": "len: 1, count: 9, start: 1"
+    },
+    {
+      "codeLine": 2,
+      "note": "Check if target n (11) is greater than 1 * 9. It is. Subtract 9 from n (n=2), increment len to 2, count to 90, start to 10.",
+      "array": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "i": "n: 2, len: 2, count: 90, start: 10"
+    },
+    {
+      "codeLine": 3,
+      "note": "Calculate the specific number: start = 10 + (2 - 1) / 2 = 10.",
+      "array": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "i": "start: 10"
+    },
+    {
+      "codeLine": 5,
+      "note": "Find the index in the string '10': (2 - 1) % 2 = 1. Index 1 of '10' is '0'.",
+      "array": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "i": "result: 0"
+    }
+  ]
+}

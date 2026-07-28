@@ -1,0 +1,83 @@
+{
+  "title": "Longest Word in Dictionary through Deleting",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Two Pointers",
+    "String"
+  ],
+  "description": "Find the longest word in the dictionary that can be formed by deleting characters from a given string s.",
+  "target": "abpcplea",
+  "pseudocode": "1. sort dictionary by length descending, then lexicographical ascending\n2. for word in dictionary:\n3.   i = 0, j = 0\n4.   while i < word.length and j < s.length:\n5.     if word[i] == s[j]: i++\n6.     j++\n7.   if i == word.length: return word",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Sort dictionary: ['apple', 'ale', 'monkey']",
+      "array": [
+        "apple",
+        "ale",
+        "monkey"
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Start processing word: 'apple'",
+      "array": [
+        "apple",
+        "ale",
+        "monkey"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Matching 'apple' against 'abpcplea'",
+      "i": 0,
+      "j": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Found 'a', move pointer i",
+      "i": 1,
+      "j": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Found 'p', move pointer i",
+      "i": 2,
+      "j": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "No match, increment j",
+      "i": 2,
+      "j": 3
+    },
+    {
+      "codeLine": 5,
+      "note": "Found 'p', move pointer i",
+      "i": 3,
+      "j": 4
+    },
+    {
+      "codeLine": 5,
+      "note": "Found 'l', move pointer i",
+      "i": 4,
+      "j": 5
+    },
+    {
+      "codeLine": 5,
+      "note": "Found 'e', move pointer i",
+      "i": 5,
+      "j": 6
+    },
+    {
+      "codeLine": 7,
+      "note": "Word 'apple' fully matched, returning result",
+      "array": [
+        "apple"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,173 @@
+{
+  "title": "Maximum Depth of Binary Tree",
+  "difficulty": "Easy",
+  "type": "tree",
+  "tags": [
+    "Tree",
+    "DFS",
+    "Recursion"
+  ],
+  "description": "Find the maximum depth of a binary tree, defined as the number of nodes along the longest path from root to leaf.",
+  "pseudocode": "1. function maxDepth(root) {\n2.   if (!root) return 0;\n3.   let left = maxDepth(root.left);\n4.   let right = maxDepth(root.right);\n5.   return Math.max(left, right) + 1;\n6. }",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize maxDepth on root (ID 0).",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 3,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 9,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 20,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Recursively call maxDepth on left child (ID 1).",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 3,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 9,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 20,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Left child has no children, returns depth 1.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 3,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 9,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 20,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        1
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Recursively call maxDepth on right child (ID 2).",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 3,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 9,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 20,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 2,
+      "note": "Right child has no children, returns depth 1.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 3,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 9,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 20,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Calculate max(1, 1) + 1 = 2. Root depth is 2.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 3,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 9,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 20,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        0,
+        1,
+        2
+      ]
+    }
+  ]
+}

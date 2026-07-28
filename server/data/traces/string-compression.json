@@ -1,0 +1,119 @@
+{
+  "title": "String Compression",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "String",
+    "Two Pointers"
+  ],
+  "description": "Compress an array of characters in-place by replacing consecutive repeating characters with the character followed by the count.",
+  "target": null,
+  "pseudocode": "1. let write = 0, read = 0\n2. while read < chars.length\n3.   let char = chars[read], count = 0\n4.   while read < chars.length && chars[read] === char\n5.     read++, count++\n6.   chars[write++] = char\n7.   if count > 1\n8.     for digit of count.toString()\n9.       chars[write++] = digit",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize write and read pointers to 0.",
+      "array": [
+        "a",
+        "a",
+        "b",
+        "b",
+        "c"
+      ],
+      "i": 0,
+      "j": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Count consecutive 'a's. Read pointer moves forward.",
+      "array": [
+        "a",
+        "a",
+        "b",
+        "b",
+        "c"
+      ],
+      "i": 0,
+      "j": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Write character 'a' at index 0.",
+      "array": [
+        "a",
+        "a",
+        "b",
+        "b",
+        "c"
+      ],
+      "i": 1,
+      "j": 2
+    },
+    {
+      "codeLine": 9,
+      "note": "Write count '2' at index 1.",
+      "array": [
+        "a",
+        "2",
+        "b",
+        "b",
+        "c"
+      ],
+      "i": 2,
+      "j": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Count consecutive 'b's. Read pointer moves forward.",
+      "array": [
+        "a",
+        "2",
+        "b",
+        "b",
+        "c"
+      ],
+      "i": 2,
+      "j": 4
+    },
+    {
+      "codeLine": 6,
+      "note": "Write character 'b' at index 2.",
+      "array": [
+        "a",
+        "2",
+        "b",
+        "b",
+        "c"
+      ],
+      "i": 3,
+      "j": 4
+    },
+    {
+      "codeLine": 9,
+      "note": "Write count '2' at index 3.",
+      "array": [
+        "a",
+        "2",
+        "b",
+        "2",
+        "c"
+      ],
+      "i": 4,
+      "j": 4
+    },
+    {
+      "codeLine": 6,
+      "note": "Write character 'c' at index 4.",
+      "array": [
+        "a",
+        "2",
+        "b",
+        "2",
+        "c"
+      ],
+      "i": 5,
+      "j": 5
+    }
+  ]
+}

@@ -1,0 +1,124 @@
+{
+  "title": "Magical String",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Two Pointers"
+  ],
+  "description": "A magical string consists only of 1s and 2s and obeys the rule that the count of consecutive identical elements matches the sequence defined by the string itself.",
+  "target": 6,
+  "pseudocode": "1. S = [1, 2, 2]\n2. head = 2, tail = 3\n3. while tail < n:\n4.   num = 3 - S[tail-1]\n5.   count = S[head]\n6.   while count > 0:\n7.     S[tail] = num\n8.     tail++\n9.     count--\n10.  head++",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize the magical string with the base [1, 2, 2].",
+      "array": [
+        1,
+        2,
+        2
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Set pointers head=2 (value 2) and tail=3 (insertion point).",
+      "array": [
+        1,
+        2,
+        2,
+        0,
+        0,
+        0
+      ],
+      "i": 2,
+      "j": 3
+    },
+    {
+      "codeLine": 4,
+      "note": "Determine next number: 3 - S[2] (3-2) = 1.",
+      "array": [
+        1,
+        2,
+        2,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Get count from S[head]: S[2] = 2.",
+      "array": [
+        1,
+        2,
+        2,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Insert 1 into the string twice.",
+      "array": [
+        1,
+        2,
+        2,
+        1,
+        1,
+        0
+      ],
+      "j": 5
+    },
+    {
+      "codeLine": 10,
+      "note": "Increment head to 3.",
+      "array": [
+        1,
+        2,
+        2,
+        1,
+        1,
+        0
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 4,
+      "note": "Determine next number: 3 - S[4] (3-1) = 2.",
+      "array": [
+        1,
+        2,
+        2,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Get count from S[3]: S[3] = 1.",
+      "array": [
+        1,
+        2,
+        2,
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Insert 2 into the string once.",
+      "array": [
+        1,
+        2,
+        2,
+        1,
+        1,
+        2
+      ],
+      "j": 6
+    }
+  ]
+}

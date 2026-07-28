@@ -1,0 +1,54 @@
+{
+  "title": "Rotate Array",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Math",
+    "Two Pointers"
+  ],
+  "description": "Rotate an array of n elements to the right by k steps.",
+  "target": 3,
+  "pseudocode": "1. reverse(nums, 0, n - 1)\n2. reverse(nums, 0, k - 1)\n3. reverse(nums, k, n - 1)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Reverse the entire array: [1,2,3,4,5,6,7] -> [7,6,5,4,3,2,1]",
+      "array": [
+        7,
+        6,
+        5,
+        4,
+        3,
+        2,
+        1
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Reverse the first k (3) elements: [7,6,5] -> [5,6,7]",
+      "array": [
+        5,
+        6,
+        7,
+        4,
+        3,
+        2,
+        1
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Reverse the remaining elements from k to n-1: [4,3,2,1] -> [1,2,3,4]",
+      "array": [
+        5,
+        6,
+        7,
+        1,
+        2,
+        3,
+        4
+      ]
+    }
+  ]
+}

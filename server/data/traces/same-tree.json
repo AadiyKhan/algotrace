@@ -1,0 +1,111 @@
+{
+  "title": "Same Tree",
+  "difficulty": "Easy",
+  "type": "tree",
+  "tags": [
+    "Tree",
+    "Depth-First Search",
+    "Binary Tree"
+  ],
+  "description": "Given the roots of two binary trees, determine if they are the same.",
+  "target": null,
+  "pseudocode": "1: if (!p && !q) return true;\n2: if (!p || !q || p.val !== q.val) return false;\n3: return isSameTree(p.left, q.left) && isSameTree(p.right, q.right);",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Comparing root nodes: p(1) and q(1). Both exist, continue.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": null
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 1,
+          "left": 3,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 2,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Root values are equal (1 == 1). Proceeding to children.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": null
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 1,
+          "left": 3,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 2,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Recursively checking left children (2 == 2).",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": null
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 1,
+          "left": 3,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 2,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        0,
+        1,
+        2,
+        3
+      ]
+    }
+  ]
+}

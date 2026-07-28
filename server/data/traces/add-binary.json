@@ -1,0 +1,87 @@
+{
+  "title": "Add Binary",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Math",
+    "String",
+    "Bit Manipulation"
+  ],
+  "description": "Given two binary strings a and b, return their sum as a binary string.",
+  "target": null,
+  "pseudocode": "1: let i = a.length - 1, j = b.length - 1, carry = 0, res = []\n2: while i >= 0 || j >= 0 || carry:\n3:   sum = carry\n4:   if i >= 0: sum += parseInt(a[i--])\n5:   if j >= 0: sum += parseInt(b[j--])\n6:   res.push(sum % 2)\n7:   carry = Math.floor(sum / 2)\n8: return res.reverse().join('')",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize pointers i, j at ends and carry as 0.",
+      "array": [
+        "1",
+        "1",
+        "+",
+        "1"
+      ],
+      "i": 1,
+      "j": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Add last bits: 1 + 1 = 2.",
+      "array": [
+        "1",
+        "1",
+        "+",
+        "1"
+      ],
+      "i": 1,
+      "j": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Store result 0 (2%2) and update carry to 1.",
+      "array": [
+        "0"
+      ],
+      "i": 0,
+      "j": -1
+    },
+    {
+      "codeLine": 4,
+      "note": "Add remaining bit 1 and carry 1: 1 + 1 = 2.",
+      "array": [
+        "0"
+      ],
+      "i": 0,
+      "j": -1
+    },
+    {
+      "codeLine": 6,
+      "note": "Store result 0 and update carry to 1.",
+      "array": [
+        "0",
+        "0"
+      ],
+      "i": -1,
+      "j": -1
+    },
+    {
+      "codeLine": 2,
+      "note": "Carry is 1, process final digit.",
+      "array": [
+        "0",
+        "0",
+        "1"
+      ],
+      "i": -1,
+      "j": -1
+    },
+    {
+      "codeLine": 8,
+      "note": "Reverse the array to get '100'.",
+      "array": [
+        "1",
+        "0",
+        "0"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,113 @@
+{
+  "title": "Minimum Index Sum of Two Lists",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "String"
+  ],
+  "description": "Find the common string with the least index sum from two lists.",
+  "target": null,
+  "pseudocode": "1. map = new Map();\n2. for (i=0; i<list1.length; i++) map.set(list1[i], i);\n3. minSum = Infinity, res = [];\n4. for (j=0; j<list2.length; j++) {\n5.   if (map.has(list2[j])) {\n6.     sum = i + j;\n7.     if (sum < minSum) { minSum = sum; res = [list2[j]]; }\n8.     else if (sum === minSum) res.push(list2[j]);\n9.   }\n10. }",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize map to store indices of list1",
+      "array": [
+        "Shogun",
+        "Tapioca Express"
+      ]
+    },
+    {
+      "codeLine": 2,
+      "i": 0,
+      "note": "Map list1: Shogun -> 0",
+      "array": [
+        "Shogun",
+        "Tapioca Express"
+      ]
+    },
+    {
+      "codeLine": 2,
+      "i": 1,
+      "note": "Map list1: Tapioca Express -> 1",
+      "array": [
+        "Shogun",
+        "Tapioca Express"
+      ]
+    },
+    {
+      "codeLine": 4,
+      "j": 0,
+      "note": "Check list2[0]: 'Tapioca Express'",
+      "array": [
+        "Tapioca Express",
+        "Shogun"
+      ]
+    },
+    {
+      "codeLine": 5,
+      "j": 0,
+      "note": "Tapioca Express found in map at index 1",
+      "array": [
+        "Tapioca Express",
+        "Shogun"
+      ]
+    },
+    {
+      "codeLine": 6,
+      "j": 0,
+      "note": "Sum = 1 + 0 = 1",
+      "array": [
+        "Tapioca Express",
+        "Shogun"
+      ]
+    },
+    {
+      "codeLine": 7,
+      "j": 0,
+      "note": "New minSum = 1, result = ['Tapioca Express']",
+      "array": [
+        "Tapioca Express",
+        "Shogun"
+      ]
+    },
+    {
+      "codeLine": 4,
+      "j": 1,
+      "note": "Check list2[1]: 'Shogun'",
+      "array": [
+        "Tapioca Express",
+        "Shogun"
+      ]
+    },
+    {
+      "codeLine": 5,
+      "j": 1,
+      "note": "Shogun found in map at index 0",
+      "array": [
+        "Tapioca Express",
+        "Shogun"
+      ]
+    },
+    {
+      "codeLine": 6,
+      "j": 1,
+      "note": "Sum = 0 + 1 = 1",
+      "array": [
+        "Tapioca Express",
+        "Shogun"
+      ]
+    },
+    {
+      "codeLine": 8,
+      "j": 1,
+      "note": "Sum equals minSum, add to result",
+      "array": [
+        "Tapioca Express",
+        "Shogun"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,146 @@
+{
+  "title": "Rotate List",
+  "difficulty": "Medium",
+  "type": "linked-list",
+  "tags": [
+    "Linked List",
+    "Two Pointers"
+  ],
+  "description": "Rotate a linked list to the right by k places.",
+  "target": 2,
+  "pseudocode": "1. len = 1, curr = head\n2. while curr.next: len++, curr = curr.next\n3. curr.next = head\n4. k = k % len\n5. for i = 0 to len - k - 1: curr = curr.next\n6. head = curr.next\n7. curr.next = null",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize length to 1 and pointer to head.",
+      "nodes": [
+        {
+          "val": 1,
+          "next": 1
+        },
+        {
+          "val": 2,
+          "next": 2
+        },
+        {
+          "val": 3,
+          "next": null
+        }
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Traverse to find length and tail node.",
+      "nodes": [
+        {
+          "val": 1,
+          "next": 1
+        },
+        {
+          "val": 2,
+          "next": 2
+        },
+        {
+          "val": 3,
+          "next": null
+        }
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Make the list circular.",
+      "nodes": [
+        {
+          "val": 1,
+          "next": 1
+        },
+        {
+          "val": 2,
+          "next": 2
+        },
+        {
+          "val": 3,
+          "next": 0
+        }
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Calculate effective k (k % 3 = 2).",
+      "nodes": [
+        {
+          "val": 1,
+          "next": 1
+        },
+        {
+          "val": 2,
+          "next": 2
+        },
+        {
+          "val": 3,
+          "next": 0
+        }
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Move to the new tail position (3 - 2 - 1 = 0 steps).",
+      "nodes": [
+        {
+          "val": 1,
+          "next": 1
+        },
+        {
+          "val": 2,
+          "next": 2
+        },
+        {
+          "val": 3,
+          "next": 0
+        }
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Update head to the new start node.",
+      "nodes": [
+        {
+          "val": 1,
+          "next": 1
+        },
+        {
+          "val": 2,
+          "next": 2
+        },
+        {
+          "val": 3,
+          "next": 0
+        }
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "Break the circular link to finalize rotation.",
+      "nodes": [
+        {
+          "val": 2,
+          "next": 2
+        },
+        {
+          "val": 3,
+          "next": 0
+        },
+        {
+          "val": 1,
+          "next": null
+        }
+      ],
+      "curr": 1
+    }
+  ]
+}

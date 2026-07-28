@@ -1,0 +1,77 @@
+{
+  "title": "Data Stream as Disjoint Intervals",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Binary Search",
+    "Design"
+  ],
+  "description": "Maintain a summary of the data stream as a list of disjoint intervals.",
+  "target": null,
+  "pseudocode": "1. intervals = []\n2. function addNum(val):\n3.   idx = binarySearch(intervals, val)\n4.   left = (idx > 0) ? intervals[idx-1] : null\n5.   right = (idx < intervals.length) ? intervals[idx] : null\n6.   if left and right and left[1]+1 == val and val+1 == right[0]: merge(left, right)\n7.   else if left and val <= left[1]+1: left[1] = max(left[1], val)\n8.   else if right and val >= right[0]-1: right[0] = min(right[0], val)\n9.   else: intervals.splice(idx, 0, [val, val])",
+  "steps": [
+    {
+      "codeLine": 9,
+      "note": "Add first interval [1, 1]",
+      "array": [
+        [
+          1,
+          1
+        ]
+      ]
+    },
+    {
+      "codeLine": 9,
+      "note": "Add non-adjacent 3, resulting in two intervals",
+      "array": [
+        [
+          1,
+          1
+        ],
+        [
+          3,
+          3
+        ]
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Add 2, merging [1, 1] and [3, 3] into [1, 3]",
+      "array": [
+        [
+          1,
+          3
+        ]
+      ]
+    },
+    {
+      "codeLine": 9,
+      "note": "Add 7, interval list becomes [[1, 3], [7, 7]]",
+      "array": [
+        [
+          1,
+          3
+        ],
+        [
+          7,
+          7
+        ]
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Add 6, merging with [7, 7] to make [6, 7]",
+      "array": [
+        [
+          1,
+          3
+        ],
+        [
+          6,
+          7
+        ]
+      ]
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "title": "Valid Word Abbreviation",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "String",
+    "Two Pointers"
+  ],
+  "description": "Determine if a string matches an abbreviation by parsing numeric components.",
+  "target": "word: 'internationalization', abbr: 'i18n'",
+  "pseudocode": "1. i = 0, j = 0\n2. while j < abbr.length:\n3.   if isDigit(abbr[j]):\n4.     num = parseNumber()\n5.     i += num\n6.   else if abbr[j] == word[i]:\n7.     i++, j++\n8.   else: return false\n9. return i == word.length",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize pointers i and j to 0",
+      "i": 0,
+      "j": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Match character 'i'",
+      "i": 1,
+      "j": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Parse number '18' from abbreviation",
+      "i": 1,
+      "j": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Advance pointer i by 18",
+      "i": 19,
+      "j": 3
+    },
+    {
+      "codeLine": 6,
+      "note": "Match character 'n'",
+      "i": 20,
+      "j": 4
+    },
+    {
+      "codeLine": 9,
+      "note": "Check if i reached the end of word",
+      "i": 20,
+      "j": 4
+    }
+  ]
+}

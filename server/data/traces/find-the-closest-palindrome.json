@@ -1,0 +1,72 @@
+{
+  "title": "Find The Closest Palindrome",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "String",
+    "Math"
+  ],
+  "description": "Find the closest numerical palindrome to a given string n, excluding itself.",
+  "target": "123",
+  "pseudocode": "1. candidates = getCandidates(n)\n2. closest = -1\n3. for cand in candidates:\n4.   if abs(cand - n) < abs(closest - n) or (abs(cand - n) == abs(closest - n) and cand < closest):\n5.     closest = cand",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Generate candidates for 123: 121 (prefix 12), 131 (prefix 13), 111 (prefix 11), 99, 1001",
+      "array": [
+        121,
+        131,
+        111,
+        99,
+        1001
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Iterate through candidates to find the one with minimum distance to 123",
+      "array": [
+        121,
+        131,
+        111,
+        99,
+        1001
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Compare distance: |121-123| = 2. Closest is 121.",
+      "array": [
+        121,
+        131,
+        111,
+        99,
+        1001
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Check next candidate 131: |131-123| = 8. 8 > 2, keep 121.",
+      "array": [
+        121,
+        131,
+        111,
+        99,
+        1001
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Final result found: 121",
+      "array": [
+        121,
+        131,
+        111,
+        99,
+        1001
+      ]
+    }
+  ]
+}

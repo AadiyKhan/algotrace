@@ -1,0 +1,113 @@
+{
+  "title": "Binary Prefix Divisible By 5",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Bit Manipulation"
+  ],
+  "description": "Return a boolean array answer where answer[i] is true if the binary string prefix nums[0..i] is divisible by 5.",
+  "target": 5,
+  "pseudocode": "let rem = 0;\nlet res = [];\nfor (let i = 0; i < nums.length; i++) {\n  rem = (rem * 2 + nums[i]) % 5;\n  res.push(rem === 0);\n}",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize remainder to 0.",
+      "array": [
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Start loop, i = 0.",
+      "array": [
+        0,
+        1,
+        1
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "rem = (0 * 2 + 0) % 5 = 0.",
+      "array": [
+        0,
+        1,
+        1
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "rem is 0, so push true.",
+      "array": [
+        0,
+        1,
+        1
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Next iteration, i = 1.",
+      "array": [
+        0,
+        1,
+        1
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "rem = (0 * 2 + 1) % 5 = 1.",
+      "array": [
+        0,
+        1,
+        1
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "rem is 1, so push false.",
+      "array": [
+        0,
+        1,
+        1
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Next iteration, i = 2.",
+      "array": [
+        0,
+        1,
+        1
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "rem = (1 * 2 + 1) % 5 = 3.",
+      "array": [
+        0,
+        1,
+        1
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "rem is 3, so push false.",
+      "array": [
+        0,
+        1,
+        1
+      ],
+      "i": 2
+    }
+  ]
+}

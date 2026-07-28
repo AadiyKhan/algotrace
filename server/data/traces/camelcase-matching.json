@@ -1,0 +1,57 @@
+{
+  "title": "Camelcase Matching",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "String",
+    "Two Pointers"
+  ],
+  "description": "Check if a query string matches a pattern string considering CamelCase rules.",
+  "target": "FB",
+  "pseudocode": "function camelMatch(queries, pattern) {\n  return queries.map(q => {\n    let i = 0;\n    for (let char of q) {\n      if (i < pattern.length && char === pattern[i]) i++;\n      else if (char >= 'A' && char <= 'Z') return false;\n    }\n    return i === pattern.length;\n  });\n}",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize process for queries: ['FooBar'], pattern: 'FB'",
+      "array": [
+        "FooBar"
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Checking char 'F'. Matches pattern[0] ('F').",
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Checking char 'o'. Does not match pattern[1] ('B') and is lowercase. Skip.",
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Checking char 'o'. Lowercase. Skip.",
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Checking char 'B'. Matches pattern[1] ('B').",
+      "i": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Checking char 'a'. Lowercase. Skip.",
+      "i": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Checking char 'r'. Lowercase. Skip.",
+      "i": 2
+    },
+    {
+      "codeLine": 7,
+      "note": "Final check: i (2) equals pattern length (2). Match found.",
+      "i": 2
+    }
+  ]
+}

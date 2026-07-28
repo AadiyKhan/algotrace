@@ -1,0 +1,78 @@
+{
+  "title": "Flipping an Image",
+  "difficulty": "Easy",
+  "type": "matrix",
+  "tags": [
+    "Array",
+    "Matrix",
+    "Two Pointers"
+  ],
+  "description": "Flip the image horizontally and then invert the values.",
+  "target": null,
+  "pseudocode": "1. for each row in matrix:\n2.   i = 0, j = length - 1\n3.   while i <= j:\n4.     temp = image[row][i] ^ 1\n5.     image[row][i] = image[row][j] ^ 1\n6.     image[row][j] = temp\n7.     i++, j--",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Starting processing first row [1, 1, 0]",
+      "matrix": [
+        [
+          1,
+          1,
+          0
+        ]
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Initialize pointers i=0, j=2",
+      "matrix": [
+        [
+          1,
+          1,
+          0
+        ]
+      ],
+      "i": 0,
+      "j": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Swap and invert: image[0][0] becomes 1^1 = 0, image[0][2] becomes 1^1 = 0",
+      "matrix": [
+        [
+          1,
+          1,
+          1
+        ]
+      ],
+      "i": 0,
+      "j": 2
+    },
+    {
+      "codeLine": 7,
+      "note": "Move pointers i=1, j=1",
+      "matrix": [
+        [
+          1,
+          1,
+          0
+        ]
+      ],
+      "i": 1,
+      "j": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Invert middle element: 1^1 = 0",
+      "matrix": [
+        [
+          1,
+          0,
+          0
+        ]
+      ],
+      "i": 1,
+      "j": 1
+    }
+  ]
+}

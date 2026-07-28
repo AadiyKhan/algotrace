@@ -1,0 +1,48 @@
+{
+  "title": "Design Circular Queue",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Design",
+    "Queue",
+    "Array"
+  ],
+  "description": "Design a circular queue with fixed size k. Operations include enQueue, deQueue, Front, Rear, isEmpty, and isFull.",
+  "target": 3,
+  "pseudocode": "1: function enQueue(value) { if(isFull()) return false; rear = (rear + 1) % size; data[rear] = value; count++; return true; }\n2: function deQueue() { if(isEmpty()) return false; front = (front + 1) % size; count--; return true; }",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Enqueuing 10 into an empty circular queue of size 3.",
+      "array": [
+        10,
+        null,
+        null
+      ],
+      "i": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 1,
+      "note": "Enqueuing 20. Rear pointer moves to index 1.",
+      "array": [
+        10,
+        20,
+        null
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Dequeuing. Front pointer moves to index 1, effectively removing 10.",
+      "array": [
+        null,
+        20,
+        null
+      ],
+      "i": 1,
+      "curr": 1
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "title": "Count Unique Characters of All Substrings of a Given String",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "String",
+    "Hash Table",
+    "Dynamic Programming"
+  ],
+  "description": "Calculate the sum of unique characters for all possible substrings of string S.",
+  "pseudocode": "let res = 0; let last = Array(26).fill(-1); let prev = Array(26).fill(-1); for (let i = 0; i < s.length; i++) { let c = s.charCodeAt(i) - 65; res += (i - last[c]) * (last[c] - prev[c]); prev[c] = last[c]; last[c] = i; }",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize result to 0 and tracking arrays for positions",
+      "array": [
+        0
+      ]
+    },
+    {
+      "codeLine": 3,
+      "i": 0,
+      "note": "Processing character 'A' at index 0",
+      "array": [
+        0
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 4,
+      "i": 0,
+      "note": "Update contribution for 'A': (0 - (-1)) * (-1 - (-1)) = 0",
+      "array": [
+        0
+      ]
+    },
+    {
+      "codeLine": 5,
+      "i": 0,
+      "note": "Update last and prev indices for 'A'",
+      "array": [
+        0
+      ]
+    },
+    {
+      "codeLine": 3,
+      "i": 1,
+      "note": "Processing character 'B' at index 1",
+      "array": [
+        0,
+        1
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "i": 1,
+      "note": "Update contribution for 'B': (1 - (-1)) * (-1 - (-1)) = 0, res remains 0",
+      "array": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 3,
+      "i": 2,
+      "note": "Processing character 'A' at index 2",
+      "array": [
+        0,
+        1,
+        2
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 4,
+      "i": 2,
+      "note": "Update contribution for 'A': (2 - 0) * (0 - (-1)) = 2. Res = 2",
+      "array": [
+        2
+      ]
+    }
+  ]
+}

@@ -1,0 +1,139 @@
+{
+  "title": "Game of Life",
+  "difficulty": "Medium",
+  "type": "matrix",
+  "tags": [
+    "Array",
+    "Matrix",
+    "Simulation"
+  ],
+  "description": "Update the grid based on 4 rules: underpopulation (live < 2), survival (2 or 3), overpopulation (live > 3), reproduction (dead == 3). Use -1 for dead->live and 2 for live->dead.",
+  "pseudocode": "1. for r in rows, c in cols: \n2.   liveNeighbors = count(r, c)\n3.   if board[r][c] == 1 and (liveNeighbors < 2 or liveNeighbors > 3): board[r][c] = 2\n4.   if board[r][c] == 0 and liveNeighbors == 3: board[r][c] = -1\n5. for r in rows, c in cols: \n6.   board[r][c] = 1 if board[r][c] > 0 else 0",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize traversal of the 3x3 grid.",
+      "matrix": [
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Cell [0,0] is dead, has 1 live neighbor. Stay dead.",
+      "matrix": [
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Cell [0,1] is live, has 2 neighbors. Stays live.",
+      "matrix": [
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ]
+      ],
+      "curr": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Cell [1,1] is dead, has 3 live neighbors. Reproduces (marked -1).",
+      "matrix": [
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          -1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ]
+      ],
+      "curr": [
+        1,
+        1
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Final sweep: replace state markers -1 and 2 to 1 and 0.",
+      "matrix": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          0,
+          1,
+          1
+        ]
+      ],
+      "curr": [
+        2,
+        2
+      ]
+    }
+  ]
+}

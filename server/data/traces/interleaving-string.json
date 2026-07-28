@@ -1,0 +1,144 @@
+{
+  "title": "Interleaving String",
+  "difficulty": "Medium",
+  "type": "matrix",
+  "tags": [
+    "String",
+    "Dynamic Programming"
+  ],
+  "description": "Determine if s3 is formed by the interleaving of s1 and s2.",
+  "target": true,
+  "pseudocode": "1. m = s1.length, n = s2.length\n2. dp = new boolean[m+1][n+1]\n3. dp[0][0] = true\n4. for i = 0 to m: for j = 0 to n:\n5. if i>0: dp[i][j] |= (dp[i-1][j] && s1[i-1] == s3[i+j-1])\n6. if j>0: dp[i][j] |= (dp[i][j-1] && s2[j-1] == s3[i+j-1])",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Initialize DP table of size (m+1)x(n+1) with false",
+      "matrix": [
+        [
+          true,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Start iteration at i=0, j=1",
+      "matrix": [
+        [
+          true,
+          true,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "i": 0,
+      "j": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Check s2 character match for dp[0][1]",
+      "matrix": [
+        [
+          true,
+          true,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "curr": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Iterate to i=1, j=0",
+      "matrix": [
+        [
+          true,
+          true,
+          false
+        ],
+        [
+          true,
+          false,
+          false
+        ]
+      ],
+      "i": 1,
+      "j": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Check s1 character match for dp[1][0]",
+      "matrix": [
+        [
+          true,
+          true,
+          false
+        ],
+        [
+          true,
+          false,
+          false
+        ]
+      ],
+      "curr": [
+        1,
+        0
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Iterate to i=1, j=1",
+      "matrix": [
+        [
+          true,
+          true,
+          false
+        ],
+        [
+          true,
+          true,
+          false
+        ]
+      ],
+      "i": 1,
+      "j": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Check diagonal/left match for dp[1][1]",
+      "matrix": [
+        [
+          true,
+          true,
+          false
+        ],
+        [
+          true,
+          true,
+          false
+        ]
+      ],
+      "curr": [
+        1,
+        1
+      ]
+    }
+  ]
+}

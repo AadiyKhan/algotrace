@@ -1,0 +1,73 @@
+{
+  "title": "Strange Printer",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Dynamic Programming"
+  ],
+  "description": "Find the minimum number of turns the printer needs to print the string s.",
+  "target": "aba",
+  "pseudocode": "1. n = s.length; dp = new Array(n).fill(0).map(() => new Array(n).fill(0));\n2. for (len = 1; len <= n; len++) {\n3.   for (i = 0; i <= n - len; i++) {\n4.     j = i + len - 1; dp[i][j] = len;\n5.     for (k = i; k < j; k++) {\n6.       total = dp[i][k] + dp[k+1][j];\n7.       if (s[k] == s[j]) total--;\n8.       dp[i][j] = Math.min(dp[i][j], total);\n9.     }\n10.  }\n11. }",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize DP table for string 'aba', length 3.",
+      "array": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Outer loop: len = 1. Base cases: single characters take 1 turn.",
+      "i": 0,
+      "j": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "dp[0][0] = 1, dp[1][1] = 1, dp[2][2] = 1.",
+      "array": [
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Outer loop: len = 2. Substrings 'ab', 'ba'.",
+      "i": 0,
+      "j": 1
+    },
+    {
+      "codeLine": 8,
+      "note": "dp[0][1] ('ab') = 2, dp[1][2] ('ba') = 2.",
+      "array": [
+        1,
+        2,
+        2
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Outer loop: len = 3. Full string 'aba'.",
+      "i": 0,
+      "j": 2
+    },
+    {
+      "codeLine": 7,
+      "note": "Check s[0] == s[2] ('a' == 'a'). Match found! Subtract 1 from split sum.",
+      "i": 0,
+      "j": 2
+    },
+    {
+      "codeLine": 8,
+      "note": "dp[0][2] = min(dp[0][0]+dp[1][2], dp[0][1]+dp[2][2] - 1) = 2.",
+      "array": [
+        1,
+        2,
+        2
+      ]
+    }
+  ]
+}

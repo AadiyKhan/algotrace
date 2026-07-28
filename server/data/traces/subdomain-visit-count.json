@@ -1,0 +1,77 @@
+{
+  "title": "Subdomain Visit Count",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "String"
+  ],
+  "description": "Count how many times each subdomain is visited given a list of count-paired domains.",
+  "target": null,
+  "pseudocode": "1. counts = {}\n2. for cp in cpdomains:\n3.   count, domain = cp.split(' ')\n4.   frags = domain.split('.')\n5.   for i in range(len(frags)):\n6.     sub = '.'.join(frags[i:])\n7.     counts[sub] = counts.get(sub, 0) + int(count)\n8. return [f\"{v} {k}\" for k, v in counts.items()]",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize empty hash map for counting.",
+      "array": []
+    },
+    {
+      "codeLine": 3,
+      "note": "Process '900 google.mail.com'. Split into count 900 and domain 'google.mail.com'.",
+      "array": [
+        "900 google.mail.com"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Extract subdomains: 'google.mail.com', 'mail.com', 'com'.",
+      "array": [
+        "google.mail.com",
+        "mail.com",
+        "com"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 7,
+      "note": "Update counts for subdomains in map.",
+      "array": [
+        "google.mail.com: 900",
+        "mail.com: 900",
+        "com: 900"
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Next fragment: 'mail.com'.",
+      "array": [
+        "google.mail.com",
+        "mail.com",
+        "com"
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "Update counts for subdomains in map.",
+      "array": [
+        "google.mail.com: 900",
+        "mail.com: 900",
+        "com: 900"
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 8,
+      "note": "Format final list of strings.",
+      "array": [
+        "900 google.mail.com",
+        "900 mail.com",
+        "900 com"
+      ]
+    }
+  ]
+}

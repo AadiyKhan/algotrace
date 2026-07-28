@@ -1,0 +1,204 @@
+{
+  "title": "Number of Islands",
+  "difficulty": "Medium",
+  "type": "matrix",
+  "tags": [
+    "Matrix",
+    "DFS",
+    "Graph"
+  ],
+  "description": "Given a 2D grid of '1's (land) and '0's (water), return the number of islands.",
+  "target": 1,
+  "pseudocode": "1. count = 0\n2. for r from 0 to rows-1:\n3.   for c from 0 to cols-1:\n4.     if grid[r][c] == '1':\n5.       count++\n6.       dfs(grid, r, c)\n7. return count",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize island count to 0",
+      "matrix": [
+        [
+          "1",
+          "0"
+        ],
+        [
+          "0",
+          "1"
+        ]
+      ],
+      "visited": []
+    },
+    {
+      "codeLine": 2,
+      "note": "Starting row iteration",
+      "matrix": [
+        [
+          "1",
+          "0"
+        ],
+        [
+          "0",
+          "1"
+        ]
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Starting column iteration",
+      "matrix": [
+        [
+          "1",
+          "0"
+        ],
+        [
+          "0",
+          "1"
+        ]
+      ],
+      "i": 0,
+      "j": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Found land at [0,0], initiating DFS",
+      "matrix": [
+        [
+          "1",
+          "0"
+        ],
+        [
+          "0",
+          "1"
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Incrementing count",
+      "matrix": [
+        [
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "1"
+        ]
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Checking next cell [0,1]",
+      "matrix": [
+        [
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "1"
+        ]
+      ],
+      "i": 0,
+      "j": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Moving to row 1",
+      "matrix": [
+        [
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "1"
+        ]
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Checking cell [1,1]",
+      "matrix": [
+        [
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "1"
+        ]
+      ],
+      "i": 1,
+      "j": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Found second island",
+      "matrix": [
+        [
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "curr": [
+        1,
+        1
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Returning total count: 2",
+      "matrix": [
+        [
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0"
+        ]
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ]
+    }
+  ]
+}

@@ -1,0 +1,119 @@
+{
+  "title": "Degree of an Array",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Hash Table"
+  ],
+  "description": "Find the smallest subarray length that has the same degree as the original array.",
+  "target": 2,
+  "pseudocode": "1. map = {}, left = {}, right = {}\n2. for i, x in nums:\n3.   if x not in left: left[x] = i\n4.   right[x] = i\n5.   map[x] = map.get(x, 0) + 1\n6. degree = max(map.values())\n7. minLen = len(nums)\n8. for x in map:\n9.   if map[x] == degree:\n10.    minLen = min(minLen, right[x] - left[x] + 1)",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Initializing maps and iterating through array",
+      "array": [
+        1,
+        2,
+        2,
+        3,
+        1
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Record first occurrence of 1 at index 0",
+      "array": [
+        1,
+        2,
+        2,
+        3,
+        1
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Move to index 1, value 2",
+      "array": [
+        1,
+        2,
+        2,
+        3,
+        1
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Record first occurrence of 2 at index 1",
+      "array": [
+        1,
+        2,
+        2,
+        3,
+        1
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Move to index 2, value 2",
+      "array": [
+        1,
+        2,
+        2,
+        3,
+        1
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Update right occurrence of 2 at index 2",
+      "array": [
+        1,
+        2,
+        2,
+        3,
+        1
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Degree calculated as 2",
+      "array": [
+        1,
+        2,
+        2,
+        3,
+        1
+      ]
+    },
+    {
+      "codeLine": 10,
+      "note": "Calculate length for candidate 2: indices 1 to 2, length 2",
+      "array": [
+        1,
+        2,
+        2,
+        3,
+        1
+      ]
+    },
+    {
+      "codeLine": 10,
+      "note": "Calculate length for candidate 1: indices 0 to 4, length 5",
+      "array": [
+        1,
+        2,
+        2,
+        3,
+        1
+      ]
+    }
+  ]
+}

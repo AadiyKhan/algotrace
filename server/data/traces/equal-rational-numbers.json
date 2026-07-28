@@ -1,0 +1,52 @@
+{
+  "title": "Equal Rational Numbers",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Math",
+    "String"
+  ],
+  "description": "Determine if two strings representing rational numbers (potentially with repeating decimals) are equal.",
+  "target": null,
+  "pseudocode": "1. function parse(s) {\n2.   if (!s.includes('(')) return parseFloat(s);\n3.   let [base, rep] = s.split('(');\n4.   rep = rep.replace(')', '');\n5.   let nonRepLen = base.includes('.') ? base.split('.')[1].length : 0;\n6.   let repLen = rep.length;\n7.   let num = parseFloat(base.replace('.', '')) * (Math.pow(10, repLen) - 1) + parseFloat(rep);\n8.   let den = Math.pow(10, nonRepLen) * (Math.pow(10, repLen) - 1);\n9.   return num / den;\n10. }\n11. return Math.abs(parse(s) - parse(t)) < 1e-9;",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Comparing '0.5' and '0.4(9)'",
+      "array": [
+        0.5,
+        0.499999999
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Parsing '0.5', no repeating part detected",
+      "i": 0.5
+    },
+    {
+      "codeLine": 3,
+      "note": "Parsing '0.4(9)', splitting base '0.4' and repeating '9'",
+      "i": 0.4,
+      "j": 9
+    },
+    {
+      "codeLine": 7,
+      "note": "Calculating value for 0.4(9) as (49 - 4) / 90 = 45/90",
+      "i": 0.5
+    },
+    {
+      "codeLine": 9,
+      "note": "Result of 45/90 is 0.5",
+      "i": 0.5,
+      "j": 0.5
+    },
+    {
+      "codeLine": 11,
+      "note": "Difference is 0, returning true",
+      "array": [
+        0.5,
+        0.5
+      ]
+    }
+  ]
+}

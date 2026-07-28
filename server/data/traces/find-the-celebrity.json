@@ -1,0 +1,93 @@
+{
+  "title": "Find the Celebrity",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Two Pointers"
+  ],
+  "description": "Find the celebrity in a group of n people, where a celebrity is known by everyone but knows no one.",
+  "target": 1,
+  "pseudocode": "1: candidate = 0\n2: for i = 1 to n-1:\n3:   if knows(candidate, i):\n4:     candidate = i\n5: for i = 0 to n-1:\n6:   if i != candidate and (knows(candidate, i) or !knows(i, candidate)):\n7:     return -1\n8: return candidate",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize candidate as person 0.",
+      "array": [
+        0,
+        1,
+        2
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Check if 0 knows 1. Suppose 0 knows 1, so 0 cannot be the celebrity.",
+      "array": [
+        0,
+        1,
+        2
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Update candidate to 1.",
+      "array": [
+        0,
+        1,
+        2
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Check if 1 knows 2. Suppose 1 does not know 2.",
+      "array": [
+        0,
+        1,
+        2
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Verify if 1 is the celebrity by checking against all others.",
+      "array": [
+        0,
+        1,
+        2
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Check if 0 knows 1 (true) and 1 does not know 0 (true).",
+      "array": [
+        0,
+        1,
+        2
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Check if 2 knows 1 (true) and 1 does not know 2 (true).",
+      "array": [
+        0,
+        1,
+        2
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 8,
+      "note": "Candidate 1 is confirmed as the celebrity.",
+      "array": [
+        0,
+        1,
+        2
+      ]
+    }
+  ]
+}

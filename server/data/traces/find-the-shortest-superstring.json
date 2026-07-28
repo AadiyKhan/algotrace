@@ -1,0 +1,63 @@
+{
+  "title": "Find the Shortest Superstring",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "String",
+    "Dynamic Programming",
+    "Bitmask"
+  ],
+  "description": "Find a string that contains all given strings as substrings with the minimum length.",
+  "target": "[\"alex\",\"loves\",\"leetcode\"]",
+  "pseudocode": "function shortestSuperstring(A) {\n  let n = A.length;\n  let overlaps = Array.from({length: n}, () => Array(n).fill(0));\n  for (let i = 0; i < n; i++) {\n    for (let j = 0; j < n; j++) {\n      if (i !== j) {\n        for (let k = Math.min(A[i].length, A[j].length); k > 0; k--) {\n          if (A[i].endsWith(A[j].substring(0, k))) {\n            overlaps[i][j] = k; break;\n          }\n        }\n      }\n    }\n  }\n  return buildResult(overlaps, A);\n}",
+  "steps": [
+    {
+      "codeLine": 3,
+      "note": "Initialize overlap matrix for strings: alex, loves, leetcode",
+      "array": [
+        "alex",
+        "loves",
+        "leetcode"
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Calculate overlap between 'alex' and 'loves'",
+      "i": 0,
+      "j": 1,
+      "array": [
+        "alex",
+        "loves",
+        "leetcode"
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Overlap(alex, loves) = 0",
+      "i": 0,
+      "j": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Calculate overlap between 'loves' and 'leetcode'",
+      "i": 1,
+      "j": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Overlap(loves, leetcode) found: 'le' (length 2)",
+      "i": 1,
+      "j": 2
+    },
+    {
+      "codeLine": 14,
+      "note": "Constructing superstring path based on max overlaps",
+      "array": [
+        "alex",
+        "loves",
+        "leetcode"
+      ]
+    }
+  ]
+}

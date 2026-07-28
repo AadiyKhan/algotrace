@@ -1,0 +1,67 @@
+{
+  "title": "Triples with Bitwise AND Equal to Zero",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "Bit Manipulation"
+  ],
+  "description": "Find the number of triples (i, j, k) such that (A[i] & A[j] & A[k]) == 0.",
+  "target": 0,
+  "pseudocode": "1. count = {}\n2. for x in A: for y in A:\n3.   count[x & y]++\n4. ans = 0\n5. for z in A:\n6.   for val, freq in count:\n7.     if (val & z) == 0: ans += freq",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize count map to store results of A[i] & A[j]",
+      "array": [
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Iterate through pairs to compute ANDs (1&1=1, 1&2=0, 2&1=0, 2&2=2)",
+      "i": 0,
+      "j": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Update frequency map: {1: 1, 0: 2, 2: 1}",
+      "i": 0,
+      "j": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Iterate through A to check triples with z = 1",
+      "i": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Check pairs where (val & 1) == 0: val=0 has freq 2",
+      "i": 0,
+      "curr": 2
+    },
+    {
+      "codeLine": 7,
+      "note": "Add freq 2 to total answer",
+      "i": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Iterate through A to check triples with z = 2",
+      "i": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Check pairs where (val & 2) == 0: val=0 has freq 2, val=1 has freq 1",
+      "i": 1,
+      "curr": 3
+    },
+    {
+      "codeLine": 7,
+      "note": "Total triples: 2 + 3 = 5",
+      "i": 1
+    }
+  ]
+}

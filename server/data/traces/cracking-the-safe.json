@@ -1,0 +1,90 @@
+{
+  "title": "Cracking the Safe",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Math",
+    "Depth-First Search",
+    "Graph"
+  ],
+  "description": "Find the shortest string that contains all possible combinations of length n using k digits.",
+  "target": "k^n combinations",
+  "pseudocode": "1: function dfs(current_str, n, k, visited, total):\n2:   if len(visited) == total:\n3:     return current_str\n4:   prev = current_str[-(n-1):]\n5:   for i from 0 to k-1:\n6:     next_node = prev + str(i)\n7:     if next_node not in visited:\n8:       visited.add(next_node)\n9:       res = dfs(current_str + str(i), n, k, visited, total)\n10:      if res: return res\n11:      visited.remove(next_node)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Starting DFS with initial string '00' for n=2, k=2.",
+      "array": [
+        "00"
+      ],
+      "visited": [
+        "00"
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Attempt to append '0' to last digit of '00', resulting in '00'. Already visited.",
+      "array": [
+        "00"
+      ],
+      "visited": [
+        "00"
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Attempt to append '1' to '00', resulting in '01'.",
+      "array": [
+        "00",
+        "01"
+      ],
+      "visited": [
+        "00",
+        "01"
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "From '01', attempt to append '1', resulting in '11'.",
+      "array": [
+        "00",
+        "01",
+        "11"
+      ],
+      "visited": [
+        "00",
+        "01",
+        "11"
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "From '11', attempt to append '0', resulting in '10'.",
+      "array": [
+        "00",
+        "01",
+        "11",
+        "10"
+      ],
+      "visited": [
+        "00",
+        "01",
+        "11",
+        "10"
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "All 4 combinations found. Constructing result string.",
+      "array": [
+        "00110"
+      ],
+      "visited": [
+        "00",
+        "01",
+        "11",
+        "10"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,129 @@
+{
+  "title": "Jewels and Stones",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "String"
+  ],
+  "description": "Count how many stones are also jewels given strings jewels and stones.",
+  "target": 3,
+  "pseudocode": "1. let jewelSet = new Set(jewels)\n2. let count = 0\n3. for (let i = 0; i < stones.length; i++)\n4.   if (jewelSet.has(stones[i])) count++\n5. return count",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize a Set with the jewels characters for O(1) lookup.",
+      "array": [
+        "a",
+        "A"
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Initialize the counter to 0.",
+      "array": [
+        "a",
+        "A"
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Start loop through stones string.",
+      "array": [
+        "a",
+        "A",
+        "b",
+        "A"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Stone 'a' is a jewel. Increment count.",
+      "array": [
+        "a",
+        "A",
+        "b",
+        "A"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Next iteration.",
+      "array": [
+        "a",
+        "A",
+        "b",
+        "A"
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Stone 'A' is a jewel. Increment count.",
+      "array": [
+        "a",
+        "A",
+        "b",
+        "A"
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Next iteration.",
+      "array": [
+        "a",
+        "A",
+        "b",
+        "A"
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Stone 'b' is not a jewel. Skip.",
+      "array": [
+        "a",
+        "A",
+        "b",
+        "A"
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Next iteration.",
+      "array": [
+        "a",
+        "A",
+        "b",
+        "A"
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 4,
+      "note": "Stone 'A' is a jewel. Increment count.",
+      "array": [
+        "a",
+        "A",
+        "b",
+        "A"
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 5,
+      "note": "Return total count of 3.",
+      "array": [
+        "a",
+        "A",
+        "b",
+        "A"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "title": "K Similar Strings",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "BFS",
+    "String",
+    "Graph"
+  ],
+  "description": "Find the minimum number of swaps to make string A equal to string B.",
+  "target": "baac",
+  "pseudocode": "1. queue = [[s1, 0]]\n2. visited = {s1}\n3. while queue:\n4.   curr, depth = queue.shift()\n5.   if curr == target: return depth\n6.   i = first mismatch index\n7.   for j = i + 1 to n:\n8.     if curr[j] == target[i] and curr[j] != target[j]:\n9.       swap(curr, i, j)\n10.      if curr not in visited: queue.push([curr, depth + 1])",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize BFS queue with starting string 'abac' and depth 0",
+      "array": [
+        "a",
+        "b",
+        "a",
+        "c"
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Dequeue current string 'abac', depth 0",
+      "array": [
+        "a",
+        "b",
+        "a",
+        "c"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "First mismatch at index 0: 'a' vs 'b'",
+      "array": [
+        "a",
+        "b",
+        "a",
+        "c"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 9,
+      "note": "Swap index 0 and 1 to match target 'baac'",
+      "array": [
+        "b",
+        "a",
+        "a",
+        "c"
+      ],
+      "i": 0,
+      "j": 1
+    },
+    {
+      "codeLine": 10,
+      "note": "New state 'baac' added to queue with depth 1",
+      "array": [
+        "b",
+        "a",
+        "a",
+        "c"
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Found target 'baac' at depth 1",
+      "array": [
+        "b",
+        "a",
+        "a",
+        "c"
+      ]
+    }
+  ]
+}

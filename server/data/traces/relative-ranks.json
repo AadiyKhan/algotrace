@@ -1,0 +1,63 @@
+{
+  "title": "Relative Ranks",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Sorting",
+    "Heap"
+  ],
+  "description": "Assign relative ranks to scores, where the top three are 'Gold Medal', 'Silver Medal', and 'Bronze Medal', and others are their rank number.",
+  "target": null,
+  "pseudocode": "1. Create a map of score to original index\n2. Sort scores in descending order\n3. Initialize result array\n4. For each sorted score, assign rank label based on index",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Map scores [10, 3, 5] to indices {10:0, 3:1, 5:2}",
+      "array": [
+        10,
+        3,
+        5
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Sorted scores: [10, 5, 3]",
+      "array": [
+        10,
+        5,
+        3
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Assign Gold to 10",
+      "array": [
+        "Gold Medal",
+        0,
+        0
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Assign Silver to 5",
+      "array": [
+        "Gold Medal",
+        0,
+        "Silver Medal"
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Assign Bronze to 3",
+      "array": [
+        "Gold Medal",
+        "Bronze Medal",
+        "Silver Medal"
+      ],
+      "i": 2
+    }
+  ]
+}

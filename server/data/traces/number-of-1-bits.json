@@ -1,0 +1,133 @@
+{
+  "title": "Number of 1 Bits",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Bit Manipulation"
+  ],
+  "description": "Count the number of set bits (1s) in an integer.",
+  "target": 0,
+  "pseudocode": "1. count = 0\n2. while n != 0:\n3.   n = n & (n - 1)\n4.   count++\n5. return count",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize count to 0. Using n = 11 (binary 1011).",
+      "array": [
+        1,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Check if n (11) is not 0. It is not.",
+      "array": [
+        1,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Clear the least significant bit: 1011 & 1010 = 1010 (10).",
+      "array": [
+        1,
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Increment count to 1.",
+      "array": [
+        1,
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Check if n (10) is not 0. It is not.",
+      "array": [
+        1,
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Clear the least significant bit: 1010 & 1001 = 1000 (8).",
+      "array": [
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Increment count to 2.",
+      "array": [
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Check if n (8) is not 0. It is not.",
+      "array": [
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Clear the least significant bit: 1000 & 0111 = 0000 (0).",
+      "array": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Increment count to 3.",
+      "array": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Check if n is 0. Loop terminates.",
+      "array": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Return total count of 3.",
+      "array": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "title": "Minimum Time Difference",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "String",
+    "Sorting"
+  ],
+  "description": "Find the minimum minutes difference between any two time points in a 24-hour clock.",
+  "target": null,
+  "pseudocode": "1. Convert all times to minutes from 00:00\n2. Sort the minute array\n3. Initialize minDiff = infinity\n4. For i = 1 to length - 1:\n5.   minDiff = min(minDiff, arr[i] - arr[i-1])\n6. minDiff = min(minDiff, 1440 - (arr[last] - arr[0]))\n7. Return minDiff",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Convert times ['23:59', '00:00'] to minutes [1439, 0]",
+      "array": [
+        1439,
+        0
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Sort the array of minutes",
+      "array": [
+        0,
+        1439
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Initialize minDiff to infinity",
+      "array": [
+        0,
+        1439
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Looping through adjacent elements",
+      "array": [
+        0,
+        1439
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Calculate diff: 1439 - 0 = 1439",
+      "array": [
+        0,
+        1439
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Circular check: 1440 - (1439 - 0) = 1",
+      "array": [
+        0,
+        1439
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Final result is 1",
+      "array": [
+        0,
+        1439
+      ]
+    }
+  ]
+}

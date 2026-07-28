@@ -1,0 +1,70 @@
+{
+  "title": "2 Keys Keyboard",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Math",
+    "Dynamic Programming"
+  ],
+  "description": "Find the minimum number of operations to get n 'A's on a notepad using only Copy All and Paste.",
+  "target": 6,
+  "pseudocode": "let n = 6; let ans = 0; let d = 2; while (n > 1) { while (n % d === 0) { ans += d; n /= d; } d++; } return ans;",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize n=6, ans=0, divisor d=2.",
+      "array": [
+        6
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Check if 6 is divisible by 2.",
+      "array": [
+        6
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "6 is divisible by 2. Add 2 to ans, divide 6 by 2 to get 3.",
+      "array": [
+        3
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Check if 3 is divisible by 2. It is not.",
+      "array": [
+        3
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Increment d to 3.",
+      "array": [
+        3
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Check if 3 is divisible by 3.",
+      "array": [
+        3
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "3 is divisible by 3. Add 3 to ans (total 5), divide 3 by 3 to get 1.",
+      "array": [
+        1
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "n is now 1, terminate loop.",
+      "array": [
+        1
+      ]
+    }
+  ]
+}

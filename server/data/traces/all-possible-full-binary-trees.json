@@ -1,0 +1,97 @@
+{
+  "title": "All Possible Full Binary Trees",
+  "difficulty": "Medium",
+  "type": "tree",
+  "tags": [
+    "Tree",
+    "Recursion",
+    "Memoization"
+  ],
+  "description": "Given an integer n, return a list of all possible full binary trees with n nodes.",
+  "target": 3,
+  "pseudocode": "1: function allPossibleFBT(n) {\n2:   if (n % 2 == 0) return [];\n3:   if (n == 1) return [new TreeNode(0)];\n4:   let res = [];\n5:   for (let i = 1; i < n; i += 2) {\n6:     let left = allPossibleFBT(i);\n7:     let right = allPossibleFBT(n - 1 - i);\n8:     for (let l of left) {\n9:       for (let r of right) {\n10:        res.push(new TreeNode(0, l, r));\n11:      }\n12:    }\n13:  }\n14:  return res;\n15: }",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize recursion for n=3",
+      "treeNodes": []
+    },
+    {
+      "codeLine": 5,
+      "note": "Looping through possible left subtree sizes i=1",
+      "treeNodes": []
+    },
+    {
+      "codeLine": 6,
+      "note": "Recursively get left subtree for i=1",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 0,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Recursively get right subtree for n-1-i = 1",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 0,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 10,
+      "note": "Combine left and right to form a full binary tree with 3 nodes",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 0,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 0,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 0,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 14,
+      "note": "Return list of full binary trees",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 0,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 0,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 0,
+          "left": null,
+          "right": null
+        }
+      ]
+    }
+  ]
+}

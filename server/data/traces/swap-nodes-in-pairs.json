@@ -1,0 +1,768 @@
+{
+  "title": "Swap Nodes In Pairs",
+  "difficulty": "Medium",
+  "type": "linked-list",
+  "tags": [
+    "Linked List",
+    "Recursion",
+    "Iteration"
+  ],
+  "description": "Given a linked list, swap every two adjacent nodes and return its head. You must solve the problem without modifying the values in the list's nodes (i.e., only nodes themselves may be changed).",
+  "pseudocode": "```javascript\n// 1. Initialize dummy node and pointers\nlet dummy = new ListNode(0);\ndummy.next = head;\nlet prev = dummy;\nlet curr = head;\n\n// 2. Iterate while there's a pair to swap\nwhile (curr !== null && curr.next !== null) {\n    // 3. Identify the nodes to be swapped\n    let firstNode = curr;\n    let secondNode = curr.next;\n\n    // 4. Perform the swap:\n    //    a. Link previous node to secondNode\n    prev.next = secondNode;\n    //    b. Link firstNode to the node after secondNode\n    firstNode.next = secondNode.next;\n    //    c. Link secondNode to firstNode\n    secondNode.next = firstNode;\n\n    // 5. Move pointers for the next iteration\n    prev = firstNode;\n    curr = firstNode.next;\n}\n\n// 6. Return the new head (dummy.next)\nreturn dummy.next;\n```",
+  "steps": [
+    {
+      "codeLine": null,
+      "note": "Initial linked list: 1 -> 2 -> 3 -> 4 -> null",
+      "nodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "next": 1
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "next": 2
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "next": 3
+        },
+        {
+          "id": 3,
+          "val": 4,
+          "next": null
+        }
+      ],
+      "curr": null,
+      "prev": null
+    },
+    {
+      "codeLine": 1,
+      "note": "Create a dummy node (value 0) to simplify edge cases, especially when the head needs to change. It's not part of the original list.",
+      "nodes": [
+        {
+          "id": -1,
+          "val": 0,
+          "next": null
+        },
+        {
+          "id": 0,
+          "val": 1,
+          "next": 1
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "next": 2
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "next": 3
+        },
+        {
+          "id": 3,
+          "val": 4,
+          "next": null
+        }
+      ],
+      "curr": null,
+      "prev": null
+    },
+    {
+      "codeLine": 2,
+      "note": "Point the dummy node's next to the original head of the list (node 1).",
+      "nodes": [
+        {
+          "id": -1,
+          "val": 0,
+          "next": 0
+        },
+        {
+          "id": 0,
+          "val": 1,
+          "next": 1
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "next": 2
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "next": 3
+        },
+        {
+          "id": 3,
+          "val": 4,
+          "next": null
+        }
+      ],
+      "curr": null,
+      "prev": null
+    },
+    {
+      "codeLine": 3,
+      "note": "Initialize 'prev' pointer to the dummy node (-1). This pointer will always point to the node *before* the current pair being considered.",
+      "nodes": [
+        {
+          "id": -1,
+          "val": 0,
+          "next": 0
+        },
+        {
+          "id": 0,
+          "val": 1,
+          "next": 1
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "next": 2
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "next": 3
+        },
+        {
+          "id": 3,
+          "val": 4,
+          "next": null
+        }
+      ],
+      "curr": null,
+      "prev": -1
+    },
+    {
+      "codeLine": 4,
+      "note": "Initialize 'curr' pointer to the head of the list (node 1). This pointer will point to the *first* node of the current pair.",
+      "nodes": [
+        {
+          "id": -1,
+          "val": 0,
+          "next": 0
+        },
+        {
+          "id": 0,
+          "val": 1,
+          "next": 1
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "next": 2
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "next": 3
+        },
+        {
+          "id": 3,
+          "val": 4,
+          "next": null
+        }
+      ],
+      "curr": 0,
+      "prev": -1
+    },
+    {
+      "codeLine": 7,
+      "note": "Check loop condition: `curr` (node 1) is not null, and `curr.next` (node 2) is not null. Condition is true. Proceed to swap the pair (1, 2).",
+      "nodes": [
+        {
+          "id": -1,
+          "val": 0,
+          "next": 0
+        },
+        {
+          "id": 0,
+          "val": 1,
+          "next": 1
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "next": 2
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "next": 3
+        },
+        {
+          "id": 3,
+          "val": 4,
+          "next": null
+        }
+      ],
+      "curr": 0,
+      "prev": -1
+    },
+    {
+      "codeLine": 9,
+      "note": "Assign `firstNode` to the current node (node 1).",
+      "nodes": [
+        {
+          "id": -1,
+          "val": 0,
+          "next": 0
+        },
+        {
+          "id": 0,
+          "val": 1,
+          "next": 1
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "next": 2
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "next": 3
+        },
+        {
+          "id": 3,
+          "val": 4,
+          "next": null
+        }
+      ],
+      "curr": 0,
+      "prev": -1
+    },
+    {
+      "codeLine": 10,
+      "note": "Assign `secondNode` to the next node (node 2).",
+      "nodes": [
+        {
+          "id": -1,
+          "val": 0,
+          "next": 0
+        },
+        {
+          "id": 0,
+          "val": 1,
+          "next": 1
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "next": 2
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "next": 3
+        },
+        {
+          "id": 3,
+          "val": 4,
+          "next": null
+        }
+      ],
+      "curr": 0,
+      "prev": -1
+    },
+    {
+      "codeLine": 13,
+      "note": "The node *before* the pair (`prev`, dummy node -1) now points to `secondNode` (node 2). This links the previous part of the list to the swapped pair.",
+      "nodes": [
+        {
+          "id": -1,
+          "val": 0,
+          "next": 1
+        },
+        {
+          "id": 0,
+          "val": 1,
+          "next": 1
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "next": 2
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "next": 3
+        },
+        {
+          "id": 3,
+          "val": 4,
+          "next": null
+        }
+      ],
+      "curr": 0,
+      "prev": -1
+    },
+    {
+      "codeLine": 15,
+      "note": "The `firstNode` (node 1) now points to the node *after* the `secondNode` (node 3). This effectively detaches node 1 from node 2.",
+      "nodes": [
+        {
+          "id": -1,
+          "val": 0,
+          "next": 1
+        },
+        {
+          "id": 0,
+          "val": 1,
+          "next": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "next": 2
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "next": 3
+        },
+        {
+          "id": 3,
+          "val": 4,
+          "next": null
+        }
+      ],
+      "curr": 0,
+      "prev": -1
+    },
+    {
+      "codeLine": 17,
+      "note": "The `secondNode` (node 2) now points to the `firstNode` (node 1). The swap of the pair (1, 2) is complete: 2 -> 1.",
+      "nodes": [
+        {
+          "id": -1,
+          "val": 0,
+          "next": 1
+        },
+        {
+          "id": 0,
+          "val": 1,
+          "next": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "next": 0
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "next": 3
+        },
+        {
+          "id": 3,
+          "val": 4,
+          "next": null
+        }
+      ],
+      "curr": 0,
+      "prev": -1
+    },
+    {
+      "codeLine": 20,
+      "note": "Move `prev` to `firstNode` (node 1). `prev` now points to the *last* node of the just-swapped pair (2 -> 1), ready for the next iteration.",
+      "nodes": [
+        {
+          "id": -1,
+          "val": 0,
+          "next": 1
+        },
+        {
+          "id": 0,
+          "val": 1,
+          "next": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "next": 0
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "next": 3
+        },
+        {
+          "id": 3,
+          "val": 4,
+          "next": null
+        }
+      ],
+      "curr": 0,
+      "prev": 0
+    },
+    {
+      "codeLine": 21,
+      "note": "Move `curr` to the node that `firstNode` now points to (node 3). This is the start of the next pair (3, 4) to be swapped.",
+      "nodes": [
+        {
+          "id": -1,
+          "val": 0,
+          "next": 1
+        },
+        {
+          "id": 0,
+          "val": 1,
+          "next": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "next": 0
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "next": 3
+        },
+        {
+          "id": 3,
+          "val": 4,
+          "next": null
+        }
+      ],
+      "curr": 2,
+      "prev": 0
+    },
+    {
+      "codeLine": 7,
+      "note": "Check loop condition: `curr` (node 3) is not null, and `curr.next` (node 4) is not null. Condition is true. Proceed to swap the pair (3, 4).",
+      "nodes": [
+        {
+          "id": -1,
+          "val": 0,
+          "next": 1
+        },
+        {
+          "id": 0,
+          "val": 1,
+          "next": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "next": 0
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "next": 3
+        },
+        {
+          "id": 3,
+          "val": 4,
+          "next": null
+        }
+      ],
+      "curr": 2,
+      "prev": 0
+    },
+    {
+      "codeLine": 9,
+      "note": "Assign `firstNode` to the current node (node 3).",
+      "nodes": [
+        {
+          "id": -1,
+          "val": 0,
+          "next": 1
+        },
+        {
+          "id": 0,
+          "val": 1,
+          "next": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "next": 0
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "next": 3
+        },
+        {
+          "id": 3,
+          "val": 4,
+          "next": null
+        }
+      ],
+      "curr": 2,
+      "prev": 0
+    },
+    {
+      "codeLine": 10,
+      "note": "Assign `secondNode` to the next node (node 4).",
+      "nodes": [
+        {
+          "id": -1,
+          "val": 0,
+          "next": 1
+        },
+        {
+          "id": 0,
+          "val": 1,
+          "next": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "next": 0
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "next": 3
+        },
+        {
+          "id": 3,
+          "val": 4,
+          "next": null
+        }
+      ],
+      "curr": 2,
+      "prev": 0
+    },
+    {
+      "codeLine": 13,
+      "note": "The node *before* the pair (`prev`, node 1) now points to `secondNode` (node 4). This links the previous part of the list (2 -> 1) to the new swapped pair (4 -> 3).",
+      "nodes": [
+        {
+          "id": -1,
+          "val": 0,
+          "next": 1
+        },
+        {
+          "id": 0,
+          "val": 1,
+          "next": 3
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "next": 0
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "next": 3
+        },
+        {
+          "id": 3,
+          "val": 4,
+          "next": null
+        }
+      ],
+      "curr": 2,
+      "prev": 0
+    },
+    {
+      "codeLine": 15,
+      "note": "The `firstNode` (node 3) now points to the node *after* the `secondNode` (null). This detaches node 3 from node 4.",
+      "nodes": [
+        {
+          "id": -1,
+          "val": 0,
+          "next": 1
+        },
+        {
+          "id": 0,
+          "val": 1,
+          "next": 3
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "next": 0
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "next": null
+        },
+        {
+          "id": 3,
+          "val": 4,
+          "next": null
+        }
+      ],
+      "curr": 2,
+      "prev": 0
+    },
+    {
+      "codeLine": 17,
+      "note": "The `secondNode` (node 4) now points to the `firstNode` (node 3). The swap of the pair (3, 4) is complete: 4 -> 3.",
+      "nodes": [
+        {
+          "id": -1,
+          "val": 0,
+          "next": 1
+        },
+        {
+          "id": 0,
+          "val": 1,
+          "next": 3
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "next": 0
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "next": null
+        },
+        {
+          "id": 3,
+          "val": 4,
+          "next": 2
+        }
+      ],
+      "curr": 2,
+      "prev": 0
+    },
+    {
+      "codeLine": 20,
+      "note": "Move `prev` to `firstNode` (node 3). `prev` now points to the last node of the just-swapped pair (4 -> 3).",
+      "nodes": [
+        {
+          "id": -1,
+          "val": 0,
+          "next": 1
+        },
+        {
+          "id": 0,
+          "val": 1,
+          "next": 3
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "next": 0
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "next": null
+        },
+        {
+          "id": 3,
+          "val": 4,
+          "next": 2
+        }
+      ],
+      "curr": 2,
+      "prev": 2
+    },
+    {
+      "codeLine": 21,
+      "note": "Move `curr` to the node that `firstNode` now points to (null). This signifies no more pairs.",
+      "nodes": [
+        {
+          "id": -1,
+          "val": 0,
+          "next": 1
+        },
+        {
+          "id": 0,
+          "val": 1,
+          "next": 3
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "next": 0
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "next": null
+        },
+        {
+          "id": 3,
+          "val": 4,
+          "next": 2
+        }
+      ],
+      "curr": null,
+      "prev": 2
+    },
+    {
+      "codeLine": 7,
+      "note": "Check loop condition: `curr` is null, so the condition `curr !== null` is false. The loop terminates.",
+      "nodes": [
+        {
+          "id": -1,
+          "val": 0,
+          "next": 1
+        },
+        {
+          "id": 0,
+          "val": 1,
+          "next": 3
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "next": 0
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "next": null
+        },
+        {
+          "id": 3,
+          "val": 4,
+          "next": 2
+        }
+      ],
+      "curr": null,
+      "prev": 2
+    },
+    {
+      "codeLine": 24,
+      "note": "Return `dummy.next` (node 1), which is the head of the new list: 2 -> 1 -> 4 -> 3 -> null.",
+      "nodes": [
+        {
+          "id": -1,
+          "val": 0,
+          "next": 1
+        },
+        {
+          "id": 0,
+          "val": 1,
+          "next": 3
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "next": 0
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "next": null
+        },
+        {
+          "id": 3,
+          "val": 4,
+          "next": 2
+        }
+      ],
+      "curr": null,
+      "prev": 2
+    }
+  ]
+}

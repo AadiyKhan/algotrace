@@ -1,0 +1,119 @@
+{
+  "title": "Add Two Numbers II",
+  "difficulty": "Medium",
+  "type": "linked-list",
+  "tags": [
+    "Linked List",
+    "Stack",
+    "Math"
+  ],
+  "description": "Add two numbers represented by linked lists where digits are stored in forward order.",
+  "target": null,
+  "pseudocode": "1. stack1 = push all nodes of l1\n2. stack2 = push all nodes of l2\n3. dummy = null, carry = 0\n4. while stack1 or stack2 or carry:\n5.   sum = (stack1.pop || 0) + (stack2.pop || 0) + carry\n6.   carry = floor(sum / 10)\n7.   newNode = node(sum % 10)\n8.   newNode.next = dummy\n9.   dummy = newNode",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Pushing nodes [7, 2, 4, 3] from list 1 into stack1",
+      "nodes": [
+        {
+          "val": 7,
+          "next": 1
+        },
+        {
+          "val": 2,
+          "next": 2
+        },
+        {
+          "val": 4,
+          "next": 3
+        },
+        {
+          "val": 3,
+          "next": null
+        }
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Pushing nodes [5, 6, 4] from list 2 into stack2",
+      "nodes": [
+        {
+          "val": 5,
+          "next": 1
+        },
+        {
+          "val": 6,
+          "next": 2
+        },
+        {
+          "val": 4,
+          "next": null
+        }
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Pop 3 and 4. Sum = 3 + 4 + 0 = 7. Carry = 0.",
+      "nodes": [
+        {
+          "val": 7,
+          "next": null
+        }
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Pop 4 and 6. Sum = 4 + 6 + 0 = 10. Carry = 1.",
+      "nodes": [
+        {
+          "val": 0,
+          "next": 0
+        },
+        {
+          "val": 7,
+          "next": null
+        }
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Pop 2 and 5. Sum = 2 + 5 + 1 = 8. Carry = 0.",
+      "nodes": [
+        {
+          "val": 8,
+          "next": 1
+        },
+        {
+          "val": 0,
+          "next": 2
+        },
+        {
+          "val": 7,
+          "next": null
+        }
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Pop 7 and null. Sum = 7 + 0 + 0 = 7. Carry = 0.",
+      "nodes": [
+        {
+          "val": 7,
+          "next": 1
+        },
+        {
+          "val": 8,
+          "next": 2
+        },
+        {
+          "val": 0,
+          "next": 3
+        },
+        {
+          "val": 7,
+          "next": null
+        }
+      ]
+    }
+  ]
+}

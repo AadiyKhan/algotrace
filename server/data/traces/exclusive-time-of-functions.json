@@ -1,0 +1,86 @@
+{
+  "title": "Exclusive Time of Functions",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Stack",
+    "Array"
+  ],
+  "description": "Calculate the exclusive time of functions on a single-threaded CPU using log entries.",
+  "target": 2,
+  "pseudocode": "1. stack = [], result = array(n).fill(0), prevTime = 0\n2. for log in logs:\n3.   id, type, time = parse(log)\n4.   if type == 'start':\n5.     if stack: result[stack.top()] += time - prevTime\n6.     stack.push(id), prevTime = time\n7.   else:\n8.     result[stack.pop()] += time - prevTime + 1\n9.     prevTime = time + 1",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Processing start of function 0 at time 0",
+      "array": [
+        0,
+        0
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Push function 0 to stack, update prevTime to 0",
+      "array": [
+        0,
+        0
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Processing start of function 1 at time 2",
+      "array": [
+        2,
+        0
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Push function 1 to stack, update prevTime to 2",
+      "array": [
+        2,
+        0
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Processing end of function 1 at time 5",
+      "array": [
+        2,
+        0
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 8,
+      "note": "Pop 1, calculate duration: 5 - 2 + 1 = 4",
+      "array": [
+        2,
+        4
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 2,
+      "note": "Processing end of function 0 at time 6",
+      "array": [
+        2,
+        4
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 8,
+      "note": "Pop 0, calculate duration: 6 - 6 + 1 = 1, added to existing 2",
+      "array": [
+        3,
+        4
+      ],
+      "i": 3
+    }
+  ]
+}

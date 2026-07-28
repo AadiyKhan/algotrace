@@ -1,0 +1,64 @@
+{
+  "title": "Single Number",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Bit Manipulation"
+  ],
+  "description": "Find the element that appears only once in an array where every other element appears twice.",
+  "target": 0,
+  "pseudocode": "let result = 0;\nfor (let i = 0; i < nums.length; i++) {\n  result ^= nums[i];\n}\nreturn result;",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize result to 0",
+      "array": [
+        2,
+        1,
+        2
+      ],
+      "i": null
+    },
+    {
+      "codeLine": 3,
+      "note": "XOR 0 with 2, result is 2",
+      "array": [
+        2,
+        1,
+        2
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "XOR 2 with 1, result is 3",
+      "array": [
+        2,
+        1,
+        2
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "XOR 3 with 2, result is 1",
+      "array": [
+        2,
+        1,
+        2
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Loop finished, return 1",
+      "array": [
+        2,
+        1,
+        2
+      ],
+      "i": 3
+    }
+  ]
+}

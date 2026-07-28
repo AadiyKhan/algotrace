@@ -1,0 +1,137 @@
+{
+  "title": "Maximum Depth of N-ary Tree",
+  "difficulty": "Easy",
+  "type": "tree",
+  "tags": [
+    "Tree",
+    "DFS",
+    "Recursion"
+  ],
+  "description": "Find the maximum depth of an N-ary tree, where depth is the number of nodes along the longest path from root to leaf.",
+  "pseudocode": "1: function maxDepth(root) {\n2:   if (!root) return 0;\n3:   let depth = 0;\n4:   for (let child of root.children) {\n5:     depth = Math.max(depth, maxDepth(child));\n6:   }\n7:   return depth + 1;\n8: }",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize maxDepth on root (Node 0)",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "children": [
+            1,
+            2
+          ]
+        },
+        {
+          "id": 1,
+          "val": 3,
+          "children": []
+        },
+        {
+          "id": 2,
+          "val": 2,
+          "children": []
+        }
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Iterating through children of root",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "children": [
+            1,
+            2
+          ]
+        },
+        {
+          "id": 1,
+          "val": 3,
+          "children": []
+        },
+        {
+          "id": 2,
+          "val": 2,
+          "children": []
+        }
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Recursive call for child 1, depth becomes 1",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "children": [
+            1,
+            2
+          ]
+        },
+        {
+          "id": 1,
+          "val": 3,
+          "children": []
+        },
+        {
+          "id": 2,
+          "val": 2,
+          "children": []
+        }
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Recursive call for child 2, depth stays 1",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "children": [
+            1,
+            2
+          ]
+        },
+        {
+          "id": 1,
+          "val": 3,
+          "children": []
+        },
+        {
+          "id": 2,
+          "val": 2,
+          "children": []
+        }
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 7,
+      "note": "Returning total depth 1 + 1 = 2",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "children": [
+            1,
+            2
+          ]
+        },
+        {
+          "id": 1,
+          "val": 3,
+          "children": []
+        },
+        {
+          "id": 2,
+          "val": 2,
+          "children": []
+        }
+      ]
+    }
+  ]
+}

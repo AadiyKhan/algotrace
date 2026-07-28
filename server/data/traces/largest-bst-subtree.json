@@ -1,0 +1,156 @@
+{
+  "title": "Largest BST Subtree",
+  "difficulty": "Medium",
+  "type": "tree",
+  "tags": [
+    "Tree",
+    "DFS",
+    "Dynamic Programming"
+  ],
+  "description": "Find the largest subtree which is a Binary Search Tree (BST) and return its size.",
+  "pseudocode": "function solve(node) {\n  if (!node) return {size: 0, min: Infinity, max: -Infinity, isBST: true};\n  let left = solve(node.left);\n  let right = solve(node.right);\n  if (left.isBST && right.isBST && node.val > left.max && node.val < right.min) {\n    let size = left.size + right.size + 1;\n    return {size, min: Math.min(node.val, left.min), max: Math.max(node.val, right.max), isBST: true};\n  }\n  return {size: Math.max(left.size, right.size), min: 0, max: 0, isBST: false};\n}",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Traversing to left child (id 1) of root (id 0)",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 10,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 5,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 15,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        0
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Left child (5) is a leaf, returns size 1, isBST true",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 10,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 5,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 15,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Traversing to right child (id 2) of root",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 10,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 5,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 15,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Checking BST condition for root: 5 < 10 < 15. True.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 10,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 5,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 15,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "BST size is 1+1+1 = 3",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 10,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 5,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 15,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        0,
+        1,
+        2
+      ]
+    }
+  ]
+}

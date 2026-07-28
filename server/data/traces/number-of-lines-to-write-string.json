@@ -1,0 +1,81 @@
+{
+  "title": "Number of Lines To Write String",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "String"
+  ],
+  "description": "Calculate the number of lines and the width of the last line when writing a string into lines with a maximum width of 100.",
+  "target": 100,
+  "pseudocode": "1. lines = 1, currentWidth = 0\n2. for char in s:\n3.   width = widths[char.charCodeAt(0) - 97]\n4.   if currentWidth + width > 100:\n5.     lines++, currentWidth = width\n6.   else:\n7.     currentWidth += width\n8. return [lines, currentWidth]",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize lines to 1 and currentWidth to 0.",
+      "array": [
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Process first character 'a' (width 10).",
+      "i": 0
+    },
+    {
+      "codeLine": 7,
+      "note": "Add 10 to currentWidth (total 10).",
+      "i": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Process second character 'b' (width 10).",
+      "i": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "Add 10 to currentWidth (total 20).",
+      "i": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Process final character 'c' (width 90).",
+      "i": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Check if 20 + 90 > 100. It is, so move to new line.",
+      "i": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Increment lines to 2 and reset currentWidth to 90.",
+      "i": 2
+    }
+  ]
+}

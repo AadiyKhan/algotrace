@@ -1,0 +1,68 @@
+{
+  "title": "Rearrange String k Distance Apart",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "Heap",
+    "Greedy"
+  ],
+  "description": "Rearrange characters in a string such that same characters are at least distance k apart.",
+  "target": 2,
+  "pseudocode": "1. count frequencies of all chars\n2. push into max-heap\n3. while heap not empty:\n4.   pop top k items or until heap empty\n5.   append to result, reduce count\n6.   add back to heap after k steps",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Count frequencies: a: 2, b: 1",
+      "array": [
+        "a",
+        "a",
+        "b"
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Pushing into Max-Heap based on frequency",
+      "array": [
+        "a",
+        "b"
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Pop 'a' and 'b' (k=2 distance requirement)",
+      "i": 0,
+      "j": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Append 'a' and 'b' to result",
+      "array": [
+        "a",
+        "b"
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Re-insert remaining 'a' into heap",
+      "array": [
+        "a"
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Pop final 'a'",
+      "i": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Final result string",
+      "array": [
+        "a",
+        "b",
+        "a"
+      ]
+    }
+  ]
+}

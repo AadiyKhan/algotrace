@@ -1,0 +1,53 @@
+{
+  "title": "Excel Sheet Column Title",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Math",
+    "String"
+  ],
+  "description": "Convert a positive integer to its corresponding Excel column title.",
+  "target": 28,
+  "pseudocode": "1: function convertToTitle(columnNumber) {\n2:   let result = '';\n3:   while (columnNumber > 0) {\n4:     columnNumber--;\n5:     result = String.fromCharCode(65 + (columnNumber % 26)) + result;\n6:     columnNumber = Math.floor(columnNumber / 26);\n7:   }\n8:   return result;\n9: }",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Initialize empty result string",
+      "i": 28
+    },
+    {
+      "codeLine": 4,
+      "note": "Decrement to make columnNumber 0-indexed",
+      "i": 27
+    },
+    {
+      "codeLine": 5,
+      "note": "Calculate char: 27 % 26 = 1. 'A' + 1 = 'B'. Result = 'B'",
+      "i": 27
+    },
+    {
+      "codeLine": 6,
+      "note": "Update columnNumber: floor(27 / 26) = 1",
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Decrement to make columnNumber 0-indexed",
+      "i": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Calculate char: 0 % 26 = 0. 'A' + 0 = 'A'. Result = 'AB'",
+      "i": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Update columnNumber: floor(0 / 26) = 0",
+      "i": 0
+    },
+    {
+      "codeLine": 8,
+      "note": "Loop ends, return AB"
+    }
+  ]
+}

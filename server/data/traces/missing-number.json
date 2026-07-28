@@ -1,0 +1,112 @@
+{
+  "title": "Missing Number",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Math",
+    "Bit Manipulation"
+  ],
+  "description": "Find the missing number in an array containing n distinct numbers taken from 0, 1, 2, ..., n.",
+  "target": 2,
+  "pseudocode": "1: let n = nums.length\n2: let expectedSum = n * (n + 1) / 2\n3: let actualSum = 0\n4: for i from 0 to n-1:\n5:   actualSum += nums[i]\n6: return expectedSum - actualSum",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize n as the length of the array.",
+      "array": [
+        3,
+        0,
+        1
+      ],
+      "i": null
+    },
+    {
+      "codeLine": 2,
+      "note": "Calculate the expected sum of numbers from 0 to n (0+1+2+3=6).",
+      "array": [
+        3,
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Initialize actualSum to 0.",
+      "array": [
+        3,
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Start loop to calculate the sum of array elements.",
+      "array": [
+        3,
+        0,
+        1
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Add nums[0] (3) to actualSum.",
+      "array": [
+        3,
+        0,
+        1
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Next iteration.",
+      "array": [
+        3,
+        0,
+        1
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Add nums[1] (0) to actualSum.",
+      "array": [
+        3,
+        0,
+        1
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Next iteration.",
+      "array": [
+        3,
+        0,
+        1
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Add nums[2] (1) to actualSum. Total is 4.",
+      "array": [
+        3,
+        0,
+        1
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Return expectedSum (6) - actualSum (4) = 2.",
+      "array": [
+        3,
+        0,
+        1
+      ]
+    }
+  ]
+}

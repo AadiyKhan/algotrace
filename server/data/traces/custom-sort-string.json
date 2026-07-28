@@ -1,0 +1,65 @@
+{
+  "title": "Custom Sort String",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "String",
+    "Sorting"
+  ],
+  "description": "Sort the characters in s such that they follow the order specified by order.",
+  "target": "cba",
+  "pseudocode": "1. Create a frequency map for s\n2. Build result by iterating through order\n3. Append remaining characters not in order",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Count character frequencies in s: 'abcd'",
+      "array": [
+        "a",
+        "b",
+        "c",
+        "d"
+      ],
+      "i": "map: {a:1, b:1, c:1, d:1}"
+    },
+    {
+      "codeLine": 2,
+      "note": "Append 'c' to result",
+      "array": [
+        "c"
+      ],
+      "i": "c"
+    },
+    {
+      "codeLine": 2,
+      "note": "Append 'b' to result",
+      "array": [
+        "c",
+        "b"
+      ],
+      "i": "b"
+    },
+    {
+      "codeLine": 2,
+      "note": "Append 'a' to result",
+      "array": [
+        "c",
+        "b",
+        "a"
+      ],
+      "i": "a"
+    },
+    {
+      "codeLine": 3,
+      "note": "Append remaining char 'd'",
+      "array": [
+        "c",
+        "b",
+        "a",
+        "d"
+      ],
+      "i": "d"
+    }
+  ]
+}

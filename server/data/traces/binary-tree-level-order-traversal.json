@@ -1,0 +1,220 @@
+{
+  "title": "Binary Tree Level Order Traversal",
+  "difficulty": "Medium",
+  "type": "tree",
+  "tags": [
+    "Tree",
+    "Breadth-First Search",
+    "Binary Tree"
+  ],
+  "description": "Traverse a binary tree level by level using a queue.",
+  "pseudocode": "1. queue = [root]\n2. result = []\n3. while queue is not empty:\n4.   level = []\n5.   for i in range(length of queue):\n6.     node = queue.shift()\n7.     level.push(node.val)\n8.     if node.left: queue.push(node.left)\n9.     if node.right: queue.push(node.right)\n10.  result.push(level)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize queue with root node.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 3,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 9,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 20,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 3,
+          "val": 15,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 7,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        0
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Dequeue node 3, visit children.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 3,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 9,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 20,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 3,
+          "val": 15,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 7,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": "0",
+      "visited": [
+        0
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Add children 9 and 20 to queue.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 3,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 9,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 20,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 3,
+          "val": 15,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 7,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Dequeue node 9.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 3,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 9,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 20,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 3,
+          "val": 15,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 7,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": "1",
+      "visited": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Dequeue node 20, visit children 15 and 7.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 3,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 9,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 20,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 3,
+          "val": 15,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 7,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": "2",
+      "visited": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    }
+  ]
+}

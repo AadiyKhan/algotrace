@@ -1,0 +1,54 @@
+{
+  "title": "My Calendar II",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Design",
+    "Segment Tree"
+  ],
+  "description": "Implement a Calendar class to book events. A booking is allowed if it does not cause a triple booking (three overlapping events).",
+  "pseudocode": "1. bookings = []\n2. overlaps = []\n3. book(start, end):\n4.   for overlap in overlaps:\n5.     if max(start, overlap.start) < min(end, overlap.end): return false\n6.   for book in bookings:\n7.     if max(start, book.start) < min(end, book.end):\n8.       overlaps.push(intersect(start, end, book.start, book.end))\n9.   bookings.push({start, end})\n10.  return true",
+  "steps": [
+    {
+      "codeLine": 9,
+      "note": "Book [10, 20]: No existing bookings, success.",
+      "array": [
+        [
+          10,
+          20
+        ]
+      ]
+    },
+    {
+      "codeLine": 9,
+      "note": "Book [15, 25]: Overlaps [10, 20], added to overlaps, success.",
+      "array": [
+        [
+          10,
+          20
+        ],
+        [
+          15,
+          25
+        ]
+      ],
+      "i": "[15, 20]"
+    },
+    {
+      "codeLine": 5,
+      "note": "Book [10, 25]: Intersects with overlap [15, 20], triple booking detected, return false.",
+      "array": [
+        [
+          10,
+          20
+        ],
+        [
+          15,
+          25
+        ]
+      ],
+      "i": "[15, 20]"
+    }
+  ]
+}

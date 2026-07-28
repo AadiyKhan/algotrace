@@ -1,0 +1,92 @@
+{
+  "title": "Monotone Increasing Digits",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Greedy",
+    "Math"
+  ],
+  "description": "Given an integer n, return the largest number that is less than or equal to n with monotone increasing digits.",
+  "target": 332,
+  "pseudocode": "1. s = String(n).split('').map(Number)\n2. marker = s.length\n3. for i from s.length - 1 down to 1:\n4.   if s[i-1] > s[i]:\n5.     marker = i\n6.     s[i-1] -= 1\n7. for i from marker to s.length - 1:\n8.   s[i] = 9\n9. return parseInt(s.join(''))",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Convert number 332 to array of digits [3, 3, 2].",
+      "array": [
+        3,
+        3,
+        2
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Start loop from end. Compare index 2 (2) and index 1 (3).",
+      "array": [
+        3,
+        3,
+        2
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Since 3 > 2, condition met. Mark index 2 and decrement previous digit.",
+      "array": [
+        3,
+        2,
+        2
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Update array at index 1 to 2.",
+      "array": [
+        3,
+        2,
+        2
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Compare index 1 (2) and index 0 (3).",
+      "array": [
+        3,
+        2,
+        2
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Since 3 > 2, condition met. Mark index 1 and decrement previous digit.",
+      "array": [
+        2,
+        2,
+        2
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "Set digits after marker index to 9.",
+      "array": [
+        2,
+        9,
+        9
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 9,
+      "note": "Final result conversion to integer: 299.",
+      "array": [
+        2,
+        9,
+        9
+      ]
+    }
+  ]
+}

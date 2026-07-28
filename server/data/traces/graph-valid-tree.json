@@ -1,0 +1,97 @@
+{
+  "title": "Graph Valid Tree",
+  "difficulty": "Medium",
+  "type": "tree",
+  "tags": [
+    "Graph",
+    "Depth-First Search",
+    "Breadth-First Search",
+    "Union Find"
+  ],
+  "description": "Determine if a set of edges forms a valid tree with n nodes.",
+  "target": 5,
+  "pseudocode": "1. if (edges.length !== n - 1) return false\n2. adj = buildAdjacencyList(n, edges)\n3. visited = new Set()\n4. queue = [0]\n5. visited.add(0)\n6. while (queue.length > 0) {\n7.   curr = queue.shift()\n8.   for (neighbor of adj[curr]) {\n9.     if (!visited.has(neighbor)) {\n10.      visited.add(neighbor)\n11.      queue.push(neighbor)\n12.    }\n13.  }\n14. }\n15. return visited.size === n",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Check if number of edges equals n - 1 (4 edges for 5 nodes).",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 0,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 2,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 3,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 4,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Initialize queue with starting node 0.",
+      "visited": [
+        0
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 7,
+      "note": "Dequeue node 0 and explore neighbors.",
+      "curr": 0,
+      "visited": [
+        0
+      ]
+    },
+    {
+      "codeLine": 10,
+      "note": "Add neighbors 1 and 2 to visited and queue.",
+      "visited": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 11,
+      "note": "Queue now contains [1, 2]. Continue BFS.",
+      "visited": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 15,
+      "note": "All 5 nodes reached. Valid tree confirmed.",
+      "visited": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    }
+  ]
+}

@@ -1,0 +1,124 @@
+{
+  "title": "Flood Fill",
+  "difficulty": "Easy",
+  "type": "matrix",
+  "tags": [
+    "Array",
+    "Depth-First Search",
+    "Breadth-First Search",
+    "Matrix"
+  ],
+  "description": "Perform a flood fill on a 2D grid starting from a given coordinate.",
+  "target": 2,
+  "pseudocode": "1: function floodFill(image, sr, sc, color):\n2:   startColor = image[sr][sc]\n3:   if startColor == color: return image\n4:   def dfs(r, c):\n5:     if image[r][c] == startColor:\n6:       image[r][c] = color\n7:       for dr, dc in [[0,1], [0,-1], [1,0], [-1,0]]:\n8:         if valid(r+dr, c+dc): dfs(r+dr, c+dc)",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Identify the starting color at (0,0).",
+      "matrix": [
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Fill current cell (0,0) with new color 2.",
+      "matrix": [
+        [
+          2,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Move to neighbor (0,1).",
+      "matrix": [
+        [
+          2,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "curr": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Fill neighbor (0,1) with new color 2.",
+      "matrix": [
+        [
+          2,
+          2
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "curr": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Move to neighbor (1,0).",
+      "matrix": [
+        [
+          2,
+          2
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "curr": [
+        1,
+        0
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Fill neighbor (1,0) with new color 2.",
+      "matrix": [
+        [
+          2,
+          2
+        ],
+        [
+          2,
+          0
+        ]
+      ],
+      "curr": [
+        1,
+        0
+      ]
+    }
+  ]
+}

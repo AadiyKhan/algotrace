@@ -1,0 +1,77 @@
+{
+  "title": "Frog Jump",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Dynamic Programming"
+  ],
+  "description": "Determine if a frog can cross a river by jumping on stones, where the jump size must be related to the previous jump.",
+  "target": true,
+  "pseudocode": "1: stonesMap = {val: set(jumps) for val in stones}\n2: stonesMap[0].add(0)\n3: for i in range(len(stones)):\n4:   for jump in stonesMap[stones[i]]:\n5:     for nextJump in [jump-1, jump, jump+1]:\n6:       if nextJump > 0 and stones[i] + nextJump in stonesMap:\n7:         stonesMap[stones[i] + nextJump].add(nextJump)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize map of stones and possible jump distances to reach each stone.",
+      "array": [
+        0,
+        1,
+        3
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Starting stone 0 is reached with a jump of 0.",
+      "array": [
+        0,
+        1,
+        3
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Iteration i=0, processing stone 0.",
+      "i": 0,
+      "array": [
+        0,
+        1,
+        3
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Jump size at stone 0 is 0. Exploring possible next jumps.",
+      "i": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Next jump 1 leads to stone 1.",
+      "i": 0
+    },
+    {
+      "codeLine": 7,
+      "note": "Add jump distance 1 to stone 1's set.",
+      "i": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Iteration i=1, processing stone 1.",
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Jump size at stone 1 is 1.",
+      "i": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Next jump 2 (1+1) leads to stone 3 (1+2=3).",
+      "i": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "Add jump distance 2 to stone 3's set.",
+      "i": 2
+    }
+  ]
+}

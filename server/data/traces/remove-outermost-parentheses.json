@@ -1,0 +1,170 @@
+{
+  "title": "Remove Outermost Parentheses",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "String",
+    "Stack"
+  ],
+  "description": "Remove the outermost parentheses of every primitive valid parenthesized string in the decomposition of S.",
+  "target": null,
+  "pseudocode": "1: let res = '', count = 0\n2: for char of s:\n3:   if char == '(':\n4:     if count > 0: res += char\n5:     count++\n6:   else:\n7:     count--\n8:     if count > 0: res += char",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Starting loop with s = '(()())'",
+      "array": [
+        "(",
+        "(",
+        ")",
+        "(",
+        ")",
+        ")"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Processing '(': count is 0, so do not add to res",
+      "array": [
+        "(",
+        "(",
+        ")",
+        "(",
+        ")",
+        ")"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Increment count to 1",
+      "array": [
+        "(",
+        "(",
+        ")",
+        "(",
+        ")",
+        ")"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Processing '(': count > 0, add to res",
+      "array": [
+        "(",
+        "(",
+        ")",
+        "(",
+        ")",
+        ")"
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "res becomes '(', count becomes 2",
+      "array": [
+        "(",
+        "(",
+        ")",
+        "(",
+        ")",
+        ")"
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "Processing ')': decrement count to 1, count > 0 so add to res",
+      "array": [
+        "(",
+        "(",
+        ")",
+        "(",
+        ")",
+        ")"
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 8,
+      "note": "res becomes '()'",
+      "array": [
+        "(",
+        "(",
+        ")",
+        "(",
+        ")",
+        ")"
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Processing '(': count > 0, add to res",
+      "array": [
+        "(",
+        "(",
+        ")",
+        "(",
+        ")",
+        ")"
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 4,
+      "note": "res becomes '()(', count becomes 2",
+      "array": [
+        "(",
+        "(",
+        ")",
+        "(",
+        ")",
+        ")"
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 7,
+      "note": "Processing ')': decrement count to 1, count > 0 so add to res",
+      "array": [
+        "(",
+        "(",
+        ")",
+        "(",
+        ")",
+        ")"
+      ],
+      "i": 4
+    },
+    {
+      "codeLine": 8,
+      "note": "res becomes '()()'",
+      "array": [
+        "(",
+        "(",
+        ")",
+        "(",
+        ")",
+        ")"
+      ],
+      "i": 4
+    },
+    {
+      "codeLine": 7,
+      "note": "Processing ')': decrement count to 0, count not > 0",
+      "array": [
+        "(",
+        "(",
+        ")",
+        "(",
+        ")",
+        ")"
+      ],
+      "i": 5
+    }
+  ]
+}

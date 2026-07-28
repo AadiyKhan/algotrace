@@ -1,0 +1,125 @@
+{
+  "title": "Flatten Nested List Iterator",
+  "difficulty": "Medium",
+  "type": "tree",
+  "tags": [
+    "Stack",
+    "Design",
+    "Tree"
+  ],
+  "description": "Flatten a nested list of integers using a stack-based iterator approach.",
+  "pseudocode": "1: function flatten(nestedList) {\n2:   stack = [...nestedList].reverse();\n3: }\n4: function next() {\n5:   return stack.pop().getInteger();\n6: }\n7: function hasNext() {\n8:   while (stack.length > 0 && !stack[stack.length-1].isInteger()) {\n9:     curr = stack.pop().getList();\n10:    for (i = curr.length - 1; i >= 0; i--) stack.push(curr[i]);\n11:  }\n12:  return stack.length > 0;\n13: }",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Initialize stack with reversed nested list: [[1,1], 2, [1,1]] -> stack: [[1,1], 2, [1,1]]",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": "root",
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": "[1,1]"
+        },
+        {
+          "id": 2,
+          "val": "2"
+        },
+        {
+          "id": 3,
+          "val": "[1,1]"
+        }
+      ],
+      "visited": [
+        0
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Check hasNext. Top of stack is not integer, need to flatten.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": "root",
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": "[1,1]"
+        },
+        {
+          "id": 2,
+          "val": "2"
+        },
+        {
+          "id": 3,
+          "val": "[1,1]"
+        }
+      ],
+      "visited": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 10,
+      "note": "Flatten first element [1,1] into stack.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": "root",
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": "[1,1]"
+        },
+        {
+          "id": 2,
+          "val": "2"
+        },
+        {
+          "id": 3,
+          "val": "[1,1]"
+        }
+      ],
+      "visited": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Call next(): pop 1 from stack.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": "root",
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": "[1,1]"
+        },
+        {
+          "id": 2,
+          "val": "2"
+        },
+        {
+          "id": 3,
+          "val": "[1,1]"
+        }
+      ],
+      "visited": [
+        0,
+        1
+      ]
+    }
+  ]
+}

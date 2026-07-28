@@ -1,0 +1,102 @@
+{
+  "title": "Shortest Bridge",
+  "difficulty": "Medium",
+  "type": "matrix",
+  "tags": [
+    "Matrix",
+    "DFS",
+    "BFS",
+    "Queue"
+  ],
+  "description": "Find the shortest bridge to connect two islands in a binary matrix by flipping 0s to 1s.",
+  "target": 1,
+  "pseudocode": "1. Find first island using DFS and add all its coordinates to a queue\n2. While queue is not empty:\n3.   Pop current cell, explore neighbors\n4.   If neighbor is 0, mark as 1, increment distance and push to queue\n5.   If neighbor is 1 and not part of first island, return distance",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Identify the first island (1s) using DFS and store coordinates in queue",
+      "matrix": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Begin BFS from the first island to find the nearest 0",
+      "matrix": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Flip adjacent 0 to 1 and update distance",
+      "matrix": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "curr": [
+        0,
+        1
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Bridge complete, distance is 1",
+      "matrix": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ]
+      ]
+    }
+  ]
+}

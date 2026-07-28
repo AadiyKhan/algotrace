@@ -1,0 +1,65 @@
+{
+  "title": "Shortest Word Distance II",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "Design"
+  ],
+  "description": "Design a class that finds the shortest distance between two words in a list of words, optimized for multiple queries.",
+  "target": "distance",
+  "pseudocode": "1: map = new Map();\n2: for (i = 0; i < words.length; i++) {\n3:   indices = map.get(words[i]) || [];\n4:   indices.push(i);\n5:   map.set(words[i], indices);\n6: }\n7: list1 = map.get(word1);\n8: list2 = map.get(word2);\n9: while(i < list1.length && j < list2.length) {\n10:  minDist = min(minDist, abs(list1[i] - list2[j]));\n11:  list1[i] < list2[j] ? i++ : j++;\n12: }",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Populating index map for words: ['a', 'b', 'a']",
+      "array": [
+        "a",
+        "b",
+        "a"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Map: {'a': [0, 2], 'b': [1]}",
+      "array": [
+        "a",
+        "b",
+        "a"
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 9,
+      "note": "Comparing lists for 'a' and 'b': [0, 2] vs [1]",
+      "i": 0,
+      "j": 0
+    },
+    {
+      "codeLine": 10,
+      "note": "Calculate distance: abs(0 - 1) = 1. MinDist = 1",
+      "i": 0,
+      "j": 0
+    },
+    {
+      "codeLine": 11,
+      "note": "list1[0] (0) < list2[0] (1), increment i",
+      "i": 1,
+      "j": 0
+    },
+    {
+      "codeLine": 10,
+      "note": "Calculate distance: abs(2 - 1) = 1. MinDist = 1",
+      "i": 1,
+      "j": 0
+    },
+    {
+      "codeLine": 11,
+      "note": "list1[1] (2) > list2[0] (1), increment j",
+      "i": 1,
+      "j": 1
+    }
+  ]
+}

@@ -1,0 +1,94 @@
+{
+  "title": "Maximum Sum of Two Non-Overlapping Subarrays",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Sliding Window",
+    "Dynamic Programming"
+  ],
+  "description": "Find the maximum sum of two non-overlapping subarrays with lengths L and M.",
+  "target": null,
+  "pseudocode": "1. compute prefix sums\n2. maxSum(L, M) helper: tracks max L-sum seen so far\n3. slide L then M, then slide M then L\n4. return max of both cases",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize prefix sums for array [0, 6, 5, 2, 2, 5, 1, 9, 4], L=1, M=2",
+      "array": [
+        0,
+        6,
+        5,
+        2,
+        2,
+        5,
+        1,
+        9,
+        4
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Calculating window sums, i=1, maxL=6",
+      "array": [
+        0,
+        6,
+        5,
+        2,
+        2,
+        5,
+        1,
+        9,
+        4
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Slide window M=2 after L=1, current sum L+M = 6 + (5+2) = 13",
+      "array": [
+        0,
+        6,
+        5,
+        2,
+        2,
+        5,
+        1,
+        9,
+        4
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Slide window M=2, current sum L+M = 6 + (2+2) = 10",
+      "array": [
+        0,
+        6,
+        5,
+        2,
+        2,
+        5,
+        1,
+        9,
+        4
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 4,
+      "note": "Final max calculated across all non-overlapping windows is 20 (from 9+4 and 5+2)",
+      "array": [
+        0,
+        6,
+        5,
+        2,
+        2,
+        5,
+        1,
+        9,
+        4
+      ],
+      "i": 8
+    }
+  ]
+}

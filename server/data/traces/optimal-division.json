@@ -1,0 +1,59 @@
+{
+  "title": "Optimal Division",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Math",
+    "String"
+  ],
+  "description": "Given an array of positive integers, return the expression string that evaluates to the maximum possible result by adding parentheses.",
+  "target": null,
+  "pseudocode": "function optimalDivision(nums) {\n  if (nums.length === 1) return String(nums[0]);\n  if (nums.length === 2) return nums[0] + '/' + nums[1];\n  let res = nums[0] + '/(' + nums[1];\n  for (let i = 2; i < nums.length; i++) {\n    res += '/' + nums[i];\n  }\n  return res + ')';\n}",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Check length of array [1000, 100, 10, 2]",
+      "array": [
+        1000,
+        100,
+        10,
+        2
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Initialize result string with first two numbers",
+      "array": [
+        1000,
+        100,
+        10,
+        2
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Looping to append remaining elements into parentheses",
+      "i": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Append nums[2] which is 10",
+      "i": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Increment i",
+      "i": 3
+    },
+    {
+      "codeLine": 6,
+      "note": "Append nums[3] which is 2",
+      "i": 3
+    },
+    {
+      "codeLine": 8,
+      "note": "Return final string '1000/(100/10/2)'"
+    }
+  ]
+}

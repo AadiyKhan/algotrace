@@ -1,0 +1,87 @@
+{
+  "title": "Trapping Rain Water",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Two Pointers",
+    "Stack"
+  ],
+  "description": "Given n non-negative integers representing an elevation map where the width of each bar is 1, compute how much water it can trap after raining.",
+  "target": 6,
+  "pseudocode": "let left = 0, right = height.length - 1;\nlet leftMax = 0, rightMax = 0, total = 0;\nwhile (left < right) {\n  if (height[left] < height[right]) {\n    height[left] >= leftMax ? leftMax = height[left] : total += leftMax - height[left];\n    left++;\n  } else {\n    height[right] >= rightMax ? rightMax = height[right] : total += rightMax - height[right];\n    right--;\n  }\n}",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize pointers at ends of array.",
+      "array": [
+        0,
+        1,
+        0,
+        2
+      ],
+      "i": 0,
+      "j": 3
+    },
+    {
+      "codeLine": 4,
+      "note": "Compare heights at left and right pointers.",
+      "array": [
+        0,
+        1,
+        0,
+        2
+      ],
+      "i": 0,
+      "j": 3
+    },
+    {
+      "codeLine": 5,
+      "note": "Left is smaller, update leftMax and move pointer.",
+      "array": [
+        0,
+        1,
+        0,
+        2
+      ],
+      "i": 1,
+      "j": 3
+    },
+    {
+      "codeLine": 5,
+      "note": "Process index 1, leftMax becomes 1.",
+      "array": [
+        0,
+        1,
+        0,
+        2
+      ],
+      "i": 2,
+      "j": 3
+    },
+    {
+      "codeLine": 6,
+      "note": "Water trapped at index 2 = leftMax(1) - height(0) = 1.",
+      "array": [
+        0,
+        1,
+        0,
+        2
+      ],
+      "i": 3,
+      "j": 3
+    },
+    {
+      "codeLine": 3,
+      "note": "Loop ends as left is no longer < right.",
+      "array": [
+        0,
+        1,
+        0,
+        2
+      ],
+      "i": 3,
+      "j": 3
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "title": "Replace Words",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Trie",
+    "String",
+    "Array"
+  ],
+  "description": "Replace words in a sentence with their shortest root from a dictionary.",
+  "target": "catt",
+  "pseudocode": "1. Build a Trie from dictionary words\n2. Split sentence into words\n3. For each word, find shortest prefix in Trie\n4. Join replaced words with space",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Building Trie: root -> c -> a -> t (end)",
+      "array": [
+        "cat",
+        "bat",
+        "rat"
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Splitting sentence 'catt rat' into tokens",
+      "array": [
+        "catt",
+        "rat"
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Searching 'catt' in Trie, matches root 'cat'",
+      "i": 0,
+      "curr": "cat"
+    },
+    {
+      "codeLine": 3,
+      "note": "Searching 'rat' in Trie, matches root 'rat'",
+      "i": 1,
+      "curr": "rat"
+    },
+    {
+      "codeLine": 4,
+      "note": "Final result joined: 'cat rat'",
+      "array": [
+        "cat",
+        "rat"
+      ]
+    }
+  ]
+}

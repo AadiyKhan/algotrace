@@ -1,0 +1,72 @@
+{
+  "title": "Largest Sum of Averages",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Dynamic Programming",
+    "Memoization"
+  ],
+  "description": "Partition an array into at most K adjacent non-empty groups to maximize the sum of the averages of each group.",
+  "target": 2,
+  "pseudocode": "1. dp[k][i] = max(dp[k-1][j] + avg(j, i))\n2. for k from 1 to K:\n3.   for i from 1 to N:\n4.     for j from 0 to i-1:\n5.       dp[k][i] = max(dp[k][i], dp[k-1][j] + (sum[i]-sum[j])/(i-j))",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Initializing DP table for K=2 groups, input [9,1,2,3]",
+      "array": [
+        9,
+        1,
+        2,
+        3
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Computing first partition (k=1): average of [9,1,2,3] = 3.75",
+      "array": [
+        9,
+        1,
+        2,
+        3
+      ],
+      "i": 4
+    },
+    {
+      "codeLine": 5,
+      "note": "Splitting at index 1: group1=[9], group2=[1,2,3]. Averages: 9 + 2 = 11",
+      "array": [
+        9,
+        1,
+        2,
+        3
+      ],
+      "i": 4,
+      "j": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Splitting at index 2: group1=[9,1], group2=[2,3]. Averages: 5 + 2.5 = 7.5",
+      "array": [
+        9,
+        1,
+        2,
+        3
+      ],
+      "i": 4,
+      "j": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Max sum found is 11, finalizing result.",
+      "array": [
+        9,
+        1,
+        2,
+        3
+      ],
+      "i": 4
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "title": "Ternary Expression Parser",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "String",
+    "Stack"
+  ],
+  "description": "Parse a nested ternary expression string and return the result.",
+  "target": "T",
+  "pseudocode": "1. Use a stack to store characters from right to left.\n2. Iterate through the expression backwards.\n3. If char is '?', handle the ternary logic: 'true' choice vs 'false' choice.\n4. Push the chosen result back to the stack.\n5. Continue until the stack contains one final value.",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize stack with expression 'T?2:3' processed backwards.",
+      "array": [
+        "3",
+        ":",
+        "2",
+        "?",
+        "T"
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Pop first element 'T' and push to stack.",
+      "array": [
+        "T"
+      ],
+      "i": 4
+    },
+    {
+      "codeLine": 2,
+      "note": "Pop '?' and the next two values from stack to evaluate.",
+      "array": [
+        "2",
+        "3"
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 3,
+      "note": "Evaluate 'T?2:3'. Since it is true, select 2.",
+      "array": [
+        "2"
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Final evaluation complete, result is 2.",
+      "array": [
+        "2"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,100 @@
+{
+  "title": "Find Smallest Letter Greater Than Target",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Binary Search"
+  ],
+  "description": "Find the smallest character in a sorted list that is lexicographically larger than the target.",
+  "target": "f",
+  "pseudocode": "1: low = 0, high = letters.length - 1\n2: while low <= high:\n3:   mid = floor((low + high) / 2)\n4:   if letters[mid] > target: high = mid - 1\n5:   else: low = mid + 1\n6: return letters[low % letters.length]",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize binary search pointers",
+      "array": [
+        "c",
+        "f",
+        "j"
+      ],
+      "i": 0,
+      "j": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Calculate mid index",
+      "array": [
+        "c",
+        "f",
+        "j"
+      ],
+      "i": 0,
+      "j": 2,
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Compare letters[1] ('f') with target ('f'). Condition 'f > f' is false.",
+      "array": [
+        "c",
+        "f",
+        "j"
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Condition false, move low to mid + 1",
+      "array": [
+        "c",
+        "f",
+        "j"
+      ],
+      "i": 2,
+      "j": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Calculate new mid index",
+      "array": [
+        "c",
+        "f",
+        "j"
+      ],
+      "i": 2,
+      "j": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Compare letters[2] ('j') with target ('f'). 'j > f' is true.",
+      "array": [
+        "c",
+        "f",
+        "j"
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Condition true, move high to mid - 1",
+      "array": [
+        "c",
+        "f",
+        "j"
+      ],
+      "i": 2,
+      "j": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Loop ends, return letters[2 % 3] = 'j'",
+      "array": [
+        "c",
+        "f",
+        "j"
+      ]
+    }
+  ]
+}

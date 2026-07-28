@@ -1,0 +1,224 @@
+{
+  "title": "N-ary Tree Level Order Traversal",
+  "difficulty": "Medium",
+  "type": "tree",
+  "tags": [
+    "Tree",
+    "Breadth-First Search"
+  ],
+  "description": "Traverse an N-ary tree level by level and return the values of nodes at each level.",
+  "target": null,
+  "pseudocode": "1. queue = [root]\n2. while queue is not empty:\n3.   level = [], size = queue.length\n4.   for i = 0 to size - 1:\n5.     node = queue.shift()\n6.     level.push(node.val)\n7.     for child in node.children: queue.push(child)\n8.   result.push(level)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize queue with the root node.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "children": [
+            1,
+            2,
+            3
+          ]
+        },
+        {
+          "id": 1,
+          "val": 3,
+          "children": []
+        },
+        {
+          "id": 2,
+          "val": 2,
+          "children": []
+        },
+        {
+          "id": 3,
+          "val": 4,
+          "children": []
+        }
+      ],
+      "visited": [
+        0
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Starting BFS loop, queue has root.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "children": [
+            1,
+            2,
+            3
+          ]
+        },
+        {
+          "id": 1,
+          "val": 3,
+          "children": []
+        },
+        {
+          "id": 2,
+          "val": 2,
+          "children": []
+        },
+        {
+          "id": 3,
+          "val": 4,
+          "children": []
+        }
+      ],
+      "visited": [
+        0
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Dequeue root (1), add children (3, 2, 4) to queue.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "children": [
+            1,
+            2,
+            3
+          ]
+        },
+        {
+          "id": 1,
+          "val": 3,
+          "children": []
+        },
+        {
+          "id": 2,
+          "val": 2,
+          "children": []
+        },
+        {
+          "id": 3,
+          "val": 4,
+          "children": []
+        }
+      ],
+      "visited": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Finished level 0, result is [[1]]. Proceed to next level.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "children": [
+            1,
+            2,
+            3
+          ]
+        },
+        {
+          "id": 1,
+          "val": 3,
+          "children": []
+        },
+        {
+          "id": 2,
+          "val": 2,
+          "children": []
+        },
+        {
+          "id": 3,
+          "val": 4,
+          "children": []
+        }
+      ],
+      "visited": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Dequeue level 1 nodes: 3, 2, and 4.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "children": [
+            1,
+            2,
+            3
+          ]
+        },
+        {
+          "id": 1,
+          "val": 3,
+          "children": []
+        },
+        {
+          "id": 2,
+          "val": 2,
+          "children": []
+        },
+        {
+          "id": 3,
+          "val": 4,
+          "children": []
+        }
+      ],
+      "visited": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Level 1 complete, result is [[1], [3, 2, 4]].",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "children": [
+            1,
+            2,
+            3
+          ]
+        },
+        {
+          "id": 1,
+          "val": 3,
+          "children": []
+        },
+        {
+          "id": 2,
+          "val": 2,
+          "children": []
+        },
+        {
+          "id": 3,
+          "val": 4,
+          "children": []
+        }
+      ],
+      "visited": [
+        0,
+        1,
+        2,
+        3
+      ]
+    }
+  ]
+}

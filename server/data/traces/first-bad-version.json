@@ -1,0 +1,92 @@
+{
+  "title": "First Bad Version",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Binary Search"
+  ],
+  "description": "Find the first bad version in a series of versions using binary search.",
+  "target": 4,
+  "pseudocode": "1: let left = 1, right = n\n2: while left < right:\n3:   let mid = Math.floor(left + (right - left) / 2)\n4:   if isBadVersion(mid): right = mid\n5:   else: left = mid + 1\n6: return left",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize search range [1, 5].",
+      "array": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "i": 1,
+      "j": 5
+    },
+    {
+      "codeLine": 3,
+      "note": "Calculate mid = 3. Check isBadVersion(3).",
+      "array": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "i": 1,
+      "j": 5,
+      "curr": 3
+    },
+    {
+      "codeLine": 5,
+      "note": "Version 3 is good. Move left boundary to mid + 1 (4).",
+      "array": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "i": 4,
+      "j": 5
+    },
+    {
+      "codeLine": 3,
+      "note": "Calculate mid = 4. Check isBadVersion(4).",
+      "array": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "i": 4,
+      "j": 5,
+      "curr": 4
+    },
+    {
+      "codeLine": 4,
+      "note": "Version 4 is bad. Update right to mid (4).",
+      "array": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "i": 4,
+      "j": 4
+    },
+    {
+      "codeLine": 6,
+      "note": "Loop ends. Return left (4).",
+      "array": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "i": 4
+    }
+  ]
+}

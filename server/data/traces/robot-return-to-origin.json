@@ -1,0 +1,34 @@
+{
+  "title": "Robot Return To Origin",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "String",
+    "Array"
+  ],
+  "description": "Determine if the robot returns to (0,0) after a series of moves 'U', 'D', 'L', 'R'.",
+  "target": true,
+  "pseudocode": "let x = 0, y = 0;\nfor (let i = 0; i < moves.length; i++) {\n  if (moves[i] === 'U') y++;\n  else if (moves[i] === 'D') y--;\n  else if (moves[i] === 'L') x--;\n  else if (moves[i] === 'R') x++;\n}\nreturn x === 0 && y === 0;",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize starting position x=0, y=0",
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Move 'U', increment y",
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Move 'D', decrement y",
+      "i": 1
+    },
+    {
+      "codeLine": 8,
+      "note": "Check if x and y are 0",
+      "i": 2
+    }
+  ]
+}

@@ -1,0 +1,115 @@
+{
+  "title": "Subarray Product Less Than K",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Sliding Window",
+    "Two Pointers"
+  ],
+  "description": "Find the number of contiguous subarrays where the product of all elements is strictly less than k.",
+  "target": 100,
+  "pseudocode": "1. count = 0, prod = 1, left = 0\n2. for right from 0 to n-1:\n3.   prod *= nums[right]\n4.   while prod >= k and left <= right:\n5.     prod /= nums[left]\n6.     left++\n7.   count += (right - left + 1)",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Initialize variables: nums = [10, 5, 2], k = 100",
+      "array": [
+        10,
+        5,
+        2
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Include index 0: prod = 10. Valid subarray: [10]",
+      "array": [
+        10,
+        5,
+        2
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 7,
+      "note": "Add window size (0 - 0 + 1) = 1. Count = 1",
+      "array": [
+        10,
+        5,
+        2
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Include index 1: prod = 10 * 5 = 50",
+      "array": [
+        10,
+        5,
+        2
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "Add window size (1 - 0 + 1) = 2. Count = 1 + 2 = 3",
+      "array": [
+        10,
+        5,
+        2
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Include index 2: prod = 50 * 2 = 100",
+      "array": [
+        10,
+        5,
+        2
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Prod 100 >= k (100 is false, check if >=). Shrink window",
+      "array": [
+        10,
+        5,
+        2
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Divide by nums[left=0]: prod = 100 / 10 = 10",
+      "array": [
+        10,
+        5,
+        2
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Increment left pointer to 1",
+      "array": [
+        10,
+        5,
+        2
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 7,
+      "note": "Add window size (2 - 1 + 1) = 2. Count = 3 + 2 = 5",
+      "array": [
+        10,
+        5,
+        2
+      ],
+      "i": 2
+    }
+  ]
+}

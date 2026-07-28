@@ -1,0 +1,76 @@
+{
+  "title": "Delete and Earn",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Dynamic Programming"
+  ],
+  "description": "Given an array nums, delete nums[i] to earn nums[i] points. After choosing, delete all elements equal to nums[i] - 1 and nums[i] + 1. Return the maximum points.",
+  "target": null,
+  "pseudocode": "1. maxVal = max(nums)\n2. freq = array of size maxVal + 1\n3. for n in nums: freq[n] += n\n4. prev2 = 0, prev1 = 0\n5. for i in 1..maxVal:\n6.   curr = max(prev1, prev2 + freq[i])\n7.   prev2 = prev1\n8.   prev1 = curr\n9. return prev1",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Find max value to determine DP array size. Input: [2, 2, 3]",
+      "array": [
+        2,
+        2,
+        3
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Populate frequency array where index is value and value is sum of occurrences.",
+      "array": [
+        0,
+        0,
+        4,
+        3
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Calculate max for i=1: max(0, 0 + 0) = 0",
+      "array": [
+        0,
+        0,
+        4,
+        3
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Calculate max for i=2: max(0, 0 + 4) = 4",
+      "array": [
+        0,
+        0,
+        4,
+        3
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Calculate max for i=3: max(4, 0 + 3) = 4",
+      "array": [
+        0,
+        0,
+        4,
+        3
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 9,
+      "note": "Final result returned is 4",
+      "array": [
+        0,
+        0,
+        4,
+        3
+      ]
+    }
+  ]
+}

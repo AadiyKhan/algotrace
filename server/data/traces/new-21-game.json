@@ -1,0 +1,86 @@
+{
+  "title": "New 21 Game",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Math",
+    "Dynamic Programming",
+    "Sliding Window"
+  ],
+  "description": "Calculate the probability of getting N or less points with a deck of W cards, drawing until reaching K points.",
+  "target": 6,
+  "pseudocode": "1. dp[0] = 1.0\n2. s = 1.0\n3. for i from 1 to N:\n4.   dp[i] = s / W\n5.   if i < K: s += dp[i]\n6.   if i >= W: s -= dp[i - W]",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize dp array with probability 1.0 at index 0.",
+      "array": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "i": null
+    },
+    {
+      "codeLine": 4,
+      "note": "Calculate probability for index 1: 1.0 / 3 = 0.333",
+      "array": [
+        1,
+        0.333,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Calculate probability for index 2: (1.0 + 0.333) / 3 = 0.444",
+      "array": [
+        1,
+        0.333,
+        0.444,
+        0,
+        0,
+        0,
+        0
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Calculate probability for index 3: (1.0 + 0.333 + 0.444) / 3 = 0.592",
+      "array": [
+        1,
+        0.333,
+        0.444,
+        0.592,
+        0,
+        0,
+        0
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 6,
+      "note": "Slide window: subtract index 3-3=0 (value 1.0) from sum",
+      "array": [
+        1,
+        0.333,
+        0.444,
+        0.592,
+        0,
+        0,
+        0
+      ],
+      "i": 3
+    }
+  ]
+}

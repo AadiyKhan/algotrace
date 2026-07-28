@@ -1,0 +1,150 @@
+{
+  "title": "Sparse Matrix Multiplication",
+  "difficulty": "Medium",
+  "type": "matrix",
+  "tags": [
+    "Array",
+    "Matrix"
+  ],
+  "description": "Given two sparse matrices A and B, return the result of A * B. Optimize by skipping zero entries in A.",
+  "pseudocode": "1. Initialize result matrix C of size A.rows x B.cols with 0s\n2. For i from 0 to A.rows - 1:\n3.   For k from 0 to A.cols - 1:\n4.     If A[i][k] != 0:\n5.       For j from 0 to B.cols - 1:\n6.         C[i][j] += A[i][k] * B[k][j]",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize result matrix C (2x2) with zeros.",
+      "matrix": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Start outer loop for row i=0 of matrix A.",
+      "i": 0,
+      "matrix": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Inner loop k=0. A[0][0] is 1 (non-zero).",
+      "i": 0,
+      "j": null,
+      "matrix": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Multiply A[0][0] * row 0 of B and add to row 0 of C.",
+      "i": 0,
+      "j": 0,
+      "matrix": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Complete update for j=1.",
+      "i": 0,
+      "j": 1,
+      "matrix": [
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Inner loop k=1. A[0][1] is 0, skip calculation.",
+      "i": 0,
+      "matrix": [
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Outer loop i=1. A[1][0] is 0, skip row.",
+      "i": 1,
+      "matrix": [
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Inner loop k=1. A[1][1] is 1, process row.",
+      "i": 1,
+      "matrix": [
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Final updates to row 1 of result matrix.",
+      "i": 1,
+      "matrix": [
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          4
+        ]
+      ]
+    }
+  ]
+}

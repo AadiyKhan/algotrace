@@ -1,0 +1,87 @@
+{
+  "title": "Minimum Window Subsequence",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "String",
+    "Dynamic Programming",
+    "Sliding Window"
+  ],
+  "description": "Find the minimum contiguous substring of S which contains T as a subsequence.",
+  "target": "T = 'bc'",
+  "pseudocode": "1. sIdx = 0, tIdx = 0, minLen = Infinity, res = ''\n2. while sIdx < S.length:\n3.   if S[sIdx] == T[tIdx]:\n4.     tIdx++\n5.   if tIdx == T.length:\n6.     right = sIdx, tIdx = tIdx - 1\n7.     while tIdx >= 0:\n8.       if S[sIdx] == T[tIdx]: tIdx--\n9.       sIdx--\n10.    sIdx++, tIdx++\n11.    if right - sIdx + 1 < minLen:\n12.      minLen = right - sIdx + 1, res = S.slice(sIdx, right + 1)\n13.  sIdx++",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize pointers and result variables.",
+      "array": [
+        "a",
+        "b",
+        "c",
+        "b",
+        "c"
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Scanning S for T[0] ('b'). Skipping 'a'.",
+      "array": [
+        "a",
+        "b",
+        "c",
+        "b",
+        "c"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Found 'b' at index 1, moving tIdx to 1.",
+      "array": [
+        "a",
+        "b",
+        "c",
+        "b",
+        "c"
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Found 'c' at index 2, tIdx becomes 2 (length of T).",
+      "array": [
+        "a",
+        "b",
+        "c",
+        "b",
+        "c"
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 7,
+      "note": "Backtracking to find the start of the window from index 2.",
+      "array": [
+        "a",
+        "b",
+        "c",
+        "b",
+        "c"
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 12,
+      "note": "Found window 'bc', length 2. Update result.",
+      "array": [
+        "a",
+        "b",
+        "c",
+        "b",
+        "c"
+      ],
+      "i": 2
+    }
+  ]
+}

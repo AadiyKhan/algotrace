@@ -1,0 +1,89 @@
+{
+  "title": "Cousins in Binary Tree",
+  "difficulty": "Easy",
+  "type": "tree",
+  "tags": [
+    "Tree",
+    "Breadth-First Search",
+    "Depth-First Search"
+  ],
+  "description": "Determine if two nodes are cousins (same depth, different parents).",
+  "target": "x=4, y=5",
+  "pseudocode": "1. function isCousins(root, x, y):\n2.   queue = [[root, null, 0]]\n3.   while queue is not empty:\n4.     level_size = queue.length\n5.     data = {}\n6.     for i = 0 to level_size - 1:\n7.       node, parent, depth = queue.pop()\n8.       if node.val == x or node.val == y: data[node.val] = [parent, depth]\n9.       if node.left: queue.push([node.left, node.val, depth + 1])\n10.      if node.right: queue.push([node.right, node.val, depth + 1])\n11.    if x in data and y in data: return data[x][0] != data[y][0]",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Initialize queue with root (1), parent null, depth 0",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": 5
+        },
+        {
+          "id": 3,
+          "val": 4,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 5,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Process root 1",
+      "curr": 0
+    },
+    {
+      "codeLine": 9,
+      "note": "Push children of 1 (nodes 2 and 3) to queue",
+      "visited": [
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Process nodes 2 and 3 at depth 1",
+      "curr": 1
+    },
+    {
+      "codeLine": 9,
+      "note": "Push children of 2 and 3 (nodes 4 and 5) to queue",
+      "visited": [
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Found target x=4 and y=5 at depth 2",
+      "curr": 3
+    },
+    {
+      "codeLine": 11,
+      "note": "Compare parents: node 4 parent is 2, node 5 parent is 3. Different parents, same depth: True",
+      "curr": 4
+    }
+  ]
+}

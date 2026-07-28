@@ -1,0 +1,280 @@
+{
+  "title": "Regular Expression Matching",
+  "difficulty": "Hard",
+  "type": "matrix",
+  "tags": [
+    "Dynamic Programming",
+    "String",
+    "Recursion"
+  ],
+  "description": "Given an input string s ('aa') and a pattern p ('a*'), implement regular expression matching with support for '.' and '*' where '*' matches zero or more of the preceding element.",
+  "target": true,
+  "pseudocode": "1: dp = matrix(m+1, n+1, false)\n2: dp[0][0] = true\n3: for j from 2 to n:\n4:   if p[j-1] == '*': dp[0][j] = dp[0][j-2]\n5: for i from 1 to m:\n6:   for j from 1 to n:\n7:     if p[j-1] == s[i-1] or p[j-1] == '.':\n8:       dp[i][j] = dp[i-1][j-1]\n9:     else if p[j-1] == '*':\n10:      dp[i][j] = dp[i][j-2] || ((s[i-1] == p[j-2] || p[j-2] == '.') && dp[i-1][j])\n11: return dp[m][n]",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize a (m+1) x (n+1) DP table with false (0). Rows represent substrings of s ('aa'), columns represent substrings of p ('a*').",
+      "matrix": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Base case: Empty string s='' matches empty pattern p=''. Set dp[0][0] = 1.",
+      "matrix": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Base case for empty string matching pattern: p[1] is '*', so 'a*' can match zero 'a's (dp[0][2] = dp[0][0] = 1).",
+      "matrix": [
+        [
+          1,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "j": 2,
+      "curr": [
+        0,
+        2
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Start processing character s[0] = 'a' (row i = 1).",
+      "matrix": [
+        [
+          1,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 8,
+      "note": "Compare s[0] ('a') with p[0] ('a'). Characters match, so dp[1][1] = dp[0][0] = 1.",
+      "matrix": [
+        [
+          1,
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "i": 1,
+      "j": 1,
+      "curr": [
+        1,
+        1
+      ],
+      "prev": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 10,
+      "note": "Evaluate p[1] = '*'. '*' matches 1 instance of 'a' since s[0]=='a' and dp[0][2]==1. Set dp[1][2] = 1.",
+      "matrix": [
+        [
+          1,
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          1
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "i": 1,
+      "j": 2,
+      "curr": [
+        1,
+        2
+      ],
+      "prev": [
+        0,
+        2
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Start processing character s[1] = 'a' (row i = 2).",
+      "matrix": [
+        [
+          1,
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          1
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 8,
+      "note": "Compare s[1] ('a') with p[0] ('a'). Match, so dp[2][1] = dp[1][0] = 0.",
+      "matrix": [
+        [
+          1,
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          1
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "i": 2,
+      "j": 1,
+      "curr": [
+        2,
+        1
+      ],
+      "prev": [
+        1,
+        0
+      ]
+    },
+    {
+      "codeLine": 10,
+      "note": "Evaluate p[1] = '*'. '*' matches multiple 'a's because s[1]=='a' and dp[1][2]==1. Set dp[2][2] = 1.",
+      "matrix": [
+        [
+          1,
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          1
+        ],
+        [
+          0,
+          0,
+          1
+        ]
+      ],
+      "i": 2,
+      "j": 2,
+      "curr": [
+        2,
+        2
+      ],
+      "prev": [
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 11,
+      "note": "Finished computing DP table. dp[2][2] = 1 (true), so pattern 'a*' successfully matches string 'aa'.",
+      "matrix": [
+        [
+          1,
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          1
+        ],
+        [
+          0,
+          0,
+          1
+        ]
+      ],
+      "curr": [
+        2,
+        2
+      ]
+    }
+  ]
+}

@@ -1,0 +1,181 @@
+{
+  "title": "Max Area of Island",
+  "difficulty": "Medium",
+  "type": "matrix",
+  "tags": [
+    "Array",
+    "Depth-First Search",
+    "Matrix"
+  ],
+  "description": "Find the maximum area of an island in a 2D binary grid, where an island is a group of 1s connected 4-directionally.",
+  "target": 5,
+  "pseudocode": "1. function maxAreaOfIsland(grid):\n2.   maxArea = 0\n3.   for r in rows: for c in cols:\n4.     if grid[r][c] == 1:\n5.       maxArea = max(maxArea, dfs(grid, r, c))\n6.   return maxArea\n7. function dfs(grid, r, c):\n8.   if (invalid r, c or grid[r][c] == 0): return 0\n9.   grid[r][c] = 0\n10.  return 1 + dfs(r+1,c) + dfs(r-1,c) + dfs(r,c+1) + dfs(r,c-1)",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Initialize maxArea to 0.",
+      "matrix": [
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Found land at [0, 0]. Starting DFS.",
+      "matrix": [
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 9,
+      "note": "Mark [0, 0] as visited (0).",
+      "matrix": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 10,
+      "note": "Recursively checking neighbors of [0, 0].",
+      "matrix": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "curr": [
+        1,
+        0
+      ]
+    },
+    {
+      "codeLine": 9,
+      "note": "Mark [1, 0] as visited (0).",
+      "matrix": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "curr": [
+        1,
+        0
+      ]
+    },
+    {
+      "codeLine": 10,
+      "note": "Checking neighbor [1, 1].",
+      "matrix": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "curr": [
+        1,
+        1
+      ]
+    },
+    {
+      "codeLine": 9,
+      "note": "Mark [1, 1] as visited (0). Island area is 3.",
+      "matrix": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "curr": [
+        1,
+        1
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Finished scanning. Max area is 3.",
+      "matrix": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ]
+    }
+  ]
+}

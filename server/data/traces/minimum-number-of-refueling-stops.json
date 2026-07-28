@@ -1,0 +1,62 @@
+{
+  "title": "Minimum Number of Refueling Stops",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Greedy",
+    "Heap"
+  ],
+  "description": "Find the minimum number of refueling stops to reach the target, given an initial fuel and a list of stations.",
+  "target": 100,
+  "pseudocode": "1. maxHeap.push(startFuel)\n2. stops = 0, currentPosition = 0\n3. for each station in stations:\n4.   dist = station.pos - currentPosition\n5.   while maxHeap.size > 0 and currentFuel < dist:\n6.     currentFuel += maxHeap.pop()\n7.     stops++\n8.   currentFuel -= dist\n9.   maxHeap.push(station.fuel)\n10.  currentPosition = station.pos",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize maxHeap with starting fuel of 10.",
+      "array": [
+        10
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Arriving at first station at position 10 with 10 fuel.",
+      "i": 0,
+      "array": [
+        10
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Distance to next station is 10.",
+      "i": 0
+    },
+    {
+      "codeLine": 8,
+      "note": "Travel to station, fuel reduces to 0.",
+      "i": 0
+    },
+    {
+      "codeLine": 9,
+      "note": "Add station fuel 30 to heap.",
+      "array": [
+        30
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Fuel is 0, need fuel to reach target 100.",
+      "i": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Refuel from heap, total fuel becomes 30.",
+      "i": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "Increment stops count to 1.",
+      "i": 1
+    }
+  ]
+}

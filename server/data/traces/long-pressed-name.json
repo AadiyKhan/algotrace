@@ -1,0 +1,147 @@
+{
+  "title": "Long Pressed Name",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Two Pointers",
+    "String"
+  ],
+  "description": "Check if typed string matches name, considering characters might be long-pressed.",
+  "target": null,
+  "pseudocode": "1: i = 0, j = 0\n2: while j < typed.length\n3:   if i < name.length and name[i] == typed[j]\n4:     i++, j++\n5:   else if j > 0 and typed[j] == typed[j-1]\n6:     j++\n7:   else return false\n8: return i == name.length",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize pointers i and j to 0",
+      "array": [
+        "a",
+        "l",
+        "e",
+        "x"
+      ],
+      "i": 0,
+      "j": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "name[0] ('a') matches typed[0] ('a')",
+      "array": [
+        "a",
+        "l",
+        "e",
+        "x"
+      ],
+      "i": 0,
+      "j": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Increment both pointers",
+      "array": [
+        "a",
+        "l",
+        "e",
+        "x"
+      ],
+      "i": 1,
+      "j": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "name[1] ('l') matches typed[1] ('l')",
+      "array": [
+        "a",
+        "l",
+        "e",
+        "x"
+      ],
+      "i": 1,
+      "j": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Increment both pointers",
+      "array": [
+        "a",
+        "l",
+        "e",
+        "x"
+      ],
+      "i": 2,
+      "j": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "name[2] ('e') does not match typed[2] ('e') - wait, it does. Match!",
+      "array": [
+        "a",
+        "l",
+        "e",
+        "x"
+      ],
+      "i": 2,
+      "j": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Increment both pointers",
+      "array": [
+        "a",
+        "l",
+        "e",
+        "x"
+      ],
+      "i": 3,
+      "j": 3
+    },
+    {
+      "codeLine": 5,
+      "note": "name[3] ('x') does not match typed[3] ('x') (wait, checking next index of typed 'x')",
+      "array": [
+        "a",
+        "l",
+        "e",
+        "x"
+      ],
+      "i": 3,
+      "j": 3
+    },
+    {
+      "codeLine": 4,
+      "note": "Match found at end, increment pointers",
+      "array": [
+        "a",
+        "l",
+        "e",
+        "x"
+      ],
+      "i": 4,
+      "j": 4
+    },
+    {
+      "codeLine": 5,
+      "note": "Extra typed char 'x' matches previous, increment j",
+      "array": [
+        "a",
+        "l",
+        "e",
+        "x"
+      ],
+      "i": 4,
+      "j": 5
+    },
+    {
+      "codeLine": 8,
+      "note": "Finished loop, i == name.length",
+      "array": [
+        "a",
+        "l",
+        "e",
+        "x"
+      ],
+      "i": 4,
+      "j": 5
+    }
+  ]
+}

@@ -1,0 +1,138 @@
+{
+  "title": "Matchsticks to Square",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Backtracking",
+    "Bit Manipulation"
+  ],
+  "description": "Determine if you can make a square using all matchsticks given their lengths.",
+  "target": 5,
+  "pseudocode": "1. sort(matchsticks, descending)\n2. sides = [0, 0, 0, 0]\n3. function backtrack(index):\n4.   if index == length: return sides[0] == sides[1] == sides[2] == sides[3]\n5.   for i in 0..3:\n6.     if sides[i] + matchsticks[index] <= target:\n7.       sides[i] += matchsticks[index]\n8.       if backtrack(index + 1): return true\n9.       sides[i] -= matchsticks[index]\n10.  return false",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Sort matchsticks descending: [3, 3, 2, 2]",
+      "array": [
+        3,
+        3,
+        2,
+        2
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Starting backtrack at index 0",
+      "array": [
+        3,
+        3,
+        2,
+        2
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 7,
+      "note": "Place matchstick 3 in side 0",
+      "array": [
+        3,
+        3,
+        2,
+        2
+      ],
+      "i": 0,
+      "visited": [
+        3,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Recursively move to index 1",
+      "array": [
+        3,
+        3,
+        2,
+        2
+      ],
+      "i": 1,
+      "visited": [
+        3,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Place matchstick 3 in side 1",
+      "array": [
+        3,
+        3,
+        2,
+        2
+      ],
+      "i": 1,
+      "visited": [
+        3,
+        3,
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Place matchstick 2 in side 2",
+      "array": [
+        3,
+        3,
+        2,
+        2
+      ],
+      "i": 2,
+      "visited": [
+        3,
+        3,
+        2,
+        0
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Place matchstick 2 in side 3",
+      "array": [
+        3,
+        3,
+        2,
+        2
+      ],
+      "i": 3,
+      "visited": [
+        3,
+        3,
+        2,
+        2
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "All matchsticks placed. Check if square is formed (target is 5, sides are [3,3,2,2] so this is false, would backtrack)",
+      "array": [
+        3,
+        3,
+        2,
+        2
+      ],
+      "visited": [
+        3,
+        3,
+        2,
+        2
+      ]
+    }
+  ]
+}

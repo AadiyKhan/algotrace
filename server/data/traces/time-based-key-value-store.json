@@ -1,0 +1,130 @@
+{
+  "title": "Time Based Key-Value Store",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Hash Table",
+    "Binary Search",
+    "Design"
+  ],
+  "description": "Design a time-based key-value store that supports multiple values for the same key at different timestamps and retrieves the value for a key at or before a given timestamp.",
+  "target": 20,
+  "pseudocode": "1. map = new Map();\n2. map.get(key).push({timestamp, value});\n3. low = 0, high = list.length - 1;\n4. while (low <= high) {\n5.   mid = (low + high) >> 1;\n6.   if (list[mid].timestamp <= timestamp) {\n7.     res = list[mid].value;\n8.     low = mid + 1;\n9.   } else {\n10.    high = mid - 1;\n11.  }\n12. }",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Insert {timestamp: 10, value: 'bar'} into key 'foo'",
+      "array": [
+        {
+          "timestamp": 10,
+          "value": "bar"
+        }
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Insert {timestamp: 30, value: 'baz'} into key 'foo'",
+      "array": [
+        {
+          "timestamp": 10,
+          "value": "bar"
+        },
+        {
+          "timestamp": 30,
+          "value": "baz"
+        }
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Binary search for timestamp 20: Initializing pointers",
+      "array": [
+        {
+          "timestamp": 10,
+          "value": "bar"
+        },
+        {
+          "timestamp": 30,
+          "value": "baz"
+        }
+      ],
+      "i": 0,
+      "j": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Calculate mid index",
+      "array": [
+        {
+          "timestamp": 10,
+          "value": "bar"
+        },
+        {
+          "timestamp": 30,
+          "value": "baz"
+        }
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "10 <= 20 is true, update result to 'bar'",
+      "array": [
+        {
+          "timestamp": 10,
+          "value": "bar"
+        },
+        {
+          "timestamp": 30,
+          "value": "baz"
+        }
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 8,
+      "note": "Move low pointer to search right half",
+      "array": [
+        {
+          "timestamp": 10,
+          "value": "bar"
+        },
+        {
+          "timestamp": 30,
+          "value": "baz"
+        }
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Mid index is now 1",
+      "array": [
+        {
+          "timestamp": 10,
+          "value": "bar"
+        },
+        {
+          "timestamp": 30,
+          "value": "baz"
+        }
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "30 <= 20 is false, move high pointer",
+      "array": [
+        {
+          "timestamp": 10,
+          "value": "bar"
+        },
+        {
+          "timestamp": 30,
+          "value": "baz"
+        }
+      ],
+      "j": 0
+    }
+  ]
+}

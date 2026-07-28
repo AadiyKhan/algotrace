@@ -1,0 +1,154 @@
+{
+  "title": "Next Greater Element II",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Stack",
+    "Monotonic Stack"
+  ],
+  "description": "Find the next greater element for each element in a circular array.",
+  "target": null,
+  "pseudocode": "1: n = nums.length\n2: res = new Array(n).fill(-1)\n3: stack = []\n4: for i = 0 to 2 * n - 1:\n5:   while stack.length > 0 && nums[stack[stack.length - 1]] < nums[i % n]:\n6:     index = stack.pop()\n7:     res[index] = nums[i % n]\n8:   if i < n: stack.push(i)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize variables for nums = [1, 2, 1]",
+      "array": [
+        1,
+        2,
+        1
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Start loop i=0",
+      "i": 0,
+      "array": [
+        1,
+        2,
+        1
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Push index 0 to stack",
+      "i": 0,
+      "array": [
+        1,
+        2,
+        1
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Start loop i=1",
+      "i": 1,
+      "array": [
+        1,
+        2,
+        1
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "nums[0] < nums[1] (1 < 2), condition met",
+      "i": 1,
+      "array": [
+        1,
+        2,
+        1
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Set res[0] = 2",
+      "i": 1,
+      "array": [
+        1,
+        2,
+        1
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Push index 1 to stack",
+      "i": 1,
+      "array": [
+        1,
+        2,
+        1
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Start loop i=2",
+      "i": 2,
+      "array": [
+        1,
+        2,
+        1
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Push index 2 to stack, stack is [1, 2]",
+      "i": 2,
+      "array": [
+        1,
+        2,
+        1
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Circular pass i=3 (i%n = 0)",
+      "i": 3,
+      "array": [
+        1,
+        2,
+        1
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "nums[2] < nums[0] (1 < 1) False",
+      "i": 3,
+      "array": [
+        1,
+        2,
+        1
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Circular pass i=4 (i%n = 1)",
+      "i": 4,
+      "array": [
+        1,
+        2,
+        1
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "nums[2] < nums[1] (1 < 2) True",
+      "i": 4,
+      "array": [
+        1,
+        2,
+        1
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Set res[2] = 2",
+      "i": 4,
+      "array": [
+        1,
+        2,
+        1
+      ]
+    }
+  ]
+}

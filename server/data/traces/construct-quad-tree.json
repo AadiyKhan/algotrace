@@ -1,0 +1,148 @@
+{
+  "title": "Construct Quad Tree",
+  "difficulty": "Medium",
+  "type": "tree",
+  "tags": [
+    "Array",
+    "Divide and Conquer",
+    "Matrix"
+  ],
+  "description": "Construct a Quad-Tree representing a 2D binary grid.",
+  "pseudocode": "function construct(grid, r, c, n) {\n  1: if (allSame(grid, r, c, n)) return new Node(grid[r][c] == 1, true);\n  2: node = new Node(true, false);\n  3: node.topLeft = construct(grid, r, c, n/2);\n  4: node.topRight = construct(grid, r, c + n/2, n/2);\n  5: node.bottomLeft = construct(grid, r + n/2, c, n/2);\n  6: node.bottomRight = construct(grid, r + n/2, c + n/2, n/2);\n  7: return node;\n}",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initial call for 2x2 grid. Not all values are the same.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": "isLeaf: false",
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Constructing topLeft quadrant (0,0). Value is 0.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": "isLeaf: false",
+          "left": 1,
+          "right": null
+        },
+        {
+          "id": 1,
+          "val": "val: 0, isLeaf: true",
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Constructing topRight quadrant (0,1). Value is 1.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": "isLeaf: false",
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": "val: 0, isLeaf: true",
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": "val: 1, isLeaf: true",
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Constructing bottomLeft quadrant (1,0). Value is 1.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": "isLeaf: false",
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": "val: 0, isLeaf: true",
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": "val: 1, isLeaf: true",
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": "val: 1, isLeaf: true",
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Constructing bottomRight quadrant (1,1). Value is 0.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": "isLeaf: false",
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": "val: 0, isLeaf: true",
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": "val: 1, isLeaf: true",
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": "val: 1, isLeaf: true",
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": "val: 0, isLeaf: true",
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Root node linked to children.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": "isLeaf: false",
+          "topLeft": 1,
+          "topRight": 2,
+          "bottomLeft": 3,
+          "bottomRight": 4
+        }
+      ]
+    }
+  ]
+}

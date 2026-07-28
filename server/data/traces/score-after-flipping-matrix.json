@@ -1,0 +1,80 @@
+{
+  "title": "Score After Flipping Matrix",
+  "difficulty": "Medium",
+  "type": "matrix",
+  "tags": [
+    "Array",
+    "Greedy",
+    "Matrix"
+  ],
+  "description": "Flip rows/columns to maximize the score represented by binary rows.",
+  "target": null,
+  "pseudocode": "1. For each row, flip if first element is 0\n2. For each col, flip if count of 0s > count of 1s\n3. Calculate total sum",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Ensure first column is all 1s by flipping rows starting with 0",
+      "matrix": [
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 1,
+      "note": "Row 1 starts with 1, no flip needed",
+      "matrix": [
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "curr": [
+        1,
+        0
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Checking column 1. Two 1s, one 0. No flip needed",
+      "matrix": [
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "j": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Calculating total: row 0 is 10(2), row 1 is 11(3). Total = 5",
+      "matrix": [
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ]
+    }
+  ]
+}

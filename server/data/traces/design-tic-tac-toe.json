@@ -1,0 +1,215 @@
+{
+  "title": "Design Tic Tac-Toe",
+  "difficulty": "Medium",
+  "type": "matrix",
+  "tags": [
+    "Design",
+    "Matrix",
+    "Hash Table"
+  ],
+  "description": "Design a Tic-Tac-Toe game played on an n x n grid where players take turns placing marks. Determine if a player wins in O(1) time.",
+  "target": null,
+  "pseudocode": "1: rows[row] += player == 1 ? 1 : -1\n2: cols[col] += player == 1 ? 1 : -1\n3: if (row == col) diag += player == 1 ? 1 : -1\n4: if (row + col == n - 1) antiDiag += player == 1 ? 1 : -1\n5: if (abs(rows[row]) == n || abs(cols[col]) == n || abs(diag) == n || abs(antiDiag) == n) return player",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Player 1 places at (0, 0). Increment row 0 count.",
+      "matrix": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Increment column 0 count for Player 1.",
+      "matrix": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Mark is on main diagonal, increment diagonal count.",
+      "matrix": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 1,
+      "note": "Player 1 places at (1, 1). Increment row 1 count.",
+      "matrix": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "curr": [
+        1,
+        1
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Mark is on main diagonal, increment diagonal count to 2.",
+      "matrix": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "curr": [
+        1,
+        1
+      ]
+    },
+    {
+      "codeLine": 1,
+      "note": "Player 1 places at (2, 2). Increment row 2 count.",
+      "matrix": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ]
+      ],
+      "curr": [
+        2,
+        2
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Mark is on main diagonal, increment diagonal count to 3. Player 1 wins.",
+      "matrix": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ]
+      ],
+      "curr": [
+        2,
+        2
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Diagonal count is 3, which equals n. Return Player 1.",
+      "matrix": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ]
+      ],
+      "curr": [
+        2,
+        2
+      ]
+    }
+  ]
+}

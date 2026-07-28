@@ -1,0 +1,80 @@
+{
+  "title": "Range Sum Query - Mutable",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Binary Indexed Tree",
+    "Design"
+  ],
+  "description": "Calculate the sum of elements in a range [left, right] and update elements in the array using a Binary Indexed Tree (Fenwick Tree) for O(log n) efficiency.",
+  "target": 7,
+  "pseudocode": "1. function update(i, delta):\n2.   for (; i < n; i += i & -i) tree[i] += delta\n3. function query(i):\n4.   for (sum = 0; i > 0; i -= i & -i) sum += tree[i]\n5.   return sum",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initializing BIT with array [1, 2, 3]. Tree array size is 4 (1-indexed).",
+      "array": [
+        0,
+        1,
+        3,
+        3
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Updating index 1 with value 1: tree[1]+=1, tree[2]+=1, tree[4] skip",
+      "array": [
+        0,
+        1,
+        3,
+        3
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Updating index 2 with value 2: tree[2]+=2, tree[4] skip",
+      "array": [
+        0,
+        1,
+        3,
+        3
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Querying range sum [1, 2]: calling query(2)",
+      "array": [
+        0,
+        1,
+        3,
+        3
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Accumulating sum: tree[2] = 3",
+      "array": [
+        0,
+        1,
+        3,
+        3
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Returning total sum 3",
+      "array": [
+        0,
+        1,
+        3,
+        3
+      ]
+    }
+  ]
+}

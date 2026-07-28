@@ -1,0 +1,129 @@
+{
+  "title": "Shortest Path to Get All Keys",
+  "difficulty": "Hard",
+  "type": "matrix",
+  "tags": [
+    "Breadth-First Search",
+    "Graph",
+    "Bitmask"
+  ],
+  "description": "Find the shortest path to collect all keys in a grid with locks and obstacles using BFS with bitmask state.",
+  "target": "7",
+  "pseudocode": "1. queue = [[startR, startC, 0, 0]] // r, c, mask, dist\n2. visited = Set()\n3. while queue not empty:\n4.   r, c, mask, dist = queue.shift()\n5.   for dr, dc in directions:\n6.     nr, nc = r+dr, c+dc\n7.     if valid(nr, nc) and not wall:\n8.       newMask = updateMask(nr, nc, mask)\n9.       if newMask == target: return dist + 1\n10.      if (nr, nc, newMask) not in visited: queue.push([nr, nc, newMask, dist + 1])",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize BFS queue with starting position (0,0), mask 0, and distance 0.",
+      "matrix": [
+        [
+          "@",
+          ".",
+          "a"
+        ],
+        [
+          "#",
+          "#",
+          "#"
+        ],
+        [
+          "b",
+          ".",
+          "A"
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Pop current state: at (0,0) with 0 keys.",
+      "matrix": [
+        [
+          "@",
+          ".",
+          "a"
+        ],
+        [
+          "#",
+          "#",
+          "#"
+        ],
+        [
+          "b",
+          ".",
+          "A"
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Move to (0,1). No keys found, mask remains 0.",
+      "matrix": [
+        [
+          "@",
+          ".",
+          "a"
+        ],
+        [
+          "#",
+          "#",
+          "#"
+        ],
+        [
+          "b",
+          ".",
+          "A"
+        ]
+      ],
+      "curr": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 10,
+      "note": "Move to (0,2). Found key 'a', update mask to 1.",
+      "matrix": [
+        [
+          "@",
+          ".",
+          "a"
+        ],
+        [
+          "#",
+          "#",
+          "#"
+        ],
+        [
+          "b",
+          ".",
+          "A"
+        ]
+      ],
+      "curr": [
+        0,
+        2
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ]
+      ]
+    }
+  ]
+}

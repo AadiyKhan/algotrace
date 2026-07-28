@@ -1,0 +1,113 @@
+{
+  "title": "Range Sum Query 2D - Mutable",
+  "difficulty": "Hard",
+  "type": "matrix",
+  "tags": [
+    "Array",
+    "Design",
+    "Binary Indexed Tree",
+    "Matrix"
+  ],
+  "description": "Calculate the sum of elements inside a rectangle defined by (row1, col1) and (row2, col2) with point updates using a Fenwick Tree.",
+  "target": null,
+  "pseudocode": "1. function update(row, col, val):\n2.   delta = val - matrix[row][col]\n3.   matrix[row][col] = val\n4.   for i = row+1 to rows by i += i & -i:\n5.     for j = col+1 to cols by j += j & -j:\n6.       bit[i][j] += delta\n7. function sumRegion(r1, c1, r2, c2):\n8.   return query(r2+1, c2+1) - query(r1, c2+1) - query(r2+1, c1) + query(r1, c1)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Updating matrix at [0, 0] from 3 to 5. Delta is 2.",
+      "matrix": [
+        [
+          5,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Updating Fenwick Tree row index 1.",
+      "matrix": [
+        [
+          5,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Updating Fenwick Tree col index 1.",
+      "matrix": [
+        [
+          5,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "i": 1,
+      "j": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "BIT updated at [1, 1] by delta 2.",
+      "matrix": [
+        [
+          5,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "visited": [
+        [
+          1,
+          1
+        ]
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Querying sum for region [0, 0] to [0, 0].",
+      "matrix": [
+        [
+          5,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Returning 5 from BIT structure.",
+      "matrix": [
+        [
+          5,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ]
+    }
+  ]
+}

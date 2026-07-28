@@ -1,0 +1,70 @@
+{
+  "title": "Min Cost Climbing Stairs",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Dynamic Programming"
+  ],
+  "description": "Find the minimum cost to reach the top of the floor, where you can climb 1 or 2 steps at a time.",
+  "target": null,
+  "pseudocode": "1: let n = cost.length\n2: let dp = new Array(n)\n3: dp[0] = cost[0]\n4: dp[1] = cost[1]\n5: for i = 2 to n - 1:\n6:   dp[i] = cost[i] + Math.min(dp[i-1], dp[i-2])\n7: return Math.min(dp[n-1], dp[n-2])",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize variables with cost array [10, 15, 20]",
+      "array": [
+        10,
+        15,
+        20
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Set base case: cost to start at index 0 is 10",
+      "array": [
+        10,
+        null,
+        null
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Set base case: cost to start at index 1 is 15",
+      "array": [
+        10,
+        15,
+        null
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Starting loop at index 2",
+      "array": [
+        10,
+        15,
+        null
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Calculate min cost for index 2: 20 + min(10, 15) = 30",
+      "array": [
+        10,
+        15,
+        30
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 7,
+      "note": "Return min of last two values: min(15, 30) = 15",
+      "array": [
+        10,
+        15,
+        30
+      ]
+    }
+  ]
+}

@@ -1,0 +1,215 @@
+{
+  "title": "Keys and Rooms",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Graph",
+    "DFS",
+    "BFS"
+  ],
+  "description": "Determine if you can visit all rooms starting from room 0, given that each room contains keys to other rooms.",
+  "pseudocode": "function canVisitAllRooms(rooms) {\n  let visited = new Set([0]);\n  let stack = [0];\n  while (stack.length > 0) {\n    let curr = stack.pop();\n    for (let key of rooms[curr]) {\n      if (!visited.has(key)) {\n        visited.add(key);\n        stack.push(key);\n      }\n    }\n  }\n  return visited.size === rooms.length;\n}",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Initialize visited set with room 0",
+      "array": [
+        [
+          1
+        ],
+        [
+          2
+        ],
+        [
+          0
+        ]
+      ],
+      "visited": [
+        0
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Initialize stack with room 0",
+      "array": [
+        [
+          1
+        ],
+        [
+          2
+        ],
+        [
+          0
+        ]
+      ],
+      "visited": [
+        0
+      ],
+      "i": "stack: [0]"
+    },
+    {
+      "codeLine": 5,
+      "note": "Pop current room 0 from stack",
+      "array": [
+        [
+          1
+        ],
+        [
+          2
+        ],
+        [
+          0
+        ]
+      ],
+      "visited": [
+        0
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Iterate keys in room 0, found key 1",
+      "array": [
+        [
+          1
+        ],
+        [
+          2
+        ],
+        [
+          0
+        ]
+      ],
+      "visited": [
+        0
+      ],
+      "curr": 0,
+      "i": "key: 1"
+    },
+    {
+      "codeLine": 8,
+      "note": "Add room 1 to visited and stack",
+      "array": [
+        [
+          1
+        ],
+        [
+          2
+        ],
+        [
+          0
+        ]
+      ],
+      "visited": [
+        0,
+        1
+      ],
+      "curr": 0,
+      "i": "stack: [1]"
+    },
+    {
+      "codeLine": 5,
+      "note": "Pop room 1 from stack",
+      "array": [
+        [
+          1
+        ],
+        [
+          2
+        ],
+        [
+          0
+        ]
+      ],
+      "visited": [
+        0,
+        1
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Iterate keys in room 1, found key 2",
+      "array": [
+        [
+          1
+        ],
+        [
+          2
+        ],
+        [
+          0
+        ]
+      ],
+      "visited": [
+        0,
+        1
+      ],
+      "curr": 1,
+      "i": "key: 2"
+    },
+    {
+      "codeLine": 8,
+      "note": "Add room 2 to visited and stack",
+      "array": [
+        [
+          1
+        ],
+        [
+          2
+        ],
+        [
+          0
+        ]
+      ],
+      "visited": [
+        0,
+        1,
+        2
+      ],
+      "curr": 1,
+      "i": "stack: [2]"
+    },
+    {
+      "codeLine": 5,
+      "note": "Pop room 2, no new unvisited keys",
+      "array": [
+        [
+          1
+        ],
+        [
+          2
+        ],
+        [
+          0
+        ]
+      ],
+      "visited": [
+        0,
+        1,
+        2
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 13,
+      "note": "Return true, all rooms visited",
+      "array": [
+        [
+          1
+        ],
+        [
+          2
+        ],
+        [
+          0
+        ]
+      ],
+      "visited": [
+        0,
+        1,
+        2
+      ]
+    }
+  ]
+}

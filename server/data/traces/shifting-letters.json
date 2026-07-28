@@ -1,0 +1,115 @@
+{
+  "title": "Shifting Letters",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "String",
+    "Prefix Sum"
+  ],
+  "description": "Shift each character in a string by the sum of shifts from the current index to the end.",
+  "target": null,
+  "pseudocode": "1. totalShift = 0\n2. for i = n-1 down to 0:\n3.   totalShift = (totalShift + shifts[i]) % 26\n4.   s[i] = shiftChar(s[i], totalShift)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize totalShift to track cumulative shifts from right to left.",
+      "array": [
+        "a",
+        "b",
+        "c"
+      ],
+      "i": null
+    },
+    {
+      "codeLine": 2,
+      "note": "Start iteration from the last element (index 2).",
+      "array": [
+        "a",
+        "b",
+        "c"
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Add shifts[2] (3) to totalShift (3).",
+      "array": [
+        "a",
+        "b",
+        "c"
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Shift 'c' by 3 positions to get 'f'.",
+      "array": [
+        "a",
+        "b",
+        "f"
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 2,
+      "note": "Move to index 1.",
+      "array": [
+        "a",
+        "b",
+        "f"
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Add shifts[1] (5) to totalShift (8).",
+      "array": [
+        "a",
+        "b",
+        "f"
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Shift 'b' by 8 positions to get 'j'.",
+      "array": [
+        "a",
+        "j",
+        "f"
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Move to index 0.",
+      "array": [
+        "a",
+        "j",
+        "f"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Add shifts[0] (9) to totalShift (17).",
+      "array": [
+        "a",
+        "j",
+        "f"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Shift 'a' by 17 positions to get 'r'.",
+      "array": [
+        "r",
+        "j",
+        "f"
+      ],
+      "i": 0
+    }
+  ]
+}

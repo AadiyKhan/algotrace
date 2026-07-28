@@ -1,0 +1,824 @@
+{
+  "title": "Find The Index Of The First Occurrence In A String",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "String",
+    "Two Pointers"
+  ],
+  "description": "Given two strings, haystack and needle, return the index of the first occurrence of needle in haystack, or -1 if needle is not part of haystack. This trace uses the naive string matching algorithm.",
+  "pseudocode": "function strStr(haystack, needle) {\n  const n = haystack.length;\n  const m = needle.length;\n\n  if (m === 0) {\n    return 0;\n  }\n\n  // Iterate through haystack with a window of size 'm'\n  for (let i = 0; i <= n - m; i++) {\n    let found = true;\n    // Compare the substring haystack[i...i+m-1] with needle\n    for (let j = 0; j < m; j++) {\n      if (haystack[i + j] !== needle[j]) {\n        found = false;\n        break; // Mismatch found, move to next 'i'\n      }\n    }\n    if (found) {\n      return i; // Full match found, return starting index\n    }\n  }\n\n  return -1; // Needle not found in haystack\n}",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Get the length of the haystack string (n=11).",
+      "array": [
+        "m",
+        "i",
+        "s",
+        "s",
+        "i",
+        "s",
+        "s",
+        "i",
+        "p",
+        "p",
+        "i"
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Get the length of the needle string (m=5).",
+      "array": [
+        "m",
+        "i",
+        "s",
+        "s",
+        "i",
+        "s",
+        "s",
+        "i",
+        "p",
+        "p",
+        "i"
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Check if the needle is an empty string. (m=5 is not 0).",
+      "array": [
+        "m",
+        "i",
+        "s",
+        "s",
+        "i",
+        "s",
+        "s",
+        "i",
+        "p",
+        "p",
+        "i"
+      ]
+    },
+    {
+      "codeLine": 9,
+      "note": "Start outer loop: 'i' represents the potential starting index of the needle in haystack. Current i=0.",
+      "array": [
+        "m",
+        "i",
+        "s",
+        "s",
+        "i",
+        "s",
+        "s",
+        "i",
+        "p",
+        "p",
+        "i"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 10,
+      "note": "Initialize 'found' flag to true, assuming a match for this 'i'.",
+      "array": [
+        "m",
+        "i",
+        "s",
+        "s",
+        "i",
+        "s",
+        "s",
+        "i",
+        "p",
+        "p",
+        "i"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 12,
+      "note": "Inner loop: Compare 'haystack[i+j]' ('m') with 'needle[j]' ('i'). Current j=0.",
+      "array": [
+        "m",
+        "i",
+        "s",
+        "s",
+        "i",
+        "s",
+        "s",
+        "i",
+        "p",
+        "p",
+        "i"
+      ],
+      "i": 0,
+      "j": 0,
+      "visited": [
+        0
+      ]
+    },
+    {
+      "codeLine": 13,
+      "note": "Mismatch found! 'm' !== 'i'. Set 'found' to false.",
+      "array": [
+        "m",
+        "i",
+        "s",
+        "s",
+        "i",
+        "s",
+        "s",
+        "i",
+        "p",
+        "p",
+        "i"
+      ],
+      "i": 0,
+      "j": 0,
+      "visited": [
+        0
+      ]
+    },
+    {
+      "codeLine": 14,
+      "note": "Break the inner loop due to mismatch.",
+      "array": [
+        "m",
+        "i",
+        "s",
+        "s",
+        "i",
+        "s",
+        "s",
+        "i",
+        "p",
+        "p",
+        "i"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 17,
+      "note": "Check 'found' flag. It's false, so no match found at i=0. Continue to next 'i'.",
+      "array": [
+        "m",
+        "i",
+        "s",
+        "s",
+        "i",
+        "s",
+        "s",
+        "i",
+        "p",
+        "p",
+        "i"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 9,
+      "note": "Outer loop: Increment 'i' to 1. Check next potential starting position.",
+      "array": [
+        "m",
+        "i",
+        "s",
+        "s",
+        "i",
+        "s",
+        "s",
+        "i",
+        "p",
+        "p",
+        "i"
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 10,
+      "note": "Reset 'found' flag to true for i=1.",
+      "array": [
+        "m",
+        "i",
+        "s",
+        "s",
+        "i",
+        "s",
+        "s",
+        "i",
+        "p",
+        "p",
+        "i"
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 12,
+      "note": "Inner loop: Compare 'haystack[1+0]' ('i') with 'needle[0]' ('i'). Match. j=0.",
+      "array": [
+        "m",
+        "i",
+        "s",
+        "s",
+        "i",
+        "s",
+        "s",
+        "i",
+        "p",
+        "p",
+        "i"
+      ],
+      "i": 1,
+      "j": 0,
+      "visited": [
+        1
+      ]
+    },
+    {
+      "codeLine": 12,
+      "note": "Inner loop: Compare 'haystack[1+1]' ('s') with 'needle[1]' ('s'). Match. j=1.",
+      "array": [
+        "m",
+        "i",
+        "s",
+        "s",
+        "i",
+        "s",
+        "s",
+        "i",
+        "p",
+        "p",
+        "i"
+      ],
+      "i": 1,
+      "j": 1,
+      "visited": [
+        2
+      ]
+    },
+    {
+      "codeLine": 12,
+      "note": "Inner loop: Compare 'haystack[1+2]' ('s') with 'needle[2]' ('s'). Match. j=2.",
+      "array": [
+        "m",
+        "i",
+        "s",
+        "s",
+        "i",
+        "s",
+        "s",
+        "i",
+        "p",
+        "p",
+        "i"
+      ],
+      "i": 1,
+      "j": 2,
+      "visited": [
+        3
+      ]
+    },
+    {
+      "codeLine": 12,
+      "note": "Inner loop: Compare 'haystack[1+3]' ('i') with 'needle[3]' ('i'). Match. j=3.",
+      "array": [
+        "m",
+        "i",
+        "s",
+        "s",
+        "i",
+        "s",
+        "s",
+        "i",
+        "p",
+        "p",
+        "i"
+      ],
+      "i": 1,
+      "j": 3,
+      "visited": [
+        4
+      ]
+    },
+    {
+      "codeLine": 12,
+      "note": "Inner loop: Compare 'haystack[1+4]' ('s') with 'needle[4]' ('p'). j=4.",
+      "array": [
+        "m",
+        "i",
+        "s",
+        "s",
+        "i",
+        "s",
+        "s",
+        "i",
+        "p",
+        "p",
+        "i"
+      ],
+      "i": 1,
+      "j": 4,
+      "visited": [
+        5
+      ]
+    },
+    {
+      "codeLine": 13,
+      "note": "Mismatch found! 's' !== 'p'. Set 'found' to false.",
+      "array": [
+        "m",
+        "i",
+        "s",
+        "s",
+        "i",
+        "s",
+        "s",
+        "i",
+        "p",
+        "p",
+        "i"
+      ],
+      "i": 1,
+      "j": 4,
+      "visited": [
+        5
+      ]
+    },
+    {
+      "codeLine": 14,
+      "note": "Break the inner loop due to mismatch.",
+      "array": [
+        "m",
+        "i",
+        "s",
+        "s",
+        "i",
+        "s",
+        "s",
+        "i",
+        "p",
+        "p",
+        "i"
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 17,
+      "note": "Check 'found' flag. It's false, so no match found at i=1. Continue to next 'i'.",
+      "array": [
+        "m",
+        "i",
+        "s",
+        "s",
+        "i",
+        "s",
+        "s",
+        "i",
+        "p",
+        "p",
+        "i"
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 9,
+      "note": "Outer loop: Increment 'i' to 2. Check next potential starting position.",
+      "array": [
+        "m",
+        "i",
+        "s",
+        "s",
+        "i",
+        "s",
+        "s",
+        "i",
+        "p",
+        "p",
+        "i"
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 10,
+      "note": "Reset 'found' flag to true for i=2.",
+      "array": [
+        "m",
+        "i",
+        "s",
+        "s",
+        "i",
+        "s",
+        "s",
+        "i",
+        "p",
+        "p",
+        "i"
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 12,
+      "note": "Inner loop: Compare 'haystack[2+0]' ('s') with 'needle[0]' ('i'). j=0.",
+      "array": [
+        "m",
+        "i",
+        "s",
+        "s",
+        "i",
+        "s",
+        "s",
+        "i",
+        "p",
+        "p",
+        "i"
+      ],
+      "i": 2,
+      "j": 0,
+      "visited": [
+        2
+      ]
+    },
+    {
+      "codeLine": 13,
+      "note": "Mismatch found! 's' !== 'i'. Set 'found' to false.",
+      "array": [
+        "m",
+        "i",
+        "s",
+        "s",
+        "i",
+        "s",
+        "s",
+        "i",
+        "p",
+        "p",
+        "i"
+      ],
+      "i": 2,
+      "j": 0,
+      "visited": [
+        2
+      ]
+    },
+    {
+      "codeLine": 14,
+      "note": "Break the inner loop due to mismatch.",
+      "array": [
+        "m",
+        "i",
+        "s",
+        "s",
+        "i",
+        "s",
+        "s",
+        "i",
+        "p",
+        "p",
+        "i"
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 17,
+      "note": "Check 'found' flag. It's false, so no match found at i=2. Continue to next 'i'.",
+      "array": [
+        "m",
+        "i",
+        "s",
+        "s",
+        "i",
+        "s",
+        "s",
+        "i",
+        "p",
+        "p",
+        "i"
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 9,
+      "note": "Outer loop: Increment 'i' to 3. Check next potential starting position.",
+      "array": [
+        "m",
+        "i",
+        "s",
+        "s",
+        "i",
+        "s",
+        "s",
+        "i",
+        "p",
+        "p",
+        "i"
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 10,
+      "note": "Reset 'found' flag to true for i=3.",
+      "array": [
+        "m",
+        "i",
+        "s",
+        "s",
+        "i",
+        "s",
+        "s",
+        "i",
+        "p",
+        "p",
+        "i"
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 12,
+      "note": "Inner loop: Compare 'haystack[3+0]' ('s') with 'needle[0]' ('i'). j=0.",
+      "array": [
+        "m",
+        "i",
+        "s",
+        "s",
+        "i",
+        "s",
+        "s",
+        "i",
+        "p",
+        "p",
+        "i"
+      ],
+      "i": 3,
+      "j": 0,
+      "visited": [
+        3
+      ]
+    },
+    {
+      "codeLine": 13,
+      "note": "Mismatch found! 's' !== 'i'. Set 'found' to false.",
+      "array": [
+        "m",
+        "i",
+        "s",
+        "s",
+        "i",
+        "s",
+        "s",
+        "i",
+        "p",
+        "p",
+        "i"
+      ],
+      "i": 3,
+      "j": 0,
+      "visited": [
+        3
+      ]
+    },
+    {
+      "codeLine": 14,
+      "note": "Break the inner loop due to mismatch.",
+      "array": [
+        "m",
+        "i",
+        "s",
+        "s",
+        "i",
+        "s",
+        "s",
+        "i",
+        "p",
+        "p",
+        "i"
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 17,
+      "note": "Check 'found' flag. It's false, so no match found at i=3. Continue to next 'i'.",
+      "array": [
+        "m",
+        "i",
+        "s",
+        "s",
+        "i",
+        "s",
+        "s",
+        "i",
+        "p",
+        "p",
+        "i"
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 9,
+      "note": "Outer loop: Increment 'i' to 4. Check next potential starting position.",
+      "array": [
+        "m",
+        "i",
+        "s",
+        "s",
+        "i",
+        "s",
+        "s",
+        "i",
+        "p",
+        "p",
+        "i"
+      ],
+      "i": 4
+    },
+    {
+      "codeLine": 10,
+      "note": "Reset 'found' flag to true for i=4.",
+      "array": [
+        "m",
+        "i",
+        "s",
+        "s",
+        "i",
+        "s",
+        "s",
+        "i",
+        "p",
+        "p",
+        "i"
+      ],
+      "i": 4
+    },
+    {
+      "codeLine": 12,
+      "note": "Inner loop: Compare 'haystack[4+0]' ('i') with 'needle[0]' ('i'). Match. j=0.",
+      "array": [
+        "m",
+        "i",
+        "s",
+        "s",
+        "i",
+        "s",
+        "s",
+        "i",
+        "p",
+        "p",
+        "i"
+      ],
+      "i": 4,
+      "j": 0,
+      "visited": [
+        4
+      ]
+    },
+    {
+      "codeLine": 12,
+      "note": "Inner loop: Compare 'haystack[4+1]' ('s') with 'needle[1]' ('s'). Match. j=1.",
+      "array": [
+        "m",
+        "i",
+        "s",
+        "s",
+        "i",
+        "s",
+        "s",
+        "i",
+        "p",
+        "p",
+        "i"
+      ],
+      "i": 4,
+      "j": 1,
+      "visited": [
+        5
+      ]
+    },
+    {
+      "codeLine": 12,
+      "note": "Inner loop: Compare 'haystack[4+2]' ('s') with 'needle[2]' ('s'). Match. j=2.",
+      "array": [
+        "m",
+        "i",
+        "s",
+        "s",
+        "i",
+        "s",
+        "s",
+        "i",
+        "p",
+        "p",
+        "i"
+      ],
+      "i": 4,
+      "j": 2,
+      "visited": [
+        6
+      ]
+    },
+    {
+      "codeLine": 12,
+      "note": "Inner loop: Compare 'haystack[4+3]' ('i') with 'needle[3]' ('i'). Match. j=3.",
+      "array": [
+        "m",
+        "i",
+        "s",
+        "s",
+        "i",
+        "s",
+        "s",
+        "i",
+        "p",
+        "p",
+        "i"
+      ],
+      "i": 4,
+      "j": 3,
+      "visited": [
+        7
+      ]
+    },
+    {
+      "codeLine": 12,
+      "note": "Inner loop: Compare 'haystack[4+4]' ('p') with 'needle[4]' ('p'). Match. j=4.",
+      "array": [
+        "m",
+        "i",
+        "s",
+        "s",
+        "i",
+        "s",
+        "s",
+        "i",
+        "p",
+        "p",
+        "i"
+      ],
+      "i": 4,
+      "j": 4,
+      "visited": [
+        8
+      ]
+    },
+    {
+      "codeLine": 14,
+      "note": "The inner loop completed without any mismatches, meaning a full match was found for needle starting at i=4.",
+      "array": [
+        "m",
+        "i",
+        "s",
+        "s",
+        "i",
+        "s",
+        "s",
+        "i",
+        "p",
+        "p",
+        "i"
+      ],
+      "i": 4
+    },
+    {
+      "codeLine": 17,
+      "note": "'found' is true, indicating the needle was found starting at index 'i'.",
+      "array": [
+        "m",
+        "i",
+        "s",
+        "s",
+        "i",
+        "s",
+        "s",
+        "i",
+        "p",
+        "p",
+        "i"
+      ],
+      "i": 4
+    },
+    {
+      "codeLine": 18,
+      "note": "Return the current index 'i' (4) as the first occurrence.",
+      "array": [
+        "m",
+        "i",
+        "s",
+        "s",
+        "i",
+        "s",
+        "s",
+        "i",
+        "p",
+        "p",
+        "i"
+      ],
+      "i": 4,
+      "visited": [
+        4,
+        5,
+        6,
+        7,
+        8
+      ]
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "title": "Implement Queue Using Stacks",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Stack",
+    "Design",
+    "Queue"
+  ],
+  "description": "Implement a FIFO queue using two stacks.",
+  "pseudocode": "1. push(x): stack1.push(x)\n2. pop(): if stack2.empty(): while stack1: stack2.push(stack1.pop())\n3. return stack2.pop()",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Push 1 to stack1",
+      "array": [
+        1
+      ],
+      "i": "stack1"
+    },
+    {
+      "codeLine": 1,
+      "note": "Push 2 to stack1",
+      "array": [
+        1,
+        2
+      ],
+      "i": "stack1"
+    },
+    {
+      "codeLine": 2,
+      "note": "Pop called: stack2 is empty, transfer stack1 to stack2",
+      "array": [
+        2,
+        1
+      ],
+      "i": "stack2"
+    },
+    {
+      "codeLine": 3,
+      "note": "Pop element 1 from stack2",
+      "array": [
+        2
+      ],
+      "i": "stack2"
+    }
+  ]
+}

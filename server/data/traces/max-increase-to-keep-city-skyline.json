@@ -1,0 +1,114 @@
+{
+  "title": "Max Increase to Keep City Skyline",
+  "difficulty": "Medium",
+  "type": "matrix",
+  "tags": [
+    "Array",
+    "Matrix",
+    "Greedy"
+  ],
+  "description": "Increase the height of buildings in a grid such that the skyline (max values in rows/cols) remains unchanged.",
+  "pseudocode": "1. Find max of each row: rowMaxs\n2. Find max of each col: colMaxs\n3. For each cell (i, j):\n4.   newHeight = min(rowMaxs[i], colMaxs[j])\n5.   sum += newHeight - grid[i][j]",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Calculate row maximums: [3, 4] for row 0, [2, 4] for row 1",
+      "matrix": [
+        [
+          3,
+          0
+        ],
+        [
+          2,
+          4
+        ]
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Calculate column maximums: [3, 4] for col 0, [2, 4] for col 1",
+      "matrix": [
+        [
+          3,
+          0
+        ],
+        [
+          2,
+          4
+        ]
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Processing (0, 0): min(rowMax[0]=3, colMax[0]=3) = 3. No change.",
+      "matrix": [
+        [
+          3,
+          0
+        ],
+        [
+          2,
+          4
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Processing (0, 1): min(rowMax[0]=3, colMax[1]=4) = 3. Add 3-0=3 to sum.",
+      "matrix": [
+        [
+          3,
+          3
+        ],
+        [
+          2,
+          4
+        ]
+      ],
+      "curr": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Processing (1, 0): min(rowMax[1]=2, colMax[0]=3) = 2. No change.",
+      "matrix": [
+        [
+          3,
+          3
+        ],
+        [
+          2,
+          4
+        ]
+      ],
+      "curr": [
+        1,
+        0
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Processing (1, 1): min(rowMax[1]=2, colMax[1]=4) = 2. No change.",
+      "matrix": [
+        [
+          3,
+          3
+        ],
+        [
+          2,
+          4
+        ]
+      ],
+      "curr": [
+        1,
+        1
+      ]
+    }
+  ]
+}

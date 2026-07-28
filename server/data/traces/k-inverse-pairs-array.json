@@ -1,0 +1,71 @@
+{
+  "title": "K Inverse Pairs Array",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Dynamic Programming"
+  ],
+  "description": "Find the number of arrays of size n that contain exactly k inverse pairs using DP with prefix sums.",
+  "target": 1,
+  "pseudocode": "1. dp = Array(k + 1).fill(0); dp[0] = 1;\n2. for n from 1 to N:\n3.   new_dp = Array(k + 1).fill(0);\n4.   sum = 0;\n5.   for j from 0 to k:\n6.     sum += dp[j];\n7.     if j >= n: sum -= dp[j - n];\n8.     new_dp[j] = sum;\n9.   dp = new_dp;",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize DP table for n=0 with 0 inverse pairs.",
+      "array": [
+        1,
+        0
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Start processing n=1.",
+      "array": [
+        1,
+        0
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Calculating new DP values for n=1, k=0.",
+      "array": [
+        1,
+        0
+      ],
+      "j": 0
+    },
+    {
+      "codeLine": 8,
+      "note": "Set new_dp[0] = 1.",
+      "array": [
+        1,
+        0
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Calculating new DP values for n=1, k=1.",
+      "array": [
+        1,
+        0
+      ],
+      "j": 1
+    },
+    {
+      "codeLine": 8,
+      "note": "Set new_dp[1] = 0.",
+      "array": [
+        1,
+        0
+      ]
+    },
+    {
+      "codeLine": 9,
+      "note": "Update dp table for n=1.",
+      "array": [
+        1,
+        0
+      ]
+    }
+  ]
+}

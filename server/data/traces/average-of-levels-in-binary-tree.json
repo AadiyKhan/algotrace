@@ -1,0 +1,237 @@
+{
+  "title": "Average of Levels in Binary Tree",
+  "difficulty": "Easy",
+  "type": "tree",
+  "tags": [
+    "Tree",
+    "Breadth-First Search",
+    "Binary Tree"
+  ],
+  "description": "Given the root of a binary tree, return the average value of the nodes on each level in the form of an array.",
+  "pseudocode": "1: let res = [], queue = [root]\n2: while queue.length > 0:\n3:   let sum = 0, size = queue.length\n4:   for i = 0 to size - 1:\n5:     let node = queue.shift()\n6:     sum += node.val\n7:     if node.left: queue.push(node.left)\n8:     if node.right: queue.push(node.right)\n9:   res.push(sum / size)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize queue with root node [3].",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 3,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 9,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 20,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 3,
+          "val": 15,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 7,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Start level-order traversal for level 0 (size 1).",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 3,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 9,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 20,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 3,
+          "val": 15,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 7,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        0
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Add node 3 to sum.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 3,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 9,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 20,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 3,
+          "val": 15,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 7,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 9,
+      "note": "Average for level 0 is 3/1 = 3.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 3,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 9,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 20,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 3,
+          "val": 15,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 7,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Process level 1 (nodes 9 and 20).",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 3,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 9,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 20,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 3,
+          "val": 15,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 7,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 9,
+      "note": "Average for level 1 is (9+20)/2 = 14.5.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 3,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 9,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 20,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 3,
+          "val": 15,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 7,
+          "left": null,
+          "right": null
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,144 @@
+{
+  "title": "Daily Temperatures",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Stack",
+    "Monotonic Stack"
+  ],
+  "description": "Given an array of daily temperatures, return an array such that answer[i] is the number of days you have to wait after the ith day to get a warmer temperature.",
+  "target": null,
+  "pseudocode": "1: let res = new Array(T.length).fill(0)\n2: let stack = []\n3: for (let i = 0; i < T.length; i++) {\n4:   while (stack.length > 0 && T[i] > T[stack[stack.length - 1]]) {\n5:     let idx = stack.pop()\n6:     res[idx] = i - idx\n7:   }\n8:   stack.push(i)\n9: }",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize result array with zeros",
+      "array": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Start iteration at index 0 (temp 73)",
+      "array": [
+        0,
+        0,
+        0
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 8,
+      "note": "Stack empty, push index 0",
+      "array": [
+        0,
+        0,
+        0
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Move to index 1 (temp 74)",
+      "array": [
+        0,
+        0,
+        0
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "74 > 73, entering while loop",
+      "array": [
+        0,
+        0,
+        0
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Pop index 0 from stack",
+      "array": [
+        0,
+        0,
+        0
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Calculate distance: 1 - 0 = 1",
+      "array": [
+        1,
+        0,
+        0
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 8,
+      "note": "Push index 1",
+      "array": [
+        1,
+        0,
+        0
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Move to index 2 (temp 75)",
+      "array": [
+        1,
+        0,
+        0
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "75 > 74, entering while loop",
+      "array": [
+        1,
+        0,
+        0
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Pop index 1 from stack",
+      "array": [
+        1,
+        0,
+        0
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Calculate distance: 2 - 1 = 1",
+      "array": [
+        1,
+        1,
+        0
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 8,
+      "note": "Push index 2, loop finishes",
+      "array": [
+        1,
+        1,
+        0
+      ],
+      "i": 2
+    }
+  ]
+}

@@ -1,0 +1,88 @@
+{
+  "title": "Next Greater Element III",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "String",
+    "Two Pointers"
+  ],
+  "description": "Find the smallest 32-bit integer which has the same digits as n and is greater in value than n.",
+  "target": 12,
+  "pseudocode": "1: let nums = n.toString().split('').map(Number);\n2: let i = nums.length - 2;\n3: while (i >= 0 && nums[i] >= nums[i+1]) i--;\n4: if (i < 0) return -1;\n5: let j = nums.length - 1;\n6: while (nums[j] <= nums[i]) j--;\n7: [nums[i], nums[j]] = [nums[j], nums[i]];\n8: nums.splice(i + 1, nums.length - i - 1, ...nums.slice(i + 1).reverse());\n9: return parseInt(nums.join(''));",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Convert input 12 to digit array",
+      "array": [
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Initialize i to point to the second-to-last element",
+      "array": [
+        1,
+        2
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Find the first pair where nums[i] < nums[i+1]",
+      "array": [
+        1,
+        2
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Initialize j to the end of the array",
+      "array": [
+        1,
+        2
+      ],
+      "i": 0,
+      "j": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Find the first element larger than nums[i]",
+      "array": [
+        1,
+        2
+      ],
+      "i": 0,
+      "j": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "Swap elements at i and j",
+      "array": [
+        2,
+        1
+      ],
+      "i": 0,
+      "j": 1
+    },
+    {
+      "codeLine": 8,
+      "note": "Reverse elements after index i",
+      "array": [
+        2,
+        1
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 9,
+      "note": "Return result 21",
+      "array": [
+        2,
+        1
+      ]
+    }
+  ]
+}

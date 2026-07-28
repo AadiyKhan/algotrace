@@ -1,0 +1,177 @@
+{
+  "title": "Find Largest Value in Each Tree Row",
+  "difficulty": "Medium",
+  "type": "tree",
+  "tags": [
+    "Tree",
+    "Breadth-First Search",
+    "Depth-First Search"
+  ],
+  "description": "Given the root of a binary tree, return an array of the largest value in each row of the tree.",
+  "target": null,
+  "pseudocode": "1. result = []\n2. if !root return result\n3. queue = [root]\n4. while queue.length > 0:\n5.   levelSize = queue.length\n6.   maxVal = -Infinity\n7.   for i = 0 to levelSize:\n8.     node = queue.shift()\n9.     maxVal = Math.max(maxVal, node.val)\n10.    if node.left queue.push(node.left)\n11.    if node.right queue.push(node.right)\n12.  result.push(maxVal)",
+  "steps": [
+    {
+      "codeLine": 3,
+      "note": "Initialize queue with root node (1).",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 3,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 2,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        0
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Processing level 0: levelSize is 1.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 3,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 2,
+          "left": null,
+          "right": null
+        }
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 9,
+      "note": "Max value for level 0 is 1.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 3,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 2,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        0
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Processing level 1: levelSize is 2.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 3,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 2,
+          "left": null,
+          "right": null
+        }
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 9,
+      "note": "Comparing node 3 and 2. Max value is 3.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 3,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 2,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 12,
+      "note": "Final result: [1, 3].",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 3,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 2,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        0,
+        1,
+        2
+      ]
+    }
+  ]
+}

@@ -1,0 +1,87 @@
+{
+  "title": "Add Digits",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Math",
+    "Number Theory"
+  ],
+  "description": "Given an integer num, repeatedly add all its digits until the result has only one digit, and return it.",
+  "target": 0,
+  "pseudocode": "1. while num >= 10:\n2.   sum = 0\n3.   while num > 0:\n4.     sum += num % 10\n5.     num = Math.floor(num / 10)\n6.   num = sum\n7. return num",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize with num = 38. Since 38 >= 10, enter loop.",
+      "i": 38
+    },
+    {
+      "codeLine": 2,
+      "note": "Reset sum to 0 for inner calculation.",
+      "i": 38,
+      "j": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Extract last digit 8.",
+      "i": 38,
+      "j": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Add 8 to sum.",
+      "i": 38,
+      "j": 8
+    },
+    {
+      "codeLine": 5,
+      "note": "Update num to 3.",
+      "i": 3,
+      "j": 8
+    },
+    {
+      "codeLine": 4,
+      "note": "Add 3 to sum.",
+      "i": 3,
+      "j": 11
+    },
+    {
+      "codeLine": 5,
+      "note": "Update num to 0, inner loop ends.",
+      "i": 0,
+      "j": 11
+    },
+    {
+      "codeLine": 6,
+      "note": "Set num to sum (11).",
+      "i": 11
+    },
+    {
+      "codeLine": 1,
+      "note": "11 >= 10, loop continues.",
+      "i": 11
+    },
+    {
+      "codeLine": 2,
+      "note": "Reset sum to 0.",
+      "i": 11,
+      "j": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Sum digits 1 + 1 = 2.",
+      "i": 11,
+      "j": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Set num to 2.",
+      "i": 2
+    },
+    {
+      "codeLine": 7,
+      "note": "Return 2.",
+      "i": 2
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "title": "Distribute Candies",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Hash Table"
+  ],
+  "description": "Given an array representing candy types, find the maximum number of unique candy types Alice can eat if she is allowed to eat n/2 candies.",
+  "target": 2,
+  "pseudocode": "1. limit = candyType.length / 2\n2. uniqueCandies = new Set(candyType)\n3. return Math.min(uniqueCandies.size, limit)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Calculate the limit of candies Alice can eat (length 4 / 2 = 2).",
+      "array": [
+        1,
+        1,
+        2,
+        2
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Create a Set of unique candy types: {1, 2}.",
+      "array": [
+        1,
+        1,
+        2,
+        2
+      ],
+      "visited": [
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Compare set size (2) with limit (2). Return min(2, 2) = 2.",
+      "array": [
+        1,
+        1,
+        2,
+        2
+      ]
+    }
+  ]
+}

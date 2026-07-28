@@ -1,0 +1,170 @@
+{
+  "title": "House Robber",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Dynamic Programming"
+  ],
+  "description": "Determine the maximum amount of money you can rob tonight without alerting the police (cannot rob adjacent houses).",
+  "pseudocode": "function rob(nums) {\n  let prev2 = 0;\n  let prev1 = 0;\n  for (let num of nums) {\n    let temp = prev1;\n    prev1 = Math.max(prev2 + num, prev1);\n    prev2 = temp;\n  }\n  return prev1;\n}",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Initialize prev2 to 0",
+      "array": [
+        2,
+        7,
+        9,
+        3,
+        1
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Initialize prev1 to 0",
+      "array": [
+        2,
+        7,
+        9,
+        3,
+        1
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Start loop: num = 2",
+      "array": [
+        2,
+        7,
+        9,
+        3,
+        1
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Store prev1 in temp (temp = 0)",
+      "array": [
+        2,
+        7,
+        9,
+        3,
+        1
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Update prev1: max(0 + 2, 0) = 2",
+      "array": [
+        2,
+        7,
+        9,
+        3,
+        1
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Update prev2: prev2 becomes 0",
+      "array": [
+        2,
+        7,
+        9,
+        3,
+        1
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Loop: num = 7",
+      "array": [
+        2,
+        7,
+        9,
+        3,
+        1
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Store prev1 in temp (temp = 2)",
+      "array": [
+        2,
+        7,
+        9,
+        3,
+        1
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Update prev1: max(0 + 7, 2) = 7",
+      "array": [
+        2,
+        7,
+        9,
+        3,
+        1
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Update prev2: prev2 becomes 2",
+      "array": [
+        2,
+        7,
+        9,
+        3,
+        1
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Loop: num = 9",
+      "array": [
+        2,
+        7,
+        9,
+        3,
+        1
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Store prev1 in temp (temp = 7)",
+      "array": [
+        2,
+        7,
+        9,
+        3,
+        1
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Update prev1: max(2 + 9, 7) = 11",
+      "array": [
+        2,
+        7,
+        9,
+        3,
+        1
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Update prev2: prev2 becomes 7",
+      "array": [
+        2,
+        7,
+        9,
+        3,
+        1
+      ]
+    }
+  ]
+}

@@ -1,0 +1,125 @@
+{
+  "title": "Subarrays with K Different Integers",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "Sliding Window"
+  ],
+  "description": "Find the number of subarrays with exactly k distinct integers using a sliding window approach.",
+  "target": 2,
+  "pseudocode": "1: function atMostK(nums, k) {\n2:   let count = {}, left = 0, res = 0;\n3:   for (let right = 0; right < nums.length; right++) {\n4:     if (!count[nums[right]]) k--;\n5:     count[nums[right]] = (count[nums[right]] || 0) + 1;\n6:     while (k < 0) {\n7:       count[nums[left]]--;\n8:       if (count[nums[left]] === 0) k++;\n9:       left++;\n10:    }\n11:    res += right - left + 1;\n12:  }\n13:  return res;\n14: }",
+  "steps": [
+    {
+      "codeLine": 3,
+      "note": "Initialize window at right=0, nums[right]=1",
+      "array": [
+        1,
+        2,
+        1
+      ],
+      "i": 0,
+      "j": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Added 1 to map, window [1]",
+      "array": [
+        1,
+        2,
+        1
+      ],
+      "i": 0,
+      "j": 0
+    },
+    {
+      "codeLine": 11,
+      "note": "Count subarrays: res = 1",
+      "array": [
+        1,
+        2,
+        1
+      ],
+      "i": 0,
+      "j": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Move right to 1, nums[right]=2",
+      "array": [
+        1,
+        2,
+        1
+      ],
+      "i": 0,
+      "j": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Added 2 to map, window [1, 2]",
+      "array": [
+        1,
+        2,
+        1
+      ],
+      "i": 0,
+      "j": 1
+    },
+    {
+      "codeLine": 11,
+      "note": "Count subarrays: res = 1 + 2 = 3",
+      "array": [
+        1,
+        2,
+        1
+      ],
+      "i": 0,
+      "j": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Move right to 2, nums[right]=1",
+      "array": [
+        1,
+        2,
+        1
+      ],
+      "i": 0,
+      "j": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Added 1 to map, window [1, 2, 1]",
+      "array": [
+        1,
+        2,
+        1
+      ],
+      "i": 0,
+      "j": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "K < 0, shrinking window",
+      "array": [
+        1,
+        2,
+        1
+      ],
+      "i": 1,
+      "j": 2
+    },
+    {
+      "codeLine": 11,
+      "note": "Count subarrays: res = 3 + 2 = 5",
+      "array": [
+        1,
+        2,
+        1
+      ],
+      "i": 1,
+      "j": 2
+    }
+  ]
+}

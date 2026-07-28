@@ -1,0 +1,82 @@
+{
+  "title": "Binary Tree Maximum Path Sum",
+  "difficulty": "Hard",
+  "type": "tree",
+  "tags": [
+    "Tree",
+    "DFS",
+    "Recursion"
+  ],
+  "description": "Find the maximum path sum in a binary tree where a path can start and end at any node.",
+  "target": null,
+  "pseudocode": "1: let maxSum = -Infinity\n2: function dfs(node) {\n3:   if (!node) return 0\n4:   let left = Math.max(dfs(node.left), 0)\n5:   let right = Math.max(dfs(node.right), 0)\n6:   maxSum = Math.max(maxSum, node.val + left + right)\n7:   return node.val + Math.max(left, right)\n8: }",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Starting DFS from root (node 0, val: -10)",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": -10,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 9,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 20,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 3,
+          "val": 15,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 7,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": "0"
+    },
+    {
+      "codeLine": 4,
+      "note": "Traversing to left child (node 1)",
+      "curr": "1"
+    },
+    {
+      "codeLine": 7,
+      "note": "Node 1 returns 9 to parent",
+      "curr": "1"
+    },
+    {
+      "codeLine": 5,
+      "note": "Traversing to right child (node 2)",
+      "curr": "2"
+    },
+    {
+      "codeLine": 6,
+      "note": "Calculating path through node 2: 15 + 20 + 7 = 42. Updating maxSum.",
+      "curr": "2"
+    },
+    {
+      "codeLine": 7,
+      "note": "Node 2 returns 20 + max(15, 7) = 35 to parent",
+      "curr": "2"
+    },
+    {
+      "codeLine": 6,
+      "note": "Final check at root: -10 + 9 + 35 = 34. Max remains 42.",
+      "curr": "0"
+    }
+  ]
+}

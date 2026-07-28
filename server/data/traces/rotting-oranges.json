@@ -1,0 +1,173 @@
+{
+  "title": "Rotting Oranges",
+  "difficulty": "Medium",
+  "type": "matrix",
+  "tags": [
+    "Array",
+    "Breadth-First Search",
+    "Matrix"
+  ],
+  "description": "Determine the minimum minutes to rot all fresh oranges in a grid using BFS.",
+  "target": 4,
+  "pseudocode": "1. queue = all rotten oranges\n2. minutes = 0\n3. while queue is not empty and fresh oranges > 0:\n4.   for each orange in current queue level:\n5.     poll current [r, c]\n6.     check neighbors, if fresh, turn rotten, add to queue\n7.   minutes++\n8. return fresh == 0 ? minutes : -1",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize queue with rotten oranges at [0,0]",
+      "matrix": [
+        [
+          2,
+          1
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Process rotten orange at [0,0]",
+      "matrix": [
+        [
+          2,
+          1
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Rot neighbor at [0,1], add to queue",
+      "matrix": [
+        [
+          2,
+          2
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Increment minutes to 1",
+      "matrix": [
+        [
+          2,
+          2
+        ],
+        [
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Process newly rotten orange at [0,1]",
+      "matrix": [
+        [
+          2,
+          2
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "curr": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Rot neighbor at [1,1], add to queue",
+      "matrix": [
+        [
+          2,
+          2
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "curr": [
+        0,
+        1
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Increment minutes to 2",
+      "matrix": [
+        [
+          2,
+          2
+        ],
+        [
+          0,
+          2
+        ]
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "All fresh oranges rotted, return minutes",
+      "matrix": [
+        [
+          2,
+          2
+        ],
+        [
+          0,
+          2
+        ]
+      ]
+    }
+  ]
+}

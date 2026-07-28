@@ -1,0 +1,61 @@
+{
+  "title": "Elimination Game",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Math"
+  ],
+  "description": "Starting with a list of numbers 1 to n, remove every other number starting from left, then right, alternating directions until one remains.",
+  "target": 1,
+  "pseudocode": "function lastRemaining(n) {\n  let head = 1;\n  let step = 1;\n  let left = true;\n  while (n > 1) {\n    if (left || n % 2 === 1) {\n      head += step;\n    }\n    n = Math.floor(n / 2);\n    step *= 2;\n    left = !left;\n  }\n  return head;\n}",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Initialize head at 1, step at 1, and left-to-right flag.",
+      "array": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "First pass (left to right): remove odd indices (1, 3, 5). Head shifts.",
+      "array": [
+        2,
+        4,
+        6
+      ],
+      "i": "head=2, step=2"
+    },
+    {
+      "codeLine": 8,
+      "note": "Update n to remaining count (3), double the step (4).",
+      "array": [
+        2,
+        4,
+        6
+      ],
+      "i": "n=3, step=4"
+    },
+    {
+      "codeLine": 5,
+      "note": "Second pass (right to left): n is odd, head shifts.",
+      "array": [
+        4
+      ],
+      "i": "head=4, step=4"
+    },
+    {
+      "codeLine": 8,
+      "note": "n becomes 1. Loop terminates.",
+      "array": [
+        4
+      ]
+    }
+  ]
+}

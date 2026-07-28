@@ -1,0 +1,107 @@
+{
+  "title": "License Key Formatting",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "String"
+  ],
+  "description": "Reformat a license key string by inserting dashes every K characters, converting to uppercase.",
+  "target": 4,
+  "pseudocode": "1: s = s.replace(/-/g, '').toUpperCase();\n2: result = [];\n3: for (let i = s.length - 1; i >= 0; i--) {\n4:   if (count > 0 && count % k === 0) result.push('-');\n5:   result.push(s[i]);\n6:   count++;\n7: }\n8: return result.reverse().join('');",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Clean the string and convert to uppercase",
+      "array": [
+        "5",
+        "F",
+        "3",
+        "Z",
+        "2",
+        "E",
+        "9",
+        "W"
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Start iterating from the end of the string",
+      "array": [
+        "5",
+        "F",
+        "3",
+        "Z",
+        "2",
+        "E",
+        "9",
+        "W"
+      ],
+      "i": 7
+    },
+    {
+      "codeLine": 5,
+      "note": "Add character 'W' to result",
+      "array": [
+        "5",
+        "F",
+        "3",
+        "Z",
+        "2",
+        "E",
+        "9",
+        "W"
+      ],
+      "i": 7
+    },
+    {
+      "codeLine": 4,
+      "note": "Dash condition met, insert dash",
+      "array": [
+        "5",
+        "F",
+        "3",
+        "Z",
+        "2",
+        "E",
+        "9",
+        "W",
+        "-"
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 5,
+      "note": "Add character 'Z' to result",
+      "array": [
+        "5",
+        "F",
+        "3",
+        "Z",
+        "2",
+        "E",
+        "9",
+        "W",
+        "-",
+        "Z"
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 8,
+      "note": "Reverse and return final formatted string",
+      "array": [
+        "5",
+        "F",
+        "-",
+        "3",
+        "Z",
+        "2",
+        "E",
+        "-",
+        "9",
+        "W"
+      ]
+    }
+  ]
+}

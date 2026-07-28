@@ -1,0 +1,62 @@
+{
+  "title": "Fraction to Recurring Decimal",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Hash Table",
+    "Math",
+    "String"
+  ],
+  "description": "Convert a fraction (numerator/denominator) into a decimal string, identifying recurring sequences.",
+  "target": null,
+  "pseudocode": "1. result = (num < 0 ^ den < 0) ? '-' : ''\n2. n = abs(num), d = abs(den)\n3. result += (n / d).toString()\n4. remainder = n % d\n5. if (remainder == 0) return result\n6. result += '.'\n7. map = {}\n8. while (remainder != 0)\n9.   if (map.has(remainder)) insert '(', result += ')', break\n10.  map[remainder] = result.length\n11.  remainder *= 10\n12.  result += Math.floor(remainder / d)\n13.  remainder %= d",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize result, handle signs for 1/3",
+      "array": []
+    },
+    {
+      "codeLine": 4,
+      "note": "Initial remainder of 1 / 3 is 1",
+      "array": [
+        1
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Initialize map to track remainders",
+      "array": []
+    },
+    {
+      "codeLine": 10,
+      "note": "Store remainder 1 at index 2 (after '0.')",
+      "array": [
+        1
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 12,
+      "note": "Append 3 to result (10 / 3 = 3)",
+      "array": [
+        1,
+        3
+      ]
+    },
+    {
+      "codeLine": 13,
+      "note": "New remainder is 1",
+      "array": [
+        1
+      ]
+    },
+    {
+      "codeLine": 9,
+      "note": "Remainder 1 exists in map, add parentheses",
+      "array": [
+        1
+      ]
+    }
+  ]
+}

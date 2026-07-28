@@ -1,0 +1,78 @@
+{
+  "title": "Number of Recent Calls",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Queue",
+    "Design"
+  ],
+  "description": "Count the number of requests that have happened in the past 3000 milliseconds.",
+  "target": 3000,
+  "pseudocode": "1: queue = []\n2: queue.push(t)\n3: while queue[0] < t - 3000:\n4:   queue.shift()\n5: return queue.length",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Request at t=1 arrives",
+      "array": [
+        1
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Return count of requests in last 3000ms",
+      "array": [
+        1
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Request at t=100 arrives",
+      "array": [
+        1,
+        100
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Return current queue length",
+      "array": [
+        1,
+        100
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Request at t=3001 arrives",
+      "array": [
+        1,
+        100,
+        3001
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Check if head (1) is older than 3001 - 3000 = 1",
+      "array": [
+        1,
+        100,
+        3001
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Remove outdated request at index 0",
+      "array": [
+        100,
+        3001
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Return remaining count",
+      "array": [
+        100,
+        3001
+      ]
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "title": "Word Pattern",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Hash Table",
+    "String"
+  ],
+  "description": "Determine if a string follows the same pattern as a given pattern of characters.",
+  "target": "pattern: 'abba', s: 'dog cat cat dog'",
+  "pseudocode": "1. words = s.split(' ')\n2. if pattern.length != words.length return false\n3. mapPtoW = {}, mapWtoP = {}\n4. for i from 0 to pattern.length - 1:\n5.   char = pattern[i], word = words[i]\n6.   if char in mapPtoW and mapPtoW[char] != word return false\n7.   if word in mapWtoP and mapWtoP[word] != char return false\n8.   mapPtoW[char] = word, mapWtoP[word] = char",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Split the string s into an array of words.",
+      "array": [
+        "dog",
+        "cat",
+        "cat",
+        "dog"
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Starting the loop at index 0.",
+      "i": 0
+    },
+    {
+      "codeLine": 8,
+      "note": "Map 'a' to 'dog' and 'dog' to 'a'.",
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Moving to index 1.",
+      "i": 1
+    },
+    {
+      "codeLine": 8,
+      "note": "Map 'b' to 'cat' and 'cat' to 'b'.",
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Moving to index 2.",
+      "i": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Verify if pattern 'b' already maps to 'cat'. It does, continue.",
+      "i": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Moving to index 3.",
+      "i": 3
+    },
+    {
+      "codeLine": 6,
+      "note": "Verify if pattern 'a' already maps to 'dog'. It does, continue.",
+      "i": 3
+    }
+  ]
+}

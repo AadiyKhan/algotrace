@@ -1,0 +1,257 @@
+{
+  "title": "Second Minimum Node In A Binary Tree",
+  "difficulty": "Easy",
+  "type": "tree",
+  "tags": [
+    "Tree",
+    "Depth-First Search",
+    "Binary Tree"
+  ],
+  "description": "Find the second minimum value in a special binary tree where each node has 0 or 2 children, and the root value is the minimum of all nodes.",
+  "target": null,
+  "pseudocode": "1: function findSecondMinimum(root, minVal) {\n2:   if (!root) return -1;\n3:   if (root.val > minVal) return root.val;\n4:   left = findSecondMinimum(root.left, minVal);\n5:   right = findSecondMinimum(root.right, minVal);\n6:   if (left == -1) return right;\n7:   if (right == -1) return left;\n8:   return Math.min(left, right);\n9: }",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Starting DFS at root (val: 2). minVal is 2.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 2,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 5,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 3,
+          "val": 5,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 7,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        0
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Traversing left child (val: 2).",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 2,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 5,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 3,
+          "val": 5,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 7,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Node value is not greater than minVal (2 == 2), return -1.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 2,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 5,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 3,
+          "val": 5,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 7,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Traversing right child (val: 5).",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 2,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 5,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 3,
+          "val": 5,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 7,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Node value (5) > minVal (2). Found candidate: 5.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 2,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 5,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 3,
+          "val": 5,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 7,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Returning minimum of found branches, second minimum is 5.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 2,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 5,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 3,
+          "val": 5,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 7,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        0,
+        1,
+        2
+      ]
+    }
+  ]
+}

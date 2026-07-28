@@ -1,0 +1,85 @@
+{
+  "title": "Shortest Word Distance III",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "String"
+  ],
+  "description": "Find the shortest distance between two words in a list, where words can be the same.",
+  "target": "words = ['a', 'b', 'a', 'c'], word1 = 'a', word2 = 'a'",
+  "pseudocode": "1. minDist = infinity\n2. idx1 = -1, idx2 = -1\n3. for i = 0 to words.length - 1:\n4.   if words[i] == word1:\n5.     if word1 == word2: idx2 = idx1\n6.     idx1 = i\n7.   else if words[i] == word2:\n8.     idx2 = i\n9.   if idx1 != -1 and idx2 != -1:\n10.    minDist = min(minDist, abs(idx1 - idx2))",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize minDist to infinity",
+      "array": [
+        "a",
+        "b",
+        "a",
+        "c"
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Start iteration, i=0, words[0] is 'a'",
+      "i": 0,
+      "array": [
+        "a",
+        "b",
+        "a",
+        "c"
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "words[0] matches word1 ('a')",
+      "i": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Since word1 == word2, idx2 inherits old idx1 (-1)",
+      "i": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Update idx1 to 0",
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "i=1, words[1] is 'b', no match",
+      "i": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "i=2, words[2] is 'a'",
+      "i": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "words[2] matches word1",
+      "i": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "word1 == word2, set idx2 to old idx1 (0)",
+      "i": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Update idx1 to 2",
+      "i": 2
+    },
+    {
+      "codeLine": 9,
+      "note": "Both idx1(2) and idx2(0) are set",
+      "i": 2
+    },
+    {
+      "codeLine": 10,
+      "note": "minDist = min(inf, |2-0|) = 2",
+      "i": 2
+    }
+  ]
+}

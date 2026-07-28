@@ -1,0 +1,213 @@
+{
+  "title": "Delete Columns to Make Sorted",
+  "difficulty": "Easy",
+  "type": "matrix",
+  "tags": [
+    "Array",
+    "String"
+  ],
+  "description": "Return the number of columns that are not sorted lexicographically.",
+  "target": null,
+  "pseudocode": "1. count = 0\n2. for j from 0 to cols-1:\n3.   for i from 0 to rows-2:\n4.     if matrix[i][j] > matrix[i+1][j]:\n5.       count++\n6.       break\n7. return count",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize count to 0.",
+      "matrix": [
+        [
+          "c",
+          "b",
+          "a"
+        ],
+        [
+          "d",
+          "a",
+          "f"
+        ],
+        [
+          "g",
+          "h",
+          "i"
+        ]
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Starting loop for column j=0.",
+      "matrix": [
+        [
+          "c",
+          "b",
+          "a"
+        ],
+        [
+          "d",
+          "a",
+          "f"
+        ],
+        [
+          "g",
+          "h",
+          "i"
+        ]
+      ],
+      "j": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Checking rows in column 0: c <= d and d <= g.",
+      "matrix": [
+        [
+          "c",
+          "b",
+          "a"
+        ],
+        [
+          "d",
+          "a",
+          "f"
+        ],
+        [
+          "g",
+          "h",
+          "i"
+        ]
+      ],
+      "j": 0,
+      "i": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Moving to column j=1.",
+      "matrix": [
+        [
+          "c",
+          "b",
+          "a"
+        ],
+        [
+          "d",
+          "a",
+          "f"
+        ],
+        [
+          "g",
+          "h",
+          "i"
+        ]
+      ],
+      "j": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Comparing matrix[0][1] ('b') and matrix[1][1] ('a'). Since 'b' > 'a', column 1 is not sorted.",
+      "matrix": [
+        [
+          "c",
+          "b",
+          "a"
+        ],
+        [
+          "d",
+          "a",
+          "f"
+        ],
+        [
+          "g",
+          "h",
+          "i"
+        ]
+      ],
+      "j": 1,
+      "i": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Increment count to 1.",
+      "matrix": [
+        [
+          "c",
+          "b",
+          "a"
+        ],
+        [
+          "d",
+          "a",
+          "f"
+        ],
+        [
+          "g",
+          "h",
+          "i"
+        ]
+      ],
+      "j": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Moving to column j=2.",
+      "matrix": [
+        [
+          "c",
+          "b",
+          "a"
+        ],
+        [
+          "d",
+          "a",
+          "f"
+        ],
+        [
+          "g",
+          "h",
+          "i"
+        ]
+      ],
+      "j": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Checking rows in column 2: a <= f and f <= i.",
+      "matrix": [
+        [
+          "c",
+          "b",
+          "a"
+        ],
+        [
+          "d",
+          "a",
+          "f"
+        ],
+        [
+          "g",
+          "h",
+          "i"
+        ]
+      ],
+      "j": 2,
+      "i": 0
+    },
+    {
+      "codeLine": 7,
+      "note": "Return final count: 1.",
+      "matrix": [
+        [
+          "c",
+          "b",
+          "a"
+        ],
+        [
+          "d",
+          "a",
+          "f"
+        ],
+        [
+          "g",
+          "h",
+          "i"
+        ]
+      ]
+    }
+  ]
+}

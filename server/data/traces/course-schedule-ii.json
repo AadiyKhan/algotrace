@@ -1,0 +1,65 @@
+{
+  "title": "Course Schedule II",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Graph",
+    "Topological Sort",
+    "DFS"
+  ],
+  "description": "Find an ordering of courses to finish all, given prerequisites using Kahn's algorithm (BFS).",
+  "target": null,
+  "pseudocode": "1. Build adjacency list and calculate in-degree of all nodes\n2. Add nodes with in-degree 0 to queue\n3. While queue is not empty:\n4. Pop node u, add to result list\n5. For each neighbor v of u: decrement in-degree\n6. If in-degree of v is 0, add to queue",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize in-degrees: [0, 1, 1], adjacency: [[], [0], [1]]",
+      "array": [
+        0,
+        0,
+        0
+      ],
+      "i": "in-degree: [0, 1, 1]"
+    },
+    {
+      "codeLine": 2,
+      "note": "Queue initialized with nodes having 0 in-degree: [0]",
+      "array": [
+        0,
+        1,
+        1
+      ],
+      "i": "queue: [0]"
+    },
+    {
+      "codeLine": 4,
+      "note": "Pop 0, add to result: [0]",
+      "array": [
+        0,
+        1,
+        1
+      ],
+      "i": "result: [0]"
+    },
+    {
+      "codeLine": 5,
+      "note": "Process neighbor 0 (none), queue is empty",
+      "array": [
+        0,
+        1,
+        1
+      ],
+      "i": "queue: []"
+    },
+    {
+      "codeLine": 6,
+      "note": "No more nodes with 0 in-degree. Process ends.",
+      "array": [
+        0,
+        1,
+        1
+      ],
+      "i": "result: [0, 1, 2]"
+    }
+  ]
+}

@@ -1,0 +1,123 @@
+{
+  "title": "Wildcard Matching",
+  "difficulty": "Hard",
+  "type": "matrix",
+  "tags": [
+    "Dynamic Programming",
+    "String"
+  ],
+  "description": "Implement wildcard pattern matching with support for '?' and '*'.",
+  "target": "true",
+  "pseudocode": "1: dp = new Array(s.length+1).fill(false).map(()=>new Array(p.length+1).fill(false))\n2: dp[0][0] = true\n3: for j = 1 to p.length: if p[j-1] == '*': dp[0][j] = dp[0][j-1]\n4: for i = 1 to s.length: for j = 1 to p.length:\n5:   if p[j-1] == s[i-1] or p[j-1] == '?': dp[i][j] = dp[i-1][j-1]\n6:   else if p[j-1] == '*': dp[i][j] = dp[i-1][j] or dp[i][j-1]\n7: return dp[s.length][p.length]",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize DP table with false",
+      "matrix": [
+        [
+          true,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Initialize first row for '*' handling",
+      "matrix": [
+        [
+          true,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Process s='a', p='a': Match found",
+      "matrix": [
+        [
+          true,
+          false,
+          false
+        ],
+        [
+          false,
+          true,
+          false
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "i": 1,
+      "j": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Process s='a', p='*': '*' matches empty or sequence",
+      "matrix": [
+        [
+          true,
+          true,
+          true
+        ],
+        [
+          false,
+          true,
+          true
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ],
+      "i": 1,
+      "j": 2
+    },
+    {
+      "codeLine": 7,
+      "note": "Return dp[1][2] which is true",
+      "matrix": [
+        [
+          true,
+          true,
+          true
+        ],
+        [
+          false,
+          true,
+          true
+        ],
+        [
+          false,
+          false,
+          false
+        ]
+      ]
+    }
+  ]
+}

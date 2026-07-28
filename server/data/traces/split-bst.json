@@ -1,0 +1,135 @@
+{
+  "title": "Split BST",
+  "difficulty": "Medium",
+  "type": "tree",
+  "tags": [
+    "Tree",
+    "Binary Search Tree",
+    "Recursion"
+  ],
+  "description": "Split a binary search tree into two trees based on a target value V. All nodes with values <= V go to the first tree, others to the second.",
+  "target": 3,
+  "pseudocode": "1: function split(root, V) {\n2:   if (!root) return [null, null];\n3:   if (root.val <= V) {\n4:     let [left, right] = split(root.right, V);\n5:     root.right = left;\n6:     return [root, right];\n7:   } else {\n8:     let [left, right] = split(root.left, V);\n9:     root.left = right;\n10:    return [left, root];\n11:  }\n12: }",
+  "steps": [
+    {
+      "codeLine": 3,
+      "note": "Root 2 <= 3, move to right child.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 2,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 4,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Recursive call on right child (4).",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 2,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 4,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "4 > 3, split left side of 4.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 2,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 4,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 9,
+      "note": "Adjust pointer for node 4.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 2,
+          "left": 1,
+          "right": null
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 4,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 10,
+      "note": "Return new roots [tree1: {2,1}, tree2: {4}].",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 2,
+          "left": 1,
+          "right": null
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 4,
+          "left": null,
+          "right": null
+        }
+      ]
+    }
+  ]
+}

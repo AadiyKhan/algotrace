@@ -1,0 +1,99 @@
+{
+  "title": "Reconstruct Original Digits from English",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Hash Table",
+    "Math",
+    "String"
+  ],
+  "description": "Given a string s containing out-of-order English representation of digits 0-9, reconstruct the digits.",
+  "target": "owoztneoer",
+  "pseudocode": "1. count frequencies of all chars\n2. identify unique chars for even numbers (0, 2, 4, 6, 8)\n3. identify unique chars for remaining numbers (1, 3, 5, 7, 9)\n4. build result string based on calculated counts",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Count character frequencies in 'owoztneoer'",
+      "array": [
+        2,
+        0,
+        0,
+        0,
+        2,
+        0,
+        0,
+        0,
+        2,
+        0,
+        0,
+        0,
+        0,
+        1,
+        2,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "i": "o:3, w:1, z:1, t:1, n:1, e:2, r:1"
+    },
+    {
+      "codeLine": 2,
+      "note": "Identify 'zero' using 'z', 'two' using 'w', 'four' using 'u'",
+      "array": [
+        1,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "i": "Found: 0:1, 2:1, 4:0"
+    },
+    {
+      "codeLine": 3,
+      "note": "Identify 'one' using 'o' remaining count, 'three' using 't'",
+      "array": [
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "i": "Found: 1:1, 3:1"
+    },
+    {
+      "codeLine": 4,
+      "note": "Assemble result based on counts: '0123'",
+      "array": [
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "i": "Result: '0123'"
+    }
+  ]
+}

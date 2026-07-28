@@ -1,0 +1,74 @@
+{
+  "title": "Consecutive Numbers Sum",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Math",
+    "Sliding Window"
+  ],
+  "description": "Given an integer n, return the number of ways you can write n as the sum of consecutive positive integers.",
+  "target": 5,
+  "pseudocode": "1: count = 0\n2: k = 1\n3: while k * (k + 1) / 2 <= n:\n4:   if (n - (k * (k - 1) / 2)) % k == 0:\n5:     count += 1\n6:   k += 1\n7: return count",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize count to 0",
+      "i": "count=0"
+    },
+    {
+      "codeLine": 2,
+      "note": "Initialize number of terms k to 1",
+      "i": "k=1"
+    },
+    {
+      "codeLine": 3,
+      "note": "Check if sum of 1st k terms is <= 5",
+      "i": "k=1"
+    },
+    {
+      "codeLine": 4,
+      "note": "Check if (5 - 0) is divisible by 1",
+      "i": "k=1"
+    },
+    {
+      "codeLine": 5,
+      "note": "Increment count as 5 is a valid sum (5 itself)",
+      "i": "count=1"
+    },
+    {
+      "codeLine": 6,
+      "note": "Increment k to 2",
+      "i": "k=2"
+    },
+    {
+      "codeLine": 3,
+      "note": "Check if sum of 1st 2 terms (1+2=3) is <= 5",
+      "i": "k=2"
+    },
+    {
+      "codeLine": 4,
+      "note": "Check if (5 - 1) is divisible by 2",
+      "i": "k=2"
+    },
+    {
+      "codeLine": 5,
+      "note": "Increment count as 2+3=5 is a valid sum",
+      "i": "count=2"
+    },
+    {
+      "codeLine": 6,
+      "note": "Increment k to 3",
+      "i": "k=3"
+    },
+    {
+      "codeLine": 3,
+      "note": "Check if sum of 1st 3 terms (1+2+3=6) is <= 5",
+      "i": "k=3"
+    },
+    {
+      "codeLine": 7,
+      "note": "Return final count",
+      "i": "count=2"
+    }
+  ]
+}

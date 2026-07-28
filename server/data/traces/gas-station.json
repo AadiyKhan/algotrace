@@ -1,0 +1,122 @@
+{
+  "title": "Gas Station",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Greedy"
+  ],
+  "description": "Find the starting gas station index such that you can travel around the circuit once in a clockwise direction.",
+  "target": null,
+  "pseudocode": "1: total_tank = 0, curr_tank = 0, start_index = 0\n2: for i from 0 to gas.length - 1:\n3:   total_tank += gas[i] - cost[i]\n4:   curr_tank += gas[i] - cost[i]\n5:   if curr_tank < 0:\n6:     start_index = i + 1\n7:     curr_tank = 0\n8: return total_tank >= 0 ? start_index : -1",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize trackers: total_tank and curr_tank to 0, start_index to 0.",
+      "array": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "i": null
+    },
+    {
+      "codeLine": 3,
+      "note": "Processing station 0: net gain is 1-3 = -2. total_tank = -2, curr_tank = -2.",
+      "array": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "curr_tank is negative, reset start_index to 1 and curr_tank to 0.",
+      "array": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Processing station 1: net gain is 2-4 = -2. total_tank = -4, curr_tank = -2.",
+      "array": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "curr_tank is negative, reset start_index to 2 and curr_tank to 0.",
+      "array": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Processing station 2: net gain is 3-1 = 2. total_tank = -2, curr_tank = 2.",
+      "array": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Processing station 3: net gain is 4-2 = 2. total_tank = 0, curr_tank = 4.",
+      "array": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 3,
+      "note": "Processing station 4: net gain is 5-2 = 3. total_tank = 3, curr_tank = 7.",
+      "array": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "i": 4
+    },
+    {
+      "codeLine": 8,
+      "note": "Loop finished. total_tank (3) >= 0, returning start_index (2).",
+      "array": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "i": null
+    }
+  ]
+}

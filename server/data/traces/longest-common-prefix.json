@@ -1,0 +1,170 @@
+{
+  "title": "Longest Common Prefix",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "String"
+  ],
+  "description": "Find the longest common prefix string amongst an array of strings. If there is no common prefix, return an empty string.",
+  "target": null,
+  "pseudocode": "1. IF strs is empty, RETURN \"\"\n2. SET prefix = strs[0]\n3. FOR i from 1 to length(strs) - 1:\n4.   WHILE strs[i] DOES NOT START WITH prefix:\n5.     SET prefix = prefix.substring(0, length(prefix) - 1)\n6.     IF prefix IS empty, RETURN \"\"\n7. RETURN prefix",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Check if the input array 'strs' is empty. It's not.",
+      "array": [
+        "flower",
+        "flow",
+        "flight"
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Initialize 'prefix' with the first string in 'strs'. Current prefix: 'flower'",
+      "array": [
+        "flower",
+        "flow",
+        "flight"
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Start iterating through 'strs' from the second string (index 1).",
+      "array": [
+        "flower",
+        "flow",
+        "flight"
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Current string strs[1] is 'flow'. Check if 'flow' starts with 'flower'. It does not.",
+      "array": [
+        "flower",
+        "flow",
+        "flight"
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Shorten 'prefix' by one character. Current prefix: 'flowe'",
+      "array": [
+        "flower",
+        "flow",
+        "flight"
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Check if 'flow' starts with 'flowe'. It does not.",
+      "array": [
+        "flower",
+        "flow",
+        "flight"
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Shorten 'prefix' by one character. Current prefix: 'flow'",
+      "array": [
+        "flower",
+        "flow",
+        "flight"
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Check if 'flow' starts with 'flow'. It does. Exit inner while loop.",
+      "array": [
+        "flower",
+        "flow",
+        "flight"
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Move to the next string in 'strs' (index 2).",
+      "array": [
+        "flower",
+        "flow",
+        "flight"
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Current string strs[2] is 'flight'. Check if 'flight' starts with 'flow'. It does not.",
+      "array": [
+        "flower",
+        "flow",
+        "flight"
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Shorten 'prefix' by one character. Current prefix: 'flo'",
+      "array": [
+        "flower",
+        "flow",
+        "flight"
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Check if 'flight' starts with 'flo'. It does not.",
+      "array": [
+        "flower",
+        "flow",
+        "flight"
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Shorten 'prefix' by one character. Current prefix: 'fl'",
+      "array": [
+        "flower",
+        "flow",
+        "flight"
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Check if 'flight' starts with 'fl'. It does. Exit inner while loop.",
+      "array": [
+        "flower",
+        "flow",
+        "flight"
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "All strings in 'strs' have been processed. The loop finishes.",
+      "array": [
+        "flower",
+        "flow",
+        "flight"
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Return the final 'prefix'. Result: 'fl'",
+      "array": [
+        "flower",
+        "flow",
+        "flight"
+      ]
+    }
+  ]
+}

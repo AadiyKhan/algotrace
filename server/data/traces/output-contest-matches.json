@@ -1,0 +1,114 @@
+{
+  "title": "Output Contest Matches",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "String",
+    "Simulation"
+  ],
+  "description": "Simulate a tournament bracket by pairing the first and last elements iteratively.",
+  "target": 4,
+  "pseudocode": "1. matches = ['1', '2', '3', '4']\n2. while matches.length > 1:\n3.   next_round = []\n4.   for i from 0 to matches.length / 2 - 1:\n5.     j = matches.length - 1 - i\n6.     next_round.push('(' + matches[i] + ',' + matches[j] + ')')\n7.   matches = next_round",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize matches for n=4",
+      "array": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Start first round pairing",
+      "array": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Pair first (1) and last (4)",
+      "array": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "i": 0,
+      "j": 3
+    },
+    {
+      "codeLine": 6,
+      "note": "Form (1,4)",
+      "array": [
+        "(1,4)"
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Next pair (2) and (3)",
+      "array": [
+        "(1,4)"
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Pair second (2) and third (3)",
+      "array": [
+        "(1,4)"
+      ],
+      "i": 1,
+      "j": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Form (2,3)",
+      "array": [
+        "(1,4)",
+        "(2,3)"
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Update matches for second round",
+      "array": [
+        "(1,4)",
+        "(2,3)"
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Final round pairing",
+      "array": [
+        "(1,4)",
+        "(2,3)"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Pair (1,4) and (2,3)",
+      "array": [
+        "(1,4)",
+        "(2,3)"
+      ],
+      "i": 0,
+      "j": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Result: ((1,4),(2,3))",
+      "array": [
+        "((1,4),(2,3))"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,133 @@
+{
+  "title": "4 Keys Keyboard",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Dynamic Programming",
+    "Math"
+  ],
+  "description": "Calculate the maximum number of 'A's that can be produced using N keystrokes with operations: A, Ctrl-A, Ctrl-C, Ctrl-V.",
+  "target": 7,
+  "pseudocode": "1. dp = [0...N]\n2. for i = 1 to N:\n3.   dp[i] = dp[i-1] + 1\n4.   for j = 0 to i-3:\n5.     dp[i] = max(dp[i], dp[j] * (i - j - 1))",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize DP array of size 8 for N=7",
+      "array": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Base case: i=1, press A",
+      "array": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "i=2, press A",
+      "array": [
+        0,
+        1,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "i=3, press A",
+      "array": [
+        0,
+        1,
+        2,
+        3,
+        0,
+        0,
+        0,
+        0
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 5,
+      "note": "i=4, check Ctrl-A, Ctrl-C, Ctrl-V (j=0: dp[0]*3=0, base=4)",
+      "array": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        0,
+        0,
+        0
+      ],
+      "i": 4
+    },
+    {
+      "codeLine": 5,
+      "note": "i=5, j=1: dp[1]*3 = 3. max(5, 3) = 5",
+      "array": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        0,
+        0
+      ],
+      "i": 5
+    },
+    {
+      "codeLine": 5,
+      "note": "i=6, j=2: dp[2]*3 = 6. max(6, 6) = 6",
+      "array": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        0
+      ],
+      "i": 6
+    },
+    {
+      "codeLine": 5,
+      "note": "i=7, j=3: dp[3]*3 = 9. max(7, 9) = 9",
+      "array": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        9
+      ],
+      "i": 7
+    }
+  ]
+}

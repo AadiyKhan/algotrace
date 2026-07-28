@@ -1,0 +1,78 @@
+{
+  "title": "Lonely Pixel I",
+  "difficulty": "Medium",
+  "type": "matrix",
+  "tags": [
+    "Array",
+    "Matrix"
+  ],
+  "description": "Find the number of 'B' pixels that are the only 'B' in their row and column.",
+  "target": 1,
+  "pseudocode": "1. count rows and cols for 'B'\n2. iterate through matrix\n3. check if matrix[i][j] == 'B' and counts[i] == 1 and counts[j] == 1\n4. increment result",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize row counts [2, 1] and col counts [1, 1, 1]",
+      "matrix": [
+        [
+          "B",
+          "W",
+          "B"
+        ],
+        [
+          "W",
+          "B",
+          "W"
+        ]
+      ],
+      "i": 0,
+      "j": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Check matrix[0][0] = 'B'. Row count is 2, not lonely.",
+      "matrix": [
+        [
+          "B",
+          "W",
+          "B"
+        ],
+        [
+          "W",
+          "B",
+          "W"
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Check matrix[1][1] = 'B'. Row count is 1, col count is 1. Lonely pixel found.",
+      "matrix": [
+        [
+          "B",
+          "W",
+          "B"
+        ],
+        [
+          "W",
+          "B",
+          "W"
+        ]
+      ],
+      "curr": [
+        1,
+        1
+      ],
+      "visited": [
+        [
+          1,
+          1
+        ]
+      ]
+    }
+  ]
+}

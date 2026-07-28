@@ -1,0 +1,113 @@
+{
+  "title": "Number of Subarrays with Bounded Maximum",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Two Pointers"
+  ],
+  "description": "Find the number of subarrays where the maximum element is between left and right.",
+  "target": "left=2, right=3",
+  "pseudocode": "function countSubarrays(nums, left, right) {\n  let res = 0, prevCount = 0, start = 0;\n  for (let end = 0; end < nums.length; end++) {\n    if (nums[end] > right) {\n      start = end + 1; prevCount = 0;\n    } else if (nums[end] >= left) {\n      prevCount = end - start + 1;\n      res += prevCount;\n    } else {\n      res += prevCount;\n    }\n  }\n  return res;\n}",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Initialize variables: res=0, prevCount=0, start=0",
+      "array": [
+        2,
+        1,
+        4,
+        3
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Process index 0: val 2. 2 is between [2, 3].",
+      "array": [
+        2,
+        1,
+        4,
+        3
+      ],
+      "i": 0,
+      "prevCount": 1
+    },
+    {
+      "codeLine": 8,
+      "note": "Update res: prevCount = 0-0+1 = 1, res = 1.",
+      "array": [
+        2,
+        1,
+        4,
+        3
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Process index 1: val 1. 1 < 2. Add previous valid subarray count.",
+      "array": [
+        2,
+        1,
+        4,
+        3
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 10,
+      "note": "Update res: res += 1 (total 2).",
+      "array": [
+        2,
+        1,
+        4,
+        3
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Process index 2: val 4. 4 > right (3). Reset start and prevCount.",
+      "array": [
+        2,
+        1,
+        4,
+        3
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Reset: start = 3, prevCount = 0.",
+      "array": [
+        2,
+        1,
+        4,
+        3
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Process index 3: val 3. 3 is between [2, 3].",
+      "array": [
+        2,
+        1,
+        4,
+        3
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 8,
+      "note": "Update res: prevCount = 3-3+1 = 1, res = 2 + 1 = 3.",
+      "array": [
+        2,
+        1,
+        4,
+        3
+      ],
+      "i": 3
+    }
+  ]
+}

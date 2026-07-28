@@ -1,0 +1,78 @@
+{
+  "title": "Minesweeper",
+  "difficulty": "Medium",
+  "type": "matrix",
+  "tags": [
+    "Matrix",
+    "DFS",
+    "BFS"
+  ],
+  "description": "Reveal an empty square ('E') in a Minesweeper board. If a mine is hit, change to 'X'. If an adjacent mine count exists, update it. Otherwise, recursively reveal neighbors.",
+  "target": [
+    0,
+    1
+  ],
+  "pseudocode": "1. if board[r][c] == 'M': board[r][c] = 'X'; return\n2. count = countAdjacentMines(r, c)\n3. if count > 0: board[r][c] = count\n4. else: \n5.   board[r][c] = 'B'\n6.   for each neighbor: dfs(neighbor)",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Checking adjacent mines for cell (0,1)",
+      "matrix": [
+        [
+          "E",
+          "E",
+          "E"
+        ],
+        [
+          "E",
+          "M",
+          "E"
+        ]
+      ],
+      "curr": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Count is 1 (mine at 1,1), updating cell",
+      "matrix": [
+        [
+          "E",
+          "1",
+          "E"
+        ],
+        [
+          "E",
+          "M",
+          "E"
+        ]
+      ],
+      "curr": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Count > 0, stopping recursion at (0,1)",
+      "matrix": [
+        [
+          "E",
+          "1",
+          "E"
+        ],
+        [
+          "E",
+          "M",
+          "E"
+        ]
+      ],
+      "curr": [
+        0,
+        1
+      ]
+    }
+  ]
+}

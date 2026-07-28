@@ -1,0 +1,115 @@
+{
+  "title": "Maximum Size Subarray Sum Equals K",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "Prefix Sum"
+  ],
+  "description": "Find the maximum length of a subarray that sums to k using a hash map to store the first occurrence of prefix sums.",
+  "target": 3,
+  "pseudocode": "1. map = {0: -1}, sum = 0, maxLen = 0\n2. for i in range(len(nums)):\n3.   sum += nums[i]\n4.   if (sum - k) in map:\n5.     maxLen = max(maxLen, i - map[sum - k])\n6.   if sum not in map:\n7.     map[sum] = i",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize prefix sum map with 0: -1 to handle subarrays starting at index 0.",
+      "array": [
+        1,
+        -1,
+        5
+      ],
+      "i": null
+    },
+    {
+      "codeLine": 3,
+      "note": "i=0: sum becomes 1.",
+      "array": [
+        1,
+        -1,
+        5
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Check if sum(1) - k(3) = -2 exists in map. No.",
+      "array": [
+        1,
+        -1,
+        5
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Store sum 1 at index 0.",
+      "array": [
+        1,
+        -1,
+        5
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "i=1: sum becomes 1 + (-1) = 0.",
+      "array": [
+        1,
+        -1,
+        5
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Check if sum(0) - k(3) = -3 exists in map. No.",
+      "array": [
+        1,
+        -1,
+        5
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Store sum 0 at index 1.",
+      "array": [
+        1,
+        -1,
+        5
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "i=2: sum becomes 0 + 5 = 5.",
+      "array": [
+        1,
+        -1,
+        5
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Check if sum(5) - k(3) = 2 exists in map. No.",
+      "array": [
+        1,
+        -1,
+        5
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Store sum 5 at index 2.",
+      "array": [
+        1,
+        -1,
+        5
+      ],
+      "i": 2
+    }
+  ]
+}

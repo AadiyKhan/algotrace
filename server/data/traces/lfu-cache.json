@@ -1,0 +1,51 @@
+{
+  "title": "LFU Cache",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Design",
+    "Hash Table",
+    "Linked List"
+  ],
+  "description": "Design and implement a Least Frequently Used (LFU) cache. When the cache reaches capacity, it invalidates the least frequently used item.",
+  "target": 2,
+  "pseudocode": "1. map[key] = {value, freq}\n2. freqMap[freq] = List of keys\n3. minFreq = 0\n4. if get(key): update freqMap and minFreq\n5. if put(key, val): if capacity full, remove key from minFreq list, then add key",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize cache capacity to 2. Put key 1, val 10.",
+      "array": [
+        10
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Put key 2, val 20. Cache is now full.",
+      "array": [
+        10,
+        20
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Get key 1. Frequency of key 1 becomes 2.",
+      "array": [
+        10,
+        20
+      ],
+      "i": 1,
+      "curr": "freq: 2"
+    },
+    {
+      "codeLine": 5,
+      "note": "Put key 3, val 30. Capacity full. Key 2 (freq 1) is evicted.",
+      "array": [
+        10,
+        30
+      ],
+      "i": 3
+    }
+  ]
+}

@@ -1,0 +1,113 @@
+{
+  "title": "Total Hamming Distance",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Bit Manipulation",
+    "Math"
+  ],
+  "description": "Calculate the total Hamming distance between all pairs of integers in an array.",
+  "pseudocode": "1. totalDistance = 0\n2. for bit in 0 to 31:\n3.   countOnes = 0\n4.   for num in nums:\n5.     if (num >> bit) & 1: countOnes++\n6.   totalDistance += countOnes * (n - countOnes)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize totalDistance to 0.",
+      "array": [
+        4,
+        14
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Start processing bit position 0.",
+      "array": [
+        4,
+        14
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Reset countOnes for current bit.",
+      "array": [
+        4,
+        14
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Check bit 0 for 4 (0100) and 14 (1110). countOnes becomes 0.",
+      "array": [
+        4,
+        14
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Add 0 * 2 = 0 to totalDistance.",
+      "array": [
+        4,
+        14
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Move to bit position 2.",
+      "array": [
+        4,
+        14
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Check bit 2 for 4 (0100) and 14 (1110). countOnes becomes 2.",
+      "array": [
+        4,
+        14
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Add 2 * (2 - 2) = 0 to totalDistance.",
+      "array": [
+        4,
+        14
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 2,
+      "note": "Move to bit position 3.",
+      "array": [
+        4,
+        14
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 5,
+      "note": "Check bit 3 for 4 (0100) and 14 (1110). countOnes becomes 1.",
+      "array": [
+        4,
+        14
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 6,
+      "note": "Add 1 * (2 - 1) = 1 to totalDistance. Final result is 2.",
+      "array": [
+        4,
+        14
+      ],
+      "i": 3
+    }
+  ]
+}

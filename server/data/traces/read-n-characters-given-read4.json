@@ -1,0 +1,85 @@
+{
+  "title": "Read N Characters Given Read4",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "String",
+    "Simulation"
+  ],
+  "description": "Read n characters from a file into a buffer using a provided read4 API that reads 4 characters at a time.",
+  "target": 5,
+  "pseudocode": "1. totalRead = 0\n2. buf4 = new char[4]\n3. while totalRead < n:\n4.   count = read4(buf4)\n5.   if count == 0: break\n6.   for i = 0 to count-1:\n7.     if totalRead < n: buf[totalRead++] = buf4[i]\n8. return totalRead",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize totalRead tracker to 0",
+      "array": []
+    },
+    {
+      "codeLine": 4,
+      "note": "Call read4, let's say it returns 4 characters: ['a', 'b', 'c', 'd']",
+      "array": [
+        "a",
+        "b",
+        "c",
+        "d"
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Copy characters to buffer until n=5 is reached",
+      "array": [
+        "a",
+        "b",
+        "c",
+        "d"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 7,
+      "note": "totalRead becomes 4, next read4 call triggered",
+      "array": [
+        "a",
+        "b",
+        "c",
+        "d"
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 4,
+      "note": "Second read4 returns 2 characters: ['e', 'f']",
+      "array": [
+        "a",
+        "b",
+        "c",
+        "d",
+        "e"
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Copy 'e' to buffer, totalRead reaches target 5",
+      "array": [
+        "a",
+        "b",
+        "c",
+        "d",
+        "e"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 8,
+      "note": "Return totalRead = 5",
+      "array": [
+        "a",
+        "b",
+        "c",
+        "d",
+        "e"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,87 @@
+{
+  "title": "Wiggle Sort",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Greedy",
+    "Sorting"
+  ],
+  "description": "Rearrange an array such that nums[0] <= nums[1] >= nums[2] <= nums[3]...",
+  "target": null,
+  "pseudocode": "1. for i from 0 to n-2:\n2.   if (i % 2 == 0 and nums[i] > nums[i+1]) or (i % 2 == 1 and nums[i] < nums[i+1]):\n3.     swap(nums[i], nums[i+1])",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize loop through array [3, 5, 2, 1, 6]",
+      "array": [
+        3,
+        5,
+        2,
+        1,
+        6
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "i=0 (even), nums[0] (3) <= nums[1] (5). Condition false.",
+      "array": [
+        3,
+        5,
+        2,
+        1,
+        6
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "i=1 (odd), nums[1] (5) >= nums[2] (2). Condition false.",
+      "array": [
+        3,
+        5,
+        2,
+        1,
+        6
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "i=2 (even), nums[2] (2) <= nums[3] (1). Condition true, swap.",
+      "array": [
+        3,
+        5,
+        1,
+        2,
+        6
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Swapped indices 2 and 3.",
+      "array": [
+        3,
+        5,
+        1,
+        2,
+        6
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 2,
+      "note": "i=3 (odd), nums[3] (2) >= nums[4] (6). Condition false.",
+      "array": [
+        3,
+        5,
+        1,
+        2,
+        6
+      ],
+      "i": 3
+    }
+  ]
+}

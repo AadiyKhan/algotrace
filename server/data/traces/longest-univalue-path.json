@@ -1,0 +1,243 @@
+{
+  "title": "Longest Univalue Path",
+  "difficulty": "Medium",
+  "type": "tree",
+  "tags": [
+    "Tree",
+    "DFS",
+    "Binary Tree"
+  ],
+  "description": "Find the length of the longest path where each node in the path has the same value.",
+  "target": null,
+  "pseudocode": "1: let maxLen = 0;\n2: function dfs(node) {\n3:   if (!node) return 0;\n4:   let left = dfs(node.left);\n5:   let right = dfs(node.right);\n6:   let arrowLeft = 0, arrowRight = 0;\n7:   if (node.left && node.left.val === node.val) arrowLeft = left + 1;\n8:   if (node.right && node.right.val === node.val) arrowRight = right + 1;\n9:   maxLen = Math.max(maxLen, arrowLeft + arrowRight);\n10:  return Math.max(arrowLeft, arrowRight);\n11: }",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Starting DFS at root (ID 0, val 5)",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 5,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 4,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 2,
+          "val": 5,
+          "left": null,
+          "right": 5
+        },
+        {
+          "id": 3,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 5,
+          "val": 5,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Descending to left child (ID 1, val 4)",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 5,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 4,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 2,
+          "val": 5,
+          "left": null,
+          "right": 5
+        },
+        {
+          "id": 3,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 5,
+          "val": 5,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Evaluating left path for root 5: 5->4 no match",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 5,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 4,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 2,
+          "val": 5,
+          "left": null,
+          "right": 5
+        },
+        {
+          "id": 3,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 5,
+          "val": 5,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        0,
+        1,
+        3,
+        4
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Evaluating right path for root 5: 5->5 match found",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 5,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 4,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 2,
+          "val": 5,
+          "left": null,
+          "right": 5
+        },
+        {
+          "id": 3,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 5,
+          "val": 5,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        0,
+        1,
+        3,
+        4,
+        2,
+        5
+      ]
+    },
+    {
+      "codeLine": 9,
+      "note": "Updating maxLen to 2 (path 5-5-5)",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 5,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 4,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 2,
+          "val": 5,
+          "left": null,
+          "right": 5
+        },
+        {
+          "id": 3,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 5,
+          "val": 5,
+          "left": null,
+          "right": null
+        }
+      ]
+    }
+  ]
+}

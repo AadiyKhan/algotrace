@@ -1,0 +1,69 @@
+{
+  "title": "Find And Replace In String",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "String",
+    "Sorting"
+  ],
+  "description": "Replace substrings in a source string based on starting indices and target replacements.",
+  "target": "s = \"abcd\", indices = [0, 2], sources = [\"ab\", \"ec\"], targets = [\"eee\", \"ffff\"]",
+  "pseudocode": "1. map = sort indices with sources/targets by index desc\n2. for each (i, src, tgt) in map:\n3.   if s.substring(i, i + src.length) == src:\n4.     s = s.slice(0, i) + tgt + s.slice(i + src.length)\n5. return s",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Sorted indices by position descending to prevent index shifting issues.",
+      "array": [
+        "a",
+        "b",
+        "c",
+        "d"
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Processing index 2: source 'ec' does not match 'cd'.",
+      "i": 2,
+      "array": [
+        "a",
+        "b",
+        "c",
+        "d"
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Checking index 0: source 'ab' matches substring starting at 0.",
+      "i": 0,
+      "array": [
+        "a",
+        "b",
+        "c",
+        "d"
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Replacing 'ab' with 'eee'. New string: 'eeecd'.",
+      "array": [
+        "e",
+        "e",
+        "e",
+        "c",
+        "d"
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Final result returned: 'eeecd'.",
+      "array": [
+        "e",
+        "e",
+        "e",
+        "c",
+        "d"
+      ]
+    }
+  ]
+}

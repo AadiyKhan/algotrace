@@ -1,0 +1,161 @@
+{
+  "title": "Unique Paths III",
+  "difficulty": "Hard",
+  "type": "matrix",
+  "tags": [
+    "Array",
+    "Backtracking",
+    "Matrix"
+  ],
+  "description": "Find the number of paths from starting square to ending square that walk over every non-obstacle square exactly once.",
+  "target": null,
+  "pseudocode": "1. count empty squares\n2. dfs(r, c, remaining):\n3.   if grid[r][c] == 2 and remaining == 0: return 1\n4.   temp = grid[r][c], grid[r][c] = -1\n5.   paths = sum(dfs(nr, nc, remaining-1))\n6.   grid[r][c] = temp\n7.   return paths",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Counting empty squares to track progress. Grid is [[1, 0], [0, 2]]. Empty count = 2.",
+      "matrix": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          2
+        ]
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Starting DFS from [0, 0]. Remaining squares to visit: 3 (including start).",
+      "matrix": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Marking [0, 0] as visited (-1).",
+      "matrix": [
+        [
+          -1,
+          0
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Exploring neighbors of [0, 0]: [0, 1] and [1, 0].",
+      "matrix": [
+        [
+          -1,
+          0
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Recursing to [0, 1].",
+      "matrix": [
+        [
+          -1,
+          0
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "curr": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Marking [0, 1] as visited.",
+      "matrix": [
+        [
+          -1,
+          -1
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "curr": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Recursing to [1, 1] (target).",
+      "matrix": [
+        [
+          -1,
+          -1
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "curr": [
+        1,
+        1
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Target reached with all empty squares visited. Path found.",
+      "matrix": [
+        [
+          -1,
+          -1
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "curr": [
+        1,
+        1
+      ]
+    }
+  ]
+}

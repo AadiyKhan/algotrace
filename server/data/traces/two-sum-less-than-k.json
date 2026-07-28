@@ -1,0 +1,109 @@
+{
+  "title": "Two Sum Less Than K",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Two Pointers",
+    "Sorting"
+  ],
+  "description": "Find the maximum sum of two elements in an array such that the sum is less than K.",
+  "target": 20,
+  "pseudocode": "1. sort(nums)\n2. left = 0, right = n - 1\n3. max_sum = -1\n4. while left < right:\n5.   sum = nums[left] + nums[right]\n6.   if sum < k:\n7.     max_sum = max(max_sum, sum)\n8.     left++\n9.   else:\n10.    right--",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Sort the array to use the two-pointer approach.",
+      "array": [
+        10,
+        20,
+        30,
+        40
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Initialize pointers: left at index 0, right at index 3.",
+      "array": [
+        10,
+        20,
+        30,
+        40
+      ],
+      "i": 0,
+      "j": 3
+    },
+    {
+      "codeLine": 5,
+      "note": "Calculate sum of nums[0] (10) + nums[3] (40) = 50.",
+      "array": [
+        10,
+        20,
+        30,
+        40
+      ],
+      "i": 0,
+      "j": 3
+    },
+    {
+      "codeLine": 10,
+      "note": "50 >= 20, so decrement right pointer.",
+      "array": [
+        10,
+        20,
+        30,
+        40
+      ],
+      "i": 0,
+      "j": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Calculate sum of nums[0] (10) + nums[2] (30) = 40.",
+      "array": [
+        10,
+        20,
+        30,
+        40
+      ],
+      "i": 0,
+      "j": 2
+    },
+    {
+      "codeLine": 10,
+      "note": "40 >= 20, decrement right pointer.",
+      "array": [
+        10,
+        20,
+        30,
+        40
+      ],
+      "i": 0,
+      "j": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Calculate sum of nums[0] (10) + nums[1] (20) = 30.",
+      "array": [
+        10,
+        20,
+        30,
+        40
+      ],
+      "i": 0,
+      "j": 1
+    },
+    {
+      "codeLine": 10,
+      "note": "30 >= 20, decrement right pointer. Loop terminates.",
+      "array": [
+        10,
+        20,
+        30,
+        40
+      ],
+      "i": 0,
+      "j": 0
+    }
+  ]
+}

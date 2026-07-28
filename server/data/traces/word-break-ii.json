@@ -1,0 +1,75 @@
+{
+  "title": "Word Break II",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Backtracking",
+    "Dynamic Programming",
+    "Memoization"
+  ],
+  "description": "Given a string s and a dictionary of strings wordDict, add spaces in s to construct a sentence where each word is a valid dictionary word.",
+  "target": "catsanddog",
+  "pseudocode": "1. memo = {}\n2. function backtrack(s):\n3.   if s in memo: return memo[s]\n4.   if s == '': return ['']\n5.   res = []\n6.   for word in wordDict:\n7.     if s.startsWith(word):\n8.       subSentences = backtrack(s.slice(word.length))\n9.       for sub in subSentences:\n10.        res.append((word + (sub ? ' ' : '') + sub).trim())\n11.  memo[s] = res\n12.  return res",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Starting recursion for 'catsanddog' with wordDict ['cat', 'cats', 'and', 'sand', 'dog']",
+      "array": [
+        "c",
+        "a",
+        "t",
+        "s",
+        "a",
+        "n",
+        "d",
+        "d",
+        "o",
+        "g"
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Checking word 'cat'. Matches prefix.",
+      "i": 0
+    },
+    {
+      "codeLine": 8,
+      "note": "Recursive call for remaining string 'sanddog'",
+      "i": 3
+    },
+    {
+      "codeLine": 6,
+      "note": "Checking word 'sand'. Matches prefix of 'sanddog'.",
+      "i": 3
+    },
+    {
+      "codeLine": 8,
+      "note": "Recursive call for remaining string 'dog'",
+      "i": 7
+    },
+    {
+      "codeLine": 6,
+      "note": "Checking word 'dog'. Matches prefix of 'dog'.",
+      "i": 7
+    },
+    {
+      "codeLine": 4,
+      "note": "Base case reached for empty string, returning ['']",
+      "i": 10
+    },
+    {
+      "codeLine": 10,
+      "note": "Combining results: 'cat' + ' ' + 'sand' + ' ' + 'dog'",
+      "i": 10
+    },
+    {
+      "codeLine": 11,
+      "note": "Memoizing results for current suffixes",
+      "visited": [
+        0,
+        3,
+        7
+      ]
+    }
+  ]
+}

@@ -1,0 +1,95 @@
+{
+  "title": "Unique Email Addresses",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "String",
+    "Hash Table"
+  ],
+  "description": "Count the number of unique email addresses after processing local names by ignoring dots and ignoring everything after a plus sign.",
+  "target": 2,
+  "pseudocode": "1: set = new Set()\n2: for email of emails:\n3:   [local, domain] = email.split('@')\n4:   local = local.split('+')[0].replace(/\\./g, '')\n5:   set.add(local + '@' + domain)\n6: return set.size",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize a Set to store unique processed email addresses.",
+      "array": [
+        "test.email+alex@leetcode.com",
+        "testemail@leetcode.com"
+      ],
+      "i": "Set initialized"
+    },
+    {
+      "codeLine": 3,
+      "note": "Split the first email into local and domain parts.",
+      "array": [
+        "test.email+alex@leetcode.com",
+        "testemail@leetcode.com"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Clean the local part: remove dots and ignore content after plus sign.",
+      "array": [
+        "test.email+alex@leetcode.com",
+        "testemail@leetcode.com"
+      ],
+      "i": 0,
+      "curr": "testemail@leetcode.com"
+    },
+    {
+      "codeLine": 5,
+      "note": "Add processed email to the set.",
+      "array": [
+        "test.email+alex@leetcode.com",
+        "testemail@leetcode.com"
+      ],
+      "i": 0,
+      "visited": [
+        "testemail@leetcode.com"
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Process second email.",
+      "array": [
+        "test.email+alex@leetcode.com",
+        "testemail@leetcode.com"
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Clean local part: remains testemail.",
+      "array": [
+        "test.email+alex@leetcode.com",
+        "testemail@leetcode.com"
+      ],
+      "i": 1,
+      "curr": "testemail@leetcode.com"
+    },
+    {
+      "codeLine": 5,
+      "note": "Attempt to add duplicate to set; size remains 1.",
+      "array": [
+        "test.email+alex@leetcode.com",
+        "testemail@leetcode.com"
+      ],
+      "i": 1,
+      "visited": [
+        "testemail@leetcode.com"
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Return the size of the set.",
+      "array": [
+        "test.email+alex@leetcode.com",
+        "testemail@leetcode.com"
+      ],
+      "i": "Done"
+    }
+  ]
+}

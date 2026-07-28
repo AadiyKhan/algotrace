@@ -1,0 +1,87 @@
+{
+  "title": "Design Excel Sum Formula",
+  "difficulty": "Hard",
+  "type": "matrix",
+  "tags": [
+    "Design",
+    "Matrix",
+    "Hash Table"
+  ],
+  "description": "Design a function to calculate the sum of cells in a spreadsheet based on provided ranges.",
+  "target": null,
+  "pseudocode": "1. matrix[r][c] = val\n2. sum(r, c, strings) {\n3.   refs = parse(strings)\n4.   cells[r][c] = refs\n5.   return compute(r, c)\n6. }",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize cell A1 with value 5",
+      "matrix": [
+        [
+          5,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 1,
+      "note": "Initialize cell A2 with value 3",
+      "matrix": [
+        [
+          5,
+          0
+        ],
+        [
+          3,
+          0
+        ]
+      ],
+      "curr": [
+        1,
+        0
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Parse formula 'A1:A2' for cell B1",
+      "matrix": [
+        [
+          5,
+          0
+        ],
+        [
+          3,
+          0
+        ]
+      ],
+      "curr": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Compute sum of range A1:A2",
+      "matrix": [
+        [
+          5,
+          8
+        ],
+        [
+          3,
+          0
+        ]
+      ],
+      "curr": [
+        0,
+        1
+      ]
+    }
+  ]
+}

@@ -1,0 +1,88 @@
+{
+  "title": "X of a Kind in a Deck of Cards",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "Math"
+  ],
+  "description": "Determine if the deck can be partitioned into groups of size X where X >= 2.",
+  "target": null,
+  "pseudocode": "1. counts = new Map()\n2. for card in deck: counts[card]++\n3. vals = counts.values()\n4. g = vals[0]\n5. for v in vals: g = gcd(g, v)\n6. return g >= 2",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize empty frequency map",
+      "array": [
+        1,
+        1,
+        2,
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Count occurrences: {1: 2, 2: 4}",
+      "array": [
+        1,
+        1,
+        2,
+        2,
+        2,
+        2
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Extract frequency values: [2, 4]",
+      "array": [
+        1,
+        1,
+        2,
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Set initial GCD candidate g = 2",
+      "array": [
+        1,
+        1,
+        2,
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Calculate GCD(2, 4) = 2",
+      "array": [
+        1,
+        1,
+        2,
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Result is true since 2 >= 2",
+      "array": [
+        1,
+        1,
+        2,
+        2,
+        2,
+        2
+      ]
+    }
+  ]
+}

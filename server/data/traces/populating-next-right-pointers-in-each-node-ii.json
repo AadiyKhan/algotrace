@@ -1,0 +1,140 @@
+{
+  "title": "Populating Next Right Pointers in Each Node II",
+  "difficulty": "Medium",
+  "type": "tree",
+  "tags": [
+    "Tree",
+    "Breadth-First Search",
+    "Linked List"
+  ],
+  "description": "Populate each next pointer to point to its next right node in a binary tree.",
+  "pseudocode": "let head = root;\nwhile (head) {\n  let dummy = {next: null}, tail = dummy;\n  for (let curr = head; curr; curr = curr.next) {\n    if (curr.left) { tail.next = curr.left; tail = tail.next; }\n    if (curr.right) { tail.next = curr.right; tail = tail.next; }\n  }\n  head = dummy.next;\n}",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize head to root node 1.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": 5
+        },
+        {
+          "id": 3,
+          "val": 4,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 5,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Start processing level 1 (node 1). Dummy node created.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        }
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Connect node 2 as next for node 1's children.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": 5
+        }
+      ],
+      "visited": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Head moves to the next level starting at node 2.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": 5
+        }
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Traversing level 2 nodes, linking next pointers.",
+      "treeNodes": [
+        {
+          "id": 1,
+          "val": 2,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": 5
+        }
+      ],
+      "visited": [
+        1,
+        2,
+        3,
+        4
+      ]
+    }
+  ]
+}

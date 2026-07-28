@@ -1,0 +1,76 @@
+{
+  "title": "Self Dividing Numbers",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Math"
+  ],
+  "description": "Find all self-dividing numbers in a range [left, right]. A number is self-dividing if every digit divides the number without a remainder.",
+  "target": null,
+  "pseudocode": "1: result = []\n2: for n from left to right:\n3:   temp = n, isSelf = true\n4:   while temp > 0:\n5:     digit = temp % 10\n6:     if digit == 0 or n % digit != 0: isSelf = false, break\n7:     temp = Math.floor(temp / 10)\n8:   if isSelf: result.push(n)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize empty result array.",
+      "array": []
+    },
+    {
+      "codeLine": 2,
+      "note": "Start loop for range [10, 12]. n = 10.",
+      "array": [],
+      "i": 10
+    },
+    {
+      "codeLine": 5,
+      "note": "Check last digit of 10: 0. 10 is not self-dividing.",
+      "array": [],
+      "i": 10
+    },
+    {
+      "codeLine": 2,
+      "note": "Next n = 11.",
+      "array": [],
+      "i": 11
+    },
+    {
+      "codeLine": 6,
+      "note": "11 % 1 == 0. Digit 1 divides 11.",
+      "array": [],
+      "i": 11
+    },
+    {
+      "codeLine": 8,
+      "note": "11 is self-dividing, add to result.",
+      "array": [
+        11
+      ],
+      "i": 11
+    },
+    {
+      "codeLine": 2,
+      "note": "Next n = 12.",
+      "array": [
+        11
+      ],
+      "i": 12
+    },
+    {
+      "codeLine": 6,
+      "note": "12 % 2 == 0 and 12 % 1 == 0.",
+      "array": [
+        11
+      ],
+      "i": 12
+    },
+    {
+      "codeLine": 8,
+      "note": "12 is self-dividing, add to result.",
+      "array": [
+        11,
+        12
+      ],
+      "i": 12
+    }
+  ]
+}

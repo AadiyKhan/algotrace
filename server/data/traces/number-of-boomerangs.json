@@ -1,0 +1,231 @@
+{
+  "title": "Number of Boomerangs",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "Math"
+  ],
+  "description": "Given n points on a plane, return the number of boomerangs. A boomerang is a tuple of points (i, j, k) such that the distance between i and j equals the distance between i and k.",
+  "target": null,
+  "pseudocode": "1. count = 0\n2. for i from 0 to points.length - 1:\n3.   distMap = {}\n4.   for j from 0 to points.length - 1:\n5.     d = squaredDistance(points[i], points[j])\n6.     count += (distMap[d] || 0) * 2\n7.     distMap[d] = (distMap[d] || 0) + 1",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize count to 0.",
+      "array": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ]
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Start iteration with i=0.",
+      "array": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ]
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Calculate distance from [0,0] to [1,0]: d=1.",
+      "array": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ]
+      ],
+      "i": 0,
+      "j": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "Map distance 1: count becomes 1.",
+      "array": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ]
+      ],
+      "i": 0,
+      "j": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Calculate distance from [0,0] to [2,0]: d=4.",
+      "array": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ]
+      ],
+      "i": 0,
+      "j": 2
+    },
+    {
+      "codeLine": 7,
+      "note": "Map distance 4: count remains 0.",
+      "array": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ]
+      ],
+      "i": 0,
+      "j": 2
+    },
+    {
+      "codeLine": 2,
+      "note": "Move to i=1.",
+      "array": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ]
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Calculate distance from [1,0] to [0,0]: d=1.",
+      "array": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ]
+      ],
+      "i": 1,
+      "j": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Distance 1 seen before (count += 1 * 2 = 2).",
+      "array": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ]
+      ],
+      "i": 1,
+      "j": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Calculate distance from [1,0] to [2,0]: d=1.",
+      "array": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ]
+      ],
+      "i": 1,
+      "j": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Distance 1 seen before (count += 2 * 2 = 4).",
+      "array": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ]
+      ],
+      "i": 1,
+      "j": 2
+    }
+  ]
+}

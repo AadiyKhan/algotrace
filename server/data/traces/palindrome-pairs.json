@@ -1,0 +1,66 @@
+{
+  "title": "Palindrome Pairs",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "String",
+    "Hash Table"
+  ],
+  "description": "Find all unique pairs of distinct indices [i, j] in the given list of words such that the concatenation of words[i] + words[j] is a palindrome.",
+  "pseudocode": "1. map = words.map((w, i) => [w, i]);\n2. for (let i = 0; i < words.length; i++) {\n3.   for (let j = 0; j <= words[i].length; j++) {\n4.     let prefix = words[i].substring(0, j);\n5.     let suffix = words[i].substring(j);\n6.     if (isPalindrome(prefix)) {\n7.       let target = suffix.split('').reverse().join('');\n8.       if (map.has(target) && map.get(target) !== i) res.push([map.get(target), i]);\n9.     }\n10.    if (isPalindrome(suffix)) {\n11.      let target = prefix.split('').reverse().join('');\n12.      if (map.has(target) && map.get(target) !== i && suffix !== '') res.push([i, map.get(target)]);\n13.    }\n14.  }\n15. }",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize map for quick lookup: {abcd: 0, dcba: 1}",
+      "array": [
+        "abcd",
+        "dcba"
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Start iteration for word 'abcd' (index 0)",
+      "i": 0,
+      "array": [
+        "abcd",
+        "dcba"
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Split 'abcd' into prefix '' and suffix 'abcd'",
+      "j": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Prefix '' is palindrome, look for reverse of suffix 'abcd' -> 'dcba'",
+      "i": 0
+    },
+    {
+      "codeLine": 8,
+      "note": "Found 'dcba' at index 1. Add pair [1, 0]",
+      "i": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Move to word 'dcba' (index 1)",
+      "i": 1
+    },
+    {
+      "codeLine": 10,
+      "note": "Split 'dcba' into prefix 'dcba' and suffix '', check suffixes",
+      "j": 4
+    },
+    {
+      "codeLine": 12,
+      "note": "Suffix '' is palindrome. Look for reverse of 'dcba' -> 'abcd'",
+      "i": 1
+    },
+    {
+      "codeLine": 12,
+      "note": "Found 'abcd' at index 0. Add pair [1, 0] is invalid, look for [i, target] -> [1, 0]",
+      "i": 1
+    }
+  ]
+}

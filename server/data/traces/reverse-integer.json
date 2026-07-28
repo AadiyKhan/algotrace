@@ -1,0 +1,140 @@
+{
+  "title": "Reverse Integer",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Math"
+  ],
+  "description": "Given a signed 32-bit integer x, return x with its digits reversed. If reversing x causes the value to go outside the signed 32-bit integer range [-2^31, 2^31 - 1], then return 0.",
+  "target": 123,
+  "pseudocode": "let rev = 0;\nwhile (x !== 0) {\n  let pop = x % 10;\n  x = Math.trunc(x / 10);\n  if (rev > 214748364 || rev < -214748364) return 0;\n  rev = rev * 10 + pop;\n}\nreturn rev;",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize result accumulator rev = 0 for input x = 123.",
+      "array": []
+    },
+    {
+      "codeLine": 2,
+      "note": "Check loop condition: x (123) !== 0 is true.",
+      "array": []
+    },
+    {
+      "codeLine": 3,
+      "note": "Pop the last digit: pop = 123 % 10 = 3.",
+      "array": []
+    },
+    {
+      "codeLine": 4,
+      "note": "Truncate x: x = Math.trunc(123 / 10) = 12.",
+      "array": []
+    },
+    {
+      "codeLine": 5,
+      "note": "Check overflow bounds: rev (0) is within [-214748364, 214748364].",
+      "array": []
+    },
+    {
+      "codeLine": 6,
+      "note": "Append popped digit to rev: rev = 0 * 10 + 3 = 3.",
+      "array": [
+        3
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Check loop condition: x (12) !== 0 is true.",
+      "array": [
+        3
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Pop the last digit: pop = 12 % 10 = 2.",
+      "array": [
+        3
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Truncate x: x = Math.trunc(12 / 10) = 1.",
+      "array": [
+        3
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Check overflow bounds: rev (3) is within safe range.",
+      "array": [
+        3
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Append popped digit to rev: rev = 3 * 10 + 2 = 32.",
+      "array": [
+        3,
+        2
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Check loop condition: x (1) !== 0 is true.",
+      "array": [
+        3,
+        2
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Pop the last digit: pop = 1 % 10 = 1.",
+      "array": [
+        3,
+        2
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Truncate x: x = Math.trunc(1 / 10) = 0.",
+      "array": [
+        3,
+        2
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Check overflow bounds: rev (32) is within safe range.",
+      "array": [
+        3,
+        2
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Append popped digit to rev: rev = 32 * 10 + 1 = 321.",
+      "array": [
+        3,
+        2,
+        1
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Check loop condition: x (0) !== 0 is false. Loop terminates.",
+      "array": [
+        3,
+        2,
+        1
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Return reversed integer 321.",
+      "array": [
+        3,
+        2,
+        1
+      ]
+    }
+  ]
+}

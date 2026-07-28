@@ -1,0 +1,57 @@
+{
+  "title": "Closest Leaf in a Binary Tree",
+  "difficulty": "Medium",
+  "type": "tree",
+  "tags": [
+    "Tree",
+    "Graph",
+    "Breadth-First Search"
+  ],
+  "description": "Find the value of the leaf node that is closest to a target node k in a binary tree.",
+  "target": 2,
+  "pseudocode": "1. Build an undirected graph from the tree.\n2. Add all leaves to a queue.\n3. Run BFS starting from target node.\n4. Return the value of the first leaf reached.",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Building adjacency list for tree: 1->[2, 3], 2->[1], 3->[1].",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Identify leaves: node 1 (val 2) and node 2 (val 3).",
+      "visited": [
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Start BFS from target node 2 (id 1).",
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Reached leaf node 1 (val 2) first. Return 2.",
+      "curr": 1
+    }
+  ]
+}

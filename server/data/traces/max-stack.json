@@ -1,0 +1,56 @@
+{
+  "title": "Max Stack",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Stack",
+    "Design"
+  ],
+  "description": "Design a Max Stack that supports push, pop, top, peekMax, and popMax.",
+  "target": 5,
+  "pseudocode": "1. push(x): stack.push(x), maxStack.push(max(x, maxStack.top))\n2. pop(): stack.pop(), maxStack.pop()\n3. top(): return stack.top()\n4. peekMax(): return maxStack.top()\n5. popMax(): val = peekMax(), temp = []\n6. while stack.top() != val: temp.push(stack.pop()), maxStack.pop()\n7. stack.pop(), maxStack.pop()\n8. while temp: push(temp.pop())",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Push 5: stack becomes [5], maxStack becomes [5]",
+      "array": [
+        5
+      ]
+    },
+    {
+      "codeLine": 1,
+      "note": "Push 2: stack becomes [5, 2], maxStack becomes [5, 5]",
+      "array": [
+        5,
+        2
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "popMax triggered for 5",
+      "array": [
+        5,
+        2
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Pop 2 into temp, temp=[2]",
+      "array": [
+        5
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Pop max value 5 from stack",
+      "array": []
+    },
+    {
+      "codeLine": 8,
+      "note": "Restore 2 from temp",
+      "array": [
+        2
+      ]
+    }
+  ]
+}

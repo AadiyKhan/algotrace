@@ -1,0 +1,173 @@
+{
+  "title": "Partition Array Into Three Parts With Equal Sum",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Greedy"
+  ],
+  "description": "Determine if an array can be partitioned into three contiguous parts with equal sum.",
+  "target": 6,
+  "pseudocode": "1. total = arr.reduce(sum)\n2. if total % 3 != 0 return false\n3. target = total / 3\n4. count = 0, currentSum = 0\n5. for i from 0 to arr.length - 1:\n6.   currentSum += arr[i]\n7.   if currentSum == target:\n8.     count += 1\n9.     currentSum = 0\n10. return count >= 3",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Calculate total sum: 0+2+1+-6+6+-7+9+1+2+0+1 = 9",
+      "array": [
+        0,
+        2,
+        1,
+        -6,
+        6,
+        -7,
+        9,
+        1,
+        2,
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Target sum for each part is 9 / 3 = 3",
+      "array": [
+        0,
+        2,
+        1,
+        -6,
+        6,
+        -7,
+        9,
+        1,
+        2,
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Traversing... found first partition sum 3 at index 2",
+      "array": [
+        0,
+        2,
+        1,
+        -6,
+        6,
+        -7,
+        9,
+        1,
+        2,
+        0,
+        1
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 8,
+      "note": "Increment count to 1",
+      "array": [
+        0,
+        2,
+        1,
+        -6,
+        6,
+        -7,
+        9,
+        1,
+        2,
+        0,
+        1
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Traversing... found second partition sum 3 at index 6",
+      "array": [
+        0,
+        2,
+        1,
+        -6,
+        6,
+        -7,
+        9,
+        1,
+        2,
+        0,
+        1
+      ],
+      "i": 6
+    },
+    {
+      "codeLine": 8,
+      "note": "Increment count to 2",
+      "array": [
+        0,
+        2,
+        1,
+        -6,
+        6,
+        -7,
+        9,
+        1,
+        2,
+        0,
+        1
+      ],
+      "i": 6
+    },
+    {
+      "codeLine": 6,
+      "note": "Traversing... found third partition sum 3 at index 10",
+      "array": [
+        0,
+        2,
+        1,
+        -6,
+        6,
+        -7,
+        9,
+        1,
+        2,
+        0,
+        1
+      ],
+      "i": 10
+    },
+    {
+      "codeLine": 8,
+      "note": "Increment count to 3",
+      "array": [
+        0,
+        2,
+        1,
+        -6,
+        6,
+        -7,
+        9,
+        1,
+        2,
+        0,
+        1
+      ],
+      "i": 10
+    },
+    {
+      "codeLine": 10,
+      "note": "Final count is 3, return true",
+      "array": [
+        0,
+        2,
+        1,
+        -6,
+        6,
+        -7,
+        9,
+        1,
+        2,
+        0,
+        1
+      ]
+    }
+  ]
+}

@@ -1,0 +1,131 @@
+{
+  "title": "Monotonic Array",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array"
+  ],
+  "description": "Determine if an array is monotonic (either non-increasing or non-decreasing).",
+  "pseudocode": "1. inc = true, dec = true\n2. for i = 0 to n-2:\n3.   if arr[i] > arr[i+1]: inc = false\n4.   if arr[i] < arr[i+1]: dec = false\n5. return inc or dec",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize inc and dec flags to true.",
+      "array": [
+        1,
+        2,
+        2,
+        3
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Start loop iteration for i = 0.",
+      "array": [
+        1,
+        2,
+        2,
+        3
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "1 > 2 is false, inc remains true.",
+      "array": [
+        1,
+        2,
+        2,
+        3
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "1 < 2 is true, dec becomes false.",
+      "array": [
+        1,
+        2,
+        2,
+        3
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Next iteration i = 1.",
+      "array": [
+        1,
+        2,
+        2,
+        3
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "2 > 2 is false, inc remains true.",
+      "array": [
+        1,
+        2,
+        2,
+        3
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "2 < 2 is false, dec remains false.",
+      "array": [
+        1,
+        2,
+        2,
+        3
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Next iteration i = 2.",
+      "array": [
+        1,
+        2,
+        2,
+        3
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "2 > 3 is false, inc remains true.",
+      "array": [
+        1,
+        2,
+        2,
+        3
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "2 < 3 is true, dec remains false.",
+      "array": [
+        1,
+        2,
+        2,
+        3
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Loop finished, inc is true, array is monotonic.",
+      "array": [
+        1,
+        2,
+        2,
+        3
+      ]
+    }
+  ]
+}

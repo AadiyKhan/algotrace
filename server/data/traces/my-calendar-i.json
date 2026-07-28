@@ -1,0 +1,107 @@
+{
+  "title": "My Calendar I",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Design",
+    "Segment Tree"
+  ],
+  "description": "Store booking intervals [start, end) and ensure no double booking.",
+  "pseudocode": "1. bookings = []\n2. function book(start, end) {\n3.   for (let [s, e] of bookings) {\n4.     if (max(start, s) < min(end, e)) return false\n5.   }\n6.   bookings.push([start, end])\n7.   return true\n8. }",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Booking [10, 20]",
+      "array": []
+    },
+    {
+      "codeLine": 6,
+      "note": "No overlap, adding [10, 20]",
+      "array": [
+        [
+          10,
+          20
+        ]
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Booking [15, 25]",
+      "array": [
+        [
+          10,
+          20
+        ]
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Checking overlap with [10, 20]",
+      "i": 0,
+      "array": [
+        [
+          10,
+          20
+        ]
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Overlap detected: max(15, 10)=15 < min(25, 20)=20",
+      "i": 0,
+      "array": [
+        [
+          10,
+          20
+        ]
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Booking [20, 30]",
+      "array": [
+        [
+          10,
+          20
+        ]
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Checking overlap with [10, 20]",
+      "i": 0,
+      "array": [
+        [
+          10,
+          20
+        ]
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "No overlap: max(20, 10)=20 is not < min(30, 20)=20",
+      "i": 0,
+      "array": [
+        [
+          10,
+          20
+        ]
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "No overlap found, adding [20, 30]",
+      "array": [
+        [
+          10,
+          20
+        ],
+        [
+          20,
+          30
+        ]
+      ]
+    }
+  ]
+}

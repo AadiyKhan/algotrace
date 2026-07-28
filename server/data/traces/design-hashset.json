@@ -1,0 +1,78 @@
+{
+  "title": "Design HashSet",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "Design"
+  ],
+  "description": "Design a HashSet without using any built-in hash table libraries. Uses buckets to handle collisions.",
+  "target": null,
+  "pseudocode": "1. function add(key): \n2.   index = key % 1000\n3.   if !bucket[index]: bucket[index] = []\n4.   if key not in bucket[index]: bucket[index].push(key)\n5. function contains(key):\n6.   index = key % 1000\n7.   return bucket[index] includes key",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Adding key 1001 to the HashSet.",
+      "array": [
+        null,
+        [
+          1001
+        ],
+        null
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Calculating index: 1001 % 1000 = 1.",
+      "i": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Initializing bucket at index 1.",
+      "array": [
+        null,
+        [],
+        null
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Pushing 1001 into bucket[1].",
+      "array": [
+        null,
+        [
+          1001
+        ],
+        null
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Checking if 1001 exists.",
+      "array": [
+        null,
+        [
+          1001
+        ],
+        null
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Calculating index for key 1001: index = 1.",
+      "i": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "Returning true as 1001 is present in bucket[1].",
+      "array": [
+        null,
+        [
+          1001
+        ],
+        null
+      ]
+    }
+  ]
+}

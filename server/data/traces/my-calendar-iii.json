@@ -1,0 +1,71 @@
+{
+  "title": "My Calendar III",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Design",
+    "Segment Tree",
+    "Ordered Map"
+  ],
+  "description": "Implement a MyCalendarThree class to store events and return the maximum number of overlapping events (k-booking) after each insertion.",
+  "pseudocode": "1: map = new Map()\n2: function book(start, end) {\n3:   map.set(start, (map.get(start) || 0) + 1)\n4:   map.set(end, (map.get(end) || 0) - 1)\n5:   maxK = 0, curr = 0\n6:   sortedKeys = [...map.keys()].sort((a,b) => a - b)\n7:   for (key of sortedKeys) {\n8:     curr += map.get(key)\n9:     maxK = Math.max(maxK, curr)\n10:  }\n11:  return maxK\n12: }",
+  "steps": [
+    {
+      "codeLine": 3,
+      "note": "Book [10, 20]: Increment at 10",
+      "array": [
+        10,
+        20
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Book [10, 20]: Decrement at 20",
+      "array": [
+        10,
+        20
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Sweeping: at key 10, curr becomes 1",
+      "i": 10
+    },
+    {
+      "codeLine": 9,
+      "note": "MaxK updated to 1",
+      "i": 10
+    },
+    {
+      "codeLine": 3,
+      "note": "Book [15, 25]: Increment at 15",
+      "array": [
+        10,
+        15,
+        20,
+        25
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Book [15, 25]: Decrement at 25",
+      "array": [
+        10,
+        15,
+        20,
+        25
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Sweeping: at key 10 (curr=1), key 15 (curr=2)",
+      "i": 15
+    },
+    {
+      "codeLine": 9,
+      "note": "MaxK updated to 2",
+      "i": 15
+    }
+  ]
+}

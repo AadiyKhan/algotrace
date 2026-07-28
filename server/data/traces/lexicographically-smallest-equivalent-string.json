@@ -1,0 +1,133 @@
+{
+  "title": "Lexicographically Smallest Equivalent String",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Union-Find",
+    "String",
+    "Graph"
+  ],
+  "description": "Find the lexicographically smallest equivalent string using union-find on characters.",
+  "target": "baseStr = 'parker', equivalentPairs = [['a', 'p'], ['k', 'r']]",
+  "pseudocode": "1. parent = [0..25]\n2. for u, v in pairs:\n3.   rootU = find(u), rootV = find(v)\n4.   if rootU < rootV: parent[rootV] = rootU\n5.   else: parent[rootU] = rootV\n6. for char in baseStr:\n7.   res += find(char)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize parent array where each character points to itself.",
+      "array": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Process pair ['a', 'p']. 'a' is index 0, 'p' is index 15.",
+      "i": 0,
+      "j": 15
+    },
+    {
+      "codeLine": 4,
+      "note": "Union 'a' and 'p'. Since 0 < 15, set parent[15] = 0.",
+      "array": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        0,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Process pair ['k', 'r']. 'k' is 10, 'r' is 17.",
+      "i": 10,
+      "j": 17
+    },
+    {
+      "codeLine": 4,
+      "note": "Union 'k' and 'r'. Since 10 < 17, set parent[17] = 10.",
+      "array": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        0,
+        16,
+        10,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Build result string from 'parker'. For 'p' (15), find(15) is 0 ('a').",
+      "curr": 15
+    },
+    {
+      "codeLine": 7,
+      "note": "For 'a' (0), find(0) is 0 ('a').",
+      "curr": 0
+    }
+  ]
+}

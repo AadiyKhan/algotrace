@@ -1,0 +1,94 @@
+{
+  "title": "Happy Number",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Hash Table",
+    "Math",
+    "Two Pointers"
+  ],
+  "description": "Determine if a number is happy (sum of squares of digits eventually equals 1) using Floyd's Cycle-Finding algorithm.",
+  "target": 1,
+  "pseudocode": "1. slow = n\n2. fast = getNext(n)\n3. while fast != 1 and slow != fast:\n4.   slow = getNext(slow)\n5.   fast = getNext(getNext(fast))\n6. return fast == 1",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize slow pointer at n=19",
+      "array": [
+        19
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Initialize fast pointer at next sum of squares: 1^2 + 9^2 = 82",
+      "array": [
+        19,
+        82
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Slow moves to next: 1^2 + 9^2 = 82",
+      "array": [
+        82,
+        82
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Fast moves twice: 82 -> 8^2+2^2=68 -> 6^2+8^2=100",
+      "array": [
+        82,
+        100
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Loop condition check: slow != fast (82 != 100)",
+      "array": [
+        82,
+        100
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Slow moves to 8^2+2^2=68",
+      "array": [
+        68,
+        100
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Fast moves twice: 100 -> 1 -> 1",
+      "array": [
+        68,
+        1
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Slow moves to 6^2+8^2=100",
+      "array": [
+        100,
+        1
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Fast moves twice: 1 -> 1 -> 1",
+      "array": [
+        100,
+        1
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Fast is 1, return true",
+      "array": [
+        100,
+        1
+      ]
+    }
+  ]
+}

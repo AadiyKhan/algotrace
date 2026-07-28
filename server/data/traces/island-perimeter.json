@@ -1,0 +1,95 @@
+{
+  "title": "Island Perimeter",
+  "difficulty": "Easy",
+  "type": "matrix",
+  "tags": [
+    "Array",
+    "Matrix"
+  ],
+  "description": "Calculate the perimeter of an island represented by a grid of 1s (land) and 0s (water).",
+  "pseudocode": "1. perimeter = 0\n2. for r = 0 to rows-1\n3.   for c = 0 to cols-1\n4.     if grid[r][c] == 1\n5.       perimeter += 4\n6.       if r > 0 and grid[r-1][c] == 1: perimeter -= 2\n7.       if c > 0 and grid[r][c-1] == 1: perimeter -= 2",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize perimeter to 0.",
+      "matrix": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Checking grid[0][0]. It is water (0), skip.",
+      "matrix": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "i": 0,
+      "j": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Found land at grid[0][1]. Add 4 to perimeter (Total: 4).",
+      "matrix": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "i": 0,
+      "j": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Found land at grid[1][0]. Add 4 to perimeter (Total: 8).",
+      "matrix": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "i": 1,
+      "j": 0
+    },
+    {
+      "codeLine": 7,
+      "note": "Found land at grid[1][1]. Add 4. Adjacent to grid[1][0] and grid[0][1], subtract 2+2 (Total: 8).",
+      "matrix": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "i": 1,
+      "j": 1
+    }
+  ]
+}

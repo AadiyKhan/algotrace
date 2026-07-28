@@ -1,0 +1,91 @@
+{
+  "title": "Largest Component Size by Common Factor",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Math",
+    "Union-Find"
+  ],
+  "description": "Find the size of the largest connected component where two numbers are connected if they share a common factor greater than 1.",
+  "target": null,
+  "pseudocode": "1. parent = [0..n-1]\n2. for num in nums:\n3.   for factor from 2 to sqrt(num):\n4.     if num % factor == 0:\n5.       union(num, factor)\n6.       union(num, num // factor)\n7. return max(size of components)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize Union-Find parent array for values 2, 3, 4, 6",
+      "array": [
+        2,
+        3,
+        4,
+        6
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Processing num = 4. Factors: 2.",
+      "array": [
+        2,
+        3,
+        4,
+        6
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Union(4, 2): 4 and 2 now share the same component.",
+      "array": [
+        2,
+        3,
+        2,
+        6
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 2,
+      "note": "Processing num = 6. Factors: 2, 3.",
+      "array": [
+        2,
+        3,
+        2,
+        6
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 5,
+      "note": "Union(6, 2): 6 joins component of 2.",
+      "array": [
+        2,
+        3,
+        2,
+        2
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 6,
+      "note": "Union(6, 3): 6 joins component of 3. Now 3 also connects to 2.",
+      "array": [
+        2,
+        2,
+        2,
+        2
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 7,
+      "note": "Count sizes. All {2, 3, 4, 6} are in the same component. Max size = 4.",
+      "array": [
+        2,
+        2,
+        2,
+        2
+      ]
+    }
+  ]
+}

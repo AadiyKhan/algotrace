@@ -1,0 +1,93 @@
+{
+  "title": "Non-decreasing Subsequences",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Backtracking",
+    "Depth-First Search"
+  ],
+  "description": "Find all unique non-decreasing subsequences of an integer array with at least length 2.",
+  "pseudocode": "1: function findSubsequences(nums) {\n2:   let res = [];\n3:   function backtrack(start, current) {\n4:     if (current.length >= 2) res.push([...current]);\n5:     let used = new Set();\n6:     for (let i = start; i < nums.length; i++) {\n7:       if (used.has(nums[i])) continue;\n8:       if (current.length === 0 || nums[i] >= current[current.length - 1]) {\n9:         used.add(nums[i]);\n10:        current.push(nums[i]);\n11:        backtrack(i + 1, current);\n12:        current.pop();\n13:      }\n14:    }\n15:  }\n16:  backtrack(0, []);\n17:  return res;\n18: }",
+  "steps": [
+    {
+      "codeLine": 16,
+      "note": "Initialize backtracking with index 0 and empty array.",
+      "array": [
+        4,
+        6,
+        7
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Include 4 in current subsequence.",
+      "array": [
+        4,
+        6,
+        7
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 11,
+      "note": "Recurse from index 1, current is [4].",
+      "array": [
+        4,
+        6,
+        7
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 8,
+      "note": "6 >= 4, include 6. Subsequence [4, 6] found.",
+      "array": [
+        4,
+        6,
+        7
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Valid length >= 2, added [4, 6] to results.",
+      "array": [
+        4,
+        6,
+        7
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 11,
+      "note": "Recurse from index 2, current is [4, 6].",
+      "array": [
+        4,
+        6,
+        7
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 8,
+      "note": "7 >= 6, include 7. Subsequence [4, 6, 7] found.",
+      "array": [
+        4,
+        6,
+        7
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Valid length >= 2, added [4, 6, 7] to results.",
+      "array": [
+        4,
+        6,
+        7
+      ],
+      "i": 2
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "title": "Sentence Similarity",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Hash Table"
+  ],
+  "description": "Determine if two sentences are similar based on a list of similar word pairs.",
+  "target": null,
+  "pseudocode": "1. map = new Set(pairs.map(p => p[0] + '#' + p[1]))\n2. if (s1.length !== s2.length) return false\n3. for (let i = 0; i < s1.length; i++)\n4.   if (s1[i] === s2[i]) continue\n5.   if (!map.has(s1[i] + '#' + s2[i]) && !map.has(s2[i] + '#' + s1[i])) return false\n6. return true",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize similarity map from pairs [['great', 'fine']]",
+      "array": [
+        "great",
+        "fine"
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Check length equality: sentence1 ['great'] vs sentence2 ['fine']",
+      "array": [
+        "great",
+        "fine"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Start iteration at index 0",
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Check if words are identical; 'great' != 'fine'",
+      "i": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Check if pair exists in map; 'great#fine' found",
+      "i": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "All pairs matched, returning true",
+      "i": 0
+    }
+  ]
+}

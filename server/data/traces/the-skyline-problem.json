@@ -1,0 +1,95 @@
+{
+  "title": "The Skyline Problem",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Heap",
+    "Divide and Conquer",
+    "Sweep Line"
+  ],
+  "description": "Given a list of buildings with [left, right, height], return the key points that define the skyline.",
+  "target": [
+    [
+      2,
+      10
+    ],
+    [
+      3,
+      15
+    ],
+    [
+      7,
+      12
+    ],
+    [
+      12,
+      0
+    ],
+    [
+      15,
+      10
+    ],
+    [
+      20,
+      8
+    ],
+    [
+      24,
+      0
+    ]
+  ],
+  "pseudocode": "1. Collect all edge points (left, -height) and (right, height)\n2. Sort points: primary by coordinate, secondary by height\n3. Initialize heap with 0, result with empty\n4. For each point: if left, push height to heap; if right, remove height\n5. If max height changes, add (x, max) to result",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize buildings: [2, 9, 10], [3, 7, 15], [5, 12, 12]",
+      "array": [
+        2,
+        9,
+        10,
+        3,
+        7,
+        15,
+        5,
+        12,
+        12
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Sorted points by x: [2, -10], [3, -15], [5, -12], [7, 15], [9, 10], [12, 12]",
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Process x=2: Add height 10. Max is 10. Result: [[2, 10]]",
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Process x=3: Add height 15. Max is 15. Result: [[2, 10], [3, 15]]",
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Process x=5: Add height 12. Max is 15. No change.",
+      "i": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Process x=7: Remove height 15. Max is 12. Result: [[2, 10], [3, 15], [7, 12]]",
+      "i": 3
+    },
+    {
+      "codeLine": 4,
+      "note": "Process x=9: Remove height 10. Max is 12. No change.",
+      "i": 4
+    },
+    {
+      "codeLine": 4,
+      "note": "Process x=12: Remove height 12. Max is 0. Result: [[2, 10], [3, 15], [7, 12], [12, 0]]",
+      "i": 5
+    }
+  ]
+}

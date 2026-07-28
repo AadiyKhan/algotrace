@@ -1,0 +1,109 @@
+{
+  "title": "Friends Of Appropriate Ages",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Sorting",
+    "Two Pointers"
+  ],
+  "description": "Calculate the total number of friend requests made based on age constraints: age[B] > 0.5 * age[A] + 7, age[B] <= age[A], and age[B] > age[A] (if B is older, A cannot request B).",
+  "target": null,
+  "pseudocode": "1. ages.sort((a, b) => a - b);\n2. let count = 0, left = 0, right = 0;\n3. for (let age of ages) {\n4.   while (ages[left] <= 0.5 * age + 7) left++;\n5.   while (right < ages.length && ages[right] <= age) right++;\n6.   if (right - 1 > left) count += (right - 1 - left);\n7. }",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Sorted input ages",
+      "array": [
+        10,
+        16,
+        20
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Processing age 10",
+      "array": [
+        10,
+        16,
+        20
+      ],
+      "i": 10
+    },
+    {
+      "codeLine": 4,
+      "note": "Left pointer moves to find age > 0.5 * 10 + 7 (12)",
+      "array": [
+        10,
+        16,
+        20
+      ],
+      "i": 10,
+      "curr": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Right pointer moves to find age > 10",
+      "array": [
+        10,
+        16,
+        20
+      ],
+      "i": 10,
+      "j": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "No valid friends for 10, count remains 0",
+      "array": [
+        10,
+        16,
+        20
+      ],
+      "i": 10
+    },
+    {
+      "codeLine": 3,
+      "note": "Processing age 16",
+      "array": [
+        10,
+        16,
+        20
+      ],
+      "i": 16
+    },
+    {
+      "codeLine": 4,
+      "note": "Left pointer stays at 1 (age 16 > 15)",
+      "array": [
+        10,
+        16,
+        20
+      ],
+      "i": 16,
+      "curr": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Right pointer moves past 16",
+      "array": [
+        10,
+        16,
+        20
+      ],
+      "i": 16,
+      "j": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Valid friend found: 16 (0), count = 0",
+      "array": [
+        10,
+        16,
+        20
+      ],
+      "i": 16
+    }
+  ]
+}

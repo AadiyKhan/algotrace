@@ -1,0 +1,102 @@
+{
+  "title": "Stamping The Sequence",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Greedy",
+    "String",
+    "Queue"
+  ],
+  "description": "Replace a target string using a stamp, working backwards from target to stamp to find the sequence of moves.",
+  "target": "ababc",
+  "pseudocode": "1. Initialize total_replaced = 0, visited = false array\n2. While total_replaced < target.length:\n3.   found_match = false\n4.   For i from 0 to target.length - stamp.length:\n5.     If not visited[i] and can_stamp(i):\n6.       Mark as visited, add to result, total_replaced += newly_replaced\n7.       found_match = true\n8.   If not found_match: return []\n9. Return result",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize variables: stamp='abc', target='ababc'. Lengths 3 and 5.",
+      "array": [
+        "a",
+        "b",
+        "a",
+        "b",
+        "c"
+      ],
+      "visited": []
+    },
+    {
+      "codeLine": 4,
+      "note": "Check window i=2. Target[2:5] is 'abc', matches stamp.",
+      "array": [
+        "a",
+        "b",
+        "a",
+        "b",
+        "c"
+      ],
+      "i": 2,
+      "visited": []
+    },
+    {
+      "codeLine": 6,
+      "note": "Stamp placed at index 2. Target becomes 'ab???', increment replaced count.",
+      "array": [
+        "a",
+        "b",
+        "?",
+        "?",
+        "?"
+      ],
+      "i": 2,
+      "visited": [
+        2
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Check window i=0. Target[0:3] is 'ab?'. Wildcards match 'a' and 'b'.",
+      "array": [
+        "a",
+        "b",
+        "?",
+        "?",
+        "?"
+      ],
+      "i": 0,
+      "visited": [
+        2
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Stamp placed at index 0. Target becomes '???', total_replaced is 5.",
+      "array": [
+        "?",
+        "?",
+        "?",
+        "?",
+        "?"
+      ],
+      "i": 0,
+      "visited": [
+        2,
+        0
+      ]
+    },
+    {
+      "codeLine": 9,
+      "note": "All positions filled. Return sequence [2, 0].",
+      "array": [
+        "?",
+        "?",
+        "?",
+        "?",
+        "?"
+      ],
+      "visited": [
+        0,
+        2
+      ]
+    }
+  ]
+}

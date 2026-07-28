@@ -1,0 +1,114 @@
+{
+  "title": "Best Time to Buy and Sell Stock IV",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Dynamic Programming"
+  ],
+  "description": "Find the maximum profit with at most k transactions.",
+  "target": 2,
+  "pseudocode": "1. if k == 0 return 0\n2. buy = [-infinity, -infinity]\n3. sell = [0, 0]\n4. for price in prices:\n5.   for i in 0..k-1:\n6.     buy[i] = max(buy[i], (i == 0 ? 0 : sell[i-1]) - price)\n7.     sell[i] = max(sell[i], buy[i] + price)",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Initialize buy array for k=2 transactions.",
+      "array": [
+        3,
+        2,
+        6
+      ],
+      "i": "buy: [-inf, -inf]"
+    },
+    {
+      "codeLine": 4,
+      "note": "Process first price: 3",
+      "array": [
+        3,
+        2,
+        6
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Update buy[0]: max(-inf, 0 - 3) = -3",
+      "array": [
+        3,
+        2,
+        6
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 7,
+      "note": "Update sell[0]: max(0, -3 + 3) = 0",
+      "array": [
+        3,
+        2,
+        6
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Process second price: 2",
+      "array": [
+        3,
+        2,
+        6
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Update buy[0]: max(-3, 0 - 2) = -2",
+      "array": [
+        3,
+        2,
+        6
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "Update sell[0]: max(0, -2 + 2) = 0",
+      "array": [
+        3,
+        2,
+        6
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Process third price: 6",
+      "array": [
+        3,
+        2,
+        6
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Update buy[0]: max(-2, 0 - 6) = -2",
+      "array": [
+        3,
+        2,
+        6
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 7,
+      "note": "Update sell[0]: max(0, -2 + 6) = 4",
+      "array": [
+        3,
+        2,
+        6
+      ],
+      "i": 2
+    }
+  ]
+}

@@ -1,0 +1,136 @@
+{
+  "title": "Binary Tree Pruning",
+  "difficulty": "Medium",
+  "type": "tree",
+  "tags": [
+    "Tree",
+    "DFS",
+    "Recursion"
+  ],
+  "description": "Prune all subtrees that do not contain a 1 from a binary tree.",
+  "pseudocode": "function pruneTree(root) {\n  if (!root) return null;\n  root.left = pruneTree(root.left);\n  root.right = pruneTree(root.right);\n  if (!root.left && !root.right && root.val === 0) return null;\n  return root;\n}",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Start recursion at root (node 0, value 1)",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 0,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 1,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Recurse left to node 1",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 0,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 1,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Node 1 is leaf and value is 0, prune it",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": null,
+          "right": 2
+        },
+        {
+          "id": 2,
+          "val": 1,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Recurse right to node 2",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": null,
+          "right": 2
+        },
+        {
+          "id": 2,
+          "val": 1,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Node 2 has value 1, keep it",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": null,
+          "right": 2
+        },
+        {
+          "id": 2,
+          "val": 1,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Return root node 0",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": null,
+          "right": 2
+        },
+        {
+          "id": 2,
+          "val": 1,
+          "left": null,
+          "right": null
+        }
+      ]
+    }
+  ]
+}

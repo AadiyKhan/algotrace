@@ -1,0 +1,91 @@
+{
+  "title": "Random Flip Matrix",
+  "difficulty": "Medium",
+  "type": "matrix",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "Math",
+    "Randomized"
+  ],
+  "description": "Implement a solution that returns a random position [i, j] in an m x n matrix that has not been flipped yet.",
+  "target": null,
+  "pseudocode": "1. total = m * n\n2. val = Math.floor(Math.random() * total)\n3. if map has val, pick map[val]\n4. else pick val\n5. map[val] = map[total - 1] || total - 1\n6. total--\n7. return [val / n, val % n]",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize total cells as 2x2 = 4.",
+      "matrix": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Randomly select index 3.",
+      "matrix": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 4,
+      "note": "Map index 3 to [1, 1] and mark as flipped.",
+      "matrix": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "curr": [
+        1,
+        1
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Update map to point 3 to the last available slot.",
+      "matrix": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Decrement total available slots to 3.",
+      "matrix": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ]
+    }
+  ]
+}

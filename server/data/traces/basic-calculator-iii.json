@@ -1,0 +1,67 @@
+{
+  "title": "Basic Calculator III",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Math",
+    "Stack",
+    "String"
+  ],
+  "description": "Implement a basic calculator to evaluate a simple expression string containing non-negative integers, '+', '-', '*', '/', and parentheses.",
+  "target": null,
+  "pseudocode": "1. function calculate(s) {\n2.   let stack = [], num = 0, sign = '+';\n3.   for (let i = 0; i <= s.length; i++) {\n4.     let char = s[i];\n5.     if (isDigit(char)) num = num * 10 + parseInt(char);\n6.     if (isOp(char) || i === s.length) {\n7.       if (sign === '+') stack.push(num);\n8.       if (sign === '-') stack.push(-num);\n9.       if (sign === '*') stack.push(stack.pop() * num);\n10.      if (sign === '/') stack.push(Math.trunc(stack.pop() / num));\n11.      sign = char; num = 0;\n12.    }\n13.  }\n14.  return stack.reduce((a, b) => a + b, 0);\n15. }",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Initialize stack and sign.",
+      "array": [],
+      "i": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Read digit '3'.",
+      "array": [],
+      "i": 0
+    },
+    {
+      "codeLine": 7,
+      "note": "Operator '+' found, push 3 to stack.",
+      "array": [
+        3
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Read digit '2'.",
+      "array": [
+        3
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 9,
+      "note": "Operator '*' found, pop 3, multiply by 2, push 6.",
+      "array": [
+        6
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 5,
+      "note": "Read digit '4'.",
+      "array": [
+        6
+      ],
+      "i": 4
+    },
+    {
+      "codeLine": 14,
+      "note": "End of string, sum stack elements.",
+      "array": [
+        6
+      ],
+      "i": 4
+    }
+  ]
+}

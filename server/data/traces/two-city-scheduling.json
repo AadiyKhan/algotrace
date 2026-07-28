@@ -1,0 +1,175 @@
+{
+  "title": "Two City Scheduling",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Greedy",
+    "Sorting"
+  ],
+  "description": "Minimize total cost to fly n people to city A and n people to city B given costs for each person.",
+  "target": null,
+  "pseudocode": "1. costs.sort((a, b) => (a[0] - a[1]) - (b[0] - b[1]));\n2. let total = 0;\n3. for(let i = 0; i < costs.length; i++) {\n4.   if (i < costs.length / 2) total += costs[i][0];\n5.   else total += costs[i][1];\n6. }",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Sort costs by the difference (costA - costB) to prioritize those who benefit most from A.",
+      "array": [
+        [
+          10,
+          20
+        ],
+        [
+          30,
+          200
+        ],
+        [
+          400,
+          50
+        ],
+        [
+          30,
+          20
+        ]
+      ],
+      "i": null
+    },
+    {
+      "codeLine": 1,
+      "note": "Sorted: [[10, 20], [30, 20], [30, 200], [400, 50]]. Diffs: -10, 10, -170, 350.",
+      "array": [
+        [
+          10,
+          20
+        ],
+        [
+          30,
+          20
+        ],
+        [
+          30,
+          200
+        ],
+        [
+          400,
+          50
+        ]
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Initialize total cost to 0 and start loop.",
+      "array": [
+        [
+          10,
+          20
+        ],
+        [
+          30,
+          20
+        ],
+        [
+          30,
+          200
+        ],
+        [
+          400,
+          50
+        ]
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "i=0: Send to City A (10). total = 10.",
+      "array": [
+        [
+          10,
+          20
+        ],
+        [
+          30,
+          20
+        ],
+        [
+          30,
+          200
+        ],
+        [
+          400,
+          50
+        ]
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "i=1: Send to City A (30). total = 40.",
+      "array": [
+        [
+          10,
+          20
+        ],
+        [
+          30,
+          20
+        ],
+        [
+          30,
+          200
+        ],
+        [
+          400,
+          50
+        ]
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "i=2: Send to City B (200). total = 240.",
+      "array": [
+        [
+          10,
+          20
+        ],
+        [
+          30,
+          20
+        ],
+        [
+          30,
+          200
+        ],
+        [
+          400,
+          50
+        ]
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "i=3: Send to City B (50). total = 290.",
+      "array": [
+        [
+          10,
+          20
+        ],
+        [
+          30,
+          20
+        ],
+        [
+          30,
+          200
+        ],
+        [
+          400,
+          50
+        ]
+      ],
+      "i": 3
+    }
+  ]
+}

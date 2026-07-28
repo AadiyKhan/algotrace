@@ -1,0 +1,121 @@
+{
+  "title": "Cut Off Trees for Golf Event",
+  "difficulty": "Hard",
+  "type": "matrix",
+  "tags": [
+    "Array",
+    "Breadth-First Search",
+    "Heap"
+  ],
+  "description": "Find the minimum steps to cut off all trees in order of their heights.",
+  "target": 6,
+  "pseudocode": "1. Collect all trees with height > 1 and sort by height\n2. Start at (0, 0)\n3. For each tree in sorted list:\n4.   Find shortest path using BFS from current to target\n5.   If target unreachable return -1, else add distance\n6.   Update current to target position",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Sorted trees: [(0,1,2), (1,0,3)]",
+      "matrix": [
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          0
+        ]
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "BFS from (0,0) to tree (0,1) with height 2",
+      "matrix": [
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          0
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Reached (0,1), distance = 1",
+      "matrix": [
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          0
+        ]
+      ],
+      "curr": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "BFS from (0,1) to tree (1,0) with height 3",
+      "matrix": [
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          0
+        ]
+      ],
+      "curr": [
+        0,
+        1
+      ],
+      "visited": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ]
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Reached (1,0), distance = 1 + 2 = 3",
+      "matrix": [
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          0
+        ]
+      ],
+      "curr": [
+        1,
+        0
+      ]
+    }
+  ]
+}

@@ -1,0 +1,89 @@
+{
+  "title": "1-bit and 2-bit Characters",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array"
+  ],
+  "description": "Determine if the last character of a bit stream is a 1-bit character, given that the last bit is always 0.",
+  "pseudocode": "1: i = 0\n2: while i < bits.length - 1:\n3:   i += (bits[i] == 1) ? 2 : 1\n4: return i == bits.length - 1",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize pointer i to 0.",
+      "array": [
+        1,
+        1,
+        1,
+        0
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Check condition: i < 3. 0 < 3 is true.",
+      "array": [
+        1,
+        1,
+        1,
+        0
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "bits[0] is 1, so increment i by 2.",
+      "array": [
+        1,
+        1,
+        1,
+        0
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 2,
+      "note": "Check condition: 2 < 3. 2 < 3 is true.",
+      "array": [
+        1,
+        1,
+        1,
+        0
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "bits[2] is 1, so increment i by 2.",
+      "array": [
+        1,
+        1,
+        1,
+        0
+      ],
+      "i": 4
+    },
+    {
+      "codeLine": 2,
+      "note": "Check condition: 4 < 3 is false. Loop ends.",
+      "array": [
+        1,
+        1,
+        1,
+        0
+      ],
+      "i": 4
+    },
+    {
+      "codeLine": 4,
+      "note": "Check if i == 3. 4 == 3 is false. Return false.",
+      "array": [
+        1,
+        1,
+        1,
+        0
+      ],
+      "i": 4
+    }
+  ]
+}

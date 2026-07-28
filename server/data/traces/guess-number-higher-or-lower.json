@@ -1,0 +1,106 @@
+{
+  "title": "Guess Number Higher or Lower",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Binary Search"
+  ],
+  "description": "Find the target number in range [1, n] using binary search, where the guess function returns -1 (too high), 1 (too low), or 0 (correct).",
+  "target": 6,
+  "pseudocode": "1. low = 1, high = n\n2. while low <= high:\n3.   mid = low + (high - low) / 2\n4.   res = guess(mid)\n5.   if res == 0: return mid\n6.   if res < 0: high = mid - 1\n7.   else: low = mid + 1",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize range [1, 10]",
+      "array": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "i": "1",
+      "j": "10"
+    },
+    {
+      "codeLine": 3,
+      "note": "Calculate mid = 5",
+      "array": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "curr": 4,
+      "i": "1",
+      "j": "10"
+    },
+    {
+      "codeLine": 7,
+      "note": "Guess 5 is too low (res=1), move low to 6",
+      "array": [
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "i": "6",
+      "j": "10"
+    },
+    {
+      "codeLine": 3,
+      "note": "Calculate mid = 8",
+      "array": [
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "curr": 2,
+      "i": "6",
+      "j": "10"
+    },
+    {
+      "codeLine": 6,
+      "note": "Guess 8 is too high (res=-1), move high to 7",
+      "array": [
+        6,
+        7
+      ],
+      "i": "6",
+      "j": "7"
+    },
+    {
+      "codeLine": 3,
+      "note": "Calculate mid = 6",
+      "array": [
+        6,
+        7
+      ],
+      "curr": 0,
+      "i": "6",
+      "j": "7"
+    },
+    {
+      "codeLine": 5,
+      "note": "Guess 6 is correct! Target found.",
+      "array": [
+        6
+      ],
+      "curr": 0
+    }
+  ]
+}

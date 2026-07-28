@@ -1,0 +1,124 @@
+{
+  "title": "Single Element in a Sorted Array",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Binary Search"
+  ],
+  "description": "Find the element that appears only once in a sorted array where every other element appears twice.",
+  "target": null,
+  "pseudocode": "1. low = 0, high = n - 1\n2. while low < high:\n3.   mid = low + (high - low) / 2\n4.   if mid is even and arr[mid] == arr[mid + 1] or mid is odd and arr[mid] == arr[mid - 1]:\n5.     low = mid + 1\n6.   else: high = mid\n7. return arr[low]",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize binary search pointers low and high.",
+      "array": [
+        1,
+        1,
+        2,
+        3,
+        3
+      ],
+      "i": 0,
+      "j": 4
+    },
+    {
+      "codeLine": 2,
+      "note": "Enter loop, mid calculation.",
+      "array": [
+        1,
+        1,
+        2,
+        3,
+        3
+      ],
+      "i": 0,
+      "j": 4,
+      "curr": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Check parity and equality with neighbor.",
+      "array": [
+        1,
+        1,
+        2,
+        3,
+        3
+      ],
+      "i": 0,
+      "j": 4,
+      "curr": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Condition false, move high pointer to mid.",
+      "array": [
+        1,
+        1,
+        2,
+        3,
+        3
+      ],
+      "i": 0,
+      "j": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 2,
+      "note": "Next iteration, calculate new mid.",
+      "array": [
+        1,
+        1,
+        2,
+        3,
+        3
+      ],
+      "i": 0,
+      "j": 2,
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Mid (1) is odd, check equality with index 0.",
+      "array": [
+        1,
+        1,
+        2,
+        3,
+        3
+      ],
+      "i": 0,
+      "j": 2,
+      "curr": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Condition true, move low to mid + 1.",
+      "array": [
+        1,
+        1,
+        2,
+        3,
+        3
+      ],
+      "i": 2,
+      "j": 2,
+      "curr": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "Loop terminates, return value at low index.",
+      "array": [
+        1,
+        1,
+        2,
+        3,
+        3
+      ],
+      "i": 2,
+      "j": 2
+    }
+  ]
+}

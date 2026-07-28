@@ -1,0 +1,50 @@
+{
+  "title": "Reorder Data in Log Files",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "String",
+    "Sorting"
+  ],
+  "description": "Reorder logs such that letter-logs come before digit-logs, sorted lexicographically by content, then identifier.",
+  "pseudocode": "1. split logs into letterLogs and digitLogs\n2. letterLogs.sort((a, b) => {\n3.   let valA = a.substring(a.indexOf(' ') + 1);\n4.   let valB = b.substring(b.indexOf(' ') + 1);\n5.   if (valA !== valB) return valA.localeCompare(valB);\n6.   return a.split(' ')[0].localeCompare(b.split(' ')[0]);\n7. });\n8. return [...letterLogs, ...digitLogs];",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Separating logs into letter-logs and digit-logs.",
+      "array": [
+        "a1 9 2",
+        "g1 act car",
+        "zo4 4 7",
+        "ab1 off key"
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Sorting letter-logs: 'g1 act car' and 'ab1 off key'.",
+      "array": [
+        "g1 act car",
+        "ab1 off key"
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Comparing contents: 'act car' vs 'off key'. 'act car' comes first.",
+      "array": [
+        "g1 act car",
+        "ab1 off key"
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Concatenating letter-logs and digit-logs.",
+      "array": [
+        "g1 act car",
+        "ab1 off key",
+        "a1 9 2",
+        "zo4 4 7"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,89 @@
+{
+  "title": "Reverse Bits",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Bit Manipulation"
+  ],
+  "description": "Reverse the bits of a given 32-bit unsigned integer.",
+  "target": 0,
+  "pseudocode": "1. let result = 0\n2. for (let i = 0; i < 4; i++) {\n3.   result = (result << 1) | (n & 1)\n4.   n >>= 1\n5. }",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize result to 0.",
+      "array": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Shift result left, add last bit of n (n=3 i.e. 0011). Result = 1.",
+      "array": [
+        1,
+        0,
+        0,
+        0
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Shift n right (n becomes 1 i.e. 0001).",
+      "array": [
+        1,
+        0,
+        0,
+        0
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Shift result left, add last bit of n. Result = 3 (11).",
+      "array": [
+        1,
+        1,
+        0,
+        0
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Shift n right (n becomes 0).",
+      "array": [
+        1,
+        1,
+        0,
+        0
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Shift result left, add 0. Result = 6 (110).",
+      "array": [
+        1,
+        1,
+        0,
+        0
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Shift result left, add 0. Result = 12 (1100).",
+      "array": [
+        1,
+        1,
+        0,
+        0
+      ],
+      "i": 3
+    }
+  ]
+}

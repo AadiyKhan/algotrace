@@ -1,0 +1,73 @@
+{
+  "title": "Accounts Merge",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Graph",
+    "Union-Find",
+    "Depth-First Search"
+  ],
+  "description": "Merge overlapping email accounts using Union-Find to group emails belonging to the same user.",
+  "target": "Merged list of accounts",
+  "pseudocode": "1. parent = {}; for email in emails: parent[email] = email\n2. for account in accounts: first = account[1]\n3. for i from 1 to len(account)-1: union(first, account[i])\n4. groups = defaultdict(list)\n5. for email in parent: root = find(email); groups[root].push(email)\n6. for root in groups: sort(groups[root]); result.push([name] + groups[root])",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize Union-Find structure. Each email is its own parent.",
+      "array": [
+        "john@mail.com",
+        "john_ny@mail.com",
+        "john00@mail.com"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Union john@mail.com and john_ny@mail.com.",
+      "array": [
+        "john@mail.com",
+        "john@mail.com",
+        "john00@mail.com"
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Union john@mail.com and john00@mail.com.",
+      "array": [
+        "john@mail.com",
+        "john@mail.com",
+        "john@mail.com"
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Grouping emails by their ultimate root parent.",
+      "array": [
+        "john@mail.com",
+        "john@mail.com",
+        "john@mail.com"
+      ],
+      "visited": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Sorting individual account lists and formatting the output.",
+      "array": [
+        "john@mail.com",
+        "john00@mail.com",
+        "john_ny@mail.com"
+      ],
+      "visited": [
+        0,
+        1,
+        2
+      ]
+    }
+  ]
+}

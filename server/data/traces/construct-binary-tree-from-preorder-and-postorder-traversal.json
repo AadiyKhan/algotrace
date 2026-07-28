@@ -1,0 +1,110 @@
+{
+  "title": "Construct Binary Tree From Preorder And Postorder Traversal",
+  "difficulty": "Medium",
+  "type": "tree",
+  "tags": [
+    "Tree",
+    "Divide and Conquer"
+  ],
+  "description": "Reconstruct a binary tree given its preorder and postorder traversal sequences.",
+  "target": null,
+  "pseudocode": "1. preIdx = 0, postIdx = 0\n2. function build(pre, post):\n3.   root = new Node(pre[preIdx++])\n4.   if root.val != post[postIdx]:\n5.     root.left = build(pre, post)\n6.   if root.val != post[postIdx]:\n7.     root.right = build(pre, post)\n8.   postIdx++\n9.   return root",
+  "steps": [
+    {
+      "codeLine": 3,
+      "note": "Create root node 1",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Recurse left for node 2",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": null
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Left subtree finished, increment postIdx",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": null
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Recurse right for node 3",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Right subtree finished, increment postIdx",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ]
+    }
+  ]
+}

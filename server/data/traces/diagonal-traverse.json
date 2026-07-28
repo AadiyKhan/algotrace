@@ -1,0 +1,143 @@
+{
+  "title": "Diagonal Traverse",
+  "difficulty": "Medium",
+  "type": "matrix",
+  "tags": [
+    "Array",
+    "Matrix",
+    "Simulation"
+  ],
+  "description": "Given an m x n matrix, return an array of all the elements of the matrix in a diagonal order.",
+  "target": null,
+  "pseudocode": "1. m = matrix.length, n = matrix[0].length\n2. res = [], i = 0, j = 0, up = true\n3. while res.length < m * n:\n4.   res.push(matrix[i][j])\n5.   if up:\n6.     if j == n - 1: i++, up = false\n7.     else if i == 0: j++, up = false\n8.     else: i--, j++\n9.   else:\n10.    if i == m - 1: j++, up = true\n11.    else if j == 0: i++, up = true\n12.    else: i++, j--",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Initialize variables: m=2, n=2, res=[], i=0, j=0, up=true",
+      "matrix": [
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "i": 0,
+      "j": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Add matrix[0][0] (1) to result",
+      "matrix": [
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "i": 0,
+      "j": 0
+    },
+    {
+      "codeLine": 7,
+      "note": "Hit top row, switch direction (up=false) and increment column",
+      "matrix": [
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "i": 0,
+      "j": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Add matrix[0][1] (2) to result",
+      "matrix": [
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "i": 0,
+      "j": 1
+    },
+    {
+      "codeLine": 11,
+      "note": "Hit left edge, switch direction (up=true) and increment row",
+      "matrix": [
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "i": 1,
+      "j": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Add matrix[1][0] (3) to result",
+      "matrix": [
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "i": 1,
+      "j": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Hit right edge, switch direction (up=false) and increment row",
+      "matrix": [
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "i": 1,
+      "j": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Add matrix[1][1] (4) to result",
+      "matrix": [
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "i": 1,
+      "j": 1
+    }
+  ]
+}

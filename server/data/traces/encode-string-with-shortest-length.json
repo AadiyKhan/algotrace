@@ -1,0 +1,50 @@
+{
+  "title": "Encode String With Shortest Length",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "String",
+    "Dynamic Programming"
+  ],
+  "description": "Encode a string into the shortest possible string by recursively compressing repeating patterns.",
+  "target": "aaa",
+  "pseudocode": "1. dp[n][n]\n2. for len from 1 to n:\n3.   for i from 0 to n - len:\n4.     j = i + len - 1\n5.     dp[i][j] = s.substring(i, j + 1)\n6.     for k from i to j-1:\n7.       dp[i][j] = min(dp[i][j], dp[i][k] + dp[k+1][j])\n8.     for m from 1 to len:\n9.       if len % m == 0 and (s.substring(i, j+1) is composed of repeats of length m):\n10.        dp[i][j] = min(dp[i][j], (len/m) + '[' + dp[i][i+m-1] + ']')",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Initializing DP table for string 'aaa'",
+      "array": [
+        "a",
+        "a",
+        "a"
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Checking substring 'aa' at index 0-1",
+      "i": 0,
+      "array": [
+        "a",
+        "a"
+      ]
+    },
+    {
+      "codeLine": 9,
+      "note": "Pattern 'aa' found, compressing to '2[a]'",
+      "i": 0,
+      "j": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Checking entire string 'aaa' at index 0-2",
+      "i": 0,
+      "j": 2
+    },
+    {
+      "codeLine": 10,
+      "note": "Pattern 'aaa' found, compressing to '3[a]'",
+      "i": 0,
+      "j": 2
+    }
+  ]
+}

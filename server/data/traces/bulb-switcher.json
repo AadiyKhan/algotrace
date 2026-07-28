@@ -1,0 +1,62 @@
+{
+  "title": "Bulb Switcher",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Math",
+    "Brainteaser"
+  ],
+  "description": "Find the number of bulbs that remain on after n rounds. A bulb stays on if it is toggled an odd number of times (only perfect squares).",
+  "target": 3,
+  "pseudocode": "1: function bulbSwitch(n) {\n2:   let count = 0;\n3:   for (let i = 1; i * i <= n; i++) {\n4:     count++;\n5:   }\n6:   return count;\n7: }",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Initialize count to 0.",
+      "array": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "First iteration: i=1. 1*1 <= 3 is true.",
+      "array": [
+        1,
+        0,
+        0
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Increment count because 1 is a perfect square.",
+      "array": [
+        1,
+        0,
+        0
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Second iteration: i=2. 2*2 <= 3 is false.",
+      "array": [
+        1,
+        0,
+        0
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Return total count.",
+      "array": [
+        1,
+        0,
+        0
+      ]
+    }
+  ]
+}

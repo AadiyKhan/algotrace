@@ -1,0 +1,79 @@
+{
+  "title": "Falling Squares",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Segment Tree",
+    "Ordered Map"
+  ],
+  "description": "Calculate the maximum height of a stack of squares as they drop on a coordinate line.",
+  "target": null,
+  "pseudocode": "1: heights = []\n2: max_h = 0\n3: for left, side in positions:\n4:   right = left + side - 1\n5:   h = query_max(left, right) + side\n6:   update_range(left, right, h)\n7:   max_h = max(max_h, h)\n8:   heights.append(max_h)",
+  "steps": [
+    {
+      "codeLine": 3,
+      "note": "Processing square 1: [1, 2]",
+      "array": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Range [1, 2] max height is 0, new height = 0 + 2 = 2",
+      "array": [
+        0,
+        2,
+        2,
+        0
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Update global max height to 2",
+      "array": [
+        0,
+        2,
+        2,
+        0
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Processing square 2: [2, 3]",
+      "array": [
+        0,
+        2,
+        2,
+        0
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Range [2, 4] max height is 2, new height = 2 + 3 = 5",
+      "array": [
+        0,
+        2,
+        5,
+        5,
+        5
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Update global max height to 5",
+      "array": [
+        0,
+        2,
+        5,
+        5,
+        5
+      ]
+    }
+  ]
+}

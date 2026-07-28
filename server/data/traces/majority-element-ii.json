@@ -1,0 +1,94 @@
+{
+  "title": "Majority Element II",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "Sorting",
+    "Counting"
+  ],
+  "description": "Find all elements in an array that appear more than ⌊ n/3 ⌋ times.",
+  "target": null,
+  "pseudocode": "1. candidate1 = null, candidate2 = null, count1 = 0, count2 = 0\n2. for num in nums:\n3.   if num == candidate1: count1++\n4.   else if num == candidate2: count2++\n5.   else if count1 == 0: candidate1 = num, count1 = 1\n6.   else if count2 == 0: candidate2 = num, count2 = 1\n7.   else: count1--, count2--\n8. return [c for c in [candidate1, candidate2] if count(c) > n/3]",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize two candidates and their counters.",
+      "array": [
+        3,
+        2,
+        3
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Processing first element 3.",
+      "array": [
+        3,
+        2,
+        3
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "First candidate identified as 3.",
+      "array": [
+        3,
+        2,
+        3
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Processing second element 2.",
+      "array": [
+        3,
+        2,
+        3
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Second candidate identified as 2.",
+      "array": [
+        3,
+        2,
+        3
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Processing third element 3.",
+      "array": [
+        3,
+        2,
+        3
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Increment count for candidate 3.",
+      "array": [
+        3,
+        2,
+        3
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 8,
+      "note": "Final check confirms 3 is the majority element (> 3/3).",
+      "array": [
+        3,
+        2,
+        3
+      ]
+    }
+  ]
+}

@@ -1,0 +1,87 @@
+{
+  "title": "Count The Repetitions",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Dynamic Programming",
+    "String"
+  ],
+  "description": "Find the maximum number of repetitions of s2 in the concatenation of n1 repetitions of s1.",
+  "target": 2,
+  "pseudocode": "1: count1 = 0, count2 = 0, index = 0\n2: while count1 < n1:\n3:   for char in s1:\n4:     if char == s2[index]:\n5:       index++\n6:       if index == len(s2):\n7:         count2++, index = 0\n8:   count1++\n9: return floor(count2 / n2)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize counters and pointer",
+      "array": [
+        "a",
+        "c",
+        "b",
+        "a",
+        "c",
+        "b"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Matching char 'a' in s2",
+      "array": [
+        "a",
+        "c",
+        "b"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Index moved to 1",
+      "array": [
+        "a",
+        "c",
+        "b"
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Matching char 'c' in s2",
+      "array": [
+        "a",
+        "c",
+        "b"
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Index moved to 2",
+      "array": [
+        "a",
+        "c",
+        "b"
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Matching char 'b' in s2",
+      "array": [
+        "a",
+        "c",
+        "b"
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 7,
+      "note": "Full s2 found, increment count2",
+      "array": [
+        "a",
+        "c",
+        "b"
+      ],
+      "i": 0
+    }
+  ]
+}

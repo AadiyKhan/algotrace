@@ -1,0 +1,114 @@
+{
+  "title": "Longest Substring With At Most K Distinct Characters",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "String",
+    "Sliding Window",
+    "Hash Table"
+  ],
+  "description": "Find the length of the longest substring containing at most k distinct characters.",
+  "target": 2,
+  "pseudocode": "1. map = new Map();\n2. left = 0, maxLen = 0;\n3. for (right = 0; right < s.length; right++) {\n4.   map.set(s[right], (map.get(s[right]) || 0) + 1);\n5.   while (map.size > k) {\n6.     map.set(s[left], map.get(s[left]) - 1);\n7.     if (map.get(s[left]) === 0) map.delete(s[left]);\n8.     left++;\n9.   }\n10.  maxLen = Math.max(maxLen, right - left + 1);\n11. }",
+  "steps": [
+    {
+      "codeLine": 3,
+      "note": "Initialize sliding window with string 'eceba' and k=2",
+      "array": [
+        "e",
+        "c",
+        "e",
+        "b",
+        "a"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Add 'e' to map. Map: {e: 1}",
+      "array": [
+        "e",
+        "c",
+        "e",
+        "b",
+        "a"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Add 'c' to map. Map: {e: 1, c: 1}",
+      "array": [
+        "e",
+        "c",
+        "e",
+        "b",
+        "a"
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Add 'e' to map. Map: {e: 2, c: 1}",
+      "array": [
+        "e",
+        "c",
+        "e",
+        "b",
+        "a"
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Add 'b' to map. Map: {e: 2, c: 1, b: 1}. Size > 2.",
+      "array": [
+        "e",
+        "c",
+        "e",
+        "b",
+        "a"
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 6,
+      "note": "Shrink window. Decrement 'e' at index 0. Map: {e: 1, c: 1, b: 1}",
+      "array": [
+        "e",
+        "c",
+        "e",
+        "b",
+        "a"
+      ],
+      "i": 3,
+      "prev": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Shrink window. Decrement 'c' at index 1. Map: {e: 1, b: 1}",
+      "array": [
+        "e",
+        "c",
+        "e",
+        "b",
+        "a"
+      ],
+      "i": 3,
+      "prev": 1
+    },
+    {
+      "codeLine": 10,
+      "note": "Update maxLen. Substring 'eb' (indices 2 to 3) length 2.",
+      "array": [
+        "e",
+        "c",
+        "e",
+        "b",
+        "a"
+      ],
+      "i": 3
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "title": "Assign Cookies",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Greedy",
+    "Sorting"
+  ],
+  "description": "Assign cookies to children such that the number of content children is maximized.",
+  "target": null,
+  "pseudocode": "1. g.sort((a, b) => a - b);\n2. s.sort((a, b) => a - b);\n3. child = 0, cookie = 0;\n4. while(child < g.length && cookie < s.length) {\n5.   if(s[cookie] >= g[child]) child++;\n6.   cookie++;\n7. }\n8. return child;",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Sort greedy factors: [1, 2]",
+      "array": [
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Sort cookie sizes: [1, 2, 3]",
+      "array": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Start loop, check first child and first cookie",
+      "i": 0,
+      "j": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Cookie 1 >= Child 1, increment child index",
+      "i": 1,
+      "j": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Move to next cookie",
+      "i": 1,
+      "j": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Cookie 2 >= Child 2, increment child index",
+      "i": 2,
+      "j": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Move to next cookie",
+      "i": 2,
+      "j": 2
+    },
+    {
+      "codeLine": 8,
+      "note": "All children assigned, return count 2"
+    }
+  ]
+}

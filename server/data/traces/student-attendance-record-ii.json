@@ -1,0 +1,64 @@
+{
+  "title": "Student Attendance Record II",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Dynamic Programming"
+  ],
+  "description": "Find the number of possible attendance records of length n that do not contain more than one 'A' and no more than two consecutive 'L'.",
+  "target": 2,
+  "pseudocode": "1. dp[n][2][3] initialized to 0\n2. dp[0][0][0] = 1\n3. for i = 0 to n-1:\n4.   for a = 0 to 1, l = 0 to 2:\n5.     // Add 'P'\n6.     dp[i+1][a][0] += dp[i][a][l]\n7.     // Add 'A'\n8.     if a < 1: dp[i+1][a+1][0] += dp[i][a][l]\n9.     // Add 'L'\n10.    if l < 2: dp[i+1][a][l+1] += dp[i][a][l]",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Initialize DP table with base case: 1 way to have 0 absences and 0 consecutive lates.",
+      "array": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Transitioning for length 1: Adding 'P' to the state (0,0).",
+      "array": [
+        1,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 8,
+      "note": "Transitioning for length 1: Adding 'A' to the state (0,0).",
+      "array": [
+        1,
+        1,
+        1,
+        0,
+        0,
+        0
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 10,
+      "note": "Transitioning for length 1: Adding 'L' to the state (0,0).",
+      "array": [
+        1,
+        1,
+        1,
+        0,
+        1,
+        0
+      ],
+      "i": 0
+    }
+  ]
+}

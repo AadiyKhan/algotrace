@@ -1,0 +1,97 @@
+{
+  "title": "Similar RGB Color",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "String",
+    "Math"
+  ],
+  "description": "Minimize the similarity error between a given 7-character hex color and a shorthand format #XXYYZZ.",
+  "target": "#09f166",
+  "pseudocode": "1. result = '#'\n2. for i = 1, 3, 5:\n3.   hexPart = color.substring(i, i+2)\n4.   val = parseInt(hexPart, 16)\n5.   closest = Math.round(val / 17)\n6.   result += (closest * 17).toString(16).padStart(2, '0')\n7. return result",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize result string",
+      "array": []
+    },
+    {
+      "codeLine": 3,
+      "note": "Process first pair: '09'",
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Convert '09' to decimal: 9",
+      "i": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Find closest multiple of 17: 9/17 ≈ 0.53, round to 1",
+      "i": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Append '11' to result",
+      "array": [
+        "11"
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Process second pair: 'f1'",
+      "i": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Convert 'f1' to decimal: 241",
+      "i": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Find closest multiple of 17: 241/17 ≈ 14.17, round to 14 (e in hex)",
+      "i": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Append 'ee' to result",
+      "array": [
+        "11",
+        "ee"
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Process third pair: '66'",
+      "i": 4
+    },
+    {
+      "codeLine": 4,
+      "note": "Convert '66' to decimal: 102",
+      "i": 4
+    },
+    {
+      "codeLine": 5,
+      "note": "Find closest multiple of 17: 102/17 = 6",
+      "i": 4
+    },
+    {
+      "codeLine": 6,
+      "note": "Append '66' to result",
+      "array": [
+        "11",
+        "ee",
+        "66"
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Return #11ee66",
+      "array": [
+        "11",
+        "ee",
+        "66"
+      ]
+    }
+  ]
+}

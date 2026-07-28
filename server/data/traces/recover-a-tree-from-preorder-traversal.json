@@ -1,0 +1,99 @@
+{
+  "title": "Recover a Tree From Preorder Traversal",
+  "difficulty": "Hard",
+  "type": "tree",
+  "tags": [
+    "Tree",
+    "DFS",
+    "String"
+  ],
+  "description": "Restore a binary tree from a special preorder string representation where '-' denotes depth.",
+  "target": "1-2--3--4-5--6--7",
+  "pseudocode": "function recover(S) {\n  let stack = [];\n  let i = 0;\n  while (i < S.length) {\n    let depth = 0;\n    while (S[i] === '-') { depth++; i++; }\n    let val = 0;\n    while (i < S.length && S[i] !== '-') { val = val * 10 + parseInt(S[i++]); }\n    let node = {val, left: null, right: null};\n    while (stack.length > depth) stack.pop();\n    if (stack.length > 0) {\n      if (!stack[stack.length - 1].left) stack[stack.length - 1].left = node;\n      else stack[stack.length - 1].right = node;\n    }\n    stack.push(node);\n  }\n  return stack[0];\n}",
+  "steps": [
+    {
+      "codeLine": 6,
+      "note": "Initialize root node 1 at depth 0.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 11,
+      "note": "Parse node 2 at depth 1. It becomes left child of 1.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": null
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 11,
+      "note": "Parse node 3 at depth 2. It becomes left child of 2.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": null
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": 2,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 10,
+      "note": "Pop nodes from stack until depth matches current node depth (depth 2 node 4).",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": null
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": 2,
+          "right": 3
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 4,
+          "left": null,
+          "right": null
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "title": "Buddy Strings",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "String",
+    "Hash Table"
+  ],
+  "description": "Check if two strings s and goal can become equal by swapping exactly two letters in s.",
+  "target": null,
+  "pseudocode": "1. If length mismatch, return false\n2. If s == goal, check for duplicate chars\n3. Find indices where s[i] != goal[i]\n4. If diffs count != 2, return false\n5. Return (s[i] == goal[j] && s[j] == goal[i])",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Checking string lengths.",
+      "array": [
+        "a",
+        "b",
+        "c",
+        "a"
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Identifying differing characters: s[0]='a' vs goal[0]='c', s[2]='c' vs goal[2]='a'.",
+      "array": [
+        "a",
+        "b",
+        "c",
+        "a"
+      ],
+      "i": 0,
+      "j": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Exactly two differences found, proceed to swap validation.",
+      "array": [
+        "a",
+        "b",
+        "c",
+        "a"
+      ],
+      "i": 0,
+      "j": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Verify if swapping s[0] and s[2] matches goal. 'a'=='a' and 'c'=='c'. Returns true.",
+      "array": [
+        "a",
+        "b",
+        "c",
+        "a"
+      ],
+      "i": 0,
+      "j": 2
+    }
+  ]
+}

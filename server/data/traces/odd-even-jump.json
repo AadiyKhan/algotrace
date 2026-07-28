@@ -1,0 +1,95 @@
+{
+  "title": "Odd Even Jump",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Dynamic Programming",
+    "Monotonic Stack",
+    "TreeMap"
+  ],
+  "description": "Determine how many starting indices allow you to reach the end of the array by alternating between odd-numbered jumps (smallest larger value) and even-numbered jumps (largest smaller value).",
+  "pseudocode": "n = arr.length; higher = new Array(n); lower = new Array(n);\nhigher[n-1] = true; lower[n-1] = true;\nmap = new TreeMap(); map.put(arr[n-1], n-1);\nfor (i = n - 2; i >= 0; i--) {\n  higher[i] = map.ceilingEntry(arr[i]) != null ? lower[map.ceilingEntry(arr[i]).val] : false;\n  lower[i] = map.floorEntry(arr[i]) != null ? higher[map.floorEntry(arr[i]).val] : false;\n  map.put(arr[i], i);\n}",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize arrays to track reachable states from index i for odd (higher) and even (lower) jumps.",
+      "array": [
+        10,
+        13,
+        12
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 2,
+      "note": "Last index is always reachable for both types of jumps.",
+      "array": [
+        10,
+        13,
+        12
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Start iteration from second to last element.",
+      "array": [
+        10,
+        13,
+        12
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "For arr[1]=13, no value >= 13 exists to the right. higher[1] = false.",
+      "array": [
+        10,
+        13,
+        12
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "For arr[1]=13, largest value <= 13 is 12 at index 2. lower[1] = higher[2] (true).",
+      "array": [
+        10,
+        13,
+        12
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Move to index 0.",
+      "array": [
+        10,
+        13,
+        12
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "For arr[0]=10, smallest value >= 10 is 12 at index 2. higher[0] = lower[2] (true).",
+      "array": [
+        10,
+        13,
+        12
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "For arr[0]=10, no value <= 10 exists to the right. lower[0] = false.",
+      "array": [
+        10,
+        13,
+        12
+      ],
+      "i": 0
+    }
+  ]
+}

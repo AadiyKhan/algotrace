@@ -1,0 +1,93 @@
+{
+  "title": "First Unique Character in a String",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "String",
+    "Counting"
+  ],
+  "description": "Find the index of the first non-repeating character in a string using a frequency map.",
+  "target": "leetcode",
+  "pseudocode": "let map = {};\nfor (let char of s) map[char] = (map[char] || 0) + 1;\nfor (let i = 0; i < s.length; i++) {\n  if (map[s[i]] === 1) return i;\n}\nreturn -1;",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize an empty frequency map.",
+      "array": [
+        "l",
+        "e",
+        "e",
+        "t"
+      ],
+      "i": null
+    },
+    {
+      "codeLine": 2,
+      "note": "Counting frequencies: 'l' is 1.",
+      "array": [
+        "l",
+        "e",
+        "e",
+        "t"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Counting frequencies: 'e' is 1.",
+      "array": [
+        "l",
+        "e",
+        "e",
+        "t"
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Counting frequencies: 'e' is 2.",
+      "array": [
+        "l",
+        "e",
+        "e",
+        "t"
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 2,
+      "note": "Counting frequencies: 't' is 1.",
+      "array": [
+        "l",
+        "e",
+        "e",
+        "t"
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 3,
+      "note": "Checking index 0 ('l'): frequency is 1. Found unique character.",
+      "array": [
+        "l",
+        "e",
+        "e",
+        "t"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Returning index 0.",
+      "array": [
+        "l",
+        "e",
+        "e",
+        "t"
+      ],
+      "i": 0
+    }
+  ]
+}

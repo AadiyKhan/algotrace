@@ -1,0 +1,130 @@
+{
+  "title": "01 Matrix",
+  "difficulty": "Medium",
+  "type": "matrix",
+  "tags": [
+    "Array",
+    "Dynamic Programming",
+    "Breadth-First Search",
+    "Matrix"
+  ],
+  "description": "Given an m x n binary matrix mat, return the distance of the nearest 0 for each cell.",
+  "target": null,
+  "pseudocode": "1: queue = all 0s positions\n2: dist = matrix of infinity\n3: while queue not empty:\n4: r, c = queue.shift()\n5: for dr, dc in directions:\n6: nr, nc = r + dr, c + dc\n7: if dist[nr][nc] > dist[r][c] + 1:\n8: dist[nr][nc] = dist[r][c] + 1\n9: queue.push([nr, nc])",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize queue with all 0s at [0,0]",
+      "matrix": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Pop [0,0] from queue",
+      "matrix": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Check neighbor [0,1]",
+      "matrix": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ],
+      "i": 0,
+      "j": 1
+    },
+    {
+      "codeLine": 8,
+      "note": "Update distance for [0,1]",
+      "matrix": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "curr": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Check neighbor [1,0]",
+      "matrix": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ],
+      "i": 1,
+      "j": 0
+    },
+    {
+      "codeLine": 8,
+      "note": "Update distance for [1,0]",
+      "matrix": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "curr": [
+        1,
+        0
+      ]
+    }
+  ]
+}
