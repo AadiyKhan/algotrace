@@ -1,23 +1,23 @@
 <div align="center">
   <img src="./src/assets/hero.png" alt="AlgoTrace Hero" width="600" />
+</div>
 
-<pre>
+```text
     ___    __               ______                     
    /   |  / /___ _____     /_  __/________ _________ 
   / /| | / / __ `/ __ \     / / / ___/ __ `/ ___/ _ \
  / ___ |/ / /_/ / /_/ /    / / / /  / /_/ / /__/  __/
 /_/  |_/_/\__, /\____/    /_/ /_/   \__,_/\___/\___/ 
          /____/                                      
-</pre>
+```
 
-  **[ STOP STARING AT STATIC CODE ]** <br/>
-  AlgoTrace is an interactive, AI-powered algorithm visualizer that lets you scrub through execution traces step-by-step like a YouTube video. 
+**[ STOP STARING AT STATIC CODE ]**  
+AlgoTrace is an interactive, AI-powered algorithm visualizer that lets you scrub through execution traces step-by-step like a YouTube video. 
 
-  [![React](https://img.shields.io/badge/React-19-blue?style=for-the-badge&logo=react)](https://reactjs.org/)
-  [![Vite](https://img.shields.io/badge/Vite-8-purple?style=for-the-badge&logo=vite)](https://vitejs.dev/)
-  [![TailwindCSS](https://img.shields.io/badge/Tailwind-4-38B2AC?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com/)
-  [![Express](https://img.shields.io/badge/Express-5-black?style=for-the-badge&logo=express)](https://expressjs.com/)
-</div>
+[![React](https://img.shields.io/badge/React-19-blue?style=for-the-badge&logo=react)](https://reactjs.org/)
+[![Vite](https://img.shields.io/badge/Vite-8-purple?style=for-the-badge&logo=vite)](https://vitejs.dev/)
+[![TailwindCSS](https://img.shields.io/badge/Tailwind-4-38B2AC?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com/)
+[![Express](https://img.shields.io/badge/Express-5-black?style=for-the-badge&logo=express)](https://expressjs.com/)
 
 ---
 
@@ -49,39 +49,39 @@ AlgoTrace isn't your professor's boring DSA tool. Built with a **Duotone Hacker 
 - Gemini API Key (Grab one free from Google AI Studio)
 
 ### [ BOOT SEQUENCE ]
-\`\`\`bash
+```bash
 # Install frontend core
 npm install
 
 # Install backend engine
 cd server && npm install
-\`\`\`
+```
 
 ### [ ENVIRONMENT CONFIG ]
-Create a \`.env\` file in the root directory (you can copy \`.env.example\`):
-\`\`\`env
+Create a `.env` file in the root directory (you can copy `.env.example`):
+```env
 GEMINI_API_KEY=your_gemini_api_key_here
 API_KEY=optional_key_to_bypass_rate_limits
-\`\`\`
+```
 
 ### [ IGNITION ]
 Start both the React frontend and the Express backend simultaneously:
-\`\`\`bash
+```bash
 npm run dev
-\`\`\`
-- Frontend terminal: \`http://localhost:5173\`
-- Backend API node: \`http://localhost:3001\`
+```
+- Frontend terminal: `http://localhost:5173`
+- Backend API node: `http://localhost:3001`
 
 ---
 
 ## [0x04] PRODUCTION DEPLOYMENT
 AlgoTrace is configured to be deployed as a unified Node.js app!
 1. Connect your repo to **Render** or **Railway**.
-2. Set the build command to: \`npm run build\`
-3. Set the start command to: \`npm start\`
-4. Inject your \`GEMINI_API_KEY\` to the environment variables.
+2. Set the build command to: `npm run build`
+3. Set the start command to: `npm start`
+4. Inject your `GEMINI_API_KEY` to the environment variables.
 
-The backend automatically serves the compiled frontend and routes all unrecognized requests to \`index.html\` for React Router to handle!
+The backend automatically serves the compiled frontend and routes all unrecognized requests to `index.html` for React Router to handle!
 
 ---
 <div align="center">
