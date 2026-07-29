@@ -57,7 +57,7 @@ const TwoSumViz = ({ stepData, target }) => {
                 </motion.div>
 
                 {/* Index below */}
-                <span className="font-mono text-[9px]" style={{ color: 'rgba(255,255,255,0.15)' }}>[{idx}]</span>
+                <span className="font-mono text-[11px]" style={{ color: 'rgba(255,255,255,0.25)' }}>[{idx}]</span>
               </motion.div>
             );
           })}
@@ -200,7 +200,7 @@ const BinarySearchViz = ({ stepData, target }) => {
                       transition={{ duration: 0.3 }}>
                       {val}
                     </motion.div>
-                    <span className="font-mono text-[9px]" style={{ color: 'rgba(255,255,255,0.15)' }}>[{idx}]</span>
+                    <span className="font-mono text-[11px]" style={{ color: 'rgba(255,255,255,0.25)' }}>[{idx}]</span>
                   </motion.div>
                 );
               })}
@@ -263,7 +263,7 @@ const GenericArrayViz = ({ stepData }) => {
                   transition={{ duration: 0.3 }}>
                   {val}
                 </motion.div>
-                <span className="font-mono text-[9px]" style={{ color: 'rgba(255,255,255,0.15)' }}>[{idx}]</span>
+                <span className="font-mono text-[11px]" style={{ color: 'rgba(255,255,255,0.25)' }}>[{idx}]</span>
               </motion.div>
             );
           })}

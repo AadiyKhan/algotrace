@@ -1,0 +1,94 @@
+{
+  "title": "Perfect Squares",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Math",
+    "Dynamic Programming",
+    "Breadth-First Search"
+  ],
+  "description": "Given an integer n, return the least number of perfect square numbers that sum to n.",
+  "target": 12,
+  "pseudocode": "1. dp = new Array(n + 1).fill(Infinity)\n2. dp[0] = 0\n3. for i = 1 to n:\n4.   for j = 1; j * j <= i; j++:\n5.     dp[i] = Math.min(dp[i], dp[i - j * j] + 1)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize DP table with Infinity",
+      "array": [
+        0,
+        "Inf",
+        "Inf",
+        "Inf",
+        "Inf",
+        "Inf",
+        "Inf",
+        "Inf",
+        "Inf",
+        "Inf",
+        "Inf",
+        "Inf",
+        "Inf"
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Start computing for i = 1",
+      "array": [
+        0,
+        1,
+        "Inf",
+        "Inf",
+        "Inf",
+        "Inf",
+        "Inf",
+        "Inf",
+        "Inf",
+        "Inf",
+        "Inf",
+        "Inf",
+        "Inf"
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Start computing for i = 4",
+      "array": [
+        0,
+        1,
+        2,
+        3,
+        1,
+        "Inf",
+        "Inf",
+        "Inf",
+        "Inf",
+        "Inf",
+        "Inf",
+        "Inf",
+        "Inf"
+      ],
+      "i": 4
+    },
+    {
+      "codeLine": 5,
+      "note": "Calculating dp[12] using dp[12 - 3^2] + 1",
+      "array": [
+        0,
+        1,
+        2,
+        3,
+        1,
+        2,
+        3,
+        4,
+        2,
+        1,
+        2,
+        3,
+        3
+      ],
+      "i": 12
+    }
+  ]
+}

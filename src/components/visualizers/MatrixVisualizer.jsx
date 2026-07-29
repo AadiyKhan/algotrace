@@ -83,7 +83,7 @@ const MatrixVisualizer = ({ stepData }) => {
                     
                     {/* Small column index indicator on the first row */}
                     {rIdx === 0 && (
-                      <span className="absolute -top-5 font-mono text-[9px]" style={{ color: 'rgba(255,255,255,0.2)' }}>
+                      <span className="absolute -top-5 font-mono text-[11px]" style={{ color: 'rgba(255,255,255,0.35)' }}>
                         {cIdx}
                       </span>
                     )}
