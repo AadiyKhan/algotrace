@@ -1,0 +1,92 @@
+{
+  "title": "Filter Restaurants by Vegan Friendly, Price and Distance",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Sorting"
+  ],
+  "description": "Filter a list of restaurants based on vegan-friendly status, max price, and max distance, then sort by rating (desc) and ID (desc).",
+  "target": "veganFriendly: 1, maxPrice: 50, maxDistance: 10",
+  "pseudocode": "1. filtered = restaurants.filter(r => (veganFriendly ? r.vegan : true) && r.price <= maxPrice && r.dist <= maxDistance)\n2. filtered.sort((a, b) => b.rating - a.rating || b.id - a.id)\n3. return filtered.map(r => r.id)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initial restaurants: [[1, 4, 1, 40, 10], [2, 8, 0, 50, 5], [3, 8, 1, 30, 3]]. Filtering for veganFriendly=1, maxPrice=50, maxDist=10.",
+      "array": [
+        [
+          1,
+          4,
+          1,
+          40,
+          10
+        ],
+        [
+          2,
+          8,
+          0,
+          50,
+          5
+        ],
+        [
+          3,
+          8,
+          1,
+          30,
+          3
+        ]
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 1,
+      "note": "Filtered list: [[1, 4, 1, 40, 10], [3, 8, 1, 30, 3]]. (Restaurant 2 excluded as it is not vegan).",
+      "array": [
+        [
+          1,
+          4,
+          1,
+          40,
+          10
+        ],
+        [
+          3,
+          8,
+          1,
+          30,
+          3
+        ]
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Sorting by rating (descending), then ID (descending).",
+      "array": [
+        [
+          3,
+          8,
+          1,
+          30,
+          3
+        ],
+        [
+          1,
+          4,
+          1,
+          40,
+          10
+        ]
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Extracting IDs: [3, 1].",
+      "array": [
+        3,
+        1
+      ],
+      "curr": 3
+    }
+  ]
+}

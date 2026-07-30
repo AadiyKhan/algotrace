@@ -1,0 +1,68 @@
+{
+  "title": "Minimum Operations to Make Array Equal",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Math"
+  ],
+  "description": "Calculate the minimum operations to make all elements equal to the target value (n*n).",
+  "target": 9,
+  "pseudocode": "function minOperations(n) {\n  let ops = 0;\n  for (let i = 0; i < Math.floor(n / 2); i++) {\n    ops += (n - (2 * i + 1));\n  }\n  return ops;\n}",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Initialize operations counter to 0.",
+      "array": [
+        1,
+        3,
+        5
+      ],
+      "i": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "First iteration: i=0, calculate difference from target 9.",
+      "array": [
+        1,
+        3,
+        5
+      ],
+      "i": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Add (9 - (2*0 + 1)) = 8 to ops. ops is now 8.",
+      "array": [
+        1,
+        3,
+        5
+      ],
+      "i": 0,
+      "curr": 9
+    },
+    {
+      "codeLine": 3,
+      "note": "Loop terminates as i is no longer < 1 (floor(3/2)).",
+      "array": [
+        1,
+        3,
+        5
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Return final operations count: 8.",
+      "array": [
+        1,
+        3,
+        5
+      ],
+      "curr": 8
+    }
+  ]
+}

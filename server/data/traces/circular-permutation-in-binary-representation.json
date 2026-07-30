@@ -1,0 +1,106 @@
+{
+  "title": "Circular Permutation in Binary Representation",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Math",
+    "Backtracking",
+    "Bit Manipulation"
+  ],
+  "description": "Given n and start, return any circular permutation of length 2^n where every adjacent pair differs by exactly one bit, starting with start.",
+  "target": 0,
+  "pseudocode": "1. result = []\n2. for i from 0 to (2^n - 1):\n3.    val = i ^ (i >> 1)\n4.    result.push(val ^ start)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize result array.",
+      "array": []
+    },
+    {
+      "codeLine": 2,
+      "note": "Loop start (n=2, start=3, so range is 0-3).",
+      "i": 0,
+      "array": [],
+      "curr": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Calculate Gray code 0: 0 ^ (0 >> 1) = 0.",
+      "i": 0,
+      "array": [],
+      "curr": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "XOR with start 3: 0 ^ 3 = 3.",
+      "i": 0,
+      "array": [
+        3
+      ],
+      "curr": 3
+    },
+    {
+      "codeLine": 3,
+      "note": "Calculate Gray code 1: 1 ^ (1 >> 1) = 1 ^ 0 = 1.",
+      "i": 1,
+      "array": [
+        3
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "XOR with start 3: 1 ^ 3 = 2.",
+      "i": 1,
+      "array": [
+        3,
+        2
+      ],
+      "curr": 3
+    },
+    {
+      "codeLine": 3,
+      "note": "Calculate Gray code 2: 2 ^ (2 >> 1) = 2 ^ 1 = 3.",
+      "i": 2,
+      "array": [
+        3,
+        2
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "XOR with start 3: 3 ^ 3 = 0.",
+      "i": 2,
+      "array": [
+        3,
+        2,
+        0
+      ],
+      "curr": 3
+    },
+    {
+      "codeLine": 3,
+      "note": "Calculate Gray code 3: 3 ^ (3 >> 1) = 3 ^ 1 = 2.",
+      "i": 3,
+      "array": [
+        3,
+        2,
+        0
+      ],
+      "curr": 3
+    },
+    {
+      "codeLine": 4,
+      "note": "XOR with start 3: 2 ^ 3 = 1.",
+      "i": 3,
+      "array": [
+        3,
+        2,
+        0,
+        1
+      ],
+      "curr": 3
+    }
+  ]
+}

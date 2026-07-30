@@ -1,0 +1,100 @@
+{
+  "title": "Filling Bookcase Shelves",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Dynamic Programming",
+    "Array"
+  ],
+  "description": "Arrange books into shelves with a fixed width such that the total height is minimized.",
+  "target": 4,
+  "pseudocode": "1. dp = [0] * (n + 1)\n2. for i = 1 to n:\n3.   curr_w = 0, curr_h = 0\n4.   for j = i - 1 down to 0:\n5.     curr_w += books[j].width\n6.     if curr_w > shelfWidth: break\n7.     curr_h = max(curr_h, books[j].height)\n8.     dp[i] = min(dp[i], dp[j] + curr_h)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize DP table of size n+1 with infinity/large values, dp[0] = 0.",
+      "array": [
+        0,
+        99,
+        99,
+        99
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Start processing first book (width 1, height 2).",
+      "i": 1,
+      "array": [
+        0,
+        99,
+        99,
+        99
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Add book 0 to current shelf.",
+      "i": 1,
+      "j": 0,
+      "array": [
+        0,
+        2,
+        99,
+        99
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 8,
+      "note": "Update dp[1] = dp[0] + max(h0) = 2.",
+      "i": 1,
+      "array": [
+        0,
+        2,
+        99,
+        99
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Processing second book (width 2, height 3).",
+      "i": 2,
+      "array": [
+        0,
+        2,
+        99,
+        99
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Attempt to place book 1 alone on shelf.",
+      "i": 2,
+      "j": 1,
+      "array": [
+        0,
+        2,
+        5,
+        99
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Attempt to place book 0 and 1 together.",
+      "i": 2,
+      "j": 0,
+      "array": [
+        0,
+        2,
+        3,
+        99
+      ],
+      "curr": 0
+    }
+  ]
+}

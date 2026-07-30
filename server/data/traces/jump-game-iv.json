@@ -1,0 +1,124 @@
+{
+  "title": "Jump Game IV",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "Breadth-First Search"
+  ],
+  "description": "Find the minimum jumps to reach the last index of the array using BFS.",
+  "target": 9,
+  "pseudocode": "1. Build adjacency map of indices for each value.\n2. Initialize queue with [0] and steps = 0.\n3. While queue is not empty:\n4. Process current level nodes.\n5. If curr == target, return steps.\n6. Add neighbors (i-1, i+1, and jump indices) to queue.\n7. Mark visited to avoid cycles.",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Initialize BFS queue with starting index 0.",
+      "array": [
+        100,
+        -23,
+        -23,
+        404,
+        100,
+        23,
+        23,
+        23,
+        3,
+        404
+      ],
+      "visited": [
+        0
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "From index 0 (val 100), jump to index 4 (val 100).",
+      "array": [
+        100,
+        -23,
+        -23,
+        404,
+        100,
+        23,
+        23,
+        23,
+        3,
+        404
+      ],
+      "visited": [
+        0,
+        4
+      ],
+      "i": 4
+    },
+    {
+      "codeLine": 6,
+      "note": "From index 4, jump to index 3 (val 404).",
+      "array": [
+        100,
+        -23,
+        -23,
+        404,
+        100,
+        23,
+        23,
+        23,
+        3,
+        404
+      ],
+      "visited": [
+        0,
+        4,
+        3
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 6,
+      "note": "From index 3, jump to index 9 (target) via value 404.",
+      "array": [
+        100,
+        -23,
+        -23,
+        404,
+        100,
+        23,
+        23,
+        23,
+        3,
+        404
+      ],
+      "visited": [
+        0,
+        4,
+        3,
+        9
+      ],
+      "i": 9
+    },
+    {
+      "codeLine": 5,
+      "note": "Reached target index 9. Return total steps: 3.",
+      "array": [
+        100,
+        -23,
+        -23,
+        404,
+        100,
+        23,
+        23,
+        23,
+        3,
+        404
+      ],
+      "visited": [
+        0,
+        4,
+        3,
+        9
+      ],
+      "i": 9
+    }
+  ]
+}

@@ -1,0 +1,91 @@
+{
+  "title": "Longest Well-Performing Interval",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Stack",
+    "Prefix Sum"
+  ],
+  "description": "Find the length of the longest well-performing interval in an array where hours > 8 are points (1) and others are (-1).",
+  "target": 0,
+  "pseudocode": "1. score = 0, maxLen = 0, map = {0: -1}\n2. for i, val in enumerate(hours):\n3.   score += 1 if val > 8 else -1\n4.   if score > 0: maxLen = i + 1\n5.   else:\n6.     if score - 1 in map: maxLen = max(maxLen, i - map[score - 1])\n7.     if score not in map: map[score] = i",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize score and map to track first occurrences of prefix sums.",
+      "array": [
+        9,
+        6,
+        9
+      ],
+      "i": -1
+    },
+    {
+      "codeLine": 3,
+      "note": "Process index 0: 9 > 8, score becomes 1.",
+      "array": [
+        9,
+        6,
+        9
+      ],
+      "i": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Score > 0, maxLen becomes 1.",
+      "array": [
+        9,
+        6,
+        9
+      ],
+      "i": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Process index 1: 6 < 8, score becomes 0.",
+      "array": [
+        9,
+        6,
+        9
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "Score 0 already in map, keep initial index -1.",
+      "array": [
+        9,
+        6,
+        9
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Process index 2: 9 > 8, score becomes 1.",
+      "array": [
+        9,
+        6,
+        9
+      ],
+      "i": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Score 1 > 0, maxLen = max(1, 2 + 1) = 3.",
+      "array": [
+        9,
+        6,
+        9
+      ],
+      "i": 2,
+      "curr": 2
+    }
+  ]
+}

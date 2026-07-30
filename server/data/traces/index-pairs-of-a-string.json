@@ -5,89 +5,118 @@
   "tags": [
     "Array",
     "String",
-    "Trie"
+    "Trie",
+    "Sorting"
   ],
-  "description": "Given a string text and an array of strings words, return all index pairs [i, j] such that the substring text[i...j] is in words.",
-  "target": "text = \"aba\", words = [\"a\", \"aba\"]",
-  "pseudocode": "1. result = []\n2. for i from 0 to text.length - 1:\n3.   for j from i to text.length - 1:\n4.     if words.includes(text.substring(i, j + 1)):\n5.       result.push([i, j])\n6. return result",
+  "description": "Find all index pairs [i, j] such that the substring text[i..j] is in the list of words.",
+  "target": "text = \"thestoryofleetcode\", words = [\"story\",\"fleet\",\"leetcode\"]",
+  "pseudocode": "1. Initialize result list\n2. For each word in words:\n3. Find all occurrences of word in text\n4. Add [start, end] indices to result\n5. Sort result by start index, then end index\n6. Return result",
   "steps": [
     {
       "codeLine": 1,
       "note": "Initialize empty result list.",
-      "array": []
+      "array": [],
+      "result": []
     },
     {
       "codeLine": 2,
-      "note": "Start outer loop i = 0.",
-      "i": 0
+      "note": "Processing word 'story'.",
+      "array": [
+        "thestoryofleetcode"
+      ],
+      "result": []
     },
     {
       "codeLine": 3,
-      "note": "Start inner loop j = 0. Substring: 'a'. Exists in words.",
-      "i": 0,
-      "j": 0
-    },
-    {
-      "codeLine": 5,
-      "note": "Add [0, 0] to result.",
-      "i": 0,
-      "j": 0
-    },
-    {
-      "codeLine": 3,
-      "note": "Inner loop j = 1. Substring: 'ab'. Not in words.",
-      "i": 0,
-      "j": 1
-    },
-    {
-      "codeLine": 3,
-      "note": "Inner loop j = 2. Substring: 'aba'. Exists in words.",
-      "i": 0,
-      "j": 2
-    },
-    {
-      "codeLine": 5,
-      "note": "Add [0, 2] to result.",
-      "i": 0,
-      "j": 2
+      "note": "Found 'story' at index 3 to 7.",
+      "array": [
+        "thestoryofleetcode"
+      ],
+      "result": [
+        [
+          3,
+          7
+        ]
+      ],
+      "curr": 3
     },
     {
       "codeLine": 2,
-      "note": "Outer loop i = 1.",
-      "i": 1
-    },
-    {
-      "codeLine": 3,
-      "note": "Inner loop j = 1. Substring: 'b'. Not in words.",
-      "i": 1,
-      "j": 1
-    },
-    {
-      "codeLine": 3,
-      "note": "Inner loop j = 2. Substring: 'ba'. Not in words.",
-      "i": 1,
-      "j": 2
+      "note": "Processing word 'fleet'. Not found.",
+      "array": [
+        "thestoryofleetcode"
+      ],
+      "result": [
+        [
+          3,
+          7
+        ]
+      ]
     },
     {
       "codeLine": 2,
-      "note": "Outer loop i = 2.",
-      "i": 2
+      "note": "Processing word 'leetcode'.",
+      "array": [
+        "thestoryofleetcode"
+      ],
+      "result": [
+        [
+          3,
+          7
+        ]
+      ]
     },
     {
       "codeLine": 3,
-      "note": "Inner loop j = 2. Substring: 'a'. Exists in words.",
-      "i": 2,
-      "j": 2
+      "note": "Found 'leetcode' at index 10 to 17.",
+      "array": [
+        "thestoryofleetcode"
+      ],
+      "result": [
+        [
+          3,
+          7
+        ],
+        [
+          10,
+          17
+        ]
+      ],
+      "curr": 10
     },
     {
       "codeLine": 5,
-      "note": "Add [2, 2] to result.",
-      "i": 2,
-      "j": 2
+      "note": "Sorting result pairs.",
+      "array": [
+        "thestoryofleetcode"
+      ],
+      "result": [
+        [
+          3,
+          7
+        ],
+        [
+          10,
+          17
+        ]
+      ]
     },
     {
       "codeLine": 6,
-      "note": "Return final result [[0,0], [0,2], [2,2]]."
+      "note": "Returning final index pairs.",
+      "array": [
+        "thestoryofleetcode"
+      ],
+      "result": [
+        [
+          3,
+          7
+        ],
+        [
+          10,
+          17
+        ]
+      ]
     }
   ]
 }

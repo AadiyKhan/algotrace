@@ -1,0 +1,69 @@
+{
+  "title": "How Many Numbers Are Smaller Than The Current Number",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "Counting"
+  ],
+  "description": "Given an array nums, for each nums[i] find out how many numbers in the array are smaller than it.",
+  "target": null,
+  "pseudocode": "1. count = new Array(101).fill(0)\n2. for num in nums: count[num]++\n3. for i from 1 to 100: count[i] += count[i-1]\n4. res = []\n5. for num in nums: res.push(num == 0 ? 0 : count[num-1])",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize count array to store frequency of each number (0-100).",
+      "array": [
+        8,
+        1,
+        2,
+        2
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Count frequencies: 1 appears once, 2 appears twice, 8 appears once.",
+      "array": [
+        8,
+        1,
+        2,
+        2
+      ],
+      "i": 0,
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Compute prefix sums to get count of numbers strictly smaller than i.",
+      "array": [
+        8,
+        1,
+        2,
+        2
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "For each number, lookup the count of smaller numbers.",
+      "array": [
+        8,
+        1,
+        2,
+        2
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Final result array constructed.",
+      "array": [
+        4,
+        0,
+        1,
+        1
+      ]
+    }
+  ]
+}

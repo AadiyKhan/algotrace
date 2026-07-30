@@ -1,0 +1,128 @@
+{
+  "title": "Find the Kth Smallest Sum of a Matrix With Sorted Rows",
+  "difficulty": "Hard",
+  "type": "matrix",
+  "tags": [
+    "Array",
+    "Matrix",
+    "Heap",
+    "Binary Search"
+  ],
+  "description": "Find the kth smallest sum of a matrix where each row is sorted in non-decreasing order.",
+  "target": 7,
+  "pseudocode": "1. Initialize current_row_sums = mat[0]\n2. For each subsequent row from 1 to m-1:\n3.   next_row_sums = []\n4.   For each x in current_row_sums:\n5.     For each y in mat[row]:\n6.       next_row_sums.push(x + y)\n7.   Sort next_row_sums and keep only top k smallest\n8.   current_row_sums = next_row_sums\n9. Return current_row_sums[k-1]",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize sums with the first row: [1, 10]",
+      "matrix": [
+        [
+          1,
+          10
+        ],
+        [
+          1,
+          4
+        ]
+      ],
+      "array": [
+        1,
+        10
+      ],
+      "curr": [
+        1,
+        10
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Processing row 1: [1, 4]",
+      "matrix": [
+        [
+          1,
+          10
+        ],
+        [
+          1,
+          4
+        ]
+      ],
+      "array": [
+        1,
+        10
+      ],
+      "curr": [
+        1,
+        1
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Calculating combinations: 1+1=2, 1+4=5, 10+1=11, 10+4=14",
+      "matrix": [
+        [
+          1,
+          10
+        ],
+        [
+          1,
+          4
+        ]
+      ],
+      "array": [
+        2,
+        5,
+        11,
+        14
+      ],
+      "curr": [
+        1,
+        1
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Kept top 7 smallest sums (here we have 4)",
+      "matrix": [
+        [
+          1,
+          10
+        ],
+        [
+          1,
+          4
+        ]
+      ],
+      "array": [
+        2,
+        5,
+        11,
+        14
+      ],
+      "curr": [
+        7,
+        4
+      ]
+    },
+    {
+      "codeLine": 9,
+      "note": "Return the 7th smallest sum (or last valid if k > size)",
+      "matrix": [
+        [
+          1,
+          10
+        ],
+        [
+          1,
+          4
+        ]
+      ],
+      "array": [
+        2,
+        5,
+        11,
+        14
+      ]
+    }
+  ]
+}

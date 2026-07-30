@@ -1,19 +1,19 @@
 {
-  "title": "Lowest Common Ancestor Of A Binary Search Tree",
+  "title": "Lowest Common Ancestor of a Binary Search Tree",
   "difficulty": "Medium",
   "type": "tree",
   "tags": [
     "Tree",
-    "Binary Search Tree",
-    "Recursion"
+    "Depth-First Search",
+    "Binary Search Tree"
   ],
-  "description": "Find the lowest common ancestor (LCA) node of two given nodes in a binary search tree (BST).",
-  "target": "p: 2, q: 8",
-  "pseudocode": "1: while (root) {\n2:   if (p < root.val && q < root.val) root = root.left;\n3:   else if (p > root.val && q > root.val) root = root.right;\n4:   else return root;\n5: }",
+  "description": "Find the lowest common ancestor of two nodes in a BST using property that node value splits search range.",
+  "target": "LCA(2, 8)",
+  "pseudocode": "1. curr = root\n2. if p.val < curr.val and q.val < curr.val: curr = curr.left\n3. else if p.val > curr.val and q.val > curr.val: curr = curr.right\n4. else: return curr",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Start at the root (node 6).",
+      "note": "Initialize traversal at root node 6.",
       "treeNodes": [
         {
           "id": 0,
@@ -42,8 +42,8 @@
         {
           "id": 4,
           "val": 4,
-          "left": null,
-          "right": null
+          "left": 7,
+          "right": 8
         },
         {
           "id": 5,
@@ -56,24 +56,83 @@
           "val": 9,
           "left": null,
           "right": null
+        },
+        {
+          "id": 7,
+          "val": 3,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 8,
+          "val": 5,
+          "left": null,
+          "right": null
         }
       ],
       "curr": 0
     },
     {
-      "codeLine": 2,
-      "note": "Both 2 and 8 are not less than 6. Check next condition.",
-      "curr": 0
-    },
-    {
-      "codeLine": 3,
-      "note": "2 is not greater than 6, move to else block.",
-      "curr": 0
-    },
-    {
       "codeLine": 4,
-      "note": "LCA found at node 6 (since p < 6 < q).",
+      "note": "Since p(2) < 6 and q(8) > 6, the current node 6 is the split point, hence the LCA.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 6,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 2,
+          "val": 8,
+          "left": 5,
+          "right": 6
+        },
+        {
+          "id": 3,
+          "val": 0,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 4,
+          "left": 7,
+          "right": 8
+        },
+        {
+          "id": 5,
+          "val": 7,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 6,
+          "val": 9,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 7,
+          "val": 3,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 8,
+          "val": 5,
+          "left": null,
+          "right": null
+        }
+      ],
       "curr": 0
     }
-  ]
+  ],
+  "fullDescription": "<p>Given a binary search tree (BST), find the lowest common ancestor (LCA) node of two given nodes in the BST.</p>\n\n<p>According to the <a href=\"https://en.wikipedia.org/wiki/Lowest_common_ancestor\" target=\"_blank\">definition of LCA on Wikipedia</a>: &ldquo;The lowest common ancestor is defined between two nodes <code>p</code> and <code>q</code> as the lowest node in <code>T</code> that has both <code>p</code> and <code>q</code> as descendants (where we allow <strong>a node to be a descendant of itself</strong>).&rdquo;</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2018/12/14/binarysearchtree_improved.png\" style=\"width: 200px; height: 190px;\" />\n<pre>\n<strong>Input:</strong> root = [6,2,8,0,4,7,9,null,null,3,5], p = 2, q = 8\n<strong>Output:</strong> 6\n<strong>Explanation:</strong> The LCA of nodes 2 and 8 is 6.\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2018/12/14/binarysearchtree_improved.png\" style=\"width: 200px; height: 190px;\" />\n<pre>\n<strong>Input:</strong> root = [6,2,8,0,4,7,9,null,null,3,5], p = 2, q = 4\n<strong>Output:</strong> 2\n<strong>Explanation:</strong> The LCA of nodes 2 and 4 is 2, since a node can be a descendant of itself according to the LCA definition.\n</pre>\n\n<p><strong class=\"example\">Example 3:</strong></p>\n\n<pre>\n<strong>Input:</strong> root = [2,1], p = 2, q = 1\n<strong>Output:</strong> 2\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li>The number of nodes in the tree is in the range <code>[2, 10<sup>5</sup>]</code>.</li>\n\t<li><code>-10<sup>9</sup> &lt;= Node.val &lt;= 10<sup>9</sup></code></li>\n\t<li>All <code>Node.val</code> are <strong>unique</strong>.</li>\n\t<li><code>p != q</code></li>\n\t<li><code>p</code> and <code>q</code> will exist in the BST.</li>\n</ul>\n"
 }

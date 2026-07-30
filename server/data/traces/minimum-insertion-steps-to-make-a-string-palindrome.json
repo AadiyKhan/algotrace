@@ -1,0 +1,71 @@
+{
+  "title": "Minimum Insertion Steps to Make a String Palindrome",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "String",
+    "Dynamic Programming"
+  ],
+  "description": "Calculate minimum insertions to make a string a palindrome using DP on the LCS of string and its reverse.",
+  "target": 0,
+  "pseudocode": "1. n = s.length\n2. reversed_s = s.reverse()\n3. dp = matrix of size (n+1)x(n+1) initialized to 0\n4. for i from 1 to n:\n5.   for j from 1 to n:\n6.     if s[i-1] == reversed_s[j-1]: dp[i][j] = dp[i-1][j-1] + 1\n7.     else: dp[i][j] = max(dp[i-1][j], dp[i][j-1])\n8. return n - dp[n][n]",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize variables for string length n = 5.",
+      "array": [
+        "z",
+        "z",
+        "a",
+        "z",
+        "z"
+      ],
+      "curr": 5
+    },
+    {
+      "codeLine": 2,
+      "note": "Reverse the string: reversed_s = 'zzazz'.",
+      "array": [
+        "z",
+        "z",
+        "a",
+        "z",
+        "z"
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Initialize DP table to store LCS values.",
+      "array": [
+        "z",
+        "z",
+        "a",
+        "z",
+        "z"
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Comparing characters, string matches reversed perfectly, building LCS.",
+      "array": [
+        "z",
+        "z",
+        "a",
+        "z",
+        "z"
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "LCS length is 5. Result = 5 - 5 = 0. String is already palindrome.",
+      "array": [
+        "z",
+        "z",
+        "a",
+        "z",
+        "z"
+      ],
+      "curr": 5
+    }
+  ]
+}

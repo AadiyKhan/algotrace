@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const NODE_R = 22;   // circle radius px
 const H_GAP  = 18;   // horizontal gap between sibling subtrees
@@ -55,48 +55,55 @@ function computeLayout(nodeMap, rootId) {
 // prev = dashed white border
 // visited = dotted dim border
 function nodeStyle(isCurr, isPrev, isVisited) {
-  if (isCurr)    return { bg: 'rgba(255,0,0,0.18)', border: '2px solid #ff0000', color: '#fff', shadow: '0 0 20px rgba(255,0,0,0.45)', borderStyle: 'solid' };
-  if (isPrev)    return { bg: 'rgba(255,255,255,0.08)', border: '2px dashed rgba(255,255,255,0.5)', color: '#fff', shadow: 'none', borderStyle: 'dashed' };
-  if (isVisited) return { bg: 'rgba(255,0,0,0.05)', border: '2px dotted rgba(255,0,0,0.35)', color: 'rgba(255,255,255,0.55)', shadow: 'none', borderStyle: 'dotted' };
-  return { bg: '#110000', border: '2px solid #2a0000', color: '#6b5555', shadow: 'none', borderStyle: 'solid' };
+  if (isCurr)    return { bg: 'rgba(245,158,11,0.15)', border: '2px solid #f59e0b', color: '#fff', shadow: '0 0 30px rgba(245,158,11,0.3)' };
+  if (isPrev)    return { bg: 'rgba(255,255,255,0.05)', border: '2px solid rgba(255,255,255,0.8)', color: '#fff', shadow: 'none' };
+  if (isVisited) return { bg: 'rgba(245,158,11,0.05)', border: '2px solid rgba(245,158,11,0.4)', color: 'rgba(255,255,255,0.7)', shadow: 'none' };
+  return { bg: '#050505', border: '2px solid rgba(255,255,255,0.2)', color: 'rgba(255,255,255,0.4)', shadow: 'none' };
 }
 
 const LEGEND = [
-  { label: 'CURRENT',  desc: 'Active node',          border: '2px solid #ff0000',              color: '#ff0000' },
-  { label: 'PREV',     desc: 'Previously visited',   border: '2px dashed rgba(255,255,255,0.5)', color: 'rgba(255,255,255,0.7)' },
-  { label: 'VISITED',  desc: 'Marked as visited',    border: '2px dotted rgba(255,0,0,0.4)',    color: 'rgba(255,0,0,0.6)' },
+  { label: 'CURRENT',  desc: 'ACTIVE NODE',          border: '2px solid #f59e0b',              color: '#f59e0b' },
+  { label: 'PREV',     desc: 'PREVIOUSLY VISITED',   border: '2px solid rgba(255,255,255,0.8)', color: '#ffffff' },
+  { label: 'VISITED',  desc: 'MARKED AS VISITED',    border: '2px solid rgba(245,158,11,0.4)',  color: 'rgba(245,158,11,0.8)' },
 ];
 
 const TreeVisualizer = ({ stepData }) => {
   const { treeNodes, curr, prev, visited } = stepData;
 
+  const nodeMap = {};
+  if (treeNodes && Array.isArray(treeNodes)) {
+    treeNodes.forEach(n => { nodeMap[n.id] = { ...n }; });
+  }
+
+  const childIds = new Set();
+  if (treeNodes && Array.isArray(treeNodes)) {
+    treeNodes.forEach(n => {
+      if (n.left  !== null && n.left  !== undefined) childIds.add(n.left);
+      if (n.right !== null && n.right !== undefined) childIds.add(n.right);
+    });
+  }
+
+  const root = treeNodes && treeNodes.length > 0 ? (treeNodes.find(n => !childIds.has(n.id)) ?? treeNodes[0]) : null;
+
+  const positions = useMemo(() => {
+    if (!root || !nodeMap) return {};
+    return computeLayout(nodeMap, root.id);
+  }, [treeNodes, root, nodeMap]);
+
   if (!treeNodes || !Array.isArray(treeNodes) || treeNodes.length === 0) {
     return (
-      <div className="flex items-center justify-center h-32 w-full border border-borderDark font-mono text-sm" style={{ color: 'rgba(255,255,255,0.4)' }}>
-        No tree data provided for this step.
+      <div className="flex items-center justify-center h-40 w-full border-[2px] border-white/20 font-mono text-[11px] font-bold tracking-widest uppercase bg-[#050505]" style={{ color: 'rgba(255,255,255,0.2)' }}>
+        [ EMPTY_TREE ]
       </div>
     );
   }
 
-  const nodeMap = {};
-  treeNodes.forEach(n => { nodeMap[n.id] = { ...n }; });
-
-  // Find root: node whose id appears in no child list
-  const childIds = new Set();
-  treeNodes.forEach(n => {
-    if (n.left  !== null && n.left  !== undefined) childIds.add(n.left);
-    if (n.right !== null && n.right !== undefined) childIds.add(n.right);
-  });
-  const root = treeNodes.find(n => !childIds.has(n.id)) ?? treeNodes[0];
-
-  const positions = useMemo(() => computeLayout(nodeMap, root.id), [treeNodes]);
-
   // Normalise so min-x = NODE_R (left padding)
   const xs = Object.values(positions).map(p => p.x);
   const ys = Object.values(positions).map(p => p.y);
-  const minX = Math.min(...xs);
-  const maxX = Math.max(...xs);
-  const maxY = Math.max(...ys);
+  const minX = xs.length ? Math.min(...xs) : 0;
+  const maxX = xs.length ? Math.max(...xs) : 0;
+  const maxY = ys.length ? Math.max(...ys) : 0;
   const svgW = Math.max(300, maxX - minX + NODE_R * 2 + 32);
   const svgH = maxY + NODE_R + 32;
   const offsetX = -minX + NODE_R + 16;
@@ -115,32 +122,52 @@ const TreeVisualizer = ({ stepData }) => {
   });
 
   return (
-    <div className="flex flex-col gap-6 w-full max-w-4xl mx-auto">
-      <p className="label text-center">BINARY TREE</p>
+    <div className="flex flex-col gap-8 w-full max-w-5xl mx-auto p-4">
+      <div className="flex items-center gap-4 mb-2">
+        <span className="font-mono font-bold tracking-widest text-[11px] uppercase text-white/50">BINARY_TREE</span>
+        <div className="flex-1 h-[2px] bg-white/10" />
+      </div>
 
-      <div className="overflow-x-auto">
+      <div className="overflow-x-auto border-[2px] border-white/20 bg-[#050505] p-8 relative">
         <svg
           width={svgW}
           height={svgH}
           style={{ display: 'block', margin: '0 auto' }}
           aria-label="Binary tree visualizer"
         >
-          {/* Edges */}
+          <defs>
+            <pattern id="grid-tree" width="24" height="24" patternUnits="userSpaceOnUse">
+              <path d="M 24 0 L 0 0 0 24" fill="none" stroke="rgba(255,255,255,0.03)" strokeWidth="1" />
+            </pattern>
+            <radialGradient id="node-glow-tree" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stopColor="rgba(245,158,11,0.6)" />
+              <stop offset="100%" stopColor="rgba(245,158,11,0)" />
+            </radialGradient>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#grid-tree)" />
+
+          {/* Edges — use path instead of line so pathLength works */}
           {edges.map(({ from, to }) => {
             const p1 = positions[from];
             const p2 = positions[to];
+            const isActive = curr === from || curr === to;
+            const d = `M ${p1.x + offsetX} ${p1.y} L ${p2.x + offsetX} ${p2.y}`;
             return (
-              <line
+              <motion.path
                 key={`${from}-${to}`}
-                x1={p1.x + offsetX} y1={p1.y}
-                x2={p2.x + offsetX} y2={p2.y}
-                stroke="#2a0000" strokeWidth={1.5}
+                d={d}
+                stroke={isActive ? '#f59e0b' : 'rgba(255,255,255,0.15)'}
+                strokeWidth={isActive ? 3 : 1.5}
+                fill="none"
+                initial={{ pathLength: 0, opacity: 0 }}
+                animate={{ pathLength: 1, opacity: 1 }}
+                transition={{ duration: 0.5, ease: "easeOut" }}
               />
             );
           })}
 
           {/* Nodes */}
-          {treeNodes.map(node => {
+          {treeNodes.map((node, i) => {
             const pos = positions[node.id];
             if (!pos) return null;
             const isCurr    = curr === node.id;
@@ -152,19 +179,31 @@ const TreeVisualizer = ({ stepData }) => {
 
             return (
               <g key={node.id}>
-                {/* Glow ring for current */}
+                {/* Glow halo rendered BEHIND the node — large radial circle */}
                 {isCurr && (
-                  <circle cx={cx} cy={cy} r={NODE_R + 6}
-                    fill="none" stroke="rgba(255,0,0,0.2)" strokeWidth={6} />
+                  <motion.circle
+                    cx={cx} cy={cy}
+                    r={NODE_R + 14}
+                    fill="url(#node-glow-tree)"
+                    initial={{ opacity: 0, r: NODE_R }}
+                    animate={{ opacity: 1, r: [NODE_R + 10, NODE_R + 18, NODE_R + 14] }}
+                    transition={{ duration: 1.2, repeat: Infinity, ease: 'easeInOut' }}
+                  />
                 )}
+                {/* Outer amber ring */}
+                {isCurr && (
+                  <circle cx={cx} cy={cy} r={NODE_R + 5}
+                    fill="none" stroke="rgba(245,158,11,0.5)" strokeWidth={2} />
+                )}
+                {/* Main node circle */}
                 <motion.circle
                   cx={cx} cy={cy} r={NODE_R}
                   fill={s.bg}
-                  stroke={isCurr ? '#ff0000' : isPrev ? 'rgba(255,255,255,0.5)' : isVisited ? 'rgba(255,0,0,0.35)' : '#2a0000'}
-                  strokeWidth={2}
-                  strokeDasharray={isPrev ? '4 3' : isVisited ? '2 3' : 'none'}
-                  animate={isCurr ? { r: [NODE_R, NODE_R + 3, NODE_R] } : { r: NODE_R }}
-                  transition={{ duration: 0.3 }}
+                  stroke={isCurr ? '#f59e0b' : isPrev ? 'rgba(255,255,255,0.8)' : isVisited ? 'rgba(245,158,11,0.5)' : 'rgba(255,255,255,0.2)'}
+                  strokeWidth={isCurr ? 3 : 2}
+                  initial={{ scale: 0, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  transition={{ type: 'spring', stiffness: 250, damping: 18, delay: Math.min(i * 0.05, 0.4) }}
                 />
                 <text
                   x={cx} y={cy}
@@ -182,14 +221,14 @@ const TreeVisualizer = ({ stepData }) => {
       </div>
 
       {/* Legend */}
-      <div className="grid grid-cols-3 gap-3 border-t border-borderDark pt-4">
+      <div className="grid grid-cols-3 gap-6 border-t-[2px] border-white/10 pt-8 mt-4">
         {LEGEND.map(({ label, desc, border, color }) => (
-          <div key={label} className="p-3" style={{ background: '#110000', border: '1px solid #2a0000' }}>
-            <div className="flex items-center gap-2 mb-1">
-              <div style={{ width: 14, height: 14, borderRadius: '50%', background: 'transparent', border, flexShrink: 0 }} />
-              <span className="font-mono font-bold text-[10px]" style={{ color }}>{label}</span>
+          <div key={label} className="p-6 bg-[#050505] border-[2px] border-white/20">
+            <div className="flex items-center gap-4 mb-2">
+              <div style={{ width: 14, height: 14, background: 'transparent', border, flexShrink: 0 }} />
+              <span className="font-mono font-bold tracking-widest text-[11px] uppercase" style={{ color }}>{label}</span>
             </div>
-            <p className="text-[10px] leading-relaxed" style={{ color: '#6b5555' }}>{desc}</p>
+            <p className="font-mono text-[10px] uppercase tracking-widest text-white/40">{desc}</p>
           </div>
         ))}
       </div>

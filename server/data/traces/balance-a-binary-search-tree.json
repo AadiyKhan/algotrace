@@ -1,0 +1,114 @@
+{
+  "title": "Balance a Binary Search Tree",
+  "difficulty": "Medium",
+  "type": "tree",
+  "tags": [
+    "Tree",
+    "Binary Search Tree",
+    "Divide and Conquer"
+  ],
+  "description": "Convert an unbalanced BST into a balanced one by collecting nodes in sorted order and reconstructing recursively.",
+  "pseudocode": "1. Collect nodes in sorted order using inorder traversal\n2. Build balanced BST from sorted array using middle element as root",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Traversing inorder to collect sorted nodes: [1, 2, 3, 4]",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": null,
+          "right": 1
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": 2
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": 3
+        },
+        {
+          "id": 3,
+          "val": 4,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Selecting middle element '2' as root to start building",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 2,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 2,
+      "note": "Setting left child '1' and right child '3'",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 2,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": 3
+        }
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Setting right child of '3' to '4' to complete the balanced tree",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 2,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": 3
+        },
+        {
+          "id": 3,
+          "val": 4,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 3
+    }
+  ]
+}

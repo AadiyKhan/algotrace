@@ -1,0 +1,224 @@
+{
+  "title": "Critical Connections In A Network",
+  "difficulty": "Hard",
+  "type": "graph",
+  "tags": [
+    "Graph",
+    "DFS",
+    "Tarjan's Bridge-finding"
+  ],
+  "description": "Find all critical connections (bridges) in a network of n servers.",
+  "target": null,
+  "pseudocode": "1. initialize timer = 0, discovery = [], low = [], result = []\n2. dfs(node, parent):\n3.   discovery[node] = low[node] = ++timer\n4.   for neighbor in adj[node]:\n5.     if neighbor == parent: continue\n6.     if visited[neighbor]: low[node] = min(low[node], discovery[neighbor])\n7.     else:\n8.       dfs(neighbor, node)\n9.       low[node] = min(low[node], low[neighbor])\n10.      if low[neighbor] > discovery[node]: result.push([node, neighbor])",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Starting DFS from node 0",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": "0"
+        },
+        {
+          "id": 1,
+          "val": "1"
+        },
+        {
+          "id": 2,
+          "val": "2"
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "visited": [
+        0
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Set discovery and low values for node 0 to 1",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": "0"
+        },
+        {
+          "id": 1,
+          "val": "1"
+        },
+        {
+          "id": 2,
+          "val": "2"
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "curr": "0"
+    },
+    {
+      "codeLine": 8,
+      "note": "DFS moves to neighbor 1",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": "0"
+        },
+        {
+          "id": 1,
+          "val": "1"
+        },
+        {
+          "id": 2,
+          "val": "2"
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "curr": "1",
+      "visited": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "DFS moves to neighbor 2",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": "0"
+        },
+        {
+          "id": 1,
+          "val": "1"
+        },
+        {
+          "id": 2,
+          "val": "2"
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "curr": "2",
+      "visited": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Back-edge found from 2 to 0, updating low[2]",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": "0"
+        },
+        {
+          "id": 1,
+          "val": "1"
+        },
+        {
+          "id": 2,
+          "val": "2"
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "curr": "2"
+    },
+    {
+      "codeLine": 9,
+      "note": "Backtrack to node 1, no critical connection found in cycle 0-1-2",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": "0"
+        },
+        {
+          "id": 1,
+          "val": "1"
+        },
+        {
+          "id": 2,
+          "val": "2"
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "curr": "1"
+    }
+  ]
+}

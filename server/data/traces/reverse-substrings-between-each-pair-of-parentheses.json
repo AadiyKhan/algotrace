@@ -1,0 +1,71 @@
+{
+  "title": "Reverse Substrings Between Each Pair Of Parentheses",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Stack",
+    "String"
+  ],
+  "description": "Reverse the strings in each pair of parentheses, starting from the innermost one.",
+  "target": "(u(love)i)",
+  "pseudocode": "1: stack = [[]]\n2: for char in s:\n3:   if char == '(': stack.push([])\n4:   else if char == ')':\n5:     sub = stack.pop().reverse()\n6:     stack[stack.length - 1].push(...sub)\n7:   else: stack[stack.length - 1].push(char)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize stack with an empty array to hold the current level",
+      "array": []
+    },
+    {
+      "codeLine": 2,
+      "note": "Process first char '('",
+      "i": 0,
+      "array": [
+        "("
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Push new array to stack for nested level",
+      "array": [
+        "(",
+        []
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Push 'l', 'o', 'v', 'e' to current stack level",
+      "array": [
+        "(",
+        [
+          "l",
+          "o",
+          "v",
+          "e"
+        ]
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Found ')', popping and reversing nested level",
+      "array": [
+        "(",
+        [
+          "e",
+          "v",
+          "o",
+          "l"
+        ]
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Append reversed segment to outer stack",
+      "array": [
+        "e",
+        "v",
+        "o",
+        "l"
+      ]
+    }
+  ]
+}

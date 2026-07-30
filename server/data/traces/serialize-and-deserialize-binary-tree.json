@@ -4,51 +4,15 @@
   "type": "tree",
   "tags": [
     "Tree",
-    "Design",
-    "String"
+    "DFS",
+    "Design"
   ],
-  "description": "Serialization is the process of converting a tree structure into a string, and deserialization is the inverse. Using BFS (Level-order traversal).",
-  "pseudocode": "1: queue = [root]\n2: result = []\n3: while queue is not empty:\n4:   node = queue.shift()\n5:   if node: result.push(node.val); queue.push(node.left, node.right)\n6:   else: result.push('null')\n7: return result",
+  "description": "Serialize a binary tree into a string using preorder traversal and deserialize it back into the original tree structure.",
+  "pseudocode": "1. serialize(node):\n2.   if node is null: return \"#\"\n3.   return str(node.val) + \",\" + serialize(node.left) + \",\" + serialize(node.right)\n4. deserialize(data):\n5.   queue = data.split(',')\n6.   buildTree(queue)",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize queue with root node [1]",
-      "treeNodes": [
-        {
-          "id": 0,
-          "val": 1,
-          "left": 1,
-          "right": 2
-        },
-        {
-          "id": 1,
-          "val": 2,
-          "left": null,
-          "right": null
-        },
-        {
-          "id": 2,
-          "val": 3,
-          "left": 3,
-          "right": 4
-        },
-        {
-          "id": 3,
-          "val": 4,
-          "left": null,
-          "right": null
-        },
-        {
-          "id": 4,
-          "val": 5,
-          "left": null,
-          "right": null
-        }
-      ]
-    },
-    {
-      "codeLine": 4,
-      "note": "Dequeued node 1",
+      "note": "Starting serialization of root node 1",
       "treeNodes": [
         {
           "id": 0,
@@ -81,13 +45,11 @@
           "right": null
         }
       ],
-      "visited": [
-        0
-      ]
+      "curr": 0
     },
     {
-      "codeLine": 5,
-      "note": "Added 1 to result, queue now [2, 3]",
+      "codeLine": 3,
+      "note": "Serialized root 1, moving to left child 2",
       "treeNodes": [
         {
           "id": 0,
@@ -120,13 +82,11 @@
           "right": null
         }
       ],
-      "visited": [
-        0
-      ]
+      "curr": 1
     },
     {
-      "codeLine": 4,
-      "note": "Dequeued node 2",
+      "codeLine": 2,
+      "note": "Reached null leaf below 2, appending #",
       "treeNodes": [
         {
           "id": 0,
@@ -159,14 +119,85 @@
           "right": null
         }
       ],
-      "visited": [
-        0,
-        1
-      ]
+      "curr": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Backtracking, moving to right child of 1, which is 3",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 3,
+          "val": 4,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 5,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 3
+    },
+    {
+      "codeLine": 3,
+      "note": "Serializing child 4 and 5",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 3,
+          "val": 4,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 5,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 4
     },
     {
       "codeLine": 6,
-      "note": "Node 2 has no children, added 'null' markers to queue",
+      "note": "Deserialization complete: reconstructed tree matches input",
       "treeNodes": [
         {
           "id": 0,
@@ -199,10 +230,8 @@
           "right": null
         }
       ],
-      "visited": [
-        0,
-        1
-      ]
+      "curr": 4
     }
-  ]
+  ],
+  "fullDescription": "<p>Serialization is the process of converting a data structure or object into a sequence of bits so that it can be stored in a file or memory buffer, or transmitted across a network connection link to be reconstructed later in the same or another computer environment.</p>\n\n<p>Design an algorithm to serialize and deserialize a binary tree. There is no restriction on how your serialization/deserialization algorithm should work. You just need to ensure that a binary tree can be serialized to a string and this string can be deserialized to the original tree structure.</p>\n\n<p><strong>Clarification:</strong> The input/output format is the same as <a href=\"https://support.leetcode.com/hc/en-us/articles/32442719377939-How-to-create-test-cases-on-LeetCode#h_01J5EGREAW3NAEJ14XC07GRW1A\" target=\"_blank\">how LeetCode serializes a binary tree</a>. You do not necessarily need to follow this format, so please be creative and come up with different approaches yourself.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2020/09/15/serdeser.jpg\" style=\"width: 442px; height: 324px;\" />\n<pre>\n<strong>Input:</strong> root = [1,2,3,null,null,4,5]\n<strong>Output:</strong> [1,2,3,null,null,4,5]\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> root = []\n<strong>Output:</strong> []\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li>The number of nodes in the tree is in the range <code>[0, 10<sup>4</sup>]</code>.</li>\n\t<li><code>-1000 &lt;= Node.val &lt;= 1000</code></li>\n</ul>\n"
 }

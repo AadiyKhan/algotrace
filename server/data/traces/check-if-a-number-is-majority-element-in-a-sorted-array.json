@@ -1,0 +1,81 @@
+{
+  "title": "Check If A Number Is Majority Element In A Sorted Array",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Binary Search"
+  ],
+  "description": "Given a sorted array, determine if a target value appears more than N/2 times.",
+  "target": 5,
+  "pseudocode": "1. n = nums.length\n2. first = binarySearch(nums, target)\n3. if first == -1 return false\n4. last = first + n / 2\n5. if last < n && nums[last] == target return true\n6. return false",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize array length n = 6",
+      "array": [
+        2,
+        4,
+        5,
+        5,
+        5,
+        5
+      ],
+      "curr": 6
+    },
+    {
+      "codeLine": 2,
+      "note": "Find first occurrence of target 5 using binary search",
+      "array": [
+        2,
+        4,
+        5,
+        5,
+        5,
+        5
+      ],
+      "i": 2,
+      "curr": 5
+    },
+    {
+      "codeLine": 4,
+      "note": "Calculate index for majority check (first + n/2 = 2 + 3 = 5)",
+      "array": [
+        2,
+        4,
+        5,
+        5,
+        5,
+        5
+      ],
+      "j": 5,
+      "curr": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Check if index 5 is within bounds and nums[5] is 5",
+      "array": [
+        2,
+        4,
+        5,
+        5,
+        5,
+        5
+      ],
+      "curr": 5
+    },
+    {
+      "codeLine": 5,
+      "note": "Condition met: 5 is the majority element",
+      "array": [
+        2,
+        4,
+        5,
+        5,
+        5,
+        5
+      ],
+      "curr": 5
+    }
+  ]
+}

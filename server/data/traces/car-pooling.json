@@ -1,0 +1,101 @@
+{
+  "title": "Car Pooling",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Greedy",
+    "Sorting"
+  ],
+  "description": "Determine if it is possible to transport all passengers given a capacity and trips [numPassengers, start, end].",
+  "target": 4,
+  "pseudocode": "1. Create an events array\n2. For each trip [n, s, e], add [s, n] and [e, -n]\n3. Sort events by time\n4. current = 0\n5. For each event in events: current += n; if current > capacity return false",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize empty events list.",
+      "array": []
+    },
+    {
+      "codeLine": 2,
+      "note": "Processing trip [2, 1, 3] and [3, 2, 4] with capacity 4.",
+      "array": [
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          -2
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          4,
+          -3
+        ]
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Sort events by timestamp.",
+      "array": [
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          -2
+        ],
+        [
+          4,
+          -3
+        ]
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Initialize current load to 0.",
+      "array": [
+        2,
+        3,
+        -2,
+        -3
+      ],
+      "i": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "At time 1, add 2 passengers. Current load: 2.",
+      "array": [
+        2,
+        3,
+        -2,
+        -3
+      ],
+      "i": 2,
+      "curr": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "At time 2, add 3 passengers. Current load: 5. Capacity 4 exceeded!",
+      "array": [
+        2,
+        3,
+        -2,
+        -3
+      ],
+      "i": 5,
+      "curr": 2
+    }
+  ]
+}

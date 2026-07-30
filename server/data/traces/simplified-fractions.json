@@ -1,0 +1,51 @@
+{
+  "title": "Simplified Fractions",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Math",
+    "String",
+    "Number Theory"
+  ],
+  "description": "Generate all simplified fractions between 0 and 1 with denominator <= n.",
+  "target": 2,
+  "pseudocode": "1. Initialize result list\n2. For d from 2 to n:\n3. For n from 1 to d-1:\n4. If gcd(n, d) == 1, add \"n/d\" to result",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize empty result list.",
+      "array": [],
+      "result": []
+    },
+    {
+      "codeLine": 2,
+      "note": "Start outer loop with denominator d = 2.",
+      "array": [],
+      "result": [],
+      "i": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Start inner loop with numerator n = 1.",
+      "array": [],
+      "result": [],
+      "i": 2,
+      "j": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Check gcd(1, 2) == 1. True, add '1/2' to results.",
+      "array": [
+        "1/2"
+      ],
+      "result": [
+        "1/2"
+      ],
+      "i": 2,
+      "j": 1,
+      "curr": 1
+    }
+  ]
+}

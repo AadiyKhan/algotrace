@@ -1,58 +1,86 @@
 {
-  "title": "Minimum Cost To Hire K Workers",
+  "title": "Minimum Cost to Hire K Workers",
   "difficulty": "Hard",
   "type": "array",
   "tags": [
     "Array",
     "Greedy",
+    "Sorting",
     "Heap"
   ],
-  "description": "Find the minimum cost to hire k workers given quality and wage, maintaining ratio constraints.",
-  "target": 2,
-  "pseudocode": "1. Calculate ratios (wage/quality) for all workers\n2. Sort workers by ratio ascending\n3. Use max-heap to store qualities of k workers\n4. Maintain current quality sum\n5. Calculate cost = sum * current ratio\n6. Update minCost",
+  "description": "Calculate minimum cost to hire k workers by sorting workers by wage-to-quality ratio and using a max-heap to maintain quality sum.",
+  "target": 105,
+  "pseudocode": "1. Create workers list with [ratio, quality]\n2. Sort workers by ratio\n3. Initialize max-heap for quality and sumQuality = 0\n4. For each worker in sorted list:\n5. Add worker.quality to heap and sumQuality\n6. If heap size > k, remove max quality and subtract from sumQuality\n7. If heap size == k, calculate current cost = sumQuality * ratio, update minCost",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Calculate ratios: [10/10=1, 20/5=4, 5/2=2.5]",
+      "note": "Calculate ratios: (70/10=7.0, 50/20=2.5, 30/5=6.0). Pairs: [2.5, 20], [6.0, 5], [7.0, 10]",
       "array": [
-        1,
-        4,
-        2.5
-      ]
-    },
-    {
-      "codeLine": 2,
-      "note": "Sort by ratio: (Worker 0: 1.0), (Worker 2: 2.5), (Worker 1: 4.0)",
-      "array": [
-        1,
         2.5,
-        4
+        6,
+        7
       ],
-      "i": 0
-    },
-    {
-      "codeLine": 3,
-      "note": "Add first 2 workers to max-heap (Qualities: 10, 2)",
-      "array": [
-        10,
-        2
-      ],
-      "i": 1
+      "curr": 70
     },
     {
       "codeLine": 4,
-      "note": "Current quality sum = 12",
-      "i": 1
+      "note": "Processing worker with ratio 2.5 (quality 20). Heap: [20], sumQuality: 20",
+      "array": [
+        20
+      ],
+      "i": 0,
+      "curr": 2
     },
     {
-      "codeLine": 5,
-      "note": "Cost = 12 * 2.5 = 30",
-      "i": 1
+      "codeLine": 4,
+      "note": "Processing worker with ratio 6.0 (quality 5). Heap: [20, 5], sumQuality: 25",
+      "array": [
+        20,
+        5
+      ],
+      "i": 1,
+      "curr": 6
+    },
+    {
+      "codeLine": 7,
+      "note": "Heap size is k=2. Cost = 25 * 6.0 = 150.0. MinCost = 150.0",
+      "array": [
+        20,
+        5
+      ],
+      "i": 1,
+      "curr": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Processing worker with ratio 7.0 (quality 10). Heap adds 10: [20, 5, 10]",
+      "array": [
+        20,
+        5,
+        10
+      ],
+      "i": 2,
+      "curr": 7
     },
     {
       "codeLine": 6,
-      "note": "Min cost is 30",
-      "i": 1
+      "note": "Heap size > k. Remove max quality (20). Heap: [5, 10], sumQuality: 15",
+      "array": [
+        5,
+        10
+      ],
+      "i": 2,
+      "curr": 20
+    },
+    {
+      "codeLine": 7,
+      "note": "Cost = 15 * 7.0 = 105.0. MinCost = 105.0",
+      "array": [
+        5,
+        10
+      ],
+      "i": 2,
+      "curr": 15
     }
   ]
 }

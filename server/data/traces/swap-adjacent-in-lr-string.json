@@ -3,49 +3,119 @@
   "difficulty": "Medium",
   "type": "array",
   "tags": [
-    "Array",
     "Two Pointers",
     "String"
   ],
-  "description": "Determine if string start can be transformed into end by swapping 'XL' to 'LX' or 'RX' to 'XR'.",
-  "target": "RXXLRXRXL",
-  "pseudocode": "1. i = 0, j = 0\n2. while i < n and j < n:\n3.   while i < n and start[i] == 'X': i++\n4.   while j < n and end[j] == 'X': j++\n5.   if i == n or j == n: break\n6.   if start[i] != end[j]: return false\n7.   if start[i] == 'L' and i < j: return false\n8.   if start[i] == 'R' and i > j: return false\n9.   i++, j++",
+  "description": "Determine if start string can be transformed to result by swapping 'XL' to 'LX' or 'RX' to 'XR'.",
+  "target": "XRLXXRRLX",
+  "pseudocode": "1. Filter non-X chars to compare sequence.\n2. Use two pointers i, j to compare positions.\n3. Check L/R movement constraints.",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize pointers i and j to 0",
+      "note": "Comparing non-X characters in start and result: 'RLRXRXL' vs 'RLRXRXL'. They match.",
+      "array": [
+        "R",
+        "X",
+        "X",
+        "L",
+        "R",
+        "X",
+        "R",
+        "X",
+        "L"
+      ],
       "i": 0,
       "j": 0
     },
     {
-      "codeLine": 3,
-      "note": "Skip 'X' in start string",
-      "i": 2,
-      "j": 0
+      "codeLine": 2,
+      "note": "Start pointers at i=0, j=0. Found first non-X at i=0 (R), j=1 (R). Valid (i <= j for R).",
+      "array": [
+        "R",
+        "X",
+        "X",
+        "L",
+        "R",
+        "X",
+        "R",
+        "X",
+        "L"
+      ],
+      "i": 0,
+      "j": 1,
+      "curr": 0
     },
     {
-      "codeLine": 4,
-      "note": "Skip 'X' in end string",
-      "i": 2,
-      "j": 2
-    },
-    {
-      "codeLine": 6,
-      "note": "Compare characters at current pointers",
-      "i": 2,
-      "j": 2
-    },
-    {
-      "codeLine": 7,
-      "note": "Validate 'L' constraints (i >= j)",
-      "i": 2,
-      "j": 2
-    },
-    {
-      "codeLine": 9,
-      "note": "Advance both pointers",
+      "codeLine": 2,
+      "note": "Next non-X: i=3 (L), j=2 (L). Valid (i >= j for L).",
+      "array": [
+        "R",
+        "X",
+        "X",
+        "L",
+        "R",
+        "X",
+        "R",
+        "X",
+        "L"
+      ],
       "i": 3,
-      "j": 3
+      "j": 2,
+      "curr": 3
+    },
+    {
+      "codeLine": 2,
+      "note": "Next non-X: i=4 (R), j=5 (R). Valid (i <= j for R).",
+      "array": [
+        "R",
+        "X",
+        "X",
+        "L",
+        "R",
+        "X",
+        "R",
+        "X",
+        "L"
+      ],
+      "i": 4,
+      "j": 5,
+      "curr": 4
+    },
+    {
+      "codeLine": 2,
+      "note": "Next non-X: i=6 (R), j=6 (R). Valid (i <= j for R).",
+      "array": [
+        "R",
+        "X",
+        "X",
+        "L",
+        "R",
+        "X",
+        "R",
+        "X",
+        "L"
+      ],
+      "i": 6,
+      "j": 6,
+      "curr": 6
+    },
+    {
+      "codeLine": 3,
+      "note": "Final non-X: i=8 (L), j=8 (L). All constraints satisfied. Return true.",
+      "array": [
+        "R",
+        "X",
+        "X",
+        "L",
+        "R",
+        "X",
+        "R",
+        "X",
+        "L"
+      ],
+      "i": 8,
+      "j": 8,
+      "curr": 8
     }
   ]
 }

@@ -1,0 +1,129 @@
+{
+  "title": "Number Of Ways To Reorder Array To Get Same BST",
+  "difficulty": "Hard",
+  "type": "tree",
+  "tags": [
+    "Array",
+    "Tree",
+    "Binary Search Tree",
+    "Combinatorics"
+  ],
+  "description": "Calculate the number of ways to reorder an array to produce the same Binary Search Tree.",
+  "target": null,
+  "pseudocode": "1. function getWays(nums) {\n2.   if (nums.length <= 2) return 1;\n3.   left = nums.filter(x => x < nums[0]);\n4.   right = nums.filter(x => x > nums[0]);\n5.   return nCr(nums.length - 1, left.length) * getWays(left) * getWays(right);\n6. }",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Start processing array [3, 1, 2]. Root is 3.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 3
+    },
+    {
+      "codeLine": 3,
+      "note": "Filter elements less than root 3: left = [1, 2].",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 3,
+          "left": 1,
+          "right": null
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": null,
+          "right": 2
+        },
+        {
+          "id": 2,
+          "val": 2,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 3
+    },
+    {
+      "codeLine": 4,
+      "note": "Filter elements greater than root 3: right = [].",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 3,
+          "left": 1,
+          "right": null
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": null,
+          "right": 2
+        },
+        {
+          "id": 2,
+          "val": 2,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 3
+    },
+    {
+      "codeLine": 5,
+      "note": "Calculate combinations: nCr(2, 2) * getWays([1, 2]) * getWays([]).",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 3,
+          "left": 1,
+          "right": null
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": null,
+          "right": 2
+        },
+        {
+          "id": 2,
+          "val": 2,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Recursive call for [1, 2] returns 1 way: [1, 2]. Total ways = 1 * 1 * 1 = 1.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 3,
+          "left": 1,
+          "right": null
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": null,
+          "right": 2
+        },
+        {
+          "id": 2,
+          "val": 2,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 1
+    }
+  ]
+}

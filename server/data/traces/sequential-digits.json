@@ -1,0 +1,112 @@
+{
+  "title": "Sequential Digits",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Enumeration"
+  ],
+  "description": "Find all numbers with sequential digits in the range [low, high].",
+  "target": 300,
+  "pseudocode": "1. result = []\n2. for length from 2 to 9:\n3.   for start from 1 to 9 - length + 1:\n4.     num = buildSequential(start, length)\n5.     if low <= num <= high: result.append(num)\n6. return result",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize empty result list.",
+      "array": []
+    },
+    {
+      "codeLine": 2,
+      "note": "Start outer loop with length 2.",
+      "array": [],
+      "curr": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Generate sequential number 12 (length 2, start 1).",
+      "array": [],
+      "curr": 12
+    },
+    {
+      "codeLine": 5,
+      "note": "12 is < low (100), skip.",
+      "array": [],
+      "curr": 12
+    },
+    {
+      "codeLine": 4,
+      "note": "Generate sequential number 23 (length 2, start 2).",
+      "array": [],
+      "curr": 23
+    },
+    {
+      "codeLine": 5,
+      "note": "23 is < low (100), skip.",
+      "array": [],
+      "curr": 23
+    },
+    {
+      "codeLine": 2,
+      "note": "Proceed to length 3.",
+      "array": [],
+      "curr": 3
+    },
+    {
+      "codeLine": 4,
+      "note": "Generate sequential number 123 (length 3, start 1).",
+      "array": [],
+      "curr": 123
+    },
+    {
+      "codeLine": 5,
+      "note": "100 <= 123 <= 300, add to result.",
+      "array": [
+        123
+      ],
+      "curr": 100
+    },
+    {
+      "codeLine": 4,
+      "note": "Generate sequential number 234 (length 3, start 2).",
+      "array": [
+        123
+      ],
+      "curr": 234
+    },
+    {
+      "codeLine": 5,
+      "note": "100 <= 234 <= 300, add to result.",
+      "array": [
+        123,
+        234
+      ],
+      "curr": 100
+    },
+    {
+      "codeLine": 4,
+      "note": "Generate sequential number 345 (length 3, start 3).",
+      "array": [
+        123,
+        234
+      ],
+      "curr": 345
+    },
+    {
+      "codeLine": 5,
+      "note": "345 > high (300), loop terminates.",
+      "array": [
+        123,
+        234
+      ],
+      "curr": 345
+    },
+    {
+      "codeLine": 6,
+      "note": "Return final result list.",
+      "array": [
+        123,
+        234
+      ]
+    }
+  ]
+}

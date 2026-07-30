@@ -13,7 +13,8 @@
     {
       "codeLine": 1,
       "note": "Initialize totalRead tracker to 0",
-      "array": []
+      "array": [],
+      "curr": 0
     },
     {
       "codeLine": 4,
@@ -23,7 +24,8 @@
         "b",
         "c",
         "d"
-      ]
+      ],
+      "curr": 4
     },
     {
       "codeLine": 7,
@@ -34,7 +36,8 @@
         "c",
         "d"
       ],
-      "i": 0
+      "i": 0,
+      "curr": 5
     },
     {
       "codeLine": 7,
@@ -45,7 +48,8 @@
         "c",
         "d"
       ],
-      "i": 3
+      "i": 3,
+      "curr": 4
     },
     {
       "codeLine": 4,
@@ -56,7 +60,8 @@
         "c",
         "d",
         "e"
-      ]
+      ],
+      "curr": 4
     },
     {
       "codeLine": 7,
@@ -68,7 +73,8 @@
         "d",
         "e"
       ],
-      "i": 0
+      "i": 0,
+      "curr": 5
     },
     {
       "codeLine": 8,
@@ -79,7 +85,8 @@
         "c",
         "d",
         "e"
-      ]
+      ],
+      "curr": 5
     }
   ]
 }

@@ -1,0 +1,98 @@
+{
+  "title": "Stone Game III",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Dynamic Programming",
+    "Game Theory"
+  ],
+  "description": "Alice and Bob take turns picking 1, 2, or 3 stones from the end of the array. The player with the most points wins. Determine the outcome for Alice.",
+  "target": "Alice",
+  "pseudocode": "n = stones.length; dp = new Array(n + 1).fill(0);\nfor (i = n - 1; i >= 0; i--) {\n  res = -Infinity;\n  sum = 0;\n  for (k = 0; k < 3 && i + k < n; k++) {\n    sum += stones[i + k];\n    res = Math.max(res, sum - dp[i + k + 1]);\n  }\n  dp[i] = res;\n}",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize DP table for stones [1, 2, 3]",
+      "array": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Start loop at i = 2",
+      "i": 2,
+      "array": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Pick 1 stone (value 3), res = 3 - dp[3] = 3",
+      "i": 2,
+      "array": [
+        0,
+        0,
+        0,
+        3
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Loop at i = 1",
+      "i": 1,
+      "array": [
+        0,
+        0,
+        0,
+        3
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Pick 1 stone (value 2), res = 2 - dp[2] = 2 - 3 = -1. Pick 2 stones (value 2+3=5), res = max(-1, 5 - dp[3]) = 5",
+      "i": 1,
+      "array": [
+        0,
+        0,
+        5,
+        3
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Loop at i = 0",
+      "i": 0,
+      "array": [
+        0,
+        0,
+        5,
+        3
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Pick 1 stone (1 - dp[1] = 1 - 5 = -4). Pick 2 stones (1+2 - dp[2] = 3 - 5 = -2). Pick 3 stones (1+2+3 - dp[3] = 6). Max is 6.",
+      "i": 0,
+      "array": [
+        6,
+        0,
+        5,
+        3
+      ],
+      "curr": 1
+    }
+  ]
+}

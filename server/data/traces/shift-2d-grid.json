@@ -1,0 +1,200 @@
+{
+  "title": "Shift 2D Grid",
+  "difficulty": "Medium",
+  "type": "matrix",
+  "tags": [
+    "Array",
+    "Matrix",
+    "Simulation"
+  ],
+  "description": "Shift the 2D grid k times where each element moves to the next position in a flattened sequence.",
+  "target": 1,
+  "pseudocode": "1. m = grid.length, n = grid[0].length\n2. total = m * n, k = k % total\n3. newGrid = Array(m).fill().map(() => Array(n))\n4. for i from 0 to total - 1:\n5.   currVal = grid[floor(i/n)][i%n]\n6.   newPos = (i + k) % total\n7.   newGrid[floor(newPos/n)][newPos%n] = currVal",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize dimensions: m=2, n=2, total=4",
+      "matrix": [
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "curr": [
+        2,
+        2
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Starting loop: shifting k=1",
+      "i": 0,
+      "matrix": [
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          4
+        ]
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Read grid[0][0]=1, move to (0+1)%4 = 1",
+      "i": 0,
+      "matrix": [
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Place 1 at newGrid[0][1]",
+      "i": 0,
+      "matrix": [
+        [
+          null,
+          1
+        ],
+        [
+          null,
+          null
+        ]
+      ],
+      "curr": [
+        1,
+        0
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Read grid[0][1]=2, move to (1+1)%4 = 2",
+      "i": 1,
+      "matrix": [
+        [
+          null,
+          1
+        ],
+        [
+          null,
+          null
+        ]
+      ],
+      "curr": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Place 2 at newGrid[1][0]",
+      "i": 1,
+      "matrix": [
+        [
+          null,
+          1
+        ],
+        [
+          2,
+          null
+        ]
+      ],
+      "curr": [
+        2,
+        1
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Read grid[1][0]=3, move to (2+1)%4 = 3",
+      "i": 2,
+      "matrix": [
+        [
+          null,
+          1
+        ],
+        [
+          2,
+          null
+        ]
+      ],
+      "curr": [
+        1,
+        0
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Place 3 at newGrid[1][1]",
+      "i": 2,
+      "matrix": [
+        [
+          null,
+          1
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "curr": [
+        3,
+        1
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Read grid[1][1]=4, move to (3+1)%4 = 0",
+      "i": 3,
+      "matrix": [
+        [
+          null,
+          1
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "curr": [
+        1,
+        1
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Place 4 at newGrid[0][0]",
+      "i": 3,
+      "matrix": [
+        [
+          4,
+          1
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "curr": [
+        4,
+        0
+      ]
+    }
+  ]
+}

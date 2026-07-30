@@ -1,0 +1,106 @@
+{
+  "title": "Largest Values From Labels",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Greedy",
+    "Hash Table",
+    "Sorting"
+  ],
+  "description": "Select a subset of labels with the largest values, adhering to quantity limits per label.",
+  "target": 3,
+  "pseudocode": "1. items = sorted(zip(values, labels), reverse=True)\n2. counts = {}\n3. total = 0\n4. for val, label in items:\n5.   if counts.get(label, 0) < useLimit:\n6.     total += val\n7.     counts[label] = counts.get(label, 0) + 1\n8.     if count == numWanted: break",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Sorted items by value descending: [(5, 1), (4, 1), (3, 2), (2, 2), (1, 1)]",
+      "array": [
+        5,
+        4,
+        3,
+        2,
+        1
+      ],
+      "curr": 5
+    },
+    {
+      "codeLine": 4,
+      "note": "Pick (5, 1). Label 1 count 0 < 2. Add 5 to total.",
+      "array": [
+        5,
+        4,
+        3,
+        2,
+        1
+      ],
+      "i": 0,
+      "curr": 5
+    },
+    {
+      "codeLine": 6,
+      "note": "Total is 5, counts = {1: 1}",
+      "array": [
+        5,
+        4,
+        3,
+        2,
+        1
+      ],
+      "i": 0,
+      "curr": 5
+    },
+    {
+      "codeLine": 4,
+      "note": "Pick (4, 1). Label 1 count 1 < 2. Add 4 to total.",
+      "array": [
+        5,
+        4,
+        3,
+        2,
+        1
+      ],
+      "i": 1,
+      "curr": 4
+    },
+    {
+      "codeLine": 6,
+      "note": "Total is 9, counts = {1: 2}",
+      "array": [
+        5,
+        4,
+        3,
+        2,
+        1
+      ],
+      "i": 1,
+      "curr": 9
+    },
+    {
+      "codeLine": 4,
+      "note": "Pick (3, 2). Label 2 count 0 < 2. Add 3 to total.",
+      "array": [
+        5,
+        4,
+        3,
+        2,
+        1
+      ],
+      "i": 2,
+      "curr": 3
+    },
+    {
+      "codeLine": 8,
+      "note": "numWanted reached (3/3). Terminate.",
+      "array": [
+        5,
+        4,
+        3,
+        2,
+        1
+      ],
+      "i": 2,
+      "curr": 3
+    }
+  ]
+}

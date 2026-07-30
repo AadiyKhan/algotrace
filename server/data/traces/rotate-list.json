@@ -83,7 +83,8 @@
           "val": 3,
           "next": 0
         }
-      ]
+      ],
+      "curr": 3
     },
     {
       "codeLine": 5,

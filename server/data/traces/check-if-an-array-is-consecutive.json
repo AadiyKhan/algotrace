@@ -1,0 +1,166 @@
+{
+  "title": "Check If An Array Is Consecutive",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Math",
+    "Sorting"
+  ],
+  "description": "Check if an array of integers can be rearranged to form a consecutive sequence.",
+  "target": null,
+  "pseudocode": "1. minVal = min(arr); maxVal = max(arr)\n2. if (maxVal - minVal != arr.length - 1) return false\n3. set = new Set()\n4. for each num in arr:\n5.   if (set.has(num)) return false\n6.   set.add(num)\n7. return true",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Identify min (1) and max (4) of the array [3, 1, 4, 2].",
+      "array": [
+        3,
+        1,
+        4,
+        2
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Verify if max - min equals length - 1 (4 - 1 == 4 - 1). True.",
+      "array": [
+        3,
+        1,
+        4,
+        2
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Start iteration. Processing index 0 (val 3).",
+      "array": [
+        3,
+        1,
+        4,
+        2
+      ],
+      "i": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Add 3 to set.",
+      "array": [
+        3,
+        1,
+        4,
+        2
+      ],
+      "i": 0,
+      "visited": [
+        3
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Processing index 1 (val 1).",
+      "array": [
+        3,
+        1,
+        4,
+        2
+      ],
+      "i": 1,
+      "visited": [
+        3
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Add 1 to set.",
+      "array": [
+        3,
+        1,
+        4,
+        2
+      ],
+      "i": 1,
+      "visited": [
+        3,
+        1
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Processing index 2 (val 4).",
+      "array": [
+        3,
+        1,
+        4,
+        2
+      ],
+      "i": 2,
+      "visited": [
+        3,
+        1
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Add 4 to set.",
+      "array": [
+        3,
+        1,
+        4,
+        2
+      ],
+      "i": 2,
+      "visited": [
+        3,
+        1,
+        4
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Processing index 3 (val 2).",
+      "array": [
+        3,
+        1,
+        4,
+        2
+      ],
+      "i": 3,
+      "visited": [
+        3,
+        1,
+        4
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Add 2 to set. All elements processed successfully.",
+      "array": [
+        3,
+        1,
+        4,
+        2
+      ],
+      "i": 3,
+      "visited": [
+        3,
+        1,
+        4,
+        2
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Return true, array is consecutive.",
+      "array": [
+        3,
+        1,
+        4,
+        2
+      ]
+    }
+  ]
+}

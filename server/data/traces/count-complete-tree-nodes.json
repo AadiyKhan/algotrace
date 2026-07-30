@@ -34,7 +34,8 @@
           "left": null,
           "right": null
         }
-      ]
+      ],
+      "curr": 1
     },
     {
       "codeLine": 3,
@@ -58,7 +59,8 @@
           "left": null,
           "right": null
         }
-      ]
+      ],
+      "curr": 1
     },
     {
       "codeLine": 4,
@@ -82,7 +84,8 @@
           "left": null,
           "right": null
         }
-      ]
+      ],
+      "curr": 1
     },
     {
       "codeLine": 5,
@@ -106,7 +109,8 @@
           "left": null,
           "right": null
         }
-      ]
+      ],
+      "curr": 2
     },
     {
       "codeLine": 6,
@@ -130,7 +134,8 @@
           "left": null,
           "right": null
         }
-      ]
+      ],
+      "curr": 2
     }
   ]
 }

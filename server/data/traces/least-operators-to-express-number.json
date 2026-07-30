@@ -3,38 +3,63 @@
   "difficulty": "Hard",
   "type": "array",
   "tags": [
-    "Dynamic Programming",
     "Math",
-    "Recursion"
+    "Dynamic Programming",
+    "Memoization"
   ],
-  "description": "Given target and x, express target using the minimum number of operators (/, *, +, -) and x.",
-  "target": 3,
-  "pseudocode": "function solve(target, x) {\n  if (target === 0) return 0;\n  if (target === 1) return 1;\n  let res = 0;\n  let power = 0;\n  let val = x;\n  while (val < target) {\n    val *= x;\n    power++;\n  }\n  if (val === target) return power;\n  let left = solve(target - (val / x), x) + power;\n  let right = solve(val - target, x) + power;\n  return Math.min(left, right) + 1;\n}",
+  "description": "Minimize operators to represent target using base x and operations +, -, *, /.",
+  "target": 19,
+  "pseudocode": "1. Express target in base x: 19 = 2*3^2 + 0*3^1 + 1*3^0\n2. Use DP to represent each power term as either sum or difference\n3. cost(power, remainder) = min operators to form remainder * x^power",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Starting recursion with target 3 and x 2",
-      "i": "target: 3"
+      "note": "Represent 19 in base 3: 19 = 2*9 + 0*3 + 1*1",
+      "array": [
+        2,
+        0,
+        1
+      ],
+      "curr": 19
     },
     {
-      "codeLine": 7,
-      "note": "Finding the largest power of x less than or equal to target",
-      "i": "power: 1, val: 4"
+      "codeLine": 2,
+      "note": "Evaluate highest power (x^2): 2*3^2. Costs 2 operations: 3*3 + 3*3",
+      "array": [
+        2,
+        0,
+        1
+      ],
+      "curr": 2
     },
     {
-      "codeLine": 11,
-      "note": "Recursive call: express difference between target and powers",
-      "i": "left path: solve(3 - 2) + 1"
+      "codeLine": 3,
+      "note": "Handle 0*3^1. Costs 0 operations",
+      "array": [
+        2,
+        0,
+        1
+      ],
+      "curr": 0
     },
     {
-      "codeLine": 12,
-      "note": "Recursive call: express difference between power and target",
-      "i": "right path: solve(4 - 3) + 1"
+      "codeLine": 3,
+      "note": "Handle 1*3^0. Costs 0 operators for 3/3 in the final sequence",
+      "array": [
+        2,
+        0,
+        1
+      ],
+      "curr": 1
     },
     {
-      "codeLine": 13,
-      "note": "Choosing the minimum of paths and returning",
-      "i": "result: 3"
+      "codeLine": 3,
+      "note": "Combine: 3*3 + 3*3 + 3/3 = 5 operators total",
+      "array": [
+        2,
+        0,
+        1
+      ],
+      "curr": 3
     }
   ]
 }

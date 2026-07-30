@@ -1,0 +1,84 @@
+{
+  "title": "Create Target Array in the Given Order",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Simulation"
+  ],
+  "description": "Given two arrays nums and index, create a target array by inserting nums[i] at index index[i].",
+  "target": null,
+  "pseudocode": "1: let target = []\n2: for i from 0 to nums.length - 1:\n3:   target.splice(index[i], 0, nums[i])\n4: return target",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize empty target array",
+      "array": []
+    },
+    {
+      "codeLine": 2,
+      "note": "Processing first element: nums[0]=0, index[0]=0",
+      "array": [],
+      "i": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Insert 0 at index 0",
+      "array": [
+        0
+      ],
+      "i": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Processing second element: nums[1]=1, index[1]=1",
+      "array": [
+        0
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Insert 1 at index 1",
+      "array": [
+        0,
+        1
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Processing third element: nums[2]=2, index[2]=0",
+      "array": [
+        0,
+        1
+      ],
+      "i": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Insert 2 at index 0, shifting others",
+      "array": [
+        2,
+        0,
+        1
+      ],
+      "i": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Return final array",
+      "array": [
+        2,
+        0,
+        1
+      ]
+    }
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "title": "Letter Tile Possibilities",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Backtracking",
+    "Recursion",
+    "String"
+  ],
+  "description": "Calculate the number of possible non-empty sequences of letters that can be formed using a given string of tiles.",
+  "target": "AAB",
+  "pseudocode": "1. count = frequency map of characters\n2. backtrack(count):\n3.   sum = 0\n4.   for each char in count:\n5.     if count[char] > 0:\n6.       count[char]--\n7.       sum += 1 + backtrack(count)\n8.       count[char]++\n9.   return sum",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize frequency map: {'A': 2, 'B': 1}",
+      "array": [
+        "A",
+        "A",
+        "B"
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Pick 'A', remaining {'A': 1, 'B': 1}",
+      "array": [
+        "A"
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "Deeper level: pick 'A' again, remaining {'A': 0, 'B': 1}",
+      "array": [
+        "A",
+        "A"
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 7,
+      "note": "Deeper level: pick 'B', remaining {'A': 0, 'B': 0}",
+      "array": [
+        "A",
+        "A",
+        "B"
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 8,
+      "note": "Backtrack, increment count of 'B'",
+      "array": [
+        "A",
+        "A"
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Backtrack, increment count of 'A'",
+      "array": [
+        "A"
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Pick 'B', remaining {'A': 2, 'B': 0}",
+      "array": [
+        "B"
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 7,
+      "note": "Deeper level: pick 'A', remaining {'A': 1, 'B': 0}",
+      "array": [
+        "B",
+        "A"
+      ],
+      "curr": 1
+    }
+  ]
+}

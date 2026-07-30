@@ -25,7 +25,8 @@
         10,
         11
       ],
-      "i": "len: 1, count: 9, start: 1"
+      "i": "len: 1, count: 9, start: 1",
+      "curr": 1
     },
     {
       "codeLine": 2,
@@ -43,7 +44,8 @@
         10,
         11
       ],
-      "i": "n: 2, len: 2, count: 90, start: 10"
+      "i": "n: 2, len: 2, count: 90, start: 10",
+      "curr": 11
     },
     {
       "codeLine": 3,
@@ -61,7 +63,8 @@
         10,
         11
       ],
-      "i": "start: 10"
+      "i": "start: 10",
+      "curr": 10
     },
     {
       "codeLine": 5,
@@ -79,7 +82,8 @@
         10,
         11
       ],
-      "i": "result: 0"
+      "i": "result: 0",
+      "curr": 10
     }
   ]
 }

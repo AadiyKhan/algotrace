@@ -1,0 +1,89 @@
+{
+  "title": "Maximum Performance of a Team",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Greedy",
+    "Sorting",
+    "Heap"
+  ],
+  "description": "Maximize performance defined as (sum of speeds) * (minimum efficiency) by choosing at most k engineers.",
+  "target": 60,
+  "pseudocode": "1. Pair speed and efficiency, sort by efficiency descending\n2. Iterate through engineers, maintain min-heap of k-1 highest speeds\n3. Track sum of speeds in heap, calculate perf = sum * current_efficiency\n4. Update max_perf",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Sorted engineers by efficiency descending: (5,7), (2,5), (10,4), (3,3), (8,2), (1,9) -> (1,9), (5,7), (2,5), (10,4), (3,3), (8,2)",
+      "array": [
+        1,
+        5,
+        2,
+        10,
+        3,
+        8
+      ],
+      "i": 0,
+      "curr": 5
+    },
+    {
+      "codeLine": 2,
+      "note": "Process engineer (speed=1, eff=9). Heap: [1], sum=1, perf=1*9=9",
+      "array": [
+        1
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Process engineer (speed=5, eff=7). Heap: [1, 5], sum=6, perf=6*7=42",
+      "array": [
+        1,
+        5
+      ],
+      "i": 2,
+      "curr": 5
+    },
+    {
+      "codeLine": 4,
+      "note": "Process engineer (speed=2, eff=5). Heap size > k, remove smallest 1. Heap: [2, 5], sum=7, perf=7*5=35",
+      "array": [
+        2,
+        5
+      ],
+      "i": 3,
+      "curr": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Process engineer (speed=10, eff=4). Remove smallest 2. Heap: [5, 10], sum=15, perf=15*4=60",
+      "array": [
+        5,
+        10
+      ],
+      "i": 4,
+      "curr": 10
+    },
+    {
+      "codeLine": 4,
+      "note": "Process engineer (speed=3, eff=3). Remove smallest 3. Heap: [5, 10], sum=15, perf=15*3=45",
+      "array": [
+        5,
+        10
+      ],
+      "i": 5,
+      "curr": 3
+    },
+    {
+      "codeLine": 4,
+      "note": "Final max performance found is 60",
+      "array": [
+        5,
+        10
+      ],
+      "i": 6,
+      "curr": 60
+    }
+  ]
+}

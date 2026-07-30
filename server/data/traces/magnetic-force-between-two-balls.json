@@ -1,0 +1,119 @@
+{
+  "title": "Magnetic Force Between Two Balls",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Binary Search",
+    "Sorting",
+    "Greedy"
+  ],
+  "description": "Place m balls into n baskets such that the minimum magnetic force between any two balls is maximized.",
+  "target": 3,
+  "pseudocode": "1: position.sort((a, b) => a - b);\n2: let low = 1, high = position[n-1] - position[0], ans = 1;\n3: while (low <= high) {\n4:   let mid = Math.floor((low + high) / 2);\n5:   if (canPlace(mid)) { ans = mid; low = mid + 1; }\n6:   else { high = mid - 1; }\n7: }\n8: return ans;",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Sort the positions to facilitate greedy placement.",
+      "array": [
+        1,
+        2,
+        8,
+        4,
+        9
+      ],
+      "i": "sorted: [1, 2, 4, 8, 9]"
+    },
+    {
+      "codeLine": 2,
+      "note": "Initialize binary search range [1, 8].",
+      "array": [
+        1,
+        2,
+        4,
+        8,
+        9
+      ],
+      "i": "low: 1, high: 8",
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Calculate mid force = 4.",
+      "array": [
+        1,
+        2,
+        4,
+        8,
+        9
+      ],
+      "i": "mid: 4",
+      "curr": 4
+    },
+    {
+      "codeLine": 5,
+      "note": "Check if 3 balls can be placed with min distance 4: 1, 8 (Only 2 balls fit, so false).",
+      "array": [
+        1,
+        2,
+        4,
+        8,
+        9
+      ],
+      "i": "canPlace(4): false",
+      "curr": 3
+    },
+    {
+      "codeLine": 6,
+      "note": "Decrease high to 3.",
+      "array": [
+        1,
+        2,
+        4,
+        8,
+        9
+      ],
+      "i": "high: 3",
+      "curr": 3
+    },
+    {
+      "codeLine": 4,
+      "note": "Calculate mid force = 2.",
+      "array": [
+        1,
+        2,
+        4,
+        8,
+        9
+      ],
+      "i": "mid: 2",
+      "curr": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Check if 3 balls can be placed with min distance 2: 1, 4, 8 (Fits, update ans).",
+      "array": [
+        1,
+        2,
+        4,
+        8,
+        9
+      ],
+      "i": "canPlace(2): true, ans: 2",
+      "curr": 3
+    },
+    {
+      "codeLine": 5,
+      "note": "Update low to 3.",
+      "array": [
+        1,
+        2,
+        4,
+        8,
+        9
+      ],
+      "i": "low: 3",
+      "curr": 3
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "title": "Probability of a Two Boxes Having the Same Number of Distinct Balls",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Math",
+    "Backtracking",
+    "Combinatorics"
+  ],
+  "description": "Calculate the probability that two boxes have the same number of distinct balls after distributing all balls.",
+  "target": null,
+  "pseudocode": "1: function backtrack(idx, count1, count2, diff1, diff2) {\n2:   if (idx == balls.length) return (count1 == count2 && diff1 == diff2) ? 1 : 0;\n3:   // Place in box 1\n4:   backtrack(idx + 1, count1 + 1, count2, ...);\n5:   // Place in box 2\n6:   backtrack(idx + 1, count1, count2 + 1, ...);\n7: }",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize recursion with balls [1, 1, 2, 2]",
+      "array": [
+        1,
+        1,
+        2,
+        2
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Placing first '1' in Box 1",
+      "array": [
+        1,
+        1,
+        2,
+        2
+      ],
+      "i": 0,
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Placing second '1' in Box 1",
+      "array": [
+        1,
+        1,
+        2,
+        2
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Placing first '2' in Box 2",
+      "array": [
+        1,
+        1,
+        2,
+        2
+      ],
+      "i": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Placing second '2' in Box 2",
+      "array": [
+        1,
+        1,
+        2,
+        2
+      ],
+      "i": 3,
+      "curr": 2
+    },
+    {
+      "codeLine": 2,
+      "note": "Base case reached: Box 1 has {1}, Box 2 has {2}. Distinct count matches.",
+      "array": [
+        1,
+        1,
+        2,
+        2
+      ],
+      "curr": 1
+    }
+  ]
+}

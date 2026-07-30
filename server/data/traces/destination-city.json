@@ -1,0 +1,130 @@
+{
+  "title": "Destination City",
+  "difficulty": "Easy",
+  "type": "graph",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "String"
+  ],
+  "description": "Find the destination city, which is the city that has no outgoing path.",
+  "pseudocode": "1. let set = new Set();\n2. for (let [a, b] of paths) set.add(a);\n3. for (let [a, b] of paths) {\n4.   if (!set.has(b)) return b;\n5. }",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize a set to store all departure cities.",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": "London"
+        },
+        {
+          "id": 1,
+          "val": "New York"
+        },
+        {
+          "id": 2,
+          "val": "Lima"
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Add 'London' and 'New York' to the set of departure cities.",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": "London"
+        },
+        {
+          "id": 1,
+          "val": "New York"
+        },
+        {
+          "id": 2,
+          "val": "Lima"
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "visited": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Check 'New York': it is in the set. Continue.",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": "London"
+        },
+        {
+          "id": 1,
+          "val": "New York"
+        },
+        {
+          "id": 2,
+          "val": "Lima"
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Check 'Lima': it is not in the set. Lima is the destination.",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": "London"
+        },
+        {
+          "id": 1,
+          "val": "New York"
+        },
+        {
+          "id": 2,
+          "val": "Lima"
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ]
+    }
+  ]
+}

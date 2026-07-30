@@ -3,58 +3,107 @@
   "difficulty": "Medium",
   "type": "array",
   "tags": [
-    "Backtracking",
     "String",
+    "Backtracking",
     "Bit Manipulation"
   ],
   "description": "Generate all possible generalized abbreviations of a word.",
-  "target": "word: 'abc'",
-  "pseudocode": "1: function backtrack(idx, current, count) {\n2:   if (idx === word.length) {\n3:     res.push(current + (count || ''));\n4:     return;\n5:   }\n6:   backtrack(idx + 1, current, count + 1); // Abbreviate\n7:   backtrack(idx + 1, current + (count || '') + word[idx], 0); // Keep\n8: }",
+  "target": "word",
+  "pseudocode": "1. dfs(index, count, currentString)\n2. if index == length: return currentString + (count > 0 ? count : '')\n3. dfs(index + 1, count + 1, currentString) // Abbreviate\n4. dfs(index + 1, 0, currentString + (count > 0 ? count : '') + word[index]) // Keep",
   "steps": [
     {
-      "codeLine": 6,
-      "note": "Start abbreviating: skip 'a'",
+      "codeLine": 1,
+      "note": "Starting DFS for word 'word'",
+      "array": [
+        "w",
+        "o",
+        "r",
+        "d"
+      ],
       "i": 0
     },
     {
-      "codeLine": 6,
-      "note": "Abbreviate 'b'",
-      "i": 1
-    },
-    {
-      "codeLine": 6,
-      "note": "Abbreviate 'c', count is now 3",
-      "i": 2
+      "codeLine": 3,
+      "note": "Abbreviating 'w', count becomes 1",
+      "array": [
+        "w",
+        "o",
+        "r",
+        "d"
+      ],
+      "i": 1,
+      "curr": 1
     },
     {
       "codeLine": 3,
-      "note": "Base case reached, push '3'",
-      "i": 3
-    },
-    {
-      "codeLine": 7,
-      "note": "Backtrack, keep 'c' instead of abbreviating",
-      "i": 2
-    },
-    {
-      "codeLine": 3,
-      "note": "Base case reached, push '2c'",
-      "i": 3
-    },
-    {
-      "codeLine": 7,
-      "note": "Backtrack, keep 'b' instead of abbreviating",
-      "i": 1
-    },
-    {
-      "codeLine": 6,
-      "note": "Abbreviate 'c'",
-      "i": 2
+      "note": "Abbreviating 'o', count becomes 2",
+      "array": [
+        "w",
+        "o",
+        "r",
+        "d"
+      ],
+      "i": 2,
+      "curr": 2
     },
     {
       "codeLine": 3,
-      "note": "Base case reached, push 'a1'",
-      "i": 3
+      "note": "Abbreviating 'r', count becomes 3",
+      "array": [
+        "w",
+        "o",
+        "r",
+        "d"
+      ],
+      "i": 3,
+      "curr": 3
+    },
+    {
+      "codeLine": 3,
+      "note": "Abbreviating 'd', count becomes 4",
+      "array": [
+        "w",
+        "o",
+        "r",
+        "d"
+      ],
+      "i": 4,
+      "curr": 4
+    },
+    {
+      "codeLine": 2,
+      "note": "Reached end of string, result '4'",
+      "array": [
+        "4"
+      ],
+      "curr": 4
+    },
+    {
+      "codeLine": 4,
+      "note": "Backtracking, keeping 'd', result '3d'",
+      "array": [
+        "3",
+        "d"
+      ],
+      "curr": 3
+    },
+    {
+      "codeLine": 4,
+      "note": "Continuing backtracking to generate all abbreviations",
+      "array": [
+        "word",
+        "1ord",
+        "w1rd",
+        "wo1d",
+        "wor1",
+        "2rd",
+        "w2d",
+        "wo2",
+        "1o1d",
+        "1o2",
+        "3d",
+        "4"
+      ]
     }
   ]
 }

@@ -1,0 +1,109 @@
+{
+  "title": "Check If N And Its Double Exist",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "Two Pointers"
+  ],
+  "description": "Given an array arr of integers, check if there exist two indices i and j such that arr[i] == 2 * arr[j].",
+  "target": null,
+  "pseudocode": "1: seen = new Set()\n2: for num in arr:\n3:   if (2 * num in seen) or (num % 2 == 0 and num / 2 in seen):\n4:     return true\n5:   seen.add(num)\n6: return false",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize an empty set to store visited numbers.",
+      "array": [
+        10,
+        2,
+        5,
+        3
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Processing index 0: value 10.",
+      "array": [
+        10,
+        2,
+        5,
+        3
+      ],
+      "i": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "10 not found as double or half in seen. Add 10 to seen.",
+      "array": [
+        10,
+        2,
+        5,
+        3
+      ],
+      "i": 0,
+      "curr": 10
+    },
+    {
+      "codeLine": 2,
+      "note": "Processing index 1: value 2.",
+      "array": [
+        10,
+        2,
+        5,
+        3
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "2 not found as double or half in seen. Add 2 to seen.",
+      "array": [
+        10,
+        2,
+        5,
+        3
+      ],
+      "i": 1,
+      "curr": 2
+    },
+    {
+      "codeLine": 2,
+      "note": "Processing index 2: value 5.",
+      "array": [
+        10,
+        2,
+        5,
+        3
+      ],
+      "i": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Check if 2*5 (10) or 5/2 (2.5) in seen. 10 is in seen!",
+      "array": [
+        10,
+        2,
+        5,
+        3
+      ],
+      "i": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Return true: 10 is double of 5.",
+      "array": [
+        10,
+        2,
+        5,
+        3
+      ],
+      "i": 2,
+      "curr": 10
+    }
+  ]
+}

@@ -1,0 +1,116 @@
+{
+  "title": "Insufficient Nodes in Root to Leaf Paths",
+  "difficulty": "Medium",
+  "type": "tree",
+  "tags": [
+    "Tree",
+    "DFS",
+    "Binary Tree"
+  ],
+  "description": "Remove nodes in a binary tree where every path from root to leaf has a sum less than limit.",
+  "target": 10,
+  "pseudocode": "1. function sufficientSubset(root, limit) {\n2.   if (!root) return null;\n3.   if (!root.left && !root.right) return root.val < limit ? null : root;\n4.   root.left = sufficientSubset(root.left, limit - root.val);\n5.   root.right = sufficientSubset(root.right, limit - root.val);\n6.   return (!root.left && !root.right) ? null : root;\n7. }",
+  "steps": [
+    {
+      "codeLine": 4,
+      "note": "Descending to left child (val: 5) with new limit 5 (10-5=5)",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 5,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 4,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 8,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 5
+    },
+    {
+      "codeLine": 3,
+      "note": "Left leaf (4) < limit (5), pruning node.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 5,
+          "left": null,
+          "right": 2
+        },
+        {
+          "id": 2,
+          "val": 8,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 4
+    },
+    {
+      "codeLine": 5,
+      "note": "Descending to right child (val: 8) with new limit 5 (10-5=5)",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 5,
+          "left": null,
+          "right": 2
+        },
+        {
+          "id": 2,
+          "val": 8,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 8
+    },
+    {
+      "codeLine": 3,
+      "note": "Right leaf (8) >= limit (5), keeping node.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 5,
+          "left": null,
+          "right": 2
+        },
+        {
+          "id": 2,
+          "val": 8,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 8
+    },
+    {
+      "codeLine": 6,
+      "note": "Returning root as it still has a valid path (5->8 = 13 >= 10).",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 5,
+          "left": null,
+          "right": 2
+        },
+        {
+          "id": 2,
+          "val": 8,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 5
+    }
+  ]
+}

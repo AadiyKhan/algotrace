@@ -4,16 +4,16 @@
   "type": "tree",
   "tags": [
     "Tree",
-    "DFS",
+    "Depth-First Search",
     "Binary Tree"
   ],
-  "description": "Find the sum of all left leaves in a given binary tree.",
-  "target": 0,
-  "pseudocode": "1: function sumOfLeftLeaves(node, isLeft) {\n2:   if (!node) return 0;\n3:   if (!node.left && !node.right && isLeft) return node.val;\n4:   return sumOfLeftLeaves(node.left, true) + sumOfLeftLeaves(node.right, false);\n5: }",
+  "description": "Find the sum of all left leaves in a binary tree.",
+  "target": 24,
+  "pseudocode": "1. If node is null, return 0\n2. If left child is a leaf, return left.val + dfs(right)\n3. Otherwise, return dfs(left) + dfs(right)",
   "steps": [
     {
-      "codeLine": 1,
-      "note": "Starting DFS traversal at root (3)",
+      "codeLine": 3,
+      "note": "Starting DFS at root (val: 3)",
       "treeNodes": [
         {
           "id": 0,
@@ -45,42 +45,193 @@
           "left": null,
           "right": null
         }
-      ]
-    },
-    {
-      "codeLine": 4,
-      "note": "Visiting left child (9)",
-      "curr": 1
-    },
-    {
-      "codeLine": 3,
-      "note": "Found left leaf (9), adding to sum",
-      "curr": 1
-    },
-    {
-      "codeLine": 4,
-      "note": "Backtracking to root, visiting right child (20)",
-      "curr": 2
-    },
-    {
-      "codeLine": 4,
-      "note": "Visiting left child of 20, which is (15)",
+      ],
       "curr": 3
-    },
-    {
-      "codeLine": 3,
-      "note": "Found left leaf (15), adding to sum",
-      "curr": 3
-    },
-    {
-      "codeLine": 4,
-      "note": "Visiting right child of 20, which is (7)",
-      "curr": 4
     },
     {
       "codeLine": 2,
-      "note": "Reached leaf (7), but it is a right child, ignore",
-      "curr": 4
+      "note": "Checking node 9: It is a left leaf",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 3,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 9,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 20,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 3,
+          "val": 15,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 7,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 9
+    },
+    {
+      "codeLine": 3,
+      "note": "Moving to right subtree (node 20)",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 3,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 9,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 20,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 3,
+          "val": 15,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 7,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 20
+    },
+    {
+      "codeLine": 2,
+      "note": "Checking node 15: It is a left leaf",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 3,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 9,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 20,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 3,
+          "val": 15,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 7,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 15
+    },
+    {
+      "codeLine": 3,
+      "note": "Checking node 7: It is a leaf but right child, return 0",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 3,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 9,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 20,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 3,
+          "val": 15,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 7,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 7
+    },
+    {
+      "codeLine": 3,
+      "note": "Final sum calculation: 9 + 15 = 24",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 3,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 9,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 20,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 3,
+          "val": 15,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 7,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 9
     }
   ]
 }

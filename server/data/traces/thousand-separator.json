@@ -1,0 +1,125 @@
+{
+  "title": "Thousand Separator",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "String",
+    "Array",
+    "Math"
+  ],
+  "description": "Add dots as thousand separators to an integer represented as a string.",
+  "target": "1234567",
+  "pseudocode": "1. let s = n.toString()\n2. let res = []\n3. let count = 0\n4. for (let i = s.length - 1; i >= 0; i--) {\n5.   if (count > 0 && count % 3 === 0) res.push('.')\n6.   res.push(s[i])\n7.   count++\n8. }\n9. return res.reverse().join('')",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Convert integer to string s = '1234567'",
+      "array": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7"
+      ],
+      "curr": 1234567
+    },
+    {
+      "codeLine": 4,
+      "note": "Start loop from the last character '7'",
+      "array": [
+        "7"
+      ],
+      "i": 6,
+      "curr": 7
+    },
+    {
+      "codeLine": 6,
+      "note": "Push '7' to result array",
+      "array": [
+        "7"
+      ],
+      "i": 6,
+      "curr": 7
+    },
+    {
+      "codeLine": 4,
+      "note": "Move to index 5, char '6'",
+      "array": [
+        "7",
+        "6"
+      ],
+      "i": 5,
+      "curr": 5
+    },
+    {
+      "codeLine": 4,
+      "note": "Move to index 4, char '5'",
+      "array": [
+        "7",
+        "6",
+        "5"
+      ],
+      "i": 4,
+      "curr": 4
+    },
+    {
+      "codeLine": 5,
+      "note": "Count is 3, add separator '.'",
+      "array": [
+        "7",
+        "6",
+        "5",
+        "."
+      ],
+      "i": 3,
+      "curr": 3
+    },
+    {
+      "codeLine": 6,
+      "note": "Push '4' to result",
+      "array": [
+        "7",
+        "6",
+        "5",
+        ".",
+        "4"
+      ],
+      "i": 3,
+      "curr": 4
+    },
+    {
+      "codeLine": 4,
+      "note": "Continue loop for remaining digits",
+      "array": [
+        "7",
+        "6",
+        "5",
+        ".",
+        "4",
+        "3",
+        "2",
+        ".",
+        "1"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 9,
+      "note": "Reverse array and join: '1.234.567'",
+      "array": [
+        "1",
+        ".",
+        "2",
+        "3",
+        "4",
+        ".",
+        "5",
+        "6",
+        "7"
+      ],
+      "curr": 1
+    }
+  ]
+}

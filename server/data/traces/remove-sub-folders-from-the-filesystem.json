@@ -1,0 +1,111 @@
+{
+  "title": "Remove Sub-Folders from the Filesystem",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "String",
+    "Sorting",
+    "Trie"
+  ],
+  "description": "Given a list of folders, remove all sub-folders in those folders and return the remaining folders.",
+  "pseudocode": "1. folder.sort()\n2. result = [folder[0]]\n3. for i = 1 to folder.length - 1:\n4.   last = result[result.length - 1] + '/'\n5.   if not folder[i].startsWith(last):\n6.     result.push(folder[i])\n7. return result",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Sort the folders lexicographically to ensure parent folders appear before sub-folders.",
+      "array": [
+        "/a",
+        "/a/b",
+        "/c/d",
+        "/c/d/e",
+        "/c/f"
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Initialize result with the first folder.",
+      "array": [
+        "/a"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Check if '/a/b' is a sub-folder of '/a'. Prefix check with '/' added.",
+      "array": [
+        "/a",
+        "/a/b",
+        "/c/d",
+        "/c/d/e",
+        "/c/f"
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "'/a/b' starts with '/a/', so skip it.",
+      "array": [
+        "/a",
+        "/a/b",
+        "/c/d",
+        "/c/d/e",
+        "/c/f"
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Check if '/c/d' is a sub-folder of '/a'.",
+      "array": [
+        "/a",
+        "/a/b",
+        "/c/d",
+        "/c/d/e",
+        "/c/f"
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "'/c/d' is not a sub-folder. Add to result.",
+      "array": [
+        "/a",
+        "/c/d"
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Check if '/c/d/e' is a sub-folder of '/c/d'.",
+      "array": [
+        "/a",
+        "/c/d",
+        "/c/d/e",
+        "/c/f"
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 5,
+      "note": "'/c/d/e' starts with '/c/d/', so skip it.",
+      "array": [
+        "/a",
+        "/c/d",
+        "/c/d/e",
+        "/c/f"
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 6,
+      "note": "'/c/f' is not a sub-folder of '/c/d'. Add to result.",
+      "array": [
+        "/a",
+        "/c/d",
+        "/c/f"
+      ],
+      "i": 4
+    }
+  ]
+}

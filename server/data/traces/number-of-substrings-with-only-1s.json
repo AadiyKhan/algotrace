@@ -1,0 +1,110 @@
+{
+  "title": "Number of Substrings With Only 1s",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "String",
+    "Math"
+  ],
+  "description": "Count the number of substrings consisting only of 1s in a given binary string.",
+  "target": null,
+  "pseudocode": "1: let total = 0, count = 0\n2: for char in s:\n3:   if char == '1':\n4:     count++\n5:     total += count\n6:   else:\n7:     count = 0\n8: return total",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize total count and current streak of 1s to 0",
+      "array": [
+        "1",
+        "1",
+        "0",
+        "1"
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "First char is '1', increment count",
+      "array": [
+        "1",
+        "1",
+        "0",
+        "1"
+      ],
+      "i": 0,
+      "curr": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Add current count (1) to total",
+      "array": [
+        "1",
+        "1",
+        "0",
+        "1"
+      ],
+      "i": 0,
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Second char is '1', increment count to 2",
+      "array": [
+        "1",
+        "1",
+        "0",
+        "1"
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Add current count (2) to total, total becomes 3",
+      "array": [
+        "1",
+        "1",
+        "0",
+        "1"
+      ],
+      "i": 1,
+      "curr": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Third char is '0', reset streak count to 0",
+      "array": [
+        "1",
+        "1",
+        "0",
+        "1"
+      ],
+      "i": 2,
+      "curr": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Fourth char is '1', increment count to 1",
+      "array": [
+        "1",
+        "1",
+        "0",
+        "1"
+      ],
+      "i": 3,
+      "curr": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Add current count (1) to total, total becomes 4",
+      "array": [
+        "1",
+        "1",
+        "0",
+        "1"
+      ],
+      "i": 3,
+      "curr": 1
+    }
+  ]
+}

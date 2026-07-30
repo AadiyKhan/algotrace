@@ -1,0 +1,109 @@
+{
+  "title": "Clone Binary Tree With Random Pointer",
+  "difficulty": "Medium",
+  "type": "tree",
+  "tags": [
+    "Tree",
+    "Hash Table",
+    "DFS"
+  ],
+  "description": "Create a deep copy of a binary tree where each node has an additional random pointer to any node in the tree.",
+  "pseudocode": "1. map = new Map()\n2. function clone(node) {\n3.   if (!node) return null\n4.   if (map.has(node)) return map.get(node)\n5.   newNode = new Node(node.val)\n6.   map.set(node, newNode)\n7.   newNode.left = clone(node.left)\n8.   newNode.right = clone(node.right)\n9.   newNode.random = clone(node.random)\n10.  return newNode\n11. }",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Starting clone process at root (Node 0)",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": null
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Created new node clone for root (val 1)",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": null
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 7,
+      "note": "Cloning left child (Node 1)",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": null
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 9,
+      "note": "Assigning random pointer for root (points to itself)",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": null
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 10,
+      "note": "Clone complete, returning deep copy root",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": null
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 1
+    }
+  ]
+}

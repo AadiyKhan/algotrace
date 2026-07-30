@@ -1,0 +1,113 @@
+{
+  "title": "Make Array Non-Decreasing",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Dynamic Programming",
+    "Heap"
+  ],
+  "description": "Find the minimum cost to make an array non-decreasing, where cost is the sum of absolute differences between old and new values.",
+  "target": null,
+  "pseudocode": "1. Initialize an empty max-heap\n2. For each number x in arr:\n3.   Push x into heap\n4.   If heap.top() > x:\n5.     Add heap.top() - x to cost\n6.     Pop heap.top()\n7.     Push x again",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Starting with array [3, 2, 4]",
+      "array": [
+        3,
+        2,
+        4
+      ],
+      "curr": 3
+    },
+    {
+      "codeLine": 3,
+      "note": "Push 3 into heap",
+      "array": [
+        3,
+        2,
+        4
+      ],
+      "i": 0,
+      "curr": 3
+    },
+    {
+      "codeLine": 3,
+      "note": "Push 2 into heap. Heap is [3, 2]",
+      "array": [
+        3,
+        2,
+        4
+      ],
+      "i": 1,
+      "curr": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Heap top (3) > current (2). Must adjust.",
+      "array": [
+        3,
+        2,
+        4
+      ],
+      "i": 1,
+      "curr": 3
+    },
+    {
+      "codeLine": 5,
+      "note": "Cost increases by 3 - 2 = 1",
+      "array": [
+        3,
+        2,
+        4
+      ],
+      "i": 1,
+      "curr": 3
+    },
+    {
+      "codeLine": 6,
+      "note": "Pop 3 from heap",
+      "array": [
+        3,
+        2,
+        4
+      ],
+      "i": 1,
+      "curr": 3
+    },
+    {
+      "codeLine": 7,
+      "note": "Push 2. Heap is now [2, 2]",
+      "array": [
+        3,
+        2,
+        4
+      ],
+      "i": 1,
+      "curr": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Push 4. Heap is now [2, 2, 4]",
+      "array": [
+        3,
+        2,
+        4
+      ],
+      "i": 2,
+      "curr": 4
+    },
+    {
+      "codeLine": 4,
+      "note": "Heap top (4) <= 4. No adjustment needed.",
+      "array": [
+        3,
+        2,
+        4
+      ],
+      "i": 2,
+      "curr": 4
+    }
+  ]
+}

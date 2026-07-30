@@ -45,7 +45,8 @@
           "left": null,
           "right": null
         }
-      ]
+      ],
+      "curr": 0
     },
     {
       "codeLine": 5,

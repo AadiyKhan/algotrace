@@ -1,0 +1,104 @@
+{
+  "title": "Minimum Remove to Make Valid Parentheses",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "String",
+    "Stack"
+  ],
+  "description": "Remove the minimum number of parentheses to make the input string valid.",
+  "target": null,
+  "pseudocode": "1. stack = []\n2. s = s.split('')\n3. for i, char in s:\n4.   if char == '(': stack.push(i)\n5.   else if char == ')':\n6.     if stack: stack.pop()\n7.     else: s[i] = ''\n8. for i in stack: s[i] = ''\n9. return s.join('')",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize empty stack to track indices of open parentheses.",
+      "array": [
+        "(",
+        "a",
+        ")",
+        ")"
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Iterate to index 0: found '('.",
+      "i": 0,
+      "array": [
+        "(",
+        "a",
+        ")",
+        ")"
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Push index 0 to stack.",
+      "i": 0,
+      "array": [
+        "(",
+        "a",
+        ")",
+        ")"
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Iterate to index 2: found ')'.",
+      "i": 2,
+      "array": [
+        "(",
+        "a",
+        ")",
+        ")"
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Match found, pop index 0 from stack.",
+      "i": 2,
+      "array": [
+        "(",
+        "a",
+        ")",
+        ")"
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Iterate to index 3: found ')'. Stack empty.",
+      "i": 3,
+      "array": [
+        "(",
+        "a",
+        ")",
+        ")"
+      ],
+      "curr": 3
+    },
+    {
+      "codeLine": 7,
+      "note": "No match for closing parenthesis, mark as empty.",
+      "i": 3,
+      "array": [
+        "(",
+        "a",
+        ")",
+        ""
+      ]
+    },
+    {
+      "codeLine": 9,
+      "note": "Result after removing marked characters.",
+      "array": [
+        "(",
+        "a",
+        ")"
+      ]
+    }
+  ]
+}

@@ -22,7 +22,8 @@
         "b",
         "c"
       ],
-      "visited": []
+      "visited": [],
+      "curr": 3
     },
     {
       "codeLine": 4,
@@ -35,7 +36,8 @@
         "c"
       ],
       "i": 2,
-      "visited": []
+      "visited": [],
+      "curr": 2
     },
     {
       "codeLine": 6,

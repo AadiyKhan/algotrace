@@ -4,79 +4,138 @@
   "type": "tree",
   "tags": [
     "Tree",
-    "DFS",
-    "Recursion"
+    "Depth-First Search",
+    "Binary Tree"
   ],
-  "description": "Find the maximum path sum in a binary tree where a path can start and end at any node.",
-  "target": null,
-  "pseudocode": "1: let maxSum = -Infinity\n2: function dfs(node) {\n3:   if (!node) return 0\n4:   let left = Math.max(dfs(node.left), 0)\n5:   let right = Math.max(dfs(node.right), 0)\n6:   maxSum = Math.max(maxSum, node.val + left + right)\n7:   return node.val + Math.max(left, right)\n8: }",
+  "description": "Find the maximum path sum in a binary tree where the path does not necessarily pass through the root.",
+  "target": 6,
+  "pseudocode": "1. global_max = -infinity\n2. function dfs(node):\n3.   if not node: return 0\n4.   left = max(0, dfs(node.left))\n5.   right = max(0, dfs(node.right))\n6.   global_max = max(global_max, left + right + node.val)\n7.   return node.val + max(left, right)",
   "steps": [
     {
       "codeLine": 2,
-      "note": "Starting DFS from root (node 0, val: -10)",
+      "note": "Starting DFS traversal at root node 1.",
       "treeNodes": [
         {
           "id": 0,
-          "val": -10,
+          "val": 1,
           "left": 1,
           "right": 2
         },
         {
           "id": 1,
-          "val": 9,
+          "val": 2,
           "left": null,
           "right": null
         },
         {
           "id": 2,
-          "val": 20,
-          "left": 3,
-          "right": 4
-        },
-        {
-          "id": 3,
-          "val": 15,
-          "left": null,
-          "right": null
-        },
-        {
-          "id": 4,
-          "val": 7,
+          "val": 3,
           "left": null,
           "right": null
         }
       ],
-      "curr": "0"
+      "curr": 0
     },
     {
       "codeLine": 4,
-      "note": "Traversing to left child (node 1)",
-      "curr": "1"
-    },
-    {
-      "codeLine": 7,
-      "note": "Node 1 returns 9 to parent",
-      "curr": "1"
+      "note": "Visiting left child 2. Recursion for node 2 returns 2.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 1
     },
     {
       "codeLine": 5,
-      "note": "Traversing to right child (node 2)",
-      "curr": "2"
+      "note": "Visiting right child 3. Recursion for node 3 returns 3.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 2
     },
     {
       "codeLine": 6,
-      "note": "Calculating path through node 2: 15 + 20 + 7 = 42. Updating maxSum.",
-      "curr": "2"
+      "note": "Calculating max path sum at root 1: 2 + 1 + 3 = 6. Update global_max.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 0
     },
     {
       "codeLine": 7,
-      "note": "Node 2 returns 20 + max(15, 7) = 35 to parent",
-      "curr": "2"
-    },
-    {
-      "codeLine": 6,
-      "note": "Final check at root: -10 + 9 + 35 = 34. Max remains 42.",
-      "curr": "0"
+      "note": "Returning max path sum (6) to the caller.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 2
     }
-  ]
+  ],
+  "fullDescription": "<p>A <strong>path</strong> in a binary tree is a sequence of nodes where each pair of adjacent nodes in the sequence has an edge connecting them. A node can only appear in the sequence <strong>at most once</strong>. Note that the path does not need to pass through the root.</p>\n\n<p>The <strong>path sum</strong> of a path is the sum of the node&#39;s values in the path.</p>\n\n<p>Given the <code>root</code> of a binary tree, return <em>the maximum <strong>path sum</strong> of any <strong>non-empty</strong> path</em>.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2020/10/13/exx1.jpg\" style=\"width: 322px; height: 182px;\" />\n<pre>\n<strong>Input:</strong> root = [1,2,3]\n<strong>Output:</strong> 6\n<strong>Explanation:</strong> The optimal path is 2 -&gt; 1 -&gt; 3 with a path sum of 2 + 1 + 3 = 6.\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2020/10/13/exx2.jpg\" />\n<pre>\n<strong>Input:</strong> root = [-10,9,20,null,null,15,7]\n<strong>Output:</strong> 42\n<strong>Explanation:</strong> The optimal path is 15 -&gt; 20 -&gt; 7 with a path sum of 15 + 20 + 7 = 42.\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li>The number of nodes in the tree is in the range <code>[1, 3 * 10<sup>4</sup>]</code>.</li>\n\t<li><code>-1000 &lt;= Node.val &lt;= 1000</code></li>\n</ul>\n"
 }

@@ -1,53 +1,191 @@
 {
   "title": "Word Pattern II",
-  "difficulty": "Hard",
+  "difficulty": "Medium",
   "type": "array",
   "tags": [
-    "Backtracking",
+    "Hash Table",
     "String",
-    "Hash Table"
+    "Backtracking"
   ],
-  "description": "Determine if a string matches a pattern where each character maps to a non-empty substring.",
-  "target": "pattern: 'ab', s: 'redblue'",
-  "pseudocode": "1: function backtrack(pIdx, sIdx, map, used) {\n2:   if (pIdx === pattern.length) return sIdx === s.length;\n3:   char = pattern[pIdx];\n4:   if (map.has(char)) {\n5:     sub = map.get(char);\n6:     if (!s.startsWith(sub, sIdx)) return false;\n7:     return backtrack(pIdx + 1, sIdx + sub.length, map, used);\n8:   }\n9:   for (len = 1; sIdx + len <= s.length; len++) {\n10:    sub = s.substring(sIdx, sIdx + len);\n11:    if (used.has(sub)) continue;\n12:    map.set(char, sub); used.add(sub);\n13:    if (backtrack(pIdx + 1, sIdx + len, map, used)) return true;\n14:    map.delete(char); used.delete(sub);\n15:  }\n16:  return false;\n17: }",
+  "description": "Determine if a string follows a given pattern using backtracking.",
+  "target": "pattern: 'abab', s: 'redblueredblue'",
+  "pseudocode": "1. map = {}, set = {}\n2. function backtrack(pIdx, sIdx):\n3. if pIdx == len(pattern) and sIdx == len(s): return True\n4. char = pattern[pIdx]\n5. for end = sIdx + 1 to len(s):\n6. sub = s[sIdx:end]\n7. if char in map and map[char] == sub: backtrack(pIdx + 1, end)\n8. else if char not in map and sub not in set: add to map/set, backtrack(pIdx + 1, end), remove from map/set",
   "steps": [
     {
-      "codeLine": 3,
-      "note": "Starting with pattern char 'a' at index 0.",
-      "i": 0
-    },
-    {
-      "codeLine": 10,
-      "note": "Trying mapping 'a' to 'r'.",
+      "codeLine": 2,
+      "note": "Starting backtracking with pattern 'abab' and string 'redblueredblue'.",
+      "array": [
+        "r",
+        "e",
+        "d",
+        "b",
+        "l",
+        "u",
+        "e",
+        "r",
+        "e",
+        "d",
+        "b",
+        "l",
+        "u",
+        "e"
+      ],
       "i": 0,
-      "curr": "a -> r"
+      "j": 0
     },
     {
-      "codeLine": 13,
-      "note": "Recursive call for pattern char 'b' at s index 1.",
-      "i": 1
+      "codeLine": 5,
+      "note": "Trying to map pattern 'a' to 'red'.",
+      "array": [
+        "r",
+        "e",
+        "d",
+        "b",
+        "l",
+        "u",
+        "e",
+        "r",
+        "e",
+        "d",
+        "b",
+        "l",
+        "u",
+        "e"
+      ],
+      "i": 0,
+      "j": 3
     },
     {
-      "codeLine": 10,
-      "note": "Trying mapping 'b' to 'e'.",
+      "codeLine": 8,
+      "note": "Mapping 'a' -> 'red', moving to next pattern character 'b'.",
+      "array": [
+        "r",
+        "e",
+        "d",
+        "b",
+        "l",
+        "u",
+        "e",
+        "r",
+        "e",
+        "d",
+        "b",
+        "l",
+        "u",
+        "e"
+      ],
       "i": 1,
-      "curr": "b -> e"
+      "j": 3
     },
     {
-      "codeLine": 2,
-      "note": "Pattern exhausted, s index not at end. Backtracking.",
-      "i": 1
-    },
-    {
-      "codeLine": 10,
-      "note": "Trying mapping 'b' to 'edblue'.",
+      "codeLine": 5,
+      "note": "Trying to map pattern 'b' to 'blue'.",
+      "array": [
+        "r",
+        "e",
+        "d",
+        "b",
+        "l",
+        "u",
+        "e",
+        "r",
+        "e",
+        "d",
+        "b",
+        "l",
+        "u",
+        "e"
+      ],
       "i": 1,
-      "curr": "b -> edblue"
+      "j": 7
     },
     {
-      "codeLine": 2,
-      "note": "Both pattern and s exhausted. Success.",
-      "i": 2
+      "codeLine": 8,
+      "note": "Mapping 'b' -> 'blue', moving to next pattern character 'a'.",
+      "array": [
+        "r",
+        "e",
+        "d",
+        "b",
+        "l",
+        "u",
+        "e",
+        "r",
+        "e",
+        "d",
+        "b",
+        "l",
+        "u",
+        "e"
+      ],
+      "i": 2,
+      "j": 7
+    },
+    {
+      "codeLine": 7,
+      "note": "Checking existing mapping: 'a' is 'red'. String matches.",
+      "array": [
+        "r",
+        "e",
+        "d",
+        "b",
+        "l",
+        "u",
+        "e",
+        "r",
+        "e",
+        "d",
+        "b",
+        "l",
+        "u",
+        "e"
+      ],
+      "i": 3,
+      "j": 10
+    },
+    {
+      "codeLine": 7,
+      "note": "Checking existing mapping: 'b' is 'blue'. String matches.",
+      "array": [
+        "r",
+        "e",
+        "d",
+        "b",
+        "l",
+        "u",
+        "e",
+        "r",
+        "e",
+        "d",
+        "b",
+        "l",
+        "u",
+        "e"
+      ],
+      "i": 4,
+      "j": 14
+    },
+    {
+      "codeLine": 3,
+      "note": "Base case reached, pattern matches.",
+      "array": [
+        "r",
+        "e",
+        "d",
+        "b",
+        "l",
+        "u",
+        "e",
+        "r",
+        "e",
+        "d",
+        "b",
+        "l",
+        "u",
+        "e"
+      ],
+      "i": 4,
+      "j": 14
     }
   ]
 }

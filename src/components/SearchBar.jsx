@@ -1,16 +1,17 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Search, ArrowRight } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { searchProblems } from '../services/api';
 
 const PLACEHOLDERS = [
-  'Search "Two Sum"...',
-  'Try "Reverse Linked List"...',
-  'Search "Binary Search"...',
-  'Paste a LeetCode URL...',
+  'SEARCH "TWO SUM"...',
+  'TRY "REVERSE LINKED LIST"...',
+  'SEARCH "BINARY SEARCH"...',
+  'PASTE A LEETCODE URL...',
 ];
 
-const DIFF_COLOR = { Easy: '#22c55e', Medium: '#f59e0b', Hard: '#ff0000' };
+const DIFF_DOT = { Easy: '#22c55e', Medium: '#f59e0b', Hard: '#ef4444' };
 
 const SearchBar = () => {
   const [query, setQuery]       = useState('');
@@ -77,9 +78,11 @@ const SearchBar = () => {
   return (
     <div ref={wrapperRef} className="w-full relative">
       <form onSubmit={handleSubmit}>
-        <div className="flex" style={{ border: `1px solid ${isFocused ? '#ff0000' : '#2a0000'}`, transition: 'border-color 0.15s' }}>
-          <div className="flex items-center pl-4 pr-3 flex-shrink-0">
-            <Search size={16} style={{ color: isFocused ? '#ff0000' : '#6b5555' }} className="transition-colors duration-150" />
+        <div className={`flex flex-col md:flex-row items-center bg-[#0a0a0b] border-[2px] transition-colors duration-300 ${
+          isFocused ? 'border-amber-500' : 'border-white/20'
+        }`}>
+          <div className="hidden md:flex items-center pl-6 pr-4 flex-shrink-0">
+            <span className={`font-mono font-bold text-xl ${isFocused ? 'text-amber-500 animate-pulse' : 'text-white/20'}`}>{'>'}</span>
           </div>
           <input
             type="text"
@@ -91,42 +94,47 @@ const SearchBar = () => {
             aria-label="Search problems"
             aria-autocomplete="list"
             aria-expanded={showDrop}
-            className="flex-1 bg-transparent border-none outline-none text-white text-sm py-3.5 px-1 font-sans placeholder-textMuted/40"
-            style={{ caretColor: '#ff0000' }}
+            className="w-full flex-1 bg-transparent border-none outline-none text-white font-mono text-base py-4 md:py-5 px-4 md:px-0 placeholder:text-white/20 uppercase tracking-widest text-center md:text-left"
           />
           <button type="submit" disabled={!query.trim()}
             aria-label="Trace problem"
-            className="btn-primary flex items-center gap-2 px-5 text-sm disabled:opacity-30 disabled:cursor-not-allowed">
-            <span>TRACE</span>
-            <ArrowRight size={14} />
+            className="w-full md:w-auto bg-white text-black font-black uppercase tracking-widest px-8 py-5 md:py-0 md:h-[60px] hover:bg-amber-500 transition-colors disabled:opacity-20 disabled:cursor-not-allowed">
+            EXECUTE
           </button>
         </div>
       </form>
 
       {/* Dropdown */}
-      {showDrop && results.length > 0 && (
-        <div
-          className="absolute z-50 w-full mt-px border border-borderDark overflow-hidden"
-          style={{ background: '#110000' }}
-          role="listbox"
-          aria-label="Search results"
-        >
-          {results.map((p) => (
-            <button
-              key={p.slug}
-              role="option"
-              onMouseDown={() => navigateTo(p.slug)}
-              className="w-full flex items-center justify-between px-4 py-2.5 text-left hover:bg-[#1a0000] transition-colors border-b border-borderDark last:border-0"
-            >
-              <span className="font-sans text-sm text-white truncate">{p.title}</span>
-              <span className="font-mono text-[10px] font-bold ml-3 shrink-0"
-                style={{ color: DIFF_COLOR[p.difficulty] ?? '#6b5555' }}>
-                {p.difficulty?.toUpperCase()}
-              </span>
-            </button>
-          ))}
-        </div>
-      )}
+      <AnimatePresence>
+        {showDrop && results.length > 0 && (
+          <motion.div
+            initial={{ opacity: 0, y: -4 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -4 }}
+            transition={{ duration: 0.15 }}
+            className="absolute z-50 w-full mt-2 border-[2px] border-amber-500/50 overflow-hidden bg-[#0a0a0b] shadow-[0_0_30px_rgba(245,158,11,0.15)]"
+            role="listbox"
+            aria-label="Search results"
+          >
+            {results.map((p, i) => (
+              <button
+                key={p.slug}
+                role="option"
+                onMouseDown={() => navigateTo(p.slug)}
+                className="w-full flex items-center justify-between px-6 py-4 text-left hover:bg-amber-500 hover:text-black transition-colors duration-150 border-b-[2px] border-white/10 last:border-0 group/item"
+              >
+                <span className="font-mono font-bold text-[13px] uppercase tracking-wider text-white group-hover/item:text-black truncate">{p.title}</span>
+                <div className="flex items-center gap-3 ml-3 shrink-0">
+                  <div className="w-2 h-2" style={{ background: DIFF_DOT[p.difficulty] ?? '#555' }} />
+                  <span className="font-mono font-bold text-[11px] uppercase tracking-widest text-white/40 group-hover/item:text-black/60">
+                    {p.difficulty}
+                  </span>
+                </div>
+              </button>
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };

@@ -7,23 +7,22 @@
     "Math",
     "Bit Manipulation"
   ],
-  "description": "Find the missing number in an array containing n distinct numbers taken from 0, 1, 2, ..., n.",
+  "description": "Find the missing number in an array containing n distinct numbers in the range [0, n].",
   "target": 2,
-  "pseudocode": "1: let n = nums.length\n2: let expectedSum = n * (n + 1) / 2\n3: let actualSum = 0\n4: for i from 0 to n-1:\n5:   actualSum += nums[i]\n6: return expectedSum - actualSum",
+  "pseudocode": "1. n = length of nums\n2. expectedSum = n * (n + 1) / 2\n3. actualSum = sum(nums)\n4. return expectedSum - actualSum",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize n as the length of the array.",
+      "note": "Initialize n as the length of the input array.",
       "array": [
         3,
         0,
         1
-      ],
-      "i": null
+      ]
     },
     {
       "codeLine": 2,
-      "note": "Calculate the expected sum of numbers from 0 to n (0+1+2+3=6).",
+      "note": "Calculate the expected sum of numbers from 0 to 3: 3*(4)/2 = 6.",
       "array": [
         3,
         0,
@@ -32,7 +31,7 @@
     },
     {
       "codeLine": 3,
-      "note": "Initialize actualSum to 0.",
+      "note": "Calculate the actual sum of elements in the array: 3 + 0 + 1 = 4.",
       "array": [
         3,
         0,
@@ -41,72 +40,13 @@
     },
     {
       "codeLine": 4,
-      "note": "Start loop to calculate the sum of array elements.",
-      "array": [
-        3,
-        0,
-        1
-      ],
-      "i": 0
-    },
-    {
-      "codeLine": 5,
-      "note": "Add nums[0] (3) to actualSum.",
-      "array": [
-        3,
-        0,
-        1
-      ],
-      "i": 0
-    },
-    {
-      "codeLine": 4,
-      "note": "Next iteration.",
-      "array": [
-        3,
-        0,
-        1
-      ],
-      "i": 1
-    },
-    {
-      "codeLine": 5,
-      "note": "Add nums[1] (0) to actualSum.",
-      "array": [
-        3,
-        0,
-        1
-      ],
-      "i": 1
-    },
-    {
-      "codeLine": 4,
-      "note": "Next iteration.",
-      "array": [
-        3,
-        0,
-        1
-      ],
-      "i": 2
-    },
-    {
-      "codeLine": 5,
-      "note": "Add nums[2] (1) to actualSum. Total is 4.",
-      "array": [
-        3,
-        0,
-        1
-      ],
-      "i": 2
-    },
-    {
-      "codeLine": 6,
-      "note": "Return expectedSum (6) - actualSum (4) = 2.",
+      "note": "Subtract actual sum from expected sum: 6 - 4 = 2. The missing number is 2.",
       "array": [
         3,
         0,
         1
       ]
     }
-  ]
+  ],
+  "fullDescription": "<p>Given an array <code>nums</code> containing <code>n</code> distinct numbers in the range <code>[0, n]</code>, return <em>the only number in the range that is missing from the array.</em></p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<div class=\"example-block\">\n<p><strong>Input:</strong> <span class=\"example-io\">nums = [3,0,1]</span></p>\n\n<p><strong>Output:</strong> <span class=\"example-io\">2</span></p>\n\n<p><strong>Explanation:</strong></p>\n\n<p><code>n = 3</code> since there are 3 numbers, so all numbers are in the range <code>[0,3]</code>. 2 is the missing number in the range since it does not appear in <code>nums</code>.</p>\n</div>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<div class=\"example-block\">\n<p><strong>Input:</strong> <span class=\"example-io\">nums = [0,1]</span></p>\n\n<p><strong>Output:</strong> <span class=\"example-io\">2</span></p>\n\n<p><strong>Explanation:</strong></p>\n\n<p><code>n = 2</code> since there are 2 numbers, so all numbers are in the range <code>[0,2]</code>. 2 is the missing number in the range since it does not appear in <code>nums</code>.</p>\n</div>\n\n<p><strong class=\"example\">Example 3:</strong></p>\n\n<div class=\"example-block\">\n<p><strong>Input:</strong> <span class=\"example-io\">nums = [9,6,4,2,3,5,7,0,1]</span></p>\n\n<p><strong>Output:</strong> <span class=\"example-io\">8</span></p>\n\n<p><strong>Explanation:</strong></p>\n\n<p><code>n = 9</code> since there are 9 numbers, so all numbers are in the range <code>[0,9]</code>. 8 is the missing number in the range since it does not appear in <code>nums</code>.</p>\n</div>\n\n<div class=\"simple-translate-system-theme\" id=\"simple-translate\">\n<div>\n<div class=\"simple-translate-button isShow\" style=\"background-image: url(&quot;moz-extension://8a9ffb6b-7e69-4e93-aae1-436a1448eff6/icons/512.png&quot;); height: 22px; width: 22px; top: 318px; left: 36px;\">&nbsp;</div>\n\n<div class=\"simple-translate-panel \" style=\"width: 300px; height: 200px; top: 0px; left: 0px; font-size: 13px;\">\n<div class=\"simple-translate-result-wrapper\" style=\"overflow: hidden;\">\n<div class=\"simple-translate-move\" draggable=\"true\">&nbsp;</div>\n\n<div class=\"simple-translate-result-contents\">\n<p class=\"simple-translate-result\" dir=\"auto\">&nbsp;</p>\n\n<p class=\"simple-translate-candidate\" dir=\"auto\">&nbsp;</p>\n</div>\n</div>\n</div>\n</div>\n</div>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>n == nums.length</code></li>\n\t<li><code>1 &lt;= n &lt;= 10<sup>4</sup></code></li>\n\t<li><code>0 &lt;= nums[i] &lt;= n</code></li>\n\t<li>All the numbers of <code>nums</code> are <strong>unique</strong>.</li>\n</ul>\n\n<p>&nbsp;</p>\n<p><strong>Follow up:</strong> Could you implement a solution using only <code>O(1)</code> extra space complexity and <code>O(n)</code> runtime complexity?</p>\n"
 }

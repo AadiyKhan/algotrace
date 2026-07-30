@@ -1,0 +1,41 @@
+{
+  "title": "Minimum Moves to Reach Target Score",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Math",
+    "Greedy"
+  ],
+  "description": "Find the minimum moves to reach target from 1 using increment and doubling (maxDoubles limit).",
+  "target": 5,
+  "pseudocode": "1. moves = 0\n2. while target > 1 and maxDoubles > 0:\n3.   if target is even: target /= 2, maxDoubles -= 1\n4.   else: target -= 1\n5.   moves += 1\n6. return moves + (target - 1)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize moves counter to 0.",
+      "array": [
+        5
+      ],
+      "i": "moves=0",
+      "curr": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Check while condition: target > 1 (5 > 1) is true, but maxDoubles > 0 (0 > 0) is false. Loop skipped.",
+      "array": [
+        5
+      ],
+      "i": "moves=0",
+      "curr": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Loop skipped, calculate remaining moves needed: moves + (target - 1) = 0 + (5 - 1) = 4.",
+      "array": [
+        5
+      ],
+      "i": "result=4",
+      "curr": 1
+    }
+  ]
+}

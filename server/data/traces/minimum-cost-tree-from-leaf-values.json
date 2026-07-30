@@ -1,0 +1,123 @@
+{
+  "title": "Minimum Cost Tree From Leaf Values",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Stack",
+    "Dynamic Programming"
+  ],
+  "description": "Given an array of leaf values, build a binary tree such that every non-leaf node's value is the product of the largest leaf values in its left and right subtree, minimizing the sum of all non-leaf nodes.",
+  "target": 32,
+  "pseudocode": "1: res = 0\n2: stack = [infinity]\n3: for val in arr:\n4:   while stack.peek() <= val:\n5:     mid = stack.pop()\n6:     res += mid * min(stack.peek(), val)\n7:   stack.push(val)\n8: while stack.length > 2:\n9:   res += stack.pop() * stack.peek()",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize result to 0",
+      "array": [
+        6,
+        2,
+        4
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Process element 6",
+      "array": [
+        6,
+        2,
+        4
+      ],
+      "i": 0,
+      "curr": 6
+    },
+    {
+      "codeLine": 7,
+      "note": "Push 6 to stack",
+      "array": [
+        6,
+        2,
+        4
+      ],
+      "i": 0,
+      "curr": 6
+    },
+    {
+      "codeLine": 3,
+      "note": "Process element 2",
+      "array": [
+        6,
+        2,
+        4
+      ],
+      "i": 1,
+      "curr": 2
+    },
+    {
+      "codeLine": 7,
+      "note": "Push 2 to stack",
+      "array": [
+        6,
+        2,
+        4
+      ],
+      "i": 1,
+      "curr": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Process element 4",
+      "array": [
+        6,
+        2,
+        4
+      ],
+      "i": 2,
+      "curr": 4
+    },
+    {
+      "codeLine": 4,
+      "note": "Current 4 > stack top 2",
+      "array": [
+        6,
+        2,
+        4
+      ],
+      "i": 2,
+      "curr": 4
+    },
+    {
+      "codeLine": 6,
+      "note": "Pop 2, res += 2 * min(6, 4) = 8",
+      "array": [
+        6,
+        2,
+        4
+      ],
+      "i": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 7,
+      "note": "Push 4 to stack",
+      "array": [
+        6,
+        2,
+        4
+      ],
+      "i": 2,
+      "curr": 4
+    },
+    {
+      "codeLine": 9,
+      "note": "Final calculation: pop 4, res += 4 * 6 = 24",
+      "array": [
+        6,
+        2,
+        4
+      ],
+      "curr": 4
+    }
+  ]
+}

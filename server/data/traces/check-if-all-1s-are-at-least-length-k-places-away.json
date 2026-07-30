@@ -1,0 +1,143 @@
+{
+  "title": "Check If All 1s Are At Least Length K Places Away",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array"
+  ],
+  "description": "Given an array nums of 0s and 1s and an integer k, return true if all 1s are at least k places away from each other, otherwise false.",
+  "target": 1,
+  "pseudocode": "let lastIndex = -k - 1;\nfor (let i = 0; i < nums.length; i++) {\n  if (nums[i] === 1) {\n    if (i - lastIndex - 1 < k) return false;\n    lastIndex = i;\n  }\n}\nreturn true;",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize lastIndex to a value ensuring the first 1 encountered is always valid.",
+      "array": [
+        1,
+        0,
+        0,
+        1
+      ],
+      "i": null,
+      "curr": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Start loop at index 0. nums[0] is 1.",
+      "array": [
+        1,
+        0,
+        0,
+        1
+      ],
+      "i": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Found a 1 at index 0. Check distance from lastIndex (-3).",
+      "array": [
+        1,
+        0,
+        0,
+        1
+      ],
+      "i": 0,
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "0 - (-3) - 1 = 2. 2 >= k (2), valid.",
+      "array": [
+        1,
+        0,
+        0,
+        1
+      ],
+      "i": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Update lastIndex to 0.",
+      "array": [
+        1,
+        0,
+        0,
+        1
+      ],
+      "i": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Loop to index 1. Value is 0, skip.",
+      "array": [
+        1,
+        0,
+        0,
+        1
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Loop to index 2. Value is 0, skip.",
+      "array": [
+        1,
+        0,
+        0,
+        1
+      ],
+      "i": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 2,
+      "note": "Loop to index 3. Value is 1.",
+      "array": [
+        1,
+        0,
+        0,
+        1
+      ],
+      "i": 3,
+      "curr": 3
+    },
+    {
+      "codeLine": 4,
+      "note": "3 - 0 - 1 = 2. 2 >= k (2), valid.",
+      "array": [
+        1,
+        0,
+        0,
+        1
+      ],
+      "i": 3,
+      "curr": 3
+    },
+    {
+      "codeLine": 5,
+      "note": "Update lastIndex to 3.",
+      "array": [
+        1,
+        0,
+        0,
+        1
+      ],
+      "i": 3,
+      "curr": 3
+    },
+    {
+      "codeLine": 7,
+      "note": "Finished loop, return true.",
+      "array": [
+        1,
+        0,
+        0,
+        1
+      ]
+    }
+  ]
+}

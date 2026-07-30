@@ -1,0 +1,170 @@
+{
+  "title": "Consecutive Characters",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "String"
+  ],
+  "description": "Find the length of the longest substring that contains only one unique character.",
+  "target": null,
+  "pseudocode": "1. maxLen = 1, currentLen = 1\n2. for i from 1 to s.length - 1:\n3.   if s[i] == s[i-1]:\n4.     currentLen++\n5.   else:\n6.     currentLen = 1\n7.   maxLen = Math.max(maxLen, currentLen)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize maxLen and currentLen to 1.",
+      "array": [
+        "l",
+        "e",
+        "e",
+        "e",
+        "t"
+      ],
+      "i": 0,
+      "curr": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Starting loop at index 1.",
+      "array": [
+        "l",
+        "e",
+        "e",
+        "e",
+        "t"
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Compare s[1] ('e') with s[0] ('l'). No match.",
+      "array": [
+        "l",
+        "e",
+        "e",
+        "e",
+        "t"
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Reset currentLen to 1.",
+      "array": [
+        "l",
+        "e",
+        "e",
+        "e",
+        "t"
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Compare s[2] ('e') with s[1] ('e'). Match found.",
+      "array": [
+        "l",
+        "e",
+        "e",
+        "e",
+        "t"
+      ],
+      "i": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Increment currentLen to 2.",
+      "array": [
+        "l",
+        "e",
+        "e",
+        "e",
+        "t"
+      ],
+      "i": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 7,
+      "note": "Update maxLen to 2.",
+      "array": [
+        "l",
+        "e",
+        "e",
+        "e",
+        "t"
+      ],
+      "i": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Compare s[3] ('e') with s[2] ('e'). Match found.",
+      "array": [
+        "l",
+        "e",
+        "e",
+        "e",
+        "t"
+      ],
+      "i": 3,
+      "curr": 3
+    },
+    {
+      "codeLine": 4,
+      "note": "Increment currentLen to 3.",
+      "array": [
+        "l",
+        "e",
+        "e",
+        "e",
+        "t"
+      ],
+      "i": 3,
+      "curr": 3
+    },
+    {
+      "codeLine": 7,
+      "note": "Update maxLen to 3.",
+      "array": [
+        "l",
+        "e",
+        "e",
+        "e",
+        "t"
+      ],
+      "i": 3,
+      "curr": 3
+    },
+    {
+      "codeLine": 3,
+      "note": "Compare s[4] ('t') with s[3] ('e'). No match.",
+      "array": [
+        "l",
+        "e",
+        "e",
+        "e",
+        "t"
+      ],
+      "i": 4,
+      "curr": 4
+    },
+    {
+      "codeLine": 6,
+      "note": "Reset currentLen to 1.",
+      "array": [
+        "l",
+        "e",
+        "e",
+        "e",
+        "t"
+      ],
+      "i": 4,
+      "curr": 1
+    }
+  ]
+}

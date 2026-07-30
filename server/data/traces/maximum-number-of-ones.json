@@ -1,0 +1,141 @@
+{
+  "title": "Maximum Number of Ones",
+  "difficulty": "Medium",
+  "type": "matrix",
+  "tags": [
+    "Matrix",
+    "Greedy",
+    "Array"
+  ],
+  "description": "Given an M x N binary matrix where each row and column is initially all zeros, perform k operations to flip a row or column of size r x c. Find the maximum number of 1s in the matrix.",
+  "target": null,
+  "pseudocode": "1. count = new Map()\n2. for row in matrix:\n3.   for col in row:\n4.     if row[0] == 0: flip_row()\n5.     count[row]++\n6. return max(count.values())",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize frequency map to track identical row patterns.",
+      "matrix": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Iterate through the first row.",
+      "matrix": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Row starts with 0, flip the entire row to align pattern.",
+      "matrix": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Store pattern [1, 1] in map, count is 1.",
+      "matrix": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "i": 0,
+      "curr": [
+        1,
+        1
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Iterate to second row.",
+      "matrix": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Row starts with 0, flip row.",
+      "matrix": [
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Store pattern [1, 0] in map, count is 1.",
+      "matrix": [
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "i": 1,
+      "curr": [
+        1,
+        0
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Return max frequency found (1).",
+      "matrix": [
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ]
+    }
+  ]
+}

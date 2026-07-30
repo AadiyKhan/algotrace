@@ -3,12 +3,13 @@
   "difficulty": "Easy",
   "type": "array",
   "tags": [
-    "Hash Table",
-    "String"
+    "Array",
+    "String",
+    "Hash Table"
   ],
-  "description": "Determine if a string follows the same pattern as a given pattern of characters.",
-  "target": "pattern: 'abba', s: 'dog cat cat dog'",
-  "pseudocode": "1. words = s.split(' ')\n2. if pattern.length != words.length return false\n3. mapPtoW = {}, mapWtoP = {}\n4. for i from 0 to pattern.length - 1:\n5.   char = pattern[i], word = words[i]\n6.   if char in mapPtoW and mapPtoW[char] != word return false\n7.   if word in mapWtoP and mapWtoP[word] != char return false\n8.   mapPtoW[char] = word, mapWtoP[word] = char",
+  "description": "Determine if a string s follows a pattern using bijection between characters and words.",
+  "target": "abba",
+  "pseudocode": "1. words = s.split(' ')\n2. if pattern.length != words.length return false\n3. map = {}, set = {}\n4. for i from 0 to pattern.length - 1:\n5.   char = pattern[i], word = words[i]\n6.   if char in map:\n7.     if map[char] != word return false\n8.   else:\n9.     if word in set return false\n10.    map[char] = word, set.add(word)\n11. return true",
   "steps": [
     {
       "codeLine": 1,
@@ -18,47 +19,78 @@
         "cat",
         "cat",
         "dog"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Start iteration. Index 0: 'a' maps to 'dog'.",
+      "array": [
+        "dog",
+        "cat",
+        "cat",
+        "dog"
+      ],
+      "i": 0,
+      "visited": [
+        "a:dog"
       ]
     },
     {
       "codeLine": 4,
-      "note": "Starting the loop at index 0.",
-      "i": 0
-    },
-    {
-      "codeLine": 8,
-      "note": "Map 'a' to 'dog' and 'dog' to 'a'.",
-      "i": 0
-    },
-    {
-      "codeLine": 4,
-      "note": "Moving to index 1.",
-      "i": 1
-    },
-    {
-      "codeLine": 8,
-      "note": "Map 'b' to 'cat' and 'cat' to 'b'.",
-      "i": 1
+      "note": "Index 1: 'b' maps to 'cat'.",
+      "array": [
+        "dog",
+        "cat",
+        "cat",
+        "dog"
+      ],
+      "i": 1,
+      "visited": [
+        "a:dog",
+        "b:cat"
+      ]
     },
     {
       "codeLine": 4,
-      "note": "Moving to index 2.",
-      "i": 2
-    },
-    {
-      "codeLine": 6,
-      "note": "Verify if pattern 'b' already maps to 'cat'. It does, continue.",
-      "i": 2
+      "note": "Index 2: 'b' is already mapped to 'cat'. Check match.",
+      "array": [
+        "dog",
+        "cat",
+        "cat",
+        "dog"
+      ],
+      "i": 2,
+      "visited": [
+        "a:dog",
+        "b:cat"
+      ]
     },
     {
       "codeLine": 4,
-      "note": "Moving to index 3.",
-      "i": 3
+      "note": "Index 3: 'a' is already mapped to 'dog'. Check match.",
+      "array": [
+        "dog",
+        "cat",
+        "cat",
+        "dog"
+      ],
+      "i": 3,
+      "visited": [
+        "a:dog",
+        "b:cat"
+      ]
     },
     {
-      "codeLine": 6,
-      "note": "Verify if pattern 'a' already maps to 'dog'. It does, continue.",
-      "i": 3
+      "codeLine": 11,
+      "note": "All mappings are consistent. Return true.",
+      "array": [
+        "dog",
+        "cat",
+        "cat",
+        "dog"
+      ],
+      "i": 4
     }
   ]
 }

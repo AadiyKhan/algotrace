@@ -4,84 +4,96 @@
   "type": "array",
   "tags": [
     "Math",
+    "Simulation",
     "Number Theory"
   ],
-  "description": "Given an integer num, repeatedly add all its digits until the result has only one digit, and return it.",
-  "target": 0,
+  "description": "Repeatedly add digits of a number until a single-digit result is reached.",
+  "target": 2,
   "pseudocode": "1. while num >= 10:\n2.   sum = 0\n3.   while num > 0:\n4.     sum += num % 10\n5.     num = Math.floor(num / 10)\n6.   num = sum\n7. return num",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize with num = 38. Since 38 >= 10, enter loop.",
-      "i": 38
-    },
-    {
-      "codeLine": 2,
-      "note": "Reset sum to 0 for inner calculation.",
-      "i": 38,
-      "j": 0
+      "note": "Initialize num = 38. Since 38 >= 10, enter loop.",
+      "array": [
+        38
+      ],
+      "curr": 38
     },
     {
       "codeLine": 3,
-      "note": "Extract last digit 8.",
-      "i": 38,
-      "j": 0
+      "note": "Start digit summation process for 38.",
+      "array": [
+        38
+      ],
+      "curr": 38
     },
     {
       "codeLine": 4,
-      "note": "Add 8 to sum.",
-      "i": 38,
-      "j": 8
-    },
-    {
-      "codeLine": 5,
-      "note": "Update num to 3.",
-      "i": 3,
-      "j": 8
+      "note": "Extract 8: sum = 8, num = 3.",
+      "array": [
+        3,
+        8
+      ],
+      "curr": 8
     },
     {
       "codeLine": 4,
-      "note": "Add 3 to sum.",
-      "i": 3,
-      "j": 11
-    },
-    {
-      "codeLine": 5,
-      "note": "Update num to 0, inner loop ends.",
-      "i": 0,
-      "j": 11
+      "note": "Extract 3: sum = 11, num = 0.",
+      "array": [
+        0,
+        11
+      ],
+      "curr": 3
     },
     {
       "codeLine": 6,
-      "note": "Set num to sum (11).",
-      "i": 11
+      "note": "Update num to sum (11). Loop continues as 11 >= 10.",
+      "array": [
+        11
+      ],
+      "curr": 11
     },
     {
-      "codeLine": 1,
-      "note": "11 >= 10, loop continues.",
-      "i": 11
-    },
-    {
-      "codeLine": 2,
-      "note": "Reset sum to 0.",
-      "i": 11,
-      "j": 0
+      "codeLine": 3,
+      "note": "Start digit summation process for 11.",
+      "array": [
+        11
+      ],
+      "curr": 11
     },
     {
       "codeLine": 4,
-      "note": "Sum digits 1 + 1 = 2.",
-      "i": 11,
-      "j": 2
+      "note": "Extract 1: sum = 1, num = 1.",
+      "array": [
+        1,
+        1
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Extract 1: sum = 2, num = 0.",
+      "array": [
+        0,
+        2
+      ],
+      "curr": 1
     },
     {
       "codeLine": 6,
-      "note": "Set num to 2.",
-      "i": 2
+      "note": "Update num to sum (2). Loop terminates as 2 < 10.",
+      "array": [
+        2
+      ],
+      "curr": 2
     },
     {
       "codeLine": 7,
-      "note": "Return 2.",
-      "i": 2
+      "note": "Return final single digit result: 2.",
+      "array": [
+        2
+      ],
+      "curr": 2
     }
   ]
 }

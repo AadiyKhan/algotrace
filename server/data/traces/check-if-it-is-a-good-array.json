@@ -1,0 +1,47 @@
+{
+  "title": "Check If It Is A Good Array",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Math",
+    "Number Theory"
+  ],
+  "description": "Given an array nums of positive integers, return true if you can choose a subset of nums such that the greatest common divisor (GCD) of that subset is 1.",
+  "target": 1,
+  "pseudocode": "1. function gcd(a, b) {\n2.   while (b) { a %= b; [a, b] = [b, a]; }\n3.   return a;\n4. }\n5. let res = nums[0];\n6. for (let i = 1; i < nums.length; i++) {\n7.   res = gcd(res, nums[i]);\n8.   if (res === 1) return true;\n9. }\n10. return res === 1;",
+  "steps": [
+    {
+      "codeLine": 5,
+      "note": "Initialize res with the first element of the array.",
+      "array": [
+        12,
+        5,
+        7
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 7,
+      "note": "Calculate GCD of 12 and 5.",
+      "array": [
+        12,
+        5,
+        7
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 8,
+      "note": "GCD(12, 5) is 1. Since res is 1, return true.",
+      "array": [
+        12,
+        5,
+        7
+      ],
+      "i": 1,
+      "curr": 12
+    }
+  ]
+}

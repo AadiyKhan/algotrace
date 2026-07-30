@@ -1,0 +1,93 @@
+{
+  "title": "Can Convert String in K Moves",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "String",
+    "Hash Table"
+  ],
+  "description": "Check if string s can be converted to string t by shifting characters such that each shift is unique within k moves.",
+  "target": 10,
+  "pseudocode": "1. count = new Array(26).fill(0)\n2. for i = 0 to s.length - 1:\n3.   diff = (t[i] - s[i] + 26) % 26\n4.   if diff == 0: continue\n5.   shift = diff + count[diff] * 26\n6.   if shift > k: return false\n7.   count[diff]++\n8. return true",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Starting comparison of 'a' and 'b'.",
+      "array": [
+        1,
+        2
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Calculate shift difference: 'b' - 'a' = 1.",
+      "array": [
+        1,
+        2
+      ],
+      "i": 0,
+      "curr": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Calculate actual shift: 1 + 0*26 = 1.",
+      "array": [
+        1,
+        2
+      ],
+      "i": 0,
+      "curr": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "Increment shift count for difference 1.",
+      "array": [
+        1,
+        2
+      ],
+      "i": 0,
+      "curr": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Comparing 'a' and 'b' again (second 'b').",
+      "array": [
+        1,
+        2
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Calculate shift difference: 1.",
+      "array": [
+        1,
+        2
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Calculate actual shift: 1 + 1*26 = 27.",
+      "array": [
+        1,
+        2
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "27 > 10, conversion impossible.",
+      "array": [
+        1,
+        2
+      ],
+      "i": 1,
+      "curr": 27
+    }
+  ]
+}

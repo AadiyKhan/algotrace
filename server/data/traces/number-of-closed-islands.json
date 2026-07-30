@@ -1,0 +1,120 @@
+{
+  "title": "Number of Closed Islands",
+  "difficulty": "Medium",
+  "type": "matrix",
+  "tags": [
+    "DFS",
+    "Matrix",
+    "Graph"
+  ],
+  "description": "Find the number of closed islands (land cells fully surrounded by water) in a 2D grid.",
+  "pseudocode": "function closedIsland(grid) {\n  let count = 0;\n  for(let r=0; r<rows; r++) for(let c=0; c<cols; c++) {\n    if(grid[r][c] === 0) {\n      if(isClosed(r, c)) count++;\n    }\n  }\n  return count;\n}",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Initialize count to 0.",
+      "matrix": [
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ]
+      ],
+      "i": 0,
+      "j": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Check cell (1, 1). It is 0 (land).",
+      "matrix": [
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ]
+      ],
+      "curr": [
+        1,
+        1
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "DFS checks neighbors of (1, 1). All neighbors are 1 (water), so it is a closed island.",
+      "matrix": [
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ]
+      ],
+      "curr": [
+        1,
+        1
+      ],
+      "visited": [
+        [
+          1,
+          1
+        ]
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Increment count as island is closed.",
+      "matrix": [
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ]
+      ],
+      "visited": [
+        [
+          1,
+          1
+        ]
+      ]
+    }
+  ]
+}

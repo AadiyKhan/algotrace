@@ -3,84 +3,131 @@
   "difficulty": "Hard",
   "type": "array",
   "tags": [
-    "Math"
+    "Math",
+    "Enumeration"
   ],
-  "description": "Find the largest palindrome made from the product of two n-digit numbers.",
-  "target": 2,
-  "pseudocode": "1: upper = 10^n - 1\n2: lower = 10^(n-1)\n3: for i from upper down to lower:\n4:   for j from i down to lower:\n5:     product = i * j\n6:     if isPalindrome(product):\n7:       return product % 1337",
+  "description": "Find the largest palindrome product of two n-digit numbers modulo 1337.",
+  "target": 987,
+  "pseudocode": "1. upperBound = 10^n - 1\n2. lowerBound = 10^(n-1)\n3. For i from upperBound down to lowerBound:\n4.   For j from i down to lowerBound:\n5.     product = i * j\n6.     If isPalindrome(product):\n7.       return product % 1337",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Set upper bound for n=2 as 99",
+      "note": "Initialize upper bound for n=2",
       "array": [
         99,
-        98
-      ]
+        99
+      ],
+      "i": 99,
+      "curr": 2
     },
     {
       "codeLine": 3,
       "note": "Start outer loop with i = 99",
-      "i": 99
+      "array": [
+        99,
+        99
+      ],
+      "i": 99,
+      "curr": 99
     },
     {
       "codeLine": 4,
       "note": "Start inner loop with j = 99",
+      "array": [
+        99,
+        99
+      ],
       "i": 99,
-      "j": 99
+      "j": 99,
+      "curr": 99
     },
     {
       "codeLine": 5,
       "note": "Calculate product 99 * 99 = 9801",
+      "array": [
+        99,
+        99
+      ],
       "i": 99,
-      "j": 99
+      "j": 99,
+      "curr": 99
     },
     {
       "codeLine": 6,
-      "note": "Check if 9801 is palindrome: No",
+      "note": "9801 is not a palindrome",
+      "array": [
+        99,
+        99
+      ],
       "i": 99,
-      "j": 99
+      "j": 99,
+      "curr": 9801
     },
     {
       "codeLine": 4,
       "note": "Decrement j to 98",
+      "array": [
+        99,
+        98
+      ],
       "i": 99,
-      "j": 98
+      "j": 98,
+      "curr": 98
     },
     {
       "codeLine": 5,
       "note": "Calculate product 99 * 98 = 9702",
+      "array": [
+        99,
+        98
+      ],
       "i": 99,
-      "j": 98
-    },
-    {
-      "codeLine": 6,
-      "note": "Check if 9702 is palindrome: No",
-      "i": 99,
-      "j": 98
+      "j": 98,
+      "curr": 99
     },
     {
       "codeLine": 4,
-      "note": "Decrement j until j = 91",
+      "note": "Continue inner loop until j=91",
+      "array": [
+        99,
+        91
+      ],
       "i": 99,
-      "j": 91
+      "j": 91,
+      "curr": 91
     },
     {
       "codeLine": 5,
       "note": "Calculate product 99 * 91 = 9009",
+      "array": [
+        99,
+        91
+      ],
       "i": 99,
-      "j": 91
+      "j": 91,
+      "curr": 99
     },
     {
       "codeLine": 6,
-      "note": "Check if 9009 is palindrome: Yes",
+      "note": "9009 is a palindrome",
+      "array": [
+        99,
+        91
+      ],
       "i": 99,
-      "j": 91
+      "j": 91,
+      "curr": 9009
     },
     {
       "codeLine": 7,
       "note": "Return 9009 % 1337 = 987",
+      "array": [
+        99,
+        91
+      ],
       "i": 99,
-      "j": 91
+      "j": 91,
+      "curr": 9009
     }
   ]
 }

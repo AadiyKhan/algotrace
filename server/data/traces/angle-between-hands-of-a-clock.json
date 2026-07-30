@@ -1,0 +1,49 @@
+{
+  "title": "Angle Between Hands of a Clock",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Math"
+  ],
+  "description": "Calculate the smaller angle between the hour and minute hand of a clock.",
+  "target": 165,
+  "pseudocode": "1. hour_angle = (hour % 12 + minutes / 60) * 30\n2. minute_angle = minutes * 6\n3. diff = abs(hour_angle - minute_angle)\n4. return min(diff, 360 - diff)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Calculate hour hand position. 12 becomes 0, plus 30 mins (0.5 hours) = 0.5 * 30 = 15 degrees.",
+      "array": [
+        15,
+        0
+      ],
+      "curr": 12
+    },
+    {
+      "codeLine": 2,
+      "note": "Calculate minute hand position. 30 mins * 6 degrees/min = 180 degrees.",
+      "array": [
+        15,
+        180
+      ],
+      "curr": 30
+    },
+    {
+      "codeLine": 3,
+      "note": "Calculate the absolute difference: |15 - 180| = 165.",
+      "array": [
+        15,
+        180,
+        165
+      ],
+      "curr": 15
+    },
+    {
+      "codeLine": 4,
+      "note": "Return the smaller angle: min(165, 360 - 165) = min(165, 195) = 165.",
+      "array": [
+        165
+      ],
+      "curr": 165
+    }
+  ]
+}

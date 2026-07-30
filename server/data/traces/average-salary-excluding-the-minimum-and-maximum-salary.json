@@ -1,0 +1,160 @@
+{
+  "title": "Average Salary Excluding the Minimum and Maximum Salary",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Math"
+  ],
+  "description": "Calculate the average salary excluding the minimum and maximum values.",
+  "target": null,
+  "pseudocode": "1. min = Infinity, max = -Infinity, sum = 0\n2. for salary in salaryArr:\n3.   sum += salary\n4.   min = Math.min(min, salary)\n5.   max = Math.max(max, salary)\n6. return (sum - min - max) / (salaryArr.length - 2)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize variables.",
+      "array": [
+        4000,
+        1000,
+        3000,
+        2000
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Process 4000.",
+      "array": [
+        4000,
+        1000,
+        3000,
+        2000
+      ],
+      "i": 0,
+      "curr": 4000
+    },
+    {
+      "codeLine": 3,
+      "note": "Update sum to 4000.",
+      "array": [
+        4000,
+        1000,
+        3000,
+        2000
+      ],
+      "curr": 4000
+    },
+    {
+      "codeLine": 4,
+      "note": "Update min to 4000.",
+      "array": [
+        4000,
+        1000,
+        3000,
+        2000
+      ],
+      "curr": 4000
+    },
+    {
+      "codeLine": 5,
+      "note": "Update max to 4000.",
+      "array": [
+        4000,
+        1000,
+        3000,
+        2000
+      ],
+      "curr": 4000
+    },
+    {
+      "codeLine": 2,
+      "note": "Process 1000.",
+      "array": [
+        4000,
+        1000,
+        3000,
+        2000
+      ],
+      "i": 1,
+      "curr": 1000
+    },
+    {
+      "codeLine": 3,
+      "note": "Update sum to 5000.",
+      "array": [
+        4000,
+        1000,
+        3000,
+        2000
+      ],
+      "curr": 5000
+    },
+    {
+      "codeLine": 4,
+      "note": "Update min to 1000.",
+      "array": [
+        4000,
+        1000,
+        3000,
+        2000
+      ],
+      "curr": 1000
+    },
+    {
+      "codeLine": 2,
+      "note": "Process 3000.",
+      "array": [
+        4000,
+        1000,
+        3000,
+        2000
+      ],
+      "i": 2,
+      "curr": 3000
+    },
+    {
+      "codeLine": 3,
+      "note": "Update sum to 8000.",
+      "array": [
+        4000,
+        1000,
+        3000,
+        2000
+      ],
+      "curr": 8000
+    },
+    {
+      "codeLine": 2,
+      "note": "Process 2000.",
+      "array": [
+        4000,
+        1000,
+        3000,
+        2000
+      ],
+      "i": 3,
+      "curr": 2000
+    },
+    {
+      "codeLine": 3,
+      "note": "Update sum to 10000.",
+      "array": [
+        4000,
+        1000,
+        3000,
+        2000
+      ],
+      "curr": 10000
+    },
+    {
+      "codeLine": 6,
+      "note": "Return (10000 - 1000 - 4000) / 2 = 2500.",
+      "array": [
+        4000,
+        1000,
+        3000,
+        2000
+      ],
+      "curr": 10000
+    }
+  ]
+}

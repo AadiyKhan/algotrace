@@ -4,7 +4,7 @@ const BASE = import.meta.env.VITE_API_BASE ?? (import.meta.env.PROD ? '/api' : '
 export const fetchProblemData = async (slug) => {
   let res;
   try {
-    res = await fetch(`${BASE}/trace/${slug}`);
+    res = await fetch(`${BASE}/trace/${slug}?t=${Date.now()}`);
   } catch {
     const err = new Error('Network error');
     err.status = 0;

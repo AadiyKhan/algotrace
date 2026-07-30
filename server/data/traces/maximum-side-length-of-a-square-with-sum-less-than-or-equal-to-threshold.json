@@ -1,0 +1,319 @@
+{
+  "title": "Maximum Side Length of a Square with Sum Less than or Equal to Threshold",
+  "difficulty": "Medium",
+  "type": "matrix",
+  "tags": [
+    "Array",
+    "Binary Search",
+    "Matrix",
+    "Prefix Sum"
+  ],
+  "description": "Find the maximum side length of a square submatrix with a sum <= threshold using prefix sums.",
+  "target": 4,
+  "pseudocode": "1. Build 2D prefix sum table P\n2. Binary search for side length 'k' from 1 to min(m, n)\n3. For a fixed 'k', check if any square of size k has sum <= threshold\n4. If valid, update max side length and try larger 'k'",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize prefix sum table for 3x7 matrix.",
+      "matrix": [
+        [
+          1,
+          1,
+          3,
+          2,
+          4,
+          3,
+          2
+        ],
+        [
+          1,
+          1,
+          3,
+          2,
+          4,
+          3,
+          2
+        ],
+        [
+          1,
+          1,
+          3,
+          2,
+          4,
+          3,
+          2
+        ]
+      ],
+      "curr": [
+        3,
+        7
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Binary search starts, trying side length k=1.",
+      "matrix": [
+        [
+          1,
+          1,
+          3,
+          2,
+          4,
+          3,
+          2
+        ],
+        [
+          1,
+          1,
+          3,
+          2,
+          4,
+          3,
+          2
+        ],
+        [
+          1,
+          1,
+          3,
+          2,
+          4,
+          3,
+          2
+        ]
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Checking squares of side length 1: many have sum <= 4.",
+      "matrix": [
+        [
+          1,
+          1,
+          3,
+          2,
+          4,
+          3,
+          2
+        ],
+        [
+          1,
+          1,
+          3,
+          2,
+          4,
+          3,
+          2
+        ],
+        [
+          1,
+          1,
+          3,
+          2,
+          4,
+          3,
+          2
+        ]
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Side length 1 is valid, trying larger side length k=2.",
+      "matrix": [
+        [
+          1,
+          1,
+          3,
+          2,
+          4,
+          3,
+          2
+        ],
+        [
+          1,
+          1,
+          3,
+          2,
+          4,
+          3,
+          2
+        ],
+        [
+          1,
+          1,
+          3,
+          2,
+          4,
+          3,
+          2
+        ]
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Check square of size 2 at top-left: sum is 1+1+1+1 = 4. 4 <= 4 is true.",
+      "matrix": [
+        [
+          1,
+          1,
+          3,
+          2,
+          4,
+          3,
+          2
+        ],
+        [
+          1,
+          1,
+          3,
+          2,
+          4,
+          3,
+          2
+        ],
+        [
+          1,
+          1,
+          3,
+          2,
+          4,
+          3,
+          2
+        ]
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Side length 2 is valid, trying side length k=3.",
+      "matrix": [
+        [
+          1,
+          1,
+          3,
+          2,
+          4,
+          3,
+          2
+        ],
+        [
+          1,
+          1,
+          3,
+          2,
+          4,
+          3,
+          2
+        ],
+        [
+          1,
+          1,
+          3,
+          2,
+          4,
+          3,
+          2
+        ]
+      ],
+      "curr": 3
+    },
+    {
+      "codeLine": 3,
+      "note": "Square of size 3 has sum > 4. No valid square of size 3 found.",
+      "matrix": [
+        [
+          1,
+          1,
+          3,
+          2,
+          4,
+          3,
+          2
+        ],
+        [
+          1,
+          1,
+          3,
+          2,
+          4,
+          3,
+          2
+        ],
+        [
+          1,
+          1,
+          3,
+          2,
+          4,
+          3,
+          2
+        ]
+      ],
+      "curr": [
+        3,
+        4
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Result is the last valid side length: 2.",
+      "matrix": [
+        [
+          1,
+          1,
+          3,
+          2,
+          4,
+          3,
+          2
+        ],
+        [
+          1,
+          1,
+          3,
+          2,
+          4,
+          3,
+          2
+        ],
+        [
+          1,
+          1,
+          3,
+          2,
+          4,
+          3,
+          2
+        ]
+      ]
+    }
+  ]
+}

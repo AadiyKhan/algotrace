@@ -6,51 +6,104 @@
     "Array",
     "String",
     "Dynamic Programming",
-    "Trie"
+    "DFS"
   ],
-  "description": "Find all words in a given list that are formed by concatenating at least two shorter words from the same list.",
-  "target": null,
-  "pseudocode": "1. Set = new Set(words)\n2. results = []\n3. function canForm(word, set):\n4.   for i = 1 to word.length:\n5.     prefix = word.substring(0, i)\n6.     suffix = word.substring(i)\n7.     if set.has(prefix) and (set.has(suffix) or canForm(suffix, set)):\n8.       return true\n9.   return false\n10. for word in words:\n11.   if canForm(word, set): results.push(word)",
+  "description": "Find all words in the input array that are formed by concatenating at least two shorter words from the same list.",
+  "pseudocode": "1. Sort words by length\n2. Create a set of all words\n3. For each word in words:\n4.   If canForm(word, set):\n5.     Add to result",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize dictionary set for O(1) lookups: {'cat', 'dog', 'catdog'}",
+      "note": "Sorting words by length to ensure shorter components are processed first.",
       "array": [
         "cat",
         "dog",
-        "catdog"
+        "rat",
+        "cats",
+        "catsdogcats",
+        "dogcatsdog",
+        "ratcatdogcat",
+        "hippopotamuses"
+      ],
+      "visited": []
+    },
+    {
+      "codeLine": 2,
+      "note": "Initialize dictionary set for O(1) lookup.",
+      "array": [
+        "cat",
+        "dog",
+        "rat",
+        "cats",
+        "catsdogcats",
+        "dogcatsdog",
+        "ratcatdogcat",
+        "hippopotamuses"
+      ],
+      "visited": [
+        "cat",
+        "dog",
+        "rat",
+        "cats",
+        "catsdogcats",
+        "dogcatsdog",
+        "ratcatdogcat",
+        "hippopotamuses"
       ]
     },
     {
-      "codeLine": 10,
-      "note": "Checking word: 'cat'",
-      "i": "cat"
-    },
-    {
       "codeLine": 4,
-      "note": "Attempt to split 'cat', no combination of 2+ words found",
-      "i": "cat"
-    },
-    {
-      "codeLine": 10,
-      "note": "Checking word: 'catdog'",
-      "i": "catdog"
-    },
-    {
-      "codeLine": 4,
-      "note": "Split 'catdog' at index 3: prefix='cat', suffix='dog'",
-      "i": "catdog"
-    },
-    {
-      "codeLine": 7,
-      "note": "Both 'cat' and 'dog' exist in set. 'catdog' is a concatenated word.",
-      "i": "catdog"
-    },
-    {
-      "codeLine": 11,
-      "note": "Adding 'catdog' to results.",
+      "note": "Checking 'catsdogcats'. Found components 'cats', 'dog', 'cats'.",
       "array": [
-        "catdog"
+        "cat",
+        "dog",
+        "rat",
+        "cats"
+      ],
+      "visited": [
+        "catsdogcats"
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Checking 'dogcatsdog'. Found components 'dog', 'cats', 'dog'.",
+      "array": [
+        "cat",
+        "dog",
+        "rat",
+        "cats"
+      ],
+      "visited": [
+        "catsdogcats",
+        "dogcatsdog"
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Checking 'ratcatdogcat'. Found components 'rat', 'cat', 'dog', 'cat'.",
+      "array": [
+        "cat",
+        "dog",
+        "rat",
+        "cats"
+      ],
+      "visited": [
+        "catsdogcats",
+        "dogcatsdog",
+        "ratcatdogcat"
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Final result contains concatenated words.",
+      "array": [
+        "catsdogcats",
+        "dogcatsdog",
+        "ratcatdogcat"
+      ],
+      "visited": [
+        "catsdogcats",
+        "dogcatsdog",
+        "ratcatdogcat"
       ]
     }
   ]

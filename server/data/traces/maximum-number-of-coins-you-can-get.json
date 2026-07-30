@@ -1,0 +1,99 @@
+{
+  "title": "Maximum Number of Coins You Can Get",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Sorting",
+    "Greedy"
+  ],
+  "description": "Pick triples from a pile of coins: Alice takes the largest, you take the second largest, and Bob takes the smallest. Maximize your total.",
+  "target": null,
+  "pseudocode": "1. piles.sort((a, b) => b - a)\n2. n = piles.length / 3\n3. myCoins = 0\n4. for i = 0 to n - 1:\n5.   myCoins += piles[2 * i + 1]",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Sort piles in descending order: [9, 8, 7, 6, 5, 4, 3, 2, 1]",
+      "array": [
+        9,
+        8,
+        7,
+        6,
+        5,
+        4,
+        3,
+        2,
+        1
+      ],
+      "curr": 9
+    },
+    {
+      "codeLine": 2,
+      "note": "Calculate n = 9 / 3 = 3 iterations",
+      "array": [
+        9,
+        8,
+        7,
+        6,
+        5,
+        4,
+        3,
+        2,
+        1
+      ],
+      "i": 0,
+      "curr": 9
+    },
+    {
+      "codeLine": 5,
+      "note": "First iteration: pick piles[1] which is 8",
+      "array": [
+        9,
+        8,
+        7,
+        6,
+        5,
+        4,
+        3,
+        2,
+        1
+      ],
+      "i": 0,
+      "curr": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Second iteration: pick piles[3] which is 6",
+      "array": [
+        9,
+        8,
+        7,
+        6,
+        5,
+        4,
+        3,
+        2,
+        1
+      ],
+      "i": 1,
+      "curr": 3
+    },
+    {
+      "codeLine": 5,
+      "note": "Third iteration: pick piles[5] which is 4",
+      "array": [
+        9,
+        8,
+        7,
+        6,
+        5,
+        4,
+        3,
+        2,
+        1
+      ],
+      "i": 2,
+      "curr": 5
+    }
+  ]
+}

@@ -1,0 +1,175 @@
+{
+  "title": "Escape a Large Maze",
+  "difficulty": "Hard",
+  "type": "matrix",
+  "tags": [
+    "Array",
+    "BFS",
+    "Graph"
+  ],
+  "description": "Determine if you can reach the target from the source in a 10^6 x 10^6 grid, given a set of blocked cells.",
+  "target": [
+    2,
+    0
+  ],
+  "pseudocode": "1. limit = (n * (n - 1)) / 2\n2. If BFS from source hits limit nodes, return true\n3. If BFS from target hits limit nodes, return true\n4. If both can reach limit, check if they can reach each other\n5. Otherwise return false",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize max reachable area limit for 2 blocked cells.",
+      "matrix": [
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Starting BFS from source [0, 0].",
+      "matrix": [
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "curr": [
+        1,
+        1
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Starting BFS from target [2, 0].",
+      "matrix": [
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "visited": [
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "curr": [
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Checking connectivity between BFS frontiers.",
+      "matrix": [
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "curr": [
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Path found, returning true.",
+      "matrix": [
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "curr": [
+        2,
+        0
+      ]
+    }
+  ]
+}

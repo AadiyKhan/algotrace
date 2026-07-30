@@ -1,0 +1,207 @@
+{
+  "title": "Count Ways to Build Rooms in an Ant Colony",
+  "difficulty": "Hard",
+  "type": "graph",
+  "tags": [
+    "Graph",
+    "Math",
+    "Combinatorics",
+    "Dynamic Programming"
+  ],
+  "description": "Calculate the number of ways to build rooms such that each room (except the first) is built after its parent room. This is equivalent to finding the number of topological sorts of a tree.",
+  "target": null,
+  "pseudocode": "1: function countWays(prevRoom):\n2:   size = 1, ways = 1\n3:   for child in adj[prevRoom]:\n4:     res = countWays(child)\n5:     ways = ways * res.ways * combination(size + res.size - 1, res.size)\n6:     size += res.size\n7:   return {size, ways}",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize traversal at root (Room 0).",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": 0
+        },
+        {
+          "id": 1,
+          "val": 1
+        },
+        {
+          "id": 2,
+          "val": 2
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "visited": [],
+      "curr": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Visiting child Room 1 of root.",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": 0
+        },
+        {
+          "id": 1,
+          "val": 1
+        },
+        {
+          "id": 2,
+          "val": 2
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "visited": [
+        0
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Room 1 is a leaf, returns size 1, ways 1. Combine with Room 0.",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": 0
+        },
+        {
+          "id": 1,
+          "val": 1
+        },
+        {
+          "id": 2,
+          "val": 2
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "visited": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Visiting child Room 2 of root.",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": 0
+        },
+        {
+          "id": 1,
+          "val": 1
+        },
+        {
+          "id": 2,
+          "val": 2
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "visited": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Calculate combinations for Room 2 (size 1, ways 1) with current tree (size 2, ways 1). C(1+2-1, 1) = 2.",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": 0
+        },
+        {
+          "id": 1,
+          "val": 1
+        },
+        {
+          "id": 2,
+          "val": 2
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "visited": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Total ways to build: 2. Topological sorts: [0, 1, 2] and [0, 2, 1].",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": 0
+        },
+        {
+          "id": 1,
+          "val": 1
+        },
+        {
+          "id": 2,
+          "val": 2
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "visited": [
+        0,
+        1,
+        2
+      ]
+    }
+  ]
+}

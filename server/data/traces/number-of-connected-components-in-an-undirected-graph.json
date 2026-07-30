@@ -1,20 +1,20 @@
 {
   "title": "Number of Connected Components in an Undirected Graph",
   "difficulty": "Medium",
-  "type": "tree",
+  "type": "graph",
   "tags": [
-    "Graph",
-    "DFS",
+    "Graph Theory",
+    "Depth-First Search",
     "Union-Find"
   ],
-  "description": "Find the number of connected components in an undirected graph given nodes 0 to n-1 and an edge list.",
+  "description": "Find the number of connected components in an undirected graph with n nodes and edges.",
   "target": 2,
-  "pseudocode": "1. Initialize visited array of size n to false\n2. Initialize count = 0\n3. For each node i from 0 to n-1:\n4. If !visited[i]:\n5. count++\n6. Perform DFS starting at i to mark all connected nodes as visited",
+  "pseudocode": "1. Initialize parent array where each node is its own parent\n2. For each edge [u, v], find the root of u and v\n3. If roots are different, union them and decrement component count\n4. Return final component count",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize visited array for 4 nodes",
-      "treeNodes": [
+      "note": "Initialize 5 nodes as independent components",
+      "graphNodes": [
         {
           "id": 0,
           "val": 0
@@ -30,57 +30,191 @@
         {
           "id": 3,
           "val": 3
+        },
+        {
+          "id": 4,
+          "val": 4
         }
       ],
-      "visited": []
+      "graphEdges": [],
+      "visited": [],
+      "curr": 0
     },
     {
-      "codeLine": 3,
-      "note": "Starting loop at node 0",
-      "i": 0
-    },
-    {
-      "codeLine": 5,
-      "note": "Node 0 not visited, increment count",
+      "codeLine": 2,
+      "note": "Process edge [0, 1]: Union 0 and 1",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": 0
+        },
+        {
+          "id": 1,
+          "val": 1
+        },
+        {
+          "id": 2,
+          "val": 2
+        },
+        {
+          "id": 3,
+          "val": 3
+        },
+        {
+          "id": 4,
+          "val": 4
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ]
+      ],
       "visited": [
         0,
         1
       ],
-      "i": 0
-    },
-    {
-      "codeLine": 6,
-      "note": "DFS marks 0 and 1 as visited",
-      "visited": [
-        0,
-        1
-      ]
+      "curr": 1
     },
     {
       "codeLine": 3,
-      "note": "Looping to node 2",
-      "i": 2
-    },
-    {
-      "codeLine": 5,
-      "note": "Node 2 not visited, increment count",
-      "visited": [
-        0,
-        1,
-        2,
-        3
+      "note": "Process edge [1, 2]: Union 1 and 2",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": 0
+        },
+        {
+          "id": 1,
+          "val": 1
+        },
+        {
+          "id": 2,
+          "val": 2
+        },
+        {
+          "id": 3,
+          "val": 3
+        },
+        {
+          "id": 4,
+          "val": 4
+        }
       ],
-      "i": 2
+      "graphEdges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "visited": [
+        0,
+        1,
+        2
+      ],
+      "curr": 2
     },
     {
-      "codeLine": 6,
-      "note": "DFS marks 2 and 3 as visited",
+      "codeLine": 2,
+      "note": "Process edge [3, 4]: Union 3 and 4",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": 0
+        },
+        {
+          "id": 1,
+          "val": 1
+        },
+        {
+          "id": 2,
+          "val": 2
+        },
+        {
+          "id": 3,
+          "val": 3
+        },
+        {
+          "id": 4,
+          "val": 4
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          4
+        ]
+      ],
       "visited": [
         0,
         1,
         2,
-        3
-      ]
+        3,
+        4
+      ],
+      "curr": 4
+    },
+    {
+      "codeLine": 4,
+      "note": "Final count of connected components is 2",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": 0
+        },
+        {
+          "id": 1,
+          "val": 1
+        },
+        {
+          "id": 2,
+          "val": 2
+        },
+        {
+          "id": 3,
+          "val": 3
+        },
+        {
+          "id": 4,
+          "val": 4
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "visited": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "curr": 4
     }
-  ]
+  ],
+  "fullDescription": "<p>You have a graph of <code>n</code> nodes. You are given an integer <code>n</code> and an array <code>edges</code> where <code>edges[i] = [a<sub>i</sub>, b<sub>i</sub>]</code> indicates that there is an edge between <code>a<sub>i</sub></code> and <code>b<sub>i</sub></code> in the graph.</p>\n    <p>Return the number of connected components in the graph.</p>\n    <p><strong>Example 1:</strong></p>\n    <pre><strong>Input:</strong> n = 5, edges = [[0,1],[1,2],[3,4]]\n<strong>Output:</strong> 2</pre>\n    <p><strong>Example 2:</strong></p>\n    <pre><strong>Input:</strong> n = 5, edges = [[0,1],[1,2],[2,3],[3,4]]\n<strong>Output:</strong> 1</pre>"
 }

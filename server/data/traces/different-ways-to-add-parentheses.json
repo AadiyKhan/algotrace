@@ -1,55 +1,94 @@
 {
-  "title": "Different Ways To Add Parentheses",
+  "title": "Different Ways to Add Parentheses",
   "difficulty": "Medium",
   "type": "array",
   "tags": [
-    "Divide and Conquer",
-    "Recursion",
-    "Memoization"
+    "Math",
+    "String",
+    "Dynamic Programming",
+    "Recursion"
   ],
-  "description": "Given a string of numbers and operators, return all possible results from computing all the different possible ways to group numbers and operators.",
+  "description": "Compute all possible results by grouping numbers and operators in '2-1-1'.",
   "target": "2-1-1",
-  "pseudocode": "1. function diffWaysToCompute(input) {\n2.   if (memo.has(input)) return memo.get(input);\n3.   let res = [];\n4.   for (let i = 0; i < input.length; i++) {\n5.     if (isNaN(input[i])) {\n6.       let left = diffWaysToCompute(input.substring(0, i));\n7.       let right = diffWaysToCompute(input.substring(i + 1));\n8.       for (let l of left) for (let r of right) res.push(calculate(l, r, input[i]));\n9.     }\n10.  }\n11.  if (res.length === 0) res.push(parseInt(input));\n12.  return res;\n13. }",
+  "pseudocode": "1: function diffWays(input):\n2:   if input is a number: return [int(input)]\n3:   for i, char in input:\n4:     if char is operator:\n5:       left = diffWays(input[:i])\n6:       right = diffWays(input[i+1:])\n7:       combine left and right using operator",
   "steps": [
     {
-      "codeLine": 4,
-      "note": "Iterate through '2-1-1' to find operators.",
-      "i": 1
+      "codeLine": 3,
+      "note": "Split at index 1: '2' and '1-1'",
+      "array": [
+        2,
+        1,
+        1
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Recursively compute left side: '2' -> [2]",
+      "array": [
+        2
+      ],
+      "i": 0,
+      "curr": 2
     },
     {
       "codeLine": 6,
-      "note": "Split at index 1 ('-'), recursively calculate left part '2'.",
-      "i": 1
-    },
-    {
-      "codeLine": 11,
-      "note": "Base case: '2' is a number, return [2].",
-      "i": 1
+      "note": "Recursively compute right side: '1-1' -> [0]",
+      "array": [
+        1,
+        1
+      ],
+      "i": 1,
+      "curr": 1
     },
     {
       "codeLine": 7,
-      "note": "Recursively calculate right part '1-1'.",
-      "i": 1
+      "note": "Combine: 2 - 0 = 2",
+      "array": [
+        2
+      ],
+      "i": 1,
+      "curr": 2
     },
     {
-      "codeLine": 8,
-      "note": "Combine left [2] and right [0] using '-' result [2].",
-      "i": 1
+      "codeLine": 3,
+      "note": "Split at index 3: '2-1' and '1'",
+      "array": [
+        2,
+        1,
+        1
+      ],
+      "i": 3,
+      "curr": 3
     },
     {
-      "codeLine": 4,
-      "note": "Iterate to next operator at index 3.",
-      "i": 3
+      "codeLine": 5,
+      "note": "Recursively compute left side: '2-1' -> [1]",
+      "array": [
+        2,
+        1
+      ],
+      "i": 1,
+      "curr": 2
     },
     {
       "codeLine": 6,
-      "note": "Split at index 3 ('-'), recursively calculate left part '2-1'.",
-      "i": 3
+      "note": "Recursively compute right side: '1' -> [1]",
+      "array": [
+        1
+      ],
+      "i": 2,
+      "curr": 1
     },
     {
-      "codeLine": 8,
-      "note": "Combine results of '2-1' and '1', result [0, 2].",
-      "i": 3
+      "codeLine": 7,
+      "note": "Combine: 1 - 1 = 0",
+      "array": [
+        0,
+        2
+      ],
+      "curr": 1
     }
   ]
 }

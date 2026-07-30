@@ -1,0 +1,66 @@
+{
+  "title": "Valid Parenthesis String",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "String",
+    "Greedy"
+  ],
+  "description": "Determine if a string with '(', ')', and '*' is valid by tracking the minimum and maximum possible open parenthesis counts.",
+  "target": "true",
+  "pseudocode": "1. low = 0, high = 0\n2. for char in s:\n3.   if char == '(': low++, high++\n4.   else if char == ')': low--, high--\n5.   else: low--, high++\n6.   if high < 0: return false\n7.   low = max(0, low)\n8. return low == 0",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize min (low) and max (high) possible open parentheses count.",
+      "array": [
+        "(",
+        ")"
+      ],
+      "i": 0,
+      "visited": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Process first char '(': low and high both increment to 1.",
+      "array": [
+        "(",
+        ")"
+      ],
+      "i": 0,
+      "visited": [
+        1,
+        1
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Process second char ')': low and high both decrement to 0.",
+      "array": [
+        "(",
+        ")"
+      ],
+      "i": 1,
+      "visited": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Check if low is 0. Since low == 0, return true.",
+      "array": [
+        "(",
+        ")"
+      ],
+      "i": 2,
+      "visited": [
+        0,
+        0
+      ]
+    }
+  ]
+}

@@ -1,0 +1,121 @@
+{
+  "title": "Minimum Deletions to Make Array Beautiful",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Greedy"
+  ],
+  "description": "Find minimum deletions to make array beautiful: (1) length is even, (2) nums[i] != nums[i+1] for all even i.",
+  "target": null,
+  "pseudocode": "1. deletions = 0\n2. i = 0\n3. while i < nums.length - 1:\n4.   if nums[i] == nums[i + 1]:\n5.     deletions++\n6.     i++\n7.   else:\n8.     i += 2\n9. if (nums.length - deletions) % 2 != 0:\n10.  deletions++",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Initialize variables, nums = [1, 1, 2, 3]",
+      "array": [
+        1,
+        1,
+        2,
+        3
+      ],
+      "i": 0,
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Compare nums[0] and nums[1]. They are equal.",
+      "array": [
+        1,
+        1,
+        2,
+        3
+      ],
+      "i": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Increment deletions because of duplicate pair.",
+      "array": [
+        1,
+        1,
+        2,
+        3
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Skip the first element, move i to index 1.",
+      "array": [
+        1,
+        1,
+        2,
+        3
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Compare nums[1] and nums[2] (1 != 2).",
+      "array": [
+        1,
+        1,
+        2,
+        3
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 8,
+      "note": "Elements at 1 and 2 are different, move i to 3.",
+      "array": [
+        1,
+        1,
+        2,
+        3
+      ],
+      "i": 3,
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Loop ends as i is no longer less than nums.length - 1.",
+      "array": [
+        1,
+        1,
+        2,
+        3
+      ],
+      "i": 3,
+      "curr": 1
+    },
+    {
+      "codeLine": 9,
+      "note": "Check parity: length 4 - 1 deletion = 3 (odd). Need 1 more deletion.",
+      "array": [
+        1,
+        1,
+        2,
+        3
+      ],
+      "i": 3,
+      "curr": 4
+    },
+    {
+      "codeLine": 10,
+      "note": "Final deletions = 2.",
+      "array": [
+        1,
+        1,
+        2,
+        3
+      ],
+      "i": 3,
+      "curr": 2
+    }
+  ]
+}

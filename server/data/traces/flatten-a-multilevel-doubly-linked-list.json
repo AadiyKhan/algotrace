@@ -23,7 +23,8 @@
           "next": null,
           "child": null
         }
-      ]
+      ],
+      "curr": 1
     },
     {
       "codeLine": 4,

@@ -1,0 +1,97 @@
+{
+  "title": "Can Make Palindrome From Substring",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "String",
+    "Bit Manipulation",
+    "Prefix Sum"
+  ],
+  "description": "Determine if a substring can be rearranged into a palindrome by changing at most k characters.",
+  "target": 1,
+  "pseudocode": "1. count = Array(s.length + 1).fill(0)\n2. for i = 0 to s.length - 1:\n3.   count[i+1] = count[i] ^ (1 << (s[i] - 'a'))\n4. for each query [l, r, k]:\n5.   bits = count[r+1] ^ count[l]\n6.   oddCount = countSetBits(bits)\n7.   return (oddCount >> 1) <= k",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize prefix XOR array with 0",
+      "array": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Process index 0: 'a' (1 << 0)",
+      "array": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "i": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Process index 1: 'b' (1 << 1)",
+      "array": [
+        0,
+        1,
+        3,
+        0,
+        0,
+        0
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Query [0, 1] with k=0. bits = count[2] ^ count[0] = 3 (binary 11)",
+      "array": [
+        0,
+        1,
+        3,
+        0,
+        0,
+        0
+      ],
+      "i": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Count set bits in 3: 2 odds found",
+      "array": [
+        0,
+        1,
+        3,
+        0,
+        0,
+        0
+      ],
+      "curr": 3
+    },
+    {
+      "codeLine": 7,
+      "note": "Check (2 >> 1) <= 0 -> 1 <= 0 is false. Cannot form palindrome.",
+      "array": [
+        0,
+        1,
+        3,
+        0,
+        0,
+        0
+      ],
+      "curr": 2
+    }
+  ]
+}

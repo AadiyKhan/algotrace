@@ -1,0 +1,99 @@
+{
+  "title": "Restore The Array",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Dynamic Programming",
+    "String"
+  ],
+  "description": "Count the number of ways to restore an array from a string s and integer k such that all numbers are between 1 and k and contain no leading zeros.",
+  "target": 10,
+  "pseudocode": "1: n = s.length, dp = new Array(n + 1).fill(0)\n2: dp[n] = 1\n3: for i = n - 1 down to 0:\n4:   if s[i] == '0' continue\n5:   num = 0\n6:   for j = i to n - 1:\n7:     num = num * 10 + parseInt(s[j])\n8:     if num > k break\n9:     dp[i] = (dp[i] + dp[j + 1]) % 1000000007\n10: return dp[0]",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize DP array of size n+1 with zeros.",
+      "array": [
+        0,
+        0,
+        0
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Base case: one way to represent an empty suffix.",
+      "array": [
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Start iteration from index 1 (s='10', k=10).",
+      "i": 1,
+      "array": [
+        0,
+        0,
+        1
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "Extract substring '0', skip due to leading zero rule.",
+      "i": 1,
+      "array": [
+        0,
+        0,
+        1
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Move to index 0.",
+      "i": 0,
+      "array": [
+        0,
+        0,
+        1
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 7,
+      "note": "Substring '1' <= 10, dp[0] += dp[1].",
+      "i": 0,
+      "j": 0,
+      "array": [
+        0,
+        0,
+        1
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 9,
+      "note": "Substring '10' <= 10, dp[0] += dp[2].",
+      "i": 0,
+      "j": 1,
+      "array": [
+        1,
+        0,
+        1
+      ],
+      "curr": 10
+    },
+    {
+      "codeLine": 10,
+      "note": "Return total ways.",
+      "array": [
+        1,
+        0,
+        1
+      ]
+    }
+  ]
+}

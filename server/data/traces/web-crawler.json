@@ -1,0 +1,176 @@
+{
+  "title": "Web Crawler",
+  "difficulty": "Medium",
+  "type": "graph",
+  "tags": [
+    "Graph",
+    "BFS",
+    "DFS"
+  ],
+  "description": "Given a starting URL and a parser, return all URLs reachable from the start URL following the same hostname.",
+  "target": "hostname",
+  "pseudocode": "1. queue = [startUrl]\n2. visited = {startUrl}\n3. while queue is not empty:\n4.   curr = queue.shift()\n5.   for neighbor in getUrls(curr):\n6.     if neighbor.hostname == startUrl.hostname and neighbor not in visited:\n7.       visited.add(neighbor)\n8.       queue.push(neighbor)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize queue with the start URL",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": "a.com"
+        },
+        {
+          "id": 1,
+          "val": "a.com/b"
+        },
+        {
+          "id": 2,
+          "val": "b.com"
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "visited": [
+        0
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Start BFS traversal from node 0",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": "a.com"
+        },
+        {
+          "id": 1,
+          "val": "a.com/b"
+        },
+        {
+          "id": 2,
+          "val": "b.com"
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "curr": 0,
+      "visited": [
+        0
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Checking neighbors of a.com",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": "a.com"
+        },
+        {
+          "id": 1,
+          "val": "a.com/b"
+        },
+        {
+          "id": 2,
+          "val": "b.com"
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "curr": 0,
+      "visited": [
+        0
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Adding valid neighbor a.com/b to queue",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": "a.com"
+        },
+        {
+          "id": 1,
+          "val": "a.com/b"
+        },
+        {
+          "id": 2,
+          "val": "b.com"
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "curr": 1,
+      "visited": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Skipping b.com because it has a different hostname",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": "a.com"
+        },
+        {
+          "id": 1,
+          "val": "a.com/b"
+        },
+        {
+          "id": 2,
+          "val": "b.com"
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "curr": 2,
+      "visited": [
+        0,
+        1
+      ]
+    }
+  ]
+}

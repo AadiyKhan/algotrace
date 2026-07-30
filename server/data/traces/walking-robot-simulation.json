@@ -6,49 +6,53 @@
     "Array",
     "Simulation"
   ],
-  "description": "Simulate a robot moving on a 2D plane with obstacles, returning the maximum squared Euclidean distance from the origin.",
+  "description": "Simulate robot movement on an infinite plane with commands and obstacles to find the max squared Euclidean distance.",
   "target": 25,
-  "pseudocode": "1. directions = [[0, 1], [1, 0], [0, -1], [-1, 0]]\n2. x = y = d = 0\n3. for cmd in commands:\n4.   if cmd == -1: d = (d + 1) % 4\n5.   elif cmd == -2: d = (d + 3) % 4\n6.   else:\n7.     for _ in range(cmd):\n8.       nx, ny = x + directions[d][0], y + directions[d][1]\n9.       if (nx, ny) not in obstacles: x, y = nx, ny",
+  "pseudocode": "1. Initialize pos=(0,0), dir=0 (N), maxDist=0\n2. For each command in commands:\n3. If command is -1: dir = (dir + 1) % 4\n4. If command is -2: dir = (dir + 3) % 4\n5. Else: Move step by step until hit obstacle or k steps",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize directions: North, East, South, West",
+      "note": "Initialize position at (0,0) facing North (dir=0).",
+      "array": [
+        0,
+        0
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Execute command 4: Move North 4 units to (0,4).",
+      "array": [
+        0,
+        4
+      ],
       "i": 0
     },
     {
       "codeLine": 3,
-      "note": "Process command 4 (move North)",
-      "i": 0
-    },
-    {
-      "codeLine": 8,
-      "note": "Move robot to (0, 1)",
-      "i": 0
-    },
-    {
-      "codeLine": 9,
-      "note": "Update position to (0, 1)",
-      "i": 0
-    },
-    {
-      "codeLine": 4,
-      "note": "Process command -1, turn right (East)",
+      "note": "Execute command -1: Turn right, new direction East (dir=1).",
+      "array": [
+        0,
+        4
+      ],
       "i": 1
     },
     {
-      "codeLine": 8,
-      "note": "Move robot to (1, 1)",
-      "i": 1
+      "codeLine": 5,
+      "note": "Execute command 3: Move East 3 units to (3,4).",
+      "array": [
+        3,
+        4
+      ],
+      "i": 2
     },
     {
-      "codeLine": 9,
-      "note": "Update position to (1, 1)",
-      "i": 1
-    },
-    {
-      "codeLine": 9,
-      "note": "Final max squared distance (1^2 + 1^2 = 2)",
-      "i": 1
+      "codeLine": 5,
+      "note": "Calculation: max(0, 0^2+4^2, 3^2+4^2) = 25.",
+      "array": [
+        3,
+        4
+      ]
     }
   ]
 }

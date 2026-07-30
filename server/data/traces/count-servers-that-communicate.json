@@ -1,0 +1,85 @@
+{
+  "title": "Count Servers that Communicate",
+  "difficulty": "Medium",
+  "type": "matrix",
+  "tags": [
+    "Array",
+    "Matrix"
+  ],
+  "description": "Count servers that can communicate with at least one other server in the same row or column.",
+  "pseudocode": "1. rowCounts = array of zeros\n2. colCounts = array of zeros\n3. For each cell (r, c) if grid[r][c] == 1: rowCounts[r]++, colCounts[c]++\n4. count = 0\n5. For each cell (r, c) if grid[r][c] == 1 and (rowCounts[r] > 1 or colCounts[c] > 1): count++",
+  "steps": [
+    {
+      "codeLine": 3,
+      "note": "Calculating row and column counts: grid is [[1,0],[1,1]]. rowCounts=[2,1], colCounts=[1,1].",
+      "matrix": [
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "curr": [
+        1,
+        0
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Checking cell [0,0]: rowCount=2 > 1. Server can communicate.",
+      "matrix": [
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Checking cell [1,0]: rowCount=2 > 1 (or colCount=1). Server can communicate.",
+      "matrix": [
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "curr": [
+        1,
+        0
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Checking cell [1,1]: rowCount=2 > 1 or colCount=1. Server can communicate.",
+      "matrix": [
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "curr": [
+        1,
+        1
+      ]
+    }
+  ]
+}

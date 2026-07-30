@@ -1,0 +1,136 @@
+{
+  "title": "Serialize and Deserialize N-ary Tree",
+  "difficulty": "Hard",
+  "type": "tree",
+  "tags": [
+    "Tree",
+    "DFS",
+    "Serialization"
+  ],
+  "description": "Serialize an N-ary tree into a string and deserialize it back to the original structure using depth-first traversal.",
+  "pseudocode": "1. serialize(root):\n2.   res = []\n3.   dfs(root, res)\n4.   return res.join(',')\n5. deserialize(data):\n6.   nodes = data.split(',')\n7.   return build(nodes)",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Initialize result array for serialization.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "children": [
+            1,
+            2
+          ]
+        },
+        {
+          "id": 1,
+          "val": 3,
+          "children": []
+        },
+        {
+          "id": 2,
+          "val": 2,
+          "children": []
+        }
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Traverse root node (1) with 2 children.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "children": [
+            1,
+            2
+          ]
+        },
+        {
+          "id": 1,
+          "val": 3,
+          "children": []
+        },
+        {
+          "id": 2,
+          "val": 2,
+          "children": []
+        }
+      ],
+      "visited": [
+        0
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Visit child 3. Current serialization: '1, 2, 3, #, #, #'",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "children": [
+            1,
+            2
+          ]
+        },
+        {
+          "id": 1,
+          "val": 3,
+          "children": []
+        },
+        {
+          "id": 2,
+          "val": 2,
+          "children": []
+        }
+      ],
+      "visited": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Split serialized string to begin reconstruction.",
+      "treeNodes": [],
+      "visited": []
+    },
+    {
+      "codeLine": 7,
+      "note": "Reconstruct root node 1.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "children": null
+        }
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "Reconstruct child nodes 3 and 2 attached to root.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "children": [
+            1,
+            2
+          ]
+        },
+        {
+          "id": 1,
+          "val": 3,
+          "children": []
+        },
+        {
+          "id": 2,
+          "val": 2,
+          "children": []
+        }
+      ],
+      "curr": 3
+    }
+  ]
+}

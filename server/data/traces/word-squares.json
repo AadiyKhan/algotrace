@@ -43,7 +43,8 @@
         "ball",
         "area"
       ],
-      "i": 1
+      "i": 1,
+      "curr": 1
     },
     {
       "codeLine": 6,
@@ -53,7 +54,8 @@
         "area",
         "lead"
       ],
-      "i": 2
+      "i": 2,
+      "curr": 2
     },
     {
       "codeLine": 4,
@@ -64,7 +66,8 @@
         "lead",
         "lady"
       ],
-      "i": 3
+      "i": 3,
+      "curr": 3
     },
     {
       "codeLine": 3,

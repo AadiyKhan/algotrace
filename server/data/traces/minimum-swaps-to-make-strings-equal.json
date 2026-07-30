@@ -1,0 +1,84 @@
+{
+  "title": "Minimum Swaps to Make Strings Equal",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Math",
+    "String",
+    "Greedy"
+  ],
+  "description": "Calculate minimum swaps to make s1 and s2 equal by counting xy and yx mismatches.",
+  "target": null,
+  "pseudocode": "1. Count xy and yx mismatches\n2. If (xy + yx) is odd, return -1\n3. Calculate swaps: (xy // 2) + (yx // 2) + (xy % 2) * 2\n4. Return total swaps",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize mismatch counters for s1='xx', s2='yy'. Finding xy and yx counts.",
+      "array": [
+        "x",
+        "x",
+        "y",
+        "y"
+      ],
+      "visited": [],
+      "curr": 1
+    },
+    {
+      "codeLine": 1,
+      "note": "Scanning index 0: s1[0]='x', s2[0]='y'. Mismatch type: xy. xy=1, yx=0.",
+      "array": [
+        "x",
+        "x",
+        "y",
+        "y"
+      ],
+      "i": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 1,
+      "note": "Scanning index 1: s1[1]='x', s2[1]='y'. Mismatch type: xy. xy=2, yx=0.",
+      "array": [
+        "x",
+        "x",
+        "y",
+        "y"
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Check if total mismatches (2 + 0 = 2) is odd. It is even, proceed.",
+      "array": [
+        "x",
+        "x",
+        "y",
+        "y"
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Calculate swaps: (2 // 2) + (0 // 2) + (2 % 2) * 2 = 1 + 0 + 0 = 1.",
+      "array": [
+        "x",
+        "x",
+        "y",
+        "y"
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Return the result: 1 swap.",
+      "array": [
+        "y",
+        "x",
+        "y",
+        "x"
+      ],
+      "curr": 1
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "title": "Display Table Of Food Orders In A Restaurant",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "Sorting"
+  ],
+  "description": "Given a list of food orders, return the display table where the first row is headers [Table, Food1, Food2...], and subsequent rows represent the count of each food ordered per table.",
+  "pseudocode": "1. tableMap = new Map(); foodSet = new Set();\n2. for (order of orders) {\n3.   [cust, table, food] = order;\n4.   if (!tableMap.has(table)) tableMap.set(table, {});\n5.   tableMap.get(table)[food] = (tableMap.get(table)[food] || 0) + 1;\n6.   foodSet.add(food);\n7. }\n8. sortedFoods = Array.from(foodSet).sort();\n9. sortedTables = Array.from(tableMap.keys()).map(Number).sort((a,b) => a - b);\n10. result = [['Table', ...sortedFoods]];\n11. for (t of sortedTables) {\n12.   row = [String(t)];\n13.   for (f of sortedFoods) row.push(String(tableMap.get(t)[f] || 0));\n14.   result.push(row);\n15. }",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Processing orders: [['Alice', '1', 'Bread'], ['Bob', '2', 'Coke']]",
+      "array": [
+        "1",
+        "2"
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Populating tableMap for table 1",
+      "array": [
+        "1"
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Populating tableMap for table 2",
+      "array": [
+        "1",
+        "2"
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 8,
+      "note": "Sorting unique food items: ['Bread', 'Coke']",
+      "array": [
+        "Bread",
+        "Coke"
+      ]
+    },
+    {
+      "codeLine": 13,
+      "note": "Building row for table 1",
+      "i": 0,
+      "array": [
+        "1",
+        "1",
+        "0"
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 13,
+      "note": "Building row for table 2",
+      "i": 1,
+      "array": [
+        "2",
+        "0",
+        "1"
+      ],
+      "curr": 2
+    }
+  ]
+}

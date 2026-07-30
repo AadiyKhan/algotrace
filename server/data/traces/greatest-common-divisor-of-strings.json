@@ -1,0 +1,41 @@
+{
+  "title": "Greatest Common Divisor Of Strings",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "String",
+    "Math"
+  ],
+  "description": "Find the largest string X such that X divides both str1 and str2.",
+  "target": "ABC",
+  "pseudocode": "1. gcd(a, b) { return b == 0 ? a : gcd(b, a % b); }\n2. if (str1 + str2 != str2 + str1) return '';\n3. len = gcd(str1.length, str2.length);\n4. return str1.substring(0, len);",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Check if concatenation matches to ensure a common divisor exists.",
+      "array": [
+        "ABCABC",
+        "ABC"
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Calculate GCD of lengths: gcd(6, 3) = 3.",
+      "array": [
+        "ABCABC",
+        "ABC"
+      ],
+      "i": 3,
+      "curr": 6
+    },
+    {
+      "codeLine": 4,
+      "note": "Return substring from index 0 to 3.",
+      "array": [
+        "ABC"
+      ],
+      "i": 3,
+      "curr": 0
+    }
+  ]
+}

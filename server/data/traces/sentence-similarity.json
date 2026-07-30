@@ -4,48 +4,63 @@
   "type": "array",
   "tags": [
     "Array",
-    "Hash Table"
+    "Hash Table",
+    "String"
   ],
   "description": "Determine if two sentences are similar based on a list of similar word pairs.",
-  "target": null,
-  "pseudocode": "1. map = new Set(pairs.map(p => p[0] + '#' + p[1]))\n2. if (s1.length !== s2.length) return false\n3. for (let i = 0; i < s1.length; i++)\n4.   if (s1[i] === s2[i]) continue\n5.   if (!map.has(s1[i] + '#' + s2[i]) && !map.has(s2[i] + '#' + s1[i])) return false\n6. return true",
+  "pseudocode": "1. If sentence1.length != sentence2.length, return false\n2. Create a map of similar word pairs\n3. For i from 0 to length-1:\n4.   If words are equal, continue\n5.   If pair exists in map, continue\n6.   Return false\n7. Return true",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize similarity map from pairs [['great', 'fine']]",
+      "note": "Check sentence lengths: [great, acting, skills] and [fine, drama, talent] have length 3.",
       "array": [
         "great",
-        "fine"
-      ]
-    },
-    {
-      "codeLine": 2,
-      "note": "Check length equality: sentence1 ['great'] vs sentence2 ['fine']",
-      "array": [
-        "great",
-        "fine"
+        "acting",
+        "skills"
       ],
-      "i": 0
+      "curr": 3
     },
     {
       "codeLine": 3,
-      "note": "Start iteration at index 0",
-      "i": 0
+      "note": "Comparing i=0: 'great' and 'fine'. They are similar in pair set.",
+      "array": [
+        "great",
+        "acting",
+        "skills"
+      ],
+      "i": 0,
+      "curr": 0
     },
     {
-      "codeLine": 4,
-      "note": "Check if words are identical; 'great' != 'fine'",
-      "i": 0
+      "codeLine": 3,
+      "note": "Comparing i=1: 'acting' and 'drama'. They are similar in pair set.",
+      "array": [
+        "great",
+        "acting",
+        "skills"
+      ],
+      "i": 1,
+      "curr": 1
     },
     {
-      "codeLine": 5,
-      "note": "Check if pair exists in map; 'great#fine' found",
-      "i": 0
+      "codeLine": 3,
+      "note": "Comparing i=2: 'skills' and 'talent'. They are similar in pair set.",
+      "array": [
+        "great",
+        "acting",
+        "skills"
+      ],
+      "i": 2,
+      "curr": 2
     },
     {
-      "codeLine": 6,
-      "note": "All pairs matched, returning true",
-      "i": 0
+      "codeLine": 7,
+      "note": "All words compared successfully, returning true.",
+      "array": [
+        "great",
+        "acting",
+        "skills"
+      ]
     }
   ]
 }

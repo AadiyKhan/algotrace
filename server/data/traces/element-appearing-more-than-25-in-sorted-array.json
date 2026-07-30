@@ -1,0 +1,172 @@
+{
+  "title": "Element Appearing More Than 25% In Sorted Array",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array"
+  ],
+  "description": "Given an integer array sorted in non-decreasing order, there is exactly one integer in the array that occurs more than 25% of the time. Find that integer.",
+  "target": null,
+  "pseudocode": "1. target = arr.length / 4\n2. for i = 0; i < arr.length - target; i++:\n3.   if arr[i] == arr[i + target]:\n4.     return arr[i]",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Calculate the window size threshold (target = 8 / 4 = 2).",
+      "array": [
+        1,
+        2,
+        2,
+        6,
+        6,
+        6,
+        6,
+        7
+      ],
+      "curr": 8
+    },
+    {
+      "codeLine": 2,
+      "note": "Start loop at i = 0.",
+      "array": [
+        1,
+        2,
+        2,
+        6,
+        6,
+        6,
+        6,
+        7
+      ],
+      "i": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Compare arr[0] (1) with arr[0+2] (2). Not equal.",
+      "array": [
+        1,
+        2,
+        2,
+        6,
+        6,
+        6,
+        6,
+        7
+      ],
+      "i": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Increment i to 1.",
+      "array": [
+        1,
+        2,
+        2,
+        6,
+        6,
+        6,
+        6,
+        7
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Compare arr[1] (2) with arr[1+2] (6). Not equal.",
+      "array": [
+        1,
+        2,
+        2,
+        6,
+        6,
+        6,
+        6,
+        7
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Increment i to 2.",
+      "array": [
+        1,
+        2,
+        2,
+        6,
+        6,
+        6,
+        6,
+        7
+      ],
+      "i": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Compare arr[2] (2) with arr[2+2] (6). Not equal.",
+      "array": [
+        1,
+        2,
+        2,
+        6,
+        6,
+        6,
+        6,
+        7
+      ],
+      "i": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 2,
+      "note": "Increment i to 3.",
+      "array": [
+        1,
+        2,
+        2,
+        6,
+        6,
+        6,
+        6,
+        7
+      ],
+      "i": 3,
+      "curr": 3
+    },
+    {
+      "codeLine": 3,
+      "note": "Compare arr[3] (6) with arr[3+2] (6). They are equal! Found the integer.",
+      "array": [
+        1,
+        2,
+        2,
+        6,
+        6,
+        6,
+        6,
+        7
+      ],
+      "i": 3,
+      "curr": 3
+    },
+    {
+      "codeLine": 4,
+      "note": "Return 6.",
+      "array": [
+        1,
+        2,
+        2,
+        6,
+        6,
+        6,
+        6,
+        7
+      ],
+      "i": 3,
+      "curr": 6
+    }
+  ]
+}

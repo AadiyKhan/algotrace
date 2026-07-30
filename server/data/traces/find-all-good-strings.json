@@ -1,0 +1,104 @@
+{
+  "title": "Find All Good Strings",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "String",
+    "Dynamic Programming",
+    "String Matching"
+  ],
+  "description": "Find the number of good strings that are lexicographically between s1 and s2 and do not contain evil string.",
+  "target": "s1=aa, s2=ac, evil=b",
+  "pseudocode": "1: memo = {}\n2: function dfs(idx, tight1, tight2, kmpIdx)\n3: if kmpIdx == evil.length: return 0\n4: if idx == n: return 1\n5: res = 0\n6: start = tight1 ? s1[idx] : 'a'\n7: end = tight2 ? s2[idx] : 'z'\n8: for char c from start to end:\n9:   newTight1 = tight1 && (c == start)\n10:  newTight2 = tight2 && (c == end)\n11:  newKmp = getNextKmp(kmpIdx, c)\n12:  res += dfs(idx + 1, newTight1, newTight2, newKmp)\n13: return res",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Initialize DFS for position 0 with tight constraints",
+      "array": [
+        "a",
+        "a"
+      ],
+      "i": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 8,
+      "note": "Exploring character 'a' at index 0",
+      "array": [
+        "a",
+        "a"
+      ],
+      "i": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 12,
+      "note": "Recursive call for index 1",
+      "array": [
+        "a",
+        "a"
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 8,
+      "note": "Exploring character 'a' at index 1 (Good string 'aa')",
+      "array": [
+        "a",
+        "a"
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Reached end of string, found 1 valid string",
+      "array": [
+        "a",
+        "a"
+      ],
+      "i": 2,
+      "curr": 1
+    },
+    {
+      "codeLine": 8,
+      "note": "Backtrack, exploring character 'b' at index 1",
+      "array": [
+        "a",
+        "b"
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Contains evil string 'b', pruning branch",
+      "array": [
+        "a",
+        "b"
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 8,
+      "note": "Backtrack, exploring character 'c' at index 1",
+      "array": [
+        "a",
+        "c"
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Reached end of string, found 1 valid string ('ac')",
+      "array": [
+        "a",
+        "c"
+      ],
+      "i": 2,
+      "curr": 1
+    }
+  ]
+}

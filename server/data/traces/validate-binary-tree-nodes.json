@@ -1,0 +1,210 @@
+{
+  "title": "Validate Binary Tree Nodes",
+  "difficulty": "Medium",
+  "type": "tree",
+  "tags": [
+    "Tree",
+    "Graph",
+    "Union-Find"
+  ],
+  "description": "Check if a given set of directed edges forms a valid binary tree.",
+  "target": null,
+  "pseudocode": "1. indegree = new Array(n).fill(0)\n2. for (left, right) in edges:\n3.   if left != -1: indegree[left]++\n4.   if right != -1: indegree[right]++\n5. root = indegree.indexOf(0)\n6. if root == -1 or count(indegree > 1) > 0: return false\n7. visited = bfs(root)\n8. return visited.length == n",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize indegree array to track incoming edges for 4 nodes.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 0,
+          "right": 1
+        },
+        {
+          "id": 1,
+          "val": -1,
+          "left": -1,
+          "right": -1
+        },
+        {
+          "id": 2,
+          "val": -1,
+          "left": 2,
+          "right": -1
+        },
+        {
+          "id": 3,
+          "val": -1,
+          "left": -1,
+          "right": -1
+        }
+      ],
+      "i": "indegree = [0, 0, 0, 0]",
+      "curr": 4
+    },
+    {
+      "codeLine": 2,
+      "note": "Processing edge 0 -> 1.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 0,
+          "right": 1
+        },
+        {
+          "id": 1,
+          "val": -1,
+          "left": -1,
+          "right": -1
+        },
+        {
+          "id": 2,
+          "val": -1,
+          "left": 2,
+          "right": -1
+        },
+        {
+          "id": 3,
+          "val": -1,
+          "left": -1,
+          "right": -1
+        }
+      ],
+      "i": "indegree = [0, 1, 0, 0]",
+      "curr": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Processing edge 0 -> 2.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 0,
+          "right": 1
+        },
+        {
+          "id": 1,
+          "val": -1,
+          "left": -1,
+          "right": -1
+        },
+        {
+          "id": 2,
+          "val": -1,
+          "left": 2,
+          "right": -1
+        },
+        {
+          "id": 3,
+          "val": -1,
+          "left": -1,
+          "right": -1
+        }
+      ],
+      "i": "indegree = [0, 1, 1, 0]",
+      "curr": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Found root index where indegree is 0.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 0,
+          "right": 1
+        },
+        {
+          "id": 1,
+          "val": -1,
+          "left": -1,
+          "right": -1
+        },
+        {
+          "id": 2,
+          "val": -1,
+          "left": 2,
+          "right": -1
+        },
+        {
+          "id": 3,
+          "val": -1,
+          "left": -1,
+          "right": -1
+        }
+      ],
+      "i": "root = 0",
+      "curr": 0
+    },
+    {
+      "codeLine": 7,
+      "note": "BFS traversal starting from root 0 to visit all connected nodes.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 0,
+          "right": 1
+        },
+        {
+          "id": 1,
+          "val": -1,
+          "left": -1,
+          "right": -1
+        },
+        {
+          "id": 2,
+          "val": -1,
+          "left": 2,
+          "right": -1
+        },
+        {
+          "id": 3,
+          "val": -1,
+          "left": -1,
+          "right": -1
+        }
+      ],
+      "visited": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Visited count (3) != n (4). Invalid tree.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 0,
+          "right": 1
+        },
+        {
+          "id": 1,
+          "val": -1,
+          "left": -1,
+          "right": -1
+        },
+        {
+          "id": 2,
+          "val": -1,
+          "left": 2,
+          "right": -1
+        },
+        {
+          "id": 3,
+          "val": -1,
+          "left": -1,
+          "right": -1
+        }
+      ],
+      "i": "return false",
+      "curr": 3
+    }
+  ]
+}

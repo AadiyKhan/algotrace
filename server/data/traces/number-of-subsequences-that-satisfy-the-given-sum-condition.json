@@ -1,0 +1,118 @@
+{
+  "title": "Number of Subsequences That Satisfy the Given Sum Condition",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Two Pointers",
+    "Sorting",
+    "Binary Search"
+  ],
+  "description": "Find the number of non-empty subsequences such that the sum of the minimum and maximum element is less than or equal to target.",
+  "target": 8,
+  "pseudocode": "1. sort(nums)\n2. left = 0, right = n - 1\n3. while left <= right:\n4.   if nums[left] + nums[right] <= target:\n5.     count += 2^(right - left)\n6.     left++\n7.   else:\n8.     right--",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Sorted array: [2, 3, 4, 6]",
+      "array": [
+        2,
+        3,
+        4,
+        6
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Initialize left=0, right=3. nums[0]+nums[3] = 2+6 = 8 <= 8",
+      "array": [
+        2,
+        3,
+        4,
+        6
+      ],
+      "i": 0,
+      "j": 3,
+      "curr": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Valid condition met. Subsequences with min 2: 2^(3-0) = 8 combinations",
+      "array": [
+        2,
+        3,
+        4,
+        6
+      ],
+      "i": 0,
+      "j": 3,
+      "curr": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Increment left to 1",
+      "array": [
+        2,
+        3,
+        4,
+        6
+      ],
+      "i": 1,
+      "j": 3,
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "nums[1]+nums[3] = 3+6 = 9 > 8. Decrement right",
+      "array": [
+        2,
+        3,
+        4,
+        6
+      ],
+      "i": 1,
+      "j": 3,
+      "curr": 1
+    },
+    {
+      "codeLine": 8,
+      "note": "Decrement right to 2",
+      "array": [
+        2,
+        3,
+        4,
+        6
+      ],
+      "i": 1,
+      "j": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "nums[1]+nums[2] = 3+4 = 7 <= 8. Add 2^(2-1) = 2 combinations",
+      "array": [
+        2,
+        3,
+        4,
+        6
+      ],
+      "i": 1,
+      "j": 2,
+      "curr": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Increment left to 2. Loop terminates as left > right.",
+      "array": [
+        2,
+        3,
+        4,
+        6
+      ],
+      "i": 2,
+      "j": 2,
+      "curr": 2
+    }
+  ]
+}

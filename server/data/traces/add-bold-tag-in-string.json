@@ -33,7 +33,8 @@
         false,
         false,
         false
-      ]
+      ],
+      "curr": 0
     },
     {
       "codeLine": 5,
@@ -45,7 +46,8 @@
         true,
         true,
         false
-      ]
+      ],
+      "curr": 2
     },
     {
       "codeLine": 5,
@@ -57,7 +59,8 @@
         true,
         true,
         true
-      ]
+      ],
+      "curr": 4
     },
     {
       "codeLine": 9,
@@ -70,7 +73,8 @@
         true,
         true
       ],
-      "i": 0
+      "i": 0,
+      "curr": 0
     },
     {
       "codeLine": 11,
@@ -83,7 +87,8 @@
         true,
         true
       ],
-      "i": 5
+      "i": 5,
+      "curr": 5
     }
   ]
 }

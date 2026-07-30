@@ -1,0 +1,140 @@
+{
+  "title": "Number of Dice Rolls With Target Sum",
+  "difficulty": "Medium",
+  "type": "matrix",
+  "tags": [
+    "Dynamic Programming"
+  ],
+  "description": "Find the number of ways to get the target sum using n dice, each with k faces.",
+  "target": 6,
+  "pseudocode": "let dp = Array(n + 1).fill().map(() => Array(target + 1).fill(0));\ndp[0][0] = 1;\nfor (let i = 1; i <= n; i++) {\n  for (let j = 1; j <= target; j++) {\n    for (let face = 1; face <= k; face++) {\n      if (j - face >= 0) dp[i][j] += dp[i - 1][j - face];\n    }\n  }\n}",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Initialize DP table. dp[0][0] = 1 represents 0 dice making sum 0 in 1 way.",
+      "matrix": [
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Calculating sum for 1 die (i=1), target 1 (j=1). Face 1 contributes.",
+      "matrix": [
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "i": 1,
+      "j": 1,
+      "curr": [
+        1,
+        1
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Calculating sum for 1 die (i=1), target 2 (j=2). Face 2 contributes.",
+      "matrix": [
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "i": 1,
+      "j": 2,
+      "curr": [
+        1,
+        1
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Final state for 2 dice (n=2) target 6 (target=6) using k=6 faces.",
+      "matrix": [
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          0,
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      ],
+      "i": 2,
+      "j": 6,
+      "curr": [
+        2,
+        2
+      ]
+    }
+  ]
+}

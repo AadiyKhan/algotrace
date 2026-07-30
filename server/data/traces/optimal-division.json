@@ -5,55 +5,102 @@
   "tags": [
     "Array",
     "Math",
-    "String"
+    "Dynamic Programming"
   ],
-  "description": "Given an array of positive integers, return the expression string that evaluates to the maximum possible result by adding parentheses.",
-  "target": null,
-  "pseudocode": "function optimalDivision(nums) {\n  if (nums.length === 1) return String(nums[0]);\n  if (nums.length === 2) return nums[0] + '/' + nums[1];\n  let res = nums[0] + '/(' + nums[1];\n  for (let i = 2; i < nums.length; i++) {\n    res += '/' + nums[i];\n  }\n  return res + ')';\n}",
+  "description": "Maximize the result of division of an array of numbers by strategically placing parentheses.",
+  "pseudocode": "1. If n == 1 return nums[0]\n2. If n == 2 return nums[0] + '/' + nums[1]\n3. result = nums[0] + '/(' + nums[1]\n4. For i = 2 to n-1:\n5.   result = result + '/' + nums[i]\n6. result = result + ')'\n7. Return result",
   "steps": [
     {
-      "codeLine": 2,
-      "note": "Check length of array [1000, 100, 10, 2]",
+      "codeLine": 1,
+      "note": "Initialize n=4, input is [1000, 100, 10, 2].",
       "array": [
         1000,
         100,
         10,
         2
-      ]
+      ],
+      "curr": 4
+    },
+    {
+      "codeLine": 3,
+      "note": "Start result string with the first two numbers: '1000/(100'.",
+      "array": [
+        1000,
+        100,
+        10,
+        2
+      ],
+      "curr": 1000
     },
     {
       "codeLine": 4,
-      "note": "Initialize result string with first two numbers",
+      "note": "Loop starts at index 2 (value 10).",
       "array": [
         1000,
         100,
         10,
         2
-      ]
+      ],
+      "i": 2,
+      "curr": 2
     },
     {
       "codeLine": 5,
-      "note": "Looping to append remaining elements into parentheses",
-      "i": 2
+      "note": "Append '/10' to result string: '1000/(100/10'.",
+      "array": [
+        1000,
+        100,
+        10,
+        2
+      ],
+      "i": 2,
+      "curr": 10
     },
     {
-      "codeLine": 6,
-      "note": "Append nums[2] which is 10",
-      "i": 2
+      "codeLine": 4,
+      "note": "Loop continues to index 3 (value 2).",
+      "array": [
+        1000,
+        100,
+        10,
+        2
+      ],
+      "i": 3,
+      "curr": 3
     },
     {
       "codeLine": 5,
-      "note": "Increment i",
-      "i": 3
+      "note": "Append '/2' to result string: '1000/(100/10/2'.",
+      "array": [
+        1000,
+        100,
+        10,
+        2
+      ],
+      "i": 3,
+      "curr": 2
     },
     {
       "codeLine": 6,
-      "note": "Append nums[3] which is 2",
-      "i": 3
+      "note": "Append closing parenthesis: '1000/(100/10/2)'.",
+      "array": [
+        1000,
+        100,
+        10,
+        2
+      ],
+      "curr": 1000
     },
     {
-      "codeLine": 8,
-      "note": "Return final string '1000/(100/10/2)'"
+      "codeLine": 7,
+      "note": "Final optimal string: '1000/(100/10/2)'.",
+      "array": [
+        1000,
+        100,
+        10,
+        2
+      ],
+      "curr": 1000
     }
   ]
 }

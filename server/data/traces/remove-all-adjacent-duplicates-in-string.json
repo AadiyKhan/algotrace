@@ -1,0 +1,70 @@
+{
+  "title": "Remove All Adjacent Duplicates In String",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Stack",
+    "String"
+  ],
+  "description": "Repeatedly remove adjacent duplicate characters from a string until no more are possible.",
+  "target": "abbaca",
+  "pseudocode": "1: let stack = []\n2: for char of s:\n3:   if stack.length > 0 && stack[stack.length - 1] === char:\n4:     stack.pop()\n5:   else:\n6:     stack.push(char)\n7: return stack.join('')",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize empty stack",
+      "array": []
+    },
+    {
+      "codeLine": 6,
+      "note": "Stack empty, push 'a'",
+      "array": [
+        "a"
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Stack top 'a' != 'b', push 'b'",
+      "array": [
+        "a",
+        "b"
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Stack top 'b' == 'b', pop",
+      "array": [
+        "a"
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Stack top 'a' == 'a', pop",
+      "array": []
+    },
+    {
+      "codeLine": 6,
+      "note": "Stack empty, push 'c'",
+      "array": [
+        "c"
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Stack top 'c' != 'a', push 'a'",
+      "array": [
+        "c",
+        "a"
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Return final stack contents",
+      "array": [
+        "c",
+        "a"
+      ]
+    }
+  ]
+}

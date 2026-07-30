@@ -4,123 +4,209 @@
   "type": "linked-list",
   "tags": [
     "Linked List",
-    "Recursion",
-    "Iteration"
+    "Recursion"
   ],
-  "description": "Reverse a singly linked list and return the new head.",
-  "target": null,
-  "pseudocode": "1. let prev = null\n2. let curr = head\n3. while curr is not null:\n4.   let nextTemp = curr.next\n5.   curr.next = prev\n6.   prev = curr\n7.   curr = nextTemp\n8. return prev",
+  "description": "Reverse a singly linked list iteratively by tracking prev, curr, and next pointers.",
+  "pseudocode": "1. prev = null\n2. curr = head\n3. while curr is not null:\n4.   next = curr.next\n5.   curr.next = prev\n6.   prev = curr\n7.   curr = next\n8. return prev",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize prev to null",
+      "note": "Initialize prev to null.",
       "nodes": [
         {
+          "id": 0,
           "val": 1,
           "next": 1
         },
         {
+          "id": 1,
           "val": 2,
+          "next": 2
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "next": 3
+        },
+        {
+          "id": 3,
+          "val": 4,
+          "next": 4
+        },
+        {
+          "id": 4,
+          "val": 5,
           "next": null
         }
       ],
-      "prev": null,
-      "curr": 0
+      "curr": 0,
+      "prev": null
     },
     {
       "codeLine": 4,
-      "note": "Store next node (2) in nextTemp",
+      "note": "Save next node (2) and flip pointer of 1 to null.",
       "nodes": [
         {
+          "id": 0,
           "val": 1,
+          "next": null
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "next": 2
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "next": 3
+        },
+        {
+          "id": 3,
+          "val": 4,
+          "next": 4
+        },
+        {
+          "id": 4,
+          "val": 5,
+          "next": null
+        }
+      ],
+      "curr": 1,
+      "prev": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Save next node (3) and flip pointer of 2 to 1.",
+      "nodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "next": null
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "next": 0
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "next": 3
+        },
+        {
+          "id": 3,
+          "val": 4,
+          "next": 4
+        },
+        {
+          "id": 4,
+          "val": 5,
+          "next": null
+        }
+      ],
+      "curr": 2,
+      "prev": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Save next node (4) and flip pointer of 3 to 2.",
+      "nodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "next": null
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "next": 0
+        },
+        {
+          "id": 2,
+          "val": 3,
           "next": 1
         },
         {
-          "val": 2,
+          "id": 3,
+          "val": 4,
+          "next": 4
+        },
+        {
+          "id": 4,
+          "val": 5,
           "next": null
         }
       ],
-      "prev": null,
-      "curr": 0
+      "curr": 3,
+      "prev": 2
     },
     {
-      "codeLine": 5,
-      "note": "Reverse the pointer: 1.next points to null",
+      "codeLine": 4,
+      "note": "Save next node (5) and flip pointer of 4 to 3.",
       "nodes": [
         {
+          "id": 0,
           "val": 1,
           "next": null
         },
         {
-          "val": 2,
-          "next": null
-        }
-      ],
-      "prev": 0,
-      "curr": 0
-    },
-    {
-      "codeLine": 6,
-      "note": "Move prev forward to current node (1)",
-      "nodes": [
-        {
-          "val": 1,
-          "next": null
-        },
-        {
-          "val": 2,
-          "next": null
-        }
-      ],
-      "prev": 0,
-      "curr": 0
-    },
-    {
-      "codeLine": 7,
-      "note": "Move curr forward to nextTemp (2)",
-      "nodes": [
-        {
-          "val": 1,
-          "next": null
-        },
-        {
-          "val": 2,
-          "next": null
-        }
-      ],
-      "prev": 0,
-      "curr": 1
-    },
-    {
-      "codeLine": 5,
-      "note": "Reverse the pointer: 2.next points to 1",
-      "nodes": [
-        {
-          "val": 1,
-          "next": null
-        },
-        {
+          "id": 1,
           "val": 2,
           "next": 0
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "next": 1
+        },
+        {
+          "id": 3,
+          "val": 4,
+          "next": 2
+        },
+        {
+          "id": 4,
+          "val": 5,
+          "next": null
         }
       ],
-      "prev": 1,
-      "curr": 1
+      "curr": 4,
+      "prev": 3
     },
     {
-      "codeLine": 8,
-      "note": "Return new head (node 2)",
+      "codeLine": 4,
+      "note": "Flip pointer of 5 to 4. Final step.",
       "nodes": [
         {
+          "id": 0,
           "val": 1,
           "next": null
         },
         {
+          "id": 1,
           "val": 2,
           "next": 0
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "next": 1
+        },
+        {
+          "id": 3,
+          "val": 4,
+          "next": 2
+        },
+        {
+          "id": 4,
+          "val": 5,
+          "next": 3
         }
       ],
-      "prev": 1
+      "curr": null,
+      "prev": 4
     }
-  ]
+  ],
+  "fullDescription": "<p>Given the <code>head</code> of a singly linked list, reverse the list, and return <em>the reversed list</em>.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2021/02/19/rev1ex1.jpg\" style=\"width: 542px; height: 222px;\" />\n<pre>\n<strong>Input:</strong> head = [1,2,3,4,5]\n<strong>Output:</strong> [5,4,3,2,1]\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2021/02/19/rev1ex2.jpg\" style=\"width: 182px; height: 222px;\" />\n<pre>\n<strong>Input:</strong> head = [1,2]\n<strong>Output:</strong> [2,1]\n</pre>\n\n<p><strong class=\"example\">Example 3:</strong></p>\n\n<pre>\n<strong>Input:</strong> head = []\n<strong>Output:</strong> []\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li>The number of nodes in the list is the range <code>[0, 5000]</code>.</li>\n\t<li><code>-5000 &lt;= Node.val &lt;= 5000</code></li>\n</ul>\n\n<p>&nbsp;</p>\n<p><strong>Follow up:</strong> A linked list can be reversed either iteratively or recursively. Could you implement both?</p>\n"
 }

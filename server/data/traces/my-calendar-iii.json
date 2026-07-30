@@ -3,69 +3,80 @@
   "difficulty": "Hard",
   "type": "array",
   "tags": [
-    "Array",
     "Design",
     "Segment Tree",
-    "Ordered Map"
+    "Prefix Sum"
   ],
-  "description": "Implement a MyCalendarThree class to store events and return the maximum number of overlapping events (k-booking) after each insertion.",
-  "pseudocode": "1: map = new Map()\n2: function book(start, end) {\n3:   map.set(start, (map.get(start) || 0) + 1)\n4:   map.set(end, (map.get(end) || 0) - 1)\n5:   maxK = 0, curr = 0\n6:   sortedKeys = [...map.keys()].sort((a,b) => a - b)\n7:   for (key of sortedKeys) {\n8:     curr += map.get(key)\n9:     maxK = Math.max(maxK, curr)\n10:  }\n11:  return maxK\n12: }",
+  "description": "Calculate the maximum k-booking after each event using a difference array/sweep-line approach.",
+  "pseudocode": "1. Store diff changes in a map\n2. Sort unique time points\n3. Iterate points and compute prefix sum\n4. Update global max and return",
   "steps": [
     {
-      "codeLine": 3,
-      "note": "Book [10, 20]: Increment at 10",
+      "codeLine": 1,
+      "note": "Initialize empty map",
+      "array": []
+    },
+    {
+      "codeLine": 1,
+      "note": "Book [10, 20]: diff[10]=1, diff[20]=-1. Max overlap is 1.",
       "array": [
-        10,
-        20
-      ]
+        1
+      ],
+      "curr": 10
     },
     {
-      "codeLine": 4,
-      "note": "Book [10, 20]: Decrement at 20",
+      "codeLine": 1,
+      "note": "Book [50, 60]: diff[50]=1, diff[60]=-1. Max overlap is 1.",
       "array": [
-        10,
-        20
-      ]
+        1,
+        1
+      ],
+      "curr": 50
     },
     {
-      "codeLine": 8,
-      "note": "Sweeping: at key 10, curr becomes 1",
-      "i": 10
-    },
-    {
-      "codeLine": 9,
-      "note": "MaxK updated to 1",
-      "i": 10
-    },
-    {
-      "codeLine": 3,
-      "note": "Book [15, 25]: Increment at 15",
+      "codeLine": 1,
+      "note": "Book [10, 40]: Overlap at [10, 20] reaches 2.",
       "array": [
-        10,
-        15,
-        20,
-        25
-      ]
+        1,
+        1,
+        2
+      ],
+      "curr": 10
     },
     {
-      "codeLine": 4,
-      "note": "Book [15, 25]: Decrement at 25",
+      "codeLine": 1,
+      "note": "Book [5, 15]: Overlap at [10, 15] reaches 3.",
       "array": [
-        10,
-        15,
-        20,
-        25
-      ]
+        1,
+        1,
+        2,
+        3
+      ],
+      "curr": 5
     },
     {
-      "codeLine": 8,
-      "note": "Sweeping: at key 10 (curr=1), key 15 (curr=2)",
-      "i": 15
+      "codeLine": 1,
+      "note": "Book [5, 10]: Max overlap remains 3.",
+      "array": [
+        1,
+        1,
+        2,
+        3,
+        3
+      ],
+      "curr": 5
     },
     {
-      "codeLine": 9,
-      "note": "MaxK updated to 2",
-      "i": 15
+      "codeLine": 1,
+      "note": "Book [25, 55]: Max overlap remains 3.",
+      "array": [
+        1,
+        1,
+        2,
+        3,
+        3,
+        3
+      ],
+      "curr": 25
     }
   ]
 }

@@ -1,0 +1,69 @@
+{
+  "title": "Maximum Length of Subarray With Positive Product",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Dynamic Programming",
+    "Greedy"
+  ],
+  "description": "Find the maximum length of a subarray such that the product of its elements is positive.",
+  "pseudocode": "1. pos = 0, neg = 0, maxLen = 0\n2. for x in nums:\n3.   if x == 0: pos = 0, neg = 0\n4.   else if x > 0: pos++, neg = (neg > 0 ? neg + 1 : 0)\n5.   else: temp = pos, pos = (neg > 0 ? neg + 1 : 0), neg = temp + 1\n6.   maxLen = max(maxLen, pos)",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Initialize variables with nums = [1, -2, -3]",
+      "array": [
+        1,
+        -2,
+        -3
+      ],
+      "i": 0,
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "x = 1 (positive): pos = 1, neg = 0",
+      "array": [
+        1,
+        -2,
+        -3
+      ],
+      "i": 0,
+      "curr": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "x = -2 (negative): pos = 0, neg = 2",
+      "array": [
+        1,
+        -2,
+        -3
+      ],
+      "i": 1,
+      "curr": -2
+    },
+    {
+      "codeLine": 5,
+      "note": "x = -3 (negative): pos = 3, neg = 1",
+      "array": [
+        1,
+        -2,
+        -3
+      ],
+      "i": 2,
+      "curr": -3
+    },
+    {
+      "codeLine": 6,
+      "note": "Final maxLen updated to 3",
+      "array": [
+        1,
+        -2,
+        -3
+      ],
+      "i": 2,
+      "curr": 3
+    }
+  ]
+}

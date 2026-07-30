@@ -1,0 +1,67 @@
+{
+  "title": "Prime Arrangements",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Math",
+    "Combinatorics"
+  ],
+  "description": "Return the number of permutations of 1 to n such that prime numbers are at prime indices.",
+  "target": 5,
+  "pseudocode": "1. countPrimes = count primes up to n\n2. countNotPrimes = n - countPrimes\n3. result = factorial(countPrimes) * factorial(countNotPrimes)\n4. return result % (10^9 + 7)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Count primes up to 5: {2, 3, 5}. countPrimes = 3",
+      "array": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "i": 3,
+      "curr": 5
+    },
+    {
+      "codeLine": 2,
+      "note": "Count non-primes up to 5: {1, 4}. countNotPrimes = 2",
+      "array": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "i": 3,
+      "j": 2,
+      "curr": 5
+    },
+    {
+      "codeLine": 3,
+      "note": "Calculate factorials: 3! * 2! = 6 * 2 = 12",
+      "array": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "i": 12,
+      "curr": 3
+    },
+    {
+      "codeLine": 4,
+      "note": "Return 12 modulo 10^9+7",
+      "array": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "i": 12,
+      "curr": 12
+    }
+  ]
+}

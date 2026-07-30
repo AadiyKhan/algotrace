@@ -16,7 +16,8 @@
       "array": [
         "a",
         "b"
-      ]
+      ],
+      "curr": 1
     },
     {
       "codeLine": 2,
@@ -24,7 +25,8 @@
       "array": [
         "a",
         "b"
-      ]
+      ],
+      "curr": 1
     },
     {
       "codeLine": 3,
@@ -33,7 +35,8 @@
       "array": [
         "a",
         "b"
-      ]
+      ],
+      "curr": 1
     },
     {
       "codeLine": 4,

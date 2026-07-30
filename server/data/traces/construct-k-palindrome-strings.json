@@ -1,0 +1,80 @@
+{
+  "title": "Construct K Palindrome Strings",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Hash Table",
+    "String",
+    "Greedy",
+    "Counting"
+  ],
+  "description": "Check if s can construct k palindromes by counting characters with odd frequencies.",
+  "target": 2,
+  "pseudocode": "1. If k > length(s), return false\n2. Count frequency of each character\n3. Calculate odd_count = number of characters with odd frequencies\n4. If odd_count <= k, return true, else return false",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Check if k (2) is greater than length of s (9). It is not.",
+      "array": [
+        "a",
+        "n",
+        "n",
+        "a",
+        "b",
+        "e",
+        "l",
+        "l",
+        "e"
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 2,
+      "note": "Count character frequencies: a:2, n:2, b:1, e:2, l:2",
+      "array": [
+        "a",
+        "n",
+        "n",
+        "a",
+        "b",
+        "e",
+        "l",
+        "l",
+        "e"
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Calculate odd_count. Only 'b' has frequency 1. odd_count = 1.",
+      "array": [
+        "a",
+        "n",
+        "n",
+        "a",
+        "b",
+        "e",
+        "l",
+        "l",
+        "e"
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Compare odd_count (1) with k (2). Since 1 <= 2, return true.",
+      "array": [
+        "a",
+        "n",
+        "n",
+        "a",
+        "b",
+        "e",
+        "l",
+        "l",
+        "e"
+      ],
+      "curr": 1
+    }
+  ]
+}

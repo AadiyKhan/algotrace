@@ -15,7 +15,8 @@
       "codeLine": 1,
       "note": "Initialize low pointer at 0 and high pointer at n (length of string 'ID' is 2).",
       "array": [],
-      "i": 0
+      "i": 0,
+      "curr": 0
     },
     {
       "codeLine": 3,
@@ -31,7 +32,8 @@
       "array": [
         0
       ],
-      "i": 1
+      "i": 1,
+      "curr": 0
     },
     {
       "codeLine": 3,
@@ -48,7 +50,8 @@
         0,
         2
       ],
-      "i": 1
+      "i": 1,
+      "curr": 2
     },
     {
       "codeLine": 6,
@@ -57,7 +60,8 @@
         0,
         2,
         1
-      ]
+      ],
+      "curr": 1
     }
   ]
 }

@@ -1,0 +1,126 @@
+{
+  "title": "Subtract the Product and Sum of Digits of an Integer",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Math"
+  ],
+  "description": "Calculate the difference between the product and sum of the digits of n=234.",
+  "target": 15,
+  "pseudocode": "1. product = 1, sum = 0\n2. while n > 0:\n3. digit = n % 10\n4. product *= digit\n5. sum += digit\n6. n = floor(n / 10)\n7. return product - sum",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize product to 1 and sum to 0.",
+      "array": [
+        2,
+        3,
+        4
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Extract last digit: 4.",
+      "array": [
+        2,
+        3,
+        4
+      ],
+      "i": 4,
+      "curr": 4
+    },
+    {
+      "codeLine": 4,
+      "note": "Update product: 1 * 4 = 4.",
+      "array": [
+        2,
+        3,
+        4
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Update sum: 0 + 4 = 4.",
+      "array": [
+        2,
+        3,
+        4
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Extract next digit: 3.",
+      "array": [
+        2,
+        3,
+        4
+      ],
+      "i": 3,
+      "curr": 3
+    },
+    {
+      "codeLine": 4,
+      "note": "Update product: 4 * 3 = 12.",
+      "array": [
+        2,
+        3,
+        4
+      ],
+      "curr": 4
+    },
+    {
+      "codeLine": 5,
+      "note": "Update sum: 4 + 3 = 7.",
+      "array": [
+        2,
+        3,
+        4
+      ],
+      "curr": 4
+    },
+    {
+      "codeLine": 3,
+      "note": "Extract next digit: 2.",
+      "array": [
+        2,
+        3,
+        4
+      ],
+      "i": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Update product: 12 * 2 = 24.",
+      "array": [
+        2,
+        3,
+        4
+      ],
+      "curr": 12
+    },
+    {
+      "codeLine": 5,
+      "note": "Update sum: 7 + 2 = 9.",
+      "array": [
+        2,
+        3,
+        4
+      ],
+      "curr": 7
+    },
+    {
+      "codeLine": 7,
+      "note": "Calculate final result: 24 - 9 = 15.",
+      "array": [
+        2,
+        3,
+        4
+      ],
+      "curr": 24
+    }
+  ]
+}

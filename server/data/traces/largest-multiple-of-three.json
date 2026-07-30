@@ -1,0 +1,80 @@
+{
+  "title": "Largest Multiple Of Three",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Dynamic Programming",
+    "Greedy",
+    "Math"
+  ],
+  "description": "Given an array of digits, return the largest multiple of three that can be formed by concatenating some of the digits in any order.",
+  "target": 3,
+  "pseudocode": "1. digits.sort((a, b) => b - a);\n2. buckets = [[], [], []];\n3. for d in digits: buckets[d % 3].push(d);\n4. sum = digits.reduce((a, b) => a + b);\n5. if sum % 3 == 1: remove smallest from bucket 1 or two from bucket 2;\n6. if sum % 3 == 2: remove smallest from bucket 2 or two from bucket 1;\n7. result = sort(all remaining digits).reverse().join('');",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Sort digits in descending order to prioritize larger values.",
+      "array": [
+        8,
+        6,
+        4,
+        1
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Initialize buckets for remainders 0, 1, and 2.",
+      "array": [
+        8,
+        6,
+        4,
+        1
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Distribute digits into buckets based on modulo 3.",
+      "array": [
+        8,
+        6,
+        4,
+        1
+      ],
+      "i": "Bucket0:[6], Bucket1:[4, 1], Bucket2:[8]",
+      "curr": 3
+    },
+    {
+      "codeLine": 4,
+      "note": "Calculate the total sum of digits.",
+      "array": [
+        8,
+        6,
+        4,
+        1
+      ],
+      "i": "Sum: 19"
+    },
+    {
+      "codeLine": 5,
+      "note": "Sum 19 % 3 is 1. Remove one digit from bucket 1.",
+      "array": [
+        8,
+        6,
+        4
+      ],
+      "i": "Removed 1 from bucket 1",
+      "curr": 19
+    },
+    {
+      "codeLine": 7,
+      "note": "Concatenate remaining digits to form the largest multiple.",
+      "array": [
+        8,
+        6,
+        4
+      ]
+    }
+  ]
+}

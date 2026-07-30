@@ -1,0 +1,123 @@
+{
+  "title": "Lowest Common Ancestor of Deepest Leaves",
+  "difficulty": "Medium",
+  "type": "tree",
+  "tags": [
+    "Tree",
+    "DFS",
+    "Recursion"
+  ],
+  "description": "Find the lowest common ancestor of the deepest leaves in a binary tree.",
+  "pseudocode": "function lca(root) {\n  function dfs(node) {\n    if (!node) return { node: null, depth: 0 };\n    let left = dfs(node.left);\n    let right = dfs(node.right);\n    if (left.depth > right.depth) return { node: left.node, depth: left.depth + 1 };\n    if (right.depth > left.depth) return { node: right.node, depth: right.depth + 1 };\n    return { node: node, depth: left.depth + 1 };\n  }\n  return dfs(root).node;\n}",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Starting DFS traversal on the tree with structure: 1 -> (2, 3)",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "DFS reaches node 2. Both children are null, depth is 1.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        1
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "DFS reaches node 3. Both children are null, depth is 1.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Back at node 1. Left depth (1) equals right depth (1). Return current node 1 as LCA.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        1,
+        2,
+        0
+      ]
+    }
+  ]
+}

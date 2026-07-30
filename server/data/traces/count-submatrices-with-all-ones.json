@@ -1,0 +1,194 @@
+{
+  "title": "Count Submatrices With All Ones",
+  "difficulty": "Medium",
+  "type": "matrix",
+  "tags": [
+    "Array",
+    "Dynamic Programming",
+    "Matrix"
+  ],
+  "description": "Given a rows x cols binary matrix mat, return the number of submatrices that have all ones.",
+  "pseudocode": "for i from 0 to R-1:\n  for j from 0 to C-1:\n    if mat[i][j] == 1: heights[j]++\n    else: heights[j] = 0\n    sum = 0\n    for k from j down to 0:\n      sum += heights[k]\n      total += sum",
+  "steps": [
+    {
+      "codeLine": 3,
+      "note": "Initialize heights array and process row 0, col 0",
+      "matrix": [
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "i": 0,
+      "j": 0,
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Update height for column 0",
+      "matrix": [
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "i": 0,
+      "j": 0,
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 9,
+      "note": "Calculate submatrices ending at (0,0)",
+      "matrix": [
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "i": 0,
+      "j": 0,
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Process row 1, col 0",
+      "matrix": [
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "i": 1,
+      "j": 0,
+      "curr": [
+        1,
+        0
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Update height for column 0 at row 1",
+      "matrix": [
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "i": 1,
+      "j": 0,
+      "curr": [
+        1,
+        0
+      ]
+    },
+    {
+      "codeLine": 9,
+      "note": "Accumulate submatrices ending at (1,0)",
+      "matrix": [
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "i": 1,
+      "j": 0,
+      "curr": [
+        1,
+        0
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Process row 1, col 1",
+      "matrix": [
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "i": 1,
+      "j": 1,
+      "curr": [
+        1,
+        1
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Update height for column 1 at row 1",
+      "matrix": [
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "i": 1,
+      "j": 1,
+      "curr": [
+        1,
+        1
+      ]
+    },
+    {
+      "codeLine": 9,
+      "note": "Accumulate submatrices ending at (1,1)",
+      "matrix": [
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "i": 1,
+      "j": 1,
+      "curr": [
+        1,
+        1
+      ]
+    }
+  ]
+}

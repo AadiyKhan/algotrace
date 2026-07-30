@@ -1,0 +1,148 @@
+{
+  "title": "Delete N Nodes After M Nodes Of A Linked List",
+  "difficulty": "Medium",
+  "type": "linked-list",
+  "tags": [
+    "Linked List"
+  ],
+  "description": "Given a linked list, keep M nodes, then delete N nodes, and repeat until the end of the list.",
+  "target": "M=2, N=2",
+  "pseudocode": "1. curr = head\n2. while curr:\n3.   for i = 1 to M-1: if curr: curr = curr.next\n4.   if not curr: break\n5.   temp = curr\n6.   for i = 1 to N: if temp.next: temp = temp.next\n7.   curr.next = temp.next\n8.   curr = curr.next",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize curr at the head node (val: 1).",
+      "nodes": [
+        {
+          "val": 1,
+          "next": 1
+        },
+        {
+          "val": 2,
+          "next": 2
+        },
+        {
+          "val": 3,
+          "next": 3
+        },
+        {
+          "val": 4,
+          "next": 4
+        },
+        {
+          "val": 5,
+          "next": null
+        }
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Traverse M=2 nodes: move curr from 1 to 2.",
+      "nodes": [
+        {
+          "val": 1,
+          "next": 1
+        },
+        {
+          "val": 2,
+          "next": 2
+        },
+        {
+          "val": 3,
+          "next": 3
+        },
+        {
+          "val": 4,
+          "next": 4
+        },
+        {
+          "val": 5,
+          "next": null
+        }
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Traverse N=2 nodes to find node to skip: move temp from 2 to 4.",
+      "nodes": [
+        {
+          "val": 1,
+          "next": 1
+        },
+        {
+          "val": 2,
+          "next": 2
+        },
+        {
+          "val": 3,
+          "next": 3
+        },
+        {
+          "val": 4,
+          "next": 4
+        },
+        {
+          "val": 5,
+          "next": null
+        }
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "Link curr node (val 2) to node after skip (val 5).",
+      "nodes": [
+        {
+          "val": 1,
+          "next": 1
+        },
+        {
+          "val": 2,
+          "next": 4
+        },
+        {
+          "val": 3,
+          "next": null
+        },
+        {
+          "val": 4,
+          "next": null
+        },
+        {
+          "val": 5,
+          "next": null
+        }
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 8,
+      "note": "Move curr to next valid segment (val 5).",
+      "nodes": [
+        {
+          "val": 1,
+          "next": 1
+        },
+        {
+          "val": 2,
+          "next": 4
+        },
+        {
+          "val": 3,
+          "next": null
+        },
+        {
+          "val": 4,
+          "next": null
+        },
+        {
+          "val": 5,
+          "next": null
+        }
+      ],
+      "curr": 4
+    }
+  ]
+}

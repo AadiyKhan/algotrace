@@ -1,0 +1,49 @@
+{
+  "title": "Count Odd Numbers in an Interval Range",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Math"
+  ],
+  "description": "Given two non-negative integers low and high, return the count of odd numbers between low and high (inclusive).",
+  "target": 3,
+  "pseudocode": "1: function countOdds(low, high) {\n2:   let count = Math.floor((high + 1) / 2) - Math.floor(low / 2);\n3:   return count;\n4: }",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Calculating count of odds using range math: (high+1)//2 - low//2. Inputs: low=3, high=7.",
+      "array": [
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Math.floor(8 / 2) - Math.floor(3 / 2) = 4 - 1 = 3.",
+      "array": [
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "curr": 8
+    },
+    {
+      "codeLine": 3,
+      "note": "Returning the result: 3.",
+      "array": [
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "curr": 3
+    }
+  ]
+}

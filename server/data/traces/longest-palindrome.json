@@ -3,102 +3,132 @@
   "difficulty": "Easy",
   "type": "array",
   "tags": [
-    "Array",
     "Hash Table",
     "String",
     "Greedy"
   ],
-  "description": "Given a string s, return the length of the longest palindrome that can be built with those letters.",
+  "description": "Calculate the length of the longest palindrome by counting character frequencies and accounting for pairs.",
   "target": 7,
-  "pseudocode": "1: let count = 0\n2: let set = new Set()\n3: for char of s:\n4:   if set.has(char):\n5:     count += 2\n6:     set.delete(char)\n7:   else:\n8:     set.add(char)\n9: return set.size > 0 ? count + 1 : count",
+  "pseudocode": "1. initialize counts map\n2. for char in s: increment frequency\n3. initialize length = 0, odd_found = false\n4. for count in counts:\n5. if count is even, length += count\n6. else, length += count - 1, odd_found = true\n7. if odd_found, length += 1\n8. return length",
   "steps": [
     {
-      "codeLine": 3,
-      "note": "Starting loop with string 'abccccdd'",
-      "i": 0
-    },
-    {
-      "codeLine": 8,
-      "note": "Add 'a' to set",
-      "visited": [
-        "a"
-      ]
-    },
-    {
-      "codeLine": 4,
-      "note": "Check 'b', not in set",
-      "visited": [
-        "a",
-        "b"
-      ]
-    },
-    {
-      "codeLine": 8,
-      "note": "Add 'b' to set",
-      "visited": [
-        "a",
-        "b"
-      ]
+      "codeLine": 2,
+      "note": "Counting character frequencies for 'abccccdd'",
+      "array": [
+        "a:1",
+        "b:1",
+        "c:4",
+        "d:2"
+      ],
+      "visited": []
     },
     {
       "codeLine": 4,
-      "note": "Check 'c', not in set",
-      "visited": [
-        "a",
-        "b",
-        "c"
-      ]
+      "note": "Processing frequency of 'a' (1, odd)",
+      "array": [
+        "a:1",
+        "b:1",
+        "c:4",
+        "d:2"
+      ],
+      "i": 0,
+      "curr": 1
     },
     {
-      "codeLine": 8,
-      "note": "Add 'c' to set",
-      "visited": [
-        "a",
-        "b",
-        "c"
-      ]
+      "codeLine": 6,
+      "note": "Odd count 1: add 1-1=0 to length, odd_found = true",
+      "array": [
+        "a:1",
+        "b:1",
+        "c:4",
+        "d:2"
+      ],
+      "i": 0,
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Processing frequency of 'b' (1, odd)",
+      "array": [
+        "a:1",
+        "b:1",
+        "c:4",
+        "d:2"
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Odd count 1: add 0 to length, odd_found = true",
+      "array": [
+        "a:1",
+        "b:1",
+        "c:4",
+        "d:2"
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Processing frequency of 'c' (4, even)",
+      "array": [
+        "a:1",
+        "b:1",
+        "c:4",
+        "d:2"
+      ],
+      "i": 2,
+      "curr": 4
     },
     {
       "codeLine": 5,
-      "note": "Found pair 'c', increment count",
+      "note": "Even count 4: add 4 to length, length = 4",
+      "array": [
+        "a:1",
+        "b:1",
+        "c:4",
+        "d:2"
+      ],
+      "i": 2,
+      "curr": 4
+    },
+    {
+      "codeLine": 4,
+      "note": "Processing frequency of 'd' (2, even)",
+      "array": [
+        "a:1",
+        "b:1",
+        "c:4",
+        "d:2"
+      ],
       "i": 3,
-      "visited": [
-        "a",
-        "b"
-      ]
+      "curr": 2
     },
     {
       "codeLine": 5,
-      "note": "Found pair 'c', increment count",
+      "note": "Even count 2: add 2 to length, length = 6",
+      "array": [
+        "a:1",
+        "b:1",
+        "c:4",
+        "d:2"
+      ],
+      "i": 3,
+      "curr": 2
+    },
+    {
+      "codeLine": 7,
+      "note": "Odd found: increment length by 1, final result = 7",
+      "array": [
+        "a:1",
+        "b:1",
+        "c:4",
+        "d:2"
+      ],
       "i": 4,
-      "visited": [
-        "a",
-        "b"
-      ]
-    },
-    {
-      "codeLine": 8,
-      "note": "Add 'd' to set",
-      "visited": [
-        "a",
-        "b",
-        "d"
-      ]
-    },
-    {
-      "codeLine": 5,
-      "note": "Found pair 'd', increment count",
-      "visited": [
-        "a",
-        "b"
-      ]
-    },
-    {
-      "codeLine": 9,
-      "note": "Final count 6 + 1 (odd remaining) = 7",
-      "visited": [
-        "a"
-      ]
+      "curr": 1
     }
   ]
 }

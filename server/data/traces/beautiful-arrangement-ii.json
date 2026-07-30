@@ -27,7 +27,8 @@
       "array": [
         1
       ],
-      "i": "left: 2, right: 4"
+      "i": "left: 2, right: 4",
+      "curr": 3
     },
     {
       "codeLine": 5,
@@ -36,7 +37,8 @@
         1,
         4
       ],
-      "i": "left: 2, right: 3"
+      "i": "left: 2, right: 3",
+      "curr": 2
     },
     {
       "codeLine": 4,
@@ -46,7 +48,8 @@
         4,
         2
       ],
-      "i": "left: 3, right: 3"
+      "i": "left: 3, right: 3",
+      "curr": 1
     },
     {
       "codeLine": 5,
@@ -57,7 +60,8 @@
         2,
         3
       ],
-      "i": "left: 3, right: 2"
+      "i": "left: 3, right: 2",
+      "curr": 0
     },
     {
       "codeLine": 7,

@@ -1,67 +1,382 @@
 {
-  "title": "Loud And Rich",
+  "title": "Loud and Rich",
   "difficulty": "Medium",
-  "type": "array",
+  "type": "graph",
   "tags": [
-    "Graph",
-    "DFS",
-    "Topological Sort"
+    "Array",
+    "Depth-First Search",
+    "Graph Theory"
   ],
-  "description": "Find the person with the least amount of money in each person's reach (subtree) in a directed acyclic graph.",
-  "target": null,
-  "pseudocode": "1. Build adjacency list from richer relations\n2. Initialize answer array with self indices\n3. Define dfs(person):\n4.   For neighbor in adj[person]:\n5.     res = dfs(neighbor)\n6.     If quiet[res] < quiet[ans[person]]:\n7.       ans[person] = res\n8.   Return ans[person]",
+  "description": "Find the quietest person among those who are at least as rich as person x using DFS memoization on a DAG.",
+  "pseudocode": "1. Build adjacency list from richer array\n2. For each person, perform DFS to find the quietest person in their dependency chain\n3. Memoize the result to avoid redundant computations\n4. Return the answer array",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Build graph: 1->0 (1 is richer than 0)",
-      "array": [
+      "note": "Initialize graph from richer pairs: 0<-1, 1<-2, 1<-3, 7<-3, 3<-4, 3<-5, 3<-6",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": 0
+        },
+        {
+          "id": 1,
+          "val": 1
+        },
+        {
+          "id": 2,
+          "val": 2
+        },
+        {
+          "id": 3,
+          "val": 3
+        },
+        {
+          "id": 4,
+          "val": 4
+        },
+        {
+          "id": 5,
+          "val": 5
+        },
+        {
+          "id": 6,
+          "val": 6
+        },
+        {
+          "id": 7,
+          "val": 7
+        }
+      ],
+      "graphEdges": [
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          3,
+          7
+        ],
+        [
+          4,
+          3
+        ],
+        [
+          5,
+          3
+        ],
+        [
+          6,
+          3
+        ]
+      ],
+      "visited": [],
+      "curr": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Start DFS for person 0. Path: 0 <- 1 <- 2, 3, 4, 5, 6. Quietest is 5.",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": 0
+        },
+        {
+          "id": 1,
+          "val": 1
+        },
+        {
+          "id": 2,
+          "val": 2
+        },
+        {
+          "id": 3,
+          "val": 3
+        },
+        {
+          "id": 4,
+          "val": 4
+        },
+        {
+          "id": 5,
+          "val": 5
+        },
+        {
+          "id": 6,
+          "val": 6
+        },
+        {
+          "id": 7,
+          "val": 7
+        }
+      ],
+      "graphEdges": [
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          3,
+          7
+        ],
+        [
+          4,
+          3
+        ],
+        [
+          5,
+          3
+        ],
+        [
+          6,
+          3
+        ]
+      ],
+      "visited": [
         0,
-        1
+        1,
+        3,
+        5
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Memoize answer[0] = 5.",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": 0
+        },
+        {
+          "id": 1,
+          "val": 1
+        },
+        {
+          "id": 2,
+          "val": 2
+        },
+        {
+          "id": 3,
+          "val": 3
+        },
+        {
+          "id": 4,
+          "val": 4
+        },
+        {
+          "id": 5,
+          "val": 5
+        },
+        {
+          "id": 6,
+          "val": 6
+        },
+        {
+          "id": 7,
+          "val": 7
+        }
+      ],
+      "graphEdges": [
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          3,
+          7
+        ],
+        [
+          4,
+          3
+        ],
+        [
+          5,
+          3
+        ],
+        [
+          6,
+          3
+        ]
+      ],
+      "visited": [
+        0,
+        1,
+        3,
+        5
       ]
     },
     {
       "codeLine": 2,
-      "note": "Initialize answers: ans[0]=0, ans[1]=1",
-      "array": [
-        0,
-        1
-      ]
-    },
-    {
-      "codeLine": 3,
-      "note": "Start DFS from node 1",
-      "i": 1
+      "note": "DFS for person 7. No one richer than 7 has lower quietness than 7.",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": 0
+        },
+        {
+          "id": 1,
+          "val": 1
+        },
+        {
+          "id": 2,
+          "val": 2
+        },
+        {
+          "id": 3,
+          "val": 3
+        },
+        {
+          "id": 4,
+          "val": 4
+        },
+        {
+          "id": 5,
+          "val": 5
+        },
+        {
+          "id": 6,
+          "val": 6
+        },
+        {
+          "id": 7,
+          "val": 7
+        }
+      ],
+      "graphEdges": [
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          3,
+          7
+        ],
+        [
+          4,
+          3
+        ],
+        [
+          5,
+          3
+        ],
+        [
+          6,
+          3
+        ]
+      ],
+      "visited": [
+        7
+      ],
+      "i": 7
     },
     {
       "codeLine": 4,
-      "note": "Visit neighbor 0 of node 1",
-      "i": 1,
-      "curr": 0
-    },
-    {
-      "codeLine": 5,
-      "note": "DFS(0) returns 0",
-      "i": 0
-    },
-    {
-      "codeLine": 6,
-      "note": "Compare quietness: quiet[0] vs quiet[1]",
-      "i": 1
-    },
-    {
-      "codeLine": 7,
-      "note": "If quiet[0] < quiet[1], update ans[1] = 0",
-      "array": [
+      "note": "Final answer array calculation completed.",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": 0
+        },
+        {
+          "id": 1,
+          "val": 1
+        },
+        {
+          "id": 2,
+          "val": 2
+        },
+        {
+          "id": 3,
+          "val": 3
+        },
+        {
+          "id": 4,
+          "val": 4
+        },
+        {
+          "id": 5,
+          "val": 5
+        },
+        {
+          "id": 6,
+          "val": 6
+        },
+        {
+          "id": 7,
+          "val": 7
+        }
+      ],
+      "graphEdges": [
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          3,
+          7
+        ],
+        [
+          4,
+          3
+        ],
+        [
+          5,
+          3
+        ],
+        [
+          6,
+          3
+        ]
+      ],
+      "visited": [
         0,
-        0
-      ]
-    },
-    {
-      "codeLine": 8,
-      "note": "Return final answer for node 1",
-      "array": [
-        0,
-        0
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
       ]
     }
   ]

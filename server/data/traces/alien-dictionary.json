@@ -1,102 +1,359 @@
 {
   "title": "Alien Dictionary",
   "difficulty": "Hard",
-  "type": "array",
+  "type": "graph",
   "tags": [
-    "Graph",
-    "Topological Sort",
-    "DFS"
+    "Array",
+    "String",
+    "Depth-First Search",
+    "Breadth-First Search",
+    "Graph Theory",
+    "Topological Sort"
   ],
-  "description": "Find the lexicographical order of characters in an alien dictionary given a sorted list of words.",
-  "pseudocode": "1. Build adjacency list graph from adjacent words\n2. Calculate in-degree of each character\n3. Queue all characters with in-degree 0\n4. While queue not empty, pop char and append to result\n5. For each neighbor, decrement in-degree, push if 0",
+  "description": "Determine the order of characters in an alien language based on a sorted list of words.",
+  "target": "wrtkj",
+  "pseudocode": "1. Build adjacency list from adjacent words\n2. Calculate in-degree for all characters\n3. Push characters with in-degree 0 to queue\n4. Pop node, add to result, decrement neighbors' in-degree\n5. If neighbor in-degree becomes 0, push to queue",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Building graph: 'wrt' -> 'wrf' implies 't' -> 'f'",
-      "array": [
-        "w",
-        "r",
-        "t",
-        "f"
-      ]
+      "note": "Initializing graph: words = ['wrt', 'wrf', 'er', 'ett', 'rftt']",
+      "graphNodes": [
+        {
+          "id": "w",
+          "val": "w"
+        },
+        {
+          "id": "r",
+          "val": "r"
+        },
+        {
+          "id": "t",
+          "val": "t"
+        },
+        {
+          "id": "f",
+          "val": "f"
+        },
+        {
+          "id": "e",
+          "val": "e"
+        }
+      ],
+      "graphEdges": [
+        [
+          "w",
+          "e"
+        ],
+        [
+          "r",
+          "t"
+        ],
+        [
+          "t",
+          "f"
+        ],
+        [
+          "e",
+          "r"
+        ]
+      ],
+      "curr": "w"
     },
     {
       "codeLine": 2,
-      "note": "Calculating in-degrees: w:0, r:1, t:1, f:2",
-      "array": [
-        "w",
-        "r",
-        "t",
-        "f"
-      ]
+      "note": "In-degrees calculated: w:0, e:1, r:1, t:1, f:1",
+      "graphNodes": [
+        {
+          "id": "w",
+          "val": "w"
+        },
+        {
+          "id": "r",
+          "val": "r"
+        },
+        {
+          "id": "t",
+          "val": "t"
+        },
+        {
+          "id": "f",
+          "val": "f"
+        },
+        {
+          "id": "e",
+          "val": "e"
+        }
+      ],
+      "graphEdges": [
+        [
+          "w",
+          "e"
+        ],
+        [
+          "r",
+          "t"
+        ],
+        [
+          "t",
+          "f"
+        ],
+        [
+          "e",
+          "r"
+        ]
+      ],
+      "curr": "r"
     },
     {
       "codeLine": 3,
-      "note": "Queue initialized with characters having in-degree 0: ['w']",
+      "note": "Queue initialized with w (in-degree 0)",
+      "graphNodes": [
+        {
+          "id": "w",
+          "val": "w"
+        },
+        {
+          "id": "r",
+          "val": "r"
+        },
+        {
+          "id": "t",
+          "val": "t"
+        },
+        {
+          "id": "f",
+          "val": "f"
+        },
+        {
+          "id": "e",
+          "val": "e"
+        }
+      ],
+      "graphEdges": [
+        [
+          "w",
+          "e"
+        ],
+        [
+          "r",
+          "t"
+        ],
+        [
+          "t",
+          "f"
+        ],
+        [
+          "e",
+          "r"
+        ]
+      ],
       "visited": [
         "w"
-      ]
+      ],
+      "curr": "w"
     },
     {
       "codeLine": 4,
-      "note": "Pop 'w', add to result: 'w'",
+      "note": "Processing w: Result = [w], decrement e's in-degree",
+      "graphNodes": [
+        {
+          "id": "w",
+          "val": "w"
+        },
+        {
+          "id": "r",
+          "val": "r"
+        },
+        {
+          "id": "t",
+          "val": "t"
+        },
+        {
+          "id": "f",
+          "val": "f"
+        },
+        {
+          "id": "e",
+          "val": "e"
+        }
+      ],
+      "graphEdges": [
+        [
+          "w",
+          "e"
+        ],
+        [
+          "r",
+          "t"
+        ],
+        [
+          "t",
+          "f"
+        ],
+        [
+          "e",
+          "r"
+        ]
+      ],
       "visited": [
-        "w"
-      ]
+        "w",
+        "e"
+      ],
+      "curr": "e"
     },
     {
       "codeLine": 5,
-      "note": "Decrement 'r' in-degree to 0, push 'r' to queue",
+      "note": "Processing e: Result = [w, e], decrement r's in-degree, r added to queue",
+      "graphNodes": [
+        {
+          "id": "w",
+          "val": "w"
+        },
+        {
+          "id": "r",
+          "val": "r"
+        },
+        {
+          "id": "t",
+          "val": "t"
+        },
+        {
+          "id": "f",
+          "val": "f"
+        },
+        {
+          "id": "e",
+          "val": "e"
+        }
+      ],
+      "graphEdges": [
+        [
+          "w",
+          "e"
+        ],
+        [
+          "r",
+          "t"
+        ],
+        [
+          "t",
+          "f"
+        ],
+        [
+          "e",
+          "r"
+        ]
+      ],
       "visited": [
         "w",
+        "e",
         "r"
-      ]
+      ],
+      "curr": "r"
     },
     {
       "codeLine": 4,
-      "note": "Pop 'r', add to result: 'wr'",
+      "note": "Processing r: Result = [w, e, r], decrement t's in-degree, t added to queue",
+      "graphNodes": [
+        {
+          "id": "w",
+          "val": "w"
+        },
+        {
+          "id": "r",
+          "val": "r"
+        },
+        {
+          "id": "t",
+          "val": "t"
+        },
+        {
+          "id": "f",
+          "val": "f"
+        },
+        {
+          "id": "e",
+          "val": "e"
+        }
+      ],
+      "graphEdges": [
+        [
+          "w",
+          "e"
+        ],
+        [
+          "r",
+          "t"
+        ],
+        [
+          "t",
+          "f"
+        ],
+        [
+          "e",
+          "r"
+        ]
+      ],
       "visited": [
         "w",
-        "r"
-      ]
-    },
-    {
-      "codeLine": 5,
-      "note": "Decrement 't' in-degree to 0, push 't' to queue",
-      "visited": [
-        "w",
+        "e",
         "r",
         "t"
-      ]
+      ],
+      "curr": "t"
     },
     {
       "codeLine": 4,
-      "note": "Pop 't', add to result: 'wrt'",
+      "note": "Processing t: Result = [w, e, r, t], decrement f's in-degree, f added to queue",
+      "graphNodes": [
+        {
+          "id": "w",
+          "val": "w"
+        },
+        {
+          "id": "r",
+          "val": "r"
+        },
+        {
+          "id": "t",
+          "val": "t"
+        },
+        {
+          "id": "f",
+          "val": "f"
+        },
+        {
+          "id": "e",
+          "val": "e"
+        }
+      ],
+      "graphEdges": [
+        [
+          "w",
+          "e"
+        ],
+        [
+          "r",
+          "t"
+        ],
+        [
+          "t",
+          "f"
+        ],
+        [
+          "e",
+          "r"
+        ]
+      ],
       "visited": [
         "w",
-        "r",
-        "t"
-      ]
-    },
-    {
-      "codeLine": 5,
-      "note": "Decrement 'f' in-degree to 0, push 'f' to queue",
-      "visited": [
-        "w",
+        "e",
         "r",
         "t",
         "f"
-      ]
-    },
-    {
-      "codeLine": 4,
-      "note": "Pop 'f', add to result: 'wrtf'",
-      "visited": [
-        "w",
-        "r",
-        "t",
-        "f"
-      ]
+      ],
+      "curr": "f"
     }
-  ]
+  ],
+  "fullDescription": "<p>There is a new alien language that uses the English alphabet. However, the order among the letters is unknown to you.</p>\n    <p>You are given a list of strings <code>words</code> from the alien language's dictionary, where the strings in <code>words</code> are sorted lexicographically by the rules of this new language.</p>\n    <p>Return a string of the unique letters in the new alien language sorted in lexicographically increasing order by the new language's rules. If there is no solution, return <code>\"\"</code>. If there are multiple solutions, return any of them.</p>\n    <p><strong>Example 1:</strong></p>\n    <pre><strong>Input:</strong> words = [\"wrt\",\"wrf\",\"er\",\"ett\",\"rftt\"]\n<strong>Output:</strong> \"wertf\"</pre>\n    <p><strong>Example 2:</strong></p>\n    <pre><strong>Input:</strong> words = [\"z\",\"x\"]\n<strong>Output:</strong> \"zx\"</pre>\n    <p><strong>Example 3:</strong></p>\n    <pre><strong>Input:</strong> words = [\"z\",\"x\",\"z\"]\n<strong>Output:</strong> \"\"\n<strong>Explanation:</strong> The order is invalid, so return \"\".</pre>"
 }

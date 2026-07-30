@@ -1,0 +1,142 @@
+{
+  "title": "Minimum Number of Days to Make M Bouquets",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Binary Search"
+  ],
+  "description": "Find the minimum days to make m bouquets of k adjacent flowers each.",
+  "target": 3,
+  "pseudocode": "1. low = min(bloomDay), high = max(bloomDay)\n2. while low <= high:\n3.   mid = (low + high) // 2\n4.   if canMake(mid, m, k): ans = mid; high = mid - 1\n5.   else: low = mid + 1\n6. return ans",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize binary search range [1, 10]",
+      "array": [
+        1,
+        10,
+        3,
+        10,
+        2
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Check mid = 5. Can we make 1 bouquet of 3 adjacent flowers by day 5?",
+      "array": [
+        1,
+        10,
+        3,
+        10,
+        2
+      ],
+      "i": 5,
+      "curr": 5
+    },
+    {
+      "codeLine": 4,
+      "note": "Day 5: Flowers [1, X, 3, X, 2] are open. Sequence: [1, 3, 2]. No 3 adjacent.",
+      "array": [
+        1,
+        10,
+        3,
+        10,
+        2
+      ],
+      "i": 5,
+      "curr": 5
+    },
+    {
+      "codeLine": 5,
+      "note": "Binary search moves right: low = 6",
+      "array": [
+        1,
+        10,
+        3,
+        10,
+        2
+      ],
+      "i": 6,
+      "curr": 6
+    },
+    {
+      "codeLine": 3,
+      "note": "Check mid = 8. Are there enough flowers by day 8?",
+      "array": [
+        1,
+        10,
+        3,
+        10,
+        2
+      ],
+      "i": 8,
+      "curr": 8
+    },
+    {
+      "codeLine": 4,
+      "note": "Day 8: Flowers [1, X, 3, X, 2] are open. Count adjacent: [1, 3, 2]. Still no 3 adjacent.",
+      "array": [
+        1,
+        10,
+        3,
+        10,
+        2
+      ],
+      "i": 8,
+      "curr": 8
+    },
+    {
+      "codeLine": 5,
+      "note": "Binary search moves right: low = 9",
+      "array": [
+        1,
+        10,
+        3,
+        10,
+        2
+      ],
+      "i": 9,
+      "curr": 9
+    },
+    {
+      "codeLine": 3,
+      "note": "Check mid = 10. All flowers open.",
+      "array": [
+        1,
+        10,
+        3,
+        10,
+        2
+      ],
+      "i": 10,
+      "curr": 10
+    },
+    {
+      "codeLine": 4,
+      "note": "Day 10: All open. Adjacent: [1, 10, 3, 10, 2]. 3 adjacent found.",
+      "array": [
+        1,
+        10,
+        3,
+        10,
+        2
+      ],
+      "i": 10,
+      "curr": 10
+    },
+    {
+      "codeLine": 6,
+      "note": "Return min days = 10",
+      "array": [
+        1,
+        10,
+        3,
+        10,
+        2
+      ],
+      "curr": 10
+    }
+  ]
+}

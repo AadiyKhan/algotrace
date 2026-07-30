@@ -1,0 +1,118 @@
+{
+  "title": "Pour Water",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Simulation"
+  ],
+  "description": "Simulate the distribution of volume units of water over terrain heights.",
+  "target": 2,
+  "pseudocode": "1. for drop in range(volume):\n2.   pos = k\n3.   while pos > 0 and heights[pos-1] <= heights[pos]: pos -= 1\n4.   while pos < len(heights)-1 and heights[pos+1] <= heights[pos]: pos += 1\n5.   heights[pos] += 1",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Starting simulation with 2 units of water, K=2",
+      "array": [
+        2,
+        1,
+        1,
+        2,
+        1
+      ],
+      "i": 0,
+      "curr": 2
+    },
+    {
+      "codeLine": 2,
+      "note": "Drop 1: Starting at position 2 (value 1)",
+      "array": [
+        2,
+        1,
+        1,
+        2,
+        1
+      ],
+      "i": 2,
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Drop 1: Moving left to find lowest point",
+      "array": [
+        2,
+        1,
+        1,
+        2,
+        1
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Drop 1: Settling water at index 1",
+      "array": [
+        2,
+        2,
+        1,
+        2,
+        1
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Drop 2: Starting at position 2",
+      "array": [
+        2,
+        2,
+        1,
+        2,
+        1
+      ],
+      "i": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Drop 2: Checking left neighbor",
+      "array": [
+        2,
+        2,
+        1,
+        2,
+        1
+      ],
+      "i": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Drop 2: Checking right neighbor",
+      "array": [
+        2,
+        2,
+        1,
+        2,
+        1
+      ],
+      "i": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Drop 2: Settling water at index 2",
+      "array": [
+        2,
+        2,
+        2,
+        2,
+        1
+      ],
+      "i": 2,
+      "curr": 2
+    }
+  ]
+}

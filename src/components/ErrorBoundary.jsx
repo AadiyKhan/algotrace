@@ -18,13 +18,13 @@ class ErrorBoundary extends React.Component {
   render() {
     if (this.state.hasError) {
       return (
-        <div className="flex-1 flex flex-col items-center justify-center gap-4 p-8 text-center" style={{ background: '#110000', border: '1px solid #ff0000', margin: '20px', borderRadius: '8px' }}>
-          <Terminal size={32} color="#ff0000" />
-          <h3 className="text-[#ff0000] font-display font-bold text-xl">VISUALIZER CRASHED</h3>
+        <div className="flex-1 flex flex-col items-center justify-center gap-4 p-8 text-center" style={{ background: '#18181b', border: '1px solid #6366f1', margin: '20px', borderRadius: '8px' }}>
+          <Terminal size={32} color="#6366f1" />
+          <h3 className="text-[#6366f1] font-display font-bold text-xl">VISUALIZER CRASHED</h3>
           <p className="text-textMuted text-sm max-w-md font-mono">
             The AI generated a trace that doesn't match the expected schema for this visualizer type.
           </p>
-          <div className="bg-[#0a0000] p-4 rounded border border-borderDark text-left w-full overflow-auto max-h-32">
+          <div className="bg-[#09090b] p-4 rounded border border-borderDark text-left w-full overflow-auto max-h-32">
             <pre className="text-[10px] text-[#ff4444] font-mono">{this.state.error?.toString()}</pre>
           </div>
           <button 

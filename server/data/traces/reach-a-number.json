@@ -1,0 +1,92 @@
+{
+  "title": "Reach a Number",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Math",
+    "Binary Search"
+  ],
+  "description": "Find the minimum number of steps to reach target integer starting from 0, where step i adds i to your position.",
+  "target": 3,
+  "pseudocode": "1: let sum = 0, steps = 0\n2: while sum < target or (sum - target) % 2 != 0:\n3:   steps++\n4:   sum += steps\n5: return steps",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize sum and steps to 0",
+      "array": [],
+      "i": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Check condition: sum(0) < target(3)",
+      "array": [
+        0
+      ],
+      "i": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Increment steps to 1",
+      "array": [
+        0
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Add steps to sum: sum = 1",
+      "array": [
+        1
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Check condition: sum(1) < target(3)",
+      "array": [
+        1
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Increment steps to 2",
+      "array": [
+        1
+      ],
+      "i": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Add steps to sum: sum = 3",
+      "array": [
+        3
+      ],
+      "i": 2,
+      "curr": 3
+    },
+    {
+      "codeLine": 2,
+      "note": "Check condition: sum(3) < target(3) is false, and (3-3)%2 == 0 is true",
+      "array": [
+        3
+      ],
+      "i": 2,
+      "curr": 3
+    },
+    {
+      "codeLine": 5,
+      "note": "Return steps",
+      "array": [
+        3
+      ],
+      "i": 2
+    }
+  ]
+}

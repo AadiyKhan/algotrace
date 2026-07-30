@@ -1,0 +1,55 @@
+{
+  "title": "Design A Leaderboard",
+  "difficulty": "Medium",
+  "array": null,
+  "type": "array",
+  "tags": [
+    "Hash Table",
+    "Design",
+    "Sorting"
+  ],
+  "description": "Maintain a leaderboard to track player scores, update scores, and retrieve the top K scores.",
+  "pseudocode": "1. let scores = {}\n2. function addScore(id, score) {\n3.   scores[id] = (scores[id] || 0) + score;\n4. }\n5. function top(k) {\n6.   let values = Object.values(scores).sort((a, b) => b - a);\n7.   return values.slice(0, k).reduce((a, b) => a + b, 0);\n8. }",
+  "steps": [
+    {
+      "codeLine": 3,
+      "note": "Adding score 50 for player 1",
+      "array": [],
+      "i": "id: 1, score: 50",
+      "curr": 50
+    },
+    {
+      "codeLine": 3,
+      "note": "Adding score 80 for player 2",
+      "array": [],
+      "i": "id: 2, score: 80",
+      "curr": 80
+    },
+    {
+      "codeLine": 3,
+      "note": "Adding score 30 for player 1",
+      "array": [],
+      "i": "id: 1, score: 80 (50+30)",
+      "curr": 30
+    },
+    {
+      "codeLine": 6,
+      "note": "Sorting current scores [80, 80] to find top 1",
+      "array": [
+        80,
+        80
+      ],
+      "curr": 80
+    },
+    {
+      "codeLine": 7,
+      "note": "Calculating sum of top 1 score",
+      "array": [
+        80,
+        80
+      ],
+      "target": 80,
+      "curr": 1
+    }
+  ]
+}

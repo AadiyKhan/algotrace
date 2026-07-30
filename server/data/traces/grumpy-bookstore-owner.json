@@ -1,0 +1,119 @@
+{
+  "title": "Grumpy Bookstore Owner",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Sliding Window"
+  ],
+  "description": "Maximize customers by using a technique to keep the owner from being grumpy for a window of k minutes.",
+  "target": 3,
+  "pseudocode": "1. satisfied = sum(customers[i] where grumpy[i] == 0)\n2. max_additional = 0, curr_additional = 0\n3. For i in 0 to k-1: if grumpy[i] == 1, curr_additional += customers[i]\n4. max_additional = curr_additional\n5. For i in k to n-1:\n6.   if grumpy[i] == 1, curr_additional += customers[i]\n7.   if grumpy[i-k] == 1, curr_additional -= customers[i-k]\n8.   max_additional = max(max_additional, curr_additional)\n9. return satisfied + max_additional",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Calculate base satisfied customers: customers[2] (1) + customers[3] (7) = 8",
+      "array": [
+        1,
+        0,
+        1,
+        7
+      ],
+      "i": 0,
+      "curr": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Initial window [0, 1] (k=2): grumpy indices 0 and 1. Added customers: 1 + 0 = 1",
+      "array": [
+        1,
+        0,
+        1,
+        7
+      ],
+      "i": 1,
+      "curr": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "max_additional is now 1",
+      "array": [
+        1,
+        0,
+        1,
+        7
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Slide window to [1, 2]: Add customers[2] (grumpy is 1), curr_additional = 1 + 1 = 2",
+      "array": [
+        1,
+        0,
+        1,
+        7
+      ],
+      "i": 2,
+      "curr": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "Slide window: Remove customers[0] (grumpy is 1), curr_additional = 2 - 1 = 1",
+      "array": [
+        1,
+        0,
+        1,
+        7
+      ],
+      "i": 2,
+      "curr": 0
+    },
+    {
+      "codeLine": 8,
+      "note": "max_additional remains 1",
+      "array": [
+        1,
+        0,
+        1,
+        7
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Slide window to [2, 3]: Add customers[3] (grumpy is 0), curr_additional = 1 + 0 = 1",
+      "array": [
+        1,
+        0,
+        1,
+        7
+      ],
+      "i": 3,
+      "curr": 2
+    },
+    {
+      "codeLine": 7,
+      "note": "Slide window: Remove customers[1] (grumpy is 0), curr_additional = 1 - 0 = 1",
+      "array": [
+        1,
+        0,
+        1,
+        7
+      ],
+      "i": 3,
+      "curr": 1
+    },
+    {
+      "codeLine": 9,
+      "note": "Total = 8 + 1 = 9",
+      "array": [
+        1,
+        0,
+        1,
+        7
+      ],
+      "curr": 8
+    }
+  ]
+}

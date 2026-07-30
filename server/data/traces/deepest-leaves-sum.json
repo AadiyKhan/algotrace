@@ -1,0 +1,114 @@
+{
+  "title": "Deepest Leaves Sum",
+  "difficulty": "Medium",
+  "type": "tree",
+  "tags": [
+    "Tree",
+    "DFS",
+    "BFS"
+  ],
+  "description": "Calculate the sum of values of the deepest leaves in a binary tree.",
+  "target": null,
+  "pseudocode": "1. maxDepth = 0, sum = 0\n2. dfs(node, depth):\n3.   if !node return\n4.   if depth > maxDepth: maxDepth = depth, sum = node.val\n5.   else if depth == maxDepth: sum += node.val\n6.   dfs(node.left, depth + 1)\n7.   dfs(node.right, depth + 1)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize maxDepth and sum tracking variables.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Root node at depth 0. maxDepth becomes 0, sum becomes 1.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Visiting node 2 at depth 1. 1 > 0, so maxDepth becomes 1, sum resets to 2.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Visiting node 3 at depth 1. 1 == maxDepth, add 3 to sum. sum = 5.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 3
+    }
+  ]
+}

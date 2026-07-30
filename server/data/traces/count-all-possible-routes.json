@@ -1,0 +1,75 @@
+{
+  "title": "Count All Possible Routes",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Dynamic Programming",
+    "Memoization"
+  ],
+  "description": "Count the number of possible routes from start to finish with a given amount of fuel.",
+  "target": 5,
+  "pseudocode": "1. memo = {}\n2. function solve(curr, fuel):\n3.   if fuel < 0: return 0\n4.   ans = (curr == finish ? 1 : 0)\n5.   for next in 0..len(locations):\n6.     if next != curr and fuel >= abs(loc[curr] - loc[next]):\n7.       ans += solve(next, fuel - abs(loc[curr] - loc[next]))\n8.   return ans",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Starting at location 0 with 5 fuel. Target is 2.",
+      "array": [
+        2,
+        3,
+        6
+      ],
+      "i": 0,
+      "j": 5,
+      "curr": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Exploring route to location 1. Distance = 1. Fuel remaining: 4.",
+      "array": [
+        2,
+        3,
+        6
+      ],
+      "i": 1,
+      "j": 4,
+      "curr": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "Recursive call from location 1 to 2. Distance = 3. Fuel remaining: 1.",
+      "array": [
+        2,
+        3,
+        6
+      ],
+      "i": 2,
+      "j": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Reached target location 2. Increment route count.",
+      "array": [
+        2,
+        3,
+        6
+      ],
+      "i": 2,
+      "j": 1,
+      "curr": 2
+    },
+    {
+      "codeLine": 8,
+      "note": "Return successful route count 1.",
+      "array": [
+        2,
+        3,
+        6
+      ],
+      "i": 2,
+      "j": 1,
+      "curr": 1
+    }
+  ]
+}

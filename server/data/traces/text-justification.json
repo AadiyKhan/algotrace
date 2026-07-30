@@ -20,7 +20,8 @@
         "an",
         "example"
       ],
-      "i": 0
+      "i": 0,
+      "curr": 0
     },
     {
       "codeLine": 3,
@@ -44,7 +45,8 @@
         "example"
       ],
       "i": 0,
-      "j": 2
+      "j": 2,
+      "curr": 4
     },
     {
       "codeLine": 5,
@@ -68,7 +70,8 @@
         "example"
       ],
       "i": 0,
-      "j": 3
+      "j": 3,
+      "curr": 7
     },
     {
       "codeLine": 5,
@@ -92,7 +95,8 @@
         "example"
       ],
       "i": 0,
-      "j": 3
+      "j": 3,
+      "curr": 10
     }
   ]
 }

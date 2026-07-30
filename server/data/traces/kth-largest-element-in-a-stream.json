@@ -14,14 +14,16 @@
     {
       "codeLine": 1,
       "note": "Initialize min-heap with size k=3",
-      "array": []
+      "array": [],
+      "curr": 3
     },
     {
       "codeLine": 2,
       "note": "Adding 4 to stream",
       "array": [
         4
-      ]
+      ],
+      "curr": 4
     },
     {
       "codeLine": 2,
@@ -29,7 +31,8 @@
       "array": [
         4,
         5
-      ]
+      ],
+      "curr": 5
     },
     {
       "codeLine": 2,
@@ -38,7 +41,8 @@
         4,
         5,
         8
-      ]
+      ],
+      "curr": 8
     },
     {
       "codeLine": 2,
@@ -48,7 +52,8 @@
         4,
         5,
         8
-      ]
+      ],
+      "curr": 2
     },
     {
       "codeLine": 3,
@@ -57,7 +62,8 @@
         4,
         5,
         8
-      ]
+      ],
+      "curr": 3
     },
     {
       "codeLine": 4,
@@ -66,7 +72,8 @@
         4,
         5,
         8
-      ]
+      ],
+      "curr": 4
     }
   ]
 }

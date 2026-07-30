@@ -5,61 +5,61 @@
   "tags": [
     "Bit Manipulation"
   ],
-  "description": "Check if two adjacent bits in a binary representation are always different.",
+  "description": "Check if two adjacent bits of a positive integer always have different values.",
   "target": 5,
-  "pseudocode": "1. prev = -1\n2. while n > 0:\n3.   curr = n % 2\n4.   if curr == prev: return false\n5.   prev = curr\n6.   n = Math.floor(n / 2)\n7. return true",
+  "pseudocode": "1. Convert n to binary string\n2. Iterate through bits\n3. Check if current bit is same as previous bit\n4. Return false if same, else true",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize prev bit tracker to -1",
-      "i": -1
+      "note": "Convert 5 to binary string '101'",
+      "array": [
+        1,
+        0,
+        1
+      ],
+      "curr": 5
     },
     {
-      "codeLine": 3,
-      "note": "Extract last bit of 5 (101)",
-      "i": 1,
-      "curr": 1
-    },
-    {
-      "codeLine": 5,
-      "note": "Update prev to 1",
-      "i": 1
-    },
-    {
-      "codeLine": 6,
-      "note": "Shift n right (5 -> 2)",
-      "i": 1
-    },
-    {
-      "codeLine": 3,
-      "note": "Extract last bit of 2 (10)",
+      "codeLine": 2,
+      "note": "Start iteration at index 0",
+      "array": [
+        1,
+        0,
+        1
+      ],
       "i": 0,
       "curr": 0
     },
     {
-      "codeLine": 5,
-      "note": "Update prev to 0",
-      "i": 0
-    },
-    {
-      "codeLine": 6,
-      "note": "Shift n right (2 -> 1)",
-      "i": 0
+      "codeLine": 3,
+      "note": "Check bits at index 0 and 1: 1 != 0",
+      "array": [
+        1,
+        0,
+        1
+      ],
+      "i": 1,
+      "curr": 0
     },
     {
       "codeLine": 3,
-      "note": "Extract last bit of 1 (1)",
-      "i": 1,
+      "note": "Check bits at index 1 and 2: 0 != 1",
+      "array": [
+        1,
+        0,
+        1
+      ],
+      "i": 2,
       "curr": 1
     },
     {
-      "codeLine": 5,
-      "note": "Update prev to 1",
-      "i": 1
-    },
-    {
-      "codeLine": 7,
-      "note": "Loop finished, return true"
+      "codeLine": 4,
+      "note": "All adjacent bits are alternating, return true",
+      "array": [
+        1,
+        0,
+        1
+      ]
     }
   ]
 }

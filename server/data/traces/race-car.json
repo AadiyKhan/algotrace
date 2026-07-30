@@ -4,51 +4,87 @@
   "type": "array",
   "tags": [
     "Dynamic Programming",
-    "Breadth-First Search"
+    "BFS"
   ],
-  "description": "Find the minimum number of instructions to reach target position starting from 0, 1 speed.",
+  "description": "Find the shortest sequence of 'A' (accelerate) and 'R' (reverse) commands to reach target position 3 starting from 0 with speed 1.",
   "target": 3,
-  "pseudocode": "1. queue = [[0, 1, 0]] // [pos, speed, steps]\n2. visited = new Set(['0,1'])\n3. while queue:\n4.   pos, speed, steps = queue.shift()\n5.   if pos == target: return steps\n6.   queue.push([pos + speed, speed * 2, steps + 1]) // Accelerate\n7.   if (pos + speed > target and speed > 0) or (pos + speed < target and speed < 0):\n8.     queue.push([pos, speed > 0 ? -1 : 1, steps + 1]) // Reverse",
+  "pseudocode": "1. Initialize queue with (pos=0, speed=1, length=0)\n2. While queue is not empty:\n3. Pop (pos, speed, len)\n4. If pos == target, return len\n5. Add next state A: (pos + speed, speed * 2, len + 1)\n6. Add next state R: (pos, speed > 0 ? -1 : 1, len + 1)",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize queue with starting position 0, speed 1, and 0 steps.",
+      "note": "Initialize queue with starting state: position 0, speed 1, length 0.",
       "array": [
+        0,
+        1,
         0
-      ]
-    },
-    {
-      "codeLine": 4,
-      "note": "Dequeue current state: position 0, speed 1, steps 0.",
+      ],
       "i": 0,
       "curr": 0
     },
     {
-      "codeLine": 6,
-      "note": "Accelerate: position becomes 0+1=1, speed becomes 1*2=2, steps=1.",
+      "codeLine": 3,
+      "note": "Pop current state: (0, 1, 0).",
       "array": [
-        1
+        0,
+        1,
+        0
       ],
-      "i": 1
+      "i": 0,
+      "curr": 0
     },
     {
-      "codeLine": 4,
-      "note": "Dequeue state: position 1, speed 2, steps 1.",
+      "codeLine": 5,
+      "note": "Apply A: position becomes 0+1=1, speed becomes 1*2=2, length 1.",
+      "array": [
+        1,
+        2,
+        1
+      ],
+      "i": 1,
+      "curr": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Pop state: (1, 2, 1).",
+      "array": [
+        1,
+        2,
+        1
+      ],
       "i": 1,
       "curr": 1
     },
     {
-      "codeLine": 6,
-      "note": "Accelerate: position becomes 1+2=3, speed becomes 2*2=4, steps=2.",
+      "codeLine": 5,
+      "note": "Apply A: position becomes 1+2=3, speed becomes 2*2=4, length 2.",
       "array": [
-        3
+        3,
+        4,
+        2
       ],
-      "i": 2
+      "i": 2,
+      "curr": 1
     },
     {
-      "codeLine": 5,
-      "note": "Target reached: position 3 equals target 3. Return steps.",
-      "i": 2
+      "codeLine": 3,
+      "note": "Pop state: (3, 4, 2).",
+      "array": [
+        3,
+        4,
+        2
+      ],
+      "i": 2,
+      "curr": 3
+    },
+    {
+      "codeLine": 4,
+      "note": "Target reached! Position 3 matches target. Return length 2.",
+      "array": [
+        3,
+        4,
+        2
+      ],
+      "curr": 3
     }
   ]
 }

@@ -40,7 +40,8 @@
           "right": null
         }
       ],
-      "visited": []
+      "visited": [],
+      "curr": 1
     },
     {
       "codeLine": 4,

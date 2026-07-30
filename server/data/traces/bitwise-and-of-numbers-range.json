@@ -16,7 +16,8 @@
         5,
         7
       ],
-      "i": "left: 5, right: 7"
+      "i": "left: 5, right: 7",
+      "curr": 0
     },
     {
       "codeLine": 2,
@@ -25,7 +26,8 @@
         5,
         7
       ],
-      "i": "left: 5, right: 7"
+      "i": "left: 5, right: 7",
+      "curr": 5
     },
     {
       "codeLine": 3,
@@ -34,7 +36,8 @@
         2,
         7
       ],
-      "i": "left: 2, right: 7"
+      "i": "left: 2, right: 7",
+      "curr": 5
     },
     {
       "codeLine": 4,
@@ -43,7 +46,8 @@
         2,
         3
       ],
-      "i": "left: 2, right: 3"
+      "i": "left: 2, right: 3",
+      "curr": 7
     },
     {
       "codeLine": 5,
@@ -52,7 +56,8 @@
         2,
         3
       ],
-      "i": "shift: 1"
+      "i": "shift: 1",
+      "curr": 1
     },
     {
       "codeLine": 2,
@@ -60,7 +65,8 @@
       "array": [
         2,
         3
-      ]
+      ],
+      "curr": 2
     },
     {
       "codeLine": 3,
@@ -68,7 +74,8 @@
       "array": [
         1,
         3
-      ]
+      ],
+      "curr": 2
     },
     {
       "codeLine": 4,
@@ -76,7 +83,8 @@
       "array": [
         1,
         1
-      ]
+      ],
+      "curr": 3
     },
     {
       "codeLine": 5,
@@ -85,7 +93,8 @@
         1,
         1
       ],
-      "i": "shift: 2"
+      "i": "shift: 2",
+      "curr": 2
     },
     {
       "codeLine": 2,
@@ -93,14 +102,16 @@
       "array": [
         1,
         1
-      ]
+      ],
+      "curr": 1
     },
     {
       "codeLine": 6,
       "note": "Return 1 << 2, which is 4.",
       "array": [
         4
-      ]
+      ],
+      "curr": 1
     }
   ]
 }

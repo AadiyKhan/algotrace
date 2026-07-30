@@ -4,112 +4,126 @@
   "type": "tree",
   "tags": [
     "Tree",
-    "DFS",
-    "Binary Tree"
+    "Depth-First Search",
+    "Breadth-First Search"
   ],
-  "description": "Construct a 0-indexed m x n matrix representing the structure of a binary tree.",
+  "description": "Construct a 2D string matrix representing a binary tree layout.",
   "target": null,
-  "pseudocode": "1. height = getHeight(root)\n2. width = 2^(height + 1) - 1\n3. res = new Array(height).fill(null).map(() => new Array(width).fill(''))\n4. fill(root, 0, 0, width - 1, res)\n5. function fill(node, depth, left, right, res):\n6.   mid = (left + right) / 2\n7.   res[depth][mid] = node.val\n8.   if node.left: fill(node.left, depth + 1, left, mid - 1, res)\n9.   if node.right: fill(node.right, depth + 1, mid + 1, right, res)",
+  "pseudocode": "1. Calculate height of tree\n2. Determine m = height + 1, n = 2^(height + 1) - 1\n3. Initialize m x n matrix with empty strings\n4. Use DFS to place root at res[0][(n-1)/2]\n5. Recursively place left child at res[r+1][c-2^(height-r-1)]\n6. Recursively place right child at res[r+1][c+2^(height-r-1)]",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Calculate tree height (root at depth 0, 2 levels total)",
+      "note": "Calculating tree height: height is 1 (root [1] at level 0, child [2] at level 1).",
       "treeNodes": [
         {
           "id": 0,
           "val": 1,
           "left": 1,
-          "right": 2
+          "right": null
         },
         {
           "id": 1,
           "val": 2,
           "left": null,
           "right": null
+        }
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Determining matrix dimensions: m = 2, n = 2^(1+1) - 1 = 3.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": null
         },
         {
-          "id": 2,
-          "val": 3,
+          "id": 1,
+          "val": 2,
           "left": null,
           "right": null
         }
-      ]
+      ],
+      "curr": 2
     },
     {
       "codeLine": 3,
-      "note": "Initialize 2x3 matrix with empty strings",
-      "matrix": [
-        [
-          "",
-          "",
-          ""
-        ],
-        [
-          "",
-          "",
-          ""
-        ]
-      ]
+      "note": "Initializing 2x3 matrix with empty strings.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": null
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Placing root node '1' at res[0][(3-1)/2] = res[0][1].",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": null
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Placing left child '2' at res[1][1 - 2^(1-0-1)] = res[1][1-1] = res[1][0].",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": null
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 2
     },
     {
       "codeLine": 6,
-      "note": "Root (1) placed at (0, 1)",
-      "matrix": [
-        [
-          "",
-          "1",
-          ""
-        ],
-        [
-          "",
-          "",
-          ""
-        ]
+      "note": "Finished: Matrix is [['', '1', ''], ['2', '', '']].",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": null
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": null
+        }
       ],
-      "curr": [
-        0,
-        1
-      ]
-    },
-    {
-      "codeLine": 8,
-      "note": "Recurse left for node 2 at (1, 0)",
-      "matrix": [
-        [
-          "",
-          "1",
-          ""
-        ],
-        [
-          "2",
-          "",
-          ""
-        ]
-      ],
-      "curr": [
-        1,
-        0
-      ]
-    },
-    {
-      "codeLine": 9,
-      "note": "Recurse right for node 3 at (1, 2)",
-      "matrix": [
-        [
-          "",
-          "1",
-          ""
-        ],
-        [
-          "2",
-          "",
-          "3"
-        ]
-      ],
-      "curr": [
-        1,
-        2
-      ]
+      "curr": 1
     }
   ]
 }

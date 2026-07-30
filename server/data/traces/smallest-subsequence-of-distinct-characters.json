@@ -1,0 +1,106 @@
+{
+  "title": "Smallest Subsequence of Distinct Characters",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "String",
+    "Stack",
+    "Greedy",
+    "Monotonic Stack"
+  ],
+  "description": "Return the lexicographically smallest subsequence of s that contains all the distinct characters of s exactly once.",
+  "target": null,
+  "pseudocode": "1. stack = []\n2. seen = Set()\n3. last_occurrence = Map of char to index\n4. for i, char in s:\n5.   if char not in seen:\n6.     while stack and char < stack.top and i < last_occurrence[stack.top]:\n7.       seen.remove(stack.pop())\n8.     stack.push(char)\n9.     seen.add(char)",
+  "steps": [
+    {
+      "codeLine": 4,
+      "note": "Start processing string 'bcabc'. Last occurrences: b:3, c:4, a:2",
+      "array": [
+        "b",
+        "c",
+        "a",
+        "b",
+        "c"
+      ],
+      "i": 0,
+      "curr": 3
+    },
+    {
+      "codeLine": 8,
+      "note": "Push 'b' onto stack.",
+      "array": [
+        "b"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 8,
+      "note": "Push 'c' onto stack. 'c' > 'b', no pop.",
+      "array": [
+        "b",
+        "c"
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Processing 'a'. 'a' < 'c' and 'c' appears later at index 4.",
+      "array": [
+        "b",
+        "c"
+      ],
+      "i": 2,
+      "curr": 4
+    },
+    {
+      "codeLine": 7,
+      "note": "Pop 'c' because 'a' is smaller and 'c' appears later.",
+      "array": [
+        "b"
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "'a' < 'b' and 'b' appears later at index 3.",
+      "array": [
+        "b"
+      ],
+      "i": 2,
+      "curr": 3
+    },
+    {
+      "codeLine": 7,
+      "note": "Pop 'b'.",
+      "array": [],
+      "i": 2
+    },
+    {
+      "codeLine": 8,
+      "note": "Push 'a' onto stack.",
+      "array": [
+        "a"
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 8,
+      "note": "Push 'b' onto stack (already processed, skip).",
+      "array": [
+        "a",
+        "b"
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 8,
+      "note": "Push 'c' onto stack.",
+      "array": [
+        "a",
+        "b",
+        "c"
+      ],
+      "i": 4
+    }
+  ]
+}

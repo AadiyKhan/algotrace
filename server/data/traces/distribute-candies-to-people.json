@@ -1,0 +1,68 @@
+{
+  "title": "Distribute Candies to People",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Math",
+    "Simulation"
+  ],
+  "description": "Distribute candies to a row of people, giving 1, 2, 3... candies in turns, looping back to the start when reaching the end.",
+  "target": 7,
+  "pseudocode": "1. candies = 7, num_people = 3\n2. res = [0, 0, 0]\n3. give = 1, i = 0\n4. while candies > 0:\n5.   res[i % num_people] += min(candies, give)\n6.   candies -= give\n7.   give += 1\n8.   i += 1",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Initialize result array with zeros",
+      "array": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Give 1 candy to person at index 0",
+      "array": [
+        1,
+        0,
+        0
+      ],
+      "i": 0,
+      "curr": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Give 2 candies to person at index 1",
+      "array": [
+        1,
+        2,
+        0
+      ],
+      "i": 1,
+      "curr": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Give 3 candies to person at index 2",
+      "array": [
+        1,
+        2,
+        3
+      ],
+      "i": 2,
+      "curr": 3
+    },
+    {
+      "codeLine": 5,
+      "note": "Remaining 1 candy given to person at index 0",
+      "array": [
+        2,
+        2,
+        3
+      ],
+      "i": 3,
+      "curr": 1
+    }
+  ]
+}

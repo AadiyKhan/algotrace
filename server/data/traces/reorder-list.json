@@ -4,16 +4,37 @@
   "type": "linked-list",
   "tags": [
     "Linked List",
-    "Two Pointers",
-    "Stack",
-    "Recursion"
+    "Two Pointers"
   ],
-  "description": "Reorder a linked list into the form L0 → Ln → L1 → Ln-1 → L2 → Ln-2 → ...",
-  "pseudocode": "1. Find middle of list using slow/fast pointers\n2. Reverse the second half of the list\n3. Merge the first and second half alternately",
+  "description": "Reorder a singly linked list L0->L1->...->Ln-1->Ln into L0->Ln->L1->Ln-1->L2->Ln-2...",
+  "pseudocode": "1. Find middle of list using slow and fast pointers\n2. Reverse the second half of the list\n3. Merge the first and reversed second half alternately",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Finding the middle: slow moves 1 step, fast moves 2 steps.",
+      "note": "Initialize slow and fast pointers to find the middle of [1, 2, 3, 4]",
+      "nodes": [
+        {
+          "val": 1,
+          "next": 1
+        },
+        {
+          "val": 2,
+          "next": 2
+        },
+        {
+          "val": 3,
+          "next": 3
+        },
+        {
+          "val": 4,
+          "next": null
+        }
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 1,
+      "note": "Middle reached. Slow is at node 2, fast is at node 4",
       "nodes": [
         {
           "val": 1,
@@ -36,7 +57,7 @@
     },
     {
       "codeLine": 2,
-      "note": "Reversed second half: [4, 3]",
+      "note": "Reverse the second half: [3, 4] becomes [4, 3]",
       "nodes": [
         {
           "val": 1,
@@ -44,21 +65,22 @@
         },
         {
           "val": 2,
-          "next": null
+          "next": 3
         },
         {
           "val": 4,
-          "next": 3
+          "next": 2
         },
         {
           "val": 3,
           "next": null
         }
-      ]
+      ],
+      "curr": 2
     },
     {
       "codeLine": 3,
-      "note": "Merging: 1 -> 4 -> 2 -> 3",
+      "note": "Merge: link 1->4",
       "nodes": [
         {
           "val": 1,
@@ -76,7 +98,32 @@
           "val": 3,
           "next": null
         }
-      ]
+      ],
+      "curr": 3
+    },
+    {
+      "codeLine": 3,
+      "note": "Merge: link 4->2, link 2->3",
+      "nodes": [
+        {
+          "val": 1,
+          "next": 2
+        },
+        {
+          "val": 4,
+          "next": 3
+        },
+        {
+          "val": 2,
+          "next": 4
+        },
+        {
+          "val": 3,
+          "next": null
+        }
+      ],
+      "curr": 3
     }
-  ]
+  ],
+  "fullDescription": "<p>You are given the head of a singly linked-list. The list can be represented as:</p>\n\n<pre>\nL<sub>0</sub> &rarr; L<sub>1</sub> &rarr; &hellip; &rarr; L<sub>n - 1</sub> &rarr; L<sub>n</sub>\n</pre>\n\n<p><em>Reorder the list to be on the following form:</em></p>\n\n<pre>\nL<sub>0</sub> &rarr; L<sub>n</sub> &rarr; L<sub>1</sub> &rarr; L<sub>n - 1</sub> &rarr; L<sub>2</sub> &rarr; L<sub>n - 2</sub> &rarr; &hellip;\n</pre>\n\n<p>You may not modify the values in the list&#39;s nodes. Only nodes themselves may be changed.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2021/03/04/reorder1linked-list.jpg\" style=\"width: 422px; height: 222px;\" />\n<pre>\n<strong>Input:</strong> head = [1,2,3,4]\n<strong>Output:</strong> [1,4,2,3]\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2021/03/09/reorder2-linked-list.jpg\" style=\"width: 542px; height: 222px;\" />\n<pre>\n<strong>Input:</strong> head = [1,2,3,4,5]\n<strong>Output:</strong> [1,5,2,4,3]\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li>The number of nodes in the list is in the range <code>[1, 5 * 10<sup>4</sup>]</code>.</li>\n\t<li><code>1 &lt;= Node.val &lt;= 1000</code></li>\n</ul>\n"
 }

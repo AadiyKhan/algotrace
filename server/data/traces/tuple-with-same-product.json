@@ -1,0 +1,118 @@
+{
+  "title": "Tuple with Same Product",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "Counting"
+  ],
+  "description": "Given an array of distinct integers, count the number of tuples (a, b, c, d) such that a * b = c * d where a, b, c, and d are distinct elements.",
+  "target": null,
+  "pseudocode": "1. map = {}\n2. count = 0\n3. for i = 0 to n-1\n4.   for j = i + 1 to n-1\n5.     prod = nums[i] * nums[j]\n6.     count += 8 * map[prod] || 0\n7.     map[prod] = (map[prod] || 0) + 1",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize empty product map and count",
+      "array": [
+        2,
+        3,
+        4,
+        6
+      ],
+      "i": null,
+      "j": null
+    },
+    {
+      "codeLine": 3,
+      "note": "Outer loop i = 0 (val 2), Inner loop j = 1 (val 3), product 6",
+      "array": [
+        2,
+        3,
+        4,
+        6
+      ],
+      "i": 0,
+      "j": 1,
+      "curr": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Product 6 not in map, count remains 0",
+      "array": [
+        2,
+        3,
+        4,
+        6
+      ],
+      "i": 0,
+      "j": 1,
+      "curr": 6
+    },
+    {
+      "codeLine": 7,
+      "note": "Store product 6 in map: {6: 1}",
+      "array": [
+        2,
+        3,
+        4,
+        6
+      ],
+      "i": 0,
+      "j": 1,
+      "curr": 6
+    },
+    {
+      "codeLine": 3,
+      "note": "i=0, j=2: product 2*4=8. Map: {6: 1, 8: 1}",
+      "array": [
+        2,
+        3,
+        4,
+        6
+      ],
+      "i": 0,
+      "j": 2,
+      "curr": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "i=0, j=3: product 2*6=12. Map: {6: 1, 8: 1, 12: 1}",
+      "array": [
+        2,
+        3,
+        4,
+        6
+      ],
+      "i": 0,
+      "j": 3,
+      "curr": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "i=1, j=2: product 3*4=12. Product 12 exists in map (count 1)",
+      "array": [
+        2,
+        3,
+        4,
+        6
+      ],
+      "i": 1,
+      "j": 2,
+      "curr": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Add 8 * 1 to count. Total count = 8",
+      "array": [
+        2,
+        3,
+        4,
+        6
+      ],
+      "i": 1,
+      "j": 2,
+      "curr": 8
+    }
+  ]
+}

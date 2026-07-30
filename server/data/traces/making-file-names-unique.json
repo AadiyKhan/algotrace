@@ -1,0 +1,95 @@
+{
+  "title": "Making File Names Unique",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "String"
+  ],
+  "description": "Ensure file names are unique by appending (k) to duplicates.",
+  "pseudocode": "1. Initialize count map\n2. Initialize result array\n3. For each name in names:\n4. If name not in count map, add to result and map\n5. Else, find smallest k, format name, add to result",
+  "steps": [
+    {
+      "codeLine": 3,
+      "note": "Processing 'pes'",
+      "array": [
+        "pes"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "'pes' is new, added to map with count 1",
+      "array": [
+        "pes"
+      ],
+      "i": 0,
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Processing 'fifa'",
+      "array": [
+        "pes",
+        "fifa"
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "'fifa' is new, added to map with count 1",
+      "array": [
+        "pes",
+        "fifa"
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Processing 'gta'",
+      "array": [
+        "pes",
+        "fifa",
+        "gta"
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "'gta' is new, added to map with count 1",
+      "array": [
+        "pes",
+        "fifa",
+        "gta"
+      ],
+      "i": 2,
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Processing 'pes(2019)'",
+      "array": [
+        "pes",
+        "fifa",
+        "gta",
+        "pes(2019)"
+      ],
+      "i": 3,
+      "curr": 2019
+    },
+    {
+      "codeLine": 4,
+      "note": "'pes(2019)' is new, added to map with count 1",
+      "array": [
+        "pes",
+        "fifa",
+        "gta",
+        "pes(2019)"
+      ],
+      "i": 3,
+      "curr": 2019
+    }
+  ]
+}

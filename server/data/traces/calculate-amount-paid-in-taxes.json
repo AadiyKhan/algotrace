@@ -1,0 +1,103 @@
+{
+  "title": "Calculate Amount Paid in Taxes",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Simulation"
+  ],
+  "description": "Calculate income tax based on brackets: income is taxed at different rates for each tier.",
+  "target": 10,
+  "pseudocode": "1. totalTax = 0\n2. prevUpper = 0\n3. for bracket in brackets:\n4.   upper, percent = bracket\n5.   taxable = min(income, upper) - prevUpper\n6.   if taxable > 0:\n7.     totalTax += taxable * (percent / 100)\n8.     prevUpper = upper\n9. return totalTax",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize totalTax to 0",
+      "array": [
+        10,
+        20
+      ],
+      "i": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Enter loop for first bracket [10, 15]",
+      "array": [
+        10,
+        20
+      ],
+      "i": 0,
+      "curr": 10
+    },
+    {
+      "codeLine": 5,
+      "note": "Calculate taxable amount for first tier: min(10, 10) - 0 = 10",
+      "array": [
+        10,
+        20
+      ],
+      "i": 0,
+      "curr": 10
+    },
+    {
+      "codeLine": 7,
+      "note": "Add 10 * 0.15 = 1.5 to totalTax",
+      "array": [
+        10,
+        20
+      ],
+      "i": 0,
+      "curr": 10
+    },
+    {
+      "codeLine": 8,
+      "note": "Update prevUpper to 10",
+      "array": [
+        10,
+        20
+      ],
+      "i": 0,
+      "curr": 10
+    },
+    {
+      "codeLine": 3,
+      "note": "Enter loop for second bracket [20, 25]",
+      "array": [
+        10,
+        20
+      ],
+      "i": 1,
+      "curr": 20
+    },
+    {
+      "codeLine": 5,
+      "note": "Calculate taxable amount: min(10, 20) - 10 = 0",
+      "array": [
+        10,
+        20
+      ],
+      "i": 1,
+      "curr": 10
+    },
+    {
+      "codeLine": 6,
+      "note": "Taxable is 0, skip calculation",
+      "array": [
+        10,
+        20
+      ],
+      "i": 1,
+      "curr": 0
+    },
+    {
+      "codeLine": 9,
+      "note": "Return final tax amount 1.5",
+      "array": [
+        10,
+        20
+      ],
+      "curr": 1
+    }
+  ]
+}

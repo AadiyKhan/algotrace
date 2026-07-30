@@ -4,54 +4,45 @@
   "type": "array",
   "tags": [
     "Math",
-    "String",
+    "Counting",
     "Sorting"
   ],
-  "description": "Check if any permutation of the digits of N forms a power of 2.",
-  "pseudocode": "1. count = countDigits(N)\n2. for i = 0 to 30:\n3.   power = 2^i\n4.   if count == countDigits(power):\n5.     return true\n6. return false",
+  "description": "Check if any permutation of the digits of n is a power of two.",
+  "target": 1,
+  "pseudocode": "1. Convert n to a sorted string of digits\n2. Iterate through powers of 2 from 2^0 to 2^29\n3. Convert each power to a sorted string of digits\n4. Compare sorted strings; return true if match",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Count digits of N = 10. Counts: {1:1, 0:1}",
+      "note": "Convert n=1 to sorted digit string representation",
       "array": [
-        1,
-        0
-      ]
+        1
+      ],
+      "curr": 1
     },
     {
       "codeLine": 2,
-      "note": "Start loop i = 0. power = 2^0 = 1",
-      "i": 0
+      "note": "Start iteration with power 2^0 = 1",
+      "array": [
+        1
+      ],
+      "i": 0,
+      "curr": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Convert 2^0 (1) to sorted digit string '1'",
+      "array": [
+        1
+      ],
+      "curr": 2
     },
     {
       "codeLine": 4,
-      "note": "Compare digits of 10 ({1:1, 0:1}) with digits of 1 ({1:1})",
-      "i": 0
-    },
-    {
-      "codeLine": 2,
-      "note": "Iterate to i = 1. power = 2^1 = 2",
-      "i": 1
-    },
-    {
-      "codeLine": 2,
-      "note": "Iterate to i = 2. power = 2^2 = 4",
-      "i": 2
-    },
-    {
-      "codeLine": 2,
-      "note": "Iterate to i = 3. power = 2^3 = 8",
-      "i": 3
-    },
-    {
-      "codeLine": 2,
-      "note": "Iterate to i = 4. power = 2^4 = 16",
-      "i": 4
-    },
-    {
-      "codeLine": 4,
-      "note": "Compare digits of 10 ({1:1, 0:1}) with digits of 16 ({1:1, 6:1})",
-      "i": 4
+      "note": "Sorted digits of n (1) match sorted digits of power (1). Return true.",
+      "array": [
+        1
+      ],
+      "curr": 1
     }
   ]
 }

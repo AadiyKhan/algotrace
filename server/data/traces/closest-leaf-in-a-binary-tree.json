@@ -4,16 +4,16 @@
   "type": "tree",
   "tags": [
     "Tree",
-    "Graph",
+    "Depth-First Search",
     "Breadth-First Search"
   ],
-  "description": "Find the value of the leaf node that is closest to a target node k in a binary tree.",
-  "target": 2,
-  "pseudocode": "1. Build an undirected graph from the tree.\n2. Add all leaves to a queue.\n3. Run BFS starting from target node.\n4. Return the value of the first leaf reached.",
+  "description": "Find the value of the nearest leaf node to a given target k in a binary tree.",
+  "target": 1,
+  "pseudocode": "1. Build adjacency list of tree nodes using DFS\n2. Locate target node k\n3. Perform BFS from target node to find nearest leaf",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Building adjacency list for tree: 1->[2, 3], 2->[1], 3->[1].",
+      "note": "Building graph representation of the tree",
       "treeNodes": [
         {
           "id": 0,
@@ -24,12 +24,24 @@
         {
           "id": 1,
           "val": 2,
-          "left": null,
-          "right": null
+          "left": 3,
+          "right": 4
         },
         {
           "id": 2,
           "val": 3,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 4,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 5,
           "left": null,
           "right": null
         }
@@ -37,21 +49,122 @@
     },
     {
       "codeLine": 2,
-      "note": "Identify leaves: node 1 (val 2) and node 2 (val 3).",
+      "note": "Locating target node with value 1",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 4,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 5,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "BFS search from node 1; moving to child node 2",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 4,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 5,
+          "left": null,
+          "right": null
+        }
+      ],
       "visited": [
-        1,
-        2
+        0,
+        1
       ]
     },
     {
       "codeLine": 3,
-      "note": "Start BFS from target node 2 (id 1).",
-      "curr": 1
-    },
-    {
-      "codeLine": 4,
-      "note": "Reached leaf node 1 (val 2) first. Return 2.",
-      "curr": 1
+      "note": "Leaf node 3 reached from node 1",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 4,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 5,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        0,
+        1,
+        2
+      ],
+      "curr": 2
     }
   ]
 }

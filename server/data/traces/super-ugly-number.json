@@ -16,7 +16,8 @@
       "note": "Initialize ugly sequence with 1",
       "array": [
         1
-      ]
+      ],
+      "curr": 1
     },
     {
       "codeLine": 2,
@@ -24,14 +25,16 @@
       "array": [
         1
       ],
-      "i": 0
+      "i": 0,
+      "curr": 2
     },
     {
       "codeLine": 4,
       "note": "Calculate next ugly number: min(2*1, 7*1) = 2",
       "array": [
         1
-      ]
+      ],
+      "curr": 2
     },
     {
       "codeLine": 5,
@@ -39,7 +42,8 @@
       "array": [
         1,
         2
-      ]
+      ],
+      "curr": 2
     },
     {
       "codeLine": 6,
@@ -48,7 +52,8 @@
         1,
         2
       ],
-      "i": 1
+      "i": 1,
+      "curr": 2
     },
     {
       "codeLine": 4,
@@ -57,7 +62,8 @@
         1,
         2,
         4
-      ]
+      ],
+      "curr": 2
     },
     {
       "codeLine": 5,
@@ -66,7 +72,8 @@
         1,
         2,
         4
-      ]
+      ],
+      "curr": 4
     },
     {
       "codeLine": 6,
@@ -76,7 +83,8 @@
         2,
         4
       ],
-      "i": 2
+      "i": 2,
+      "curr": 2
     }
   ]
 }

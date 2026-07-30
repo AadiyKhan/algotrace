@@ -5,16 +5,27 @@
   "tags": [
     "Array",
     "Hash Table",
-    "Heap",
-    "Sorting"
+    "Counting"
   ],
-  "description": "Given an integer array nums and an integer k, return the k most frequent elements.",
+  "description": "Find the k most frequent elements in the array using a frequency map and bucket sort.",
   "target": 2,
-  "pseudocode": "1. count = new Map();\n2. for (let n of nums) count.set(n, (count.get(n) || 0) + 1);\n3. buckets = Array.from({length: nums.length + 1}, () => []);\n4. for (let [n, freq] of count) buckets[freq].push(n);\n5. res = [];\n6. for (let i = buckets.length - 1; i >= 0 && res.length < k; i--) {\n7.   if (buckets[i].length > 0) res.push(...buckets[i]);\n8. }",
+  "pseudocode": "1. count frequencies of each element in a hash map\n2. create buckets where index is frequency and value is list of elements\n3. iterate buckets from end to start to collect top k elements",
   "steps": [
     {
+      "codeLine": 1,
+      "note": "Initialize hash map to count frequencies: {1: 3, 2: 2, 3: 1}",
+      "array": [
+        1,
+        1,
+        1,
+        2,
+        2,
+        3
+      ]
+    },
+    {
       "codeLine": 2,
-      "note": "Counting frequencies of elements: [1,1,1,2,2,3]",
+      "note": "Create buckets of size nums.length + 1: index 0:[], 1:[3], 2:[2], 3:[1], 4:[], 5:[], 6:[]",
       "array": [
         1,
         1,
@@ -26,60 +37,35 @@
     },
     {
       "codeLine": 3,
-      "note": "Initialize buckets array based on frequency",
+      "note": "Collect elements starting from end of buckets. Frequency 3 found element 1.",
       "array": [
-        [],
-        [],
-        [],
-        [
-          1
-        ],
-        [
-          2
-        ],
-        [
-          3
-        ]
+        1,
+        1,
+        1,
+        2,
+        2,
+        3
+      ],
+      "result": [
+        1
       ]
     },
     {
-      "codeLine": 4,
-      "note": "Populating buckets where index is frequency, value is element",
+      "codeLine": 3,
+      "note": "Frequency 2 found element 2. Result array complete.",
       "array": [
-        [],
-        [
-          3
-        ],
-        [
-          2
-        ],
-        [
-          1
-        ],
-        [],
-        [],
-        []
+        1,
+        1,
+        1,
+        2,
+        2,
+        3
+      ],
+      "result": [
+        1,
+        2
       ]
-    },
-    {
-      "codeLine": 6,
-      "note": "Iterating from end of buckets to find top frequencies",
-      "i": 3
-    },
-    {
-      "codeLine": 7,
-      "note": "Adding element 1 (freq 3) to result",
-      "i": 3
-    },
-    {
-      "codeLine": 6,
-      "note": "Moving to next bucket",
-      "i": 2
-    },
-    {
-      "codeLine": 7,
-      "note": "Adding element 2 (freq 2) to result",
-      "i": 2
     }
-  ]
+  ],
+  "fullDescription": "<p>Given an integer array <code>nums</code> and an integer <code>k</code>, return <em>the</em> <code>k</code> <em>most frequent elements</em>. You may return the answer in <strong>any order</strong>.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<div class=\"example-block\">\n<p><strong>Input:</strong> <span class=\"example-io\">nums = [1,1,1,2,2,3], k = 2</span></p>\n\n<p><strong>Output:</strong> <span class=\"example-io\">[1,2]</span></p>\n</div>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<div class=\"example-block\">\n<p><strong>Input:</strong> <span class=\"example-io\">nums = [1], k = 1</span></p>\n\n<p><strong>Output:</strong> <span class=\"example-io\">[1]</span></p>\n</div>\n\n<p><strong class=\"example\">Example 3:</strong></p>\n\n<div class=\"example-block\">\n<p><strong>Input:</strong> <span class=\"example-io\">nums = [1,2,1,2,1,2,3,1,3,2], k = 2</span></p>\n\n<p><strong>Output:</strong> <span class=\"example-io\">[1,2]</span></p>\n</div>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= nums.length &lt;= 10<sup>5</sup></code></li>\n\t<li><code>-10<sup>4</sup> &lt;= nums[i] &lt;= 10<sup>4</sup></code></li>\n\t<li><code>k</code> is in the range <code>[1, the number of unique elements in the array]</code>.</li>\n\t<li>It is <strong>guaranteed</strong> that the answer is <strong>unique</strong>.</li>\n</ul>\n\n<p>&nbsp;</p>\n<p><strong>Follow up:</strong> Your algorithm&#39;s time complexity must be better than <code>O(n log n)</code>, where n is the array&#39;s size.</p>\n"
 }

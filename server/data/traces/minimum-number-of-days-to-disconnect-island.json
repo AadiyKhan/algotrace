@@ -1,0 +1,207 @@
+{
+  "title": "Minimum Number of Days to Disconnect Island",
+  "difficulty": "Hard",
+  "type": "matrix",
+  "tags": [
+    "Graph",
+    "Matrix",
+    "DFS"
+  ],
+  "description": "Find the minimum days to disconnect an island in a grid. 0 days if already disconnected, 1 day if one cell removal works, else 2.",
+  "target": 0,
+  "pseudocode": "1: function isDisconnected(grid) {\n2:   count = countIslands(grid);\n3:   return count !== 1;\n4: }\n5: if (isDisconnected(grid)) return 0;\n6: for (r, c in grid where cell is 1) {\n7:   grid[r][c] = 0;\n8:   if (isDisconnected(grid)) return 1;\n9:   grid[r][c] = 1;\n10: }\n11: return 2;",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Checking initial state: count islands in the grid.",
+      "matrix": [
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Initial count is 1. Not disconnected.",
+      "matrix": [
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Attempting to remove cell at [0,0].",
+      "curr": [
+        0,
+        0
+      ],
+      "matrix": [
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Removing cell [0,0].",
+      "matrix": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Checking if island is still connected.",
+      "matrix": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "visited": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ]
+    },
+    {
+      "codeLine": 9,
+      "note": "Reverting cell [0,0] back to 1.",
+      "matrix": [
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Attempting to remove cell at [0,1].",
+      "curr": [
+        0,
+        1
+      ],
+      "matrix": [
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Removing cell [0,1].",
+      "matrix": [
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "curr": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Still connected, count is 1.",
+      "matrix": [
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ]
+    },
+    {
+      "codeLine": 11,
+      "note": "Returning 2 as no single removal disconnects the grid.",
+      "matrix": [
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ]
+    }
+  ]
+}

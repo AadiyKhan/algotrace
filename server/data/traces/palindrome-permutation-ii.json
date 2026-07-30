@@ -7,61 +7,53 @@
     "String",
     "Backtracking"
   ],
-  "description": "Find all distinct palindromic permutations of a given string.",
+  "description": "Given a string s, return all the palindromic permutations (without duplicates) of it.",
   "target": "aabb",
-  "pseudocode": "1. count frequencies of characters\n2. check if more than one odd frequency exists\n3. build half string from characters with count/2\n4. generate permutations of half string\n5. mirror each permutation with middle char",
+  "pseudocode": "1. Count frequencies of each character.\n2. Identify characters with odd counts.\n3. If more than one character has an odd count, return empty list.\n4. Build half of the palindrome using available characters.\n5. Use backtracking to generate all permutations of the half.\n6. Concatenate half + mid + reverse(half) to form palindromes.",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Count frequencies: {a: 2, b: 2}",
+      "note": "Count frequencies: {a: 2, b: 2}.",
       "array": [
         "a",
         "a",
         "b",
         "b"
-      ]
+      ],
+      "curr": 2
     },
     {
       "codeLine": 2,
-      "note": "Check odd counts: Only 0 odd frequencies found, possible to form palindrome",
+      "note": "Identify odd counts: None.",
       "array": [
         "a",
         "a",
         "b",
-        "b"
-      ]
-    },
-    {
-      "codeLine": 3,
-      "note": "Construct half string: 'ab'",
-      "array": [
-        "a",
         "b"
       ]
     },
     {
       "codeLine": 4,
-      "note": "Permutations of 'ab': 'ab', 'ba'",
-      "i": 0
-    },
-    {
-      "codeLine": 5,
-      "note": "Mirror 'ab' to 'abba'",
+      "note": "Construct half: 'ab'.",
       "array": [
         "a",
-        "b",
-        "b",
-        "a"
+        "b"
       ]
     },
     {
       "codeLine": 5,
-      "note": "Mirror 'ba' to 'baab'",
+      "note": "Backtracking permutations of 'ab': ['ab', 'ba'].",
       "array": [
-        "b",
-        "a",
         "a",
         "b"
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Form palindromes: 'abba', 'baab'.",
+      "array": [
+        "abba",
+        "baab"
       ]
     }
   ]

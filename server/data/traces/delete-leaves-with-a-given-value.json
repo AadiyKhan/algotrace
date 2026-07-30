@@ -1,0 +1,141 @@
+{
+  "title": "Delete Leaves With a Given Value",
+  "difficulty": "Medium",
+  "type": "tree",
+  "tags": [
+    "Tree",
+    "DFS",
+    "Recursion"
+  ],
+  "description": "Given a binary tree root and an integer target, delete all leaf nodes with the value target. Repeat until no such leaf nodes exist.",
+  "target": 2,
+  "pseudocode": "1: function removeLeaves(node, target) {\n2:   if (!node) return null;\n3:   node.left = removeLeaves(node.left, target);\n4:   node.right = removeLeaves(node.right, target);\n5:   if (!node.left && !node.right && node.val === target) return null;\n6:   return node;\n7: }",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize DFS on root node 1",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Traversing to left child (node 2)",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Node 2 is a leaf and matches target 2; returning null to parent",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": null,
+          "right": 2
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Traversing to right child (node 3)",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": null,
+          "right": 2
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 3
+    },
+    {
+      "codeLine": 5,
+      "note": "Node 3 is a leaf but does not match target 2; keeping node",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": null,
+          "right": 2
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 3
+    },
+    {
+      "codeLine": 6,
+      "note": "Returning root node 1 as the modified tree",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": null,
+          "right": 2
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 1
+    }
+  ]
+}

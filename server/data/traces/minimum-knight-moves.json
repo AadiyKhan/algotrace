@@ -1,0 +1,156 @@
+{
+  "title": "Minimum Knight Moves",
+  "difficulty": "Medium",
+  "type": "graph",
+  "tags": [
+    "Breadth-First Search",
+    "Graph"
+  ],
+  "description": "Find the minimum number of steps a knight needs to reach coordinate (x, y) starting from (0, 0).",
+  "target": [
+    2,
+    1
+  ],
+  "pseudocode": "1. Initialize queue with (0,0) and distance 0\n2. While queue is not empty:\n3. Pop current (x, y) and dist\n4. If (x, y) == target, return dist\n5. For each of 8 knight moves, add to queue if not visited",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize BFS queue with starting position (0, 0).",
+      "graphNodes": [
+        {
+          "id": "0,0",
+          "val": "0,0"
+        }
+      ],
+      "graphEdges": [],
+      "visited": [
+        "0,0"
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Dequeue (0,0). Check if target (2,1) is reached.",
+      "graphNodes": [
+        {
+          "id": "0,0",
+          "val": "0,0"
+        }
+      ],
+      "graphEdges": [],
+      "visited": [
+        "0,0"
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Explore 8 knight moves from (0,0).",
+      "graphNodes": [
+        {
+          "id": "0,0",
+          "val": "0,0"
+        },
+        {
+          "id": "2,1",
+          "val": "2,1"
+        },
+        {
+          "id": "1,2",
+          "val": "1,2"
+        },
+        {
+          "id": "-1,2",
+          "val": "-1,2"
+        },
+        {
+          "id": "-2,1",
+          "val": "-2,1"
+        },
+        {
+          "id": "-2,-1",
+          "val": "-2,-1"
+        },
+        {
+          "id": "-1,-2",
+          "val": "-1,-2"
+        },
+        {
+          "id": "1,-2",
+          "val": "1,-2"
+        },
+        {
+          "id": "2,-1",
+          "val": "2,-1"
+        }
+      ],
+      "graphEdges": [
+        [
+          "0,0",
+          "2,1"
+        ],
+        [
+          "0,0",
+          "1,2"
+        ],
+        [
+          "0,0",
+          "-1,2"
+        ],
+        [
+          "0,0",
+          "-2,1"
+        ],
+        [
+          "0,0",
+          "-2,-1"
+        ],
+        [
+          "0,0",
+          "-1,-2"
+        ],
+        [
+          "0,0",
+          "1,-2"
+        ],
+        [
+          "0,0",
+          "2,-1"
+        ]
+      ],
+      "visited": [
+        "0,0",
+        "2,1",
+        "1,2",
+        "-1,2",
+        "-2,1",
+        "-2,-1",
+        "-1,-2",
+        "1,-2",
+        "2,-1"
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Found target (2,1) in 1 move.",
+      "graphNodes": [
+        {
+          "id": "0,0",
+          "val": "0,0"
+        },
+        {
+          "id": "2,1",
+          "val": "2,1"
+        }
+      ],
+      "graphEdges": [
+        [
+          "0,0",
+          "2,1"
+        ]
+      ],
+      "visited": [
+        "0,0",
+        "2,1"
+      ]
+    }
+  ]
+}

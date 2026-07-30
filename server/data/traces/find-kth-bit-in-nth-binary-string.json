@@ -1,0 +1,138 @@
+{
+  "title": "Find Kth Bit in Nth Binary String",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "String",
+    "Recursion",
+    "Simulation"
+  ],
+  "description": "Find the kth bit in the nth binary string defined by recursive construction.",
+  "target": 1,
+  "pseudocode": "1. If n == 1, return '0'\n2. Find length L = 2^n - 1\n3. Find mid = L / 2 + 1\n4. If k == mid, return '1'\n5. If k < mid, recurse (n-1, k)\n6. If k > mid, recurse (n-1, L - k + 1) and invert result",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Start with n=3, k=1. Since n != 1, proceed to calculate length.",
+      "array": [
+        "0",
+        "1",
+        "1",
+        "1",
+        "0",
+        "0",
+        "1"
+      ],
+      "curr": 3
+    },
+    {
+      "codeLine": 2,
+      "note": "Calculate length L = 2^3 - 1 = 7.",
+      "array": [
+        "0",
+        "1",
+        "1",
+        "1",
+        "0",
+        "0",
+        "1"
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Calculate middle index mid = 7 / 2 + 1 = 4.",
+      "array": [
+        "0",
+        "1",
+        "1",
+        "1",
+        "0",
+        "0",
+        "1"
+      ],
+      "i": 4,
+      "curr": 7
+    },
+    {
+      "codeLine": 4,
+      "note": "Check if k (1) == mid (4). False.",
+      "array": [
+        "0",
+        "1",
+        "1",
+        "1",
+        "0",
+        "0",
+        "1"
+      ],
+      "i": 4,
+      "curr": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Since k (1) < mid (4), recurse for n=2, k=1.",
+      "array": [
+        "0",
+        "1",
+        "1",
+        "1",
+        "0",
+        "0",
+        "1"
+      ],
+      "i": 4,
+      "curr": 1
+    },
+    {
+      "codeLine": 1,
+      "note": "Recursion n=2, k=1. Since n != 1, continue.",
+      "array": [
+        "0",
+        "1",
+        "1"
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 2,
+      "note": "Length L = 2^2 - 1 = 3.",
+      "array": [
+        "0",
+        "1",
+        "1"
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Middle index mid = 3 / 2 + 1 = 2.",
+      "array": [
+        "0",
+        "1",
+        "1"
+      ],
+      "i": 2,
+      "curr": 3
+    },
+    {
+      "codeLine": 5,
+      "note": "Since k (1) < mid (2), recurse for n=1, k=1.",
+      "array": [
+        "0",
+        "1",
+        "1"
+      ],
+      "i": 2,
+      "curr": 1
+    },
+    {
+      "codeLine": 1,
+      "note": "Recursion n=1, k=1. Condition n==1 is met, return '0'.",
+      "array": [
+        "0"
+      ],
+      "curr": 1
+    }
+  ]
+}

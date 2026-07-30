@@ -1,0 +1,158 @@
+{
+  "title": "Find Positive Integer Solution for a Given Equation",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Math",
+    "Two Pointers",
+    "Binary Search"
+  ],
+  "description": "Find all positive integer pairs (x, y) such that f(x, y) == z for a monotonically increasing function.",
+  "target": 5,
+  "pseudocode": "1. Initialize result list\n2. Set x = 1, y = z\n3. While x <= z and y >= 1:\n4.   val = f(x, y)\n5.   If val == z: add [x, y], x++, y--\n6.   Else if val < z: x++\n7.   Else: y--",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Initialize pointers x=1, y=5",
+      "array": [],
+      "i": 1,
+      "j": 5,
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "f(1, 5) = 6. 6 > 5, decrement y",
+      "array": [],
+      "i": 1,
+      "j": 5,
+      "curr": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "f(1, 4) = 5. Match found, add [1, 4]",
+      "array": [
+        [
+          1,
+          4
+        ]
+      ],
+      "i": 1,
+      "j": 4,
+      "curr": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Increment x to 2, decrement y to 3",
+      "array": [
+        [
+          1,
+          4
+        ]
+      ],
+      "i": 2,
+      "j": 3,
+      "curr": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "f(2, 3) = 5. Match found, add [2, 3]",
+      "array": [
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "i": 2,
+      "j": 3,
+      "curr": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Increment x to 3, decrement y to 2",
+      "array": [
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "i": 3,
+      "j": 2,
+      "curr": 3
+    },
+    {
+      "codeLine": 4,
+      "note": "f(3, 2) = 5. Match found, add [3, 2]",
+      "array": [
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          2
+        ]
+      ],
+      "i": 3,
+      "j": 2,
+      "curr": 3
+    },
+    {
+      "codeLine": 5,
+      "note": "Increment x to 4, decrement y to 1",
+      "array": [
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          2
+        ]
+      ],
+      "i": 4,
+      "j": 1,
+      "curr": 4
+    },
+    {
+      "codeLine": 4,
+      "note": "f(4, 1) = 5. Match found, add [4, 1]",
+      "array": [
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          4,
+          1
+        ]
+      ],
+      "i": 4,
+      "j": 1,
+      "curr": 4
+    }
+  ]
+}

@@ -4,63 +4,96 @@
   "type": "array",
   "tags": [
     "Array",
+    "Two Pointers",
     "Greedy",
     "Sorting"
   ],
-  "description": "Assign cookies to children such that the number of content children is maximized.",
-  "target": null,
-  "pseudocode": "1. g.sort((a, b) => a - b);\n2. s.sort((a, b) => a - b);\n3. child = 0, cookie = 0;\n4. while(child < g.length && cookie < s.length) {\n5.   if(s[cookie] >= g[child]) child++;\n6.   cookie++;\n7. }\n8. return child;",
+  "description": "Maximize the number of content children by assigning cookies based on greed factor.",
+  "target": 1,
+  "pseudocode": "1. Sort greed g and cookies s\n2. child = 0, cookie = 0\n3. while child < g.len and cookie < s.len:\n4.   if s[cookie] >= g[child]: child++\n5.   cookie++\n6. return child",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Sort greedy factors: [1, 2]",
-      "array": [
-        1,
-        2
-      ]
-    },
-    {
-      "codeLine": 2,
-      "note": "Sort cookie sizes: [1, 2, 3]",
+      "note": "Sort both arrays: g=[1,2,3], s=[1,1]",
       "array": [
         1,
         2,
         3
-      ]
+      ],
+      "visited": [],
+      "i": 0,
+      "j": 0,
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Initialize pointers child=0, cookie=0",
+      "array": [
+        1,
+        2,
+        3
+      ],
+      "i": 0,
+      "j": 0,
+      "curr": 0
     },
     {
       "codeLine": 4,
-      "note": "Start loop, check first child and first cookie",
-      "i": 0,
-      "j": 0
+      "note": "Compare s[0]=1 and g[0]=1. 1 >= 1 is true. Increment child.",
+      "array": [
+        1,
+        2,
+        3
+      ],
+      "i": 1,
+      "j": 0,
+      "curr": 0
     },
     {
       "codeLine": 5,
-      "note": "Cookie 1 >= Child 1, increment child index",
-      "i": 1,
-      "j": 0
-    },
-    {
-      "codeLine": 6,
-      "note": "Move to next cookie",
+      "note": "Increment cookie pointer.",
+      "array": [
+        1,
+        2,
+        3
+      ],
       "i": 1,
       "j": 1
     },
     {
-      "codeLine": 5,
-      "note": "Cookie 2 >= Child 2, increment child index",
-      "i": 2,
-      "j": 1
+      "codeLine": 4,
+      "note": "Compare s[1]=1 and g[1]=2. 1 >= 2 is false.",
+      "array": [
+        1,
+        2,
+        3
+      ],
+      "i": 1,
+      "j": 1,
+      "curr": 1
     },
     {
-      "codeLine": 6,
-      "note": "Move to next cookie",
-      "i": 2,
+      "codeLine": 5,
+      "note": "Increment cookie pointer.",
+      "array": [
+        1,
+        2,
+        3
+      ],
+      "i": 1,
       "j": 2
     },
     {
-      "codeLine": 8,
-      "note": "All children assigned, return count 2"
+      "codeLine": 6,
+      "note": "Cookie pointer exceeds s length. Return child=1.",
+      "array": [
+        1,
+        2,
+        3
+      ],
+      "i": 1,
+      "j": 2,
+      "curr": 1
     }
   ]
 }

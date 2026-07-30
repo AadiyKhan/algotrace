@@ -3,57 +3,59 @@
   "difficulty": "Hard",
   "type": "array",
   "tags": [
-    "Heap",
     "Design",
+    "Heap",
     "Data Stream"
   ],
-  "description": "Maintain a median of a stream of numbers using two heaps (max-heap for lower half, min-heap for upper half).",
-  "pseudocode": "1. Add num to lower heap\n2. Move largest of lower to upper heap\n3. Balance sizes: if upper > lower, move back\n4. If lower.size > upper.size return lower.peek()\n5. Else return (lower.peek() + upper.peek()) / 2",
+  "description": "Maintain two heaps (max-heap for lower half, min-heap for upper half) to find the median in O(log n) time.",
+  "pseudocode": "1. maxHeap.push(num)\n2. minHeap.push(maxHeap.pop())\n3. if maxHeap.size < minHeap.size: maxHeap.push(minHeap.pop())\n4. if maxHeap.size > minHeap.size: return maxHeap.top()\n5. else: return (maxHeap.top() + minHeap.top()) / 2",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Add 5 to lower heap (max-heap)",
-      "array": [
-        5
-      ]
+      "note": "Initialize MedianFinder",
+      "array": []
     },
     {
-      "codeLine": 2,
-      "note": "Move 5 to upper heap (min-heap) to maintain order",
+      "codeLine": 1,
+      "note": "addNum(1): Add 1 to maxHeap",
       "array": [
-        5
-      ]
-    },
-    {
-      "codeLine": 3,
-      "note": "Balance heaps: upper heap is size 1, lower 0. Move 5 back.",
-      "array": [
-        5
+        1
       ]
     },
     {
       "codeLine": 1,
-      "note": "Add 10 to lower heap",
+      "note": "addNum(2): Add 2 to maxHeap, balance to minHeap",
       "array": [
-        5,
-        10
+        1,
+        2
       ]
     },
     {
-      "codeLine": 2,
-      "note": "Move 10 (max of lower) to upper heap",
+      "codeLine": 5,
+      "note": "findMedian(): Even elements, return (1+2)/2",
       "array": [
-        5,
-        10
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 1,
+      "note": "addNum(3): Add 3 to maxHeap",
+      "array": [
+        1,
+        2,
+        3
       ]
     },
     {
       "codeLine": 4,
-      "note": "Lower size (1) == Upper size (1), median is average",
+      "note": "findMedian(): Odd elements, return middle 2",
       "array": [
-        5,
-        10
+        1,
+        2,
+        3
       ]
     }
-  ]
+  ],
+  "fullDescription": "<p>The <strong>median</strong> is the middle value in an ordered integer list. If the size of the list is even, there is no middle value, and the median is the mean of the two middle values.</p>\n\n<ul>\n\t<li>For example, for <code>arr = [2,3,4]</code>, the median is <code>3</code>.</li>\n\t<li>For example, for <code>arr = [2,3]</code>, the median is <code>(2 + 3) / 2 = 2.5</code>.</li>\n</ul>\n\n<p>Implement the MedianFinder class:</p>\n\n<ul>\n\t<li><code>MedianFinder()</code> initializes the <code>MedianFinder</code> object.</li>\n\t<li><code>void addNum(int num)</code> adds the integer <code>num</code> from the data stream to the data structure.</li>\n\t<li><code>double findMedian()</code> returns the median of all elements so far. Answers within <code>10<sup>-5</sup></code> of the actual answer will be accepted.</li>\n</ul>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<pre>\n<strong>Input</strong>\n[&quot;MedianFinder&quot;, &quot;addNum&quot;, &quot;addNum&quot;, &quot;findMedian&quot;, &quot;addNum&quot;, &quot;findMedian&quot;]\n[[], [1], [2], [], [3], []]\n<strong>Output</strong>\n[null, null, null, 1.5, null, 2.0]\n\n<strong>Explanation</strong>\nMedianFinder medianFinder = new MedianFinder();\nmedianFinder.addNum(1);    // arr = [1]\nmedianFinder.addNum(2);    // arr = [1, 2]\nmedianFinder.findMedian(); // return 1.5 (i.e., (1 + 2) / 2)\nmedianFinder.addNum(3);    // arr[1, 2, 3]\nmedianFinder.findMedian(); // return 2.0\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>-10<sup>5</sup> &lt;= num &lt;= 10<sup>5</sup></code></li>\n\t<li>There will be at least one element in the data structure before calling <code>findMedian</code>.</li>\n\t<li>At most <code>5 * 10<sup>4</sup></code> calls will be made to <code>addNum</code> and <code>findMedian</code>.</li>\n</ul>\n\n<p>&nbsp;</p>\n<p><strong>Follow up:</strong></p>\n\n<ul>\n\t<li>If all integer numbers from the stream are in the range <code>[0, 100]</code>, how would you optimize your solution?</li>\n\t<li>If <code>99%</code> of all integer numbers from the stream are in the range <code>[0, 100]</code>, how would you optimize your solution?</li>\n</ul>\n"
 }

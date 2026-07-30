@@ -4,59 +4,34 @@
   "type": "array",
   "tags": [
     "Array",
+    "Dynamic Programming",
     "Greedy",
     "Heap"
   ],
-  "description": "Find the minimum number of refueling stops to reach the target, given an initial fuel and a list of stations.",
-  "target": 100,
-  "pseudocode": "1. maxHeap.push(startFuel)\n2. stops = 0, currentPosition = 0\n3. for each station in stations:\n4.   dist = station.pos - currentPosition\n5.   while maxHeap.size > 0 and currentFuel < dist:\n6.     currentFuel += maxHeap.pop()\n7.     stops++\n8.   currentFuel -= dist\n9.   maxHeap.push(station.fuel)\n10.  currentPosition = station.pos",
+  "description": "Calculate minimum refueling stops to reach target using a max-priority queue to greedily pick the largest available fuel source.",
+  "target": 1,
+  "pseudocode": "1. Initialize current_fuel = startFuel, stops = 0, pq = max_heap\n2. For each station in stations:\n3.   While current_fuel < station_position: pop from pq, add to current_fuel, stops++\n4.   Push station_fuel to pq\n5. While current_fuel < target: pop from pq, add to current_fuel, stops++\n6. Return stops",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize maxHeap with starting fuel of 10.",
-      "array": [
-        10
-      ]
-    },
-    {
-      "codeLine": 3,
-      "note": "Arriving at first station at position 10 with 10 fuel.",
+      "note": "Initialize starting fuel and stops count.",
+      "array": [],
       "i": 0,
-      "array": [
-        10
-      ]
-    },
-    {
-      "codeLine": 4,
-      "note": "Distance to next station is 10.",
-      "i": 0
-    },
-    {
-      "codeLine": 8,
-      "note": "Travel to station, fuel reduces to 0.",
-      "i": 0
-    },
-    {
-      "codeLine": 9,
-      "note": "Add station fuel 30 to heap.",
-      "array": [
-        30
-      ]
+      "curr": 1
     },
     {
       "codeLine": 5,
-      "note": "Fuel is 0, need fuel to reach target 100.",
-      "i": 1
+      "note": "Check if current fuel (1) is sufficient to reach target (1). Since 1 >= 1, no stops needed.",
+      "array": [],
+      "i": 0,
+      "curr": 1
     },
     {
       "codeLine": 6,
-      "note": "Refuel from heap, total fuel becomes 30.",
-      "i": 1
-    },
-    {
-      "codeLine": 7,
-      "note": "Increment stops count to 1.",
-      "i": 1
+      "note": "Return total stops: 0.",
+      "array": [],
+      "i": 0,
+      "curr": 1
     }
   ]
 }

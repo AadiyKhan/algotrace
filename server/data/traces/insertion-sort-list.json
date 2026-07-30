@@ -34,7 +34,8 @@
           "val": 3,
           "next": null
         }
-      ]
+      ],
+      "curr": 4
     },
     {
       "codeLine": 3,
@@ -88,7 +89,8 @@
           "val": 3,
           "next": null
         }
-      ]
+      ],
+      "curr": 2
     },
     {
       "codeLine": 8,

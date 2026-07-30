@@ -1,0 +1,263 @@
+{
+  "title": "Count Good Nodes in Binary Tree",
+  "difficulty": "Medium",
+  "type": "tree",
+  "tags": [
+    "Tree",
+    "DFS",
+    "Binary Tree"
+  ],
+  "description": "Count the number of nodes in a binary tree where the value is greater than or equal to all nodes on the path from the root.",
+  "target": null,
+  "pseudocode": "1. count = 0\n2. dfs(node, maxVal):\n3.   if not node: return\n4.   if node.val >= maxVal:\n5.     count++\n6.     maxVal = node.val\n7.   dfs(node.left, maxVal)\n8.   dfs(node.right, maxVal)",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Starting DFS at root node (3) with initial maxVal -infinity",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 3,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": 3,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 4,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 3
+    },
+    {
+      "codeLine": 4,
+      "note": "Node 3 >= -inf. Increment count (1). New maxVal is 3.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 3,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": 3,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 4,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 7,
+      "note": "Traversing to left child (1) with maxVal 3",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 3,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": 3,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 4,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Node 1 < 3. Not a good node. Continue DFS with maxVal 3.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 3,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": 3,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 4,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "Traversing to child (3) with maxVal 3",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 3,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": 3,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 4,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 3
+    },
+    {
+      "codeLine": 4,
+      "note": "Node 3 >= 3. Increment count (2). New maxVal 3.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 3,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": 3,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 4,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 3
+    },
+    {
+      "codeLine": 8,
+      "note": "Returning to root and traversing right child (4) with maxVal 3",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 3,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": 3,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 4,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Node 4 >= 3. Increment count (3). Final result: 3.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 3,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": 3,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 4,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 2
+    }
+  ]
+}

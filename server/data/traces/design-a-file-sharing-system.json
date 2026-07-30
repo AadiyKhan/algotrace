@@ -1,0 +1,71 @@
+{
+  "title": "Design a File Sharing System",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Design",
+    "Array",
+    "Heap"
+  ],
+  "description": "Manage user IDs and the files they own, supporting join, leave, request, and report operations.",
+  "pseudocode": "1. join(userID): add userID to availableUsers (min-heap)\n2. leave(userID): remove userID from ownedFiles and add to availableUsers\n3. request(userID, chunkID): find users who own chunkID, return sorted list\n4. report(userID, chunkID): add chunkID to ownedFiles[userID]",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "User 1 joins the system",
+      "array": [
+        1
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 1,
+      "note": "User 2 joins the system",
+      "array": [
+        1,
+        2
+      ],
+      "i": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "User 1 reports owning chunk 10",
+      "array": [
+        1,
+        2
+      ],
+      "curr": "User 1 owns [10]"
+    },
+    {
+      "codeLine": 4,
+      "note": "User 2 reports owning chunk 10",
+      "array": [
+        1,
+        2
+      ],
+      "curr": "User 2 owns [10]"
+    },
+    {
+      "codeLine": 3,
+      "note": "User 3 requests chunk 10, system identifies owners [1, 2]",
+      "array": [
+        1,
+        2,
+        3
+      ],
+      "curr": "Found owners: [1, 2]"
+    },
+    {
+      "codeLine": 2,
+      "note": "User 1 leaves the system",
+      "array": [
+        2,
+        3
+      ],
+      "i": 1,
+      "curr": 1
+    }
+  ]
+}

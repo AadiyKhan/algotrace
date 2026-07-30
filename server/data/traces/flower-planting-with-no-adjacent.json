@@ -1,0 +1,155 @@
+{
+  "title": "Flower Planting With No Adjacent",
+  "difficulty": "Medium",
+  "type": "graph",
+  "tags": [
+    "Graph Theory",
+    "DFS",
+    "BFS"
+  ],
+  "description": "Assign one of 4 flower types to each garden such that no two connected gardens have the same flower type.",
+  "pseudocode": "1. Build adjacency list from paths\n2. Initialize answer array with 0s\n3. For each garden 1 to n:\n4.   Find flowers used by neighbors\n5.   Assign the smallest available flower type (1-4)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Constructing adjacency list: 1:[2,3], 2:[1,3], 3:[2,1]",
+      "graphNodes": [
+        {
+          "id": 1,
+          "val": 0
+        },
+        {
+          "id": 2,
+          "val": 0
+        },
+        {
+          "id": 3,
+          "val": 0
+        }
+      ],
+      "graphEdges": [
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          1
+        ]
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Processing garden 1: No neighbors assigned yet. Assign type 1.",
+      "graphNodes": [
+        {
+          "id": 1,
+          "val": 1
+        },
+        {
+          "id": 2,
+          "val": 0
+        },
+        {
+          "id": 3,
+          "val": 0
+        }
+      ],
+      "graphEdges": [
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          1
+        ]
+      ],
+      "visited": [
+        1
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Processing garden 2: Neighbor 1 has type 1. Assign type 2.",
+      "graphNodes": [
+        {
+          "id": 1,
+          "val": 1
+        },
+        {
+          "id": 2,
+          "val": 2
+        },
+        {
+          "id": 3,
+          "val": 0
+        }
+      ],
+      "graphEdges": [
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          1
+        ]
+      ],
+      "visited": [
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Processing garden 3: Neighbors 1 and 2 have types 1 and 2. Assign type 3.",
+      "graphNodes": [
+        {
+          "id": 1,
+          "val": 1
+        },
+        {
+          "id": 2,
+          "val": 2
+        },
+        {
+          "id": 3,
+          "val": 3
+        }
+      ],
+      "graphEdges": [
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          1
+        ]
+      ],
+      "visited": [
+        1,
+        2,
+        3
+      ]
+    }
+  ]
+}

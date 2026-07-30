@@ -1,0 +1,77 @@
+{
+  "title": "Minimum Cost To Connect Sticks",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Greedy",
+    "Heap"
+  ],
+  "description": "Combine sticks into one with minimum cost, where cost is the sum of the lengths of the two sticks being connected.",
+  "target": null,
+  "pseudocode": "1: minHeap = sticks.sort()\n2: totalCost = 0\n3: while minHeap.length > 1:\n4:   a = minHeap.shift()\n5:   b = minHeap.shift()\n6:   cost = a + b\n7:   totalCost += cost\n8:   minHeap.push(cost)\n9:   minHeap.sort()",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize min-heap with sticks [2, 4, 3]. Sorted: [2, 3, 4].",
+      "array": [
+        2,
+        3,
+        4
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Extract smallest stick: 2",
+      "array": [
+        3,
+        4
+      ],
+      "i": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Extract second smallest stick: 3",
+      "array": [
+        4
+      ],
+      "j": 3,
+      "curr": 3
+    },
+    {
+      "codeLine": 7,
+      "note": "Connect 2 and 3, cost is 5. Total cost: 5",
+      "array": [
+        4,
+        5
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Extract smallest stick: 4",
+      "array": [
+        5
+      ],
+      "i": 4,
+      "curr": 4
+    },
+    {
+      "codeLine": 5,
+      "note": "Extract second smallest stick: 5",
+      "array": [],
+      "j": 5,
+      "curr": 5
+    },
+    {
+      "codeLine": 7,
+      "note": "Connect 4 and 5, cost is 9. Total cost: 14",
+      "array": [
+        9
+      ],
+      "curr": 4
+    }
+  ]
+}

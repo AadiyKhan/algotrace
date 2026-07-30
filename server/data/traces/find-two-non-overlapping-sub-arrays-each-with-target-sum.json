@@ -1,0 +1,85 @@
+{
+  "title": "Find Two Non-Overlapping Sub-arrays Each With Target Sum",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Dynamic Programming",
+    "Sliding Window"
+  ],
+  "description": "Find two non-overlapping sub-arrays each with a sum equal to target, minimizing the sum of their lengths.",
+  "target": 3,
+  "pseudocode": "1. let n = arr.length, min_len = Infinity, res = Infinity\n2. let left_min = new Array(n).fill(Infinity)\n3. let sum = 0, map = {0: -1}\n4. for i = 0 to n-1:\n5.   sum += arr[i]\n6.   if (sum - target) in map: min_len = min(min_len, i - map[sum - target])\n7.   left_min[i] = min_len\n8.   map[sum] = i\n9. sum = 0, map = {0: n}\n10. for i = n-1 down to 0:\n11.  sum += arr[i]\n12.  if (sum - target) in map:\n13.    right_min = map[sum - target] - i\n14.    if left_min[i-1] != Infinity: res = min(res, left_min[i-1] + right_min)\n15.  map[sum] = i",
+  "steps": [
+    {
+      "codeLine": 4,
+      "note": "Starting forward pass to find shortest sub-array ending at or before i.",
+      "array": [
+        1,
+        2,
+        1,
+        2
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Found sub-array [1, 2] ending at index 1. min_len becomes 2.",
+      "array": [
+        1,
+        2,
+        1,
+        2
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "Storing min_len at left_min[1] = 2.",
+      "array": [
+        1,
+        2,
+        1,
+        2
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 10,
+      "note": "Starting backward pass to find non-overlapping sub-array starting at or after i.",
+      "array": [
+        1,
+        2,
+        1,
+        2
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 12,
+      "note": "Found sub-array [1, 2] starting at index 2.",
+      "array": [
+        1,
+        2,
+        1,
+        2
+      ],
+      "i": 2,
+      "curr": 1
+    },
+    {
+      "codeLine": 14,
+      "note": "Check left_min[1] (2) + current sub-array length (2) = 4. Res = 4.",
+      "array": [
+        1,
+        2,
+        1,
+        2
+      ],
+      "i": 2,
+      "curr": 1
+    }
+  ]
+}

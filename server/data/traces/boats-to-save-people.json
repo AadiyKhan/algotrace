@@ -1,0 +1,157 @@
+{
+  "title": "Boats to Save People",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Two Pointers",
+    "Sorting",
+    "Greedy"
+  ],
+  "description": "Find the minimum number of boats to carry people given a weight limit, where each boat carries at most two people.",
+  "target": 3,
+  "pseudocode": "1. sort(people)\n2. left = 0, right = n - 1, boats = 0\n3. while left <= right:\n4.   boats++\n5.   if people[left] + people[right] <= limit:\n6.     left++\n7.   right--\n8. return boats",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Sort people weights: [1, 2, 2, 3]",
+      "array": [
+        1,
+        2,
+        2,
+        3
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Initialize pointers: left=0, right=3, boats=0",
+      "array": [
+        1,
+        2,
+        2,
+        3
+      ],
+      "i": 0,
+      "j": 3,
+      "curr": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Boat 1: Pair heaviest (3) with lightest (1)",
+      "array": [
+        1,
+        2,
+        2,
+        3
+      ],
+      "i": 0,
+      "j": 3,
+      "curr": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "1 + 3 <= 3 is False. Only boat 3.",
+      "array": [
+        1,
+        2,
+        2,
+        3
+      ],
+      "i": 0,
+      "j": 3,
+      "curr": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "Move right pointer: right=2",
+      "array": [
+        1,
+        2,
+        2,
+        3
+      ],
+      "i": 0,
+      "j": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Boat 2: Pair heaviest (2) with lightest (1)",
+      "array": [
+        1,
+        2,
+        2,
+        3
+      ],
+      "i": 0,
+      "j": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "1 + 2 <= 3 is True.",
+      "array": [
+        1,
+        2,
+        2,
+        3
+      ],
+      "i": 0,
+      "j": 2,
+      "curr": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Move left pointer: left=1",
+      "array": [
+        1,
+        2,
+        2,
+        3
+      ],
+      "i": 1,
+      "j": 2,
+      "curr": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "Move right pointer: right=1",
+      "array": [
+        1,
+        2,
+        2,
+        3
+      ],
+      "i": 1,
+      "j": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Boat 3: Take remaining person (2)",
+      "array": [
+        1,
+        2,
+        2,
+        3
+      ],
+      "i": 1,
+      "j": 1,
+      "curr": 3
+    },
+    {
+      "codeLine": 7,
+      "note": "Final pointer update: right=0",
+      "array": [
+        1,
+        2,
+        2,
+        3
+      ],
+      "i": 1,
+      "j": 0,
+      "curr": 0
+    }
+  ]
+}

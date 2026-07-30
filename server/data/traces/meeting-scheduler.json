@@ -1,0 +1,202 @@
+{
+  "title": "Meeting Scheduler",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Two Pointers",
+    "Sorting"
+  ],
+  "description": "Find the earliest time slot of duration 'duration' that works for both people.",
+  "target": 8,
+  "pseudocode": "1. Sort slots1 and slots2 by start time.\n2. Use two pointers i and j to iterate through slots.\n3. Find intersection [max(start1, start2), min(end1, end2)].\n4. If intersection duration >= target, return found slot.\n5. Move pointer of the slot that ends earlier.",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Sort input slots1: [[10,50], [60,120], [140,210]], slots2: [[0,15], [60,70]]",
+      "array": [
+        [
+          10,
+          50
+        ],
+        [
+          60,
+          120
+        ],
+        [
+          140,
+          210
+        ],
+        [
+          0,
+          15
+        ],
+        [
+          60,
+          70
+        ]
+      ],
+      "i": 0,
+      "j": 0,
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Compare slots1[0] and slots2[0]: intersect [10, 15]. Duration 5 < 8.",
+      "array": [
+        [
+          10,
+          50
+        ],
+        [
+          60,
+          120
+        ],
+        [
+          140,
+          210
+        ],
+        [
+          0,
+          15
+        ],
+        [
+          60,
+          70
+        ]
+      ],
+      "i": 0,
+      "j": 0,
+      "curr": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Increment j as slots2[0] ends earlier.",
+      "array": [
+        [
+          10,
+          50
+        ],
+        [
+          60,
+          120
+        ],
+        [
+          140,
+          210
+        ],
+        [
+          0,
+          15
+        ],
+        [
+          60,
+          70
+        ]
+      ],
+      "i": 0,
+      "j": 1,
+      "curr": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Compare slots1[0] and slots2[1]: intersect [60, 50]. Invalid.",
+      "array": [
+        [
+          10,
+          50
+        ],
+        [
+          60,
+          120
+        ],
+        [
+          140,
+          210
+        ],
+        [
+          0,
+          15
+        ],
+        [
+          60,
+          70
+        ]
+      ],
+      "i": 0,
+      "j": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Increment i as slots1[0] ends earlier.",
+      "array": [
+        [
+          10,
+          50
+        ],
+        [
+          60,
+          120
+        ],
+        [
+          140,
+          210
+        ],
+        [
+          0,
+          15
+        ],
+        [
+          60,
+          70
+        ]
+      ],
+      "i": 1,
+      "j": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Compare slots1[1] and slots2[1]: intersect [60, 70]. Duration 10 >= 8.",
+      "array": [
+        [
+          10,
+          50
+        ],
+        [
+          60,
+          120
+        ],
+        [
+          140,
+          210
+        ],
+        [
+          0,
+          15
+        ],
+        [
+          60,
+          70
+        ]
+      ],
+      "i": 1,
+      "j": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Return [60, 68].",
+      "array": [
+        [
+          60,
+          68
+        ]
+      ],
+      "i": 1,
+      "j": 1,
+      "curr": 60
+    }
+  ]
+}

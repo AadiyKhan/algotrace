@@ -1,0 +1,258 @@
+{
+  "title": "Distance to a Cycle in Undirected Graph",
+  "difficulty": "Hard",
+  "type": "graph",
+  "tags": [
+    "Graph Theory",
+    "Breadth-First Search",
+    "Topological Sort"
+  ],
+  "description": "Find the distance of each node to the nearest cycle in an undirected graph.",
+  "pseudocode": "1. Find cycle nodes using Kahn's algorithm (topological sort).\n2. Initialize distance of all cycle nodes to 0 and push to queue.\n3. Perform Multi-source BFS to calculate distances for all non-cycle nodes.",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize degrees: {0:1, 1:2, 2:2, 3:1}. Queue contains leaves: [0, 3]",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": 0
+        },
+        {
+          "id": 1,
+          "val": 1
+        },
+        {
+          "id": 2,
+          "val": 2
+        },
+        {
+          "id": 3,
+          "val": 3
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          2
+        ]
+      ],
+      "visited": [],
+      "curr": 0
+    },
+    {
+      "codeLine": 1,
+      "note": "Removing leaf 0, updating degree of 1. Queue: [3, 1]",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": 0
+        },
+        {
+          "id": 1,
+          "val": 1
+        },
+        {
+          "id": 2,
+          "val": 2
+        },
+        {
+          "id": 3,
+          "val": 3
+        }
+      ],
+      "graphEdges": [
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          2
+        ]
+      ],
+      "visited": [
+        0
+      ]
+    },
+    {
+      "codeLine": 1,
+      "note": "Removing leaf 3, updating degree of 2. Queue: [1, 2]",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": 0
+        },
+        {
+          "id": 1,
+          "val": 1
+        },
+        {
+          "id": 2,
+          "val": 2
+        },
+        {
+          "id": 3,
+          "val": 3
+        }
+      ],
+      "graphEdges": [
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          1
+        ]
+      ],
+      "visited": [
+        0,
+        3
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Cycle nodes identified: [1, 2]. Distance 0 assigned.",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": 0
+        },
+        {
+          "id": 1,
+          "val": 1
+        },
+        {
+          "id": 2,
+          "val": 2
+        },
+        {
+          "id": 3,
+          "val": 3
+        }
+      ],
+      "graphEdges": [
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          1
+        ]
+      ],
+      "visited": [
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "BFS: Node 0 distance = dist(1) + 1 = 1",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": 0
+        },
+        {
+          "id": 1,
+          "val": 1
+        },
+        {
+          "id": 2,
+          "val": 2
+        },
+        {
+          "id": 3,
+          "val": 3
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          2
+        ]
+      ],
+      "visited": [
+        1,
+        2,
+        0
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "BFS: Node 3 distance = dist(2) + 1 = 1",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": 0
+        },
+        {
+          "id": 1,
+          "val": 1
+        },
+        {
+          "id": 2,
+          "val": 2
+        },
+        {
+          "id": 3,
+          "val": 3
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          3,
+          2
+        ]
+      ],
+      "visited": [
+        1,
+        2,
+        0,
+        3
+      ]
+    }
+  ]
+}

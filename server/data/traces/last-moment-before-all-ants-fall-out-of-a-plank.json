@@ -1,0 +1,40 @@
+{
+  "title": "Last Moment Before All Ants Fall Out Of A Plank",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Brainteaser"
+  ],
+  "description": "Calculate the last moment an ant falls off a plank of length n, given ants moving left and right.",
+  "target": 4,
+  "pseudocode": "function getLastMoment(n, left, right) {\n  let maxLeft = Math.max(...left, 0);\n  let minRight = Math.min(...right, n);\n  return Math.max(maxLeft, n - minRight);\n}",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Initialize maxLeft: the furthest ant moving left is at position 4.",
+      "array": [
+        4
+      ],
+      "i": 4,
+      "curr": 4
+    },
+    {
+      "codeLine": 3,
+      "note": "Initialize minRight: the closest ant moving right is at position 0.",
+      "array": [
+        0
+      ],
+      "i": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Calculate max distance: max(4, 4 - 0) = 4. The result is 4.",
+      "array": [
+        4
+      ],
+      "curr": 4
+    }
+  ]
+}

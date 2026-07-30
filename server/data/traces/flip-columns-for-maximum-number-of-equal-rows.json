@@ -1,0 +1,120 @@
+{
+  "title": "Flip Columns For Maximum Number Of Equal Rows",
+  "difficulty": "Medium",
+  "type": "matrix",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "Matrix"
+  ],
+  "description": "Return the maximum number of rows that have all equal values after toggling any number of columns.",
+  "target": null,
+  "pseudocode": "1. map = {}\n2. for row in matrix:\n3.   pattern = row[0] == 0 ? row : row.map(x => 1 - x)\n4.   patternStr = pattern.join('')\n5.   map[patternStr] = (map[patternStr] || 0) + 1\n6. return Math.max(...Object.values(map))",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Initialize empty frequency map",
+      "matrix": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Process first row [0, 1]. Since it starts with 0, keep as is.",
+      "matrix": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "i": 0,
+      "curr": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Update map: '01' count is 1",
+      "matrix": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "i": 0,
+      "curr": [
+        1,
+        1
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Process second row [1, 0]. Starts with 1, so flip to [0, 1].",
+      "matrix": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "i": 1,
+      "curr": [
+        1,
+        0
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Update map: '01' count is 2",
+      "matrix": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "i": 1,
+      "curr": [
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Return max frequency 2",
+      "matrix": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ]
+    }
+  ]
+}

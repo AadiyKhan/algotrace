@@ -1,0 +1,74 @@
+{
+  "title": "Shortest Distance to a Character",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "String"
+  ],
+  "description": "Given a string s and a character c, return an array of integers representing the shortest distance from each character in s to the character c in s.",
+  "target": "e",
+  "pseudocode": "1. n = s.length\n2. res = new Array(n)\n3. prev = -Infinity\n4. for i from 0 to n-1:\n5.   if s[i] == c: prev = i\n6.   res[i] = i - prev\n7. prev = Infinity\n8. for i from n-1 down to 0:\n9.   if s[i] == c: prev = i\n10.  res[i] = min(res[i], abs(i - prev))",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Initialize result array with length of s",
+      "array": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Forward pass: calculate distance to nearest 'e' on the left",
+      "i": 0,
+      "array": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Found 'e' at index 3, update prev",
+      "i": 3,
+      "array": [
+        null,
+        null,
+        null,
+        0,
+        1
+      ],
+      "curr": 3
+    },
+    {
+      "codeLine": 8,
+      "note": "Backward pass: calculate distance to nearest 'e' on the right",
+      "i": 4,
+      "array": [
+        3,
+        2,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 10,
+      "note": "Final comparison for shortest distance",
+      "i": 0,
+      "array": [
+        3,
+        2,
+        1,
+        0,
+        1
+      ]
+    }
+  ]
+}

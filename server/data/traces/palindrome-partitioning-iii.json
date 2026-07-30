@@ -1,0 +1,51 @@
+{
+  "title": "Palindrome Partitioning III",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Dynamic Programming",
+    "String"
+  ],
+  "description": "Divide a string into k palindrome substrings with minimum character changes.",
+  "target": 2,
+  "pseudocode": "1. cost[i][j] = cost to make s[i...j] palindrome\n2. dp[k][i] = min changes to split s[0...i] into k parts\n3. for k from 1 to K:\n4.   for i from k-1 to N-1:\n5.     for j from k-2 to i-1:\n6.       dp[k][i] = min(dp[k][i], dp[k-1][j] + cost[j+1][i])",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Precomputing cost to make 'abc' palindrome: a=0, b=0, c=0, ab=1, bc=1, abc=1",
+      "array": [
+        0,
+        0,
+        0,
+        1,
+        1,
+        1
+      ],
+      "i": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Starting DP for k=1 part",
+      "array": [
+        0,
+        0,
+        0
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Calculating min changes for 2 partitions of 'abc'",
+      "array": [
+        0,
+        1,
+        1
+      ],
+      "i": 2,
+      "j": 0,
+      "curr": 2
+    }
+  ]
+}

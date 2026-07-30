@@ -1,0 +1,176 @@
+{
+  "title": "Smallest String With Swaps",
+  "difficulty": "Medium",
+  "type": "graph",
+  "tags": [
+    "Union-Find",
+    "Graph",
+    "String"
+  ],
+  "description": "Given a string and pairs of indices that can be swapped, find the lexicographically smallest string possible by performing any number of swaps.",
+  "target": "dcab",
+  "pseudocode": "1. Initialize DSU with n nodes\n2. For each pair (u, v), union(u, v)\n3. Group indices by root parent\n4. For each group, sort characters and indices\n5. Place sorted characters back into original string positions",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize DSU for string 'dcab' (len 4)",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": "d"
+        },
+        {
+          "id": 1,
+          "val": "c"
+        },
+        {
+          "id": 2,
+          "val": "a"
+        },
+        {
+          "id": 3,
+          "val": "b"
+        }
+      ],
+      "graphEdges": [],
+      "curr": 4
+    },
+    {
+      "codeLine": 2,
+      "note": "Union indices (0, 3) and (1, 2)",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": "d"
+        },
+        {
+          "id": 1,
+          "val": "c"
+        },
+        {
+          "id": 2,
+          "val": "a"
+        },
+        {
+          "id": 3,
+          "val": "b"
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Components found: {0, 3} and {1, 2}",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": "d"
+        },
+        {
+          "id": 1,
+          "val": "c"
+        },
+        {
+          "id": 2,
+          "val": "a"
+        },
+        {
+          "id": 3,
+          "val": "b"
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "visited": [
+        0,
+        3,
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Sort chars in components: {0,3}->['b', 'd'], {1,2}->['a', 'c']",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": "b"
+        },
+        {
+          "id": 1,
+          "val": "a"
+        },
+        {
+          "id": 2,
+          "val": "c"
+        },
+        {
+          "id": 3,
+          "val": "d"
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Reconstruct string: 'bacd'",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": "b"
+        },
+        {
+          "id": 1,
+          "val": "a"
+        },
+        {
+          "id": 2,
+          "val": "c"
+        },
+        {
+          "id": 3,
+          "val": "d"
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "curr": 0
+    }
+  ]
+}

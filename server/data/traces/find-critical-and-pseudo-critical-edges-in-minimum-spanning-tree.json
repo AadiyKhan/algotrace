@@ -1,0 +1,255 @@
+{
+  "title": "Find Critical and Pseudo-Critical Edges in Minimum Spanning Tree",
+  "difficulty": "Hard",
+  "type": "graph",
+  "tags": [
+    "Graph Theory",
+    "Union-Find",
+    "Minimum Spanning Tree"
+  ],
+  "description": "Identify critical edges (present in every MST) and pseudo-critical edges (present in some MSTs).",
+  "pseudocode": "1. Calculate base MST weight using Kruskal's\n2. For each edge, force include it: if weight increases, it's not in MST\n3. For each edge, force exclude it: if weight increases, it's critical\n4. Otherwise, it's pseudo-critical",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Calculate initial MST weight. Edges sorted by weight: (0,1,1), (1,2,1), (2,3,2), (0,3,2), (0,4,3), (3,4,3), (1,4,6)",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": 0
+        },
+        {
+          "id": 1,
+          "val": 1
+        },
+        {
+          "id": 2,
+          "val": 2
+        },
+        {
+          "id": 3,
+          "val": 3
+        },
+        {
+          "id": 4,
+          "val": 4
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          1,
+          4
+        ]
+      ],
+      "visited": [],
+      "curr": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Test edge 0 (0,1,1). Removing it forces a higher MST weight. Edge 0 is critical.",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": 0
+        },
+        {
+          "id": 1,
+          "val": 1
+        },
+        {
+          "id": 2,
+          "val": 2
+        },
+        {
+          "id": 3,
+          "val": 3
+        },
+        {
+          "id": 4,
+          "val": 4
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          1,
+          4
+        ]
+      ],
+      "visited": [
+        0
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Test edge 1 (1,2,1). Removing it forces a higher MST weight. Edge 1 is critical.",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": 0
+        },
+        {
+          "id": 1,
+          "val": 1
+        },
+        {
+          "id": 2,
+          "val": 2
+        },
+        {
+          "id": 3,
+          "val": 3
+        },
+        {
+          "id": 4,
+          "val": 4
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          1,
+          4
+        ]
+      ],
+      "visited": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Test edges 2, 3, 4, 5. They can be included in some MSTs but are not strictly necessary. They are pseudo-critical.",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": 0
+        },
+        {
+          "id": 1,
+          "val": 1
+        },
+        {
+          "id": 2,
+          "val": 2
+        },
+        {
+          "id": 3,
+          "val": 3
+        },
+        {
+          "id": 4,
+          "val": 4
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          1,
+          4
+        ]
+      ],
+      "visited": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    }
+  ]
+}

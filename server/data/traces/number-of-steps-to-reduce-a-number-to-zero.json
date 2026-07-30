@@ -1,0 +1,230 @@
+{
+  "title": "Number of Steps to Reduce a Number to Zero",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Math",
+    "Bit Manipulation"
+  ],
+  "description": "Given an integer num, return the number of steps to reduce it to zero. If the current number is even, divide by 2, otherwise subtract 1.",
+  "target": 0,
+  "pseudocode": "1: let steps = 0\n2: while num > 0:\n3:   if num % 2 == 0:\n4:     num /= 2\n5:   else:\n6:     num -= 1\n7:   steps++\n8: return steps",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize steps to 0 with num = 14",
+      "array": [
+        14
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "14 > 0, enter loop",
+      "array": [
+        14
+      ],
+      "curr": 14
+    },
+    {
+      "codeLine": 3,
+      "note": "14 is even",
+      "array": [
+        14
+      ],
+      "curr": 14
+    },
+    {
+      "codeLine": 4,
+      "note": "14 / 2 = 7",
+      "array": [
+        7
+      ],
+      "curr": 14
+    },
+    {
+      "codeLine": 7,
+      "note": "Increment steps to 1",
+      "array": [
+        7
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "7 > 0, enter loop",
+      "array": [
+        7
+      ],
+      "curr": 7
+    },
+    {
+      "codeLine": 5,
+      "note": "7 is odd",
+      "array": [
+        7
+      ],
+      "curr": 7
+    },
+    {
+      "codeLine": 6,
+      "note": "7 - 1 = 6",
+      "array": [
+        6
+      ],
+      "curr": 7
+    },
+    {
+      "codeLine": 7,
+      "note": "Increment steps to 2",
+      "array": [
+        6
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 2,
+      "note": "6 > 0, enter loop",
+      "array": [
+        6
+      ],
+      "curr": 6
+    },
+    {
+      "codeLine": 3,
+      "note": "6 is even",
+      "array": [
+        6
+      ],
+      "curr": 6
+    },
+    {
+      "codeLine": 4,
+      "note": "6 / 2 = 3",
+      "array": [
+        3
+      ],
+      "curr": 6
+    },
+    {
+      "codeLine": 7,
+      "note": "Increment steps to 3",
+      "array": [
+        3
+      ],
+      "curr": 3
+    },
+    {
+      "codeLine": 2,
+      "note": "3 > 0, enter loop",
+      "array": [
+        3
+      ],
+      "curr": 3
+    },
+    {
+      "codeLine": 5,
+      "note": "3 is odd",
+      "array": [
+        3
+      ],
+      "curr": 3
+    },
+    {
+      "codeLine": 6,
+      "note": "3 - 1 = 2",
+      "array": [
+        2
+      ],
+      "curr": 3
+    },
+    {
+      "codeLine": 7,
+      "note": "Increment steps to 4",
+      "array": [
+        2
+      ],
+      "curr": 4
+    },
+    {
+      "codeLine": 2,
+      "note": "2 > 0, enter loop",
+      "array": [
+        2
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "2 is even",
+      "array": [
+        2
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "2 / 2 = 1",
+      "array": [
+        1
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 7,
+      "note": "Increment steps to 5",
+      "array": [
+        1
+      ],
+      "curr": 5
+    },
+    {
+      "codeLine": 2,
+      "note": "1 > 0, enter loop",
+      "array": [
+        1
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "1 is odd",
+      "array": [
+        1
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "1 - 1 = 0",
+      "array": [
+        0
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "Increment steps to 6",
+      "array": [
+        0
+      ],
+      "curr": 6
+    },
+    {
+      "codeLine": 2,
+      "note": "num is 0, exit loop",
+      "array": [
+        0
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 8,
+      "note": "Return final steps: 6",
+      "array": [
+        0
+      ],
+      "curr": 6
+    }
+  ]
+}

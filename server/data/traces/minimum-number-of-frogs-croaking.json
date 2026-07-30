@@ -1,0 +1,150 @@
+{
+  "title": "Minimum Number of Frogs Croaking",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "String",
+    "Counting"
+  ],
+  "description": "Find the minimum number of frogs needed to produce the string 'croak' sequence.",
+  "target": "croak",
+  "pseudocode": "1. count = [0,0,0,0,0] (c,r,o,a,k)\n2. active = 0, max_frogs = 0\n3. for char in croakOfFrogs:\n4.   idx = index(char)\n5.   if idx == 0: active++, max_frogs = max(max_frogs, active)\n6.   else: if count[idx-1] == 0: return -1\n7.   count[idx-1]--, count[idx]++\n8.   if idx == 4: active--\n9. return active == 0 ? max_frogs : -1",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize count array for 'croak' and variables.",
+      "array": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Processing 'c', index 0.",
+      "array": [
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "i": "c",
+      "curr": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "First frog starts croaking.",
+      "array": [
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "i": "c"
+    },
+    {
+      "codeLine": 4,
+      "note": "Processing 'r', index 1.",
+      "array": [
+        0,
+        1,
+        0,
+        0,
+        0
+      ],
+      "i": "r",
+      "curr": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "Frog progresses to 'r'.",
+      "array": [
+        0,
+        1,
+        0,
+        0,
+        0
+      ],
+      "i": "r"
+    },
+    {
+      "codeLine": 4,
+      "note": "Processing 'o', index 2.",
+      "array": [
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
+      "i": "o",
+      "curr": 2
+    },
+    {
+      "codeLine": 7,
+      "note": "Frog progresses to 'o'.",
+      "array": [
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
+      "i": "o"
+    },
+    {
+      "codeLine": 4,
+      "note": "Processing 'a', index 3.",
+      "array": [
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      "i": "a",
+      "curr": 3
+    },
+    {
+      "codeLine": 7,
+      "note": "Frog progresses to 'a'.",
+      "array": [
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      "i": "a"
+    },
+    {
+      "codeLine": 4,
+      "note": "Processing 'k', index 4.",
+      "array": [
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "i": "k",
+      "curr": 4
+    },
+    {
+      "codeLine": 8,
+      "note": "Frog completes 'croak', decrement active frogs.",
+      "array": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "i": "k"
+    }
+  ]
+}

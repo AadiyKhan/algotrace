@@ -1,0 +1,170 @@
+{
+  "title": "Find Winner on a Tic Tac Toe Game",
+  "difficulty": "Easy",
+  "type": "matrix",
+  "tags": [
+    "Array",
+    "Simulation",
+    "Matrix"
+  ],
+  "description": "Determine the winner of a Tic Tac Toe game given a list of moves.",
+  "target": "A",
+  "pseudocode": "1. Initialize board[3][3] with empty values\n2. For each move in moves:\n3.   player = (i % 2 == 0) ? 'A' : 'B'\n4.   board[r][c] = player\n5.   Check if current player wins by checking row, col, and diagonals\n6. Return 'Draw' if moves are 9 else 'Pending'",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize empty 3x3 board",
+      "matrix": [
+        [
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null
+        ]
+      ],
+      "curr": [
+        3,
+        3
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Player A moves to [0,0]",
+      "matrix": [
+        [
+          "A",
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null
+        ]
+      ],
+      "i": 0,
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Player B moves to [1,1]",
+      "matrix": [
+        [
+          "A",
+          null,
+          null
+        ],
+        [
+          null,
+          "B",
+          null
+        ],
+        [
+          null,
+          null,
+          null
+        ]
+      ],
+      "i": 1,
+      "curr": [
+        1,
+        1
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Player A moves to [0,1]",
+      "matrix": [
+        [
+          "A",
+          "A",
+          null
+        ],
+        [
+          null,
+          "B",
+          null
+        ],
+        [
+          null,
+          null,
+          null
+        ]
+      ],
+      "i": 2,
+      "curr": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Player B moves to [1,0]",
+      "matrix": [
+        [
+          "A",
+          "A",
+          null
+        ],
+        [
+          "B",
+          "B",
+          null
+        ],
+        [
+          null,
+          null,
+          null
+        ]
+      ],
+      "i": 3,
+      "curr": [
+        1,
+        0
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Player A moves to [0,2] - A wins!",
+      "matrix": [
+        [
+          "A",
+          "A",
+          "A"
+        ],
+        [
+          "B",
+          "B",
+          null
+        ],
+        [
+          null,
+          null,
+          null
+        ]
+      ],
+      "i": 4,
+      "curr": [
+        0,
+        2
+      ]
+    }
+  ]
+}

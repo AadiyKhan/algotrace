@@ -1,5 +1,5 @@
 {
-  "title": "Count Numbers With Unique Digits",
+  "title": "Count Numbers with Unique Digits",
   "difficulty": "Medium",
   "type": "array",
   "tags": [
@@ -7,60 +7,76 @@
     "Dynamic Programming",
     "Backtracking"
   ],
-  "description": "Given an integer n, return the count of all numbers with unique digits, x, where 0 <= x < 10^n.",
-  "target": 2,
-  "pseudocode": "1. if n == 0 return 1\n2. res = 10, unique = 9, available = 9\n3. for i = 2 to n:\n4.   unique = unique * available\n5.   res = res + unique\n6.   available = available - 1\n7. return res",
+  "description": "Calculate count of numbers with unique digits in range 0 <= x < 10^n.",
+  "target": 91,
+  "pseudocode": "1. if n == 0 return 1\n2. res = 10, uniqueDigits = 9, availableNumber = 9\n3. for i from 2 to n:\n4.   uniqueDigits = uniqueDigits * availableNumber\n5.   res = res + uniqueDigits\n6.   availableNumber = availableNumber - 1\n7. return res",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Check if n is 0. Since n=2, we proceed.",
+      "note": "Check if n is 0, since n=2, continue.",
       "array": [
         10
-      ]
+      ],
+      "curr": 0
     },
     {
       "codeLine": 2,
-      "note": "Initialize result with 10 (0-9), unique digits count, and available digits (1-9).",
+      "note": "Initialize result (res=10), unique digits for first two places (9*9=81), and next available multiplier (9).",
       "array": [
-        10
+        10,
+        81,
+        9
       ],
-      "i": 0
+      "curr": 10
     },
     {
       "codeLine": 3,
-      "note": "Loop from 2 up to n (2).",
-      "i": 2
+      "note": "Start loop for i=2.",
+      "array": [
+        10,
+        81,
+        9
+      ],
+      "i": 2,
+      "curr": 2
     },
     {
       "codeLine": 4,
-      "note": "Calculate unique numbers for current digit length: 9 * 9 = 81.",
+      "note": "Calculate count of unique numbers for 2 digits: 9 * 9 = 81.",
       "array": [
-        91
+        10,
+        81,
+        9
       ],
-      "i": 2
+      "curr": 2
     },
     {
       "codeLine": 5,
-      "note": "Add unique numbers to result: 10 + 81 = 91.",
+      "note": "Update total result: 10 + 81 = 91.",
       "array": [
-        91
+        91,
+        81,
+        9
       ],
-      "i": 2
+      "curr": 10
     },
     {
       "codeLine": 6,
-      "note": "Decrement available digits from 9 to 8.",
+      "note": "Decrement available digits for next iteration: 9 - 1 = 8.",
       "array": [
-        91
+        91,
+        81,
+        8
       ],
-      "i": 2
+      "curr": 9
     },
     {
       "codeLine": 7,
-      "note": "Return final result.",
+      "note": "Return final result 91.",
       "array": [
         91
-      ]
+      ],
+      "curr": 91
     }
   ]
 }

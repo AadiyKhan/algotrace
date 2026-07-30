@@ -6,46 +6,30 @@
     "Array",
     "Dynamic Programming"
   ],
-  "description": "Generate the first numRows of Pascal's triangle.",
-  "target": 3,
-  "pseudocode": "1. result = []\n2. for i from 0 to numRows - 1:\n3.   row = new Array(i + 1).fill(1)\n4.   for j from 1 to i - 1:\n5.     row[j] = result[i-1][j-1] + result[i-1][j]\n6.   result.push(row)",
+  "description": "Generate the first numRows of Pascal's triangle where each number is the sum of the two numbers above it.",
+  "target": 5,
+  "pseudocode": "1. Initialize triangle = []\n2. For i from 0 to numRows - 1:\n3.   row = [1] * (i + 1)\n4.   For j from 1 to i - 1:\n5.     row[j] = triangle[i-1][j-1] + triangle[i-1][j]\n6.   triangle.append(row)\n7. Return triangle",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize result array",
+      "note": "Initialize empty triangle structure.",
       "array": []
     },
     {
       "codeLine": 2,
-      "note": "Start outer loop for row 0",
-      "i": 0
-    },
-    {
-      "codeLine": 3,
-      "note": "Create row 0 with one element",
+      "note": "Starting loop for row 0.",
+      "i": 0,
       "array": [
         [
           1
         ]
-      ]
+      ],
+      "curr": 0
     },
     {
       "codeLine": 6,
-      "note": "Push row 0 to result",
-      "array": [
-        [
-          1
-        ]
-      ]
-    },
-    {
-      "codeLine": 2,
-      "note": "Start outer loop for row 1",
-      "i": 1
-    },
-    {
-      "codeLine": 3,
-      "note": "Create row 1 with two 1s",
+      "note": "Row 1: Initialize [1, 1].",
+      "i": 1,
       "array": [
         [
           1
@@ -54,53 +38,13 @@
           1,
           1
         ]
-      ]
+      ],
+      "curr": 1
     },
     {
       "codeLine": 6,
-      "note": "Push row 1 to result",
-      "array": [
-        [
-          1
-        ],
-        [
-          1,
-          1
-        ]
-      ]
-    },
-    {
-      "codeLine": 2,
-      "note": "Start outer loop for row 2",
-      "i": 2
-    },
-    {
-      "codeLine": 3,
-      "note": "Create row 2 with three 1s",
-      "array": [
-        [
-          1
-        ],
-        [
-          1,
-          1
-        ],
-        [
-          1,
-          1,
-          1
-        ]
-      ]
-    },
-    {
-      "codeLine": 4,
-      "note": "Start inner loop to calculate middle value",
+      "note": "Row 2: Calculate middle element 1+1=2.",
       "i": 2,
-      "j": 1
-    },
-    {
-      "codeLine": 5,
-      "note": "Calculate row[1] as sum of parents",
       "array": [
         [
           1
@@ -115,12 +59,12 @@
           1
         ]
       ],
-      "i": 2,
-      "j": 1
+      "curr": 2
     },
     {
       "codeLine": 6,
-      "note": "Finalize row 2",
+      "note": "Row 3: Calculate middle elements 1+2=3, 2+1=3.",
+      "i": 3,
       "array": [
         [
           1
@@ -132,6 +76,77 @@
         [
           1,
           2,
+          1
+        ],
+        [
+          1,
+          3,
+          3,
+          1
+        ]
+      ],
+      "curr": 3
+    },
+    {
+      "codeLine": 6,
+      "note": "Row 4: Calculate middle elements 1+3=4, 3+3=6, 3+1=4.",
+      "i": 4,
+      "array": [
+        [
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          2,
+          1
+        ],
+        [
+          1,
+          3,
+          3,
+          1
+        ],
+        [
+          1,
+          4,
+          6,
+          4,
+          1
+        ]
+      ],
+      "curr": 4
+    },
+    {
+      "codeLine": 7,
+      "note": "Return completed triangle.",
+      "array": [
+        [
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          2,
+          1
+        ],
+        [
+          1,
+          3,
+          3,
+          1
+        ],
+        [
+          1,
+          4,
+          6,
+          4,
           1
         ]
       ]

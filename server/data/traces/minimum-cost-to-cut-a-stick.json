@@ -1,0 +1,128 @@
+{
+  "title": "Minimum Cost to Cut a Stick",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Dynamic Programming",
+    "Sorting"
+  ],
+  "description": "Minimize the cost of cutting a stick by choosing optimal cut orderings.",
+  "target": 16,
+  "pseudocode": "1. Sort cuts and add 0 and n to boundaries.\n2. Create DP table dp[len(newCuts)][len(newCuts)] initialized to 0.\n3. Iterate over chain lengths from 2 to m-1.\n4. For each sub-segment (i, j), calculate min cost: dp[i][j] = (cuts[j]-cuts[i]) + min(dp[i][k] + dp[k][j]) for k in i+1 to j-1.",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Sort cuts: [1, 3, 4, 5] and add boundaries 0 and 7. New cuts array: [0, 1, 3, 4, 5, 7]",
+      "array": [
+        0,
+        1,
+        3,
+        4,
+        5,
+        7
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Processing small sub-segments of length 2 (cost of cutting once).",
+      "array": [
+        0,
+        1,
+        3,
+        4,
+        5,
+        7
+      ],
+      "i": 0,
+      "curr": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Calculating DP for segment (0, 2), cuts at index 1: Cost = (cuts[2]-cuts[0]) = 3.",
+      "array": [
+        0,
+        1,
+        3,
+        4,
+        5,
+        7
+      ],
+      "i": 0,
+      "j": 2,
+      "curr": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Calculating DP for segment (1, 3), cuts at index 2: Cost = (cuts[3]-cuts[1]) = 3.",
+      "array": [
+        0,
+        1,
+        3,
+        4,
+        5,
+        7
+      ],
+      "i": 1,
+      "j": 3,
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Calculating DP for segment (2, 4), cuts at index 3: Cost = (cuts[4]-cuts[2]) = 2.",
+      "array": [
+        0,
+        1,
+        3,
+        4,
+        5,
+        7
+      ],
+      "i": 2,
+      "j": 4,
+      "curr": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Calculating DP for segment (3, 5), cuts at index 4: Cost = (cuts[5]-cuts[3]) = 3.",
+      "array": [
+        0,
+        1,
+        3,
+        4,
+        5,
+        7
+      ],
+      "i": 3,
+      "j": 5,
+      "curr": 3
+    },
+    {
+      "codeLine": 4,
+      "note": "Calculating larger segments. Optimal order results in total cost 16.",
+      "array": [
+        0,
+        1,
+        3,
+        4,
+        5,
+        7
+      ],
+      "curr": 16
+    },
+    {
+      "codeLine": 4,
+      "note": "Final DP result dp[0][5] reached.",
+      "array": [
+        0,
+        1,
+        3,
+        4,
+        5,
+        7
+      ],
+      "curr": 0
+    }
+  ]
+}

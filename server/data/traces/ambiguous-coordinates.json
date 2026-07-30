@@ -5,52 +5,66 @@
   "tags": [
     "String",
     "Backtracking",
-    "Math"
+    "Enumeration"
   ],
-  "description": "Add decimal points and commas to a string of digits to form valid 2D coordinates.",
-  "target": "(1, 23)",
-  "pseudocode": "1. function getCandidates(s) {\n2.   res = []\n3.   for i in 1..len(s) {\n4.     left = s.slice(0, i), right = s.slice(i)\n5.     if (left.length > 1 && left.startsWith('0')) continue\n6.     if (right.endsWith('0')) continue\n7.     res.push(left + (right ? '.' + right : ''))\n8.   }\n9.   return res\n10. }",
+  "description": "Generate all valid coordinate pairs by inserting a comma and possible decimal points into string s.",
+  "target": "(123)",
+  "pseudocode": "1. For i from 1 to len(s)-2: \n2.   split s into parts X = s[1:i+1], Y = s[i+1:-1]\n3.   generate all possible decimal versions of X and Y\n4.   combine valid X and Y pairs into '(x, y)' format",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize decomposition for string '123'",
+      "note": "Initialize splitting the string '(123)' at various points.",
       "array": [
-        1,
-        2,
-        3
-      ]
+        "(123)"
+      ],
+      "curr": 123
+    },
+    {
+      "codeLine": 2,
+      "note": "Split into X='1', Y='23'",
+      "array": [
+        "1",
+        "23"
+      ],
+      "curr": 1
     },
     {
       "codeLine": 3,
-      "note": "Split at index 1: '1' and '23'",
-      "i": 1
+      "note": "Generate valid decimals: X can only be '1'. Y can be '23' or '2.3'.",
+      "array": [
+        "(1, 23)",
+        "(1, 2.3)"
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Split into X='12', Y='3'",
+      "array": [
+        "12",
+        "3"
+      ],
+      "curr": 12
+    },
+    {
+      "codeLine": 3,
+      "note": "Generate valid decimals: X can be '12' or '1.2'. Y can only be '3'.",
+      "array": [
+        "(1, 23)",
+        "(1, 2.3)",
+        "(12, 3)",
+        "(1.2, 3)"
+      ],
+      "curr": 12
     },
     {
       "codeLine": 4,
-      "note": "Check validity of '1' and '23'",
-      "i": 1
-    },
-    {
-      "codeLine": 7,
-      "note": "Valid coordinate found: 1.23",
-      "i": 1
-    },
-    {
-      "codeLine": 3,
-      "note": "Split at index 2: '12' and '3'",
-      "i": 2
-    },
-    {
-      "codeLine": 7,
-      "note": "Valid coordinate found: 12.3",
-      "i": 2
-    },
-    {
-      "codeLine": 10,
-      "note": "Returning all valid combinations",
+      "note": "Final result gathered.",
       "array": [
-        1.23,
-        12.3
+        "(1, 2.3)",
+        "(1, 23)",
+        "(1.2, 3)",
+        "(12, 3)"
       ]
     }
   ]

@@ -1,0 +1,221 @@
+{
+  "title": "Matrix Diagonal Sum",
+  "difficulty": "Easy",
+  "type": "matrix",
+  "tags": [
+    "Array",
+    "Matrix"
+  ],
+  "description": "Calculate the sum of the primary and secondary diagonals of a square matrix, ensuring the center element is not counted twice for odd-sized matrices.",
+  "target": 25,
+  "pseudocode": "1: let sum = 0, n = mat.length\n2: for i from 0 to n - 1:\n3:   sum += mat[i][i]\n4:   sum += mat[i][n - 1 - i]\n5: if n % 2 != 0:\n6:   sum -= mat[n // 2][n // 2]",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize sum to 0 and get matrix size n=3.",
+      "matrix": [
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          4,
+          5,
+          6
+        ],
+        [
+          7,
+          8,
+          9
+        ]
+      ],
+      "i": 0,
+      "curr": [
+        0,
+        3
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Add primary diagonal element at [0,0] (1).",
+      "matrix": [
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          4,
+          5,
+          6
+        ],
+        [
+          7,
+          8,
+          9
+        ]
+      ],
+      "i": 0,
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Add secondary diagonal element at [0,2] (3). Sum = 4.",
+      "matrix": [
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          4,
+          5,
+          6
+        ],
+        [
+          7,
+          8,
+          9
+        ]
+      ],
+      "i": 0,
+      "curr": [
+        0,
+        2
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Add primary diagonal element at [1,1] (5). Sum = 9.",
+      "matrix": [
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          4,
+          5,
+          6
+        ],
+        [
+          7,
+          8,
+          9
+        ]
+      ],
+      "i": 1,
+      "curr": [
+        1,
+        1
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Add secondary diagonal element at [1,1] (5). Sum = 14.",
+      "matrix": [
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          4,
+          5,
+          6
+        ],
+        [
+          7,
+          8,
+          9
+        ]
+      ],
+      "i": 1,
+      "curr": [
+        1,
+        1
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Add primary diagonal element at [2,2] (9). Sum = 23.",
+      "matrix": [
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          4,
+          5,
+          6
+        ],
+        [
+          7,
+          8,
+          9
+        ]
+      ],
+      "i": 2,
+      "curr": [
+        2,
+        2
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Add secondary diagonal element at [2,0] (7). Sum = 30.",
+      "matrix": [
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          4,
+          5,
+          6
+        ],
+        [
+          7,
+          8,
+          9
+        ]
+      ],
+      "i": 2,
+      "curr": [
+        2,
+        0
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Matrix size is odd, subtract center element [1,1] (5). Final Sum = 25.",
+      "matrix": [
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          4,
+          5,
+          6
+        ],
+        [
+          7,
+          8,
+          9
+        ]
+      ],
+      "curr": [
+        1,
+        1
+      ]
+    }
+  ]
+}

@@ -1,0 +1,113 @@
+{
+  "title": "Maximum Students Taking Exam",
+  "difficulty": "Hard",
+  "type": "matrix",
+  "tags": [
+    "Array",
+    "Dynamic Programming",
+    "Bitmask"
+  ],
+  "description": "Find the maximum number of students that can take the exam in an m x n room without any two students sitting in adjacent seats (including diagonally).",
+  "target": null,
+  "pseudocode": "1. masks = valid row configurations\n2. dp = new Array(m).fill(0).map(() => new Map())\n3. for row in m:\n4.   for curr_mask in masks:\n5.     for prev_mask in dp[row-1]:\n6.       if is_compatible(curr_mask, prev_mask):\n7.         dp[row][curr_mask] = max(dp[row][curr_mask], dp[row-1][prev_mask] + bits(curr_mask))",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize valid row masks for 2x2 grid. Row 0: [0, 1, 2]. Row 1: [0, 1, 2].",
+      "matrix": [
+        [
+          "#",
+          "."
+        ],
+        [
+          ".",
+          "#"
+        ]
+      ],
+      "i": 0,
+      "curr": [
+        2,
+        2
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Processing Row 0. Possible masks: 0 (00), 1 (01), 2 (10).",
+      "matrix": [
+        [
+          "#",
+          "."
+        ],
+        [
+          ".",
+          "#"
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Assigning weights: mask 0 (0 students), mask 1 (1 student), mask 2 (1 student).",
+      "matrix": [
+        [
+          "#",
+          "."
+        ],
+        [
+          ".",
+          "#"
+        ]
+      ],
+      "i": 0,
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Processing Row 1. Compare with Row 0 masks. Ensure no diagonal adjacency.",
+      "matrix": [
+        [
+          "#",
+          "."
+        ],
+        [
+          ".",
+          "#"
+        ]
+      ],
+      "curr": [
+        1,
+        0
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Calculated max students for Row 1 using compatible previous masks.",
+      "matrix": [
+        [
+          "#",
+          "."
+        ],
+        [
+          ".",
+          "#"
+        ]
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ]
+    }
+  ]
+}

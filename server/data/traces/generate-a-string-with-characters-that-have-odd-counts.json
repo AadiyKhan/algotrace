@@ -1,0 +1,41 @@
+{
+  "title": "Generate a String With Characters That Have Odd Counts",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "String",
+    "Math"
+  ],
+  "description": "Given an integer n, return a string with n characters such that each character appears an odd number of times.",
+  "target": 4,
+  "pseudocode": "1: result = ''\n2: if n is odd:\n3:   return 'a' * n\n4: else:\n5:   return 'a' * (n - 1) + 'b'",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize empty result string",
+      "array": []
+    },
+    {
+      "codeLine": 2,
+      "note": "Check if target n=4 is odd",
+      "array": [],
+      "curr": 4
+    },
+    {
+      "codeLine": 4,
+      "note": "n is even, execute else block",
+      "array": []
+    },
+    {
+      "codeLine": 5,
+      "note": "Construct string with n-1 'a's and one 'b'",
+      "array": [
+        "a",
+        "a",
+        "a",
+        "b"
+      ],
+      "curr": -1
+    }
+  ]
+}

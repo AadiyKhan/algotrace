@@ -1,0 +1,86 @@
+{
+  "title": "Maximum of Absolute Value Expression",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Math"
+  ],
+  "description": "Find the maximum value of |arr1[i] - arr1[j]| + |arr2[i] - arr2[j]| + |i - j|.",
+  "target": null,
+  "pseudocode": "1. maxVal = -Infinity\n2. For s1 in [-1, 1], s2 in [-1, 1]:\n3.   minV = Infinity, maxV = -Infinity\n4.   For i = 0 to n-1:\n5.     val = arr1[i] + s1*arr2[i] + s2*i\n6.     minV = min(minV, val)\n7.     maxV = max(maxV, val)\n8.   maxVal = max(maxVal, maxV - minV)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize maxVal to track the global maximum result.",
+      "array": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Pick combination s1=1, s2=1 for the expression expansion.",
+      "array": [
+        1,
+        2,
+        3
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Iterate through the array to find min and max values for the current sign combination.",
+      "i": 0,
+      "array": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Calculate val = arr1[0] + 1*arr2[0] + 1*0 = 1 + 2 + 0 = 3.",
+      "i": 0,
+      "array": [
+        1,
+        2,
+        3
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Move to next index.",
+      "i": 1,
+      "array": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Calculate val = arr1[1] + 1*arr2[1] + 1*1 = 2 + 3 + 1 = 6.",
+      "i": 1,
+      "array": [
+        1,
+        2,
+        3
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 8,
+      "note": "Update maxVal with the difference between current max (6) and min (3).",
+      "i": 1,
+      "array": [
+        1,
+        2,
+        3
+      ],
+      "curr": 6
+    }
+  ]
+}

@@ -1,0 +1,82 @@
+{
+  "title": "Greatest English Letter in Upper and Lower Case",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "String",
+    "Enumeration"
+  ],
+  "description": "Find the greatest uppercase English letter that also appears as a lowercase letter in the string.",
+  "target": "E",
+  "pseudocode": "1. Initialize set for characters in s\n2. Iterate from 'Z' down to 'A'\n3. If char and lowercase(char) in set, return char\n4. Return empty string if no match found",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Create a set of all characters present in 'lEeTcOdE'",
+      "array": [
+        "l",
+        "E",
+        "e",
+        "T",
+        "c",
+        "O",
+        "d",
+        "E"
+      ],
+      "visited": [
+        "l",
+        "E",
+        "e",
+        "T",
+        "c",
+        "O",
+        "d"
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Checking for 'Z' down to 'F'...",
+      "array": [
+        "l",
+        "E",
+        "e",
+        "T",
+        "c",
+        "O",
+        "d",
+        "E"
+      ],
+      "i": "Z to F"
+    },
+    {
+      "codeLine": 3,
+      "note": "Checking 'E': both 'E' and 'e' are present in the set.",
+      "array": [
+        "l",
+        "E",
+        "e",
+        "T",
+        "c",
+        "O",
+        "d",
+        "E"
+      ],
+      "i": "E"
+    },
+    {
+      "codeLine": 3,
+      "note": "Found greatest letter 'E'.",
+      "array": [
+        "l",
+        "E",
+        "e",
+        "T",
+        "c",
+        "O",
+        "d",
+        "E"
+      ]
+    }
+  ]
+}

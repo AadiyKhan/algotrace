@@ -1,0 +1,111 @@
+{
+  "title": "Decrease Elements To Make Array Zigzag",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Greedy"
+  ],
+  "description": "Reduce elements to make array zigzag such that nums[i-1] > nums[i] < nums[i+1] or vice versa.",
+  "target": null,
+  "pseudocode": "1: let res = [0, 0];\n2: for (let i = 0; i < nums.length; i++) {\n3:   let left = i > 0 ? nums[i-1] : Infinity;\n4:   let right = i < nums.length - 1 ? nums[i+1] : Infinity;\n5:   let minVal = Math.min(left, right);\n6:   if (nums[i] >= minVal) {\n7:     res[i % 2] += nums[i] - minVal + 1;\n8:   }\n9: }",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize result array to track moves for even and odd index peaks.",
+      "array": [
+        2,
+        7,
+        10
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Processing index 0 (even). left is Infinity, right is 7.",
+      "array": [
+        2,
+        7,
+        10
+      ],
+      "i": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "nums[0] is 2, min(inf, 7) is 7. 2 < 7, no moves needed.",
+      "array": [
+        2,
+        7,
+        10
+      ],
+      "i": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Processing index 1 (odd). left is 2, right is 10.",
+      "array": [
+        2,
+        7,
+        10
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "nums[1] is 7, min(2, 10) is 2. 7 >= 2, must decrease nums[1] to 1.",
+      "array": [
+        2,
+        7,
+        10
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "Adding 7 - 2 + 1 = 6 to res[1].",
+      "array": [
+        2,
+        1,
+        10
+      ],
+      "i": 1,
+      "curr": 7
+    },
+    {
+      "codeLine": 2,
+      "note": "Processing index 2 (even). left is 1, right is Infinity.",
+      "array": [
+        2,
+        1,
+        10
+      ],
+      "i": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "nums[2] is 10, min(1, inf) is 1. 10 >= 1, must decrease nums[2] to 0.",
+      "array": [
+        2,
+        1,
+        10
+      ],
+      "i": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 7,
+      "note": "Adding 10 - 1 + 1 = 10 to res[0].",
+      "array": [
+        2,
+        1,
+        0
+      ],
+      "i": 2,
+      "curr": 10
+    }
+  ]
+}

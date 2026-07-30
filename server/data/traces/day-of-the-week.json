@@ -1,0 +1,57 @@
+{
+  "title": "Day of the Week",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Math"
+  ],
+  "description": "Given a date, return the day of the week for that date.",
+  "target": "Sunday",
+  "pseudocode": "1. days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']\n2. d = new Date(year, month - 1, day)\n3. return days[d.getDay()]",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize array of days starting from Sunday.",
+      "array": [
+        "Sunday",
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday"
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Calculate date object for 2023-12-25.",
+      "array": [
+        "Sunday",
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday"
+      ],
+      "i": 1,
+      "curr": 2023
+    },
+    {
+      "codeLine": 3,
+      "note": "Retrieve index from getDay() (1 = Monday).",
+      "array": [
+        "Sunday",
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday"
+      ],
+      "i": 1,
+      "curr": 1
+    }
+  ]
+}

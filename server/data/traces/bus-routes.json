@@ -1,63 +1,130 @@
 {
   "title": "Bus Routes",
   "difficulty": "Hard",
-  "type": "array",
+  "type": "graph",
   "tags": [
     "Array",
-    "BFS",
-    "Graph"
+    "Hash Table",
+    "Breadth-First Search"
   ],
-  "description": "Find the minimum number of buses to travel from source to target using BFS on bus routes.",
+  "description": "Find the minimum number of buses to travel from source to target using BFS on a bus-stop graph.",
   "target": 6,
-  "pseudocode": "1. map = Map<stop, List<busIndex>>\n2. queue = [source], visitedBuses = Set()\n3. count = 0\n4. while queue not empty:\n5.   count++\n6.   for size of queue:\n7.     curr = queue.pop()\n8.     for bus in map[curr]:\n9.       if bus not in visitedBuses:\n10.        visitedBuses.add(bus)\n11.        for stop in routes[bus]:\n12.          if stop == target: return count\n13.          queue.push(stop)",
+  "pseudocode": "1. Build adjacency map: stop -> list of buses\n2. BFS queue starting with buses containing source\n3. Mark visited buses and stops\n4. If target is in current bus, return count\n5. Otherwise, add all neighboring buses to queue",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Building graph: Mapping stops to bus indices.",
-      "array": [
-        1,
-        2,
-        7
+      "note": "Map stops to bus indices: 1:[0], 2:[0], 7:[0,1], 3:[1], 6:[1]",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": "Bus 0"
+        },
+        {
+          "id": 1,
+          "val": "Bus 1"
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ]
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Starting at stop 1, add Bus 0 to queue",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": "Bus 0"
+        },
+        {
+          "id": 1,
+          "val": "Bus 1"
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ]
+      ],
+      "visited": [
+        0
       ]
     },
     {
       "codeLine": 4,
-      "note": "Starting BFS from stop 1.",
-      "i": 0,
-      "visited": []
-    },
-    {
-      "codeLine": 5,
-      "note": "Incrementing bus count to 1.",
-      "i": 1
-    },
-    {
-      "codeLine": 7,
-      "note": "Processing stop 1, taking bus 0.",
-      "curr": 1
-    },
-    {
-      "codeLine": 11,
-      "note": "Adding connected stops [2, 7] to queue.",
-      "array": [
-        2,
-        7
+      "note": "Processing Bus 0, contains stops {1, 2, 7}. Target 6 not found.",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": "Bus 0"
+        },
+        {
+          "id": 1,
+          "val": "Bus 1"
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ]
+      ],
+      "visited": [
+        0
       ]
     },
     {
       "codeLine": 5,
-      "note": "Incrementing bus count to 2.",
-      "i": 2
+      "note": "Add Bus 1 to queue because it shares stop 7 with Bus 0",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": "Bus 0"
+        },
+        {
+          "id": 1,
+          "val": "Bus 1"
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ]
+      ],
+      "visited": [
+        0,
+        1
+      ]
     },
     {
-      "codeLine": 11,
-      "note": "Processing bus from stop 7, reaching target 6.",
-      "curr": 7
-    },
-    {
-      "codeLine": 12,
-      "note": "Target reached, returning total bus count.",
-      "i": 2
+      "codeLine": 4,
+      "note": "Processing Bus 1, contains stops {3, 6, 7}. Target 6 found! Return 2 buses.",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": "Bus 0"
+        },
+        {
+          "id": 1,
+          "val": "Bus 1"
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ]
+      ],
+      "visited": [
+        0,
+        1
+      ]
     }
   ]
 }

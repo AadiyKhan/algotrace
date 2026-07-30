@@ -3,59 +3,58 @@
   "difficulty": "Medium",
   "type": "array",
   "tags": [
-    "Array",
+    "Hash Table",
     "String",
-    "Math"
+    "Backtracking",
+    "Enumeration"
   ],
-  "description": "Find the next closest time using the current digits from a given time string 'HH:MM'.",
-  "target": "23:59",
-  "pseudocode": "1. digits = time.split('') \n2. allowed = sort unique digits \n3. for h1 in allowed: \n4.   for h2 in allowed: \n5.     for m1 in allowed: \n6.       for m2 in allowed: \n7.         time = h1h2:m1m2 \n8.         if valid and time > input: return time",
+  "description": "Find the next closest time using the current digits from a given time string.",
+  "target": "19:34",
+  "pseudocode": "1. Extract digits from time\n2. Generate all possible valid times using these digits\n3. Sort times and find the next one after current\n4. If no next time, return the earliest time",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Parse input time '19:34' into digits.",
+      "note": "Extract digits from '19:34': {1, 9, 3, 4}",
       "array": [
         1,
         9,
         3,
         4
-      ]
+      ],
+      "curr": 19
     },
     {
       "codeLine": 2,
-      "note": "Allowed digits are sorted: [1, 3, 4, 9].",
+      "note": "Generate combinations: 11:11, 11:13, ..., 19:34, 19:39, 11:11",
       "array": [
         1,
-        3,
-        4,
-        9
-      ]
+        1,
+        1,
+        1
+      ],
+      "curr": 11
     },
     {
       "codeLine": 3,
-      "note": "Start nested loops to form permutations.",
-      "i": 1,
-      "j": 1
-    },
-    {
-      "codeLine": 7,
-      "note": "Check permutation '19:39'. Valid and greater than '19:34'.",
+      "note": "Compare '19:34' with generated times. Next is '19:39'",
       "array": [
         1,
         9,
         3,
         9
-      ]
+      ],
+      "curr": 19
     },
     {
-      "codeLine": 8,
-      "note": "Found the next closest time.",
+      "codeLine": 4,
+      "note": "Found 19:39, return result.",
       "array": [
         1,
         9,
         3,
         9
-      ]
+      ],
+      "curr": 19
     }
   ]
 }

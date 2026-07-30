@@ -1,0 +1,87 @@
+{
+  "title": "Break a Palindrome",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "String",
+    "Greedy"
+  ],
+  "description": "Change exactly one character of a palindrome string to make it lexicographically smallest and non-palindromic.",
+  "target": "a",
+  "pseudocode": "1: if length is 1 return \"\"\n2: for i from 0 to length/2 - 1:\n3:   if s[i] != 'a':\n4:     s[i] = 'a'\n5:     return s\n6: s[length - 1] = 'b'\n7: return s",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Check if string length is 1",
+      "array": [
+        "a",
+        "b",
+        "a"
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Iterate through the first half of the string",
+      "array": [
+        "a",
+        "b",
+        "a"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Check if s[0] is not 'a'; it is 'a', continue loop",
+      "array": [
+        "a",
+        "b",
+        "a"
+      ],
+      "i": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Increment i to 1",
+      "array": [
+        "a",
+        "b",
+        "a"
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Check if s[1] is not 'a'; it is 'b', condition met",
+      "array": [
+        "a",
+        "b",
+        "a"
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Replace s[1] with 'a'",
+      "array": [
+        "a",
+        "a",
+        "a"
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Return the new lexicographically smallest non-palindrome",
+      "array": [
+        "a",
+        "a",
+        "a"
+      ]
+    }
+  ]
+}

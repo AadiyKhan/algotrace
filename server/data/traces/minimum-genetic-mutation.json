@@ -3,36 +3,47 @@
   "difficulty": "Medium",
   "type": "array",
   "tags": [
-    "Breadth-First Search",
+    "Hash Table",
     "String",
-    "Graph"
+    "Breadth-First Search"
   ],
-  "description": "Find the minimum mutations to transform start gene to end gene using a bank of valid mutations.",
-  "target": "AACCGGTT",
-  "pseudocode": "1: queue = [[start, 0]]\n2: visited = {start}\n3: while queue not empty:\n4:   curr, dist = queue.shift()\n5:   if curr == end: return dist\n6:   for each gene in bank:\n7:     if diff(curr, gene) == 1 and gene not in visited:\n8:       visited.add(gene)\n9:       queue.push([gene, dist + 1])",
+  "description": "Find the minimum number of mutations to transform startGene to endGene using a bank of valid mutations.",
+  "target": "AACCGGTA",
+  "pseudocode": "1. Initialize queue with [startGene, 0]\n2. Add startGene to visited\n3. While queue is not empty:\n4. Pop [currentGene, steps]\n5. If currentGene == endGene, return steps\n6. For each gene in bank:\n7. If gene is one mutation away and not visited, add to queue",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize BFS queue with start gene 'AACCGGTT' at distance 0.",
+      "note": "Initialize queue with startGene and 0 mutations.",
       "array": [
         "AACCGGTT"
-      ]
-    },
-    {
-      "codeLine": 3,
-      "note": "Queue is not empty, process 'AACCGGTT'.",
-      "i": "AACCGGTT"
-    },
-    {
-      "codeLine": 6,
-      "note": "Iterate through bank to find genes with 1-character difference.",
+      ],
       "visited": [
         "AACCGGTT"
       ]
     },
     {
-      "codeLine": 7,
-      "note": "Found 'AACCGGTA' in bank, 1 diff from 'AACCGGTT'. Adding to queue.",
+      "codeLine": 3,
+      "note": "Queue is not empty, start BFS.",
+      "array": [
+        "AACCGGTT"
+      ],
+      "visited": [
+        "AACCGGTT"
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Pop currentGene 'AACCGGTT' with 0 steps.",
+      "array": [
+        "AACCGGTT"
+      ],
+      "visited": [
+        "AACCGGTT"
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Check bank: 'AACCGGTA' is one mutation away.",
       "array": [
         "AACCGGTT",
         "AACCGGTA"
@@ -44,25 +55,24 @@
     },
     {
       "codeLine": 4,
-      "note": "Dequeue 'AACCGGTA', distance is 1.",
-      "i": "AACCGGTA"
-    },
-    {
-      "codeLine": 5,
-      "note": "Check if 'AACCGGTA' matches target 'AACCGGTT'. No.",
-      "i": "AACCGGTA"
-    },
-    {
-      "codeLine": 7,
-      "note": "Found 'AACCGGAA' in bank, 1 diff from 'AACCGGTA'. Adding to queue.",
+      "note": "Pop 'AACCGGTA' from queue.",
       "array": [
-        "AACCGGTA",
-        "AACCGGAA"
+        "AACCGGTA"
       ],
       "visited": [
         "AACCGGTT",
-        "AACCGGTA",
-        "AACCGGAA"
+        "AACCGGTA"
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Found endGene 'AACCGGTA', return 1.",
+      "array": [
+        "AACCGGTA"
+      ],
+      "visited": [
+        "AACCGGTT",
+        "AACCGGTA"
       ]
     }
   ]

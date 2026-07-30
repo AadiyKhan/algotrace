@@ -1,0 +1,77 @@
+{
+  "title": "Minimum Swaps to Group All 1s Together",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Sliding Window"
+  ],
+  "description": "Find the minimum number of swaps to group all 1s together in a binary array.",
+  "target": null,
+  "pseudocode": "1. countOnes = sum(data)\n2. windowOnes = sum(data[0...countOnes-1])\n3. maxWindowOnes = windowOnes\n4. for i from 1 to data.length - countOnes:\n5.   windowOnes = windowOnes - data[i-1] + data[i+countOnes-1]\n6.   maxWindowOnes = max(maxWindowOnes, windowOnes)\n7. return countOnes - maxWindowOnes",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Total number of 1s is 3.",
+      "array": [
+        1,
+        0,
+        1,
+        0,
+        1
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Initial window of size 3 has 2 ones.",
+      "array": [
+        1,
+        0,
+        1,
+        0,
+        1
+      ],
+      "i": 0,
+      "curr": 3
+    },
+    {
+      "codeLine": 5,
+      "note": "Slide window: remove data[0]=1, add data[3]=0. Window ones: 2 - 1 + 0 = 1.",
+      "array": [
+        1,
+        0,
+        1,
+        0,
+        1
+      ],
+      "i": 1,
+      "curr": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Slide window: remove data[1]=0, add data[4]=1. Window ones: 1 - 0 + 1 = 2.",
+      "array": [
+        1,
+        0,
+        1,
+        0,
+        1
+      ],
+      "i": 2,
+      "curr": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "Min swaps = 3 - 2 = 1.",
+      "array": [
+        1,
+        0,
+        1,
+        0,
+        1
+      ],
+      "curr": 3
+    }
+  ]
+}

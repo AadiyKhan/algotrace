@@ -1,0 +1,160 @@
+{
+  "title": "Rank Transform of a Matrix",
+  "difficulty": "Hard",
+  "type": "matrix",
+  "tags": [
+    "Array",
+    "Matrix",
+    "Union Find",
+    "Sorting"
+  ],
+  "description": "Transform each matrix element into its rank, where the rank is the smallest positive integer such that the element is larger than all elements in its row/column with a smaller rank.",
+  "target": null,
+  "pseudocode": "1. Collect elements with their positions (r, c, val)\n2. Sort elements by value\n3. Union-Find on rows and columns for equal values\n4. Calculate rank as max(rank[row], rank[col]) + 1",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Collecting elements: [[1, 2], [3, 4]]",
+      "matrix": [
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "curr": [
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Sorted elements: (0,0,1), (0,1,2), (1,0,3), (1,1,4)",
+      "matrix": [
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Processing 1 at (0,0): rank is max(rowRank[0], colRank[0]) + 1 = 1",
+      "matrix": [
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Updating ranks: rowRank[0]=1, colRank[0]=1",
+      "matrix": [
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "curr": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Processing 2 at (0,1): rank is max(rowRank[0], colRank[1]) + 1 = 2",
+      "matrix": [
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "curr": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Updating ranks: rowRank[0]=2, colRank[1]=2",
+      "matrix": [
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "curr": [
+        0,
+        2
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Processing 3 at (1,0): rank is max(rowRank[1], colRank[0]) + 1 = 2",
+      "matrix": [
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          4
+        ]
+      ],
+      "curr": [
+        1,
+        0
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Processing 4 at (1,1): rank is max(rowRank[1], colRank[1]) + 1 = 3",
+      "matrix": [
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "curr": [
+        1,
+        1
+      ]
+    }
+  ]
+}

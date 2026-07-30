@@ -1,0 +1,102 @@
+{
+  "title": "Count Artifacts That Can Be Extracted",
+  "difficulty": "Medium",
+  "type": "matrix",
+  "tags": [
+    "Array",
+    "Matrix",
+    "Simulation"
+  ],
+  "description": "Given a grid, artifacts defined by rectangles, and a list of dig locations, count how many artifacts are fully uncovered.",
+  "target": 1,
+  "pseudocode": "1. Initialize grid of size n x n with 0s\n2. For each dig in digs: set grid[r][c] = 1\n3. For each artifact [r1, c1, r2, c2]:\n4. Check if all cells in range are 1\n5. If true, increment count",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize 2x2 grid with 0s",
+      "matrix": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "curr": [
+        2,
+        2
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Dig at [0, 0]",
+      "matrix": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Dig at [0, 1]",
+      "matrix": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "curr": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Checking artifact at [0, 0, 0, 1]. All cells are 1.",
+      "matrix": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "i": 0,
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Artifact extracted. Total count = 1.",
+      "matrix": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ]
+      ]
+    }
+  ]
+}

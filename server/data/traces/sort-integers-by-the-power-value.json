@@ -1,0 +1,84 @@
+{
+  "title": "Sort Integers by The Power Value",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Sorting",
+    "Dynamic Programming"
+  ],
+  "description": "Calculate power values for range [lo, hi] and return the kth element after sorting by power and then by value.",
+  "target": 2,
+  "pseudocode": "1. Create array of pairs [value, power] for each x in [lo, hi]\n2. Calculate power for each x using Collatz sequence\n3. Sort pairs by power (asc), then by value (asc)\n4. Return the kth element (k-1 index)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initializing range [12, 13, 14, 15]",
+      "array": [
+        12,
+        13,
+        14,
+        15
+      ],
+      "curr": 12
+    },
+    {
+      "codeLine": 2,
+      "note": "Calculating power: 12 -> 9, 13 -> 9, 14 -> 17, 15 -> 17",
+      "array": [
+        [
+          12,
+          9
+        ],
+        [
+          13,
+          9
+        ],
+        [
+          14,
+          17
+        ],
+        [
+          15,
+          17
+        ]
+      ],
+      "curr": 12
+    },
+    {
+      "codeLine": 3,
+      "note": "Sorting by power then value: [12, 9], [13, 9], [14, 17], [15, 17]",
+      "array": [
+        [
+          12,
+          9
+        ],
+        [
+          13,
+          9
+        ],
+        [
+          14,
+          17
+        ],
+        [
+          15,
+          17
+        ]
+      ],
+      "curr": 12
+    },
+    {
+      "codeLine": 4,
+      "note": "Selecting 2nd element (index 1), which is 13",
+      "array": [
+        12,
+        13,
+        14,
+        15
+      ],
+      "i": 1,
+      "curr": 2
+    }
+  ]
+}

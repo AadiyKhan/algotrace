@@ -4,46 +4,16 @@
   "type": "array",
   "tags": [
     "Array",
-    "Heap",
-    "Divide and Conquer",
-    "Sweep Line"
+    "Sweep Line",
+    "Heap"
   ],
-  "description": "Given a list of buildings with [left, right, height], return the key points that define the skyline.",
-  "target": [
-    [
-      2,
-      10
-    ],
-    [
-      3,
-      15
-    ],
-    [
-      7,
-      12
-    ],
-    [
-      12,
-      0
-    ],
-    [
-      15,
-      10
-    ],
-    [
-      20,
-      8
-    ],
-    [
-      24,
-      0
-    ]
-  ],
-  "pseudocode": "1. Collect all edge points (left, -height) and (right, height)\n2. Sort points: primary by coordinate, secondary by height\n3. Initialize heap with 0, result with empty\n4. For each point: if left, push height to heap; if right, remove height\n5. If max height changes, add (x, max) to result",
+  "description": "Calculate the skyline contour using a sweep-line algorithm with a max-heap.",
+  "target": null,
+  "pseudocode": "1. Create events: (left, -height) and (right, height)\n2. Sort events by x, then by height\n3. Use a max-heap to store active heights\n4. If max height changes, add point to result",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize buildings: [2, 9, 10], [3, 7, 15], [5, 12, 12]",
+      "note": "Initialize events from building boundaries. Start at x=2.",
       "array": [
         2,
         9,
@@ -53,43 +23,121 @@
         15,
         5,
         12,
+        12,
+        15,
+        20,
+        10,
+        19,
+        24,
+        8
+      ],
+      "visited": [],
+      "curr": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "At x=2, add height 10. Max heap: [10]. Result: [[2, 10]]",
+      "array": [
+        2,
+        9,
+        10
+      ],
+      "visited": [
+        10
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "At x=3, add height 15. Max heap: [15, 10]. Result: [[2, 10], [3, 15]]",
+      "array": [
+        3,
+        7,
+        15
+      ],
+      "visited": [
+        15,
+        10
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "At x=7, remove height 15. Current max is 10 (from building at x=2). Result: [[2, 10], [3, 15], [7, 12]]",
+      "array": [
+        5,
+        12,
+        12
+      ],
+      "visited": [
+        12,
+        10
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "At x=9, remove height 10. Current max is 12. Result: [[2, 10], [3, 15], [7, 12]]",
+      "array": [
+        5,
+        12,
+        12
+      ],
+      "visited": [
         12
       ]
     },
     {
-      "codeLine": 2,
-      "note": "Sorted points by x: [2, -10], [3, -15], [5, -12], [7, 15], [9, 10], [12, 12]",
-      "i": 0
+      "codeLine": 4,
+      "note": "At x=12, remove height 12. Current max is 0. Result: [[2, 10], [3, 15], [7, 12], [12, 0]]",
+      "array": [
+        15,
+        20,
+        10
+      ],
+      "visited": [],
+      "curr": 12
+    },
+    {
+      "codeLine": 3,
+      "note": "At x=15, add height 10. Max heap: [10]. Result: [[2, 10], [3, 15], [7, 12], [12, 0], [15, 10]]",
+      "array": [
+        15,
+        20,
+        10
+      ],
+      "visited": [
+        10
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "At x=19, add height 8. Max heap: [10, 8]. Result: [[2, 10], [3, 15], [7, 12], [12, 0], [15, 10]]",
+      "array": [
+        19,
+        24,
+        8
+      ],
+      "visited": [
+        10,
+        8
+      ]
     },
     {
       "codeLine": 4,
-      "note": "Process x=2: Add height 10. Max is 10. Result: [[2, 10]]",
-      "i": 0
+      "note": "At x=20, remove height 10. Max heap: [8]. Result: [[2, 10], [3, 15], [7, 12], [12, 0], [15, 10], [20, 8]]",
+      "array": [
+        19,
+        24,
+        8
+      ],
+      "visited": [
+        8
+      ]
     },
     {
       "codeLine": 4,
-      "note": "Process x=3: Add height 15. Max is 15. Result: [[2, 10], [3, 15]]",
-      "i": 1
-    },
-    {
-      "codeLine": 4,
-      "note": "Process x=5: Add height 12. Max is 15. No change.",
-      "i": 2
-    },
-    {
-      "codeLine": 4,
-      "note": "Process x=7: Remove height 15. Max is 12. Result: [[2, 10], [3, 15], [7, 12]]",
-      "i": 3
-    },
-    {
-      "codeLine": 4,
-      "note": "Process x=9: Remove height 10. Max is 12. No change.",
-      "i": 4
-    },
-    {
-      "codeLine": 4,
-      "note": "Process x=12: Remove height 12. Max is 0. Result: [[2, 10], [3, 15], [7, 12], [12, 0]]",
-      "i": 5
+      "note": "At x=24, remove height 8. Max heap: []. Result: [[2, 10], [3, 15], [7, 12], [12, 0], [15, 10], [20, 8], [24, 0]]",
+      "array": [],
+      "visited": [],
+      "curr": 24
     }
   ]
 }

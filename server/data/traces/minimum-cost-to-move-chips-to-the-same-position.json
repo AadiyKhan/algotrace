@@ -1,0 +1,98 @@
+{
+  "title": "Minimum Cost to Move Chips to The Same Position",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Math",
+    "Greedy"
+  ],
+  "description": "Find the minimum cost to move all chips to the same position, where moving by 2 costs 0 and moving by 1 costs 1.",
+  "target": "Minimum Cost",
+  "pseudocode": "let odd = 0; let even = 0;\nfor (let chip of position) {\n  if (chip % 2 === 0) even++;\n  else odd++;\n}\nreturn Math.min(odd, even);",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize counters for even and odd positions.",
+      "array": [
+        1,
+        2,
+        3
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Processing chip at position 1 (odd).",
+      "array": [
+        1,
+        2,
+        3
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Increment odd count.",
+      "array": [
+        1,
+        2,
+        3
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Processing chip at position 2 (even).",
+      "array": [
+        1,
+        2,
+        3
+      ],
+      "i": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Increment even count.",
+      "array": [
+        1,
+        2,
+        3
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 2,
+      "note": "Processing chip at position 3 (odd).",
+      "array": [
+        1,
+        2,
+        3
+      ],
+      "i": 3,
+      "curr": 3
+    },
+    {
+      "codeLine": 4,
+      "note": "Increment odd count.",
+      "array": [
+        1,
+        2,
+        3
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 6,
+      "note": "Return min(even: 1, odd: 2), which is 1.",
+      "array": [
+        1,
+        2,
+        3
+      ],
+      "curr": 1
+    }
+  ]
+}

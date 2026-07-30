@@ -14,14 +14,16 @@
     {
       "codeLine": 1,
       "note": "Initialize result, handle signs for 1/3",
-      "array": []
+      "array": [],
+      "curr": 1
     },
     {
       "codeLine": 4,
       "note": "Initial remainder of 1 / 3 is 1",
       "array": [
         1
-      ]
+      ],
+      "curr": 1
     },
     {
       "codeLine": 7,
@@ -34,7 +36,8 @@
       "array": [
         1
       ],
-      "i": 2
+      "i": 2,
+      "curr": 1
     },
     {
       "codeLine": 12,
@@ -42,21 +45,24 @@
       "array": [
         1,
         3
-      ]
+      ],
+      "curr": 3
     },
     {
       "codeLine": 13,
       "note": "New remainder is 1",
       "array": [
         1
-      ]
+      ],
+      "curr": 1
     },
     {
       "codeLine": 9,
       "note": "Remainder 1 exists in map, add parentheses",
       "array": [
         1
-      ]
+      ],
+      "curr": 1
     }
   ]
 }

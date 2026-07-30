@@ -1,0 +1,99 @@
+{
+  "title": "Last Stone Weight II",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Dynamic Programming"
+  ],
+  "description": "Partition stones into two piles to minimize the difference between their total weights.",
+  "target": 5,
+  "pseudocode": "1. total = sum(stones)\n2. target = floor(total / 2)\n3. dp = new Array(target + 1).fill(false)\n4. dp[0] = true\n5. for stone in stones:\n6.   for j from target down to stone:\n7.     dp[j] = dp[j] || dp[j - stone]",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Calculate total sum of stones [2, 4, 1]. Total = 7.",
+      "array": [
+        2,
+        4,
+        1
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 2,
+      "note": "Calculate target = floor(7 / 2) = 3.",
+      "array": [
+        2,
+        4,
+        1
+      ],
+      "curr": 7
+    },
+    {
+      "codeLine": 4,
+      "note": "Initialize dp array of size 4 [true, false, false, false].",
+      "array": [
+        2,
+        4,
+        1
+      ],
+      "curr": 4
+    },
+    {
+      "codeLine": 6,
+      "note": "Processing stone 2. Update dp: j=3,2.",
+      "array": [
+        2,
+        4,
+        1
+      ],
+      "i": 0,
+      "curr": 2
+    },
+    {
+      "codeLine": 7,
+      "note": "After stone 2: dp[2] becomes true. dp = [true, false, true, false]",
+      "array": [
+        2,
+        4,
+        1
+      ],
+      "i": 0,
+      "curr": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Processing stone 4. 4 > target 3, skip loop.",
+      "array": [
+        2,
+        4,
+        1
+      ],
+      "i": 1,
+      "curr": 4
+    },
+    {
+      "codeLine": 6,
+      "note": "Processing stone 1. j=3,2,1.",
+      "array": [
+        2,
+        4,
+        1
+      ],
+      "i": 2,
+      "curr": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "After stone 1: dp[3] becomes true. dp = [true, true, true, true]",
+      "array": [
+        2,
+        4,
+        1
+      ],
+      "i": 2,
+      "curr": 1
+    }
+  ]
+}

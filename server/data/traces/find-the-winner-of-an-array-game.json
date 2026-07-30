@@ -1,0 +1,143 @@
+{
+  "title": "Find the Winner of an Array Game",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Simulation"
+  ],
+  "description": "Determine the winner of an array game where the two front elements play, the winner stays, and the loser goes to the end. The first player to win k consecutive games wins.",
+  "target": 2,
+  "pseudocode": "let winner = arr[0]\nlet wins = 0\nfor i from 1 to arr.length - 1:\n  if arr[i] > winner:\n    winner = arr[i]\n    wins = 1\n  else:\n    wins++\n  if wins == k: return winner\nreturn winner",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize winner as the first element",
+      "array": [
+        2,
+        1,
+        3,
+        5,
+        4
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Start comparing with the second element (arr[1]=1)",
+      "array": [
+        2,
+        1,
+        3,
+        5,
+        4
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "2 > 1, so 2 wins, increment wins to 1",
+      "array": [
+        2,
+        1,
+        3,
+        5,
+        4
+      ],
+      "i": 1,
+      "curr": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Compare winner (2) with arr[2]=3",
+      "array": [
+        2,
+        1,
+        3,
+        5,
+        4
+      ],
+      "i": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "3 > 2, update winner to 3, reset wins to 1",
+      "array": [
+        2,
+        1,
+        3,
+        5,
+        4
+      ],
+      "i": 2,
+      "curr": 3
+    },
+    {
+      "codeLine": 3,
+      "note": "Compare winner (3) with arr[3]=5",
+      "array": [
+        2,
+        1,
+        3,
+        5,
+        4
+      ],
+      "i": 3,
+      "curr": 3
+    },
+    {
+      "codeLine": 4,
+      "note": "5 > 3, update winner to 5, reset wins to 1",
+      "array": [
+        2,
+        1,
+        3,
+        5,
+        4
+      ],
+      "i": 3,
+      "curr": 5
+    },
+    {
+      "codeLine": 3,
+      "note": "Compare winner (5) with arr[4]=4",
+      "array": [
+        2,
+        1,
+        3,
+        5,
+        4
+      ],
+      "i": 4,
+      "curr": 5
+    },
+    {
+      "codeLine": 7,
+      "note": "5 > 4, 5 wins again, increment wins to 2",
+      "array": [
+        2,
+        1,
+        3,
+        5,
+        4
+      ],
+      "i": 4,
+      "curr": 5
+    },
+    {
+      "codeLine": 9,
+      "note": "Wins reached target (2), return winner (5)",
+      "array": [
+        2,
+        1,
+        3,
+        5,
+        4
+      ],
+      "i": 4,
+      "curr": 2
+    }
+  ]
+}

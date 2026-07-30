@@ -1,0 +1,109 @@
+{
+  "title": "Detect Pattern Of Length M Repeated K Or More Times",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Simulation"
+  ],
+  "description": "Given an array, determine if there exists a pattern of length m that repeats at least k times consecutively.",
+  "target": "m=2, k=2",
+  "pseudocode": "1. count = 0\n2. for i = 0 to arr.length - m - 1:\n3.   if arr[i] == arr[i + m]:\n4.     count++\n5.   else:\n6.     count = 0\n7.   if count == (k - 1) * m:\n8.     return true\n9. return false",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Initialize count = 0, start loop. arr = [1, 2, 1, 2], m = 2, k = 2.",
+      "array": [
+        1,
+        2,
+        1,
+        2
+      ],
+      "i": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Compare arr[0] (1) with arr[0+2] (1). Match found.",
+      "array": [
+        1,
+        2,
+        1,
+        2
+      ],
+      "i": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Increment count to 1.",
+      "array": [
+        1,
+        2,
+        1,
+        2
+      ],
+      "i": 0,
+      "curr": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Increment i to 1.",
+      "array": [
+        1,
+        2,
+        1,
+        2
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Compare arr[1] (2) with arr[1+2] (2). Match found.",
+      "array": [
+        1,
+        2,
+        1,
+        2
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Increment count to 2.",
+      "array": [
+        1,
+        2,
+        1,
+        2
+      ],
+      "i": 1,
+      "curr": 2
+    },
+    {
+      "codeLine": 7,
+      "note": "Check if count (2) == (k-1)*m (1*2 = 2). Condition met.",
+      "array": [
+        1,
+        2,
+        1,
+        2
+      ],
+      "i": 1,
+      "curr": 2
+    },
+    {
+      "codeLine": 8,
+      "note": "Return true: pattern found.",
+      "array": [
+        1,
+        2,
+        1,
+        2
+      ],
+      "i": 1
+    }
+  ]
+}

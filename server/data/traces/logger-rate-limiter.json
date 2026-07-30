@@ -17,28 +17,32 @@
     {
       "codeLine": 2,
       "note": "Check 'foo' at timestamp 1: Not in map, proceed.",
-      "array": []
+      "array": [],
+      "curr": 1
     },
     {
       "codeLine": 3,
       "note": "Set 'foo' to timestamp 1 in map.",
       "array": [
         "foo: 1"
-      ]
+      ],
+      "curr": 1
     },
     {
       "codeLine": 4,
       "note": "Return true for 'foo' at timestamp 1.",
       "array": [
         "foo: 1"
-      ]
+      ],
+      "curr": 1
     },
     {
       "codeLine": 2,
       "note": "Check 'bar' at timestamp 2: Not in map, proceed.",
       "array": [
         "foo: 1"
-      ]
+      ],
+      "curr": 2
     },
     {
       "codeLine": 3,
@@ -46,7 +50,8 @@
       "array": [
         "foo: 1",
         "bar: 2"
-      ]
+      ],
+      "curr": 2
     },
     {
       "codeLine": 4,
@@ -54,7 +59,8 @@
       "array": [
         "foo: 1",
         "bar: 2"
-      ]
+      ],
+      "curr": 2
     },
     {
       "codeLine": 2,
@@ -62,7 +68,8 @@
       "array": [
         "foo: 1",
         "bar: 2"
-      ]
+      ],
+      "curr": 8
     },
     {
       "codeLine": 6,
@@ -70,7 +77,8 @@
       "array": [
         "foo: 1",
         "bar: 2"
-      ]
+      ],
+      "curr": 8
     },
     {
       "codeLine": 2,
@@ -78,7 +86,8 @@
       "array": [
         "foo: 1",
         "bar: 2"
-      ]
+      ],
+      "curr": 11
     },
     {
       "codeLine": 3,
@@ -86,7 +95,8 @@
       "array": [
         "foo: 11",
         "bar: 2"
-      ]
+      ],
+      "curr": 11
     },
     {
       "codeLine": 4,
@@ -94,7 +104,8 @@
       "array": [
         "foo: 11",
         "bar: 2"
-      ]
+      ],
+      "curr": 11
     }
   ]
 }

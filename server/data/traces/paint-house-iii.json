@@ -1,0 +1,57 @@
+{
+  "title": "Paint House III",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Dynamic Programming"
+  ],
+  "description": "Minimize cost to paint houses such that there are exactly target neighborhoods, where a neighborhood is a contiguous segment of the same color.",
+  "target": 2,
+  "pseudocode": "1. dp[house][count][color] = min_cost\n2. for h from 0 to m-1:\n3.   for c from 1 to n:\n4.     if houses[h] == 0 or houses[h] == c:\n5.       for prev_c from 1 to n:\n6.         new_count = count + (prev_c != c ? 1 : 0)\n7.         dp[h][new_count][c] = min(dp[h][new_count][c], dp[h-1][count][prev_c] + cost[h][c])",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Initialize DP table for house 0 with costs.",
+      "array": [
+        0,
+        2
+      ],
+      "i": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Evaluating color 1 for house 0.",
+      "array": [
+        0,
+        2
+      ],
+      "i": 0,
+      "j": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Calculating cost for house 1, starting a new neighborhood.",
+      "array": [
+        0,
+        2
+      ],
+      "i": 1,
+      "j": 2,
+      "curr": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "Updating DP state: house 1 is colored 2, creating a new neighborhood.",
+      "array": [
+        0,
+        2
+      ],
+      "i": 1,
+      "j": 2,
+      "curr": 1
+    }
+  ]
+}

@@ -1,65 +1,133 @@
 {
   "title": "Number of Provinces",
   "difficulty": "Medium",
-  "type": "matrix",
+  "type": "graph",
   "tags": [
-    "Graph",
-    "DFS",
-    "Union-Find"
+    "Depth-First Search",
+    "Graph Theory"
   ],
-  "description": "Given an n x n adjacency matrix isConnected, return the number of provinces (connected components).",
-  "target": 2,
-  "pseudocode": "1. count = 0\n2. visited = new Set()\n3. for i from 0 to n-1:\n4.   if i not in visited:\n5.     count++\n6.     dfs(i, visited, isConnected)\n7. function dfs(node, visited, isConnected):\n8.   visited.add(node)\n9.   for neighbor from 0 to n-1:\n10.    if isConnected[node][neighbor] == 1 and neighbor not in visited:\n11.      dfs(neighbor, visited, isConnected)",
+  "description": "Find the number of connected components in an undirected graph represented by an adjacency matrix.",
+  "pseudocode": "1. count = 0, visited = set()\n2. for i from 0 to n-1:\n3.   if i not in visited:\n4.     dfs(i)\n5.     count++\n6. return count",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize province count to 0.",
-      "matrix": [
+      "note": "Initialize province count to 0 and an empty visited set.",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": 0
+        },
+        {
+          "id": 1,
+          "val": 1
+        },
+        {
+          "id": 2,
+          "val": 2
+        }
+      ],
+      "graphEdges": [
         [
-          1,
-          1,
-          0
-        ],
-        [
-          1,
-          1,
-          0
-        ],
-        [
-          0,
           0,
           1
+        ],
+        [
+          1,
+          0
         ]
       ],
-      "visited": []
+      "visited": [],
+      "curr": 0
     },
     {
       "codeLine": 3,
-      "note": "Starting loop at i=0.",
-      "i": 0
+      "note": "Starting DFS from city 0, city 0 is not visited.",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": 0
+        },
+        {
+          "id": 1,
+          "val": 1
+        },
+        {
+          "id": 2,
+          "val": 2
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "visited": [],
+      "curr": 0
     },
     {
       "codeLine": 4,
-      "note": "Node 0 not visited, start DFS.",
-      "i": 0
+      "note": "Visiting city 0 and its neighbor city 1.",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": 0
+        },
+        {
+          "id": 1,
+          "val": 1
+        },
+        {
+          "id": 2,
+          "val": 2
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "visited": [
+        0,
+        1
+      ]
     },
     {
       "codeLine": 5,
-      "note": "Increment count to 1.",
-      "visited": [
-        0
-      ]
-    },
-    {
-      "codeLine": 8,
-      "note": "DFS marks node 0 as visited.",
-      "visited": [
-        0
-      ]
-    },
-    {
-      "codeLine": 10,
-      "note": "Node 0 connected to 1, visiting 1.",
+      "note": "DFS completed for first province. count = 1.",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": 0
+        },
+        {
+          "id": 1,
+          "val": 1
+        },
+        {
+          "id": 2,
+          "val": 2
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
       "visited": [
         0,
         1
@@ -67,26 +135,63 @@
     },
     {
       "codeLine": 3,
-      "note": "Back to main loop, i=1 is already visited, skip.",
-      "i": 1,
+      "note": "Checking city 2. It is not visited.",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": 0
+        },
+        {
+          "id": 1,
+          "val": 1
+        },
+        {
+          "id": 2,
+          "val": 2
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
       "visited": [
         0,
         1
       ]
     },
     {
-      "codeLine": 3,
-      "note": "Loop at i=2.",
-      "i": 2
-    },
-    {
       "codeLine": 4,
-      "note": "Node 2 not visited, start DFS.",
-      "i": 2
-    },
-    {
-      "codeLine": 5,
-      "note": "Increment count to 2.",
+      "note": "Visiting city 2. It has no other unvisited neighbors.",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": 0
+        },
+        {
+          "id": 1,
+          "val": 1
+        },
+        {
+          "id": 2,
+          "val": 2
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
       "visited": [
         0,
         1,
@@ -94,8 +199,65 @@
       ]
     },
     {
-      "codeLine": 8,
-      "note": "DFS marks node 2 as visited.",
+      "codeLine": 5,
+      "note": "DFS completed for second province. count = 2.",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": 0
+        },
+        {
+          "id": 1,
+          "val": 1
+        },
+        {
+          "id": 2,
+          "val": 2
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "visited": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Return final count: 2.",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": 0
+        },
+        {
+          "id": 1,
+          "val": 1
+        },
+        {
+          "id": 2,
+          "val": 2
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
       "visited": [
         0,
         1,

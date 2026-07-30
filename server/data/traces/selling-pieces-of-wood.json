@@ -1,0 +1,186 @@
+{
+  "title": "Selling Pieces of Wood",
+  "difficulty": "Hard",
+  "type": "matrix",
+  "tags": [
+    "Dynamic Programming",
+    "Matrix"
+  ],
+  "description": "Find the maximum money earned by cutting a piece of wood of size m x n given a list of prices for specific height and width dimensions.",
+  "target": 32,
+  "pseudocode": "1. dp = new Array(m + 1).fill(0).map(() => new Array(n + 1).fill(0))\n2. for price in prices: dp[price.h][price.w] = price.p\n3. for i = 1 to m: for j = 1 to n:\n4.   for k = 1 to i/2: dp[i][j] = max(dp[i][j], dp[k][j] + dp[i-k][j])\n5.   for k = 1 to j/2: dp[i][j] = max(dp[i][j], dp[i][k] + dp[i][j-k])",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize DP table for a 3x3 board with zeros.",
+      "matrix": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "curr": [
+        3,
+        3
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Insert known prices. E.g., a 2x2 piece sells for 5.",
+      "matrix": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          5
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "curr": [
+        2,
+        2
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Begin iterating through the DP table.",
+      "matrix": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          5
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "i": 1,
+      "j": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Checking horizontal cuts for piece (2,2).",
+      "matrix": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          5
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "i": 2,
+      "j": 2,
+      "curr": [
+        2,
+        2
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Checking vertical cuts. Max value updated for (2,2).",
+      "matrix": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          5
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "i": 2,
+      "j": 2,
+      "curr": [
+        2,
+        2
+      ]
+    }
+  ]
+}

@@ -80,7 +80,8 @@
         "*"
       ],
       "i": 2,
-      "visited": []
+      "visited": [],
+      "curr": 2
     },
     {
       "codeLine": 7,
@@ -139,7 +140,8 @@
         "*"
       ],
       "i": 4,
-      "visited": []
+      "visited": [],
+      "curr": 3
     },
     {
       "codeLine": 7,

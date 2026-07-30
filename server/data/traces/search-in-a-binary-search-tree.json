@@ -1,19 +1,18 @@
 {
-  "title": "Search In A Binary Search Tree",
+  "title": "Search in a Binary Search Tree",
   "difficulty": "Easy",
   "type": "tree",
   "tags": [
     "Tree",
-    "Binary Search Tree",
-    "Recursion"
+    "Binary Search Tree"
   ],
-  "description": "Given the root of a binary search tree (BST) and an integer val, find the node in the BST that the node's value equals val and return the subtree rooted with that node.",
+  "description": "Find the node in a BST that equals the target value.",
   "target": 2,
-  "pseudocode": "1: function searchBST(root, val) {\n2:   if (!root || root.val === val) return root;\n3:   if (val < root.val) return searchBST(root.left, val);\n4:   return searchBST(root.right, val);\n5: }",
+  "pseudocode": "1. If root is null or root.val == val, return root\n2. If val < root.val, search left subtree\n3. If val > root.val, search right subtree",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize search at the root node (val: 4).",
+      "note": "Start at the root node with value 4.",
       "treeNodes": [
         {
           "id": 0,
@@ -50,17 +49,64 @@
     },
     {
       "codeLine": 2,
-      "note": "Check if current node value 4 equals target 2. False.",
-      "curr": 0
-    },
-    {
-      "codeLine": 3,
-      "note": "Target 2 is less than 4, traverse to left child.",
+      "note": "Target 2 is less than current value 4, moving to left child.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 4,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 2,
+          "val": 7,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ],
       "curr": 1
     },
     {
-      "codeLine": 2,
-      "note": "Check if current node value 2 equals target 2. True, return node.",
+      "codeLine": 1,
+      "note": "Current node value is 2, which matches target. Found the subtree.",
+      "treeNodes": [
+        {
+          "id": 1,
+          "val": 2,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 3,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ],
       "curr": 1
     }
   ]

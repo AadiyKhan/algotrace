@@ -37,7 +37,8 @@
     {
       "codeLine": 9,
       "note": "Base case reached. Return 1 sticker.",
-      "array": []
+      "array": [],
+      "curr": 1
     },
     {
       "codeLine": 10,
@@ -46,7 +47,8 @@
         "c",
         "a",
         "t"
-      ]
+      ],
+      "curr": 1
     }
   ]
 }

@@ -1,0 +1,96 @@
+{
+  "title": "Longest Duplicate Substring",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "String",
+    "Binary Search",
+    "Rolling Hash"
+  ],
+  "description": "Find the longest duplicate substring in a given string using Binary Search on length and Rabin-Karp rolling hash.",
+  "target": "banana",
+  "pseudocode": "1. low = 1, high = n-1\n2. while low <= high:\n3.   mid = (low + high) / 2\n4.   if search(mid) != -1: low = mid + 1\n5.   else: high = mid - 1\n6. return result",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize binary search range for length 1 to 5.",
+      "array": [
+        "b",
+        "a",
+        "n",
+        "a",
+        "n",
+        "a"
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "First mid is 3. Searching for duplicate substrings of length 3.",
+      "array": [
+        "b",
+        "a",
+        "n",
+        "a",
+        "n",
+        "a"
+      ],
+      "i": 3,
+      "curr": 3
+    },
+    {
+      "codeLine": 4,
+      "note": "Length 3 found: 'ana' at index 1 and 3. Set low to 4.",
+      "array": [
+        "b",
+        "a",
+        "n",
+        "a",
+        "n",
+        "a"
+      ],
+      "i": 4,
+      "curr": 3
+    },
+    {
+      "codeLine": 3,
+      "note": "Mid is 4. Searching for duplicate substrings of length 4.",
+      "array": [
+        "b",
+        "a",
+        "n",
+        "a",
+        "n",
+        "a"
+      ],
+      "i": 4,
+      "curr": 4
+    },
+    {
+      "codeLine": 5,
+      "note": "Length 4 not found. Set high to 3.",
+      "array": [
+        "b",
+        "a",
+        "n",
+        "a",
+        "n",
+        "a"
+      ],
+      "i": 3,
+      "curr": 4
+    },
+    {
+      "codeLine": 6,
+      "note": "Binary search ends, return last valid result 'ana'.",
+      "array": [
+        "b",
+        "a",
+        "n",
+        "a",
+        "n",
+        "a"
+      ]
+    }
+  ]
+}

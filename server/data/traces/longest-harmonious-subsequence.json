@@ -5,51 +5,135 @@
   "tags": [
     "Array",
     "Hash Table",
-    "Sorting"
+    "Counting"
   ],
-  "description": "Find the length of the longest harmonious subsequence where the difference between its maximum and minimum values is exactly 1.",
-  "target": 1,
-  "pseudocode": "1. map = new Map();\n2. for (let x of nums) map.set(x, (map.get(x) || 0) + 1);\n3. let maxLen = 0;\n4. for (let [key, val] of map) {\n5.   if (map.has(key + 1)) {\n6.     maxLen = Math.max(maxLen, val + map.get(key + 1));\n7.   }\n8. }",
+  "description": "Find the length of the longest harmonious subsequence where the difference between the max and min element is exactly 1.",
+  "target": 5,
+  "pseudocode": "1. countMap = frequency map of all elements\n2. maxLen = 0\n3. for key in countMap:\n4.   if countMap contains key + 1:\n5.     maxLen = max(maxLen, countMap[key] + countMap[key + 1])\n6. return maxLen",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize an empty hash map to store frequencies.",
+      "note": "Initialize frequency map: {1:1, 3:2, 2:3, 5:1, 7:1}",
       "array": [
         1,
         3,
         2,
-        2
-      ]
+        2,
+        5,
+        2,
+        3,
+        7
+      ],
+      "curr": 1
     },
     {
-      "codeLine": 2,
-      "note": "Count frequencies: 1:1, 3:1, 2:2.",
+      "codeLine": 3,
+      "note": "Processing key 1: check if key+1 (2) exists.",
       "array": [
         1,
         3,
         2,
-        2
-      ]
+        2,
+        5,
+        2,
+        3,
+        7
+      ],
+      "i": 1,
+      "curr": 1
     },
     {
-      "codeLine": 4,
-      "note": "Checking key 1. Map has key 2 (1+1).",
-      "i": 1
+      "codeLine": 5,
+      "note": "Found key 1 and 2: length = count(1) + count(2) = 1 + 3 = 4. maxLen = 4.",
+      "array": [
+        1,
+        3,
+        2,
+        2,
+        5,
+        2,
+        3,
+        7
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Processing key 2: check if key+1 (3) exists.",
+      "array": [
+        1,
+        3,
+        2,
+        2,
+        5,
+        2,
+        3,
+        7
+      ],
+      "i": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Found key 2 and 3: length = count(2) + count(3) = 3 + 2 = 5. maxLen = 5.",
+      "array": [
+        1,
+        3,
+        2,
+        2,
+        5,
+        2,
+        3,
+        7
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Processing key 3: check if key+1 (4) exists. Not found.",
+      "array": [
+        1,
+        3,
+        2,
+        2,
+        5,
+        2,
+        3,
+        7
+      ],
+      "i": 3,
+      "curr": 3
+    },
+    {
+      "codeLine": 3,
+      "note": "Processing key 5: check if key+1 (6) exists. Not found.",
+      "array": [
+        1,
+        3,
+        2,
+        2,
+        5,
+        2,
+        3,
+        7
+      ],
+      "i": 5,
+      "curr": 5
     },
     {
       "codeLine": 6,
-      "note": "Update maxLen: 1 (count of 1) + 2 (count of 2) = 3.",
-      "i": 1
-    },
-    {
-      "codeLine": 4,
-      "note": "Checking key 3. Map does not have key 4.",
-      "i": 3
-    },
-    {
-      "codeLine": 4,
-      "note": "Checking key 2. Map does not have key 3.",
-      "i": 2
+      "note": "Return maxLen = 5.",
+      "array": [
+        1,
+        3,
+        2,
+        2,
+        5,
+        2,
+        3,
+        7
+      ],
+      "curr": 5
     }
   ]
 }

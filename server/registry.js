@@ -110,6 +110,35 @@ const registry = {
     curr = nextTemp
   return prev`,
   },
+  'merge-intervals': {
+    title: 'Merge Intervals', difficulty: 'Medium', type: 'array',
+    tags: ['Array', 'Sorting'],
+    description: 'Given an array of intervals where intervals[i] = [start_i, end_i], merge all overlapping intervals, and return an array of the non-overlapping intervals that cover all the intervals in the input.',
+    target: null,
+    steps: [
+      { array:[[1,3],[2,6],[8,10],[15,18]], i:0, currentMap:{ merged:[] }, codeLine:2, note:'Initialize empty merged list.' },
+      { array:[[1,3],[2,6],[8,10],[15,18]], i:0, currentMap:{ merged:[[1,3]] }, codeLine:8, note:'i=0: Merged list is empty, so we just add [1,3].' },
+      { array:[[1,3],[2,6],[8,10],[15,18]], i:1, currentMap:{ merged:[[1,3]] }, codeLine:3, note:'i=1: Look at interval [2,6].' },
+      { array:[[1,3],[2,6],[8,10],[15,18]], i:1, currentMap:{ merged:[[1,3]] }, codeLine:5, note:'Does [2,6] overlap with last merged interval [1,3]? Yes, 2 <= 3.' },
+      { array:[[1,3],[2,6],[8,10],[15,18]], i:1, currentMap:{ merged:[[1,6]] }, codeLine:6, note:'Merge them! Update end to max(3, 6) = 6. Merged is now [1,6].' },
+      { array:[[1,3],[2,6],[8,10],[15,18]], i:2, currentMap:{ merged:[[1,6]] }, codeLine:3, note:'i=2: Look at interval [8,10].' },
+      { array:[[1,3],[2,6],[8,10],[15,18]], i:2, currentMap:{ merged:[[1,6]] }, codeLine:5, note:'Does [8,10] overlap with [1,6]? No, 8 > 6.' },
+      { array:[[1,3],[2,6],[8,10],[15,18]], i:2, currentMap:{ merged:[[1,6],[8,10]] }, codeLine:8, note:'Add [8,10] as a distinct interval to merged list.' },
+      { array:[[1,3],[2,6],[8,10],[15,18]], i:3, currentMap:{ merged:[[1,6],[8,10]] }, codeLine:3, note:'i=3: Look at interval [15,18].' },
+      { array:[[1,3],[2,6],[8,10],[15,18]], i:3, currentMap:{ merged:[[1,6],[8,10]] }, codeLine:5, note:'Does [15,18] overlap with [8,10]? No, 15 > 10.' },
+      { array:[[1,3],[2,6],[8,10],[15,18]], i:3, currentMap:{ merged:[[1,6],[8,10],[15,18]] }, codeLine:8, note:'Add [15,18] as a distinct interval to merged list.' },
+      { array:[[1,3],[2,6],[8,10],[15,18]], i:null, currentMap:{ merged:[[1,6],[8,10],[15,18]] }, codeLine:9, note:'Loop finishes. Return merged list. ✓' },
+    ],
+    pseudocode: `function merge(intervals):
+  merged = []
+  for interval in intervals:
+    last = merged.last()
+    if not merged.isEmpty() and interval.start <= last.end:
+      last.end = max(last.end, interval.end)
+    else:
+      merged.append(interval)
+  return merged`,
+  },
 };
 
 module.exports = registry;

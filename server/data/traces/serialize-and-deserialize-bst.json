@@ -4,39 +4,97 @@
   "type": "tree",
   "tags": [
     "Tree",
-    "BST",
-    "DFS"
+    "Binary Search Tree",
+    "Depth-First Search"
   ],
-  "description": "Serialize a binary search tree into a string and deserialize it back into the original BST structure using preorder traversal.",
-  "pseudocode": "function serialize(root) {\n  let res = [];\n  function dfs(node) {\n    if (!node) res.push('#');\n    else {\n      res.push(node.val);\n      dfs(node.left);\n      dfs(node.right);\n    }\n  }\n  dfs(root);\n  return res.join(',');\n}",
+  "description": "Serialize a BST into a preorder traversal string and deserialize it back using the BST property.",
+  "pseudocode": "1. serialize(root): return preorder traversal string.\n2. deserialize(data): split string, build tree using BST property (if val < current, go left).",
   "steps": [
     {
+      "codeLine": 1,
+      "note": "Starting serialization of BST [2, 1, 3] via preorder traversal.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 2,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 1,
+      "note": "Visited root 2, then left child 1, then right child 3. Result: '2,1,3'",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 2,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 2
+    },
+    {
       "codeLine": 2,
-      "note": "Initialize empty array to store preorder traversal values.",
+      "note": "Deserializing '2,1,3'. First value 2 becomes root.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 2,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Insert 1 into BST: 1 < 2, set as left child of 2.",
       "treeNodes": [
         {
           "id": 0,
           "val": 2,
           "left": 1,
-          "right": 2
+          "right": null
         },
         {
           "id": 1,
           "val": 1,
           "left": null,
           "right": null
-        },
-        {
-          "id": 2,
-          "val": 3,
-          "left": null,
-          "right": null
         }
-      ]
+      ],
+      "curr": 1
     },
     {
-      "codeLine": 6,
-      "note": "Visit root node (2), push to array.",
+      "codeLine": 2,
+      "note": "Insert 3 into BST: 3 > 2, set as right child of 2.",
       "treeNodes": [
         {
           "id": 0,
@@ -57,94 +115,7 @@
           "right": null
         }
       ],
-      "visited": [
-        0
-      ]
-    },
-    {
-      "codeLine": 7,
-      "note": "Recursively visit left child (1).",
-      "treeNodes": [
-        {
-          "id": 0,
-          "val": 2,
-          "left": 1,
-          "right": 2
-        },
-        {
-          "id": 1,
-          "val": 1,
-          "left": null,
-          "right": null
-        },
-        {
-          "id": 2,
-          "val": 3,
-          "left": null,
-          "right": null
-        }
-      ],
-      "visited": [
-        0,
-        1
-      ]
-    },
-    {
-      "codeLine": 4,
-      "note": "Left child of 1 is null, append '#'.",
-      "treeNodes": [
-        {
-          "id": 0,
-          "val": 2,
-          "left": 1,
-          "right": 2
-        },
-        {
-          "id": 1,
-          "val": 1,
-          "left": null,
-          "right": null
-        },
-        {
-          "id": 2,
-          "val": 3,
-          "left": null,
-          "right": null
-        }
-      ]
-    },
-    {
-      "codeLine": 8,
-      "note": "Recursively visit right child (3).",
-      "treeNodes": [
-        {
-          "id": 0,
-          "val": 2,
-          "left": 1,
-          "right": 2
-        },
-        {
-          "id": 1,
-          "val": 1,
-          "left": null,
-          "right": null
-        },
-        {
-          "id": 2,
-          "val": 3,
-          "left": null,
-          "right": null
-        }
-      ],
-      "visited": [
-        0,
-        1,
-        2
-      ]
-    },
-    {
-      "codeLine": 11,
-      "note": "Traversal complete. Result: '2,1,#,#,3,#,#'"
+      "curr": 3
     }
   ]
 }

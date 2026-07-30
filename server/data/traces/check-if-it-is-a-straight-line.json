@@ -1,0 +1,133 @@
+{
+  "title": "Check If It Is A Straight Line",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Math",
+    "Geometry"
+  ],
+  "description": "Determine if all points in a coordinate array lie on the same straight line.",
+  "target": null,
+  "pseudocode": "1. dx = coords[1][0] - coords[0][0]\n2. dy = coords[1][1] - coords[0][1]\n3. for i from 2 to coords.length - 1:\n4.   curr_dx = coords[i][0] - coords[0][0]\n5.   curr_dy = coords[i][1] - coords[0][1]\n6.   if dy * curr_dx != dx * curr_dy: return false\n7. return true",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Calculate initial dx using the first two points: (1,1) and (2,2). dx = 2-1 = 1.",
+      "array": [
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Calculate initial dy: 2-1 = 1.",
+      "array": [
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Start loop from index 2.",
+      "array": [
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "i": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Calculate curr_dx for index 2: 3-1 = 2.",
+      "array": [
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "i": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Calculate curr_dy for index 2: 4-1 = 3.",
+      "array": [
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "i": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Cross multiply: dy * curr_dx (1*2=2) vs dx * curr_dy (1*3=3). Not equal.",
+      "array": [
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "i": 2,
+      "curr": 1
+    }
+  ]
+}

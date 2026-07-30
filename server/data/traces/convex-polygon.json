@@ -7,13 +7,13 @@
     "Math",
     "Geometry"
   ],
-  "description": "Determine if a given set of points forms a convex polygon by checking the cross product orientation of consecutive edges.",
+  "description": "Determine if the given points form a convex polygon by checking the cross product orientation of consecutive edges.",
   "target": null,
-  "pseudocode": "1: n = points.length\n2: prevCross = 0\n3: for i from 0 to n-1:\n4:   p1 = points[i], p2 = points[(i+1)%n], p3 = points[(i+2)%n]\n5:   cp = (p2.x - p1.x)*(p3.y - p2.y) - (p2.y - p1.y)*(p3.x - p2.x)\n6:   if cp != 0:\n7:     if cp * prevCross < 0: return False\n8:     prevCross = cp\n9: return True",
+  "pseudocode": "1. n = points.length\n2. prevCrossProduct = 0\n3. for i = 0 to n - 1:\n4.   p1 = points[i], p2 = points[(i+1)%n], p3 = points[(i+2)%n]\n5.   dx1 = p2[0]-p1[0], dy1 = p2[1]-p1[1]\n6.   dx2 = p3[0]-p2[0], dy2 = p3[1]-p2[1]\n7.   cp = dx1 * dy2 - dy1 * dx2\n8.   if cp != 0:\n9.     if (cp > 0 and prevCrossProduct < 0) or (cp < 0 and prevCrossProduct > 0) return false\n10.    prevCrossProduct = cp",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize points array length n = 4.",
+      "note": "Initialize number of points n = 4.",
       "array": [
         [
           0,
@@ -31,42 +31,176 @@
           1,
           0
         ]
-      ]
+      ],
+      "curr": 4
     },
     {
       "codeLine": 3,
-      "note": "Start iteration for i = 0.",
-      "i": 0
+      "note": "Start iteration i = 0. Calculate cross product at vertex 0.",
+      "array": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "i": 0,
+      "curr": 0
     },
     {
-      "codeLine": 5,
-      "note": "Calculate cross product for vertices (0,0), (0,1), (1,1).",
-      "i": 0
+      "codeLine": 7,
+      "note": "Cross product of vectors (0,1) and (1,0) is -1.",
+      "array": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "i": 0,
+      "curr": 0
     },
     {
-      "codeLine": 8,
-      "note": "Cross product is 1, set prevCross to 1.",
-      "i": 0
+      "codeLine": 10,
+      "note": "Update prevCrossProduct to -1.",
+      "array": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "i": 0,
+      "curr": -1
     },
     {
       "codeLine": 3,
-      "note": "Move to iteration i = 1.",
-      "i": 1
+      "note": "Iteration i = 1. Calculate cross product at vertex 1.",
+      "array": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "i": 1,
+      "curr": 1
     },
     {
-      "codeLine": 5,
-      "note": "Calculate cross product for vertices (0,1), (1,1), (1,0).",
-      "i": 1
+      "codeLine": 7,
+      "note": "Cross product is -1. Consistent with prevCrossProduct.",
+      "array": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "i": 1,
+      "curr": -1
     },
     {
-      "codeLine": 8,
-      "note": "Cross product is 1, sign matches prevCross.",
-      "i": 1
+      "codeLine": 3,
+      "note": "Iteration i = 2. Cross product is -1.",
+      "array": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "i": 2,
+      "curr": 2
     },
     {
-      "codeLine": 9,
-      "note": "Completed all vertices, polygon is convex.",
-      "i": 3
+      "codeLine": 3,
+      "note": "Iteration i = 3. Final vertex check, cross product is -1.",
+      "array": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "i": 3,
+      "curr": 3
     }
   ]
 }

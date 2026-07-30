@@ -3,57 +3,123 @@
   "difficulty": "Easy",
   "type": "array",
   "tags": [
-    "String",
-    "Array"
+    "Array",
+    "String"
   ],
-  "description": "Find all possible states of the string after flipping two consecutive '++' into '--'.",
-  "target": "++",
-  "pseudocode": "function generatePossibleNextMoves(s) {\n  let res = [];\n  for (let i = 0; i < s.length - 1; i++) {\n    if (s[i] === '+' && s[i+1] === '+') {\n      res.push(s.substring(0, i) + '--' + s.substring(i + 2));\n    }\n  }\n  return res;\n}",
+  "description": "Find all possible states of the string after flipping '++' to '--' exactly once.",
+  "pseudocode": "1. Initialize result list\n2. For i from 0 to length - 2\n3. If s[i] == '+' and s[i+1] == '+'\n4. Add modified string to result",
   "steps": [
     {
-      "codeLine": 2,
+      "codeLine": 1,
       "note": "Initialize empty result list.",
-      "i": null
+      "array": [
+        "+",
+        "+",
+        "-",
+        "-"
+      ],
+      "result": []
+    },
+    {
+      "codeLine": 2,
+      "note": "Start loop at i=0.",
+      "array": [
+        "+",
+        "+",
+        "-",
+        "-"
+      ],
+      "i": 0,
+      "result": [],
+      "curr": 0
     },
     {
       "codeLine": 3,
-      "note": "Start loop at index 0.",
-      "i": 0
+      "note": "Check if s[0] and s[1] are '+'.",
+      "array": [
+        "+",
+        "+",
+        "-",
+        "-"
+      ],
+      "i": 0,
+      "result": [],
+      "curr": 0
     },
     {
       "codeLine": 4,
-      "note": "Check if s[0] and s[1] are '++'.",
-      "i": 0
+      "note": "Found '++' at index 0, add flipped state to result.",
+      "array": [
+        "+",
+        "+",
+        "-",
+        "-"
+      ],
+      "i": 0,
+      "result": [
+        "----"
+      ],
+      "curr": 0
     },
     {
-      "codeLine": 5,
-      "note": "Found '++' at index 0, generate new state '--+'.",
-      "i": 0
+      "codeLine": 2,
+      "note": "Continue loop to i=1.",
+      "array": [
+        "+",
+        "+",
+        "-",
+        "-"
+      ],
+      "i": 1,
+      "result": [
+        "----"
+      ],
+      "curr": 1
     },
     {
       "codeLine": 3,
-      "note": "Increment i to 1.",
-      "i": 1
+      "note": "Check if s[1] and s[2] are '+'.",
+      "array": [
+        "+",
+        "+",
+        "-",
+        "-"
+      ],
+      "i": 1,
+      "result": [
+        "----"
+      ],
+      "curr": 1
     },
     {
-      "codeLine": 4,
-      "note": "Check if s[1] and s[2] are '++'.",
-      "i": 1
-    },
-    {
-      "codeLine": 5,
-      "note": "Found '++' at index 1, generate new state '+--'.",
-      "i": 1
+      "codeLine": 2,
+      "note": "Continue loop to i=2.",
+      "array": [
+        "+",
+        "+",
+        "-",
+        "-"
+      ],
+      "i": 2,
+      "result": [
+        "----"
+      ],
+      "curr": 2
     },
     {
       "codeLine": 3,
-      "note": "Increment i to 2, loop terminates.",
-      "i": 2
-    },
-    {
-      "codeLine": 7,
-      "note": "Return result list: ['--+', '+--'].",
-      "i": 2
+      "note": "Check if s[2] and s[3] are '+'.",
+      "array": [
+        "+",
+        "+",
+        "-",
+        "-"
+      ],
+      "i": 2,
+      "result": [
+        "----"
+      ],
+      "curr": 2
     }
   ]
 }

@@ -7,98 +7,118 @@
     "Dynamic Programming"
   ],
   "description": "Find the contiguous subarray within an array that has the largest product.",
-  "target": null,
-  "pseudocode": "1. let maxSoFar = nums[0], minSoFar = nums[0], res = nums[0]\n2. for i from 1 to nums.length - 1:\n3.   let temp = maxSoFar\n4.   maxSoFar = Math.max(nums[i], maxSoFar * nums[i], minSoFar * nums[i])\n5.   minSoFar = Math.min(nums[i], temp * nums[i], minSoFar * nums[i])\n6.   res = Math.max(res, maxSoFar)",
+  "pseudocode": "1. maxProd = nums[0], minProd = nums[0], res = nums[0]\n2. for i = 1 to length - 1:\n3.   temp = max(nums[i], maxProd * nums[i], minProd * nums[i])\n4.   minProd = min(nums[i], maxProd * nums[i], minProd * nums[i])\n5.   maxProd = temp\n6.   res = max(res, maxProd)",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize variables with first element of array.",
+      "note": "Initialize variables with the first element of the array.",
       "array": [
         2,
-        -5,
-        3
+        3,
+        -2,
+        4
       ],
-      "i": null
+      "i": 0
     },
     {
       "codeLine": 2,
-      "note": "Start loop at index 1.",
+      "note": "Start loop from index 1. Current element is 3.",
       "array": [
         2,
-        -5,
-        3
-      ],
-      "i": 1
-    },
-    {
-      "codeLine": 4,
-      "note": "Update maxSoFar: max(-5, 2*-5, 2*-5) = -5.",
-      "array": [
-        2,
-        -5,
-        3
+        3,
+        -2,
+        4
       ],
       "i": 1
     },
     {
       "codeLine": 5,
-      "note": "Update minSoFar: min(-5, 2*-5, 2*-5) = -10.",
+      "note": "Calculate new maxProd (6) and minProd (3) for current index.",
       "array": [
         2,
-        -5,
-        3
+        3,
+        -2,
+        4
       ],
       "i": 1
     },
     {
       "codeLine": 6,
-      "note": "Update global result res: max(2, -5) = 2.",
+      "note": "Update result to 6.",
       "array": [
         2,
-        -5,
-        3
+        3,
+        -2,
+        4
       ],
       "i": 1
     },
     {
       "codeLine": 2,
-      "note": "Loop to index 2.",
+      "note": "Move to index 2. Current element is -2.",
       "array": [
         2,
-        -5,
-        3
-      ],
-      "i": 2
-    },
-    {
-      "codeLine": 4,
-      "note": "Update maxSoFar: max(3, -5*3, -10*3) = 3.",
-      "array": [
-        2,
-        -5,
-        3
+        3,
+        -2,
+        4
       ],
       "i": 2
     },
     {
       "codeLine": 5,
-      "note": "Update minSoFar: min(3, -5*3, -10*3) = -30.",
+      "note": "Calculate new maxProd (-2) and minProd (-12) after multiplying by -2.",
       "array": [
         2,
-        -5,
-        3
+        3,
+        -2,
+        4
       ],
       "i": 2
     },
     {
       "codeLine": 6,
-      "note": "Update result: max(2, 3) = 3.",
+      "note": "Result remains 6.",
       "array": [
         2,
-        -5,
-        3
+        3,
+        -2,
+        4
       ],
       "i": 2
+    },
+    {
+      "codeLine": 2,
+      "note": "Move to index 3. Current element is 4.",
+      "array": [
+        2,
+        3,
+        -2,
+        4
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 5,
+      "note": "Calculate new maxProd (4) and minProd (-48).",
+      "array": [
+        2,
+        3,
+        -2,
+        4
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 6,
+      "note": "Final result is 6.",
+      "array": [
+        2,
+        3,
+        -2,
+        4
+      ],
+      "i": 3
     }
-  ]
+  ],
+  "fullDescription": "<p>Given an integer array <code>nums</code>, find a <span data-keyword=\"subarray-nonempty\">subarray</span> that has the largest product, and return <em>the product</em>.</p>\n\n<p>The test cases are generated so that the answer will fit in a <strong>32-bit</strong> integer.</p>\n\n<p><strong>Note</strong> that the product of an array with a single element is the value of that element.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> nums = [2,3,-2,4]\n<strong>Output:</strong> 6\n<strong>Explanation:</strong> [2,3] has the largest product 6.\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> nums = [-2,0,-1]\n<strong>Output:</strong> 0\n<strong>Explanation:</strong> The result cannot be 2, because [-2,-1] is not a subarray.\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= nums.length &lt;= 2 * 10<sup>4</sup></code></li>\n\t<li><code>-10 &lt;= nums[i] &lt;= 10</code></li>\n\t<li>The product of any subarray of <code>nums</code> is <strong>guaranteed</strong> to fit in a <strong>32-bit</strong> integer.</li>\n</ul>\n"
 }

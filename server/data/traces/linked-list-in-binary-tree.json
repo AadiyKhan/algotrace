@@ -1,0 +1,161 @@
+{
+  "title": "Linked List in Binary Tree",
+  "difficulty": "Medium",
+  "type": "tree",
+  "tags": [
+    "Tree",
+    "Linked List",
+    "Depth-First Search"
+  ],
+  "description": "Check if a linked list exists as a downward path in a binary tree.",
+  "pseudocode": "1. If head is null return true\n2. If root is null return false\n3. Return check(root, head) or isSubPath(head, root.left) or isSubPath(head, root.right)\n4. check(node, listNode) matches downward path starting at node",
+  "steps": [
+    {
+      "codeLine": 3,
+      "note": "Start search at tree root (val: 1)",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 4,
+          "left": null,
+          "right": 3
+        },
+        {
+          "id": 2,
+          "val": 4,
+          "left": 4,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 2,
+          "left": 5,
+          "right": 6
+        },
+        {
+          "id": 4,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 5,
+          "val": 6,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 6,
+          "val": 8,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Move to tree node 4 (ID 1)",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 4,
+          "left": null,
+          "right": 3
+        },
+        {
+          "id": 2,
+          "val": 4,
+          "left": 4,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 2,
+          "left": 5,
+          "right": 6
+        },
+        {
+          "id": 4,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 5,
+          "val": 6,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 6,
+          "val": 8,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Match found: List [4, 2, 8] matches Tree path [4 -> 2 -> 8]",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 4,
+          "left": null,
+          "right": 3
+        },
+        {
+          "id": 2,
+          "val": 4,
+          "left": 4,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 2,
+          "left": 5,
+          "right": 6
+        },
+        {
+          "id": 4,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 5,
+          "val": 6,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 6,
+          "val": 8,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 4
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "title": "Sort Integers by The Number of 1 Bits",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Bit Manipulation",
+    "Sorting"
+  ],
+  "description": "Sort an array of integers in ascending order based on the number of 1 bits in their binary representation.",
+  "pseudocode": "1. arr.sort((a, b) => {\n2.   const countA = countBits(a);\n3.   const countB = countBits(b);\n4.   return countA === countB ? a - b : countA - countB;\n5. });",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize sorting array: [0, 1, 2, 3]",
+      "array": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Compare 0 (0 bits) and 1 (1 bit). Since 0 < 1, order remains.",
+      "array": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "i": 0,
+      "j": 1,
+      "curr": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Compare 1 (1 bit) and 2 (1 bit). Bits equal, sort by value: 1 < 2.",
+      "array": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "i": 1,
+      "j": 2,
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Compare 2 (1 bit) and 3 (2 bits). Since 1 bit < 2 bits, 2 comes before 3.",
+      "array": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "i": 2,
+      "j": 3,
+      "curr": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Sorting complete.",
+      "array": [
+        0,
+        1,
+        2,
+        3
+      ]
+    }
+  ]
+}

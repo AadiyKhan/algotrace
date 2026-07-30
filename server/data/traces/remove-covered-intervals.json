@@ -1,0 +1,193 @@
+{
+  "title": "Remove Covered Intervals",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Sorting",
+    "Greedy"
+  ],
+  "description": "Given a list of intervals, remove all intervals that are covered by another interval in the list. Return the number of remaining intervals.",
+  "target": null,
+  "pseudocode": "1. intervals.sort((a, b) => a[0] == b[0] ? b[1] - a[1] : a[0] - b[0])\n2. count = 0\n3. end = -1\n4. for each [start, intervalEnd] in intervals:\n5.   if intervalEnd > end:\n6.     count++\n7.     end = intervalEnd",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Sort intervals by start time ascending, then end time descending.",
+      "array": [
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          8
+        ],
+        [
+          3,
+          6
+        ]
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Initialize count to 0 and end boundary to -1.",
+      "array": [
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          8
+        ],
+        [
+          3,
+          6
+        ]
+      ],
+      "i": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Checking [1, 4]: 4 > -1, so it is not covered.",
+      "array": [
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          8
+        ],
+        [
+          3,
+          6
+        ]
+      ],
+      "i": 0,
+      "curr": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Increment count to 1.",
+      "array": [
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          8
+        ],
+        [
+          3,
+          6
+        ]
+      ],
+      "i": 0,
+      "curr": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "Update end boundary to 4.",
+      "array": [
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          8
+        ],
+        [
+          3,
+          6
+        ]
+      ],
+      "i": 0,
+      "curr": 4
+    },
+    {
+      "codeLine": 5,
+      "note": "Checking [2, 8]: 8 > 4, so it is not covered.",
+      "array": [
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          8
+        ],
+        [
+          3,
+          6
+        ]
+      ],
+      "i": 1,
+      "curr": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Increment count to 2.",
+      "array": [
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          8
+        ],
+        [
+          3,
+          6
+        ]
+      ],
+      "i": 1,
+      "curr": 2
+    },
+    {
+      "codeLine": 7,
+      "note": "Update end boundary to 8.",
+      "array": [
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          8
+        ],
+        [
+          3,
+          6
+        ]
+      ],
+      "i": 1,
+      "curr": 8
+    },
+    {
+      "codeLine": 5,
+      "note": "Checking [3, 6]: 6 is not > 8, so it is covered.",
+      "array": [
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          8
+        ],
+        [
+          3,
+          6
+        ]
+      ],
+      "i": 2,
+      "curr": 3
+    }
+  ]
+}

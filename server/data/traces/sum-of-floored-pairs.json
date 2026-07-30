@@ -1,0 +1,117 @@
+{
+  "title": "Sum of Floored Pairs",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Math",
+    "Counting"
+  ],
+  "description": "Calculate sum of floor(nums[i] / nums[j]) for all pairs using a frequency array and prefix sums.",
+  "pseudocode": "1. count = frequency array of nums\n2. pref = prefix sum of count\n3. total = 0\n4. for each unique val x in nums:\n5.   for k = x, 2x, 3x... <= max_val:\n6.     total += count[x] * (pref[min(k+x-1, max_val)] - pref[k-1]) * (k/x)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize frequency array: [0, 0, 1, 0, 0, 1, 0, 0, 0, 1] for max 9",
+      "array": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Compute prefix sums of frequencies",
+      "array": [
+        0,
+        0,
+        1,
+        1,
+        1,
+        2,
+        2,
+        2,
+        2,
+        3
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Processing x=2: floor(2/2)=1, floor(5/2)=2, floor(9/2)=4",
+      "array": [
+        2,
+        5,
+        9
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Calculating contribution of pairs with divisor 2",
+      "array": [
+        2,
+        5,
+        9
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Adding floor divisions: 1*1 + 1*2 + 1*4 = 7",
+      "array": [
+        2,
+        5,
+        9
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Processing x=5: floor(5/5)=1, floor(9/5)=1",
+      "array": [
+        2,
+        5,
+        9
+      ],
+      "curr": 5
+    },
+    {
+      "codeLine": 6,
+      "note": "Adding floor divisions: 7 + 1 + 1 = 9",
+      "array": [
+        2,
+        5,
+        9
+      ],
+      "curr": 7
+    },
+    {
+      "codeLine": 4,
+      "note": "Processing x=9: floor(9/9)=1",
+      "array": [
+        2,
+        5,
+        9
+      ],
+      "curr": 9
+    },
+    {
+      "codeLine": 6,
+      "note": "Adding floor divisions: 9 + 1 = 10. Result is 10.",
+      "array": [
+        2,
+        5,
+        9
+      ],
+      "curr": 9
+    }
+  ]
+}

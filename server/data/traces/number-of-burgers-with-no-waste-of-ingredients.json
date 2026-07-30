@@ -1,0 +1,52 @@
+{
+  "title": "Number of Burgers with No Waste of Ingredients",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Math",
+    "Algebra"
+  ],
+  "description": "Given tomatoSlices and cheeseSlices, find the number of jumbo (4 tomatoes, 1 cheese) and small (2 tomatoes, 1 cheese) burgers with no waste.",
+  "target": "tomatoSlices = 16, cheeseSlices = 7",
+  "pseudocode": "1. jumbo = (tomatoSlices - 2 * cheeseSlices) / 2\n2. small = cheeseSlices - jumbo\n3. if jumbo >= 0 and small >= 0 and (4 * jumbo + 2 * small) == tomatoSlices:\n4.   return [jumbo, small]\n5. else:\n6.   return []",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Calculate jumbo burgers: (16 - 2 * 7) / 2 = (16 - 14) / 2 = 1",
+      "array": [
+        1,
+        6
+      ],
+      "i": 1,
+      "curr": 16
+    },
+    {
+      "codeLine": 2,
+      "note": "Calculate small burgers: 7 - 1 = 6",
+      "array": [
+        1,
+        6
+      ],
+      "j": 6,
+      "curr": 7
+    },
+    {
+      "codeLine": 3,
+      "note": "Validate constraints: jumbo (1) >= 0, small (6) >= 0, and 4(1) + 2(6) == 16",
+      "array": [
+        1,
+        6
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Return the result [1, 6]",
+      "array": [
+        1,
+        6
+      ],
+      "curr": 1
+    }
+  ]
+}

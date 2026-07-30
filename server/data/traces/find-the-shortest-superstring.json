@@ -1,5 +1,5 @@
 {
-  "title": "Find the Shortest Superstring",
+  "title": "Shortest Superstring",
   "difficulty": "Hard",
   "type": "array",
   "tags": [
@@ -8,55 +8,58 @@
     "Dynamic Programming",
     "Bitmask"
   ],
-  "description": "Find a string that contains all given strings as substrings with the minimum length.",
-  "target": "[\"alex\",\"loves\",\"leetcode\"]",
-  "pseudocode": "function shortestSuperstring(A) {\n  let n = A.length;\n  let overlaps = Array.from({length: n}, () => Array(n).fill(0));\n  for (let i = 0; i < n; i++) {\n    for (let j = 0; j < n; j++) {\n      if (i !== j) {\n        for (let k = Math.min(A[i].length, A[j].length); k > 0; k--) {\n          if (A[i].endsWith(A[j].substring(0, k))) {\n            overlaps[i][j] = k; break;\n          }\n        }\n      }\n    }\n  }\n  return buildResult(overlaps, A);\n}",
+  "description": "Find the shortest string that contains every word in the input as a substring.",
+  "target": "alexlovesleetcode",
+  "pseudocode": "1. Precompute overlap between every pair of strings\n2. Initialize DP table with bitmask to store path\n3. Iterate through masks and last index to find min length\n4. Reconstruct path from DP table result",
   "steps": [
     {
+      "codeLine": 1,
+      "note": "Initialize overlap matrix: alex-loves:0, alex-leetcode:0, loves-alex:0, loves-leetcode:0, leetcode-alex:0, leetcode-loves:0",
+      "array": [
+        "alex",
+        "loves",
+        "leetcode"
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Starting with single words in mask (binary 001, 010, 100)",
+      "array": [
+        "alex",
+        "loves",
+        "leetcode"
+      ],
+      "visited": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
       "codeLine": 3,
-      "note": "Initialize overlap matrix for strings: alex, loves, leetcode",
+      "note": "Merging alex + loves -> alexloves",
       "array": [
-        "alex",
-        "loves",
+        "alexloves",
         "leetcode"
-      ]
-    },
-    {
-      "codeLine": 4,
-      "note": "Calculate overlap between 'alex' and 'loves'",
-      "i": 0,
-      "j": 1,
-      "array": [
-        "alex",
-        "loves",
-        "leetcode"
-      ]
-    },
-    {
-      "codeLine": 6,
-      "note": "Overlap(alex, loves) = 0",
+      ],
       "i": 0,
       "j": 1
     },
     {
-      "codeLine": 4,
-      "note": "Calculate overlap between 'loves' and 'leetcode'",
-      "i": 1,
-      "j": 2
-    },
-    {
-      "codeLine": 6,
-      "note": "Overlap(loves, leetcode) found: 'le' (length 2)",
-      "i": 1,
-      "j": 2
-    },
-    {
-      "codeLine": 14,
-      "note": "Constructing superstring path based on max overlaps",
+      "codeLine": 3,
+      "note": "Merging alexloves + leetcode -> alexlovesleetcode",
       "array": [
-        "alex",
-        "loves",
-        "leetcode"
+        "alexlovesleetcode"
+      ],
+      "i": 0,
+      "j": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Reconstructing final shortest superstring",
+      "array": [
+        "alexlovesleetcode"
       ]
     }
   ]

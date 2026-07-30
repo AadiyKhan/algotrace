@@ -1,0 +1,241 @@
+{
+  "title": "Leftmost Column with at Least a One",
+  "difficulty": "Medium",
+  "type": "matrix",
+  "tags": [
+    "Array",
+    "Matrix",
+    "Binary Search"
+  ],
+  "description": "Find the leftmost column index with at least a one in a row-sorted binary matrix.",
+  "target": 1,
+  "pseudocode": "1: let rows = mat.length, cols = mat[0].length\n2: let r = 0, c = cols - 1, res = -1\n3: while r < rows and c >= 0:\n4:   if mat[r][c] == 1:\n5:     res = c\n6:     c--\n7:   else:\n8:     r++\n9: return res",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Initialize pointers at top-right corner.",
+      "matrix": [
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          1
+        ]
+      ],
+      "curr": [
+        0,
+        2
+      ],
+      "i": 0,
+      "j": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Check mat[0][2] which is 1.",
+      "matrix": [
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          1
+        ]
+      ],
+      "curr": [
+        0,
+        2
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Found a 1, update result to 2.",
+      "matrix": [
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          1
+        ]
+      ],
+      "curr": [
+        0,
+        2
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Move column left to look for earlier 1.",
+      "matrix": [
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          1
+        ]
+      ],
+      "curr": [
+        0,
+        1
+      ],
+      "j": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Check mat[0][1] which is 0.",
+      "matrix": [
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          1
+        ]
+      ],
+      "curr": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Since value is 0, move row down.",
+      "matrix": [
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          1
+        ]
+      ],
+      "curr": [
+        1,
+        1
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Check mat[1][1] which is 1.",
+      "matrix": [
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          1
+        ]
+      ],
+      "curr": [
+        1,
+        1
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Update result to 1.",
+      "matrix": [
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          1
+        ]
+      ],
+      "curr": [
+        1,
+        1
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Move column left.",
+      "matrix": [
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          1
+        ]
+      ],
+      "curr": [
+        1,
+        0
+      ],
+      "j": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Check mat[1][0] which is 0.",
+      "matrix": [
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          1
+        ]
+      ],
+      "curr": [
+        1,
+        0
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Move row down, exit bounds.",
+      "matrix": [
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          1
+        ]
+      ],
+      "curr": [
+        2,
+        0
+      ],
+      "i": 2
+    }
+  ]
+}

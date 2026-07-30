@@ -3,11 +3,13 @@
   "difficulty": "Medium",
   "type": "array",
   "tags": [
+    "Array",
     "String",
-    "Dynamic Programming"
+    "Two Pointers"
   ],
-  "description": "Count the total number of palindromic substrings in a given string.",
-  "pseudocode": "1. count = 0\n2. for i from 0 to n-1:\n3.   expand(i, i)\n4.   expand(i, i+1)\n5. function expand(l, r):\n6.   while l >= 0 and r < n and s[l] == s[r]:\n7.     count++\n8.     l--, r++",
+  "description": "Count all palindromic substrings using the expand around center approach.",
+  "target": 3,
+  "pseudocode": "1. count = 0\n2. for i from 0 to s.length - 1:\n3.   expand(i, i)\n4.   expand(i, i + 1)\n5. return count",
   "steps": [
     {
       "codeLine": 1,
@@ -15,68 +17,108 @@
       "array": [
         "a",
         "b",
-        "a"
+        "c"
       ]
     },
     {
-      "codeLine": 3,
-      "note": "Expand around center index 0 (a). Palindrome found: 'a'.",
+      "codeLine": 2,
+      "note": "Start iteration with i=0.",
       "array": [
         "a",
         "b",
-        "a"
-      ],
-      "i": 0
-    },
-    {
-      "codeLine": 4,
-      "note": "Expand around center 0, 1 (ab). No palindrome.",
-      "array": [
-        "a",
-        "b",
-        "a"
+        "c"
       ],
       "i": 0
     },
     {
       "codeLine": 3,
-      "note": "Expand around center index 1 (b). Palindrome found: 'b'.",
+      "note": "Expand around center index 0: 'a' is a palindrome. count = 1.",
       "array": [
         "a",
         "b",
-        "a"
+        "c"
       ],
-      "i": 1
+      "i": 0
     },
     {
       "codeLine": 4,
-      "note": "Expand around center 1, 2 (ba). No palindrome.",
+      "note": "Expand around center 0, 1: 'ab' is not a palindrome.",
       "array": [
         "a",
         "b",
-        "a"
+        "c"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Increment i to 1.",
+      "array": [
+        "a",
+        "b",
+        "c"
       ],
       "i": 1
     },
     {
       "codeLine": 3,
-      "note": "Expand around center index 2 (a). Palindrome found: 'a'.",
+      "note": "Expand around center index 1: 'b' is a palindrome. count = 2.",
       "array": [
         "a",
         "b",
-        "a"
+        "c"
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Expand around center 1, 2: 'bc' is not a palindrome.",
+      "array": [
+        "a",
+        "b",
+        "c"
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Increment i to 2.",
+      "array": [
+        "a",
+        "b",
+        "c"
       ],
       "i": 2
     },
     {
-      "codeLine": 6,
-      "note": "Expand around center 0, 2 ('aba'). Palindrome found: 'aba'.",
+      "codeLine": 3,
+      "note": "Expand around center index 2: 'c' is a palindrome. count = 3.",
       "array": [
         "a",
         "b",
-        "a"
+        "c"
       ],
-      "i": 0
+      "i": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Expand around center 2, 3: out of bounds.",
+      "array": [
+        "a",
+        "b",
+        "c"
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Return final count: 3.",
+      "array": [
+        "a",
+        "b",
+        "c"
+      ]
     }
-  ]
+  ],
+  "fullDescription": "<p>Given a string <code>s</code>, return <em>the number of <strong>palindromic substrings</strong> in it</em>.</p>\n\n<p>A string is a <strong>palindrome</strong> when it reads the same backward as forward.</p>\n\n<p>A <strong>substring</strong> is a contiguous sequence of characters within the string.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> s = &quot;abc&quot;\n<strong>Output:</strong> 3\n<strong>Explanation:</strong> Three palindromic strings: &quot;a&quot;, &quot;b&quot;, &quot;c&quot;.\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> s = &quot;aaa&quot;\n<strong>Output:</strong> 6\n<strong>Explanation:</strong> Six palindromic strings: &quot;a&quot;, &quot;a&quot;, &quot;a&quot;, &quot;aa&quot;, &quot;aa&quot;, &quot;aaa&quot;.\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= s.length &lt;= 1000</code></li>\n\t<li><code>s</code> consists of lowercase English letters.</li>\n</ul>\n"
 }

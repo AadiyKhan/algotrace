@@ -18,8 +18,8 @@ const tokenize = (line) => {
   return parts;
 };
 
-const PseudocodeBlock = ({ code, activeLine }) => {
-  const lines = code.split('\n');
+const PseudocodeBlock = ({ code = '', activeLine }) => {
+  const lines = (code || '').split('\n');
   const activeRef = useRef(null);
 
   useEffect(() => {
@@ -35,28 +35,30 @@ const PseudocodeBlock = ({ code, activeLine }) => {
         return (
           <motion.div key={idx}
             ref={isActive ? activeRef : null}
-            className="relative flex items-center px-5 py-[7px] transition-colors duration-150"
-            style={{ background: isActive ? 'rgba(255,0,0,0.08)' : 'transparent' }}
+            className="relative flex items-center px-5 py-[7px] transition-colors duration-300"
+            style={{ background: isActive ? 'rgba(255,255,255,0.03)' : 'transparent' }}
             animate={isActive ? { x: [0, 3, 0] } : { x: 0 }}
             transition={{ duration: 0.2 }}>
 
             {isActive && (
               <motion.div layoutId="active-bar"
-                className="absolute left-0 top-0 bottom-0 w-0.5"
-                style={{ background: '#ff0000' }}
+                className="absolute left-0 top-0 bottom-0 w-[4px]"
+                style={{ 
+                  background: '#f59e0b', 
+                }}
                 transition={{ type: 'spring', stiffness: 500, damping: 40 }} />
             )}
 
-            <span className="w-6 text-right pr-4 flex-shrink-0 select-none"
-              style={{ color: isActive ? '#ff0000' : 'rgba(255,255,255,0.2)', fontSize: 10 }}>
+            <span className="w-6 text-right pr-4 flex-shrink-0 select-none transition-colors duration-300 font-bold"
+              style={{ color: isActive ? '#f59e0b' : 'rgba(255,255,255,0.1)', fontSize: 10 }}>
               {lineNum}
             </span>
 
-            <span className="whitespace-pre flex-1"
-              style={{ color: isActive ? 'rgba(255,255,255,0.9)' : 'rgba(255,255,255,0.5)' }}>
+            <span className="whitespace-pre flex-1 transition-colors duration-300"
+              style={{ color: isActive ? 'rgba(255,255,255,1)' : 'rgba(255,255,255,0.2)' }}>
               {tokenize(line).map((tok, i) =>
                 tok.kw
-                  ? <span key={i} style={{ color: isActive ? '#ff4444' : 'rgba(255,68,68,0.5)' }}>{tok.t}</span>
+                  ? <span key={i} className="transition-colors duration-300 font-bold uppercase tracking-widest" style={{ color: isActive ? '#ffffff' : 'rgba(255,255,255,0.15)' }}>{tok.t}</span>
                   : <span key={i}>{tok.t}</span>
               )}
             </span>

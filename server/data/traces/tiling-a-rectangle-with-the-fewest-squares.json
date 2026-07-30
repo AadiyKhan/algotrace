@@ -1,0 +1,150 @@
+{
+  "title": "Tiling a Rectangle with the Fewest Squares",
+  "difficulty": "Hard",
+  "type": "matrix",
+  "tags": [
+    "Backtracking",
+    "Dynamic Programming"
+  ],
+  "description": "Find the minimum number of squares to tile a rectangle of size n x m.",
+  "target": 11,
+  "pseudocode": "function solve(n, m) {\n  let minSquares = n * m;\n  let grid = Array(n).fill().map(() => Array(m).fill(false));\n  function backtrack(count) {\n    if (count >= minSquares) return;\n    let [r, c] = findEmpty(grid);\n    if (r === -1) { minSquares = count; return; }\n    for (let size = Math.min(n - r, m - c); size > 0; size--) {\n      if (canPlace(grid, r, c, size)) {\n        place(grid, r, c, size, true);\n        backtrack(count + 1);\n        place(grid, r, c, size, false);\n      }\n    }\n  }\n  backtrack(0);\n  return minSquares;\n}",
+  "steps": [
+    {
+      "codeLine": 4,
+      "note": "Initialize 2x3 grid with all cells empty (false).",
+      "matrix": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "curr": [
+        2,
+        3
+      ]
+    },
+    {
+      "codeLine": 9,
+      "note": "Place a 2x2 square at [0, 0].",
+      "matrix": [
+        [
+          1,
+          1,
+          0
+        ],
+        [
+          1,
+          1,
+          0
+        ]
+      ],
+      "curr": [
+        2,
+        2
+      ]
+    },
+    {
+      "codeLine": 11,
+      "note": "Recurse: find next empty cell, which is [0, 2].",
+      "curr": [
+        0,
+        2
+      ],
+      "matrix": [
+        [
+          1,
+          1,
+          0
+        ],
+        [
+          1,
+          1,
+          0
+        ]
+      ]
+    },
+    {
+      "codeLine": 9,
+      "note": "Place a 1x1 square at [0, 2].",
+      "matrix": [
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          0
+        ]
+      ],
+      "curr": [
+        1,
+        1
+      ]
+    },
+    {
+      "codeLine": 11,
+      "note": "Recurse: find next empty cell, which is [1, 2].",
+      "curr": [
+        1,
+        2
+      ],
+      "matrix": [
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ]
+      ]
+    },
+    {
+      "codeLine": 9,
+      "note": "Place a 1x1 square at [1, 2].",
+      "matrix": [
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ]
+      ],
+      "curr": [
+        1,
+        1
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Grid full, update minSquares to 3.",
+      "matrix": [
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ]
+      ]
+    }
+  ]
+}

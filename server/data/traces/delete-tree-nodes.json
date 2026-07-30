@@ -1,0 +1,146 @@
+{
+  "title": "Delete Tree Nodes",
+  "difficulty": "Medium",
+  "type": "tree",
+  "tags": [
+    "Tree",
+    "DFS",
+    "Recursion"
+  ],
+  "description": "Delete subtrees that sum to zero, starting from the root or children.",
+  "target": 0,
+  "pseudocode": "1: function deleteSubtree(node) {\n2:   sum = node.val\n3:   count = 1\n4:   for child in node.children {\n5:     childSum, childCount = deleteSubtree(child)\n6:     sum += childSum\n7:     count += childCount\n8:   }\n9:   if (sum == 0) return 0, 0\n10:  return sum, count\n11: }",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Starting DFS at root (ID 0).",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 0,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": -1,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Visiting child 1 (val: 1).",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 0,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": -1,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 10,
+      "note": "Child 1 returns sum 1, count 1.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 0,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": -1,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Visiting child 2 (val: -1).",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 0,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": -1,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 10,
+      "note": "Child 2 returns sum -1, count 1.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 0,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": -1,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 9,
+      "note": "Root sum is 0 + 1 + (-1) = 0. Delete entire tree.",
+      "treeNodes": [],
+      "curr": 0
+    }
+  ]
+}

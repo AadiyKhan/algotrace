@@ -3,32 +3,39 @@
   "difficulty": "Medium",
   "type": "tree",
   "tags": [
-    "Trie",
-    "Backtracking",
-    "String"
+    "String",
+    "Depth-First Search",
+    "Design",
+    "Trie"
   ],
-  "description": "Design a data structure that supports adding new words and searching for words which may contain dots '.' where a dot can match any letter.",
-  "pseudocode": "function search(node, word, index) {\n  if (index === word.length) return node.isEnd;\n  char = word[index];\n  if (char === '.') {\n    for (let child of node.children) {\n      if (search(child, word, index + 1)) return true;\n    }\n  } else {\n    if (!node.children[char]) return false;\n    return search(node.children[char], word, index + 1);\n  }\n  return false;\n}",
+  "description": "Implement a Trie-based dictionary with dot-pattern wildcard search.",
+  "pseudocode": "1. root = Node()\n2. addWord(word): curr = root; for char in word: curr = curr.children[char]; curr.isEnd = true\n3. search(word): dfs(node, index)",
   "steps": [
     {
       "codeLine": 2,
-      "note": "Start search at root with word 'a.c'",
+      "note": "Adding 'bad' to Trie",
       "treeNodes": [
         {
           "id": 0,
           "val": "root",
-          "left": 1,
+          "left": null,
           "right": null
         },
         {
           "id": 1,
-          "val": "a",
+          "val": "b",
           "left": 2,
           "right": null
         },
         {
           "id": 2,
-          "val": "c",
+          "val": "a",
+          "left": 3,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": "d",
           "left": null,
           "right": null
         }
@@ -36,88 +43,179 @@
       "curr": 0
     },
     {
-      "codeLine": 5,
-      "note": "Character at index 1 is '.', checking all children of node 'a'",
+      "codeLine": 2,
+      "note": "Adding 'dad' to Trie",
       "treeNodes": [
         {
           "id": 0,
           "val": "root",
-          "left": 1,
+          "left": 4,
+          "right": 1
+        },
+        {
+          "id": 4,
+          "val": "d",
+          "left": 5,
+          "right": null
+        },
+        {
+          "id": 5,
+          "val": "a",
+          "left": 6,
+          "right": null
+        },
+        {
+          "id": 6,
+          "val": "d",
+          "left": null,
           "right": null
         },
         {
           "id": 1,
-          "val": "a",
+          "val": "b",
           "left": 2,
           "right": null
         },
         {
           "id": 2,
-          "val": "c",
-          "left": null,
-          "right": null
-        }
-      ],
-      "curr": 1,
-      "visited": [
-        0,
-        1
-      ]
-    },
-    {
-      "codeLine": 7,
-      "note": "Matched '.' with node 'c' at index 1",
-      "treeNodes": [
-        {
-          "id": 0,
-          "val": "root",
-          "left": 1,
-          "right": null
-        },
-        {
-          "id": 1,
           "val": "a",
-          "left": 2,
+          "left": 3,
           "right": null
         },
         {
-          "id": 2,
-          "val": "c",
+          "id": 3,
+          "val": "d",
           "left": null,
           "right": null
         }
       ],
-      "curr": 2,
-      "visited": [
-        0,
-        1,
-        2
-      ]
+      "curr": 4
     },
     {
       "codeLine": 2,
-      "note": "Reached end of word, checking isEnd property",
+      "note": "Adding 'mad' to Trie",
       "treeNodes": [
         {
           "id": 0,
           "val": "root",
-          "left": 1,
+          "left": 7,
+          "right": 4
+        },
+        {
+          "id": 7,
+          "val": "m",
+          "left": 8,
           "right": null
         },
         {
-          "id": 1,
+          "id": 8,
           "val": "a",
+          "left": 9,
+          "right": null
+        },
+        {
+          "id": 9,
+          "val": "d",
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": "d",
+          "left": 5,
+          "right": null
+        },
+        {
+          "id": 5,
+          "val": "a",
+          "left": 6,
+          "right": null
+        },
+        {
+          "id": 6,
+          "val": "d",
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 8
+    },
+    {
+      "codeLine": 3,
+      "note": "Searching 'pad' (false)",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": "root",
+          "left": 7,
+          "right": 4
+        }
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Searching 'bad' (true)",
+      "treeNodes": [
+        {
+          "id": 1,
+          "val": "b",
           "left": 2,
           "right": null
         },
         {
           "id": 2,
-          "val": "c",
+          "val": "a",
+          "left": 3,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": "d",
           "left": null,
           "right": null
         }
       ],
-      "curr": 2
+      "curr": 3
+    },
+    {
+      "codeLine": 3,
+      "note": "Searching '.ad' (true)",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": "root",
+          "left": 7,
+          "right": 4
+        }
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Searching 'b..' (true)",
+      "treeNodes": [
+        {
+          "id": 1,
+          "val": "b",
+          "left": 2,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": "a",
+          "left": 3,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": "d",
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 3
     }
-  ]
+  ],
+  "fullDescription": "<p>Design a data structure that supports adding new words and finding if a string matches any previously added string.</p>\n\n<p>Implement the <code>WordDictionary</code> class:</p>\n\n<ul>\n\t<li><code>WordDictionary()</code>&nbsp;Initializes the object.</li>\n\t<li><code>void addWord(word)</code> Adds <code>word</code> to the data structure, it can be matched later.</li>\n\t<li><code>bool search(word)</code>&nbsp;Returns <code>true</code> if there is any string in the data structure that matches <code>word</code>&nbsp;or <code>false</code> otherwise. <code>word</code> may contain dots <code>&#39;.&#39;</code> where dots can be matched with any letter.</li>\n</ul>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example:</strong></p>\n\n<pre>\n<strong>Input</strong>\n[&quot;WordDictionary&quot;,&quot;addWord&quot;,&quot;addWord&quot;,&quot;addWord&quot;,&quot;search&quot;,&quot;search&quot;,&quot;search&quot;,&quot;search&quot;]\n[[],[&quot;bad&quot;],[&quot;dad&quot;],[&quot;mad&quot;],[&quot;pad&quot;],[&quot;bad&quot;],[&quot;.ad&quot;],[&quot;b..&quot;]]\n<strong>Output</strong>\n[null,null,null,null,false,true,true,true]\n\n<strong>Explanation</strong>\nWordDictionary wordDictionary = new WordDictionary();\nwordDictionary.addWord(&quot;bad&quot;);\nwordDictionary.addWord(&quot;dad&quot;);\nwordDictionary.addWord(&quot;mad&quot;);\nwordDictionary.search(&quot;pad&quot;); // return False\nwordDictionary.search(&quot;bad&quot;); // return True\nwordDictionary.search(&quot;.ad&quot;); // return True\nwordDictionary.search(&quot;b..&quot;); // return True\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= word.length &lt;= 25</code></li>\n\t<li><code>word</code> in <code>addWord</code> consists of lowercase English letters.</li>\n\t<li><code>word</code> in <code>search</code> consist of <code>&#39;.&#39;</code> or lowercase English letters.</li>\n\t<li>There will be at most <code>2</code> dots in <code>word</code> for <code>search</code> queries.</li>\n\t<li>At most <code>10<sup>4</sup></code> calls will be made to <code>addWord</code> and <code>search</code>.</li>\n</ul>\n"
 }

@@ -3,25 +3,25 @@
   "difficulty": "Medium",
   "type": "matrix",
   "tags": [
-    "Dynamic Programming",
-    "Matrix"
+    "Array",
+    "Dynamic Programming"
   ],
-  "description": "Calculate the probability that a knight remains on the board after K moves.",
-  "target": 1,
-  "pseudocode": "1: dp = new matrix(n, n, 1)\n2: for step = 1 to k:\n3:   newDp = new matrix(n, n, 0)\n4:   for r, c in cells:\n5:     for dr, dc in knightMoves:\n6:       if (r+dr, c+dc) is on board:\n7:         newDp[r+dr][c+dc] += dp[r][c] / 8\n8:   dp = newDp\n9: return sum(dp)",
+  "description": "Calculate the probability that a knight remains on an n x n board after k moves.",
+  "target": 0.0625,
+  "pseudocode": "1. Initialize dp[n][n] with 1.0\n2. For step = 1 to k:\n3.   Create new_dp[n][n] with 0.0\n4.   For each cell (r, c):\n5.     For each knight move (dr, dc):\n6.       If (r+dr, c+dc) is valid, new_dp[r+dr][c+dc] += dp[r][c] / 8.0\n7.   dp = new_dp\n8. Return sum of all dp cells",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize 3x3 DP table with probability 1.0 (starting position [1,1])",
+      "note": "Initialize probability matrix for move 0 at (0,0)",
       "matrix": [
         [
-          0,
+          1,
           0,
           0
         ],
         [
           0,
-          1,
+          0,
           0
         ],
         [
@@ -29,21 +29,20 @@
           0,
           0
         ]
+      ],
+      "curr": [
+        0,
+        0
       ]
     },
     {
       "codeLine": 2,
-      "note": "Starting move 1 iteration",
-      "i": 1
-    },
-    {
-      "codeLine": 3,
-      "note": "Initialize next state matrix with zeros",
+      "note": "Step 1: Calculate probabilities after 1 move",
       "matrix": [
         [
           0,
           0,
-          0
+          0.125
         ],
         [
           0,
@@ -51,15 +50,11 @@
           0
         ],
         [
-          0,
+          0.125,
           0,
           0
         ]
-      ]
-    },
-    {
-      "codeLine": 6,
-      "note": "Knight at [1,1] has valid moves to [0,3] (invalid), [3,0] (invalid), etc. Valid: [0,3] no, [2,3] no. For 3x3, most moves go off-board.",
+      ],
       "curr": [
         1,
         1
@@ -67,49 +62,53 @@
     },
     {
       "codeLine": 7,
-      "note": "Distribute probability 1/8 to each of the 8 possible moves if within bounds",
+      "note": "Step 2: Calculate probabilities after 2 moves from previous positions",
       "matrix": [
         [
-          0,
-          0,
-          0
-        ],
-        [
-          0,
+          0.015625,
           0,
           0
         ],
         [
           0,
-          0,
+          0.03125,
           0
+        ],
+        [
+          0,
+          0,
+          0.015625
         ]
+      ],
+      "curr": [
+        2,
+        2
       ]
     },
     {
       "codeLine": 8,
-      "note": "Update dp table for move 1",
+      "note": "Summing probabilities on board: 0.015625 + 0.03125 + 0.015625 = 0.0625",
       "matrix": [
         [
-          0,
-          0,
-          0
-        ],
-        [
-          0,
+          0.015625,
           0,
           0
         ],
         [
           0,
-          0,
+          0.03125,
           0
+        ],
+        [
+          0,
+          0,
+          0.015625
         ]
+      ],
+      "curr": [
+        0,
+        15625
       ]
-    },
-    {
-      "codeLine": 9,
-      "note": "Sum of probabilities is 0 as all moves from [1,1] in 3x3 lead off-board"
     }
   ]
 }

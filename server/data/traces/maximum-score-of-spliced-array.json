@@ -1,0 +1,51 @@
+{
+  "title": "Maximum Score Of Spliced Array",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Dynamic Programming"
+  ],
+  "description": "Maximize the sum of one array after swapping a subarray with the other array.",
+  "target": null,
+  "pseudocode": "1. diff = []\n2. for i in range(len(nums1)): diff.append(nums1[i] - nums2[i])\n3. max_diff = kadane(diff)\n4. return max(sum(nums1) - max_diff, sum(nums2) + max_diff)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize difference array diff where diff[i] = nums1[i] - nums2[i]. nums1=[10, 5], nums2=[2, 8]",
+      "array": [
+        8,
+        -3
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Running Kadane's on diff to find the maximum subarray sum.",
+      "array": [
+        8,
+        -3
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Kadane's update: max subarray sum found is 8.",
+      "array": [
+        8,
+        -3
+      ],
+      "i": 1,
+      "curr": 8
+    },
+    {
+      "codeLine": 4,
+      "note": "Calculate final score: max(sum(nums1) - 8, sum(nums2) + 8). Result: 13.",
+      "array": [
+        8,
+        -3
+      ],
+      "curr": 1
+    }
+  ]
+}

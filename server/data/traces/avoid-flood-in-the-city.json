@@ -1,0 +1,92 @@
+{
+  "title": "Avoid Flood in The City",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "Greedy"
+  ],
+  "description": "Given rains as an array where rains[i] > 0 means lake rains[i] fills, and rains[i] == 0 means you can dry one lake, determine if you can avoid floods.",
+  "target": null,
+  "pseudocode": "1. map = {}, zeros = []\n2. for i, lake in rains:\n3.   if lake > 0:\n4.     if lake in map: dry_day = zeros.find(> map[lake])\n5.     if dry_day: ans[dry_day] = lake, map[lake] = i\n6.     else: return []\n7.   else: zeros.push(i), ans[i] = 1\n8. return ans",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Initialize rains = [1, 2, 0, 1, 2], processing lake 1",
+      "array": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "i": 0,
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Lake 1 is full, mark in map",
+      "array": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "i": 0,
+      "curr": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "Processing 0 at index 2, add to zeros stack",
+      "array": [
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
+      "i": 2,
+      "curr": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Lake 1 rains again at index 3. Need to dry using a zero after index 0",
+      "array": [
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
+      "i": 3,
+      "curr": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Dry lake 1 using zero at index 2",
+      "array": [
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
+      "i": 3,
+      "curr": 1
+    },
+    {
+      "codeLine": 8,
+      "note": "Result array for case [1,2,0,1,2]",
+      "array": [
+        -1,
+        -1,
+        1,
+        -1,
+        2
+      ],
+      "curr": 1
+    }
+  ]
+}

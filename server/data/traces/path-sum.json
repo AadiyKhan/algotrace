@@ -4,16 +4,16 @@
   "type": "tree",
   "tags": [
     "Tree",
-    "DFS",
+    "Depth-First Search",
     "Binary Tree"
   ],
-  "description": "Determine if the tree has a root-to-leaf path that sums to a given target value.",
+  "description": "Determine if there is a root-to-leaf path that sums up to targetSum.",
   "target": 22,
-  "pseudocode": "1. if !node return false\n2. if !node.left && !node.right return node.val == target\n3. newTarget = target - node.val\n4. return hasPath(node.left, newTarget) || hasPath(node.right, newTarget)",
+  "pseudocode": "1. If root is null, return false.\n2. If root is leaf and val == targetSum, return true.\n3. Return hasPathSum(root.left, targetSum - val) || hasPathSum(root.right, targetSum - val)",
   "steps": [
     {
       "codeLine": 3,
-      "note": "Starting at root (5), subtract from target 22",
+      "note": "Starting DFS at root (val: 5), target 22",
       "treeNodes": [
         {
           "id": 0,
@@ -70,42 +70,251 @@
           "right": null
         }
       ],
-      "curr": 0
+      "curr": 5
     },
     {
       "codeLine": 3,
-      "note": "Traversing to node 4, new target is 17",
-      "curr": 1
+      "note": "Traversing left to node 4, target remaining: 17",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 5,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 4,
+          "left": 3,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 8,
+          "left": 4,
+          "right": 5
+        },
+        {
+          "id": 3,
+          "val": 11,
+          "left": 6,
+          "right": 7
+        },
+        {
+          "id": 4,
+          "val": 13,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 5,
+          "val": 4,
+          "left": null,
+          "right": 8
+        },
+        {
+          "id": 6,
+          "val": 7,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 7,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 8,
+          "val": 1,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 4
     },
     {
       "codeLine": 3,
-      "note": "Traversing to node 11, new target is 13",
-      "curr": 3
+      "note": "Traversing left to node 11, target remaining: 6",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 5,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 4,
+          "left": 3,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 8,
+          "left": 4,
+          "right": 5
+        },
+        {
+          "id": 3,
+          "val": 11,
+          "left": 6,
+          "right": 7
+        },
+        {
+          "id": 4,
+          "val": 13,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 5,
+          "val": 4,
+          "left": null,
+          "right": 8
+        },
+        {
+          "id": 6,
+          "val": 7,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 7,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 8,
+          "val": 1,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 11
     },
     {
-      "codeLine": 2,
-      "note": "Checking leaf node 7, 7 != 13, returning false",
-      "curr": 6
-    },
-    {
-      "codeLine": 2,
-      "note": "Checking leaf node 2, 2 == 13 fails, returning false",
-      "curr": 7
-    },
-    {
-      "codeLine": 2,
-      "note": "Backtracking, traversing right child 8, new target is 17",
+      "codeLine": 3,
+      "note": "Traversing right to node 2, target remaining: 0",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 5,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 4,
+          "left": 3,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 8,
+          "left": 4,
+          "right": 5
+        },
+        {
+          "id": 3,
+          "val": 11,
+          "left": 6,
+          "right": 7
+        },
+        {
+          "id": 4,
+          "val": 13,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 5,
+          "val": 4,
+          "left": null,
+          "right": 8
+        },
+        {
+          "id": 6,
+          "val": 7,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 7,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 8,
+          "val": 1,
+          "left": null,
+          "right": null
+        }
+      ],
       "curr": 2
     },
     {
       "codeLine": 2,
-      "note": "Traversing right child 4, new target is 9",
-      "curr": 5
-    },
-    {
-      "codeLine": 2,
-      "note": "Checking leaf node 1, 1 == 9 fails",
-      "curr": 8
+      "note": "Leaf node 2 found with value 2, matches remaining target 2. Return True.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 5,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 4,
+          "left": 3,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 8,
+          "left": 4,
+          "right": 5
+        },
+        {
+          "id": 3,
+          "val": 11,
+          "left": 6,
+          "right": 7
+        },
+        {
+          "id": 4,
+          "val": 13,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 5,
+          "val": 4,
+          "left": null,
+          "right": 8
+        },
+        {
+          "id": 6,
+          "val": 7,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 7,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 8,
+          "val": 1,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 7
     }
   ]
 }

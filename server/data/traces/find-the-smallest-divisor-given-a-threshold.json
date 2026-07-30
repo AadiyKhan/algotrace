@@ -1,0 +1,108 @@
+{
+  "title": "Find The Smallest Divisor Given A Threshold",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Binary Search"
+  ],
+  "description": "Find the smallest divisor such that the sum of division results (rounded up) does not exceed the threshold.",
+  "target": 6,
+  "pseudocode": "1. low = 1, high = max(nums)\n2. while low <= high:\n3.   mid = floor((low + high) / 2)\n4.   sum = calculateSum(nums, mid)\n5.   if sum <= threshold:\n6.     ans = mid, high = mid - 1\n7.   else:\n8.     low = mid + 1",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize binary search range [1, 4] for nums [1, 2, 3], threshold 6.",
+      "array": [
+        1,
+        2,
+        3
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Calculate mid = (1+4)/2 = 2.",
+      "array": [
+        1,
+        2,
+        3
+      ],
+      "i": 1,
+      "j": 4,
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Sum = ceil(1/2) + ceil(2/2) + ceil(3/2) = 1 + 1 + 2 = 4.",
+      "array": [
+        1,
+        2,
+        3
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "4 <= 6 is true. Possible answer found: 2.",
+      "array": [
+        1,
+        2,
+        3
+      ],
+      "curr": 4
+    },
+    {
+      "codeLine": 6,
+      "note": "Update high to 2 - 1 = 1.",
+      "array": [
+        1,
+        2,
+        3
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Calculate mid = (1+1)/2 = 1.",
+      "array": [
+        1,
+        2,
+        3
+      ],
+      "i": 1,
+      "j": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Sum = ceil(1/1) + ceil(2/1) + ceil(3/1) = 1 + 2 + 3 = 6.",
+      "array": [
+        1,
+        2,
+        3
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "6 <= 6 is true. Possible answer found: 1.",
+      "array": [
+        1,
+        2,
+        3
+      ],
+      "curr": 6
+    },
+    {
+      "codeLine": 6,
+      "note": "Update high to 1 - 1 = 0. Loop terminates.",
+      "array": [
+        1,
+        2,
+        3
+      ],
+      "curr": 1
+    }
+  ]
+}

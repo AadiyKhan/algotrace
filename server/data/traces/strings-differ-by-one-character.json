@@ -1,0 +1,103 @@
+{
+  "title": "Strings Differ By One Character",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "String",
+    "Hash Set"
+  ],
+  "description": "Determine if any two strings in a list differ by exactly one character.",
+  "pseudocode": "for (let i = 0; i < len; i++) {\n  for (let j = 0; j < strLen; j++) {\n    let modified = s[i].slice(0, j) + '*' + s[i].slice(j + 1);\n    if (seen.has(modified)) return true;\n    seen.add(modified);\n  }\n}",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Starting loop with first string 'abc'",
+      "array": [
+        "abc",
+        "adc",
+        "xyz"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Generating wildcard pattern for 'abc' at index 0",
+      "array": [
+        "abc",
+        "adc",
+        "xyz"
+      ],
+      "j": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Adding '*bc' to seen set",
+      "array": [
+        "abc",
+        "adc",
+        "xyz"
+      ],
+      "visited": [
+        "*bc"
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Generating wildcard pattern for 'abc' at index 1",
+      "array": [
+        "abc",
+        "adc",
+        "xyz"
+      ],
+      "j": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Adding 'a*c' to seen set",
+      "array": [
+        "abc",
+        "adc",
+        "xyz"
+      ],
+      "visited": [
+        "*bc",
+        "a*c"
+      ]
+    },
+    {
+      "codeLine": 1,
+      "note": "Moving to second string 'adc'",
+      "array": [
+        "abc",
+        "adc",
+        "xyz"
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Generating wildcard pattern for 'adc' at index 1",
+      "array": [
+        "abc",
+        "adc",
+        "xyz"
+      ],
+      "j": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Match found: 'a*c' exists in seen set",
+      "array": [
+        "abc",
+        "adc",
+        "xyz"
+      ],
+      "i": 1,
+      "j": 1
+    }
+  ]
+}

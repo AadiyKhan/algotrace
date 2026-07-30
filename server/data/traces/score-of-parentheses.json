@@ -15,7 +15,8 @@
       "note": "Initialize stack with 0 to track the base score.",
       "array": [
         0
-      ]
+      ],
+      "curr": 0
     },
     {
       "codeLine": 3,
@@ -23,7 +24,8 @@
       "array": [
         0,
         0
-      ]
+      ],
+      "curr": 0
     },
     {
       "codeLine": 3,
@@ -32,7 +34,8 @@
         0,
         0,
         0
-      ]
+      ],
+      "curr": 0
     },
     {
       "codeLine": 6,
@@ -40,7 +43,8 @@
       "array": [
         0,
         1
-      ]
+      ],
+      "curr": 0
     },
     {
       "codeLine": 3,
@@ -49,7 +53,8 @@
         0,
         1,
         0
-      ]
+      ],
+      "curr": 0
     },
     {
       "codeLine": 6,
@@ -57,14 +62,16 @@
       "array": [
         0,
         2
-      ]
+      ],
+      "curr": 0
     },
     {
       "codeLine": 6,
       "note": "Encounter ')', pop 2, update base with max(2*2, 1) = 4.",
       "array": [
         4
-      ]
+      ],
+      "curr": 2
     }
   ]
 }

@@ -1,0 +1,84 @@
+{
+  "title": "Longest Subarray of 1s After Deleting One Element",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Sliding Window"
+  ],
+  "description": "Find the longest subarray of 1s after deleting exactly one element from a binary array.",
+  "target": null,
+  "pseudocode": "1. left = 0, zeros = 0, maxLen = 0\n2. for right from 0 to n-1:\n3.   if nums[right] == 0: zeros++\n4.   while zeros > 1:\n5.     if nums[left] == 0: zeros--\n6.     left++\n7.   maxLen = max(maxLen, right - left)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize window pointers and zero counter.",
+      "array": [
+        1,
+        1,
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Enter loop, right at index 0.",
+      "array": [
+        1,
+        1,
+        0,
+        1
+      ],
+      "i": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "right at index 1.",
+      "array": [
+        1,
+        1,
+        0,
+        1
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Found zero at index 2, increment zero count.",
+      "array": [
+        1,
+        1,
+        0,
+        1
+      ],
+      "i": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 2,
+      "note": "right at index 3.",
+      "array": [
+        1,
+        1,
+        0,
+        1
+      ],
+      "i": 3,
+      "curr": 3
+    },
+    {
+      "codeLine": 7,
+      "note": "Window is [1, 1, 0, 1], length - 1 = 3.",
+      "array": [
+        1,
+        1,
+        0,
+        1
+      ],
+      "i": 3,
+      "curr": 1
+    }
+  ]
+}

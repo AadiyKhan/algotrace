@@ -1,0 +1,69 @@
+{
+  "title": "Form Largest Integer With Digits That Add Up To Target",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Dynamic Programming",
+    "String"
+  ],
+  "description": "Find the largest integer string formed by digits 1-9 that sum to a target value, using provided costs for each digit.",
+  "target": 5,
+  "pseudocode": "1. dp = Array(target + 1).fill('')\n2. for cost in 1..9:\n3.   for i in cost..target:\n4.     if i == cost or dp[i - cost] != '':\n5.       candidate = digit + dp[i - cost]\n6.       if candidate.length >= dp[i].length:\n7.         dp[i] = max(dp[i], candidate)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize DP table for target 5. Index 0 is empty string base case.",
+      "array": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "curr": 5
+    },
+    {
+      "codeLine": 3,
+      "note": "Processing digit '1' (cost 1). Update DP array.",
+      "array": [
+        "",
+        "1",
+        "11",
+        "111",
+        "1111",
+        "11111"
+      ],
+      "i": 5,
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Processing digit '2' (cost 2). Compare lengths for index 5: '11111' vs '2111'.",
+      "array": [
+        "",
+        "1",
+        "21",
+        "211",
+        "221",
+        "2211"
+      ],
+      "i": 5,
+      "curr": 2
+    },
+    {
+      "codeLine": 7,
+      "note": "Final DP table after considering all digits. Optimal value at index 5 is returned.",
+      "array": [
+        "",
+        "1",
+        "21",
+        "311",
+        "321",
+        "3221"
+      ],
+      "i": 5,
+      "curr": 5
+    }
+  ]
+}

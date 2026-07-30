@@ -1,0 +1,66 @@
+{
+  "title": "Sort the Jumbled Numbers",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Sorting"
+  ],
+  "description": "Sort an array of integers based on their mapped values according to a given digit mapping rule.",
+  "target": null,
+  "pseudocode": "1. Create a list of pairs (mappedValue, originalValue) for each number in nums\n2. For each number, calculate mappedValue by replacing each digit using mapping[]\n3. Sort the list of pairs based on mappedValue (stable sort)\n4. Extract and return the originalValue from the sorted list",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Calculating mapped value for 991: 9->6, 9->6, 1->9. Result: 669",
+      "array": [
+        991,
+        338,
+        38
+      ],
+      "i": 0,
+      "curr": 991
+    },
+    {
+      "codeLine": 2,
+      "note": "Calculating mapped value for 338: 3->0, 3->0, 8->7. Result: 7",
+      "array": [
+        991,
+        338,
+        38
+      ],
+      "i": 1,
+      "curr": 338
+    },
+    {
+      "codeLine": 2,
+      "note": "Calculating mapped value for 38: 3->0, 8->7. Result: 7",
+      "array": [
+        991,
+        338,
+        38
+      ],
+      "i": 2,
+      "curr": 38
+    },
+    {
+      "codeLine": 3,
+      "note": "Sorting based on mapped values: [669, 7, 7]. Stable sort preserves 338 before 38.",
+      "array": [
+        338,
+        38,
+        991
+      ],
+      "curr": 669
+    },
+    {
+      "codeLine": 4,
+      "note": "Final sorted array returned based on original values.",
+      "array": [
+        338,
+        38,
+        991
+      ]
+    }
+  ]
+}

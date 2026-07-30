@@ -1,0 +1,106 @@
+{
+  "title": "Print Words Vertically",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "String",
+    "Simulation"
+  ],
+  "description": "Arrange words from a string vertically, ignoring trailing spaces.",
+  "target": "HAY, ORO, WEU",
+  "pseudocode": "1. Split string into words: words = s.split(' ')\n2. Find max length of words\n3. For each column from 0 to maxLen-1:\n4.   For each word in words:\n5.     Append char at col or space to result string\n6.   Trim trailing spaces and add to output",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Split the input string into a list of words.",
+      "array": [
+        "HOW",
+        "ARE",
+        "YOU"
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Determine the maximum length among all words. Max length is 3.",
+      "array": [
+        "HOW",
+        "ARE",
+        "YOU"
+      ],
+      "curr": 3
+    },
+    {
+      "codeLine": 3,
+      "note": "Starting column 0 iteration.",
+      "array": [
+        "HOW",
+        "ARE",
+        "YOU"
+      ],
+      "i": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Construct first vertical word: H, A, Y.",
+      "array": [
+        "HOW",
+        "ARE",
+        "YOU"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Starting column 1 iteration.",
+      "array": [
+        "HOW",
+        "ARE",
+        "YOU"
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Construct second vertical word: O, R, O.",
+      "array": [
+        "HOW",
+        "ARE",
+        "YOU"
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Starting column 2 iteration.",
+      "array": [
+        "HOW",
+        "ARE",
+        "YOU"
+      ],
+      "i": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Construct third vertical word: W, E, U.",
+      "array": [
+        "HOW",
+        "ARE",
+        "YOU"
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Final result construction with trimmed trailing spaces.",
+      "array": [
+        "HAY",
+        "ORO",
+        "WEU"
+      ]
+    }
+  ]
+}

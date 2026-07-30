@@ -3,28 +3,29 @@
   "difficulty": "Medium",
   "type": "array",
   "tags": [
+    "Array",
     "String",
-    "Two Pointers",
-    "Dynamic Programming"
+    "Two Pointers"
   ],
-  "description": "Given a string s, return the longest palindromic substring in s.",
+  "description": "Find the longest palindromic substring in 'babad' using center expansion.",
   "target": "bab",
-  "pseudocode": "function longestPalindrome(s):\n  start = 0, maxLen = 0\n  for i = 0 to s.length - 1:\n    len1 = expandAroundCenter(s, i, i)\n    len2 = expandAroundCenter(s, i, i + 1)\n    len = max(len1, len2)\n    if len > maxLen:\n      start = i - Math.floor((len - 1) / 2)\n      maxLen = len\n  return s.substring(start, start + maxLen)",
+  "pseudocode": "1. start = 0, end = 0\n2. for i from 0 to len(s)-1:\n3.   len1 = expand(s, i, i)\n4.   len2 = expand(s, i, i+1)\n5.   maxlen = max(len1, len2)\n6.   if maxlen > end - start:\n7.     start = i - (maxlen-1)/2, end = i + maxlen/2",
   "steps": [
     {
+      "codeLine": 1,
+      "note": "Initialize result pointers.",
+      "array": [
+        "b",
+        "a",
+        "b",
+        "a",
+        "d"
+      ],
+      "i": 0
+    },
+    {
       "codeLine": 2,
-      "note": "Initialize start = 0 and maxLen = 0.",
-      "array": [
-        "b",
-        "a",
-        "b",
-        "a",
-        "d"
-      ]
-    },
-    {
-      "codeLine": 3,
-      "note": "Check center i = 0 ('b'). Expand odd/even centers.",
+      "note": "Expand around center index 0 ('b').",
       "array": [
         "b",
         "a",
@@ -32,14 +33,11 @@
         "a",
         "d"
       ],
-      "i": 0,
-      "visited": [
-        0
-      ]
+      "i": 0
     },
     {
-      "codeLine": 7,
-      "note": "Length 1 > maxLen (0). Update best palindrome to 'b' at index [0..0].",
+      "codeLine": 5,
+      "note": "Max length found at center 0 is 1.",
       "array": [
         "b",
         "a",
@@ -47,14 +45,11 @@
         "a",
         "d"
       ],
-      "i": 0,
-      "visited": [
-        0
-      ]
+      "i": 0
     },
     {
-      "codeLine": 3,
-      "note": "Check center i = 1 ('a'). Expand odd center: s[0] ('b') == s[2] ('b').",
+      "codeLine": 2,
+      "note": "Expand around center index 1 ('a').",
       "array": [
         "b",
         "a",
@@ -62,16 +57,23 @@
         "a",
         "d"
       ],
-      "i": 1,
-      "visited": [
-        0,
-        1,
-        2
-      ]
+      "i": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Found 'bab' length 3 using center 1.",
+      "array": [
+        "b",
+        "a",
+        "b",
+        "a",
+        "d"
+      ],
+      "i": 1
     },
     {
       "codeLine": 7,
-      "note": "Found palindrome 'bab' of length 3 > maxLen (1). Update maxLen = 3, start = 0.",
+      "note": "Update start and end pointers to capture 'bab'.",
       "array": [
         "b",
         "a",
@@ -79,16 +81,11 @@
         "a",
         "d"
       ],
-      "i": 1,
-      "visited": [
-        0,
-        1,
-        2
-      ]
+      "i": 1
     },
     {
-      "codeLine": 3,
-      "note": "Check center i = 2 ('b'). Expand odd center: s[1] ('a') == s[3] ('a').",
+      "codeLine": 2,
+      "note": "Expand around index 2 ('b').",
       "array": [
         "b",
         "a",
@@ -96,16 +93,11 @@
         "a",
         "d"
       ],
-      "i": 2,
-      "visited": [
-        1,
-        2,
-        3
-      ]
+      "i": 2
     },
     {
-      "codeLine": 6,
-      "note": "Found palindrome 'aba' of length 3, which is not greater than current maxLen (3).",
+      "codeLine": 5,
+      "note": "Center 2 yields 'aba', length 3, already captured.",
       "array": [
         "b",
         "a",
@@ -113,16 +105,11 @@
         "a",
         "d"
       ],
-      "i": 2,
-      "visited": [
-        1,
-        2,
-        3
-      ]
+      "i": 2
     },
     {
-      "codeLine": 3,
-      "note": "Check center i = 3 ('a'). Expand odd center: s[2] ('b') != s[4] ('d').",
+      "codeLine": 2,
+      "note": "Final check for remaining indices.",
       "array": [
         "b",
         "a",
@@ -130,56 +117,8 @@
         "a",
         "d"
       ],
-      "i": 3,
-      "visited": [
-        3
-      ]
-    },
-    {
-      "codeLine": 6,
-      "note": "Max length from center i=3 is 1. No update.",
-      "array": [
-        "b",
-        "a",
-        "b",
-        "a",
-        "d"
-      ],
-      "i": 3,
-      "visited": [
-        3
-      ]
-    },
-    {
-      "codeLine": 3,
-      "note": "Check center i = 4 ('d'). Expand odd/even centers.",
-      "array": [
-        "b",
-        "a",
-        "b",
-        "a",
-        "d"
-      ],
-      "i": 4,
-      "visited": [
-        4
-      ]
-    },
-    {
-      "codeLine": 10,
-      "note": "Completed searching all centers. Return longest palindrome 'bab'.",
-      "array": [
-        "b",
-        "a",
-        "b",
-        "a",
-        "d"
-      ],
-      "visited": [
-        0,
-        1,
-        2
-      ]
+      "i": 4
     }
-  ]
+  ],
+  "fullDescription": "<p>Given a string <code>s</code>, return <em>the longest</em> <span data-keyword=\"palindromic-string\"><em>palindromic</em></span> <span data-keyword=\"substring-nonempty\"><em>substring</em></span> in <code>s</code>.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> s = &quot;babad&quot;\n<strong>Output:</strong> &quot;bab&quot;\n<strong>Explanation:</strong> &quot;aba&quot; is also a valid answer.\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> s = &quot;cbbd&quot;\n<strong>Output:</strong> &quot;bb&quot;\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= s.length &lt;= 1000</code></li>\n\t<li><code>s</code> consist of only digits and English letters.</li>\n</ul>\n"
 }

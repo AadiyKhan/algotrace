@@ -15,7 +15,8 @@
       "codeLine": 2,
       "note": "Starting DFS with digit 1",
       "array": [],
-      "i": 1
+      "i": 1,
+      "curr": 1
     },
     {
       "codeLine": 6,
@@ -23,7 +24,8 @@
       "array": [
         1
       ],
-      "i": 1
+      "i": 1,
+      "curr": 1
     },
     {
       "codeLine": 8,
@@ -46,7 +48,8 @@
       "note": "Length 2 == n, adding 10 to result",
       "array": [
         10
-      ]
+      ],
+      "curr": 2
     },
     {
       "codeLine": 10,
@@ -63,7 +66,8 @@
       "array": [
         10,
         12
-      ]
+      ],
+      "curr": 2
     }
   ]
 }

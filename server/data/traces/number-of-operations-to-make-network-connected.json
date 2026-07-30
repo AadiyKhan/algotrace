@@ -1,0 +1,216 @@
+{
+  "title": "Number of Operations to Make Network Connected",
+  "difficulty": "Medium",
+  "type": "graph",
+  "tags": [
+    "Graph",
+    "DFS",
+    "Union-Find"
+  ],
+  "description": "Find the minimum number of operations to connect all computers given an initial network configuration.",
+  "target": 1,
+  "pseudocode": "1. if (connections.length < n - 1) return -1;\n2. parent = Array(n).fill().map((_, i) => i);\n3. count = n;\n4. for (let [u, v] of connections) {\n5.   if (find(u) !== find(v)) {\n6.     union(u, v);\n7.     count--;\n8.   }\n9. }\n10. return count - 1;",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Check if enough cables exist to connect n nodes.",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": 0
+        },
+        {
+          "id": 1,
+          "val": 1
+        },
+        {
+          "id": 2,
+          "val": 2
+        },
+        {
+          "id": 3,
+          "val": 3
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ]
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Processing first connection (0, 1).",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": 0
+        },
+        {
+          "id": 1,
+          "val": 1
+        },
+        {
+          "id": 2,
+          "val": 2
+        },
+        {
+          "id": 3,
+          "val": 3
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ]
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Union 0 and 1. Components reduced.",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": 0
+        },
+        {
+          "id": 1,
+          "val": 1
+        },
+        {
+          "id": 2,
+          "val": 2
+        },
+        {
+          "id": 3,
+          "val": 3
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ]
+      ],
+      "visited": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Processing second connection (0, 2).",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": 0
+        },
+        {
+          "id": 1,
+          "val": 1
+        },
+        {
+          "id": 2,
+          "val": 2
+        },
+        {
+          "id": 3,
+          "val": 3
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Union 0 and 2. Components reduced.",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": 0
+        },
+        {
+          "id": 1,
+          "val": 1
+        },
+        {
+          "id": 2,
+          "val": 2
+        },
+        {
+          "id": 3,
+          "val": 3
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "visited": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 10,
+      "note": "Return components - 1. Final answer 1 operation needed.",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": 0
+        },
+        {
+          "id": 1,
+          "val": 1
+        },
+        {
+          "id": 2,
+          "val": 2
+        },
+        {
+          "id": 3,
+          "val": 3
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "visited": [
+        0,
+        1,
+        2,
+        3
+      ]
+    }
+  ]
+}

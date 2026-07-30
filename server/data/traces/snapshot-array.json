@@ -1,0 +1,66 @@
+{
+  "title": "Snapshot Array",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "Binary Search",
+    "Design"
+  ],
+  "description": "Implement a SnapshotArray that supports setting values at indices and taking snapshots to retrieve values at specific versions.",
+  "target": null,
+  "pseudocode": "1: snapshots = [[]]\n2: snap_id = 0\n3: def set(index, val):\n4:   snapshots[snap_id][index] = val\n5: def snap():\n6:   snap_id++\n7:   snapshots[snap_id] = snapshots[snap_id-1].slice()\n8: def get(index, id):\n9:   return snapshots[id][index]",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize snapshots array with an empty state for version 0.",
+      "array": [],
+      "curr": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Setting index 0 to value 5 at snap_id 0.",
+      "array": [
+        5
+      ],
+      "i": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Taking a snapshot, incrementing snap_id to 1.",
+      "array": [
+        5
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "Copying state from version 0 to version 1.",
+      "array": [
+        5
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Setting index 0 to value 10 at snap_id 1.",
+      "array": [
+        10
+      ],
+      "i": 1,
+      "curr": 0
+    },
+    {
+      "codeLine": 9,
+      "note": "Retrieving value at index 0, version 0: returns 5.",
+      "array": [
+        5
+      ],
+      "i": 0,
+      "curr": 0
+    }
+  ]
+}

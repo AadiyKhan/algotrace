@@ -4,15 +4,15 @@
   "type": "tree",
   "tags": [
     "Tree",
-    "DFS",
-    "Recursion"
+    "Depth-First Search",
+    "Binary Tree"
   ],
-  "description": "Find the maximum depth of a binary tree, defined as the number of nodes along the longest path from root to leaf.",
-  "pseudocode": "1. function maxDepth(root) {\n2.   if (!root) return 0;\n3.   let left = maxDepth(root.left);\n4.   let right = maxDepth(root.right);\n5.   return Math.max(left, right) + 1;\n6. }",
+  "description": "Calculate the maximum depth of a binary tree using DFS.",
+  "pseudocode": "1. If root is null, return 0\n2. leftDepth = maxDepth(root.left)\n3. rightDepth = maxDepth(root.right)\n4. return max(leftDepth, rightDepth) + 1",
   "steps": [
     {
-      "codeLine": 1,
-      "note": "Initialize maxDepth on root (ID 0).",
+      "codeLine": 2,
+      "note": "Starting DFS at root (val: 3). Calling left child (val: 9).",
       "treeNodes": [
         {
           "id": 0,
@@ -29,15 +29,27 @@
         {
           "id": 2,
           "val": 20,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 3,
+          "val": 15,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 7,
           "left": null,
           "right": null
         }
       ],
-      "curr": 0
+      "curr": 1
     },
     {
-      "codeLine": 3,
-      "note": "Recursively call maxDepth on left child (ID 1).",
+      "codeLine": 1,
+      "note": "Reaching null node under 9, returning 0.",
       "treeNodes": [
         {
           "id": 0,
@@ -54,6 +66,18 @@
         {
           "id": 2,
           "val": 20,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 3,
+          "val": 15,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 7,
           "left": null,
           "right": null
         }
@@ -62,7 +86,7 @@
     },
     {
       "codeLine": 2,
-      "note": "Left child has no children, returns depth 1.",
+      "note": "Finished left subtree of 3. Moving to right child (val: 20).",
       "treeNodes": [
         {
           "id": 0,
@@ -79,33 +103,18 @@
         {
           "id": 2,
           "val": 20,
-          "left": null,
-          "right": null
-        }
-      ],
-      "visited": [
-        1
-      ]
-    },
-    {
-      "codeLine": 4,
-      "note": "Recursively call maxDepth on right child (ID 2).",
-      "treeNodes": [
-        {
-          "id": 0,
-          "val": 3,
-          "left": 1,
-          "right": 2
+          "left": 3,
+          "right": 4
         },
         {
-          "id": 1,
-          "val": 9,
+          "id": 3,
+          "val": 15,
           "left": null,
           "right": null
         },
         {
-          "id": 2,
-          "val": 20,
+          "id": 4,
+          "val": 7,
           "left": null,
           "right": null
         }
@@ -114,7 +123,7 @@
     },
     {
       "codeLine": 2,
-      "note": "Right child has no children, returns depth 1.",
+      "note": "Processing left child of 20 (val: 15).",
       "treeNodes": [
         {
           "id": 0,
@@ -131,18 +140,27 @@
         {
           "id": 2,
           "val": 20,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 3,
+          "val": 15,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 7,
           "left": null,
           "right": null
         }
       ],
-      "visited": [
-        1,
-        2
-      ]
+      "curr": 3
     },
     {
-      "codeLine": 5,
-      "note": "Calculate max(1, 1) + 1 = 2. Root depth is 2.",
+      "codeLine": 3,
+      "note": "Processing right child of 20 (val: 7).",
       "treeNodes": [
         {
           "id": 0,
@@ -159,15 +177,61 @@
         {
           "id": 2,
           "val": 20,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 3,
+          "val": 15,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 7,
           "left": null,
           "right": null
         }
       ],
-      "visited": [
-        0,
-        1,
-        2
-      ]
+      "curr": 4
+    },
+    {
+      "codeLine": 4,
+      "note": "Calculating depth at root 3: max(1, 2) + 1 = 3.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 3,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 9,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 20,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 3,
+          "val": 15,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 7,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 0
     }
-  ]
+  ],
+  "fullDescription": "<p>Given the <code>root</code> of a binary tree, return <em>its maximum depth</em>.</p>\n\n<p>A binary tree&#39;s <strong>maximum depth</strong>&nbsp;is the number of nodes along the longest path from the root node down to the farthest leaf node.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2020/11/26/tmp-tree.jpg\" style=\"width: 400px; height: 277px;\" />\n<pre>\n<strong>Input:</strong> root = [3,9,20,null,null,15,7]\n<strong>Output:</strong> 3\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> root = [1,null,2]\n<strong>Output:</strong> 2\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li>The number of nodes in the tree is in the range <code>[0, 10<sup>4</sup>]</code>.</li>\n\t<li><code>-100 &lt;= Node.val &lt;= 100</code></li>\n</ul>\n"
 }

@@ -1,0 +1,57 @@
+{
+  "title": "Distant Barcodes",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "Heap",
+    "Sorting",
+    "Greedy"
+  ],
+  "description": "Rearrange barcodes so that no two adjacent barcodes are equal.",
+  "target": null,
+  "pseudocode": "1. count frequencies of all barcodes\n2. sort unique barcodes by frequency descending\n3. place most frequent elements into even indices\n4. place remaining elements into odd indices",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Count frequencies: {1: 2, 2: 1}",
+      "array": [
+        1,
+        1,
+        2
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Sorted by frequency: [1, 2]",
+      "array": [
+        1,
+        1,
+        2
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Fill even indices with 1s: index 0 and 2",
+      "array": [
+        1,
+        0,
+        1
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Fill remaining index 1 with 2",
+      "array": [
+        1,
+        2,
+        1
+      ],
+      "curr": 1
+    }
+  ]
+}

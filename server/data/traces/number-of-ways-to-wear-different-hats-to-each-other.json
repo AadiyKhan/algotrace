@@ -1,0 +1,93 @@
+{
+  "title": "Number of Ways to Wear Different Hats to Each Other",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Dynamic Programming",
+    "Bitmask"
+  ],
+  "description": "Calculate number of ways to assign distinct hats to people using bitmask DP.",
+  "target": 1,
+  "pseudocode": "1. Initialize dp[1 << n] = 0, dp[0] = 1\n2. Iterate through hats 1 to 40\n3. For each hat, update dp mask backwards\n4. If person can wear hat, update dp[mask | (1 << person)] += dp[mask]\n5. Return dp[(1 << n) - 1]",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize DP table with size 8 (2^3) representing all possible person assignments.",
+      "array": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "curr": 8
+    },
+    {
+      "codeLine": 2,
+      "note": "Start processing hat 3. Person 0 can wear hat 3.",
+      "array": [
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "i": 3,
+      "curr": 3
+    },
+    {
+      "codeLine": 3,
+      "note": "Start processing hat 4. Person 0 and 1 can wear hat 4.",
+      "array": [
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "i": 4,
+      "curr": 4
+    },
+    {
+      "codeLine": 4,
+      "note": "Start processing hat 5. Person 1 and 2 can wear hat 5.",
+      "array": [
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1
+      ],
+      "i": 5,
+      "curr": 5
+    },
+    {
+      "codeLine": 5,
+      "note": "Final state at mask 7 (binary 111) is 1.",
+      "array": [
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1
+      ],
+      "curr": 7
+    }
+  ]
+}

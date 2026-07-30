@@ -1,0 +1,48 @@
+{
+  "title": "Distance Between Bus Stops",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array"
+  ],
+  "description": "Find the shortest distance between two bus stops in a circular route.",
+  "target": "destination",
+  "pseudocode": "1. total = sum(distance)\n2. path = sum(distance[min(start, end) : max(start, end)])\n3. return min(path, total - path)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Calculate the total distance of the circular route.",
+      "array": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "i": 10
+    },
+    {
+      "codeLine": 2,
+      "note": "Calculate distance going clockwise from start 0 to end 2.",
+      "array": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "i": 3,
+      "curr": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Compare clockwise distance (3) with counter-clockwise distance (10-3=7) and return the minimum.",
+      "array": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "i": 3,
+      "curr": 3
+    }
+  ]
+}

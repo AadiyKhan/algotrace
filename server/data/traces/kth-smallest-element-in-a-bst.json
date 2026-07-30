@@ -4,20 +4,20 @@
   "type": "tree",
   "tags": [
     "Tree",
-    "Binary Search Tree",
-    "DFS"
+    "Depth-First Search",
+    "Binary Search Tree"
   ],
-  "description": "Find the kth smallest element in a binary search tree using inorder traversal.",
-  "target": 2,
-  "pseudocode": "1. stack = []\n2. curr = root\n3. while stack or curr:\n4.   while curr:\n5.     stack.push(curr)\n6.     curr = curr.left\n7.   curr = stack.pop()\n8.   k -= 1\n9.   if k == 0: return curr.val\n10.  curr = curr.right",
+  "description": "Find the kth smallest value in a BST using in-order traversal.",
+  "target": 1,
+  "pseudocode": "1. Initialize stack and curr = root\n2. While curr is not null or stack is not empty:\n3.   Push all left children to stack\n4.   Pop node from stack, decrement k\n5.   If k == 0, return node.val\n6.   Set curr = node.right",
   "steps": [
     {
-      "codeLine": 2,
-      "note": "Initialize stack and set current to root.",
+      "codeLine": 1,
+      "note": "Initialize traversal with root node 3",
       "treeNodes": [
         {
           "id": 0,
-          "val": 2,
+          "val": 3,
           "left": 1,
           "right": 2
         },
@@ -25,11 +25,17 @@
           "id": 1,
           "val": 1,
           "left": null,
+          "right": 3
+        },
+        {
+          "id": 3,
+          "val": 2,
+          "left": null,
           "right": null
         },
         {
           "id": 2,
-          "val": 3,
+          "val": 4,
           "left": null,
           "right": null
         }
@@ -37,12 +43,12 @@
       "curr": 0
     },
     {
-      "codeLine": 5,
-      "note": "Push root to stack, move to left child.",
+      "codeLine": 3,
+      "note": "Pushing 3 and 1 onto the stack",
       "treeNodes": [
         {
           "id": 0,
-          "val": 2,
+          "val": 3,
           "left": 1,
           "right": 2
         },
@@ -50,11 +56,48 @@
           "id": 1,
           "val": 1,
           "left": null,
+          "right": 3
+        },
+        {
+          "id": 3,
+          "val": 2,
+          "left": null,
           "right": null
         },
         {
           "id": 2,
+          "val": 4,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Pop node 1 from stack, k becomes 0",
+      "treeNodes": [
+        {
+          "id": 0,
           "val": 3,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": null,
+          "right": 3
+        },
+        {
+          "id": 3,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 4,
           "left": null,
           "right": null
         }
@@ -63,11 +106,11 @@
     },
     {
       "codeLine": 5,
-      "note": "Push node 1 to stack.",
+      "note": "k is 0, return value 1",
       "treeNodes": [
         {
           "id": 0,
-          "val": 2,
+          "val": 3,
           "left": 1,
           "right": 2
         },
@@ -75,66 +118,23 @@
           "id": 1,
           "val": 1,
           "left": null,
-          "right": null
+          "right": 3
         },
         {
-          "id": 2,
-          "val": 3,
-          "left": null,
-          "right": null
-        }
-      ],
-      "curr": null
-    },
-    {
-      "codeLine": 7,
-      "note": "Pop node 1 from stack. k decreases.",
-      "treeNodes": [
-        {
-          "id": 0,
+          "id": 3,
           "val": 2,
-          "left": 1,
-          "right": 2
-        },
-        {
-          "id": 1,
-          "val": 1,
           "left": null,
           "right": null
         },
         {
           "id": 2,
-          "val": 3,
+          "val": 4,
           "left": null,
           "right": null
         }
       ],
       "curr": 1
-    },
-    {
-      "codeLine": 7,
-      "note": "Pop node 2 from stack. k becomes 0.",
-      "treeNodes": [
-        {
-          "id": 0,
-          "val": 2,
-          "left": 1,
-          "right": 2
-        },
-        {
-          "id": 1,
-          "val": 1,
-          "left": null,
-          "right": null
-        },
-        {
-          "id": 2,
-          "val": 3,
-          "left": null,
-          "right": null
-        }
-      ],
-      "curr": 0
     }
-  ]
+  ],
+  "fullDescription": "<p>Given the <code>root</code> of a binary search tree, and an integer <code>k</code>, return <em>the</em> <code>k<sup>th</sup></code> <em>smallest value (<strong>1-indexed</strong>) of all the values of the nodes in the tree</em>.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2021/01/28/kthtree1.jpg\" style=\"width: 212px; height: 301px;\" />\n<pre>\n<strong>Input:</strong> root = [3,1,4,null,2], k = 1\n<strong>Output:</strong> 1\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2021/01/28/kthtree2.jpg\" style=\"width: 382px; height: 302px;\" />\n<pre>\n<strong>Input:</strong> root = [5,3,6,2,4,null,null,1], k = 3\n<strong>Output:</strong> 3\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li>The number of nodes in the tree is <code>n</code>.</li>\n\t<li><code>1 &lt;= k &lt;= n &lt;= 10<sup>4</sup></code></li>\n\t<li><code>0 &lt;= Node.val &lt;= 10<sup>4</sup></code></li>\n</ul>\n\n<p>&nbsp;</p>\n<p><strong>Follow up:</strong> If the BST is modified often (i.e., we can do insert and delete operations) and you need to find the kth smallest frequently, how would you optimize?</p>\n"
 }

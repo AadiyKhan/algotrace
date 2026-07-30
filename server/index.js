@@ -13,8 +13,8 @@ const tracesDir = path.join(__dirname, 'data', 'traces');
 
 // Lazy-load a trace from disk on demand
 async function loadTrace(slug) {
-  // Only use cached value if it's a full trace (has steps), not just a metadata stub
-  if (registry[slug] && registry[slug].steps) return registry[slug];
+  // Removed caching so hot fixes apply immediately
+  // if (registry[slug] && registry[slug].steps) return registry[slug];
   const filePath = path.join(tracesDir, `${slug}.json`);
   try {
     const content = await fs.readFile(filePath, 'utf8');

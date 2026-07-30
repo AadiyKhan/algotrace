@@ -1,0 +1,136 @@
+{
+  "title": "Maximum Number of Events That Can Be Attended",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Greedy",
+    "Sorting",
+    "Heap"
+  ],
+  "description": "Given an array of events where events[i] = [startDay, endDay], find the maximum number of events that can be attended.",
+  "target": null,
+  "pseudocode": "1. events.sort((a, b) => a[0] - b[0]);\n2. minHeap = [];\n3. d = 1, i = 0, ans = 0;\n4. while(i < n || minHeap.length > 0) {\n5.   if (minHeap.length === 0) d = events[i][0];\n6.   while(i < n && events[i][0] <= d) minHeap.push(events[i++][1]);\n7.   while(minHeap.length > 0 && minHeap[0] < d) minHeap.shift();\n8.   if(minHeap.length > 0) { minHeap.shift(); ans++; d++; }\n9. }",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Sort events by start day: [[1,2], [1,3], [2,2]]",
+      "array": [
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          2
+        ]
+      ],
+      "i": 0,
+      "curr": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Day 1: Add all events starting on or before day 1 to heap",
+      "array": [
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          2
+        ]
+      ],
+      "i": 2,
+      "curr": 1
+    },
+    {
+      "codeLine": 8,
+      "note": "Attend event ending earliest (day 2). ans = 1",
+      "array": [
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          2
+        ]
+      ],
+      "i": 2,
+      "curr": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Day 2: Add event starting on day 2 to heap",
+      "array": [
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          2
+        ]
+      ],
+      "i": 3,
+      "curr": 2
+    },
+    {
+      "codeLine": 8,
+      "note": "Attend next earliest event ending (day 2). ans = 2",
+      "array": [
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          2
+        ]
+      ],
+      "i": 3,
+      "curr": 2
+    },
+    {
+      "codeLine": 8,
+      "note": "Attend final event ending (day 3). ans = 3",
+      "array": [
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          2
+        ]
+      ],
+      "i": 3,
+      "curr": 3
+    }
+  ]
+}

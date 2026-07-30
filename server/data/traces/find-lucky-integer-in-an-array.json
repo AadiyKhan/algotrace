@@ -1,0 +1,128 @@
+{
+  "title": "Find Lucky Integer in an Array",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "Counting"
+  ],
+  "description": "Find the largest integer in an array such that its frequency is equal to its value.",
+  "target": null,
+  "pseudocode": "1. let freq = {}\n2. for num of arr:\n3.   freq[num] = (freq[num] || 0) + 1\n4. let lucky = -1\n5. for val in freq:\n6.   if val == freq[val]:\n7.     lucky = max(lucky, val)\n8. return lucky",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize frequency map",
+      "array": [
+        2,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Start iterating through the array",
+      "array": [
+        2,
+        2,
+        3,
+        4
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Count occurrences of 2",
+      "array": [
+        2,
+        2,
+        3,
+        4
+      ],
+      "i": 0,
+      "curr": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Count occurrences of 2 again",
+      "array": [
+        2,
+        2,
+        3,
+        4
+      ],
+      "i": 1,
+      "curr": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Count occurrences of 3",
+      "array": [
+        2,
+        2,
+        3,
+        4
+      ],
+      "i": 2,
+      "curr": 3
+    },
+    {
+      "codeLine": 3,
+      "note": "Count occurrences of 4",
+      "array": [
+        2,
+        2,
+        3,
+        4
+      ],
+      "i": 3,
+      "curr": 4
+    },
+    {
+      "codeLine": 5,
+      "note": "Check frequency of key 2 (freq[2] is 2)",
+      "array": [
+        2,
+        2,
+        3,
+        4
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Found lucky number 2",
+      "array": [
+        2,
+        2,
+        3,
+        4
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 7,
+      "note": "Update lucky to 2",
+      "array": [
+        2,
+        2,
+        3,
+        4
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 8,
+      "note": "Return 2",
+      "array": [
+        2,
+        2,
+        3,
+        4
+      ],
+      "curr": 2
+    }
+  ]
+}

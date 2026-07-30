@@ -1,0 +1,265 @@
+{
+  "title": "Path With Maximum Minimum Value",
+  "difficulty": "Medium",
+  "type": "matrix",
+  "tags": [
+    "Array",
+    "Matrix",
+    "Graph",
+    "Heap",
+    "Union Find"
+  ],
+  "description": "Find a path from top-left to bottom-right such that the minimum value in the path is maximized.",
+  "target": [
+    2,
+    2
+  ],
+  "pseudocode": "1. maxHeap.push([grid[0][0], 0, 0])\n2. visited[0][0] = true\n3. while maxHeap is not empty:\n4.   [val, r, c] = maxHeap.pop()\n5.   minVal = min(minVal, val)\n6.   if r == rows-1 and c == cols-1: return minVal\n7.   for neighbor in neighbors(r, c):\n8.     if not visited[neighbor]:\n9.       visited[neighbor] = true\n10.      maxHeap.push([grid[neighbor], neighbor])",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize Max-Heap with start point (5).",
+      "matrix": [
+        [
+          5,
+          4,
+          5
+        ],
+        [
+          1,
+          2,
+          6
+        ],
+        [
+          7,
+          4,
+          6
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Pop 5 from heap, check neighbors.",
+      "matrix": [
+        [
+          5,
+          4,
+          5
+        ],
+        [
+          1,
+          2,
+          6
+        ],
+        [
+          7,
+          4,
+          6
+        ]
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 10,
+      "note": "Push neighbor 4 at [0, 1] to heap.",
+      "matrix": [
+        [
+          5,
+          4,
+          5
+        ],
+        [
+          1,
+          2,
+          6
+        ],
+        [
+          7,
+          4,
+          6
+        ]
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "curr": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Pop 4 at [0, 1], move to [0, 2] (value 5).",
+      "matrix": [
+        [
+          5,
+          4,
+          5
+        ],
+        [
+          1,
+          2,
+          6
+        ],
+        [
+          7,
+          4,
+          6
+        ]
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "curr": [
+        0,
+        2
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Pop 5 at [0, 2], move to [1, 2] (value 6).",
+      "matrix": [
+        [
+          5,
+          4,
+          5
+        ],
+        [
+          1,
+          2,
+          6
+        ],
+        [
+          7,
+          4,
+          6
+        ]
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "curr": [
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Pop 6 at [1, 2], move to [2, 2] (value 6).",
+      "matrix": [
+        [
+          5,
+          4,
+          5
+        ],
+        [
+          1,
+          2,
+          6
+        ],
+        [
+          7,
+          4,
+          6
+        ]
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          2
+        ]
+      ],
+      "curr": [
+        2,
+        2
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Reached target [2, 2]. Path min is 4.",
+      "matrix": [
+        [
+          5,
+          4,
+          5
+        ],
+        [
+          1,
+          2,
+          6
+        ],
+        [
+          7,
+          4,
+          6
+        ]
+      ],
+      "curr": [
+        2,
+        2
+      ]
+    }
+  ]
+}

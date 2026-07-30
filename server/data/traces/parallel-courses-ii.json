@@ -1,0 +1,207 @@
+{
+  "title": "Parallel Courses II",
+  "difficulty": "Hard",
+  "type": "graph",
+  "tags": [
+    "Graph",
+    "Bitmask",
+    "Dynamic Programming"
+  ],
+  "description": "Minimize semesters to finish n courses given prerequisites and a maximum of k courses per semester.",
+  "target": 3,
+  "pseudocode": "1. dp = array of size 2^n filled with Infinity\n2. dp[0] = 0\n3. for mask in 0 to 2^n - 1:\n4.   if dp[mask] == Infinity: continue\n5.   available = get_courses_with_all_prereqs_met(mask)\n6.   can_take = filter_by_k(available, k)\n7.   for subset in can_take:\n8.     dp[mask | subset] = min(dp[mask | subset], dp[mask] + 1)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize DP table with Infinity, dp[0] = 0",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": "C0"
+        },
+        {
+          "id": 1,
+          "val": "C1"
+        },
+        {
+          "id": 2,
+          "val": "C2"
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "visited": [],
+      "curr": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Start processing mask 0 (no courses taken)",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": "C0"
+        },
+        {
+          "id": 1,
+          "val": "C1"
+        },
+        {
+          "id": 2,
+          "val": "C2"
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "visited": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Identify available courses (C0, C1) and take them (k=2)",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": "C0"
+        },
+        {
+          "id": 1,
+          "val": "C1"
+        },
+        {
+          "id": 2,
+          "val": "C2"
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "visited": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Update dp[3] (binary 011) to 1 semester",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": "C0"
+        },
+        {
+          "id": 1,
+          "val": "C1"
+        },
+        {
+          "id": 2,
+          "val": "C2"
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "visited": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Process mask 3 (C0, C1 taken), C2 becomes available",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": "C0"
+        },
+        {
+          "id": 1,
+          "val": "C1"
+        },
+        {
+          "id": 2,
+          "val": "C2"
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "visited": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Update dp[7] (binary 111) to 2 semesters",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": "C0"
+        },
+        {
+          "id": 1,
+          "val": "C1"
+        },
+        {
+          "id": 2,
+          "val": "C2"
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "visited": [
+        0,
+        1,
+        2
+      ]
+    }
+  ]
+}

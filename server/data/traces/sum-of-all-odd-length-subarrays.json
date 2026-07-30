@@ -1,0 +1,166 @@
+{
+  "title": "Sum of All Odd Length Subarrays",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Math",
+    "Prefix Sum"
+  ],
+  "description": "Calculate the sum of all possible odd-length subarrays of a given array.",
+  "target": null,
+  "pseudocode": "1. totalSum = 0\n2. for i from 0 to arr.length - 1\n3.   currentSum = 0\n4.   for j from i to arr.length - 1\n5.     currentSum += arr[j]\n6.     if (j - i + 1) % 2 != 0\n7.       totalSum += currentSum",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize totalSum to 0.",
+      "array": [
+        1,
+        4,
+        2
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Start outer loop, i = 0.",
+      "array": [
+        1,
+        4,
+        2
+      ],
+      "i": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Start inner loop, j = 0. Subarray [1] length 1 (odd).",
+      "array": [
+        1,
+        4,
+        2
+      ],
+      "i": 0,
+      "j": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 7,
+      "note": "Add subarray [1] to totalSum. totalSum = 1.",
+      "array": [
+        1,
+        4,
+        2
+      ],
+      "i": 0,
+      "j": 0,
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Inner loop j = 1. Subarray [1, 4] length 2 (even).",
+      "array": [
+        1,
+        4,
+        2
+      ],
+      "i": 0,
+      "j": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Inner loop j = 2. Subarray [1, 4, 2] length 3 (odd).",
+      "array": [
+        1,
+        4,
+        2
+      ],
+      "i": 0,
+      "j": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 7,
+      "note": "Add subarray [1, 4, 2] to totalSum. totalSum = 1 + 7 = 8.",
+      "array": [
+        1,
+        4,
+        2
+      ],
+      "i": 0,
+      "j": 2,
+      "curr": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Outer loop i = 1.",
+      "array": [
+        1,
+        4,
+        2
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Inner loop j = 1. Subarray [4] length 1 (odd).",
+      "array": [
+        1,
+        4,
+        2
+      ],
+      "i": 1,
+      "j": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "Add subarray [4] to totalSum. totalSum = 8 + 4 = 12.",
+      "array": [
+        1,
+        4,
+        2
+      ],
+      "i": 1,
+      "j": 1,
+      "curr": 4
+    },
+    {
+      "codeLine": 2,
+      "note": "Outer loop i = 2.",
+      "array": [
+        1,
+        4,
+        2
+      ],
+      "i": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Inner loop j = 2. Subarray [2] length 1 (odd).",
+      "array": [
+        1,
+        4,
+        2
+      ],
+      "i": 2,
+      "j": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 7,
+      "note": "Add subarray [2] to totalSum. Final totalSum = 14.",
+      "array": [
+        1,
+        4,
+        2
+      ],
+      "i": 2,
+      "j": 2,
+      "curr": 2
+    }
+  ]
+}

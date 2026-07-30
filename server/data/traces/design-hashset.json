@@ -7,72 +7,83 @@
     "Hash Table",
     "Design"
   ],
-  "description": "Design a HashSet without using any built-in hash table libraries. Uses buckets to handle collisions.",
+  "description": "Design a HashSet using a boolean array as the underlying structure for keys up to 10^6.",
   "target": null,
-  "pseudocode": "1. function add(key): \n2.   index = key % 1000\n3.   if !bucket[index]: bucket[index] = []\n4.   if key not in bucket[index]: bucket[index].push(key)\n5. function contains(key):\n6.   index = key % 1000\n7.   return bucket[index] includes key",
+  "pseudocode": "1. Initialize boolean array set of size 1000001\n2. add(key): set[key] = true\n3. remove(key): set[key] = false\n4. contains(key): return set[key]",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Adding key 1001 to the HashSet.",
-      "array": [
-        null,
-        [
-          1001
-        ],
-        null
-      ]
+      "note": "Initialize empty HashSet represented by boolean array.",
+      "array": []
     },
     {
       "codeLine": 2,
-      "note": "Calculating index: 1001 % 1000 = 1.",
-      "i": 1
+      "note": "Add 1 to HashSet.",
+      "array": [
+        1
+      ],
+      "curr": 1
     },
     {
-      "codeLine": 3,
-      "note": "Initializing bucket at index 1.",
+      "codeLine": 2,
+      "note": "Add 2 to HashSet.",
       "array": [
-        null,
-        [],
-        null
-      ]
+        1,
+        2
+      ],
+      "curr": 2
     },
     {
       "codeLine": 4,
-      "note": "Pushing 1001 into bucket[1].",
+      "note": "Check if 1 exists (True).",
       "array": [
-        null,
-        [
-          1001
-        ],
-        null
-      ]
+        1,
+        2
+      ],
+      "curr": 1
     },
     {
-      "codeLine": 5,
-      "note": "Checking if 1001 exists.",
+      "codeLine": 4,
+      "note": "Check if 3 exists (False).",
       "array": [
-        null,
-        [
-          1001
-        ],
-        null
-      ]
+        1,
+        2
+      ],
+      "curr": 3
     },
     {
-      "codeLine": 6,
-      "note": "Calculating index for key 1001: index = 1.",
-      "i": 1
+      "codeLine": 2,
+      "note": "Add 2 (already exists).",
+      "array": [
+        1,
+        2
+      ],
+      "curr": 2
     },
     {
-      "codeLine": 7,
-      "note": "Returning true as 1001 is present in bucket[1].",
+      "codeLine": 4,
+      "note": "Check if 2 exists (True).",
       "array": [
-        null,
-        [
-          1001
-        ],
-        null
-      ]
+        1,
+        2
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Remove 2 from HashSet.",
+      "array": [
+        1
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Check if 2 exists (False).",
+      "array": [
+        1
+      ],
+      "curr": 2
     }
   ]
 }

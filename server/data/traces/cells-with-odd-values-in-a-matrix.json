@@ -1,0 +1,87 @@
+{
+  "title": "Cells with Odd Values in a Matrix",
+  "difficulty": "Easy",
+  "type": "matrix",
+  "tags": [
+    "Array",
+    "Math",
+    "Simulation"
+  ],
+  "description": "Given m x n matrix initialized to 0, increment all cells in row ri and column ci for each operation [ri, ci]. Return count of odd values.",
+  "target": null,
+  "pseudocode": "let rows = new Array(m).fill(0);\nlet cols = new Array(n).fill(0);\nfor (let [r, c] of indices) {\n  rows[r]++;\n  cols[c]++;\n}\nlet count = 0;\nfor (let i = 0; i < m; i++) {\n  for (let j = 0; j < n; j++) {\n    if ((rows[i] + cols[j]) % 2 !== 0) count++;\n  }\n}",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize row and column increment counters to zeros.",
+      "matrix": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Process first operation [0, 1]. Increment row 0 and col 1.",
+      "matrix": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "i": 0,
+      "j": 1,
+      "curr": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Process second operation [1, 1]. Increment row 1 and col 1.",
+      "matrix": [
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "i": 1,
+      "j": 1,
+      "curr": [
+        1,
+        1
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Iterate through cells. (0,0): 1+0=1 (odd), (0,1): 1+2=3 (odd), (1,0): 1+0=1 (odd), (1,1): 1+2=3 (odd).",
+      "matrix": [
+        [
+          1,
+          3
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "curr": [
+        1,
+        1
+      ]
+    }
+  ]
+}

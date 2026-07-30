@@ -15,7 +15,8 @@
       "note": "Push 5: stack becomes [5], maxStack becomes [5]",
       "array": [
         5
-      ]
+      ],
+      "curr": 5
     },
     {
       "codeLine": 1,
@@ -23,7 +24,8 @@
       "array": [
         5,
         2
-      ]
+      ],
+      "curr": 2
     },
     {
       "codeLine": 5,
@@ -31,26 +33,30 @@
       "array": [
         5,
         2
-      ]
+      ],
+      "curr": 5
     },
     {
       "codeLine": 6,
       "note": "Pop 2 into temp, temp=[2]",
       "array": [
         5
-      ]
+      ],
+      "curr": 2
     },
     {
       "codeLine": 7,
       "note": "Pop max value 5 from stack",
-      "array": []
+      "array": [],
+      "curr": 5
     },
     {
       "codeLine": 8,
       "note": "Restore 2 from temp",
       "array": [
         2
-      ]
+      ],
+      "curr": 2
     }
   ]
 }

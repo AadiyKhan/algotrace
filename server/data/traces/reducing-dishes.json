@@ -1,0 +1,184 @@
+{
+  "title": "Reducing Dishes",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Dynamic Programming",
+    "Greedy",
+    "Sorting"
+  ],
+  "description": "Calculate the maximum possible sum of like-time coefficients for dishes, where the coefficient is dish_satisfaction * time.",
+  "target": null,
+  "pseudocode": "1. satisfaction.sort((a, b) => b - a)\n2. let total = 0, currentSum = 0\n3. for i from 0 to satisfaction.length - 1:\n4.   if currentSum + satisfaction[i] > 0:\n5.     currentSum += satisfaction[i]\n6.     total += currentSum\n7.   else: break",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Sort dishes in descending order of satisfaction: [-1, -8, 0, 5, -9] becomes [5, 0, -1, -8, -9]",
+      "array": [
+        5,
+        0,
+        -1,
+        -8,
+        -9
+      ],
+      "curr": -1
+    },
+    {
+      "codeLine": 3,
+      "note": "Initialize variables. Start loop at index 0.",
+      "array": [
+        5,
+        0,
+        -1,
+        -8,
+        -9
+      ],
+      "i": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Current dish (5) is positive. Add to running sum (5).",
+      "array": [
+        5,
+        0,
+        -1,
+        -8,
+        -9
+      ],
+      "i": 0,
+      "curr": 5
+    },
+    {
+      "codeLine": 6,
+      "note": "Add current running sum (5) to total (5).",
+      "array": [
+        5,
+        0,
+        -1,
+        -8,
+        -9
+      ],
+      "i": 0,
+      "curr": 5
+    },
+    {
+      "codeLine": 3,
+      "note": "Moving to index 1.",
+      "array": [
+        5,
+        0,
+        -1,
+        -8,
+        -9
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Current dish (0). Running sum becomes 5 + 0 = 5.",
+      "array": [
+        5,
+        0,
+        -1,
+        -8,
+        -9
+      ],
+      "i": 1,
+      "curr": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Add running sum (5) to total. Total becomes 5 + 5 = 10.",
+      "array": [
+        5,
+        0,
+        -1,
+        -8,
+        -9
+      ],
+      "i": 1,
+      "curr": 5
+    },
+    {
+      "codeLine": 3,
+      "note": "Moving to index 2.",
+      "array": [
+        5,
+        0,
+        -1,
+        -8,
+        -9
+      ],
+      "i": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Current dish (-1). Running sum becomes 5 + (-1) = 4.",
+      "array": [
+        5,
+        0,
+        -1,
+        -8,
+        -9
+      ],
+      "i": 2,
+      "curr": -1
+    },
+    {
+      "codeLine": 6,
+      "note": "Add running sum (4) to total. Total becomes 10 + 4 = 14.",
+      "array": [
+        5,
+        0,
+        -1,
+        -8,
+        -9
+      ],
+      "i": 2,
+      "curr": 4
+    },
+    {
+      "codeLine": 3,
+      "note": "Moving to index 3.",
+      "array": [
+        5,
+        0,
+        -1,
+        -8,
+        -9
+      ],
+      "i": 3,
+      "curr": 3
+    },
+    {
+      "codeLine": 4,
+      "note": "Current dish (-8). Running sum (4) + (-8) = -4. Condition fails.",
+      "array": [
+        5,
+        0,
+        -1,
+        -8,
+        -9
+      ],
+      "i": 3,
+      "curr": -8
+    },
+    {
+      "codeLine": 7,
+      "note": "Break loop. Maximum satisfaction is 14.",
+      "array": [
+        5,
+        0,
+        -1,
+        -8,
+        -9
+      ],
+      "i": 3,
+      "curr": 14
+    }
+  ]
+}

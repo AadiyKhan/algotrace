@@ -3,63 +3,72 @@
   "difficulty": "Medium",
   "type": "array",
   "tags": [
-    "String",
-    "Two Pointers"
+    "Array",
+    "Two Pointers",
+    "String"
   ],
-  "description": "Compare two version strings version1 and version2 based on their numeric components separated by dots.",
-  "target": null,
-  "pseudocode": "1: const v1 = version1.split('.');\n2: const v2 = version2.split('.');\n3: for (let i = 0; i < Math.max(v1.length, v2.length); i++) {\n4:   const n1 = parseInt(v1[i]) || 0;\n5:   const n2 = parseInt(v2[i]) || 0;\n6:   if (n1 > n2) return 1;\n7:   if (n1 < n2) return -1;\n8: }\n9: return 0;",
+  "description": "Compare two version strings by splitting them into revisions and comparing integer values.",
+  "pseudocode": "1. Split version1 and version2 by '.' into arrays v1 and v2.\n2. Iterate through the maximum length of v1 and v2.\n3. Parse current revisions as integers (default to 0 if out of bounds).\n4. Compare values; return -1, 1, or 0.",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Split version1 '1.0' into parts.",
+      "note": "Split version1 '1.2' and version2 '1.10' into arrays.",
       "array": [
         "1",
-        "0"
-      ]
+        "2",
+        "1",
+        "10"
+      ],
+      "i": 0,
+      "curr": 1
     },
     {
       "codeLine": 2,
-      "note": "Split version2 '1.2' into parts.",
+      "note": "Comparing first revision: 1 vs 1.",
       "array": [
         "1",
-        "2"
-      ]
+        "2",
+        "1",
+        "10"
+      ],
+      "i": 0,
+      "curr": 1
     },
     {
       "codeLine": 3,
-      "note": "Start loop iteration i=0.",
-      "i": 0
-    },
-    {
-      "codeLine": 4,
-      "note": "Parse numeric values for index 0.",
-      "i": 0
-    },
-    {
-      "codeLine": 5,
-      "note": "n1=1, n2=1. They are equal, continue loop.",
-      "i": 0
+      "note": "1 == 1, continue to next revision.",
+      "array": [
+        "1",
+        "2",
+        "1",
+        "10"
+      ],
+      "i": 1,
+      "curr": 1
     },
     {
       "codeLine": 3,
-      "note": "Start loop iteration i=1.",
-      "i": 1
+      "note": "Comparing second revision: 2 vs 10.",
+      "array": [
+        "1",
+        "2",
+        "1",
+        "10"
+      ],
+      "i": 1,
+      "curr": 2
     },
     {
       "codeLine": 4,
-      "note": "Parse numeric values for index 1.",
-      "i": 1
-    },
-    {
-      "codeLine": 5,
-      "note": "n1=0, n2=2.",
-      "i": 1
-    },
-    {
-      "codeLine": 7,
-      "note": "n1 < n2 (0 < 2), return -1.",
-      "i": 1
+      "note": "2 < 10, version1 is smaller.",
+      "array": [
+        "1",
+        "2",
+        "1",
+        "10"
+      ],
+      "i": 1,
+      "curr": 2
     }
   ]
 }

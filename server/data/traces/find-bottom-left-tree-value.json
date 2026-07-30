@@ -189,7 +189,8 @@
           "left": null,
           "right": null
         }
-      ]
+      ],
+      "curr": 1
     }
   ]
 }

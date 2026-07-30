@@ -131,7 +131,8 @@
           "next": null
         }
       ],
-      "prev": 1
+      "prev": 1,
+      "curr": 2
     }
   ]
 }

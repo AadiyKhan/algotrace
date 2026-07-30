@@ -1,0 +1,71 @@
+{
+  "title": "Number of Ways to Paint N × 3 Grid",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Dynamic Programming",
+    "Math"
+  ],
+  "description": "Calculate the number of ways to paint an N x 3 grid using 3 colors such that no two adjacent cells have the same color.",
+  "target": 2,
+  "pseudocode": "1. twoColor = 6, threeColor = 6\n2. for i from 2 to n:\n3.   newTwo = 3 * twoColor + 2 * threeColor\n4.   newThree = 2 * twoColor + 2 * threeColor\n5.   twoColor = newTwo, threeColor = newThree\n6. return twoColor + threeColor",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize counts for patterns using 2 colors (e.g., ABA) and 3 colors (e.g., ABC) for a 1x3 grid.",
+      "array": [
+        6,
+        6
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 2,
+      "note": "Start iteration for n=2.",
+      "i": 2,
+      "array": [
+        6,
+        6
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Calculate new two-color patterns: 3 * 6 + 2 * 6 = 30.",
+      "i": 2,
+      "array": [
+        30,
+        6
+      ],
+      "curr": 3
+    },
+    {
+      "codeLine": 4,
+      "note": "Calculate new three-color patterns: 2 * 6 + 2 * 6 = 24.",
+      "i": 2,
+      "array": [
+        30,
+        24
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Update variables for the next iteration.",
+      "i": 2,
+      "array": [
+        30,
+        24
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Final result for n=2 is 30 + 24 = 54.",
+      "array": [
+        30,
+        24
+      ],
+      "curr": 2
+    }
+  ]
+}

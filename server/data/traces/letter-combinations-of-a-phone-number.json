@@ -1,196 +1,86 @@
 {
-  "title": "Letter Combinations Of A Phone Number",
+  "title": "Letter Combinations of a Phone Number",
   "difficulty": "Medium",
   "type": "array",
   "tags": [
+    "Hash Table",
     "String",
-    "Backtracking",
-    "Recursion",
-    "Array"
+    "Backtracking"
   ],
-  "description": "Given a string of digits (2-9 inclusive), return all possible letter combinations that the number could represent. This is a standard phone keypad mapping problem.",
-  "target": null,
-  "pseudocode": "1 function letterCombinations(digits):\n2   if digits is empty:\n3     return []\n4   \n5   mapping = {\n6     '2': \"abc\", '3': \"def\", '4': \"ghi\", '5': \"jkl\",\n7     '6': \"mno\", '7': \"pqrs\", '8': \"tuv\", '9': \"wxyz\"\n8   }\n9   \n10  result = []\n11  \n12  function backtrack(index, currentCombination):\n13    if index == length of digits:\n14      add currentCombination to result\n15      return\n16    \n17    digit = digits[index]\n18    letters = mapping[digit]\n19    \n20    for each letter in letters:\n21      backtrack(index + 1, currentCombination + letter)\n22      \n23  backtrack(0, \"\")\n24  return result",
+  "description": "Generate all possible letter combinations for phone digits 23 using backtracking.",
+  "target": "23",
+  "pseudocode": "1. mapping = {'2': 'abc', '3': 'def'}\n2. result = []\n3. backtrack(index, path)\n4. if index == len(digits): result.append(path); return\n5. for char in mapping[digits[index]]: backtrack(index + 1, path + char)",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Start `letterCombinations` function with input `digits = \"23\"`.",
-      "array": []
+      "note": "Initialize mapping and result list.",
+      "array": [],
+      "i": 0
     },
     {
-      "codeLine": 2,
-      "note": "Check if `digits` string is empty. `\"23\"` is not empty.",
-      "array": []
+      "codeLine": 3,
+      "note": "Start backtracking at index 0, path empty.",
+      "array": [],
+      "i": 0,
+      "curr": 0
     },
     {
       "codeLine": 5,
-      "note": "Initialize the `mapping` from digits to letters based on a phone keypad.",
-      "array": []
-    },
-    {
-      "codeLine": 10,
-      "note": "Initialize an empty list `result` to store all generated combinations.",
-      "array": []
-    },
-    {
-      "codeLine": 23,
-      "note": "Initiate the backtracking process by calling `backtrack` with `index = 0` (start of digits) and an empty `currentCombination` string.",
-      "i": 0,
-      "curr": ""
-    },
-    {
-      "codeLine": 13,
-      "note": "Base case check: `index` (0) is not equal to `length of digits` (2). We have not formed a complete combination yet.",
-      "i": 0,
-      "curr": ""
-    },
-    {
-      "codeLine": 17,
-      "note": "Retrieve the digit at the current `index`: `digits[0]` is '2'.",
-      "i": 0,
-      "curr": "",
-      "prev": "2"
-    },
-    {
-      "codeLine": 18,
-      "note": "Get the corresponding `letters` for '2' from the `mapping`: `\"abc\"`.",
-      "i": 0,
-      "curr": "",
-      "prev": "abc"
-    },
-    {
-      "codeLine": 20,
-      "note": "Start iterating through `letters` (`\"abc\"`). Current `letter` is 'a'.",
-      "i": 0,
-      "curr": "",
-      "prev": "a"
-    },
-    {
-      "codeLine": 21,
-      "note": "Recursively call `backtrack` with `index + 1` (1) and append 'a' to `currentCombination` (`\"a\"`).",
+      "note": "Choosing 'a' from digit '2'.",
+      "array": [
+        "a"
+      ],
       "i": 1,
-      "curr": "a"
+      "curr": 2
     },
     {
-      "codeLine": 13,
-      "note": "Base case check: `index` (1) is not equal to `length of digits` (2).",
-      "i": 1,
-      "curr": "a"
-    },
-    {
-      "codeLine": 17,
-      "note": "Retrieve the digit at the current `index`: `digits[1]` is '3'.",
-      "i": 1,
-      "curr": "a",
-      "prev": "3"
-    },
-    {
-      "codeLine": 18,
-      "note": "Get the corresponding `letters` for '3' from the `mapping`: `\"def\"`.",
-      "i": 1,
-      "curr": "a",
-      "prev": "def"
-    },
-    {
-      "codeLine": 20,
-      "note": "Start iterating through `letters` (`\"def\"`). Current `letter` is 'd'.",
-      "i": 1,
-      "curr": "a",
-      "prev": "d"
-    },
-    {
-      "codeLine": 21,
-      "note": "Recursively call `backtrack` with `index + 1` (2) and append 'd' to `currentCombination` (`\"ad\"`).",
+      "codeLine": 5,
+      "note": "Choosing 'd' from digit '3'.",
+      "array": [
+        "ad"
+      ],
       "i": 2,
-      "curr": "ad"
+      "curr": 3
     },
     {
-      "codeLine": 13,
-      "note": "Base case check: `index` (2) IS equal to `length of digits` (2). A complete combination is formed.",
-      "i": 2,
-      "curr": "ad"
-    },
-    {
-      "codeLine": 14,
-      "note": "Add the `currentCombination` (`\"ad\"`) to the `result` list.",
-      "i": 2,
-      "curr": "ad",
+      "codeLine": 4,
+      "note": "Reached end, add 'ad' to result.",
       "array": [
         "ad"
       ]
     },
     {
-      "codeLine": 15,
-      "note": "Return from `backtrack(2, \"ad\")`.",
-      "i": 2,
-      "curr": "ad",
+      "codeLine": 5,
+      "note": "Backtrack, choosing 'e' from digit '3'.",
       "array": [
-        "ad"
-      ]
-    },
-    {
-      "codeLine": 20,
-      "note": "Continue loop for `letters = \"def\"`. Next `letter` is 'e'.",
-      "i": 1,
-      "curr": "a",
-      "prev": "e"
-    },
-    {
-      "codeLine": 21,
-      "note": "Recursively call `backtrack` with `index + 1` (2) and append 'e' to `currentCombination` (`\"ae\"`).",
+        "ad",
+        "ae"
+      ],
       "i": 2,
-      "curr": "ae"
+      "curr": 3
     },
     {
-      "codeLine": 13,
-      "note": "Base case check: `index` (2) IS equal to `length of digits` (2). A complete combination is formed.",
-      "i": 2,
-      "curr": "ae"
-    },
-    {
-      "codeLine": 14,
-      "note": "Add the `currentCombination` (`\"ae\"`) to the `result` list.",
-      "i": 2,
-      "curr": "ae",
+      "codeLine": 4,
+      "note": "Reached end, add 'ae' to result.",
       "array": [
         "ad",
         "ae"
       ]
     },
     {
-      "codeLine": 15,
-      "note": "Return from `backtrack(2, \"ae\")`.",
-      "i": 2,
-      "curr": "ae",
+      "codeLine": 5,
+      "note": "Backtrack, choosing 'f' from digit '3'.",
       "array": [
         "ad",
-        "ae"
-      ]
-    },
-    {
-      "codeLine": 20,
-      "note": "Continue loop for `letters = \"def\"`. Next `letter` is 'f'.",
-      "i": 1,
-      "curr": "a",
-      "prev": "f"
-    },
-    {
-      "codeLine": 21,
-      "note": "Recursively call `backtrack` with `index + 1` (2) and append 'f' to `currentCombination` (`\"af\"`).",
+        "ae",
+        "af"
+      ],
       "i": 2,
-      "curr": "af"
+      "curr": 3
     },
     {
-      "codeLine": 13,
-      "note": "Base case check: `index` (2) IS equal to `length of digits` (2). A complete combination is formed.",
-      "i": 2,
-      "curr": "af"
-    },
-    {
-      "codeLine": 14,
-      "note": "Add the `currentCombination` (`\"af\"`) to the `result` list.",
-      "i": 2,
-      "curr": "af",
+      "codeLine": 4,
+      "note": "Reached end, add 'af' to result.",
       "array": [
         "ad",
         "ae",
@@ -198,89 +88,32 @@
       ]
     },
     {
-      "codeLine": 15,
-      "note": "Return from `backtrack(2, \"af\")`.",
-      "i": 2,
-      "curr": "af",
+      "codeLine": 5,
+      "note": "Backtrack to '2', choosing 'b'.",
       "array": [
         "ad",
         "ae",
-        "af"
-      ]
+        "af",
+        "bd"
+      ],
+      "i": 1,
+      "curr": 2
     },
     {
-      "codeLine": 20,
-      "note": "Finished loop for `letters = \"def\"`. Return from `backtrack(1, \"a\")`.",
-      "i": 1,
-      "curr": "a",
+      "codeLine": 5,
+      "note": "Choosing 'd' from digit '3'.",
       "array": [
         "ad",
         "ae",
-        "af"
-      ]
-    },
-    {
-      "codeLine": 20,
-      "note": "Continue loop for `letters = \"abc\"`. Next `letter` is 'b'.",
-      "i": 0,
-      "curr": "",
-      "prev": "b",
-      "array": [
-        "ad",
-        "ae",
-        "af"
-      ]
-    },
-    {
-      "codeLine": 21,
-      "note": "Recursively call `backtrack` with `index + 1` (1) and append 'b' to `currentCombination` (`\"b\"`).",
-      "i": 1,
-      "curr": "b"
-    },
-    {
-      "codeLine": 13,
-      "note": "Base case check: `index` (1) is not equal to `length of digits` (2).",
-      "i": 1,
-      "curr": "b"
-    },
-    {
-      "codeLine": 17,
-      "note": "Retrieve the digit at the current `index`: `digits[1]` is '3'.",
-      "i": 1,
-      "curr": "b",
-      "prev": "3"
-    },
-    {
-      "codeLine": 18,
-      "note": "Get the corresponding `letters` for '3' from the `mapping`: `\"def\"`.",
-      "i": 1,
-      "curr": "b",
-      "prev": "def"
-    },
-    {
-      "codeLine": 20,
-      "note": "Start iterating through `letters` (`\"def\"`). Current `letter` is 'd'.",
-      "i": 1,
-      "curr": "b",
-      "prev": "d"
-    },
-    {
-      "codeLine": 21,
-      "note": "Recursively call `backtrack` with `index + 1` (2) and append 'd' to `currentCombination` (`\"bd\"`).",
+        "af",
+        "bd"
+      ],
       "i": 2,
-      "curr": "bd"
+      "curr": 3
     },
     {
-      "codeLine": 13,
-      "note": "Base case check: `index` (2) IS equal to `length of digits` (2). A complete combination is formed.",
-      "i": 2,
-      "curr": "bd"
-    },
-    {
-      "codeLine": 14,
-      "note": "Add the `currentCombination` (`\"bd\"`) to the `result` list.",
-      "i": 2,
-      "curr": "bd",
+      "codeLine": 4,
+      "note": "Reached end, add 'bd' to result.",
       "array": [
         "ad",
         "ae",
@@ -289,86 +122,8 @@
       ]
     },
     {
-      "codeLine": 15,
-      "note": "Return from `backtrack(2, \"bd\")`.",
-      "i": 2,
-      "curr": "bd",
-      "array": [
-        "ad",
-        "ae",
-        "af",
-        "bd"
-      ]
-    },
-    {
-      "codeLine": 20,
-      "note": "Continue loop for `letters = \"def\"`. Next `letter` is 'e'.",
-      "i": 1,
-      "curr": "b",
-      "prev": "e"
-    },
-    {
-      "codeLine": 21,
-      "note": "Recursively call `backtrack` with `index + 1` (2) and append 'e' to `currentCombination` (`\"be\"`).",
-      "i": 2,
-      "curr": "be"
-    },
-    {
-      "codeLine": 13,
-      "note": "Base case check: `index` (2) IS equal to `length of digits` (2). A complete combination is formed.",
-      "i": 2,
-      "curr": "be"
-    },
-    {
-      "codeLine": 14,
-      "note": "Add the `currentCombination` (`\"be\"`) to the `result` list.",
-      "i": 2,
-      "curr": "be",
-      "array": [
-        "ad",
-        "ae",
-        "af",
-        "bd",
-        "be"
-      ]
-    },
-    {
-      "codeLine": 15,
-      "note": "Return from `backtrack(2, \"be\")`.",
-      "i": 2,
-      "curr": "be",
-      "array": [
-        "ad",
-        "ae",
-        "af",
-        "bd",
-        "be"
-      ]
-    },
-    {
-      "codeLine": 20,
-      "note": "Continue loop for `letters = \"def\"`. Next `letter` is 'f'.",
-      "i": 1,
-      "curr": "b",
-      "prev": "f"
-    },
-    {
-      "codeLine": 21,
-      "note": "Recursively call `backtrack` with `index + 1` (2) and append 'f' to `currentCombination` (`\"bf\"`).",
-      "i": 2,
-      "curr": "bf"
-    },
-    {
-      "codeLine": 13,
-      "note": "Base case check: `index` (2) IS equal to `length of digits` (2). A complete combination is formed.",
-      "i": 2,
-      "curr": "bf"
-    },
-    {
-      "codeLine": 14,
-      "note": "Add the `currentCombination` (`\"bf\"`) to the `result` list.",
-      "i": 2,
-      "curr": "bf",
+      "codeLine": 5,
+      "note": "Continuing combination for 'b'...",
       "array": [
         "ad",
         "ae",
@@ -376,201 +131,12 @@
         "bd",
         "be",
         "bf"
-      ]
+      ],
+      "i": 2
     },
     {
-      "codeLine": 15,
-      "note": "Return from `backtrack(2, \"bf\")`.",
-      "i": 2,
-      "curr": "bf",
-      "array": [
-        "ad",
-        "ae",
-        "af",
-        "bd",
-        "be",
-        "bf"
-      ]
-    },
-    {
-      "codeLine": 20,
-      "note": "Finished loop for `letters = \"def\"`. Return from `backtrack(1, \"b\")`.",
-      "i": 1,
-      "curr": "b",
-      "array": [
-        "ad",
-        "ae",
-        "af",
-        "bd",
-        "be",
-        "bf"
-      ]
-    },
-    {
-      "codeLine": 20,
-      "note": "Continue loop for `letters = \"abc\"`. Next `letter` is 'c'.",
-      "i": 0,
-      "curr": "",
-      "prev": "c",
-      "array": [
-        "ad",
-        "ae",
-        "af",
-        "bd",
-        "be",
-        "bf"
-      ]
-    },
-    {
-      "codeLine": 21,
-      "note": "Recursively call `backtrack` with `index + 1` (1) and append 'c' to `currentCombination` (`\"c\"`).",
-      "i": 1,
-      "curr": "c"
-    },
-    {
-      "codeLine": 13,
-      "note": "Base case check: `index` (1) is not equal to `length of digits` (2).",
-      "i": 1,
-      "curr": "c"
-    },
-    {
-      "codeLine": 17,
-      "note": "Retrieve the digit at the current `index`: `digits[1]` is '3'.",
-      "i": 1,
-      "curr": "c",
-      "prev": "3"
-    },
-    {
-      "codeLine": 18,
-      "note": "Get the corresponding `letters` for '3' from the `mapping`: `\"def\"`.",
-      "i": 1,
-      "curr": "c",
-      "prev": "def"
-    },
-    {
-      "codeLine": 20,
-      "note": "Start iterating through `letters` (`\"def\"`). Current `letter` is 'd'.",
-      "i": 1,
-      "curr": "c",
-      "prev": "d"
-    },
-    {
-      "codeLine": 21,
-      "note": "Recursively call `backtrack` with `index + 1` (2) and append 'd' to `currentCombination` (`\"cd\"`).",
-      "i": 2,
-      "curr": "cd"
-    },
-    {
-      "codeLine": 13,
-      "note": "Base case check: `index` (2) IS equal to `length of digits` (2). A complete combination is formed.",
-      "i": 2,
-      "curr": "cd"
-    },
-    {
-      "codeLine": 14,
-      "note": "Add the `currentCombination` (`\"cd\"`) to the `result` list.",
-      "i": 2,
-      "curr": "cd",
-      "array": [
-        "ad",
-        "ae",
-        "af",
-        "bd",
-        "be",
-        "bf",
-        "cd"
-      ]
-    },
-    {
-      "codeLine": 15,
-      "note": "Return from `backtrack(2, \"cd\")`.",
-      "i": 2,
-      "curr": "cd",
-      "array": [
-        "ad",
-        "ae",
-        "af",
-        "bd",
-        "be",
-        "bf",
-        "cd"
-      ]
-    },
-    {
-      "codeLine": 20,
-      "note": "Continue loop for `letters = \"def\"`. Next `letter` is 'e'.",
-      "i": 1,
-      "curr": "c",
-      "prev": "e"
-    },
-    {
-      "codeLine": 21,
-      "note": "Recursively call `backtrack` with `index + 1` (2) and append 'e' to `currentCombination` (`\"ce\"`).",
-      "i": 2,
-      "curr": "ce"
-    },
-    {
-      "codeLine": 13,
-      "note": "Base case check: `index` (2) IS equal to `length of digits` (2). A complete combination is formed.",
-      "i": 2,
-      "curr": "ce"
-    },
-    {
-      "codeLine": 14,
-      "note": "Add the `currentCombination` (`\"ce\"`) to the `result` list.",
-      "i": 2,
-      "curr": "ce",
-      "array": [
-        "ad",
-        "ae",
-        "af",
-        "bd",
-        "be",
-        "bf",
-        "cd",
-        "ce"
-      ]
-    },
-    {
-      "codeLine": 15,
-      "note": "Return from `backtrack(2, \"ce\")`.",
-      "i": 2,
-      "curr": "ce",
-      "array": [
-        "ad",
-        "ae",
-        "af",
-        "bd",
-        "be",
-        "bf",
-        "cd",
-        "ce"
-      ]
-    },
-    {
-      "codeLine": 20,
-      "note": "Continue loop for `letters = \"def\"`. Next `letter` is 'f'.",
-      "i": 1,
-      "curr": "c",
-      "prev": "f"
-    },
-    {
-      "codeLine": 21,
-      "note": "Recursively call `backtrack` with `index + 1` (2) and append 'f' to `currentCombination` (`\"cf\"`).",
-      "i": 2,
-      "curr": "cf"
-    },
-    {
-      "codeLine": 13,
-      "note": "Base case check: `index` (2) IS equal to `length of digits` (2). A complete combination is formed.",
-      "i": 2,
-      "curr": "cf"
-    },
-    {
-      "codeLine": 14,
-      "note": "Add the `currentCombination` (`\"cf\"`) to the `result` list.",
-      "i": 2,
-      "curr": "cf",
+      "codeLine": 5,
+      "note": "Backtrack to '2', choosing 'c'.",
       "array": [
         "ad",
         "ae",
@@ -581,73 +147,9 @@
         "cd",
         "ce",
         "cf"
-      ]
-    },
-    {
-      "codeLine": 15,
-      "note": "Return from `backtrack(2, \"cf\")`.",
-      "i": 2,
-      "curr": "cf",
-      "array": [
-        "ad",
-        "ae",
-        "af",
-        "bd",
-        "be",
-        "bf",
-        "cd",
-        "ce",
-        "cf"
-      ]
-    },
-    {
-      "codeLine": 20,
-      "note": "Finished loop for `letters = \"def\"`. Return from `backtrack(1, \"c\")`.",
+      ],
       "i": 1,
-      "curr": "c",
-      "array": [
-        "ad",
-        "ae",
-        "af",
-        "bd",
-        "be",
-        "bf",
-        "cd",
-        "ce",
-        "cf"
-      ]
-    },
-    {
-      "codeLine": 20,
-      "note": "Finished loop for `letters = \"abc\"`. All combinations starting with 'a', 'b', 'c' have been explored. Return from `backtrack(0, \"\")`.",
-      "i": 0,
-      "curr": "",
-      "array": [
-        "ad",
-        "ae",
-        "af",
-        "bd",
-        "be",
-        "bf",
-        "cd",
-        "ce",
-        "cf"
-      ]
-    },
-    {
-      "codeLine": 24,
-      "note": "All combinations have been generated. The `letterCombinations` function returns the `result` list.",
-      "array": [
-        "ad",
-        "ae",
-        "af",
-        "bd",
-        "be",
-        "bf",
-        "cd",
-        "ce",
-        "cf"
-      ]
+      "curr": 2
     }
   ]
 }

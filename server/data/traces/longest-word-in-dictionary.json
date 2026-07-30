@@ -4,63 +4,116 @@
   "type": "array",
   "tags": [
     "Array",
+    "Hash Table",
     "String",
     "Trie",
-    "Hash Set"
+    "Sorting"
   ],
-  "description": "Find the longest word in the dictionary that can be built one character at a time by other words in the dictionary.",
-  "target": "w",
-  "pseudocode": "1. words.sort();\n2. set = new Set(words);\n3. longest = '';\n4. for word in words:\n5.   if (word.length > 1):\n6.     prefix = word.substring(0, length - 1);\n7.     if (set.has(prefix)):\n8.       if (word.length > longest.length) longest = word;",
+  "description": "Find the longest word in words that can be built one character at a time by other words in the input.",
+  "target": "world",
+  "pseudocode": "1. Sort words lexicographically\n2. Use a set to store words found\n3. For each word, check if all prefixes exist\n4. Update longest word if current is longer or lexicographically smaller",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Sort words to handle lexicographical order: ['a', 'ap', 'app', 'apply']",
+      "note": "Sort words: [\"w\", \"wo\", \"wor\", \"worl\", \"world\"]",
       "array": [
-        "a",
-        "ap",
-        "app",
-        "apply"
-      ]
+        "w",
+        "wo",
+        "wor",
+        "worl",
+        "world"
+      ],
+      "visited": []
     },
     {
       "codeLine": 2,
-      "note": "Insert all words into a Set for O(1) lookup",
+      "note": "Initialize word set for O(1) lookups.",
       "array": [
-        "a",
-        "ap",
-        "app",
-        "apply"
+        "w",
+        "wo",
+        "wor",
+        "worl",
+        "world"
+      ],
+      "visited": [
+        "w",
+        "wo",
+        "wor",
+        "worl",
+        "world"
       ]
     },
     {
-      "codeLine": 4,
-      "note": "Check 'a'",
-      "i": "a"
+      "codeLine": 3,
+      "note": "Check 'w': valid (length 1). Update longest: 'w'.",
+      "array": [
+        "w",
+        "wo",
+        "wor",
+        "worl",
+        "world"
+      ],
+      "i": 0,
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Check 'wo': prefix 'w' exists. Update longest: 'wo'.",
+      "array": [
+        "w",
+        "wo",
+        "wor",
+        "worl",
+        "world"
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Check 'wor': prefix 'wo' exists. Update longest: 'wor'.",
+      "array": [
+        "w",
+        "wo",
+        "wor",
+        "worl",
+        "world"
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Check 'worl': prefix 'wor' exists. Update longest: 'worl'.",
+      "array": [
+        "w",
+        "wo",
+        "wor",
+        "worl",
+        "world"
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 3,
+      "note": "Check 'world': prefix 'worl' exists. Update longest: 'world'.",
+      "array": [
+        "w",
+        "wo",
+        "wor",
+        "worl",
+        "world"
+      ],
+      "i": 4
     },
     {
       "codeLine": 4,
-      "note": "Check 'ap', prefix 'a' exists",
-      "i": "ap"
-    },
-    {
-      "codeLine": 8,
-      "note": "Update longest to 'ap'",
-      "i": "ap"
-    },
-    {
-      "codeLine": 4,
-      "note": "Check 'app', prefix 'ap' exists",
-      "i": "app"
-    },
-    {
-      "codeLine": 8,
-      "note": "Update longest to 'app'",
-      "i": "app"
-    },
-    {
-      "codeLine": 4,
-      "note": "Check 'apply', prefix 'appl' does not exist",
-      "i": "apply"
+      "note": "Return 'world'.",
+      "array": [
+        "w",
+        "wo",
+        "wor",
+        "worl",
+        "world"
+      ]
     }
   ]
 }

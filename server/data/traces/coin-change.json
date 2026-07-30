@@ -3,88 +3,124 @@
   "difficulty": "Medium",
   "type": "array",
   "tags": [
-    "Dynamic Programming",
-    "Array"
+    "Array",
+    "Dynamic Programming"
   ],
-  "description": "Find the minimum number of coins to make up a target amount using given denominations.",
-  "target": 3,
-  "pseudocode": "1. dp = [0, inf, inf, inf]\n2. for i in 1..amount:\n3.   for coin in coins:\n4.     if i >= coin:\n5.       dp[i] = min(dp[i], dp[i-coin] + 1)",
+  "description": "Find the fewest number of coins that make up a given amount using dynamic programming.",
+  "target": 11,
+  "pseudocode": "1. dp = array of size amount + 1 filled with amount + 1\n2. dp[0] = 0\n3. for i from 1 to amount:\n4.   for coin in coins:\n5.     if i - coin >= 0: dp[i] = min(dp[i], dp[i - coin] + 1)\n6. return dp[amount] > amount ? -1 : dp[amount]",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize DP array with infinity, base case dp[0] = 0.",
+      "note": "Initialize DP array with size 12 filled with 12 (representing infinity).",
       "array": [
         0,
-        99,
-        99,
-        99
+        12,
+        12,
+        12,
+        12,
+        12,
+        12,
+        12,
+        12,
+        12,
+        12,
+        12
       ]
     },
     {
       "codeLine": 2,
-      "note": "Start calculating min coins for amount i=1.",
+      "note": "Set base case: 0 coins needed to make amount 0.",
       "array": [
         0,
-        99,
-        99,
-        99
+        12,
+        12,
+        12,
+        12,
+        12,
+        12,
+        12,
+        12,
+        12,
+        12,
+        12
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Starting calculation for amount 1.",
+      "array": [
+        0,
+        1,
+        12,
+        12,
+        12,
+        12,
+        12,
+        12,
+        12,
+        12,
+        12,
+        12
       ],
       "i": 1
     },
     {
-      "codeLine": 5,
-      "note": "Use coin 1: dp[1] = min(inf, dp[0] + 1) = 1.",
+      "codeLine": 3,
+      "note": "Calculated up to amount 5.",
       "array": [
         0,
         1,
-        99,
-        99
-      ],
-      "i": 1
-    },
-    {
-      "codeLine": 2,
-      "note": "Calculate for i=2.",
-      "array": [
-        0,
         1,
-        99,
-        99
+        2,
+        2,
+        1,
+        12,
+        12,
+        12,
+        12,
+        12,
+        12
       ],
-      "i": 2
+      "i": 5
     },
     {
       "codeLine": 5,
-      "note": "Use coin 1: dp[2] = min(inf, dp[1] + 1) = 2.",
+      "note": "Updating DP for amount 11 using coin 5.",
       "array": [
         0,
         1,
+        1,
         2,
-        99
+        2,
+        1,
+        2,
+        2,
+        3,
+        3,
+        2,
+        3
       ],
-      "i": 2
+      "i": 11
     },
     {
-      "codeLine": 2,
-      "note": "Calculate for i=3.",
+      "codeLine": 6,
+      "note": "Final DP array state after processing all amounts.",
       "array": [
         0,
         1,
-        2,
-        99
-      ],
-      "i": 3
-    },
-    {
-      "codeLine": 5,
-      "note": "Use coin 3: dp[3] = min(inf, dp[0] + 1) = 1.",
-      "array": [
-        0,
         1,
         2,
-        1
-      ],
-      "i": 3
+        2,
+        1,
+        2,
+        2,
+        3,
+        3,
+        2,
+        3
+      ]
     }
-  ]
+  ],
+  "fullDescription": "<p>You are given an integer array <code>coins</code> representing coins of different denominations and an integer <code>amount</code> representing a total amount of money.</p>\n\n<p>Return <em>the fewest number of coins that you need to make up that amount</em>. If that amount of money cannot be made up by any combination of the coins, return <code>-1</code>.</p>\n\n<p>You may assume that you have an infinite number of each kind of coin.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> coins = [1,2,5], amount = 11\n<strong>Output:</strong> 3\n<strong>Explanation:</strong> 11 = 5 + 5 + 1\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> coins = [2], amount = 3\n<strong>Output:</strong> -1\n</pre>\n\n<p><strong class=\"example\">Example 3:</strong></p>\n\n<pre>\n<strong>Input:</strong> coins = [1], amount = 0\n<strong>Output:</strong> 0\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= coins.length &lt;= 12</code></li>\n\t<li><code>1 &lt;= coins[i] &lt;= 2<sup>31</sup> - 1</code></li>\n\t<li><code>0 &lt;= amount &lt;= 10<sup>4</sup></code></li>\n</ul>\n"
 }

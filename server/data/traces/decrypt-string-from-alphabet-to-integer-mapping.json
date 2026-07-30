@@ -1,0 +1,112 @@
+{
+  "title": "Decrypt String from Alphabet to Integer Mapping",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "String",
+    "Array"
+  ],
+  "description": "Map strings like '10#', '11#' to 'j', 'k', and '1'-'9' to 'a'-'i'.",
+  "target": null,
+  "pseudocode": "1: let res = '', i = s.length - 1\n2: while i >= 0:\n3:   if s[i] == '#':\n4:     val = s.slice(i-2, i)\n5:     res = char(val + 96) + res\n6:     i -= 3\n7:   else:\n8:     val = s[i]\n9:     res = char(val + 96) + res\n10:    i -= 1",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize result string and index at the end of '10#11#'",
+      "array": [
+        "1",
+        "0",
+        "#",
+        "1",
+        "1",
+        "#"
+      ],
+      "i": 5,
+      "curr": 10
+    },
+    {
+      "codeLine": 3,
+      "note": "Found '#', look for '11'",
+      "array": [
+        "1",
+        "0",
+        "#",
+        "1",
+        "1",
+        "#"
+      ],
+      "i": 5,
+      "curr": 11
+    },
+    {
+      "codeLine": 5,
+      "note": "Convert '11' to 'k', result is 'k'",
+      "array": [
+        "1",
+        "0",
+        "#",
+        "1",
+        "1",
+        "#"
+      ],
+      "i": 5,
+      "curr": 11
+    },
+    {
+      "codeLine": 6,
+      "note": "Move index back 3 positions",
+      "array": [
+        "1",
+        "0",
+        "#",
+        "1",
+        "1",
+        "#"
+      ],
+      "i": 2,
+      "curr": 3
+    },
+    {
+      "codeLine": 3,
+      "note": "Found '#', look for '10'",
+      "array": [
+        "1",
+        "0",
+        "#",
+        "1",
+        "1",
+        "#"
+      ],
+      "i": 2,
+      "curr": 10
+    },
+    {
+      "codeLine": 5,
+      "note": "Convert '10' to 'j', result is 'jk'",
+      "array": [
+        "1",
+        "0",
+        "#",
+        "1",
+        "1",
+        "#"
+      ],
+      "i": 2,
+      "curr": 10
+    },
+    {
+      "codeLine": 6,
+      "note": "Move index back 3 positions",
+      "array": [
+        "1",
+        "0",
+        "#",
+        "1",
+        "1",
+        "#"
+      ],
+      "i": -1,
+      "curr": 3
+    }
+  ]
+}

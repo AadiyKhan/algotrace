@@ -1,0 +1,190 @@
+{
+  "title": "Number of Nodes in the Sub-Tree With the Same Label",
+  "difficulty": "Medium",
+  "type": "tree",
+  "tags": [
+    "Tree",
+    "DFS",
+    "Graph"
+  ],
+  "description": "Return an array where the i-th element is the number of nodes in the subtree of the i-th node which have the same label as node i.",
+  "target": null,
+  "pseudocode": "1. dfs(node, parent, labels, adj, counts, result):\n2.   idx = labels[node]\n3.   before = counts[idx]\n4.   counts[idx]++\n5.   for child in adj[node]:\n6.     if child != parent: dfs(child, node, ...)\n7.   result[node] = counts[idx] - before",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Starting DFS from root (node 0) with label 'a'",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": "a",
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": "b",
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": "a",
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Incrementing count for 'a' at root 0. counts['a'] = 1",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": "a",
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": "b",
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": "a",
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Moving to child node 1 (label 'b')",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": "a",
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": "b",
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": "a",
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "Node 1 has no children, result[1] = 1",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": "a",
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": "b",
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": "a",
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Backtracking to node 0, moving to node 2 (label 'a')",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": "a",
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": "b",
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": "a",
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Incrementing count for 'a' at node 2. counts['a'] = 2",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": "a",
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": "b",
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": "a",
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 7,
+      "note": "Node 2 result = 1, back at root 0, result[0] = counts['a'] (2) - 0 = 2",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": "a",
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": "b",
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": "a",
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 2
+    }
+  ]
+}

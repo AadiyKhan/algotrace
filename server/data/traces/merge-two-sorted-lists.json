@@ -4,470 +4,305 @@
   "type": "linked-list",
   "tags": [
     "Linked List",
-    "Two Pointers"
+    "Recursion"
   ],
-  "description": "Merge two sorted linked lists into one sorted list by splicing together the nodes of the first two lists.",
-  "target": null,
-  "pseudocode": "1. dummy = new ListNode(0)\n2. tail = dummy\n3. while l1 != null and l2 != null:\n4.   if l1.val <= l2.val:\n5.     tail.next = l1; l1 = l1.next\n6.   else:\n7.     tail.next = l2; l2 = l2.next\n8.   tail = tail.next\n9. tail.next = l1 if l1 != null else l2\n10. return dummy.next",
+  "description": "Merge two sorted linked lists into one sorted linked list.",
+  "pseudocode": "1. Initialize dummy node, curr = dummy\n2. While list1 and list2 are not null:\n3. If list1.val <= list2.val, link curr to list1 and list1 = list1.next\n4. Else, link curr to list2 and list2 = list2.next\n5. curr = curr.next\n6. Attach remaining non-null list to curr.next",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize dummy head node at index 4.",
+      "note": "Initialize dummy node to track the head of the merged list.",
       "nodes": [
         {
-          "val": 1,
-          "next": 1
-        },
-        {
-          "val": 3,
+          "id": "dummy",
+          "val": 0,
           "next": null
         },
         {
-          "val": 2,
-          "next": 3
+          "id": "1a",
+          "val": 1,
+          "next": "2a"
         },
         {
+          "id": "2a",
+          "val": 2,
+          "next": "4a"
+        },
+        {
+          "id": "4a",
           "val": 4,
           "next": null
         },
         {
-          "val": 0,
-          "next": null
-        }
-      ],
-      "curr": 4
-    },
-    {
-      "codeLine": 2,
-      "note": "Set tail pointer to dummy node.",
-      "nodes": [
-        {
+          "id": "1b",
           "val": 1,
-          "next": 1
+          "next": "3b"
         },
         {
+          "id": "3b",
           "val": 3,
-          "next": null
+          "next": "4b"
         },
         {
-          "val": 2,
-          "next": 3
-        },
-        {
+          "id": "4b",
           "val": 4,
           "next": null
-        },
-        {
-          "val": 0,
-          "next": null
         }
       ],
-      "curr": 4
+      "curr": "dummy"
     },
     {
       "codeLine": 3,
-      "note": "Both l1 (node 0, val 1) and l2 (node 2, val 2) are not null.",
+      "note": "1 <= 1, link dummy to first node of list1.",
       "nodes": [
         {
+          "id": "dummy",
+          "val": 0,
+          "next": "1a"
+        },
+        {
+          "id": "1a",
           "val": 1,
-          "next": 1
+          "next": "2a"
         },
         {
-          "val": 3,
-          "next": null
-        },
-        {
+          "id": "2a",
           "val": 2,
-          "next": 3
+          "next": "4a"
         },
         {
+          "id": "4a",
           "val": 4,
           "next": null
         },
         {
-          "val": 0,
+          "id": "1b",
+          "val": 1,
+          "next": "3b"
+        },
+        {
+          "id": "3b",
+          "val": 3,
+          "next": "4b"
+        },
+        {
+          "id": "4b",
+          "val": 4,
           "next": null
         }
       ],
-      "curr": 4
+      "curr": "1a"
+    },
+    {
+      "codeLine": 3,
+      "note": "2 > 1, link 1a to first node of list2.",
+      "nodes": [
+        {
+          "id": "dummy",
+          "val": 0,
+          "next": "1a"
+        },
+        {
+          "id": "1a",
+          "val": 1,
+          "next": "1b"
+        },
+        {
+          "id": "1b",
+          "val": 1,
+          "next": "3b"
+        },
+        {
+          "id": "3b",
+          "val": 3,
+          "next": "4b"
+        },
+        {
+          "id": "4b",
+          "val": 4,
+          "next": null
+        },
+        {
+          "id": "2a",
+          "val": 2,
+          "next": "4a"
+        },
+        {
+          "id": "4a",
+          "val": 4,
+          "next": null
+        }
+      ],
+      "curr": "1b"
+    },
+    {
+      "codeLine": 3,
+      "note": "2 <= 3, link 1b to 2a.",
+      "nodes": [
+        {
+          "id": "dummy",
+          "val": 0,
+          "next": "1a"
+        },
+        {
+          "id": "1a",
+          "val": 1,
+          "next": "1b"
+        },
+        {
+          "id": "1b",
+          "val": 1,
+          "next": "2a"
+        },
+        {
+          "id": "2a",
+          "val": 2,
+          "next": "4a"
+        },
+        {
+          "id": "4a",
+          "val": 4,
+          "next": null
+        },
+        {
+          "id": "3b",
+          "val": 3,
+          "next": "4b"
+        },
+        {
+          "id": "4b",
+          "val": 4,
+          "next": null
+        }
+      ],
+      "curr": "2a"
     },
     {
       "codeLine": 4,
-      "note": "Compare l1.val (1) <= l2.val (2) -> True.",
+      "note": "4 > 3, link 2a to 3b.",
       "nodes": [
         {
+          "id": "dummy",
+          "val": 0,
+          "next": "1a"
+        },
+        {
+          "id": "1a",
           "val": 1,
-          "next": 1
+          "next": "1b"
         },
         {
-          "val": 3,
-          "next": null
+          "id": "1b",
+          "val": 1,
+          "next": "2a"
         },
         {
+          "id": "2a",
           "val": 2,
-          "next": 3
+          "next": "3b"
         },
         {
+          "id": "3b",
+          "val": 3,
+          "next": "4b"
+        },
+        {
+          "id": "4b",
           "val": 4,
           "next": null
         },
         {
-          "val": 0,
-          "next": null
-        }
-      ],
-      "curr": 4
-    },
-    {
-      "codeLine": 5,
-      "note": "Connect tail.next to l1 (node 0), advance l1 to node 1.",
-      "nodes": [
-        {
-          "val": 1,
-          "next": 1
-        },
-        {
-          "val": 3,
-          "next": null
-        },
-        {
-          "val": 2,
-          "next": 3
-        },
-        {
+          "id": "4a",
           "val": 4,
           "next": null
-        },
-        {
-          "val": 0,
-          "next": 0
         }
       ],
-      "curr": 4
-    },
-    {
-      "codeLine": 8,
-      "note": "Advance tail to tail.next (node 0).",
-      "nodes": [
-        {
-          "val": 1,
-          "next": 1
-        },
-        {
-          "val": 3,
-          "next": null
-        },
-        {
-          "val": 2,
-          "next": 3
-        },
-        {
-          "val": 4,
-          "next": null
-        },
-        {
-          "val": 0,
-          "next": 0
-        }
-      ],
-      "curr": 0
+      "curr": "3b"
     },
     {
       "codeLine": 3,
-      "note": "Both l1 (node 1, val 3) and l2 (node 2, val 2) are not null.",
+      "note": "4 <= 4, link 3b to 4a.",
       "nodes": [
         {
+          "id": "dummy",
+          "val": 0,
+          "next": "1a"
+        },
+        {
+          "id": "1a",
           "val": 1,
-          "next": 1
+          "next": "1b"
         },
         {
-          "val": 3,
-          "next": null
+          "id": "1b",
+          "val": 1,
+          "next": "2a"
         },
         {
+          "id": "2a",
           "val": 2,
-          "next": 3
+          "next": "3b"
         },
         {
+          "id": "3b",
+          "val": 3,
+          "next": "4a"
+        },
+        {
+          "id": "4a",
           "val": 4,
           "next": null
         },
         {
-          "val": 0,
-          "next": 0
+          "id": "4b",
+          "val": 4,
+          "next": null
         }
       ],
-      "curr": 0
+      "curr": "4a"
     },
     {
-      "codeLine": 4,
-      "note": "Compare l1.val (3) <= l2.val (2) -> False.",
+      "codeLine": 6,
+      "note": "list1 is exhausted, attach remaining list2.",
       "nodes": [
         {
+          "id": "dummy",
+          "val": 0,
+          "next": "1a"
+        },
+        {
+          "id": "1a",
           "val": 1,
-          "next": 1
+          "next": "1b"
         },
         {
-          "val": 3,
-          "next": null
+          "id": "1b",
+          "val": 1,
+          "next": "2a"
         },
         {
+          "id": "2a",
           "val": 2,
-          "next": 3
+          "next": "3b"
         },
         {
+          "id": "3b",
+          "val": 3,
+          "next": "4a"
+        },
+        {
+          "id": "4a",
+          "val": 4,
+          "next": "4b"
+        },
+        {
+          "id": "4b",
           "val": 4,
           "next": null
-        },
-        {
-          "val": 0,
-          "next": 0
         }
       ],
-      "curr": 0
-    },
-    {
-      "codeLine": 7,
-      "note": "Connect tail.next to l2 (node 2), advance l2 to node 3.",
-      "nodes": [
-        {
-          "val": 1,
-          "next": 2
-        },
-        {
-          "val": 3,
-          "next": null
-        },
-        {
-          "val": 2,
-          "next": 3
-        },
-        {
-          "val": 4,
-          "next": null
-        },
-        {
-          "val": 0,
-          "next": 0
-        }
-      ],
-      "curr": 0
-    },
-    {
-      "codeLine": 8,
-      "note": "Advance tail to tail.next (node 2).",
-      "nodes": [
-        {
-          "val": 1,
-          "next": 2
-        },
-        {
-          "val": 3,
-          "next": null
-        },
-        {
-          "val": 2,
-          "next": 3
-        },
-        {
-          "val": 4,
-          "next": null
-        },
-        {
-          "val": 0,
-          "next": 0
-        }
-      ],
-      "curr": 2
-    },
-    {
-      "codeLine": 3,
-      "note": "Both l1 (node 1, val 3) and l2 (node 3, val 4) are not null.",
-      "nodes": [
-        {
-          "val": 1,
-          "next": 2
-        },
-        {
-          "val": 3,
-          "next": null
-        },
-        {
-          "val": 2,
-          "next": 3
-        },
-        {
-          "val": 4,
-          "next": null
-        },
-        {
-          "val": 0,
-          "next": 0
-        }
-      ],
-      "curr": 2
-    },
-    {
-      "codeLine": 4,
-      "note": "Compare l1.val (3) <= l2.val (4) -> True.",
-      "nodes": [
-        {
-          "val": 1,
-          "next": 2
-        },
-        {
-          "val": 3,
-          "next": null
-        },
-        {
-          "val": 2,
-          "next": 3
-        },
-        {
-          "val": 4,
-          "next": null
-        },
-        {
-          "val": 0,
-          "next": 0
-        }
-      ],
-      "curr": 2
-    },
-    {
-      "codeLine": 5,
-      "note": "Connect tail.next to l1 (node 1), advance l1 to null.",
-      "nodes": [
-        {
-          "val": 1,
-          "next": 2
-        },
-        {
-          "val": 3,
-          "next": null
-        },
-        {
-          "val": 2,
-          "next": 1
-        },
-        {
-          "val": 4,
-          "next": null
-        },
-        {
-          "val": 0,
-          "next": 0
-        }
-      ],
-      "curr": 2
-    },
-    {
-      "codeLine": 8,
-      "note": "Advance tail to tail.next (node 1).",
-      "nodes": [
-        {
-          "val": 1,
-          "next": 2
-        },
-        {
-          "val": 3,
-          "next": null
-        },
-        {
-          "val": 2,
-          "next": 1
-        },
-        {
-          "val": 4,
-          "next": null
-        },
-        {
-          "val": 0,
-          "next": 0
-        }
-      ],
-      "curr": 1
-    },
-    {
-      "codeLine": 3,
-      "note": "l1 is null, while loop terminates.",
-      "nodes": [
-        {
-          "val": 1,
-          "next": 2
-        },
-        {
-          "val": 3,
-          "next": null
-        },
-        {
-          "val": 2,
-          "next": 1
-        },
-        {
-          "val": 4,
-          "next": null
-        },
-        {
-          "val": 0,
-          "next": 0
-        }
-      ],
-      "curr": 1
-    },
-    {
-      "codeLine": 9,
-      "note": "Append remaining l2 list (node 3, val 4) to tail.next.",
-      "nodes": [
-        {
-          "val": 1,
-          "next": 2
-        },
-        {
-          "val": 3,
-          "next": 3
-        },
-        {
-          "val": 2,
-          "next": 1
-        },
-        {
-          "val": 4,
-          "next": null
-        },
-        {
-          "val": 0,
-          "next": 0
-        }
-      ],
-      "curr": 1
-    },
-    {
-      "codeLine": 10,
-      "note": "Return dummy.next (node 0, val 1). Merged list is 1 -> 2 -> 3 -> 4.",
-      "nodes": [
-        {
-          "val": 1,
-          "next": 2
-        },
-        {
-          "val": 3,
-          "next": 3
-        },
-        {
-          "val": 2,
-          "next": 1
-        },
-        {
-          "val": 4,
-          "next": null
-        },
-        {
-          "val": 0,
-          "next": 0
-        }
-      ],
-      "curr": 0
+      "curr": "4b"
     }
-  ]
+  ],
+  "fullDescription": "<p>You are given the heads of two sorted linked lists <code>list1</code> and <code>list2</code>.</p>\n\n<p>Merge the two lists into one <strong>sorted</strong> list. The list should be made by splicing together the nodes of the first two lists.</p>\n\n<p>Return <em>the head of the merged linked list</em>.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2020/10/03/merge_ex1.jpg\" style=\"width: 662px; height: 302px;\" />\n<pre>\n<strong>Input:</strong> list1 = [1,2,4], list2 = [1,3,4]\n<strong>Output:</strong> [1,1,2,3,4,4]\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> list1 = [], list2 = []\n<strong>Output:</strong> []\n</pre>\n\n<p><strong class=\"example\">Example 3:</strong></p>\n\n<pre>\n<strong>Input:</strong> list1 = [], list2 = [0]\n<strong>Output:</strong> [0]\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li>The number of nodes in both lists is in the range <code>[0, 50]</code>.</li>\n\t<li><code>-100 &lt;= Node.val &lt;= 100</code></li>\n\t<li>Both <code>list1</code> and <code>list2</code> are sorted in <strong>non-decreasing</strong> order.</li>\n</ul>\n"
 }

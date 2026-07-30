@@ -4,29 +4,39 @@
   "type": "array",
   "tags": [
     "Math",
-    "Geometry"
+    "Geometry",
+    "Number Theory"
   ],
-  "description": "Determine which receiver a laser hits in a square room with mirrors at corners.",
-  "target": null,
-  "pseudocode": "1: while (p % 2 == 0 && q % 2 == 0) { p /= 2; q /= 2; }\n2: if (p % 2 == 0) return 2;\n3: if (q % 2 == 0) return 0;\n4: return 1;",
+  "description": "Find the receptor hit by a laser in a square room of side p given reflection distance q.",
+  "target": 2,
+  "pseudocode": "1. while p % 2 == 0 and q % 2 == 0:\n2.     p /= 2\n3.     q /= 2\n4. if p % 2 == 0: return 2\n5. if q % 2 == 0: return 0\n6. return 1",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Divide p=2, q=1 by 2 if both even. p=2, q=1 are not both even.",
-      "i": 2,
-      "j": 1
+      "note": "Initial state with p=2, q=1. Check if both are even.",
+      "array": [
+        2,
+        1
+      ],
+      "curr": 2
     },
     {
-      "codeLine": 2,
-      "note": "Check if p is even. 2 % 2 == 0 is true.",
-      "i": 2,
-      "j": 1
+      "codeLine": 4,
+      "note": "p=2 is even, implying the ray hits the reflection point 2.",
+      "array": [
+        2,
+        1
+      ],
+      "curr": 2
     },
     {
-      "codeLine": 2,
-      "note": "Return 2.",
-      "i": 2,
-      "j": 1
+      "codeLine": 4,
+      "note": "Returning 2 as the receptor.",
+      "array": [
+        2,
+        1
+      ],
+      "curr": 2
     }
   ]
 }

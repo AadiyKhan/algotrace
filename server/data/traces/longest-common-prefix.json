@@ -36,7 +36,8 @@
         "flow",
         "flight"
       ],
-      "i": 1
+      "i": 1,
+      "curr": 1
     },
     {
       "codeLine": 4,
@@ -46,7 +47,8 @@
         "flow",
         "flight"
       ],
-      "i": 1
+      "i": 1,
+      "curr": 1
     },
     {
       "codeLine": 5,
@@ -96,7 +98,8 @@
         "flow",
         "flight"
       ],
-      "i": 2
+      "i": 2,
+      "curr": 2
     },
     {
       "codeLine": 4,
@@ -106,7 +109,8 @@
         "flow",
         "flight"
       ],
-      "i": 2
+      "i": 2,
+      "curr": 2
     },
     {
       "codeLine": 5,

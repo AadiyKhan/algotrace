@@ -15,7 +15,8 @@
       "note": "Registering hit at timestamp 1",
       "array": [
         1
-      ]
+      ],
+      "curr": 1
     },
     {
       "codeLine": 2,
@@ -23,7 +24,8 @@
       "array": [
         1,
         200
-      ]
+      ],
+      "curr": 200
     },
     {
       "codeLine": 5,
@@ -31,14 +33,16 @@
       "array": [
         1,
         200
-      ]
+      ],
+      "curr": 400
     },
     {
       "codeLine": 6,
       "note": "Removing expired hit at timestamp 1",
       "array": [
         200
-      ]
+      ],
+      "curr": 1
     },
     {
       "codeLine": 8,

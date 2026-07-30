@@ -1,0 +1,154 @@
+{
+  "title": "Minimum Number of Taps to Open to Water a Garden",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Dynamic Programming",
+    "Greedy"
+  ],
+  "description": "Find the minimum number of taps needed to cover the range [0, n] in a garden of length n.",
+  "target": 5,
+  "pseudocode": "1. maxReach = array of size n+1 initialized to 0\n2. for range in ranges: calculate start and end, update maxReach[start] = max(maxReach[start], end)\n3. taps = 0, currEnd = 0, nextEnd = 0\n4. for i from 0 to n-1:\n5.   nextEnd = max(nextEnd, maxReach[i])\n6.   if i == currEnd:\n7.     taps++, currEnd = nextEnd",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Initialize maxReach array based on ranges: [[0,2],[4,6],[0,1]] for n=5",
+      "array": [
+        2,
+        0,
+        0,
+        0,
+        6,
+        0
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Start iteration at i=0",
+      "array": [
+        2,
+        0,
+        0,
+        0,
+        6,
+        0
+      ],
+      "i": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "nextEnd updated to 2",
+      "array": [
+        2,
+        0,
+        0,
+        0,
+        6,
+        0
+      ],
+      "i": 0,
+      "curr": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "i (0) equals currEnd (0), tap opened",
+      "array": [
+        2,
+        0,
+        0,
+        0,
+        6,
+        0
+      ],
+      "i": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 7,
+      "note": "taps becomes 1, currEnd becomes 2",
+      "array": [
+        2,
+        0,
+        0,
+        0,
+        6,
+        0
+      ],
+      "i": 0,
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Continue loop to i=1",
+      "array": [
+        2,
+        0,
+        0,
+        0,
+        6,
+        0
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "nextEnd remains 2",
+      "array": [
+        2,
+        0,
+        0,
+        0,
+        6,
+        0
+      ],
+      "i": 1,
+      "curr": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Continue loop to i=2",
+      "array": [
+        2,
+        0,
+        0,
+        0,
+        6,
+        0
+      ],
+      "i": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "i (2) equals currEnd (2), tap opened",
+      "array": [
+        2,
+        0,
+        0,
+        0,
+        6,
+        0
+      ],
+      "i": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 7,
+      "note": "taps becomes 2, currEnd becomes 6",
+      "array": [
+        2,
+        0,
+        0,
+        0,
+        6,
+        0
+      ],
+      "i": 2,
+      "curr": 2
+    }
+  ]
+}

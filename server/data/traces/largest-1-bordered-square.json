@@ -1,0 +1,108 @@
+{
+  "title": "Largest 1-Bordered Square",
+  "difficulty": "Medium",
+  "type": "matrix",
+  "tags": [
+    "Array",
+    "Dynamic Programming",
+    "Matrix"
+  ],
+  "description": "Find the largest square subgrid where all four borders consist only of 1s.",
+  "pseudocode": "1. R = grid.length, C = grid[0].length\n2. hor = zeros(R, C), ver = zeros(R, C)\n3. For i in 0..R-1, j in 0..C-1:\n4.   if grid[i][j] == 1: hor[i][j] = (j>0 ? hor[i][j-1] : 0) + 1\n5.   if grid[i][j] == 1: ver[i][j] = (i>0 ? ver[i-1][j] : 0) + 1\n6. For size from min(R, C) down to 1:\n7.   For i from 0 to R-size, j from 0 to C-size:\n8.     If min(hor[i][j+size-1], hor[i+size-1][j+size-1], ver[i+size-1][j], ver[i+size-1][j+size-1]) >= size: return size*size",
+  "steps": [
+    {
+      "codeLine": 4,
+      "note": "Calculating horizontal and vertical prefix sums for 1s",
+      "matrix": [
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Horizontal sum computed for row 0",
+      "matrix": [
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "curr": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Vertical sum computed for row 1",
+      "matrix": [
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          2
+        ]
+      ],
+      "curr": [
+        1,
+        1
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Checking square of size 2 at [0,0]",
+      "matrix": [
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          2
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ],
+      "i": 0,
+      "j": 0
+    },
+    {
+      "codeLine": 8,
+      "note": "Square borders are all >= 2, returning area 4",
+      "matrix": [
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          2
+        ]
+      ],
+      "i": 0,
+      "j": 0,
+      "curr": [
+        2,
+        4
+      ]
+    }
+  ]
+}

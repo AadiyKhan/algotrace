@@ -76,7 +76,8 @@
           "val": 4,
           "next": null
         }
-      ]
+      ],
+      "curr": 0
     },
     {
       "codeLine": 8,
@@ -98,7 +99,8 @@
           "val": 4,
           "next": null
         }
-      ]
+      ],
+      "curr": 0
     },
     {
       "codeLine": 11,
@@ -120,7 +122,8 @@
           "val": 4,
           "next": null
         }
-      ]
+      ],
+      "curr": 0
     }
   ]
 }

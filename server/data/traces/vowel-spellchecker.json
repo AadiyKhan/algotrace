@@ -4,58 +4,66 @@
   "type": "array",
   "tags": [
     "Array",
-    "String",
-    "Hash Table"
+    "Hash Table",
+    "String"
   ],
-  "description": "Spellcheck queries against a dictionary, prioritizing exact matches, case-insensitive matches, and vowel-insensitive matches.",
-  "target": [
-    "ktE"
-  ],
-  "pseudocode": "1. exact = new Set(wordlist)\n2. cap = new Map()\n3. vow = new Map()\n4. for word in wordlist:\n5.   lower = word.toLowerCase()\n6.   devowel = lower.replace(/[aeiou]/g, '*')\n7.   if (!cap.has(lower)) cap.set(lower, word)\n8.   if (!vow.has(devowel)) vow.set(devowel, word)\n9. for q in queries:\n10.  if exact.has(q) return q\n11.  if cap.has(q.toLowerCase()) return cap.get(q.toLowerCase())\n12.  if vow.has(q.toLowerCase().replace(/[aeiou]/g, '*')) return vow.get(devowel)\n13. return ''",
+  "description": "Spellchecker using exact match, capitalization-insensitive, and vowel-insensitive lookups.",
+  "target": "YellOw",
+  "pseudocode": "1. Build sets/maps for exact, case-insensitive, and vowel-masked words.\n2. Check exact match in wordlist.\n3. Check case-insensitive match in map.\n4. Check vowel-masked match in map.\n5. Return first match found or empty string.",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize exact match set.",
+      "note": "Preprocessing wordlist: ['KiTe', 'kiTe', 'hare', 'Hare']",
       "array": [
         "KiTe",
-        "kite",
-        "hare"
-      ]
+        "kiTe",
+        "hare",
+        "Hare"
+      ],
+      "visited": []
+    },
+    {
+      "codeLine": 2,
+      "note": "Checking exact match for 'KiTe'.",
+      "array": [
+        "KiTe",
+        "kiTe",
+        "hare",
+        "Hare"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Checking case-insensitive match for 'kite' -> 'KiTe' (first occurrence).",
+      "array": [
+        "KiTe",
+        "kiTe",
+        "hare",
+        "Hare"
+      ],
+      "i": 1
     },
     {
       "codeLine": 4,
-      "note": "Processing word 'KiTe'.",
-      "i": 0
+      "note": "Checking vowel-masked match for 'k*t*' -> 'KiTe'.",
+      "array": [
+        "KiTe",
+        "kiTe",
+        "hare",
+        "Hare"
+      ],
+      "i": 2
     },
     {
-      "codeLine": 7,
-      "note": "Mapping 'kite' to 'KiTe' in cap map.",
-      "i": 0
-    },
-    {
-      "codeLine": 8,
-      "note": "Mapping 'k*t*' to 'KiTe' in vowel map.",
-      "i": 0
-    },
-    {
-      "codeLine": 9,
-      "note": "Processing query 'ktE'.",
-      "i": 0
-    },
-    {
-      "codeLine": 10,
-      "note": "Check exact: 'ktE' not in set.",
-      "i": 0
-    },
-    {
-      "codeLine": 11,
-      "note": "Check case-insensitive: 'kte' not in map.",
-      "i": 0
-    },
-    {
-      "codeLine": 12,
-      "note": "Check vowel-insensitive: 'kt*' matches 'KiTe'.",
-      "i": 0
+      "codeLine": 5,
+      "note": "Returning result for query.",
+      "array": [
+        "KiTe"
+      ],
+      "visited": [
+        0
+      ]
     }
   ]
 }

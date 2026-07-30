@@ -3,64 +3,73 @@
   "difficulty": "Hard",
   "type": "array",
   "tags": [
-    "Array",
     "Hash Table",
-    "Heap",
-    "Greedy"
+    "String",
+    "Greedy",
+    "Heap"
   ],
-  "description": "Rearrange characters in a string such that same characters are at least distance k apart.",
+  "description": "Rearrange a string so that the same characters are at least distance k apart.",
   "target": 2,
-  "pseudocode": "1. count frequencies of all chars\n2. push into max-heap\n3. while heap not empty:\n4.   pop top k items or until heap empty\n5.   append to result, reduce count\n6.   add back to heap after k steps",
+  "pseudocode": "1. Count frequencies of each character\n2. Use a max-heap to store characters by frequency\n3. Use a queue to keep track of characters waiting for k-distance constraint\n4. Build result string character by character",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Count frequencies: a: 2, b: 1",
+      "note": "Count frequencies: {a: 3, b: 1, c: 1}, k=2",
       "array": [
         "a",
         "a",
-        "b"
-      ]
-    },
-    {
-      "codeLine": 2,
-      "note": "Pushing into Max-Heap based on frequency",
-      "array": [
         "a",
-        "b"
-      ]
+        "b",
+        "c"
+      ],
+      "curr": 3
     },
     {
       "codeLine": 4,
-      "note": "Pop 'a' and 'b' (k=2 distance requirement)",
-      "i": 0,
-      "j": 1
-    },
-    {
-      "codeLine": 5,
-      "note": "Append 'a' and 'b' to result",
-      "array": [
-        "a",
-        "b"
-      ]
-    },
-    {
-      "codeLine": 6,
-      "note": "Re-insert remaining 'a' into heap",
+      "note": "Pick 'a' (highest freq), result: 'a', waitQueue: [['a', 2]]",
       "array": [
         "a"
-      ]
+      ],
+      "curr": 2
     },
     {
       "codeLine": 4,
-      "note": "Pop final 'a'",
-      "i": 2
+      "note": "Pick 'b', result: 'ab', waitQueue: [['a', 2], ['b', 1]]",
+      "array": [
+        "a",
+        "b"
+      ],
+      "curr": 2
     },
     {
-      "codeLine": 5,
-      "note": "Final result string",
+      "codeLine": 4,
+      "note": "Pick 'a' from waitQueue, result: 'aba', waitQueue: [['b', 1], ['a', 1]]",
       "array": [
         "a",
         "b",
+        "a"
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Pick 'c', result: 'abac', waitQueue: [['a', 1], ['c', 0]]",
+      "array": [
+        "a",
+        "b",
+        "a",
+        "c"
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Pick 'a', result: 'abaca', waitQueue: []",
+      "array": [
+        "a",
+        "b",
+        "a",
+        "c",
         "a"
       ]
     }

@@ -1,0 +1,148 @@
+{
+  "title": "Maximum Number of Non-Overlapping Subarrays With Sum Equals Target",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Prefix Sum",
+    "Greedy",
+    "Hash Table"
+  ],
+  "description": "Find the maximum number of non-overlapping subarrays that each sum up to a target value.",
+  "target": 2,
+  "pseudocode": "1: let count = 0, sum = 0\n2: let seen = {0: -1}\n3: for i from 0 to n-1:\n4:   sum += nums[i]\n5:   if (sum - target) in seen:\n6:     count++\n7:     sum = 0\n8:     seen = {0: -1}\n9:   else:\n10:    seen[sum] = i",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize count to 0 and prefix sum to 0.",
+      "array": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "i": null,
+      "curr": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Add nums[0] (1) to sum. sum = 1.",
+      "array": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "i": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Check if (1 - 2) = -1 is in seen. No.",
+      "array": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "i": 0,
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Add nums[1] (1) to sum. sum = 2.",
+      "array": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Check if (2 - 2) = 0 is in seen. Yes! Found subarray.",
+      "array": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "i": 1,
+      "curr": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Increment count to 1.",
+      "array": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "Reset sum to 0 to ensure non-overlapping.",
+      "array": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "i": 1,
+      "curr": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Add nums[2] (1) to sum. sum = 1.",
+      "array": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "i": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Add nums[3] (1) to sum. sum = 2.",
+      "array": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "i": 3,
+      "curr": 3
+    },
+    {
+      "codeLine": 5,
+      "note": "Check if (2 - 2) = 0 is in seen. Yes! Found subarray.",
+      "array": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "i": 3,
+      "curr": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Increment count to 2.",
+      "array": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "i": 3,
+      "curr": 2
+    }
+  ]
+}

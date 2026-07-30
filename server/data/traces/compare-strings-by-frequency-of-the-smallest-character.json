@@ -1,0 +1,51 @@
+{
+  "title": "Compare Strings by Frequency of the Smallest Character",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "String",
+    "Hash Table"
+  ],
+  "description": "Count how many words have a frequency of their smallest character greater than that of a query string.",
+  "target": "f(query) < f(word)",
+  "pseudocode": "1. Calculate f(s) for all words -> wordFreqs\n2. Sort wordFreqs\n3. For each query q:\n4.   target = f(q)\n5.   count = count elements in wordFreqs > target\n6. Return results",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Calculate f('zaaaz'). Smallest char is 'a', occurs 3 times. f('zaaaz') = 3.",
+      "array": [
+        3
+      ],
+      "curr": 3
+    },
+    {
+      "codeLine": 3,
+      "note": "Processing query 'cbd'. Smallest char is 'b', occurs 1 time. f('cbd') = 1.",
+      "array": [
+        3
+      ],
+      "i": 0,
+      "curr": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Compare f('cbd') = 1 with wordFreqs [3]. Since 1 < 3, count is 1.",
+      "array": [
+        3
+      ],
+      "i": 0,
+      "visited": [
+        3
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Final answer for queries is [1].",
+      "array": [
+        1
+      ],
+      "curr": 1
+    }
+  ]
+}

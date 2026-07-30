@@ -1,0 +1,93 @@
+{
+  "title": "Verbal Arithmetic Puzzle",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Backtracking",
+    "Constraint Satisfaction"
+  ],
+  "description": "Given an equation represented by words, determine if it can be mapped to a valid numerical equation where each letter represents a unique digit.",
+  "target": true,
+  "pseudocode": "1. function solve(index, currentSum) {\n2.   if (index == uniqueChars.length) return currentSum == 0;\n3.   char = uniqueChars[index];\n4.   for (digit = 0; digit <= 9; digit++) {\n5.     if (isValid(char, digit)) {\n6.       assign(char, digit);\n7.       if (solve(index + 1, currentSum + getWeight(char) * digit)) return true;\n8.       unassign(char);\n9.     }\n10.  }\n11.  return false;\n12. }",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Starting recursion with 'SEND' + 'MORE' = 'MONEY'",
+      "array": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Picking character 'S', trying digit 9",
+      "array": [
+        9,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "i": 0,
+      "curr": 9
+    },
+    {
+      "codeLine": 7,
+      "note": "Recursing to next character 'E', trying digit 5",
+      "array": [
+        9,
+        5,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "i": 1,
+      "curr": 5
+    },
+    {
+      "codeLine": 7,
+      "note": "Recursing to next character 'N', trying digit 6",
+      "array": [
+        9,
+        5,
+        6,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "i": 2,
+      "curr": 6
+    },
+    {
+      "codeLine": 7,
+      "note": "Recursing to next character 'D', trying digit 7",
+      "array": [
+        9,
+        5,
+        6,
+        7,
+        0,
+        0,
+        0,
+        0
+      ],
+      "i": 3,
+      "curr": 7
+    }
+  ]
+}

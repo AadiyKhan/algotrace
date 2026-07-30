@@ -1,0 +1,150 @@
+{
+  "title": "Remove Interval",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Intervals"
+  ],
+  "description": "Given a sorted list of disjoint intervals and an interval to remove, return the set of intervals after removing the specified range.",
+  "target": "[2, 5]",
+  "pseudocode": "1. result = []\n2. for interval in intervals:\n3.   if interval.end <= toRemove.start or interval.start >= toRemove.end:\n4.     result.push(interval)\n5.   else:\n6.     if interval.start < toRemove.start:\n7.       result.push([interval.start, toRemove.start])\n8.     if interval.end > toRemove.end:\n9.       result.push([toRemove.end, interval.end])",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize empty result list",
+      "array": []
+    },
+    {
+      "codeLine": 2,
+      "note": "Processing first interval [0, 2]",
+      "array": [
+        [
+          0,
+          2
+        ]
+      ],
+      "i": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Interval [0, 2] ends before [2, 5] starts. Keep it.",
+      "array": [
+        [
+          0,
+          2
+        ]
+      ],
+      "i": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Add [0, 2] to result",
+      "array": [
+        [
+          0,
+          2
+        ]
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Processing second interval [1, 6]",
+      "array": [
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          6
+        ]
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Overlap detected between [1, 6] and [2, 5]",
+      "array": [
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          6
+        ]
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Check left split: 1 < 2 is true",
+      "array": [
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          6
+        ]
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "Push [1, 2] to result",
+      "array": [
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 8,
+      "note": "Check right split: 6 > 5 is true",
+      "array": [
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "curr": 6
+    },
+    {
+      "codeLine": 9,
+      "note": "Push [5, 6] to result",
+      "array": [
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          5,
+          6
+        ]
+      ],
+      "curr": 5
+    }
+  ]
+}

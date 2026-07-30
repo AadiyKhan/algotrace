@@ -1,0 +1,111 @@
+{
+  "title": "Maximum Nesting Depth of Two Valid Parentheses Strings",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "String",
+    "Greedy",
+    "Stack"
+  ],
+  "description": "Partition a valid parentheses string into two disjoint subsequences A and B such that the maximum nesting depth of the combined partition is minimized.",
+  "target": null,
+  "pseudocode": "let depth = 0, res = [];\nfor (char of seq) {\n  if (char == '(') {\n    res.push(depth % 2);\n    depth++;\n  } else {\n    depth--;\n    res.push(depth % 2);\n  }\n}",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Initialize loop with first character '('",
+      "array": [],
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Char is '(', depth is 0, push 0 % 2 = 0 to res",
+      "array": [
+        0
+      ],
+      "i": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Increment depth to 1",
+      "array": [
+        0
+      ],
+      "i": 0,
+      "curr": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Next character '('",
+      "array": [
+        0
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Char is '(', depth is 1, push 1 % 2 = 1 to res",
+      "array": [
+        0,
+        1
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Increment depth to 2",
+      "array": [
+        0,
+        1
+      ],
+      "i": 1,
+      "curr": 2
+    },
+    {
+      "codeLine": 7,
+      "note": "Char is ')', decrement depth to 1",
+      "array": [
+        0,
+        1
+      ],
+      "i": 2,
+      "curr": 1
+    },
+    {
+      "codeLine": 8,
+      "note": "Push 1 % 2 = 1 to res",
+      "array": [
+        0,
+        1,
+        1
+      ],
+      "i": 2,
+      "curr": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "Char is ')', decrement depth to 0",
+      "array": [
+        0,
+        1,
+        1
+      ],
+      "i": 3,
+      "curr": 0
+    },
+    {
+      "codeLine": 8,
+      "note": "Push 0 % 2 = 0 to res",
+      "array": [
+        0,
+        1,
+        1,
+        0
+      ],
+      "i": 3,
+      "curr": 0
+    }
+  ]
+}

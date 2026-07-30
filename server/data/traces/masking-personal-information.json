@@ -5,29 +5,114 @@
   "tags": [
     "String"
   ],
-  "description": "Mask an email address or a phone number according to specific rules.",
-  "target": null,
-  "pseudocode": "1. If email contains '@': lowercase, mask first char, add *****, add rest of local name and domain.\n2. If phone: remove non-digits, keep last 4, prefix with masked local/country code parts.",
+  "description": "Masking an email or a phone number based on specific rules.",
+  "pseudocode": "1. Check if input contains '@' to identify email or phone.\n2. If email: convert to lowercase, extract first/last of name, mask middle with '*****', keep domain.\n3. If phone: remove non-digits, identify country code length, format as masked string.",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Input is email 'LeetCode@LeetCode.com'. Detect '@'.",
-      "i": "LeetCode@LeetCode.com"
-    },
-    {
-      "codeLine": 1,
-      "note": "Extract local name 'LeetCode' and domain 'LeetCode.com'.",
-      "i": "l***e@leetcode.com"
+      "note": "Identify input type by checking for '@'. Input: 'LeetCode@LeetCode.com'",
+      "array": [
+        "L",
+        "e",
+        "e",
+        "t",
+        "C",
+        "o",
+        "d",
+        "e",
+        "@",
+        "L",
+        "e",
+        "e",
+        "t",
+        "C",
+        "o",
+        "d",
+        "e",
+        ".",
+        "c",
+        "o",
+        "m"
+      ]
     },
     {
       "codeLine": 2,
-      "note": "Input is phone '1(234)567-890'. Remove all non-digits.",
-      "i": "1234567890"
+      "note": "Convert to lowercase: 'leetcode@leetcode.com'",
+      "array": [
+        "l",
+        "e",
+        "e",
+        "t",
+        "c",
+        "o",
+        "d",
+        "e",
+        "@",
+        "l",
+        "e",
+        "e",
+        "t",
+        "c",
+        "o",
+        "d",
+        "e",
+        ".",
+        "c",
+        "o",
+        "m"
+      ]
     },
     {
       "codeLine": 2,
-      "note": "Format local part and append last 4 digits '7890'.",
-      "i": "***-***-7890"
+      "note": "Split name 'leetcode' into first 'l', last 'e', and mask '*****'",
+      "array": [
+        "l",
+        "*",
+        "*",
+        "*",
+        "*",
+        "*",
+        "e",
+        "@",
+        "l",
+        "e",
+        "e",
+        "t",
+        "c",
+        "o",
+        "d",
+        "e",
+        ".",
+        "c",
+        "o",
+        "m"
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Final masked email: 'l*****e@leetcode.com'",
+      "array": [
+        "l",
+        "*",
+        "*",
+        "*",
+        "*",
+        "*",
+        "e",
+        "@",
+        "l",
+        "e",
+        "e",
+        "t",
+        "c",
+        "o",
+        "d",
+        "e",
+        ".",
+        "c",
+        "o",
+        "m"
+      ]
     }
   ]
 }

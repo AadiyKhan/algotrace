@@ -1,0 +1,207 @@
+{
+  "title": "Max Value of Equation",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Sliding Window",
+    "Queue",
+    "Heap"
+  ],
+  "description": "Find the maximum value of |yi - yj| + |xi - xj| given points sorted by x where |xi - xj| <= k.",
+  "target": null,
+  "pseudocode": "1. Initialize deque to store indices\n2. result = -infinity\n3. for i = 0 to points.length - 1:\n4.   while deque not empty and points[i][0] - points[deque[0]][0] > k:\n5.     deque.shift()\n6.   if deque not empty:\n7.     result = max(result, points[i][1] + points[i][0] + points[deque[0]][1] - points[deque[0]][0])\n8.   while deque not empty and points[deque[back]][1] - points[deque[back]][0] <= points[i][1] - points[i][0]:\n9.     deque.pop()\n10.  deque.push(i)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize result and empty deque.",
+      "array": [
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          5,
+          10
+        ],
+        [
+          6,
+          -10
+        ]
+      ],
+      "i": null
+    },
+    {
+      "codeLine": 10,
+      "note": "Add point 0 to deque.",
+      "array": [
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          5,
+          10
+        ],
+        [
+          6,
+          -10
+        ]
+      ],
+      "i": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Process point 1.",
+      "array": [
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          5,
+          10
+        ],
+        [
+          6,
+          -10
+        ]
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "Calculate value: 0 + 2 + 3 - 1 = 4. Update result.",
+      "array": [
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          5,
+          10
+        ],
+        [
+          6,
+          -10
+        ]
+      ],
+      "i": 1,
+      "curr": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Process point 2.",
+      "array": [
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          5,
+          10
+        ],
+        [
+          6,
+          -10
+        ]
+      ],
+      "i": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Check constraint: 5 - 1 = 4 > k (assume k=3). Pop point 0.",
+      "array": [
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          5,
+          10
+        ],
+        [
+          6,
+          -10
+        ]
+      ],
+      "i": 2,
+      "curr": 5
+    },
+    {
+      "codeLine": 10,
+      "note": "Push index 2 to deque.",
+      "array": [
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          5,
+          10
+        ],
+        [
+          6,
+          -10
+        ]
+      ],
+      "i": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Process point 3. Value: -10 + 6 + 10 - 5 = 1. Result remains 4.",
+      "array": [
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          5,
+          10
+        ],
+        [
+          6,
+          -10
+        ]
+      ],
+      "i": 3,
+      "curr": 3
+    }
+  ]
+}

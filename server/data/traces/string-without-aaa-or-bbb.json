@@ -13,7 +13,8 @@
     {
       "codeLine": 1,
       "note": "Initialize counts: A=2, B=3, result=''",
-      "array": []
+      "array": [],
+      "curr": 2
     },
     {
       "codeLine": 2,
@@ -27,7 +28,8 @@
       "note": "Decrement B to 2",
       "array": [
         "B"
-      ]
+      ],
+      "curr": 2
     },
     {
       "codeLine": 2,
@@ -43,7 +45,8 @@
       "array": [
         "B",
         "A"
-      ]
+      ],
+      "curr": 1
     },
     {
       "codeLine": 2,
@@ -61,7 +64,8 @@
         "B",
         "A",
         "B"
-      ]
+      ],
+      "curr": 1
     },
     {
       "codeLine": 2,
@@ -81,7 +85,8 @@
         "A",
         "B",
         "A"
-      ]
+      ],
+      "curr": 0
     },
     {
       "codeLine": 2,
@@ -103,7 +108,8 @@
         "B",
         "A",
         "B"
-      ]
+      ],
+      "curr": 0
     }
   ]
 }

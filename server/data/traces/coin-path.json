@@ -1,0 +1,105 @@
+{
+  "title": "Coin Path",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Dynamic Programming"
+  ],
+  "description": "Find the lexicographically smallest path from the first to the last index with jumps of size at most B.",
+  "target": 2,
+  "pseudocode": "1: let n = A.length, B = jump\n2: dp = new Array(n).fill(Infinity)\n3: next = new Array(n).fill(-1)\n4: dp[n-1] = A[n-1]\n5: for i = n-2 down to 0:\n6:   for j = 1 to B:\n7:     if i+j < n and dp[i+j] + A[i] < dp[i]:\n8:       dp[i] = dp[i+j] + A[i], next[i] = i+j",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize DP array and next pointers for path reconstruction. A = [1, 2, 4, -1, 2], B = 2",
+      "array": [
+        1,
+        2,
+        4,
+        -1,
+        2
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Base case: start from the end index",
+      "array": [
+        1,
+        2,
+        4,
+        -1,
+        2
+      ],
+      "i": 4
+    },
+    {
+      "codeLine": 5,
+      "note": "Iterate backwards from index 3",
+      "array": [
+        1,
+        2,
+        4,
+        -1,
+        2
+      ],
+      "i": 3,
+      "curr": 3
+    },
+    {
+      "codeLine": 7,
+      "note": "Calculate DP[3] using jump to index 4",
+      "array": [
+        1,
+        2,
+        4,
+        -1,
+        2
+      ],
+      "i": 3,
+      "j": 1,
+      "curr": 3
+    },
+    {
+      "codeLine": 5,
+      "note": "Iterate backwards to index 2",
+      "array": [
+        1,
+        2,
+        4,
+        -1,
+        2
+      ],
+      "i": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 7,
+      "note": "Calculate DP[2] by comparing jumps to index 3 and 4",
+      "array": [
+        1,
+        2,
+        4,
+        -1,
+        2
+      ],
+      "i": 2,
+      "j": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Final path reconstruction starting from index 0",
+      "array": [
+        1,
+        2,
+        4,
+        -1,
+        2
+      ],
+      "i": 0,
+      "curr": 0
+    }
+  ]
+}

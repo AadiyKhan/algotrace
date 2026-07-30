@@ -18,7 +18,8 @@
         3,
         1,
         2
-      ]
+      ],
+      "curr": 3
     },
     {
       "codeLine": 3,
@@ -35,7 +36,8 @@
       "note": "Recursively sorting left half [3]",
       "array": [
         3
-      ]
+      ],
+      "curr": 3
     },
     {
       "codeLine": 5,
@@ -43,7 +45,8 @@
       "array": [
         1,
         2
-      ]
+      ],
+      "curr": 1
     },
     {
       "codeLine": 6,
@@ -52,7 +55,8 @@
         1,
         2,
         3
-      ]
+      ],
+      "curr": 3
     }
   ]
 }

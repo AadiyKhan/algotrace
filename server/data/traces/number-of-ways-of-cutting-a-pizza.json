@@ -1,0 +1,166 @@
+{
+  "title": "Number of Ways of Cutting a Pizza",
+  "difficulty": "Hard",
+  "type": "matrix",
+  "tags": [
+    "Array",
+    "Dynamic Programming",
+    "Matrix",
+    "Prefix Sum"
+  ],
+  "description": "Calculate ways to cut a pizza into k pieces with at least one apple per piece using DP and 2D prefix sums.",
+  "target": 3,
+  "pseudocode": "1. Precompute apple counts using 2D prefix sum.\n2. Define dfs(r, c, k) to count valid cuts.\n3. If k=1 and apples > 0 return 1.\n4. Iterate horizontal cuts: if upper part has apples, add dfs(nr, c, k-1).\n5. Iterate vertical cuts: if left part has apples, add dfs(r, nc, k-1).",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Precomputing prefix sum of apples for the 3x3 pizza.",
+      "matrix": [
+        [
+          "A",
+          ".",
+          "."
+        ],
+        [
+          "A",
+          "A",
+          "A"
+        ],
+        [
+          ".",
+          ".",
+          "."
+        ]
+      ],
+      "curr": [
+        3,
+        3
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Starting DFS at full pizza (0,0) with k=3.",
+      "matrix": [
+        [
+          "A",
+          ".",
+          "."
+        ],
+        [
+          "A",
+          "A",
+          "A"
+        ],
+        [
+          ".",
+          ".",
+          "."
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Testing horizontal cut at row 1. Upper part (row 0) contains 1 apple. Valid.",
+      "matrix": [
+        [
+          "A",
+          ".",
+          "."
+        ],
+        [
+          "A",
+          "A",
+          "A"
+        ],
+        [
+          ".",
+          ".",
+          "."
+        ]
+      ],
+      "curr": [
+        1,
+        0
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Testing vertical cut at col 1. Left part (col 0) contains 2 apples. Valid.",
+      "matrix": [
+        [
+          "A",
+          ".",
+          "."
+        ],
+        [
+          "A",
+          "A",
+          "A"
+        ],
+        [
+          ".",
+          ".",
+          "."
+        ]
+      ],
+      "curr": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Testing horizontal cut at row 2. Upper part contains 4 apples. Valid.",
+      "matrix": [
+        [
+          "A",
+          ".",
+          "."
+        ],
+        [
+          "A",
+          "A",
+          "A"
+        ],
+        [
+          ".",
+          ".",
+          "."
+        ]
+      ],
+      "curr": [
+        2,
+        0
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Recursion completed for all k=3 paths, total valid ways found: 3.",
+      "matrix": [
+        [
+          "A",
+          ".",
+          "."
+        ],
+        [
+          "A",
+          "A",
+          "A"
+        ],
+        [
+          ".",
+          ".",
+          "."
+        ]
+      ],
+      "curr": [
+        3,
+        3
+      ]
+    }
+  ]
+}

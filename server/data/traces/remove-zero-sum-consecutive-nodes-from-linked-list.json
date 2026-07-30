@@ -1,0 +1,194 @@
+{
+  "title": "Remove Zero Sum Consecutive Nodes from Linked List",
+  "difficulty": "Medium",
+  "type": "linked-list",
+  "tags": [
+    "Linked List",
+    "Hash Table"
+  ],
+  "description": "Remove sequences of consecutive nodes that sum to 0 repeatedly until no such sequences remain.",
+  "pseudocode": "1. dummy = new Node(0, head)\n2. prefixSum = 0\n3. map = {0: dummy}\n4. curr = head\n5. while curr:\n6.   prefixSum += curr.val\n7.   if prefixSum in map:\n8.     toDelete = map[prefixSum].next\n9.     tempSum = prefixSum + toDelete.val\n10.    while toDelete != curr:\n11.      delete tempSum from map\n12.      toDelete = toDelete.next\n13.      tempSum += toDelete.val\n14.    map[prefixSum].next = curr.next\n15.  else:\n16.    map[prefixSum] = curr\n17.  curr = curr.next",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize dummy node pointing to head [1, 2, -3, 3, 1]",
+      "nodes": [
+        {
+          "val": 0,
+          "next": 1
+        },
+        {
+          "val": 1,
+          "next": 2
+        },
+        {
+          "val": 2,
+          "next": 3
+        },
+        {
+          "val": -3,
+          "next": 4
+        },
+        {
+          "val": 3,
+          "next": 5
+        },
+        {
+          "val": 1,
+          "next": null
+        }
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Prefix sum is 1, not in map. Store in map.",
+      "nodes": [
+        {
+          "val": 0,
+          "next": 1
+        },
+        {
+          "val": 1,
+          "next": 2
+        },
+        {
+          "val": 2,
+          "next": 3
+        },
+        {
+          "val": -3,
+          "next": 4
+        },
+        {
+          "val": 3,
+          "next": 5
+        },
+        {
+          "val": 1,
+          "next": null
+        }
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Prefix sum is 3, not in map. Store in map.",
+      "nodes": [
+        {
+          "val": 0,
+          "next": 1
+        },
+        {
+          "val": 1,
+          "next": 2
+        },
+        {
+          "val": 2,
+          "next": 3
+        },
+        {
+          "val": -3,
+          "next": 4
+        },
+        {
+          "val": 3,
+          "next": 5
+        },
+        {
+          "val": 1,
+          "next": null
+        }
+      ],
+      "curr": 3
+    },
+    {
+      "codeLine": 6,
+      "note": "Prefix sum is 0 (1+2-3). Found in map at dummy.",
+      "nodes": [
+        {
+          "val": 0,
+          "next": 1
+        },
+        {
+          "val": 1,
+          "next": 2
+        },
+        {
+          "val": 2,
+          "next": 3
+        },
+        {
+          "val": -3,
+          "next": 4
+        },
+        {
+          "val": 3,
+          "next": 5
+        },
+        {
+          "val": 1,
+          "next": null
+        }
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 14,
+      "note": "Remove consecutive zero sum nodes. Dummy now points to node(3).",
+      "nodes": [
+        {
+          "val": 0,
+          "next": 4
+        },
+        {
+          "val": 3,
+          "next": 5
+        },
+        {
+          "val": 1,
+          "next": null
+        }
+      ],
+      "curr": 3
+    },
+    {
+      "codeLine": 6,
+      "note": "Prefix sum 3 found. Updating map to newest node(3).",
+      "nodes": [
+        {
+          "val": 0,
+          "next": 4
+        },
+        {
+          "val": 3,
+          "next": 5
+        },
+        {
+          "val": 1,
+          "next": null
+        }
+      ],
+      "curr": 3
+    },
+    {
+      "codeLine": 6,
+      "note": "Prefix sum 4 (3+1). Not in map.",
+      "nodes": [
+        {
+          "val": 0,
+          "next": 4
+        },
+        {
+          "val": 3,
+          "next": 5
+        },
+        {
+          "val": 1,
+          "next": null
+        }
+      ],
+      "curr": 4
+    }
+  ]
+}

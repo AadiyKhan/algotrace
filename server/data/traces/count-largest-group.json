@@ -1,0 +1,114 @@
+{
+  "title": "Count Largest Group",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Hash Table",
+    "Math",
+    "Counting"
+  ],
+  "description": "Group numbers from 1 to n by sum of digits and return the count of groups with the maximum size.",
+  "target": 13,
+  "pseudocode": "1. Initialize empty hash map groups\n2. For i from 1 to n:\n3.   sum = getSumOfDigits(i)\n4.   groups[sum]++\n5. max_size = max(groups.values)\n6. count = number of groups with size == max_size",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize empty frequency array to store counts for each digit sum (max sum for 13 is 9, 10 is 1, 11 is 2, 12 is 3, 13 is 4)",
+      "array": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "curr": 13
+    },
+    {
+      "codeLine": 2,
+      "note": "Iterate i from 1 to 13",
+      "array": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "After processing 1-9: sums 1-9 each appear once. After 10: 1+0=1, 11: 1+1=2, 12: 1+2=3, 13: 1+3=4",
+      "array": [
+        0,
+        2,
+        2,
+        2,
+        2,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "i": 13,
+      "curr": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Identify max group size. Sizes are: sum 1:2, sum 2:2, sum 3:2, sum 4:2, sum 5-9:1. Max size is 2.",
+      "array": [
+        0,
+        2,
+        2,
+        2,
+        2,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "visited": [
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Count groups with size 2. There are 4 such groups (sums 1, 2, 3, 4). Return 4.",
+      "array": [
+        0,
+        2,
+        2,
+        2,
+        2,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "visited": [
+        1,
+        2,
+        3,
+        4
+      ]
+    }
+  ]
+}

@@ -33,7 +33,8 @@
           "right": null
         }
       ],
-      "visited": []
+      "visited": [],
+      "curr": 1
     },
     {
       "codeLine": 3,
@@ -58,7 +59,8 @@
           "right": null
         }
       ],
-      "visited": []
+      "visited": [],
+      "curr": 2
     },
     {
       "codeLine": 5,

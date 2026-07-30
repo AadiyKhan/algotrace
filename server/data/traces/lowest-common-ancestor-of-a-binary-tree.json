@@ -4,16 +4,16 @@
   "type": "tree",
   "tags": [
     "Tree",
-    "DFS",
-    "Recursion"
+    "Depth-First Search",
+    "Binary Tree"
   ],
-  "description": "Find the lowest common ancestor (LCA) of two given nodes in a binary tree.",
-  "target": "p=4, q=5",
-  "pseudocode": "1. function findLCA(root, p, q) {\n2.   if (!root || root === p || root === q) return root;\n3.   let left = findLCA(root.left, p, q);\n4.   let right = findLCA(root.right, p, q);\n5.   if (left && right) return root;\n6.   return left ? left : right;\n7. }",
+  "description": "Find the lowest common ancestor of two nodes p and q in a binary tree.",
+  "target": "LCA(5, 1) = 3",
+  "pseudocode": "1. If root is null or root is p or root is q, return root.\n2. left = LCA(root.left, p, q)\n3. right = LCA(root.right, p, q)\n4. If left and right exist, return root (LCA found).\n5. Return left if exists, else right.",
   "steps": [
     {
-      "codeLine": 1,
-      "note": "Starting recursion at root node 3.",
+      "codeLine": 2,
+      "note": "Traversing down to the left child of 3 (node 5).",
       "treeNodes": [
         {
           "id": 0,
@@ -42,8 +42,8 @@
         {
           "id": 4,
           "val": 2,
-          "left": null,
-          "right": null
+          "left": 7,
+          "right": 8
         },
         {
           "id": 5,
@@ -56,70 +56,266 @@
           "val": 8,
           "left": null,
           "right": null
+        },
+        {
+          "id": 7,
+          "val": 7,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 8,
+          "val": 4,
+          "left": null,
+          "right": null
         }
-      ]
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 1,
+      "note": "Reached node 5, which is p. Return 5.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 3,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 5,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 2,
+          "val": 1,
+          "left": 5,
+          "right": 6
+        },
+        {
+          "id": 3,
+          "val": 6,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 2,
+          "left": 7,
+          "right": 8
+        },
+        {
+          "id": 5,
+          "val": 0,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 6,
+          "val": 8,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 7,
+          "val": 7,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 8,
+          "val": 4,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 1
     },
     {
       "codeLine": 3,
-      "note": "Traversing left to node 5.",
-      "visited": [
-        0
-      ]
+      "note": "Traversing down to the right child of 3 (node 1).",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 3,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 5,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 2,
+          "val": 1,
+          "left": 5,
+          "right": 6
+        },
+        {
+          "id": 3,
+          "val": 6,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 2,
+          "left": 7,
+          "right": 8
+        },
+        {
+          "id": 5,
+          "val": 0,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 6,
+          "val": 8,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 7,
+          "val": 7,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 8,
+          "val": 4,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 2
     },
     {
-      "codeLine": 2,
-      "note": "Node 5 matches p, returning node 5 to parent.",
-      "visited": [
-        0,
-        1
-      ]
+      "codeLine": 1,
+      "note": "Reached node 1, which is q. Return 1.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 3,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 5,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 2,
+          "val": 1,
+          "left": 5,
+          "right": 6
+        },
+        {
+          "id": 3,
+          "val": 6,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 2,
+          "left": 7,
+          "right": 8
+        },
+        {
+          "id": 5,
+          "val": 0,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 6,
+          "val": 8,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 7,
+          "val": 7,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 8,
+          "val": 4,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 2
     },
     {
       "codeLine": 4,
-      "note": "Traversing right to node 1.",
-      "visited": [
-        0,
-        1
-      ]
-    },
-    {
-      "codeLine": 3,
-      "note": "Traversing left from 1 to 0.",
-      "visited": [
-        0,
-        1,
-        2
-      ]
-    },
-    {
-      "codeLine": 2,
-      "note": "Node 0 is null/leaf, returning null.",
-      "visited": [
-        0,
-        1,
-        2,
-        5
-      ]
-    },
-    {
-      "codeLine": 5,
-      "note": "Left is 5, right is null. Returning 5 to root.",
-      "visited": [
-        0,
-        1,
-        2,
-        5
-      ]
-    },
-    {
-      "codeLine": 5,
-      "note": "Both left (5) and right (null) evaluated. Final LCA is 3.",
-      "visited": [
-        0,
-        1,
-        2,
-        5
-      ]
+      "note": "Back at node 3. Both left (5) and right (1) found. 3 is LCA.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 3,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 5,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 2,
+          "val": 1,
+          "left": 5,
+          "right": 6
+        },
+        {
+          "id": 3,
+          "val": 6,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 2,
+          "left": 7,
+          "right": 8
+        },
+        {
+          "id": 5,
+          "val": 0,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 6,
+          "val": 8,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 7,
+          "val": 7,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 8,
+          "val": 4,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 0
     }
-  ]
+  ],
+  "fullDescription": "<p>Given a binary tree, find the lowest common ancestor (LCA) of two given nodes in the tree.</p>\n\n<p>According to the <a href=\"https://en.wikipedia.org/wiki/Lowest_common_ancestor\" target=\"_blank\">definition of LCA on Wikipedia</a>: &ldquo;The lowest common ancestor is defined between two nodes <code>p</code> and <code>q</code> as the lowest node in <code>T</code> that has both <code>p</code> and <code>q</code> as descendants (where we allow <b>a node to be a descendant of itself</b>).&rdquo;</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2018/12/14/binarytree.png\" style=\"width: 200px; height: 190px;\" />\n<pre>\n<strong>Input:</strong> root = [3,5,1,6,2,0,8,null,null,7,4], p = 5, q = 1\n<strong>Output:</strong> 3\n<strong>Explanation:</strong> The LCA of nodes 5 and 1 is 3.\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2018/12/14/binarytree.png\" style=\"width: 200px; height: 190px;\" />\n<pre>\n<strong>Input:</strong> root = [3,5,1,6,2,0,8,null,null,7,4], p = 5, q = 4\n<strong>Output:</strong> 5\n<strong>Explanation:</strong> The LCA of nodes 5 and 4 is 5, since a node can be a descendant of itself according to the LCA definition.\n</pre>\n\n<p><strong class=\"example\">Example 3:</strong></p>\n\n<pre>\n<strong>Input:</strong> root = [1,2], p = 1, q = 2\n<strong>Output:</strong> 1\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li>The number of nodes in the tree is in the range <code>[2, 10<sup>5</sup>]</code>.</li>\n\t<li><code>-10<sup>9</sup> &lt;= Node.val &lt;= 10<sup>9</sup></code></li>\n\t<li>All <code>Node.val</code> are <strong>unique</strong>.</li>\n\t<li><code>p != q</code></li>\n\t<li><code>p</code> and <code>q</code> will exist in the tree.</li>\n</ul>\n"
 }

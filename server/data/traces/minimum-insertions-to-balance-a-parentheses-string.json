@@ -1,0 +1,101 @@
+{
+  "title": "Minimum Insertions to Balance a Parentheses String",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "String",
+    "Greedy",
+    "Stack"
+  ],
+  "description": "Find the minimum insertions required to make a string of '(' and ')' parentheses balanced, where one '(' must be followed by two consecutive '))'.",
+  "target": null,
+  "pseudocode": "1. let insertions = 0, balance = 0\n2. for char of s:\n3.   if char == '(':\n4.     balance += 2\n5.     if balance is odd:\n6.       insertions++, balance--\n7.   else:\n8.     balance--\n9.     if balance < 0:\n10.      insertions++, balance += 2\n11. return insertions + balance",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize insertions to 0 and balance to 0",
+      "array": [
+        "(",
+        ")",
+        ")"
+      ],
+      "i": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Processing '(', increment balance by 2",
+      "array": [
+        "(",
+        ")",
+        ")"
+      ],
+      "i": 0,
+      "curr": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Balance is 2",
+      "array": [
+        "(",
+        ")",
+        ")"
+      ],
+      "i": 0,
+      "curr": 2
+    },
+    {
+      "codeLine": 7,
+      "note": "Processing ')', decrement balance",
+      "array": [
+        "(",
+        ")",
+        ")"
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 8,
+      "note": "Balance is now 1",
+      "array": [
+        "(",
+        ")",
+        ")"
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "Processing ')', decrement balance",
+      "array": [
+        "(",
+        ")",
+        ")"
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 8,
+      "note": "Balance is now 0",
+      "array": [
+        "(",
+        ")",
+        ")"
+      ],
+      "i": 2,
+      "curr": 0
+    },
+    {
+      "codeLine": 11,
+      "note": "Loop finished, return insertions (0) + balance (0)",
+      "array": [
+        "(",
+        ")",
+        ")"
+      ],
+      "i": 3,
+      "curr": 0
+    }
+  ]
+}

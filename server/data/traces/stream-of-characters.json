@@ -1,0 +1,194 @@
+{
+  "title": "Stream of Characters",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "String",
+    "Design",
+    "Trie"
+  ],
+  "description": "Checks if a suffix of the character stream exists in the given words dictionary using a Trie.",
+  "pseudocode": "1. Build Trie from reversed words.\n2. Maintain current stream buffer.\n3. For query(c):\n4.   Add c to stream.\n5.   Traverse Trie starting from stream end (backwards).\n6.   If end-of-word node found, return true.",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize Trie with reversed words: 'dc', 'f', 'lk'.",
+      "array": [
+        "dc",
+        "f",
+        "lk"
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Query 'a': Stream is ['a']. No match.",
+      "array": [
+        "a"
+      ],
+      "visited": []
+    },
+    {
+      "codeLine": 4,
+      "note": "Query 'b': Stream is ['a', 'b']. No match.",
+      "array": [
+        "a",
+        "b"
+      ],
+      "visited": []
+    },
+    {
+      "codeLine": 4,
+      "note": "Query 'c': Stream is ['a', 'b', 'c']. No match.",
+      "array": [
+        "a",
+        "b",
+        "c"
+      ],
+      "visited": []
+    },
+    {
+      "codeLine": 6,
+      "note": "Query 'd': Stream is ['a', 'b', 'c', 'd']. Suffix 'dc' matches.",
+      "array": [
+        "a",
+        "b",
+        "c",
+        "d"
+      ],
+      "visited": [
+        2,
+        3
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Query 'e': Stream is ['a', 'b', 'c', 'd', 'e']. No match.",
+      "array": [
+        "a",
+        "b",
+        "c",
+        "d",
+        "e"
+      ],
+      "visited": []
+    },
+    {
+      "codeLine": 6,
+      "note": "Query 'f': Stream is ['a', 'b', 'c', 'd', 'e', 'f']. Suffix 'f' matches.",
+      "array": [
+        "a",
+        "b",
+        "c",
+        "d",
+        "e",
+        "f"
+      ],
+      "visited": [
+        5
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Query 'g': Stream is ['a', ..., 'g']. No match.",
+      "array": [
+        "a",
+        "b",
+        "c",
+        "d",
+        "e",
+        "f",
+        "g"
+      ],
+      "visited": []
+    },
+    {
+      "codeLine": 4,
+      "note": "Query 'h': Stream is ['a', ..., 'h']. No match.",
+      "array": [
+        "a",
+        "b",
+        "c",
+        "d",
+        "e",
+        "f",
+        "g",
+        "h"
+      ],
+      "visited": []
+    },
+    {
+      "codeLine": 4,
+      "note": "Query 'i': Stream is ['a', ..., 'i']. No match.",
+      "array": [
+        "a",
+        "b",
+        "c",
+        "d",
+        "e",
+        "f",
+        "g",
+        "h",
+        "i"
+      ],
+      "visited": []
+    },
+    {
+      "codeLine": 4,
+      "note": "Query 'j': Stream is ['a', ..., 'j']. No match.",
+      "array": [
+        "a",
+        "b",
+        "c",
+        "d",
+        "e",
+        "f",
+        "g",
+        "h",
+        "i",
+        "j"
+      ],
+      "visited": []
+    },
+    {
+      "codeLine": 4,
+      "note": "Query 'k': Stream is ['a', ..., 'k']. No match.",
+      "array": [
+        "a",
+        "b",
+        "c",
+        "d",
+        "e",
+        "f",
+        "g",
+        "h",
+        "i",
+        "j",
+        "k"
+      ],
+      "visited": []
+    },
+    {
+      "codeLine": 6,
+      "note": "Query 'l': Stream is ['a', ..., 'l']. Suffix 'lk' matches.",
+      "array": [
+        "a",
+        "b",
+        "c",
+        "d",
+        "e",
+        "f",
+        "g",
+        "h",
+        "i",
+        "j",
+        "k",
+        "l"
+      ],
+      "visited": [
+        10,
+        11
+      ]
+    }
+  ]
+}

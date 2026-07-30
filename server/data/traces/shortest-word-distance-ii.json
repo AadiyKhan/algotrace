@@ -5,61 +5,81 @@
   "tags": [
     "Array",
     "Hash Table",
+    "Two Pointers",
+    "String",
     "Design"
   ],
-  "description": "Design a class that finds the shortest distance between two words in a list of words, optimized for multiple queries.",
-  "target": "distance",
-  "pseudocode": "1: map = new Map();\n2: for (i = 0; i < words.length; i++) {\n3:   indices = map.get(words[i]) || [];\n4:   indices.push(i);\n5:   map.set(words[i], indices);\n6: }\n7: list1 = map.get(word1);\n8: list2 = map.get(word2);\n9: while(i < list1.length && j < list2.length) {\n10:  minDist = min(minDist, abs(list1[i] - list2[j]));\n11:  list1[i] < list2[j] ? i++ : j++;\n12: }",
+  "description": "Find the shortest distance between two words in a list using a dictionary of indices.",
+  "target": "distance between 'coding' and 'makes'",
+  "pseudocode": "1. Map each word to a list of its indices in the input array.\n2. Retrieve indices list1 for word1 and list2 for word2.\n3. Use two pointers i and j to compare indices in list1 and list2.\n4. Update minDistance by taking abs(list1[i] - list2[i]) and increment the smaller pointer.",
   "steps": [
     {
+      "codeLine": 1,
+      "note": "Mapping indices: 'coding' -> [0, 3], 'makes' -> [1], 'practice' -> [2], 'bug' -> [4].",
+      "array": [
+        "coding",
+        "practice",
+        "makes",
+        "coding",
+        "bug"
+      ],
+      "curr": 0
+    },
+    {
       "codeLine": 2,
-      "note": "Populating index map for words: ['a', 'b', 'a']",
+      "note": "Retrieve indices: list1 = [0, 3] ('coding'), list2 = [1] ('makes').",
       "array": [
-        "a",
-        "b",
-        "a"
+        "coding",
+        "practice",
+        "makes",
+        "coding",
+        "bug"
       ],
-      "i": 0
+      "i": 0,
+      "j": 0,
+      "curr": 1
     },
     {
-      "codeLine": 5,
-      "note": "Map: {'a': [0, 2], 'b': [1]}",
+      "codeLine": 4,
+      "note": "Compare list1[0]=0 and list2[0]=1. Distance = |0-1| = 1. Min = 1.",
       "array": [
-        "a",
-        "b",
-        "a"
+        "coding",
+        "practice",
+        "makes",
+        "coding",
+        "bug"
       ],
-      "i": 2
-    },
-    {
-      "codeLine": 9,
-      "note": "Comparing lists for 'a' and 'b': [0, 2] vs [1]",
       "i": 0,
-      "j": 0
+      "j": 0,
+      "curr": 1
     },
     {
-      "codeLine": 10,
-      "note": "Calculate distance: abs(0 - 1) = 1. MinDist = 1",
-      "i": 0,
-      "j": 0
-    },
-    {
-      "codeLine": 11,
-      "note": "list1[0] (0) < list2[0] (1), increment i",
+      "codeLine": 4,
+      "note": "Increment i because list1[0] < list2[0]. list1[1]=3, list2[0]=1. Distance = |3-1| = 2.",
+      "array": [
+        "coding",
+        "practice",
+        "makes",
+        "coding",
+        "bug"
+      ],
       "i": 1,
-      "j": 0
+      "j": 0,
+      "curr": 1
     },
     {
-      "codeLine": 10,
-      "note": "Calculate distance: abs(2 - 1) = 1. MinDist = 1",
-      "i": 1,
-      "j": 0
-    },
-    {
-      "codeLine": 11,
-      "note": "list1[1] (2) > list2[0] (1), increment j",
-      "i": 1,
-      "j": 1
+      "codeLine": 4,
+      "note": "Min distance remains 1. Pointer i exceeds list1 bounds.",
+      "array": [
+        "coding",
+        "practice",
+        "makes",
+        "coding",
+        "bug"
+      ],
+      "i": 2,
+      "j": 0,
+      "curr": 1
     }
   ]
 }

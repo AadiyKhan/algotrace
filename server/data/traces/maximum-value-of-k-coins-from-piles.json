@@ -1,0 +1,84 @@
+{
+  "title": "Maximum Value Of K Coins From Piles",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Dynamic Programming"
+  ],
+  "description": "Find the maximum total value of k coins collected from multiple piles where you can only take coins from the top of each pile.",
+  "target": 2,
+  "pseudocode": "1. dp = new Array(k + 1).fill(0)\n2. for pile of piles:\n3.   for j from k down to 1:\n4.     sum = 0\n5.     for i from 0 to min(pile.length, j):\n6.       if i > 0: sum += pile[i-1]\n7.       dp[j] = max(dp[j], dp[j-i] + sum)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize DP array of size k+1 with zeros.",
+      "array": [
+        0,
+        0,
+        0
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Processing first pile [1, 100].",
+      "array": [
+        0,
+        0,
+        0
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Inner loop j=2 (target k).",
+      "array": [
+        0,
+        0,
+        0
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Taking 1 coin from pile: sum=1.",
+      "array": [
+        0,
+        0,
+        1
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "Taking 2 coins from pile: sum=101, dp[2] becomes 101.",
+      "array": [
+        0,
+        1,
+        101
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Inner loop j=1.",
+      "array": [
+        0,
+        1,
+        101
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "Updating dp[1] with max(1, 100) = 100.",
+      "array": [
+        0,
+        100,
+        101
+      ],
+      "curr": 1
+    }
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "title": "Rank Teams by Votes",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "Sorting"
+  ],
+  "description": "Given a list of strings votes, rank the teams based on their position preferences.",
+  "target": null,
+  "pseudocode": "1. let ranks = new Map()\n2. for each vote in votes:\n3.   for i in range(vote.length):\n4.     team = vote[i], rank = i\n5.     ranks[team][rank]++\n6. let teams = Object.keys(ranks).sort((a, b) => {\n7.   for i in range(len): if ranks[a][i] != ranks[b][i] return ranks[b][i] - ranks[a][i]\n8.   return a.localeCompare(b)\n9. })",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize empty map to store rank counts.",
+      "array": []
+    },
+    {
+      "codeLine": 2,
+      "note": "Processing first vote: 'ABC'",
+      "array": [
+        "A",
+        "B",
+        "C"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Update counts: A at rank 0, B at rank 1, C at rank 2",
+      "array": [
+        "A",
+        "B",
+        "C"
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Processing second vote: 'ACB'",
+      "array": [
+        "A",
+        "C",
+        "B"
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Update counts: A at rank 0, C at rank 1, B at rank 2",
+      "array": [
+        "A",
+        "C",
+        "B"
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Sorting teams based on rank frequency arrays",
+      "array": [
+        "A",
+        "B",
+        "C"
+      ]
+    },
+    {
+      "codeLine": 9,
+      "note": "Final sorted result: A is rank 0 for both, B and C compete for rank 1",
+      "array": [
+        "A",
+        "B",
+        "C"
+      ],
+      "curr": 0
+    }
+  ]
+}

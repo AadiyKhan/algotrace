@@ -1,0 +1,76 @@
+{
+  "title": "K-Concatenation Maximum Sum",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Dynamic Programming"
+  ],
+  "description": "Find the maximum subarray sum of an array concatenated k times.",
+  "target": null,
+  "pseudocode": "1. let totalSum = sum(arr)\n2. let maxSub = kadane(arr)\n3. if k == 1 return maxSub\n4. let doubleArr = arr + arr\n5. let maxDouble = kadane(doubleArr)\n6. if totalSum > 0 return maxDouble + (k - 2) * totalSum\n7. return maxDouble",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Calculate total sum of original array [1, -2].",
+      "array": [
+        1,
+        -2
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Kadane's on [1, -2] gives 1.",
+      "array": [
+        1,
+        -2
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Create double array [1, -2, 1, -2] for k > 1.",
+      "array": [
+        1,
+        -2,
+        1,
+        -2
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Kadane's on double array gives 1.",
+      "array": [
+        1,
+        -2,
+        1,
+        -2
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Total sum is -1, which is not > 0.",
+      "array": [
+        1,
+        -2,
+        1,
+        -2
+      ],
+      "curr": -1
+    },
+    {
+      "codeLine": 7,
+      "note": "Return maxDouble (1).",
+      "array": [
+        1,
+        -2,
+        1,
+        -2
+      ],
+      "curr": 1
+    }
+  ]
+}

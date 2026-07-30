@@ -19,7 +19,8 @@
         null,
         null
       ],
-      "i": 0
+      "i": 0,
+      "curr": 3
     },
     {
       "codeLine": 3,
@@ -29,7 +30,8 @@
         null,
         5
       ],
-      "i": 2
+      "i": 2,
+      "curr": 5
     },
     {
       "codeLine": 4,
@@ -39,7 +41,8 @@
         null,
         5
       ],
-      "i": 2
+      "i": 2,
+      "curr": 5
     },
     {
       "codeLine": 9,
@@ -49,7 +52,8 @@
         null,
         null
       ],
-      "i": 2
+      "i": 2,
+      "curr": 0
     }
   ]
 }

@@ -1,0 +1,66 @@
+{
+  "title": "Count All Valid Pickup and Delivery Options",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Math",
+    "Dynamic Programming",
+    "Combinatorics"
+  ],
+  "description": "Given n orders, count the number of valid pickup and delivery sequences such that pickup i always occurs before delivery i.",
+  "target": 2,
+  "pseudocode": "1. count = 1\n2. for i = 1 to n:\n3.   count = count * (2 * i - 1) * i\n4. return count",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize total valid sequences for 0 orders to 1.",
+      "array": [
+        1
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Start loop for order i=1.",
+      "i": 1,
+      "array": [
+        1
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Calculate sequences for n=1: 1 * (2*1 - 1) * 1 = 1.",
+      "i": 1,
+      "array": [
+        1
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Increment loop for order i=2.",
+      "i": 2,
+      "array": [
+        1
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Calculate sequences for n=2: 1 * (2*2 - 1) * 2 = 6.",
+      "i": 2,
+      "array": [
+        6
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Return final count.",
+      "array": [
+        6
+      ]
+    }
+  ]
+}

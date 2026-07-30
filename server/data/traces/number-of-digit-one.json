@@ -16,7 +16,8 @@
       "array": [
         13
       ],
-      "i": "m=1"
+      "i": "m=1",
+      "curr": 0
     },
     {
       "codeLine": 3,
@@ -33,7 +34,8 @@
       "array": [
         13
       ],
-      "i": "m=1"
+      "i": "m=1",
+      "curr": 1
     },
     {
       "codeLine": 2,
@@ -41,7 +43,8 @@
       "array": [
         13
       ],
-      "i": "m=10"
+      "i": "m=10",
+      "curr": 10
     },
     {
       "codeLine": 3,
@@ -58,14 +61,16 @@
       "array": [
         13
       ],
-      "i": "m=10"
+      "i": "m=10",
+      "curr": 2
     },
     {
       "codeLine": 6,
       "note": "Return total count of 6 (the number of 1s in 1, 10, 11, 12, 13)",
       "array": [
         13
-      ]
+      ],
+      "curr": 6
     }
   ]
 }

@@ -1,0 +1,92 @@
+{
+  "title": "XOR Operation in an Array",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Bit Manipulation"
+  ],
+  "description": "Calculate the XOR sum of n elements where nums[i] = start + 2*i.",
+  "target": null,
+  "pseudocode": "let ans = 0;\nfor (let i = 0; i < n; i++) {\n  ans ^= (start + 2 * i);\n}\nreturn ans;",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize result variable ans to 0.",
+      "array": [],
+      "i": null,
+      "curr": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Start loop for n=3, start=0. i=0.",
+      "array": [
+        0
+      ],
+      "i": 0,
+      "curr": 3
+    },
+    {
+      "codeLine": 3,
+      "note": "Calculate 0 ^ (0 + 2*0) = 0.",
+      "array": [
+        0
+      ],
+      "i": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Increment i to 1.",
+      "array": [
+        0,
+        2
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Calculate 0 ^ (0 + 2*1) = 2.",
+      "array": [
+        0,
+        2
+      ],
+      "i": 1,
+      "curr": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Increment i to 2.",
+      "array": [
+        0,
+        2,
+        4
+      ],
+      "i": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Calculate 2 ^ (0 + 2*2) = 6.",
+      "array": [
+        0,
+        2,
+        4
+      ],
+      "i": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Loop ends, return 6.",
+      "array": [
+        0,
+        2,
+        4
+      ],
+      "i": 3,
+      "curr": 6
+    }
+  ]
+}

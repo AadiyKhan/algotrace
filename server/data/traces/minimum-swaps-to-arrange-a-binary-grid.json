@@ -1,0 +1,113 @@
+{
+  "title": "Minimum Swaps to Arrange a Binary Grid",
+  "difficulty": "Medium",
+  "type": "matrix",
+  "tags": [
+    "Array",
+    "Greedy",
+    "Matrix"
+  ],
+  "description": "Calculate minimum swaps to make all rows below the diagonal contain only zeros.",
+  "pseudocode": "let n = grid.length, swaps = 0;\nlet counts = grid.map(row => row.lastIndexOf(1));\nfor (let i = 0; i < n; i++) {\n  let target = n - 1 - i;\n  let j = i;\n  while (j < n && counts[j] > target) j++;\n  if (j === n) return -1;\n  while (j > i) {\n    [counts[j], counts[j-1]] = [counts[j-1], counts[j]];\n    swaps++;\n    j--;\n  }\n}\nreturn swaps;",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Calculate last index of '1' for each row: [[0,0,1], [1,1,0], [0,1,0]] -> [2, 1, 1]",
+      "matrix": [
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ]
+      ],
+      "i": 0,
+      "curr": [
+        1,
+        0
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "For row 0, target is 2 (need at least 2 trailing zeros). Current trailing zero counts: [2, 1, 1]. Row 0 has 2, which is >= 2. No swap needed.",
+      "matrix": [
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ]
+      ],
+      "i": 0,
+      "curr": [
+        0,
+        2
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "For row 1, target is 1. Row 1 has count 1. Row 2 has count 1. Row 1 satisfies condition.",
+      "matrix": [
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ]
+      ],
+      "i": 1,
+      "curr": [
+        1,
+        1
+      ]
+    },
+    {
+      "codeLine": 11,
+      "note": "Final check completed, returning swaps.",
+      "matrix": [
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ]
+      ]
+    }
+  ]
+}

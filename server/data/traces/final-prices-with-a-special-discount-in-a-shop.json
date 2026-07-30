@@ -1,0 +1,134 @@
+{
+  "title": "Final Prices With a Special Discount in a Shop",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Stack",
+    "Monotonic Stack"
+  ],
+  "description": "Given prices array, for each item, subtract the first smaller or equal price found to its right. If none exists, keep original price.",
+  "target": null,
+  "pseudocode": "1. stack = []\n2. result = [...prices]\n3. for i from 0 to prices.length - 1:\n4.   while stack and prices[stack.top] >= prices[i]:\n5.     prev = stack.pop()\n6.     result[prev] -= prices[i]\n7.   stack.push(i)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize empty stack and result array [8, 4, 6, 2, 3]",
+      "array": [
+        8,
+        4,
+        6,
+        2,
+        3
+      ],
+      "curr": 8
+    },
+    {
+      "codeLine": 3,
+      "note": "i=0: push 0 to stack",
+      "i": 0,
+      "array": [
+        8,
+        4,
+        6,
+        2,
+        3
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "i=1: prices[1]=4 <= prices[0]=8. Pop index 0",
+      "i": 1,
+      "prev": 0,
+      "array": [
+        4,
+        4,
+        6,
+        2,
+        3
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "Push index 1 to stack",
+      "i": 1,
+      "array": [
+        4,
+        4,
+        6,
+        2,
+        3
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "i=2: prices[2]=6 > prices[1]=4. Push index 2",
+      "i": 2,
+      "array": [
+        4,
+        4,
+        6,
+        2,
+        3
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "i=3: prices[3]=2 <= prices[2]=6. Pop index 2",
+      "i": 3,
+      "prev": 2,
+      "array": [
+        4,
+        4,
+        4,
+        2,
+        3
+      ],
+      "curr": 3
+    },
+    {
+      "codeLine": 4,
+      "note": "i=3: prices[3]=2 <= prices[1]=4. Pop index 1",
+      "i": 3,
+      "prev": 1,
+      "array": [
+        4,
+        2,
+        4,
+        2,
+        3
+      ],
+      "curr": 3
+    },
+    {
+      "codeLine": 7,
+      "note": "Push index 3 to stack",
+      "i": 3,
+      "array": [
+        4,
+        2,
+        4,
+        2,
+        3
+      ],
+      "curr": 3
+    },
+    {
+      "codeLine": 3,
+      "note": "i=4: prices[4]=3 > prices[3]=2. Push index 4",
+      "i": 4,
+      "array": [
+        4,
+        2,
+        4,
+        2,
+        3
+      ],
+      "curr": 4
+    }
+  ]
+}

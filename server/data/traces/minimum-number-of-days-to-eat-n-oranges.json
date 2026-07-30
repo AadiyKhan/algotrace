@@ -1,0 +1,78 @@
+{
+  "title": "Minimum Number of Days to Eat N Oranges",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Dynamic Programming",
+    "Memoization",
+    "Breadth-First Search"
+  ],
+  "description": "Find the minimum number of days to consume n oranges given operations: eat 1, eat n/2 if divisible by 2, eat 2n/3 if divisible by 3.",
+  "target": 10,
+  "pseudocode": "1. function minDays(n, memo = {}): \n2.   if n <= 1: return n\n3.   if n in memo: return memo[n]\n4.   memo[n] = 1 + min(n % 2 + minDays(floor(n / 2)), n % 3 + minDays(floor(n / 3)))\n5.   return memo[n]",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize memoization for n = 10.",
+      "array": [
+        10
+      ],
+      "curr": 10
+    },
+    {
+      "codeLine": 4,
+      "note": "Calculating minDays(10): min(10%2 + minDays(5), 10%3 + minDays(3))",
+      "array": [
+        10
+      ],
+      "curr": 10
+    },
+    {
+      "codeLine": 4,
+      "note": "Recurse into minDays(5): min(5%2 + minDays(2), 5%3 + minDays(1))",
+      "array": [
+        10,
+        5
+      ],
+      "curr": 5
+    },
+    {
+      "codeLine": 4,
+      "note": "Solve base case minDays(1) = 1, minDays(2) = 2 (2/2=1, 1+1=2)",
+      "array": [
+        10,
+        5,
+        2,
+        1
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Backtrack: minDays(5) = 1 + min(1+2, 2+1) = 4",
+      "array": [
+        10,
+        4
+      ],
+      "curr": 5
+    },
+    {
+      "codeLine": 4,
+      "note": "Recurse into minDays(3): 3/3 = 1, so 1 + minDays(1) = 2",
+      "array": [
+        10,
+        4,
+        2
+      ],
+      "curr": 3
+    },
+    {
+      "codeLine": 5,
+      "note": "Final calculation for 10: 1 + min(0 + 4, 1 + 2) = 1 + 3 = 4",
+      "array": [
+        4
+      ],
+      "curr": 10
+    }
+  ]
+}

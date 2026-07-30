@@ -4,22 +4,65 @@
   "type": "array",
   "tags": [
     "Hash Table",
-    "String"
+    "String",
+    "Bit Manipulation"
   ],
-  "description": "Check if a permutation of the input string can form a palindrome.",
+  "description": "Check if a permutation of a string can form a palindrome by checking if at most one character appears an odd number of times.",
   "target": null,
-  "pseudocode": "1. let charCounts = {}\n2. for char in s:\n3.   charCounts[char] = (charCounts[char] || 0) + 1\n4. let oddCount = 0\n5. for count in charCounts:\n6.   if count % 2 !== 0: oddCount++\n7. return oddCount <= 1",
+  "pseudocode": "1. Initialize a set to track odd occurrences\n2. For each character in string:\n3. If char is in set, remove it\n4. Else, add it to set\n5. Return size of set <= 1",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize empty frequency map.",
-      "array": []
+      "note": "Initialize empty set to track characters with odd frequencies.",
+      "array": [],
+      "visited": []
     },
     {
       "codeLine": 2,
-      "note": "Start iterating through 'code'.",
-      "i": "c",
+      "note": "Processing character 'c' from 'code'. Adding to set.",
       "array": [
+        "c"
+      ],
+      "visited": [
+        "c"
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Processing character 'o' from 'code'. Adding to set.",
+      "array": [
+        "c",
+        "o"
+      ],
+      "visited": [
+        "c",
+        "o"
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Processing character 'd' from 'code'. Adding to set.",
+      "array": [
+        "c",
+        "o",
+        "d"
+      ],
+      "visited": [
+        "c",
+        "o",
+        "d"
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Processing character 'e' from 'code'. Adding to set.",
+      "array": [
+        "c",
+        "o",
+        "d",
+        "e"
+      ],
+      "visited": [
         "c",
         "o",
         "d",
@@ -27,87 +70,19 @@
       ]
     },
     {
-      "codeLine": 3,
-      "note": "Count frequency of 'c'.",
+      "codeLine": 5,
+      "note": "Set size is 4. Since 4 > 1, returns false.",
       "array": [
-        "c:1"
-      ]
-    },
-    {
-      "codeLine": 2,
-      "note": "Process 'o'.",
-      "i": "o",
-      "array": [
-        "c:1",
-        "o:1"
-      ]
-    },
-    {
-      "codeLine": 3,
-      "note": "Count frequency of 'o'.",
-      "array": [
-        "c:1",
-        "o:1"
-      ]
-    },
-    {
-      "codeLine": 2,
-      "note": "Process 'd'.",
-      "i": "d",
-      "array": [
-        "c:1",
-        "o:1",
-        "d:1"
-      ]
-    },
-    {
-      "codeLine": 3,
-      "note": "Count frequency of 'd'.",
-      "array": [
-        "c:1",
-        "o:1",
-        "d:1"
-      ]
-    },
-    {
-      "codeLine": 2,
-      "note": "Process 'e'.",
-      "i": "e",
-      "array": [
-        "c:1",
-        "o:1",
-        "d:1",
-        "e:1"
-      ]
-    },
-    {
-      "codeLine": 3,
-      "note": "Count frequency of 'e'.",
-      "array": [
-        "c:1",
-        "o:1",
-        "d:1",
-        "e:1"
-      ]
-    },
-    {
-      "codeLine": 4,
-      "note": "Initialize oddCount.",
-      "i": 0
-    },
-    {
-      "codeLine": 6,
-      "note": "Check odd counts. All 4 chars appear once (odd).",
-      "i": 4
-    },
-    {
-      "codeLine": 7,
-      "note": "Return false as 4 > 1.",
-      "array": [
-        "c:1",
-        "o:1",
-        "d:1",
-        "e:1"
+        "c",
+        "o",
+        "d",
+        "e"
+      ],
+      "visited": [
+        "c",
+        "o",
+        "d",
+        "e"
       ]
     }
   ]

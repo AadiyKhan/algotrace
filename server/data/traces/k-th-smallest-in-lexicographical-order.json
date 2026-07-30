@@ -3,47 +3,113 @@
   "difficulty": "Hard",
   "type": "array",
   "tags": [
-    "Math",
-    "Trie"
+    "Array",
+    "Math"
   ],
-  "description": "Find the k-th smallest lexicographical integer in the range [1, n].",
-  "target": 5,
-  "pseudocode": "1. curr = 1, k = k - 1\n2. while k > 0:\n3.   steps = countSteps(n, curr, curr + 1)\n4.   if steps <= k:\n5.     curr++, k -= steps\n6.   else:\n7.     curr *= 10, k -= 1",
+  "description": "Find the k-th lexicographically smallest integer in range [1, n] by traversing a virtual prefix tree.",
+  "target": 10,
+  "pseudocode": "1. curr = 1, k = k - 1\n2. while k > 0:\n3.   steps = countSteps(curr, n)\n4.   if steps <= k:\n5.     curr++, k -= steps\n6.   else:\n7.     curr *= 10, k--\n8. return curr",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize current pointer to 1 and decrement k.",
-      "i": 1
+      "note": "Initialize current prefix to 1 and decrement k to find the offset.",
+      "array": [
+        1,
+        10,
+        11,
+        12,
+        13,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "i": 1,
+      "curr": 1
     },
     {
       "codeLine": 3,
-      "note": "Count numbers between 1 and 2 in the range [1, 13].",
-      "i": 1
+      "note": "Calculate steps between current prefix 1 and 10 in the range [1, 13].",
+      "array": [
+        1,
+        10,
+        11,
+        12,
+        13,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "curr": 1
     },
     {
       "codeLine": 4,
-      "note": "Steps (10) > k (4), so we go deeper into the current prefix.",
-      "i": 1
+      "note": "Steps count (including 1, 10, 11, 12, 13) is 5. Since 5 > k (k=1), move to child.",
+      "array": [
+        1,
+        10,
+        11,
+        12,
+        13,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "curr": 1
     },
     {
       "codeLine": 7,
-      "note": "Move to child: 1 -> 10. Decrement k.",
-      "i": 10
+      "note": "Move down the tree: curr becomes 1 * 10 = 10. Decrement k to 0.",
+      "array": [
+        1,
+        10,
+        11,
+        12,
+        13,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "curr": 10
     },
     {
-      "codeLine": 3,
-      "note": "Count nodes under 10. Only 10 itself fits in range [1, 13].",
-      "i": 10
-    },
-    {
-      "codeLine": 4,
-      "note": "Steps (1) <= k (3), jump to next sibling.",
-      "i": 10
-    },
-    {
-      "codeLine": 5,
-      "note": "Move to sibling 11. k becomes 2.",
-      "i": 11
+      "codeLine": 8,
+      "note": "k is 0, loop terminates. Return curr = 10.",
+      "array": [
+        1,
+        10,
+        11,
+        12,
+        13,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "curr": 10
     }
   ]
 }

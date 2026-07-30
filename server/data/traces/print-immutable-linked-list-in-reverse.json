@@ -1,0 +1,105 @@
+{
+  "title": "Print Immutable Linked List in Reverse",
+  "difficulty": "Medium",
+  "type": "linked-list",
+  "tags": [
+    "Linked List",
+    "Recursion",
+    "Stack"
+  ],
+  "description": "Print the values of an immutable linked list in reverse order.",
+  "target": null,
+  "pseudocode": "1. function printReverse(head) {\n2.   if (head == null) return;\n3.   printReverse(head.getNext());\n4.   print(head.getValue());\n5. }",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Starting recursion with head node (val: 1)",
+      "nodes": [
+        {
+          "val": 1,
+          "next": 1
+        },
+        {
+          "val": 2,
+          "next": null
+        }
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Recursive call moving to next node (val: 2)",
+      "nodes": [
+        {
+          "val": 1,
+          "next": 1
+        },
+        {
+          "val": 2,
+          "next": null
+        }
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Recursive call moving past last node (null)",
+      "nodes": [
+        {
+          "val": 1,
+          "next": 1
+        },
+        {
+          "val": 2,
+          "next": null
+        }
+      ],
+      "curr": null
+    },
+    {
+      "codeLine": 2,
+      "note": "Base case reached, returning from recursion",
+      "nodes": [
+        {
+          "val": 1,
+          "next": 1
+        },
+        {
+          "val": 2,
+          "next": null
+        }
+      ],
+      "curr": null
+    },
+    {
+      "codeLine": 4,
+      "note": "Printing value of current node: 2",
+      "nodes": [
+        {
+          "val": 1,
+          "next": 1
+        },
+        {
+          "val": 2,
+          "next": null
+        }
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Printing value of current node: 1",
+      "nodes": [
+        {
+          "val": 1,
+          "next": 1
+        },
+        {
+          "val": 2,
+          "next": null
+        }
+      ],
+      "curr": 0
+    }
+  ]
+}

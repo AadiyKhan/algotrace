@@ -20,7 +20,8 @@
         "dot",
         "dog",
         "cog"
-      ]
+      ],
+      "curr": 1
     },
     {
       "codeLine": 4,
@@ -32,7 +33,8 @@
         "dog",
         "cog"
       ],
-      "i": "hit"
+      "i": "hit",
+      "curr": 1
     },
     {
       "codeLine": 6,
@@ -73,7 +75,8 @@
         "dog",
         "cog"
       ],
-      "i": "hot"
+      "i": "hot",
+      "curr": 2
     },
     {
       "codeLine": 9,
@@ -102,7 +105,8 @@
         "dog",
         "cog"
       ],
-      "i": "dog"
+      "i": "dog",
+      "curr": 3
     },
     {
       "codeLine": 9,
@@ -131,7 +135,8 @@
         "dot",
         "dog",
         "cog"
-      ]
+      ],
+      "curr": 5
     }
   ]
 }

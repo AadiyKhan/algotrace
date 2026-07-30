@@ -1,0 +1,122 @@
+{
+  "title": "Maximum Equal Frequency",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Hash Table"
+  ],
+  "description": "Find the length of the longest prefix such that all numbers occur the same number of times, or one number can be removed to satisfy this.",
+  "target": null,
+  "pseudocode": "1. count = map(), freq = map()\n2. maxFreq = 0, res = 0\n3. for i, num in nums:\n4.   count[num]++, freq[count[num]-1]--, freq[count[num]]++\n5.   maxFreq = max(maxFreq, count[num])\n6.   if maxFreq == 1 or freq[maxFreq] * maxFreq == i or (freq[maxFreq-1] * (maxFreq-1) + maxFreq == i + 1):\n7.     res = i + 1",
+  "steps": [
+    {
+      "codeLine": 3,
+      "note": "Initialize loop for input [2, 2, 1, 1]",
+      "array": [
+        2,
+        2,
+        1,
+        1
+      ],
+      "i": 0,
+      "curr": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Processing 2: count[2]=1, freq[1]=1",
+      "array": [
+        2,
+        2,
+        1,
+        1
+      ],
+      "i": 0,
+      "curr": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "maxFreq is 1, condition met, res = 1",
+      "array": [
+        2,
+        2,
+        1,
+        1
+      ],
+      "i": 0,
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Processing 2: count[2]=2, freq[1]=0, freq[2]=1",
+      "array": [
+        2,
+        2,
+        1,
+        1
+      ],
+      "i": 1,
+      "curr": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "maxFreq is 2, freq[1]=0. freq[maxFreq]*maxFreq = 1*2 = 2. 2 == i+1 (1+1). Condition met, res = 2",
+      "array": [
+        2,
+        2,
+        1,
+        1
+      ],
+      "i": 1,
+      "curr": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Processing 1: count[1]=1, freq[1]=1",
+      "array": [
+        2,
+        2,
+        1,
+        1
+      ],
+      "i": 2,
+      "curr": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "maxFreq is 2. Condition fails.",
+      "array": [
+        2,
+        2,
+        1,
+        1
+      ],
+      "i": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Processing 1: count[1]=2, freq[1]=0, freq[2]=2",
+      "array": [
+        2,
+        2,
+        1,
+        1
+      ],
+      "i": 3,
+      "curr": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "maxFreq is 2. freq[2]*2 = 4. i+1 = 4. Condition met, res = 4",
+      "array": [
+        2,
+        2,
+        1,
+        1
+      ],
+      "i": 3,
+      "curr": 2
+    }
+  ]
+}

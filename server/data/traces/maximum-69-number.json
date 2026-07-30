@@ -1,0 +1,100 @@
+{
+  "title": "Maximum 69 Number",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Math",
+    "String",
+    "Greedy"
+  ],
+  "description": "Given a positive integer num consisting only of 6 and 9, return the maximum number you can get by changing at most one 6 to a 9.",
+  "target": null,
+  "pseudocode": "1: str = num.toString().split('')\n2: for i = 0 to str.length - 1:\n3:   if str[i] == '6':\n4:     str[i] = '9'\n5:     break\n6: return parseInt(str.join(''))",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Convert number 966 to array ['9', '6', '6']",
+      "array": [
+        "9",
+        "6",
+        "6"
+      ],
+      "curr": 966
+    },
+    {
+      "codeLine": 2,
+      "note": "Start loop at index 0",
+      "array": [
+        "9",
+        "6",
+        "6"
+      ],
+      "i": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Check if element at index 0 is '6'. It is '9', so continue.",
+      "array": [
+        "9",
+        "6",
+        "6"
+      ],
+      "i": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Increment loop to index 1",
+      "array": [
+        "9",
+        "6",
+        "6"
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Check if element at index 1 is '6'. It is '6'.",
+      "array": [
+        "9",
+        "6",
+        "6"
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Change '6' to '9' at index 1.",
+      "array": [
+        "9",
+        "9",
+        "6"
+      ],
+      "i": 1,
+      "curr": 6
+    },
+    {
+      "codeLine": 5,
+      "note": "Break the loop.",
+      "array": [
+        "9",
+        "9",
+        "6"
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Return the result 996.",
+      "array": [
+        "9",
+        "9",
+        "6"
+      ],
+      "curr": 996
+    }
+  ]
+}

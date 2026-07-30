@@ -1,0 +1,105 @@
+{
+  "title": "Cinema Seat Allocation",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "Greedy"
+  ],
+  "description": "Allocate as many 4-person family groups as possible in a cinema with n rows and 10 seats per row.",
+  "target": 4,
+  "pseudocode": "1. Initialize totalSeats = n * 2\n2. For each row with reserved seats:\n3.   Create bitmask for reserved seats\n4.   Check if [2, 3, 4, 5] is free\n5.   Check if [6, 7, 8, 9] is free\n6.   Check if [4, 5, 6, 7] is free\n7.   If left or right is free, totalSeats -= 1\n8.   If neither is free but center is free, totalSeats -= 1\n9.   If all occupied, totalSeats -= 2",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize max possible groups for n=1 (n*2 = 2).",
+      "array": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "i": 0,
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Mark seats 4 and 5 as reserved (bitmask set).",
+      "array": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "i": 0,
+      "curr": 4
+    },
+    {
+      "codeLine": 4,
+      "note": "Check left block [2-5]: Occupied by 4, 5. Not free.",
+      "array": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "i": 0,
+      "curr": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Check right block [6-9]: Free.",
+      "array": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "i": 0,
+      "curr": 6
+    },
+    {
+      "codeLine": 7,
+      "note": "Right block is free, reduce totalSeats by 1.",
+      "array": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "i": 0,
+      "curr": 1
+    }
+  ]
+}

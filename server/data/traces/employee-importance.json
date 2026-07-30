@@ -33,7 +33,8 @@
           "left": null,
           "right": null
         }
-      ]
+      ],
+      "curr": 1
     },
     {
       "codeLine": 3,

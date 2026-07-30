@@ -4,16 +4,52 @@
   "type": "tree",
   "tags": [
     "Tree",
-    "BST",
-    "Depth-First Search"
+    "Depth-First Search",
+    "Binary Search Tree"
   ],
-  "description": "Find the minimum absolute difference between the values of any two different nodes in the BST.",
-  "target": null,
-  "pseudocode": "1: let minDiff = Infinity, prev = null\n2: function traverse(node) {\n3:   if (!node) return\n4:   traverse(node.left)\n5:   if (prev !== null) minDiff = min(minDiff, node.val - prev)\n6:   prev = node.val\n7:   traverse(node.right)\n8: }",
+  "description": "Find the minimum absolute difference between the values of any two nodes in a BST using in-order traversal.",
+  "target": 1,
+  "pseudocode": "1. minDiff = infinity, prev = null\n2. function inorder(node):\n3.   if node is null return\n4.   inorder(node.left)\n5.   if prev is not null: minDiff = min(minDiff, node.val - prev.val)\n6.   prev = node\n7.   inorder(node.right)",
   "steps": [
     {
-      "codeLine": 2,
-      "note": "Starting traversal at root (val: 4)",
+      "codeLine": 1,
+      "note": "Initialize minDiff to infinity and prev to null.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 4,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 2,
+          "val": 6,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Visiting node 1 (leftmost node).",
       "treeNodes": [
         {
           "id": 0,
@@ -46,110 +82,192 @@
           "right": null
         }
       ],
-      "visited": []
-    },
-    {
-      "codeLine": 4,
-      "note": "Traversing to left child (val: 2)",
-      "visited": [
-        0
-      ]
-    },
-    {
-      "codeLine": 4,
-      "note": "Traversing to left child (val: 1)",
-      "visited": [
-        0,
-        1
-      ]
-    },
-    {
-      "codeLine": 6,
-      "note": "Reached leaf 1. Setting prev = 1",
-      "visited": [
-        0,
-        1,
-        3
-      ]
+      "curr": 1
     },
     {
       "codeLine": 5,
-      "note": "Backtrack to 2. Difference 2-1 = 1. minDiff = 1",
-      "visited": [
-        0,
-        1,
-        3
-      ]
+      "note": "prev is null, update prev to node 1.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 4,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 2,
+          "val": 6,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 1
     },
     {
       "codeLine": 6,
-      "note": "Setting prev = 2",
-      "visited": [
-        0,
-        1,
-        3
-      ]
+      "note": "Backtrack to node 2, update minDiff: |2-1| = 1.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 4,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 2,
+          "val": 6,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 2
     },
     {
       "codeLine": 7,
-      "note": "Traversing to right child of 2 (val: 3)",
-      "visited": [
-        0,
-        1,
-        3,
-        4
-      ]
-    },
-    {
-      "codeLine": 5,
-      "note": "Diff 3-2 = 1. minDiff remains 1",
-      "visited": [
-        0,
-        1,
-        3,
-        4
-      ]
-    },
-    {
-      "codeLine": 6,
-      "note": "Setting prev = 3",
-      "visited": [
-        0,
-        1,
-        3,
-        4
-      ]
-    },
-    {
-      "codeLine": 5,
-      "note": "Backtrack to 4. Diff 4-3 = 1. minDiff remains 1",
-      "visited": [
-        0,
-        1,
-        3,
-        4
-      ]
+      "note": "Move to node 3 (right child of 2). minDiff = min(1, |3-2|) = 1.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 4,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 2,
+          "val": 6,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 3
     },
     {
       "codeLine": 7,
-      "note": "Traversing to right child (val: 6)",
-      "visited": [
-        0,
-        1,
-        3,
-        4
-      ]
+      "note": "Moving to root node 4. minDiff = min(1, |4-3|) = 1.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 4,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 2,
+          "val": 6,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 4
     },
     {
-      "codeLine": 5,
-      "note": "Diff 6-4 = 2. minDiff remains 1",
-      "visited": [
-        0,
-        1,
-        3,
-        4,
-        2
-      ]
+      "codeLine": 7,
+      "note": "Final step, visiting node 6. minDiff = min(1, |6-4|) = 1.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 4,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 2,
+          "val": 6,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 6
     }
   ]
 }

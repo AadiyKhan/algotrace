@@ -1,0 +1,75 @@
+{
+  "title": "Circle and Rectangle Overlapping",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Math",
+    "Geometry"
+  ],
+  "description": "Check if a circle overlaps with an axis-aligned rectangle by finding the closest point on the rectangle to the circle center.",
+  "target": true,
+  "pseudocode": "1. closestX = max(x1, min(xCenter, x2))\n2. closestY = max(y1, min(yCenter, y2))\n3. distanceX = xCenter - closestX\n4. distanceY = yCenter - closestY\n5. return (distanceX^2 + distanceY^2) <= radius^2",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Find the closest X coordinate on the rectangle to the circle center x=0. Clamp 0 between [1, 3].",
+      "array": [
+        1,
+        -1,
+        3,
+        1
+      ],
+      "i": 1,
+      "curr": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Find the closest Y coordinate on the rectangle to the circle center y=0. Clamp 0 between [-1, 1].",
+      "array": [
+        1,
+        -1,
+        3,
+        1
+      ],
+      "i": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Calculate X distance: 0 - 1 = -1",
+      "array": [
+        1,
+        -1,
+        3,
+        1
+      ],
+      "i": -1,
+      "curr": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Calculate Y distance: 0 - 0 = 0",
+      "array": [
+        1,
+        -1,
+        3,
+        1
+      ],
+      "i": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Check squared distance (-1)^2 + 0^2 = 1. Since 1 <= 1^2, return true.",
+      "array": [
+        1,
+        -1,
+        3,
+        1
+      ],
+      "visited": [
+        1
+      ]
+    }
+  ]
+}

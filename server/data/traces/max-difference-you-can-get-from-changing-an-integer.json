@@ -1,0 +1,57 @@
+{
+  "title": "Max Difference You Can Get From Changing An Integer",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Math",
+    "String",
+    "Greedy"
+  ],
+  "description": "Find the maximum difference between the max and min possible integer values obtained by changing exactly one digit in num.",
+  "target": null,
+  "pseudocode": "1. s = num.toString().split('')\n2. max_val = findMax(s)\n3. min_val = findMin(s)\n4. return max_val - min_val",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize string array from input number 555",
+      "array": [
+        5,
+        5,
+        5
+      ],
+      "curr": 555
+    },
+    {
+      "codeLine": 2,
+      "note": "To maximize, replace the first non-9 digit with 9",
+      "array": [
+        9,
+        9,
+        9
+      ],
+      "i": 0,
+      "curr": -9
+    },
+    {
+      "codeLine": 3,
+      "note": "To minimize, if first digit is > 1, replace all instances with 1; otherwise replace first non-0 non-1 with 0",
+      "array": [
+        1,
+        1,
+        1
+      ],
+      "i": 0,
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Calculate difference: 999 - 111 = 888",
+      "array": [
+        8,
+        8,
+        8
+      ],
+      "curr": 999
+    }
+  ]
+}

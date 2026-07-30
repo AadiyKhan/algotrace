@@ -26,7 +26,11 @@
           1
         ]
       ],
-      "visited": []
+      "visited": [],
+      "curr": [
+        1,
+        0
+      ]
     },
     {
       "codeLine": 1,

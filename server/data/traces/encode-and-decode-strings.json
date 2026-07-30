@@ -4,55 +4,48 @@
   "type": "array",
   "tags": [
     "Array",
-    "String"
+    "String",
+    "Design"
   ],
-  "description": "Design an algorithm to encode a list of strings into a single string and decode it back to the original list.",
-  "pseudocode": "1. function encode(strs) { let res = ''; for (let s of strs) res += s.length + '#' + s; return res; }\n2. function decode(str) { let res = [], i = 0; while (i < str.length) { let j = i; while (str[j] !== '#') j++; let len = parseInt(str.substring(i, j)); res.push(str.substring(j + 1, j + 1 + len)); i = j + 1 + len; } return res; }",
+  "description": "Design an algorithm to encode a list of strings to a single string and decode it back to the original list.",
+  "pseudocode": "1. result = ''\n2. for s in strs: result += str(len(s)) + '#' + s\n3. return result",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Encoding list: ['abc', 'de']",
+      "note": "Initialize empty result string.",
       "array": [
-        "abc",
-        "de"
-      ]
+        "hello",
+        "world"
+      ],
+      "result": ""
     },
     {
-      "codeLine": 1,
-      "note": "Encoded result: '3#abc2#de'",
+      "codeLine": 2,
+      "note": "Processing 'hello': length 5, append '5#hello'.",
       "array": [
-        "3#abc2#de"
-      ]
+        "hello",
+        "world"
+      ],
+      "result": "5#hello"
     },
     {
       "codeLine": 2,
-      "note": "Starting decode process on '3#abc2#de'",
-      "i": 0
-    },
-    {
-      "codeLine": 2,
-      "note": "Found length 3, extracting 'abc'",
-      "i": 0,
-      "j": 1
-    },
-    {
-      "codeLine": 2,
-      "note": "Extracted 'abc', moving to next chunk",
-      "i": 5
-    },
-    {
-      "codeLine": 2,
-      "note": "Found length 2, extracting 'de'",
-      "i": 5,
-      "j": 6
-    },
-    {
-      "codeLine": 2,
-      "note": "Finished decoding, result ['abc', 'de']",
+      "note": "Processing 'world': length 5, append '5#world'.",
       "array": [
-        "abc",
-        "de"
-      ]
+        "hello",
+        "world"
+      ],
+      "result": "5#hello5#world"
+    },
+    {
+      "codeLine": 3,
+      "note": "Return final encoded string.",
+      "array": [
+        "hello",
+        "world"
+      ],
+      "result": "5#hello5#world"
     }
-  ]
+  ],
+  "fullDescription": "<p>Design an algorithm to encode a list of strings to a string. The encoded string is then sent over the network and is decoded back to the original list of strings.</p>\n    <p><strong>Example 1:</strong></p>\n    <pre><strong>Input:</strong> dummy_input = [\"Hello\",\"World\"]\n<strong>Output:</strong> [\"Hello\",\"World\"]</pre>\n    <p><strong>Example 2:</strong></p>\n    <pre><strong>Input:</strong> dummy_input = [\"\"]\n<strong>Output:</strong> [\"\"]</pre>"
 }

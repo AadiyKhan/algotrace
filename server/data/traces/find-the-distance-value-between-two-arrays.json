@@ -1,0 +1,76 @@
+{
+  "title": "Find The Distance Value Between Two Arrays",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Two Pointers",
+    "Binary Search"
+  ],
+  "description": "Given two integer arrays arr1 and arr2, and an integer d, return the distance value between the two arrays. The distance value is the number of elements arr1[i] such that there is no element arr2[j] where |arr1[i] - arr2[j]| <= d.",
+  "target": 2,
+  "pseudocode": "1. arr2.sort((a, b) => a - b);\n2. let count = 0;\n3. for (let x of arr1) {\n4.   let low = 0, high = arr2.length - 1;\n5.   let found = false;\n6.   while (low <= high) {\n7.     let mid = Math.floor((low + high) / 2);\n8.     if (Math.abs(x - arr2[mid]) <= d) { found = true; break; }\n9.     else if (arr2[mid] < x) low = mid + 1;\n10.    else high = mid - 1;\n11.  }\n12.  if (!found) count++;\n13. }",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Sort arr2 to enable binary search.",
+      "array": [
+        10,
+        9,
+        1
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Iterate through arr1, starting with x = 4.",
+      "array": [
+        1,
+        9,
+        10
+      ],
+      "i": 0,
+      "curr": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Binary search for 4 in [1, 9, 10] with d=2. mid is 9.",
+      "array": [
+        1,
+        9,
+        10
+      ],
+      "curr": 4
+    },
+    {
+      "codeLine": 8,
+      "note": "Check |4 - 9| <= 2. It is 5, which is > 2. Narrow search.",
+      "array": [
+        1,
+        9,
+        10
+      ],
+      "curr": 4
+    },
+    {
+      "codeLine": 10,
+      "note": "Target 4 is smaller than 9, move high.",
+      "array": [
+        1,
+        9,
+        10
+      ],
+      "curr": 4
+    },
+    {
+      "codeLine": 12,
+      "note": "No element found within range for 4. count becomes 1.",
+      "array": [
+        1,
+        9,
+        10
+      ],
+      "curr": 4
+    }
+  ]
+}

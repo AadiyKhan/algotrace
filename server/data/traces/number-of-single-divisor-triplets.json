@@ -1,0 +1,61 @@
+{
+  "title": "Number of Single Divisor Triplets",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Math",
+    "Combinatorics"
+  ],
+  "description": "Find the number of triplets (i, j, k) such that 0 <= i < j < k < n and exactly one of the elements divides the sum of the other two.",
+  "target": null,
+  "pseudocode": "1. count = 0\n2. for i = 0 to n-3\n3.   for j = i+1 to n-2\n4.     for k = j+1 to n-1\n5.       sum = arr[i] + arr[j] + arr[k]\n6.       divisors = (sum%arr[i]==0) + (sum%arr[j]==0) + (sum%arr[k]==0)\n7.       if divisors == 1: count++",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize count to 0",
+      "array": [
+        2,
+        3,
+        5
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Check triplet (0, 1, 2) values [2, 3, 5], sum = 10",
+      "array": [
+        2,
+        3,
+        5
+      ],
+      "i": 0,
+      "j": 1,
+      "curr": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "10%2==0 (True), 10%3==0 (False), 10%5==0 (True). Divisors count = 2",
+      "array": [
+        2,
+        3,
+        5
+      ],
+      "i": 0,
+      "j": 1,
+      "curr": 2
+    },
+    {
+      "codeLine": 7,
+      "note": "Divisors count is 2, not 1. Count remains 0",
+      "array": [
+        2,
+        3,
+        5
+      ],
+      "i": 0,
+      "j": 1,
+      "curr": 2
+    }
+  ]
+}

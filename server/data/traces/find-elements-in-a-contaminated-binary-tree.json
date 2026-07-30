@@ -1,0 +1,117 @@
+{
+  "title": "Find Elements in a Contaminated Binary Tree",
+  "difficulty": "Medium",
+  "type": "tree",
+  "tags": [
+    "Tree",
+    "Hash Table",
+    "Design",
+    "Binary Tree",
+    "Depth-First Search",
+    "Breadth-First Search"
+  ],
+  "description": "Recover a binary tree where all nodes are set to -1, following the rules: root is 0, if parent is x, left child is 2x+1, right child is 2x+2.",
+  "pseudocode": "function recover(node, val, set) {\n  if (!node) return;\n  node.val = val;\n  set.add(val);\n  recover(node.left, 2 * val + 1, set);\n  recover(node.right, 2 * val + 2, set);\n}",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Start DFS from root node with value 0",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": -1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": -1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": -1,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Set root value to 0 and add to recovery set",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 0,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": -1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": -1,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Traverse left child: val = 2*0 + 1 = 1",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 0,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": -1,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Traverse right child of root: val = 2*0 + 2 = 2",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 0,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 2,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 2
+    }
+  ]
+}

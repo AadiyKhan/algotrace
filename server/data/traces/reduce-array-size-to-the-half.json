@@ -1,0 +1,87 @@
+{
+  "title": "Reduce Array Size to The Half",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "Greedy",
+    "Sorting"
+  ],
+  "description": "Find the minimum number of distinct integers to remove to reduce the array size to at least half.",
+  "target": 5,
+  "pseudocode": "1. Count frequencies of all elements.\n2. Store frequencies in a list and sort in descending order.\n3. Keep adding counts until the sum reaches at least n/2.\n4. Return the number of elements used.",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Count frequencies: {3:4, 5:3, 2:2, 7:1}",
+      "array": [
+        3,
+        3,
+        3,
+        3,
+        5,
+        5,
+        5,
+        2,
+        2,
+        7
+      ],
+      "visited": [],
+      "curr": 3
+    },
+    {
+      "codeLine": 2,
+      "note": "Sorted frequencies: [4, 3, 2, 1]",
+      "array": [
+        4,
+        3,
+        2,
+        1
+      ],
+      "visited": [],
+      "curr": 4
+    },
+    {
+      "codeLine": 3,
+      "note": "Add first count: 4 (Sum=4, Threshold=5)",
+      "array": [
+        4,
+        3,
+        2,
+        1
+      ],
+      "visited": [
+        0
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Add second count: 3 (Sum=7, Threshold=5). Sum reached half.",
+      "array": [
+        4,
+        3,
+        2,
+        1
+      ],
+      "visited": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Return count of elements used: 2",
+      "array": [
+        4,
+        3,
+        2,
+        1
+      ],
+      "visited": [
+        0,
+        1
+      ]
+    }
+  ]
+}

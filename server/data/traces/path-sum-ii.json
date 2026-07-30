@@ -4,16 +4,16 @@
   "type": "tree",
   "tags": [
     "Tree",
-    "DFS",
-    "Backtracking"
+    "Backtracking",
+    "Depth-First Search"
   ],
-  "description": "Find all root-to-leaf paths where the path sum equals targetSum.",
+  "description": "Find all root-to-leaf paths that sum up to targetSum.",
   "target": 22,
-  "pseudocode": "1. function dfs(node, currentSum, path):\n2.   if !node return\n3.   path.push(node.val)\n4.   currentSum += node.val\n5.   if !node.left && !node.right && currentSum == target:\n6.     results.push([...path])\n7.   dfs(node.left, currentSum, path)\n8.   dfs(node.right, currentSum, path)\n9.   path.pop()",
+  "pseudocode": "1. If node is null, return\n2. Add node val to current path\n3. If leaf and sum matches target, add path to results\n4. Recurse left and right\n5. Backtrack: remove node val from current path",
   "steps": [
     {
-      "codeLine": 3,
-      "note": "Start DFS at root (5), add 5 to path.",
+      "codeLine": 2,
+      "note": "Start DFS at root (5), path: [5]",
       "treeNodes": [
         {
           "id": 0,
@@ -76,42 +76,342 @@
           "right": null
         }
       ],
-      "curr": 0
+      "curr": 5
     },
     {
-      "codeLine": 7,
+      "codeLine": 4,
       "note": "Traverse to left child (4), path: [5, 4]",
-      "curr": 1
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 5,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 4,
+          "left": 3,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 8,
+          "left": 4,
+          "right": 5
+        },
+        {
+          "id": 3,
+          "val": 11,
+          "left": 6,
+          "right": 7
+        },
+        {
+          "id": 4,
+          "val": 13,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 5,
+          "val": 4,
+          "left": 8,
+          "right": 9
+        },
+        {
+          "id": 6,
+          "val": 7,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 7,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 8,
+          "val": 5,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 9,
+          "val": 1,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 4
     },
     {
-      "codeLine": 7,
+      "codeLine": 4,
       "note": "Traverse to left child (11), path: [5, 4, 11]",
-      "curr": 3
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 5,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 4,
+          "left": 3,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 8,
+          "left": 4,
+          "right": 5
+        },
+        {
+          "id": 3,
+          "val": 11,
+          "left": 6,
+          "right": 7
+        },
+        {
+          "id": 4,
+          "val": 13,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 5,
+          "val": 4,
+          "left": 8,
+          "right": 9
+        },
+        {
+          "id": 6,
+          "val": 7,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 7,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 8,
+          "val": 5,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 9,
+          "val": 1,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 11
     },
     {
-      "codeLine": 7,
-      "note": "Traverse to left child (7), path: [5, 4, 11, 7]",
-      "curr": 6
+      "codeLine": 3,
+      "note": "Reached leaf (2), path [5, 4, 11, 2] sum is 22. Match found.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 5,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 4,
+          "left": 3,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 8,
+          "left": 4,
+          "right": 5
+        },
+        {
+          "id": 3,
+          "val": 11,
+          "left": 6,
+          "right": 7
+        },
+        {
+          "id": 4,
+          "val": 13,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 5,
+          "val": 4,
+          "left": 8,
+          "right": 9
+        },
+        {
+          "id": 6,
+          "val": 7,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 7,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 8,
+          "val": 5,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 9,
+          "val": 1,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 2
     },
     {
-      "codeLine": 5,
-      "note": "Leaf reached, sum is 27 != 22. Backtrack.",
-      "curr": 6
+      "codeLine": 4,
+      "note": "Traverse to right child (4), path: [5, 8, 4]",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 5,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 4,
+          "left": 3,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 8,
+          "left": 4,
+          "right": 5
+        },
+        {
+          "id": 3,
+          "val": 11,
+          "left": 6,
+          "right": 7
+        },
+        {
+          "id": 4,
+          "val": 13,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 5,
+          "val": 4,
+          "left": 8,
+          "right": 9
+        },
+        {
+          "id": 6,
+          "val": 7,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 7,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 8,
+          "val": 5,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 9,
+          "val": 1,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 4
     },
     {
-      "codeLine": 9,
-      "note": "Pop 7 from path, curr at 3.",
-      "curr": 3
-    },
-    {
-      "codeLine": 8,
-      "note": "Traverse to right child (2), path: [5, 4, 11, 2]",
-      "curr": 7
-    },
-    {
-      "codeLine": 5,
-      "note": "Leaf reached, sum is 22 == 22. Add to results.",
-      "curr": 7
+      "codeLine": 3,
+      "note": "Reached leaf (5), path [5, 8, 4, 5] sum is 22. Match found.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 5,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 4,
+          "left": 3,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 8,
+          "left": 4,
+          "right": 5
+        },
+        {
+          "id": 3,
+          "val": 11,
+          "left": 6,
+          "right": 7
+        },
+        {
+          "id": 4,
+          "val": 13,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 5,
+          "val": 4,
+          "left": 8,
+          "right": 9
+        },
+        {
+          "id": 6,
+          "val": 7,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 7,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 8,
+          "val": 5,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 9,
+          "val": 1,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 5
     }
   ]
 }

@@ -6,45 +6,139 @@
     "Backtracking",
     "Bit Manipulation"
   ],
-  "description": "Return all possible times a binary watch can show given a specific number of LEDs turned on.",
+  "description": "Find all possible times for a binary watch given the number of LEDs turned on.",
   "target": 1,
-  "pseudocode": "function readBinaryWatch(turnedOn) {\n  let times = [];\n  for (let h = 0; h < 12; h++) {\n    for (let m = 0; m < 60; m++) {\n      if (countSetBits(h) + countSetBits(m) === turnedOn) {\n        times.push(`${h}:${m < 10 ? '0' + m : m}`);\n      }\n    }\n  }\n  return times;\n}",
+  "pseudocode": "1. for h from 0 to 11:\n2.   for m from 0 to 59:\n3.     if bitCount(h) + bitCount(m) == turnedOn:\n4.       result.push(format(h, m))",
   "steps": [
     {
-      "codeLine": 2,
-      "note": "Initialize result array.",
+      "codeLine": 1,
+      "note": "Initialize result list to store valid times.",
       "array": []
     },
     {
-      "codeLine": 3,
-      "note": "Start hour loop.",
-      "i": 0
-    },
-    {
-      "codeLine": 4,
-      "note": "Start minute loop.",
-      "j": 0
-    },
-    {
-      "codeLine": 5,
-      "note": "Check if bits in 0:00 equal 1.",
-      "i": 0,
-      "j": 0
-    },
-    {
-      "codeLine": 5,
-      "note": "Continue loops, checking 0:01.",
-      "i": 0,
-      "j": 1
-    },
-    {
-      "codeLine": 6,
-      "note": "Found valid time: 0:01.",
-      "i": 0,
-      "j": 1,
+      "codeLine": 2,
+      "note": "Checking hour 0, minute 1 (binary 0:000001). bitCount(0) + bitCount(1) = 0 + 1 = 1.",
       "array": [
         "0:01"
-      ]
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Checking hour 0, minute 2 (binary 0:000010). bitCount(0) + bitCount(2) = 0 + 1 = 1.",
+      "array": [
+        "0:01",
+        "0:02"
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Checking hour 0, minute 4 (binary 0:000100). bitCount(0) + bitCount(4) = 0 + 1 = 1.",
+      "array": [
+        "0:01",
+        "0:02",
+        "0:04"
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Checking hour 0, minute 8 (binary 0:001000). bitCount(0) + bitCount(8) = 0 + 1 = 1.",
+      "array": [
+        "0:01",
+        "0:02",
+        "0:04",
+        "0:08"
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Checking hour 0, minute 16 (binary 0:010000). bitCount(0) + bitCount(16) = 0 + 1 = 1.",
+      "array": [
+        "0:01",
+        "0:02",
+        "0:04",
+        "0:08",
+        "0:16"
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Checking hour 0, minute 32 (binary 0:100000). bitCount(0) + bitCount(32) = 0 + 1 = 1.",
+      "array": [
+        "0:01",
+        "0:02",
+        "0:04",
+        "0:08",
+        "0:16",
+        "0:32"
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 1,
+      "note": "Checking hour 1, minute 0 (binary 1:000000). bitCount(1) + bitCount(0) = 1 + 0 = 1.",
+      "array": [
+        "0:01",
+        "0:02",
+        "0:04",
+        "0:08",
+        "0:16",
+        "0:32",
+        "1:00"
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 1,
+      "note": "Checking hour 2, minute 0 (binary 10:000000). bitCount(2) + bitCount(0) = 1 + 0 = 1.",
+      "array": [
+        "0:01",
+        "0:02",
+        "0:04",
+        "0:08",
+        "0:16",
+        "0:32",
+        "1:00",
+        "2:00"
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 1,
+      "note": "Checking hour 4, minute 0 (binary 100:000000). bitCount(4) + bitCount(0) = 1 + 0 = 1.",
+      "array": [
+        "0:01",
+        "0:02",
+        "0:04",
+        "0:08",
+        "0:16",
+        "0:32",
+        "1:00",
+        "2:00",
+        "4:00"
+      ],
+      "curr": 4
+    },
+    {
+      "codeLine": 1,
+      "note": "Checking hour 8, minute 0 (binary 1000:000000). bitCount(8) + bitCount(0) = 1 + 0 = 1.",
+      "array": [
+        "0:01",
+        "0:02",
+        "0:04",
+        "0:08",
+        "0:16",
+        "0:32",
+        "1:00",
+        "2:00",
+        "4:00",
+        "8:00"
+      ],
+      "curr": 8
     }
   ]
 }

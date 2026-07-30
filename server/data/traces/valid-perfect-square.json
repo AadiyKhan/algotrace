@@ -6,56 +6,136 @@
     "Math",
     "Binary Search"
   ],
-  "description": "Determine if a positive integer num is a perfect square using binary search.",
+  "description": "Determine if a number is a perfect square using binary search.",
   "target": 16,
-  "pseudocode": "1. low = 1, high = num\n2. while low <= high:\n3.   mid = low + (high - low) / 2\n4.   if mid * mid == num: return true\n5.   if mid * mid < num: low = mid + 1\n6.   else: high = mid - 1\n7. return false",
+  "pseudocode": "1. left = 1, right = num\n2. while left <= right:\n3. mid = left + (right - left) // 2\n4. square = mid * mid\n5. if square == num: return true\n6. if square < num: left = mid + 1\n7. else: right = mid - 1\n8. return false",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize binary search range [1, 16].",
+      "note": "Initialize left = 1 and right = 16.",
+      "array": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
       "i": 1,
-      "j": 16
-    },
-    {
-      "codeLine": 2,
-      "note": "Enter while loop, 1 <= 16 is true.",
-      "i": 1,
-      "j": 16
+      "j": 16,
+      "curr": 1
     },
     {
       "codeLine": 3,
-      "note": "Calculate mid = 1 + (16 - 1) / 2 = 8.",
-      "i": 1,
-      "j": 16,
+      "note": "Calculate mid = 1 + (16 - 1) // 2 = 8.",
+      "array": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
       "curr": 8
     },
     {
       "codeLine": 4,
-      "note": "8 * 8 = 64. 64 != 16.",
+      "note": "Calculate square = 8 * 8 = 64.",
+      "array": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
       "curr": 8
     },
     {
-      "codeLine": 6,
-      "note": "64 > 16, move high to mid - 1 = 7.",
-      "i": 1,
-      "j": 7
-    },
-    {
-      "codeLine": 2,
-      "note": "1 <= 7 is true.",
-      "i": 1,
-      "j": 7
+      "codeLine": 7,
+      "note": "64 > 16, update right = mid - 1 = 7.",
+      "array": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "j": 7,
+      "curr": 64
     },
     {
       "codeLine": 3,
-      "note": "Calculate mid = 1 + (7 - 1) / 2 = 4.",
-      "i": 1,
-      "j": 7,
+      "note": "Calculate mid = 1 + (7 - 1) // 2 = 4.",
+      "array": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
       "curr": 4
     },
     {
       "codeLine": 4,
-      "note": "4 * 4 = 16. Match found!",
+      "note": "Calculate square = 4 * 4 = 16.",
+      "array": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "curr": 4
+    },
+    {
+      "codeLine": 5,
+      "note": "16 == 16, return true.",
+      "array": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
       "curr": 4
     }
   ]

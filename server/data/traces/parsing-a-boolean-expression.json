@@ -1,0 +1,84 @@
+{
+  "title": "Parsing A Boolean Expression",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Stack",
+    "String",
+    "Recursion"
+  ],
+  "description": "Evaluate a boolean expression string containing !, &, |, t, f, (, and ).",
+  "target": "t",
+  "pseudocode": "1: stack = []\n2: for char in expression:\n3:   if char == ')':\n4:     vals = pop until '('\n5:     op = pop operator\n6:     result = apply op to vals\n7:     push result to stack\n8:   else if char != ',': push char",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Initialize stack with input characters",
+      "array": [
+        "!",
+        "(",
+        "t",
+        "|",
+        "f",
+        "f",
+        ")"
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Pushing operators and operands onto the stack",
+      "array": [
+        "!",
+        "(",
+        "t",
+        "|",
+        "f",
+        "f"
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Found ')', beginning evaluation of current scope",
+      "array": [
+        "!",
+        "(",
+        "t",
+        "|",
+        "f",
+        "f"
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Popping values 'f', 'f' and operator '|'",
+      "array": [
+        "!",
+        "("
+      ],
+      "i": "f|f"
+    },
+    {
+      "codeLine": 6,
+      "note": "Evaluating f|f which is false",
+      "array": [
+        "!",
+        "(",
+        "f"
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Popping '(' and operator '!'",
+      "array": [
+        "f"
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Evaluating !f which is true",
+      "array": [
+        "t"
+      ]
+    }
+  ]
+}

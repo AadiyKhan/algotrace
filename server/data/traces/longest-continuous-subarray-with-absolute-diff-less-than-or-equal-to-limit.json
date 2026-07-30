@@ -1,0 +1,135 @@
+{
+  "title": "Longest Continuous Subarray With Absolute Diff Less Than Or Equal To Limit",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Sliding Window",
+    "Monotonic Queue"
+  ],
+  "description": "Find the length of the longest subarray such that the absolute difference between any two elements is less than or equal to limit.",
+  "target": 2,
+  "pseudocode": "1. left = 0, maxLen = 0\n2. minQ = [], maxQ = []\n3. for right = 0 to nums.length - 1:\n4.   while minQ and nums[minQ.back] >= nums[right]: minQ.pop()\n5.   while maxQ and nums[maxQ.back] <= nums[right]: maxQ.pop()\n6.   minQ.push(right), maxQ.push(right)\n7.   while nums[maxQ[0]] - nums[minQ[0]] > limit:\n8.     left++\n9.     if minQ[0] < left: minQ.shift()\n10.    if maxQ[0] < left: maxQ.shift()\n11.  maxLen = max(maxLen, right - left + 1)",
+  "steps": [
+    {
+      "codeLine": 3,
+      "note": "Initialize sliding window with nums = [8, 2, 4, 7], limit = 4",
+      "array": [
+        8,
+        2,
+        4,
+        7
+      ],
+      "i": 0,
+      "curr": 8
+    },
+    {
+      "codeLine": 6,
+      "note": "Add index 0 to queues",
+      "array": [
+        8,
+        2,
+        4,
+        7
+      ],
+      "i": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Process index 1 (val 2). minQ: [1], maxQ: [0, 1]",
+      "array": [
+        8,
+        2,
+        4,
+        7
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "Check diff: |8 - 2| = 6 > 4. Slide left.",
+      "array": [
+        8,
+        2,
+        4,
+        7
+      ],
+      "i": 1,
+      "curr": 0
+    },
+    {
+      "codeLine": 11,
+      "note": "Update maxLen = 1",
+      "array": [
+        8,
+        2,
+        4,
+        7
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Process index 2 (val 4). minQ: [1, 2], maxQ: [1, 2]",
+      "array": [
+        8,
+        2,
+        4,
+        7
+      ],
+      "i": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 11,
+      "note": "Diff |4 - 2| = 2 <= 4. maxLen = 2",
+      "array": [
+        8,
+        2,
+        4,
+        7
+      ],
+      "i": 2,
+      "curr": 4
+    },
+    {
+      "codeLine": 6,
+      "note": "Process index 3 (val 7). minQ: [1, 2, 3], maxQ: [3]",
+      "array": [
+        8,
+        2,
+        4,
+        7
+      ],
+      "i": 3,
+      "curr": 3
+    },
+    {
+      "codeLine": 7,
+      "note": "Diff |7 - 2| = 5 > 4. Slide left.",
+      "array": [
+        8,
+        2,
+        4,
+        7
+      ],
+      "i": 3,
+      "curr": 1
+    },
+    {
+      "codeLine": 11,
+      "note": "Diff |7 - 4| = 3 <= 4. maxLen = 2",
+      "array": [
+        8,
+        2,
+        4,
+        7
+      ],
+      "i": 3,
+      "curr": 7
+    }
+  ]
+}

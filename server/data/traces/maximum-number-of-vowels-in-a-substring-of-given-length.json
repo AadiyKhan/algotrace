@@ -1,0 +1,98 @@
+{
+  "title": "Maximum Number of Vowels in a Substring of Given Length",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "String",
+    "Sliding Window"
+  ],
+  "description": "Find the maximum number of vowels in any substring of a given length k using a sliding window approach.",
+  "target": 3,
+  "pseudocode": "1. function maxVowels(s, k):\n2.   vowels = new Set(['a','e','i','o','u'])\n3.   count = 0, maxV = 0\n4.   for i from 0 to k-1:\n5.     if s[i] in vowels: count++\n6.   maxV = count\n7.   for i from k to s.length - 1:\n8.     if s[i] in vowels: count++\n9.     if s[i-k] in vowels: count--\n10.    maxV = max(maxV, count)\n11.  return maxV",
+  "steps": [
+    {
+      "codeLine": 4,
+      "note": "Initialize window of size k=3 with 'a', 'b', 'c'",
+      "array": [
+        "a",
+        "b",
+        "c"
+      ],
+      "i": 0,
+      "visited": [
+        0
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "First character 'a' is a vowel, count becomes 1",
+      "array": [
+        "a",
+        "b",
+        "c"
+      ],
+      "i": 0,
+      "curr": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Initial window processed, maxV set to 1",
+      "array": [
+        "a",
+        "b",
+        "c"
+      ],
+      "i": 2,
+      "curr": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "Slide window: add 'e' at index 3",
+      "array": [
+        "a",
+        "b",
+        "c",
+        "e"
+      ],
+      "i": 3,
+      "curr": 3
+    },
+    {
+      "codeLine": 8,
+      "note": "Character 'e' is a vowel, count increments to 2",
+      "array": [
+        "a",
+        "b",
+        "c",
+        "e"
+      ],
+      "i": 3,
+      "curr": 2
+    },
+    {
+      "codeLine": 9,
+      "note": "Remove 'a' (index 0) from window, count decrements to 1",
+      "array": [
+        "a",
+        "b",
+        "c",
+        "e"
+      ],
+      "i": 3,
+      "curr": 0
+    },
+    {
+      "codeLine": 10,
+      "note": "Update maxV: current count is 1, maxV stays 1",
+      "array": [
+        "a",
+        "b",
+        "c",
+        "e"
+      ],
+      "i": 3,
+      "curr": 1
+    }
+  ]
+}

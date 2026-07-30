@@ -1,0 +1,107 @@
+{
+  "title": "Smallest Common Region",
+  "difficulty": "Medium",
+  "type": "tree",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "Tree",
+    "Depth-First Search"
+  ],
+  "description": "Find the smallest common region that contains all given regions, essentially the Lowest Common Ancestor (LCA) in a tree structure.",
+  "target": "Quebec",
+  "pseudocode": "1. Build parent mapping for all regions\n2. Trace path from region1 to root in a set\n3. Traverse up from region2 until a region in the set is found\n4. Return the first common region",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Building parent mapping: {Quebec: Earth, Canada: Earth, Montreal: Quebec, Toronto: Quebec}",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": "Earth",
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": "Quebec",
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 2,
+          "val": "Canada",
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": "Montreal",
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": "Toronto",
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Path from Montreal to root: [Montreal, Quebec, Earth]",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": "Earth",
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": "Quebec",
+          "left": 3,
+          "right": 4
+        }
+      ],
+      "visited": [
+        "Montreal",
+        "Quebec",
+        "Earth"
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Traversing up from Toronto: Toronto -> Quebec. Quebec is in visited set.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": "Earth",
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": "Quebec",
+          "left": 3,
+          "right": 4
+        }
+      ],
+      "curr": "Quebec"
+    },
+    {
+      "codeLine": 4,
+      "note": "Smallest common region found: Quebec",
+      "treeNodes": [
+        {
+          "id": 1,
+          "val": "Quebec",
+          "left": 3,
+          "right": 4
+        }
+      ],
+      "curr": "Quebec"
+    }
+  ]
+}

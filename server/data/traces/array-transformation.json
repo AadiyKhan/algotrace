@@ -1,0 +1,84 @@
+{
+  "title": "Array Transformation",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Simulation"
+  ],
+  "description": "Transform an array by incrementing elements strictly smaller than their neighbors and decrementing elements strictly larger than their neighbors until no more changes occur.",
+  "target": null,
+  "pseudocode": "1: while (changed) {\n2:   changed = false;\n3:   nextArr = [...arr];\n4:   for (i = 1; i < arr.length - 1; i++) {\n5:     if (arr[i] < arr[i-1] && arr[i] < arr[i+1]) {\n6:       nextArr[i]++; changed = true;\n7:     } else if (arr[i] > arr[i-1] && arr[i] > arr[i+1]) {\n8:       nextArr[i]--; changed = true;\n9:     }\n10:  }\n11:  arr = nextArr;\n12: }",
+  "steps": [
+    {
+      "codeLine": 4,
+      "note": "Starting iteration on [6, 2, 3, 4]",
+      "array": [
+        6,
+        2,
+        3,
+        4
+      ],
+      "i": 1,
+      "curr": 6
+    },
+    {
+      "codeLine": 5,
+      "note": "2 < 6 and 2 < 3, incrementing index 1",
+      "array": [
+        6,
+        2,
+        3,
+        4
+      ],
+      "i": 1,
+      "curr": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "2 becomes 3",
+      "array": [
+        6,
+        3,
+        3,
+        4
+      ],
+      "i": 1,
+      "curr": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Checking index 2",
+      "array": [
+        6,
+        3,
+        3,
+        4
+      ],
+      "i": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "3 is not smaller than both neighbors",
+      "array": [
+        6,
+        3,
+        3,
+        4
+      ],
+      "i": 2,
+      "curr": 3
+    },
+    {
+      "codeLine": 11,
+      "note": "Array transformation complete",
+      "array": [
+        6,
+        3,
+        3,
+        4
+      ]
+    }
+  ]
+}

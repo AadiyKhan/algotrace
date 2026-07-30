@@ -1,153 +1,250 @@
 {
   "title": "Possible Bipartition",
   "difficulty": "Medium",
-  "type": "tree",
+  "type": "graph",
   "tags": [
-    "Graph",
-    "BFS",
-    "DFS"
+    "Graph Theory",
+    "Depth-First Search"
   ],
-  "description": "Partition nodes into two groups such that no two nodes in a group are connected.",
-  "target": 4,
-  "pseudocode": "1. Build adjacency list\n2. For each node 1 to N, if not colored:\n3. Start BFS, color current 0, neighbors 1\n4. If neighbor colored same, return false\n5. Return true",
+  "description": "Determine if a graph can be bipartite using 2-coloring.",
+  "target": true,
+  "pseudocode": "1. Build adjacency list from dislikes\n2. Initialize colors array with 0\n3. For each node 1 to n:\n4. If uncolored, DFS and color with 1\n5. If neighbor has same color, return false\n6. Return true",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Constructing adjacency list for N=4, dislikes=[[1,2],[1,3],[2,4]]",
-      "treeNodes": [
+      "note": "Building adjacency list: 1:[2,3], 2:[1,4], 3:[1], 4:[2]",
+      "graphNodes": [
         {
           "id": 1,
-          "val": 1,
-          "left": 2,
-          "right": 3
+          "val": 1
         },
         {
           "id": 2,
-          "val": 2,
-          "left": 4,
-          "right": null
+          "val": 2
         },
         {
           "id": 3,
-          "val": 3,
-          "left": null,
-          "right": null
+          "val": 3
         },
         {
           "id": 4,
-          "val": 4,
-          "left": null,
-          "right": null
+          "val": 4
         }
-      ]
+      ],
+      "graphEdges": [
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          4
+        ]
+      ],
+      "visited": [],
+      "curr": 1
     },
     {
-      "codeLine": 2,
-      "note": "Starting BFS at node 1 (color: 0)",
+      "codeLine": 4,
+      "note": "Start DFS from node 1, color 1",
+      "graphNodes": [
+        {
+          "id": 1,
+          "val": "1(C:1)"
+        },
+        {
+          "id": 2,
+          "val": 2
+        },
+        {
+          "id": 3,
+          "val": 3
+        },
+        {
+          "id": 4,
+          "val": 4
+        }
+      ],
+      "graphEdges": [
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          4
+        ]
+      ],
       "visited": [
         1
-      ],
-      "treeNodes": [
-        {
-          "id": 1,
-          "val": 1,
-          "left": 2,
-          "right": 3
-        },
-        {
-          "id": 2,
-          "val": 2,
-          "left": 4,
-          "right": null
-        },
-        {
-          "id": 3,
-          "val": 3,
-          "left": null,
-          "right": null
-        },
-        {
-          "id": 4,
-          "val": 4,
-          "left": null,
-          "right": null
-        }
-      ]
-    },
-    {
-      "codeLine": 3,
-      "note": "Coloring neighbors 2 and 3 as color 1",
-      "visited": [
-        1,
-        2,
-        3
-      ],
-      "treeNodes": [
-        {
-          "id": 1,
-          "val": 1,
-          "left": 2,
-          "right": 3
-        },
-        {
-          "id": 2,
-          "val": 2,
-          "left": 4,
-          "right": null
-        },
-        {
-          "id": 3,
-          "val": 3,
-          "left": null,
-          "right": null
-        },
-        {
-          "id": 4,
-          "val": 4,
-          "left": null,
-          "right": null
-        }
-      ]
-    },
-    {
-      "codeLine": 3,
-      "note": "Coloring neighbor 4 of node 2 as color 0",
-      "visited": [
-        1,
-        2,
-        3,
-        4
-      ],
-      "treeNodes": [
-        {
-          "id": 1,
-          "val": 1,
-          "left": 2,
-          "right": 3
-        },
-        {
-          "id": 2,
-          "val": 2,
-          "left": 4,
-          "right": null
-        },
-        {
-          "id": 3,
-          "val": 3,
-          "left": null,
-          "right": null
-        },
-        {
-          "id": 4,
-          "val": 4,
-          "left": null,
-          "right": null
-        }
       ]
     },
     {
       "codeLine": 5,
-      "note": "All nodes colored successfully without conflicts",
+      "note": "Color neighbor 2 with -1 (opposite of 1)",
+      "graphNodes": [
+        {
+          "id": 1,
+          "val": "1(C:1)"
+        },
+        {
+          "id": 2,
+          "val": "2(C:-1)"
+        },
+        {
+          "id": 3,
+          "val": 3
+        },
+        {
+          "id": 4,
+          "val": 4
+        }
+      ],
+      "graphEdges": [
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          4
+        ]
+      ],
+      "visited": [
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Color neighbor 4 with 1 (opposite of 2)",
+      "graphNodes": [
+        {
+          "id": 1,
+          "val": "1(C:1)"
+        },
+        {
+          "id": 2,
+          "val": "2(C:-1)"
+        },
+        {
+          "id": 3,
+          "val": 3
+        },
+        {
+          "id": 4,
+          "val": "4(C:1)"
+        }
+      ],
+      "graphEdges": [
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          4
+        ]
+      ],
+      "visited": [
+        1,
+        2,
+        4
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Backtrack, color neighbor 3 with -1 (opposite of 1)",
+      "graphNodes": [
+        {
+          "id": 1,
+          "val": "1(C:1)"
+        },
+        {
+          "id": 2,
+          "val": "2(C:-1)"
+        },
+        {
+          "id": 3,
+          "val": "3(C:-1)"
+        },
+        {
+          "id": 4,
+          "val": "4(C:1)"
+        }
+      ],
+      "graphEdges": [
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          4
+        ]
+      ],
+      "visited": [
+        1,
+        2,
+        4,
+        3
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "All nodes colored successfully, return true",
+      "graphNodes": [
+        {
+          "id": 1,
+          "val": "1(C:1)"
+        },
+        {
+          "id": 2,
+          "val": "2(C:-1)"
+        },
+        {
+          "id": 3,
+          "val": "3(C:-1)"
+        },
+        {
+          "id": 4,
+          "val": "4(C:1)"
+        }
+      ],
+      "graphEdges": [
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          4
+        ]
+      ],
       "visited": [
         1,
         2,

@@ -3,40 +3,18 @@
   "difficulty": "Medium",
   "type": "tree",
   "tags": [
-    "Tree",
     "Hash Table",
-    "DFS"
+    "Tree",
+    "Depth-First Search",
+    "Binary Tree"
   ],
-  "description": "Find the subtree sum(s) that occur most frequently in the binary tree.",
-  "pseudocode": "function getSum(node) {\n  if (!node) return 0;\n  let s = node.val + getSum(node.left) + getSum(node.right);\n  counts[s] = (counts[s] || 0) + 1;\n  maxFreq = Math.max(maxFreq, counts[s]);\n  return s;\n}",
+  "description": "Calculate subtree sums, track frequencies in a map, and return the most frequent sums.",
+  "target": "Most frequent sum",
+  "pseudocode": "1. countMap = {}\n2. function getSum(node):\n3.   if !node: return 0\n4.   s = node.val + getSum(node.left) + getSum(node.right)\n5.   countMap[s]++\n6.   return s\n7. getSum(root)\n8. maxFreq = max(countMap.values())\n9. return [k for k, v in countMap if v == maxFreq]",
   "steps": [
     {
-      "codeLine": 2,
-      "note": "Base case: null node returns 0 sum.",
-      "treeNodes": [
-        {
-          "id": 0,
-          "val": 5,
-          "left": 1,
-          "right": 2
-        },
-        {
-          "id": 1,
-          "val": 2,
-          "left": null,
-          "right": null
-        },
-        {
-          "id": 2,
-          "val": -3,
-          "left": null,
-          "right": null
-        }
-      ]
-    },
-    {
-      "codeLine": 3,
-      "note": "Calculating subtree sum for node with val 2.",
+      "codeLine": 7,
+      "note": "Starting DFS traversal from root node with value 5.",
       "treeNodes": [
         {
           "id": 0,
@@ -57,20 +35,11 @@
           "right": null
         }
       ],
-      "visited": [
-        1
-      ]
+      "curr": 0
     },
     {
       "codeLine": 4,
-      "note": "Updating count for sum 2.",
-      "visited": [
-        1
-      ]
-    },
-    {
-      "codeLine": 3,
-      "note": "Calculating subtree sum for node with val -3.",
+      "note": "Traversing to left child (2).",
       "treeNodes": [
         {
           "id": 0,
@@ -91,22 +60,11 @@
           "right": null
         }
       ],
-      "visited": [
-        1,
-        2
-      ]
+      "curr": 2
     },
     {
-      "codeLine": 4,
-      "note": "Updating count for sum -3.",
-      "visited": [
-        1,
-        2
-      ]
-    },
-    {
-      "codeLine": 3,
-      "note": "Calculating root subtree sum: 5 + 2 + (-3) = 4.",
+      "codeLine": 5,
+      "note": "Subtree sum for node 2 is 2. countMap = {2: 1}",
       "treeNodes": [
         {
           "id": 0,
@@ -127,20 +85,107 @@
           "right": null
         }
       ],
-      "visited": [
-        1,
-        2,
-        0
-      ]
+      "curr": 2
     },
     {
       "codeLine": 4,
-      "note": "Updating count for sum 4.",
-      "visited": [
-        1,
-        2,
-        0
-      ]
+      "note": "Traversing to right child (-3).",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 5,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": -3,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": -3
+    },
+    {
+      "codeLine": 5,
+      "note": "Subtree sum for node -3 is -3. countMap = {2: 1, -3: 1}",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 5,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": -3,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": -3
+    },
+    {
+      "codeLine": 5,
+      "note": "Calculating total sum for root 5: 5 + 2 + (-3) = 4. countMap = {2: 1, -3: 1, 4: 1}",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 5,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": -3,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 5
+    },
+    {
+      "codeLine": 9,
+      "note": "Max frequency is 1. All sums {2, -3, 4} have frequency 1.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 5,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": -3,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 1
     }
   ]
 }

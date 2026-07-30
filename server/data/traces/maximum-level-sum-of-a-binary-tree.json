@@ -1,0 +1,273 @@
+{
+  "title": "Maximum Level Sum of a Binary Tree",
+  "difficulty": "Medium",
+  "type": "tree",
+  "tags": [
+    "Tree",
+    "Breadth-First Search",
+    "Binary Tree"
+  ],
+  "description": "Find the level of a binary tree with the maximum sum of node values.",
+  "pseudocode": "1. queue = [root], level = 1, maxSum = -inf, maxLevel = 1\n2. while queue is not empty:\n3.   currentLevelSum = 0, size = queue.length\n4.   for i = 0 to size-1:\n5.     node = queue.shift(), currentLevelSum += node.val\n6.     if node.left: queue.push(node.left)\n7.     if node.right: queue.push(node.right)\n8.   if currentLevelSum > maxSum: maxSum = currentLevelSum, maxLevel = level\n9.   level++",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize queue with root (1) and trackers.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 7,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 2,
+          "val": 0,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 7,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": -8,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Process level 1: sum node 1.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 7,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 2,
+          "val": 0,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 7,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": -8,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": "Level 1"
+    },
+    {
+      "codeLine": 8,
+      "note": "Level 1 sum is 1. maxSum = 1, maxLevel = 1.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 7,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 2,
+          "val": 0,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 7,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": -8,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Process level 2: sum nodes 7 and 0.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 7,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 2,
+          "val": 0,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 7,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": -8,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": "Level 2"
+    },
+    {
+      "codeLine": 8,
+      "note": "Level 2 sum is 7. 7 > 1, so maxSum = 7, maxLevel = 2.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 7,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 2,
+          "val": 0,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 7,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": -8,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Process level 3: sum nodes 7 and -8.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 7,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 2,
+          "val": 0,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 7,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": -8,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": "Level 3"
+    },
+    {
+      "codeLine": 8,
+      "note": "Level 3 sum is -1. -1 is not > 7. Max level remains 2.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 7,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 2,
+          "val": 0,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 7,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": -8,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 3
+    }
+  ]
+}

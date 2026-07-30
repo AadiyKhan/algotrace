@@ -1,0 +1,143 @@
+{
+  "title": "Number of Visible People in a Queue",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Stack",
+    "Monotonic Stack"
+  ],
+  "description": "For each person, find how many people to their right they can see. A person can see another person if everyone between them is shorter.",
+  "pseudocode": "1. stack = []\n2. res = array of 0s\n3. for i from n-1 down to 0:\n4.   count = 0\n5.   while stack and heights[i] > stack.top():\n6.     stack.pop(); count++\n7.   if stack: count++\n8.   res[i] = count\n9.   stack.push(heights[i])",
+  "steps": [
+    {
+      "codeLine": 3,
+      "note": "Initialize array [10, 6, 8, 5, 11] with res [0, 0, 0, 0, 0] and empty stack.",
+      "array": [
+        10,
+        6,
+        8,
+        5,
+        11
+      ],
+      "curr": 10
+    },
+    {
+      "codeLine": 5,
+      "note": "i=4 (11): Stack is empty. res[4] = 0.",
+      "array": [
+        10,
+        6,
+        8,
+        5,
+        11
+      ],
+      "i": 4,
+      "curr": 4
+    },
+    {
+      "codeLine": 9,
+      "note": "Push 11 to stack. stack=[11]",
+      "array": [
+        10,
+        6,
+        8,
+        5,
+        11
+      ],
+      "i": 4,
+      "curr": 11
+    },
+    {
+      "codeLine": 5,
+      "note": "i=3 (5): 5 < 11. Can see 11. count=1. res[3] = 1.",
+      "array": [
+        10,
+        6,
+        8,
+        5,
+        11
+      ],
+      "i": 3,
+      "curr": 3
+    },
+    {
+      "codeLine": 9,
+      "note": "Push 5 to stack. stack=[11, 5]",
+      "array": [
+        10,
+        6,
+        8,
+        5,
+        11
+      ],
+      "i": 3,
+      "curr": 5
+    },
+    {
+      "codeLine": 5,
+      "note": "i=2 (8): 8 > 5, pop 5 (count=1). 8 < 11, see 11 (count=2). res[2] = 2.",
+      "array": [
+        10,
+        6,
+        8,
+        5,
+        11
+      ],
+      "i": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 9,
+      "note": "Push 8 to stack. stack=[11, 8]",
+      "array": [
+        10,
+        6,
+        8,
+        5,
+        11
+      ],
+      "i": 2,
+      "curr": 8
+    },
+    {
+      "codeLine": 5,
+      "note": "i=1 (6): 6 < 8, see 8 (count=1). res[1] = 1.",
+      "array": [
+        10,
+        6,
+        8,
+        5,
+        11
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 9,
+      "note": "Push 6 to stack. stack=[11, 8, 6]",
+      "array": [
+        10,
+        6,
+        8,
+        5,
+        11
+      ],
+      "i": 1,
+      "curr": 6
+    },
+    {
+      "codeLine": 5,
+      "note": "i=0 (10): 10 > 6, pop 6 (count=1). 10 > 8, pop 8 (count=2). 10 < 11, see 11 (count=3). res[0] = 3.",
+      "array": [
+        10,
+        6,
+        8,
+        5,
+        11
+      ],
+      "i": 0,
+      "curr": 0
+    }
+  ]
+}

@@ -1,0 +1,110 @@
+{
+  "title": "Shortest Subarray to be Removed to Make Array Sorted",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Two Pointers",
+    "Sliding Window"
+  ],
+  "description": "Find the length of the shortest subarray to remove so that the remaining elements are in non-decreasing order.",
+  "target": null,
+  "pseudocode": "1. Find longest non-decreasing prefix end index (right).\n2. Find longest non-decreasing suffix start index (left).\n3. Result is min of (n - right - 1, left).\n4. Use two pointers to merge prefix and suffix to find smaller removal window.\n5. Return minimal removal length.",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize prefix end index at 0. Array: [1, 2, 3, 10, 4, 2, 3, 5]",
+      "array": [
+        1,
+        2,
+        3,
+        10,
+        4,
+        2,
+        3,
+        5
+      ],
+      "i": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 1,
+      "note": "Find end of non-decreasing prefix: ends at index 3 (value 10).",
+      "array": [
+        1,
+        2,
+        3,
+        10,
+        4,
+        2,
+        3,
+        5
+      ],
+      "i": 3,
+      "curr": 3
+    },
+    {
+      "codeLine": 2,
+      "note": "Find start of non-decreasing suffix: starts at index 5 (value 2).",
+      "array": [
+        1,
+        2,
+        3,
+        10,
+        4,
+        2,
+        3,
+        5
+      ],
+      "j": 5,
+      "curr": 5
+    },
+    {
+      "codeLine": 3,
+      "note": "Initial answer is min(8-3-1, 5) = 4.",
+      "array": [
+        1,
+        2,
+        3,
+        10,
+        4,
+        2,
+        3,
+        5
+      ],
+      "i": 3,
+      "j": 5,
+      "curr": 8
+    },
+    {
+      "codeLine": 4,
+      "note": "Slide pointers to see if connecting prefix[i] and suffix[j] is possible.",
+      "array": [
+        1,
+        2,
+        3,
+        10,
+        4,
+        2,
+        3,
+        5
+      ],
+      "i": 2,
+      "j": 7
+    },
+    {
+      "codeLine": 5,
+      "note": "Minimum removal found as 3, removing [10, 4, 2].",
+      "array": [
+        1,
+        2,
+        3,
+        3,
+        5
+      ],
+      "i": 2,
+      "j": 7,
+      "curr": 3
+    }
+  ]
+}

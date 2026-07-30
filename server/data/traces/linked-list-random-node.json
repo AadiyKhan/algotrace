@@ -67,7 +67,8 @@
           "next": null
         }
       ],
-      "i": 0
+      "i": 0,
+      "curr": 0
     },
     {
       "codeLine": 4,
@@ -86,7 +87,8 @@
           "next": null
         }
       ],
-      "i": 0
+      "i": 0,
+      "curr": 1
     },
     {
       "codeLine": 2,
@@ -125,7 +127,8 @@
           "next": null
         }
       ],
-      "i": 1
+      "i": 1,
+      "curr": 0
     },
     {
       "codeLine": 2,
@@ -164,7 +167,8 @@
           "next": null
         }
       ],
-      "i": 2
+      "i": 2,
+      "curr": 0
     },
     {
       "codeLine": 4,
@@ -183,7 +187,8 @@
           "next": null
         }
       ],
-      "i": 2
+      "i": 2,
+      "curr": 3
     }
   ]
 }

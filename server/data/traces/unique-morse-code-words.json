@@ -4,61 +4,96 @@
   "type": "array",
   "tags": [
     "Array",
-    "String",
-    "Hash Table"
+    "Hash Table",
+    "String"
   ],
-  "description": "Transform a list of words into Morse code and count the number of unique transformations.",
+  "description": "Count the number of unique Morse code transformations for a given array of words.",
   "target": 2,
-  "pseudocode": "1. morse = [\"-.-\", \"---\", ...]\n2. transformations = new Set()\n3. for word in words:\n4.   code = \"\"\n5.   for char in word:\n6.     code += morse[char.charCodeAt(0) - 97]\n7.   transformations.add(code)\n8. return transformations.size",
+  "pseudocode": "1. transformations = set()\n2. for word in words:\n3.   trans = convert(word)\n4.   transformations.add(trans)\n5. return len(transformations)",
   "steps": [
     {
-      "codeLine": 2,
-      "note": "Initialize an empty Set to store unique transformations.",
-      "array": []
-    },
-    {
-      "codeLine": 3,
-      "note": "Processing first word: 'gin'",
-      "i": 0,
+      "codeLine": 1,
+      "note": "Initialize an empty set to store unique transformations.",
       "array": [
         "gin",
-        "zen"
-      ]
+        "zen",
+        "gig",
+        "msg"
+      ],
+      "visited": []
     },
     {
-      "codeLine": 6,
-      "note": "Mapping 'g', 'i', 'n' to morse: '--.', '..', '-.'",
+      "codeLine": 2,
+      "note": "Processing 'gin': Morse is '--...-.'",
+      "array": [
+        "gin",
+        "zen",
+        "gig",
+        "msg"
+      ],
+      "visited": [
+        "--...-."
+      ],
       "i": 0
     },
     {
-      "codeLine": 7,
-      "note": "Added '--..--.' to transformations set.",
+      "codeLine": 2,
+      "note": "Processing 'zen': Morse is '--...-.'",
       "array": [
-        "--..--."
-      ]
-    },
-    {
-      "codeLine": 3,
-      "note": "Processing second word: 'zen'",
+        "gin",
+        "zen",
+        "gig",
+        "msg"
+      ],
+      "visited": [
+        "--...-."
+      ],
       "i": 1
     },
     {
-      "codeLine": 6,
-      "note": "Mapping 'z', 'e', 'n' to morse: '--..', '.', '-.'",
-      "i": 1
+      "codeLine": 2,
+      "note": "Processing 'gig': Morse is '--...--.'",
+      "array": [
+        "gin",
+        "zen",
+        "gig",
+        "msg"
+      ],
+      "visited": [
+        "--...-.",
+        "--...--."
+      ],
+      "i": 2
     },
     {
-      "codeLine": 7,
-      "note": "Added '--..--.' to transformations set (already exists, no change).",
+      "codeLine": 2,
+      "note": "Processing 'msg': Morse is '--..-..'",
       "array": [
-        "--..--."
-      ]
+        "gin",
+        "zen",
+        "gig",
+        "msg"
+      ],
+      "visited": [
+        "--...-.",
+        "--...--.",
+        "--..-.."
+      ],
+      "i": 3
     },
     {
-      "codeLine": 8,
-      "note": "Return size of set: 1.",
+      "codeLine": 5,
+      "note": "Return the count of unique transformations in the set.",
       "array": [
-        "--..--."
+        "gin",
+        "zen",
+        "gig",
+        "msg"
+      ],
+      "visited": [
+        "--...-.",
+        "--...--.",
+        "--..-.."
       ]
     }
   ]

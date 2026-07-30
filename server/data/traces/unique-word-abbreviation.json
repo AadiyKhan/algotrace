@@ -29,7 +29,8 @@
         "door",
         "cake"
       ],
-      "i": 0
+      "i": 0,
+      "curr": 2
     },
     {
       "codeLine": 4,
@@ -38,7 +39,8 @@
         "deer",
         "door",
         "cake"
-      ]
+      ],
+      "curr": 2
     },
     {
       "codeLine": 3,
@@ -48,7 +50,8 @@
         "door",
         "cake"
       ],
-      "i": 1
+      "i": 1,
+      "curr": 2
     },
     {
       "codeLine": 4,
@@ -57,7 +60,8 @@
         "deer",
         "door",
         "cake"
-      ]
+      ],
+      "curr": 2
     },
     {
       "codeLine": 6,
@@ -75,7 +79,8 @@
         "deer",
         "door",
         "cake"
-      ]
+      ],
+      "curr": 2
     }
   ]
 }

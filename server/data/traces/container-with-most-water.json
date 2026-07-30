@@ -7,28 +7,13 @@
     "Two Pointers",
     "Greedy"
   ],
-  "description": "Given n non-negative integers representing heights of vertical lines, find two lines that together with the x-axis form a container that holds the most water.",
+  "description": "Find two lines that form a container that holds the most water using two pointers.",
   "target": 49,
-  "pseudocode": "1: maxArea = 0\n2: left = 0, right = height.length - 1\n3: while left < right:\n4:   area = min(height[left], height[right]) * (right - left)\n5:   maxArea = max(maxArea, area)\n6:   if height[left] < height[right]:\n7:     left++\n8:   else:\n9:     right--\n10: return maxArea",
+  "pseudocode": "1. left = 0, right = n - 1, maxArea = 0\n2. while left < right:\n3.   currentArea = min(height[left], height[right]) * (right - left)\n4.   maxArea = max(maxArea, currentArea)\n5.   if height[left] < height[right]: left++\n6.   else: right--",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize maxArea to 0.",
-      "array": [
-        1,
-        8,
-        6,
-        2,
-        5,
-        4,
-        8,
-        3,
-        7
-      ]
-    },
-    {
-      "codeLine": 2,
-      "note": "Set left pointer to index 0 and right pointer to index 8.",
+      "note": "Initialize left pointer at 0, right pointer at 8, maxArea at 0.",
       "array": [
         1,
         8,
@@ -45,24 +30,7 @@
     },
     {
       "codeLine": 3,
-      "note": "Check loop condition: left (0) < right (8).",
-      "array": [
-        1,
-        8,
-        6,
-        2,
-        5,
-        4,
-        8,
-        3,
-        7
-      ],
-      "i": 0,
-      "j": 8
-    },
-    {
-      "codeLine": 4,
-      "note": "Calculate current container area: min(1, 7) * (8 - 0) = 1 * 8 = 8.",
+      "note": "Calculate area: min(1, 7) * 8 = 8. Max area is 8.",
       "array": [
         1,
         8,
@@ -79,41 +47,7 @@
     },
     {
       "codeLine": 5,
-      "note": "Update maxArea to max(0, 8) = 8.",
-      "array": [
-        1,
-        8,
-        6,
-        2,
-        5,
-        4,
-        8,
-        3,
-        7
-      ],
-      "i": 0,
-      "j": 8
-    },
-    {
-      "codeLine": 6,
-      "note": "height[left] (1) < height[right] (7), so move left pointer inward.",
-      "array": [
-        1,
-        8,
-        6,
-        2,
-        5,
-        4,
-        8,
-        3,
-        7
-      ],
-      "i": 0,
-      "j": 8
-    },
-    {
-      "codeLine": 7,
-      "note": "Increment left pointer to index 1.",
+      "note": "height[0] < height[8] (1 < 7), increment left.",
       "array": [
         1,
         8,
@@ -130,41 +64,7 @@
     },
     {
       "codeLine": 3,
-      "note": "Check loop condition: left (1) < right (8).",
-      "array": [
-        1,
-        8,
-        6,
-        2,
-        5,
-        4,
-        8,
-        3,
-        7
-      ],
-      "i": 1,
-      "j": 8
-    },
-    {
-      "codeLine": 4,
-      "note": "Calculate area: min(8, 7) * (8 - 1) = 7 * 7 = 49.",
-      "array": [
-        1,
-        8,
-        6,
-        2,
-        5,
-        4,
-        8,
-        3,
-        7
-      ],
-      "i": 1,
-      "j": 8
-    },
-    {
-      "codeLine": 5,
-      "note": "Update maxArea to max(8, 49) = 49.",
+      "note": "Calculate area: min(8, 7) * 7 = 49. Max area is 49.",
       "array": [
         1,
         8,
@@ -181,24 +81,7 @@
     },
     {
       "codeLine": 6,
-      "note": "height[left] (8) >= height[right] (7), so move right pointer inward.",
-      "array": [
-        1,
-        8,
-        6,
-        2,
-        5,
-        4,
-        8,
-        3,
-        7
-      ],
-      "i": 1,
-      "j": 8
-    },
-    {
-      "codeLine": 9,
-      "note": "Decrement right pointer to index 7.",
+      "note": "height[1] > height[8] (8 > 7), decrement right.",
       "array": [
         1,
         8,
@@ -215,41 +98,7 @@
     },
     {
       "codeLine": 3,
-      "note": "Check loop condition: left (1) < right (7).",
-      "array": [
-        1,
-        8,
-        6,
-        2,
-        5,
-        4,
-        8,
-        3,
-        7
-      ],
-      "i": 1,
-      "j": 7
-    },
-    {
-      "codeLine": 4,
-      "note": "Calculate area: min(8, 3) * (7 - 1) = 3 * 6 = 18.",
-      "array": [
-        1,
-        8,
-        6,
-        2,
-        5,
-        4,
-        8,
-        3,
-        7
-      ],
-      "i": 1,
-      "j": 7
-    },
-    {
-      "codeLine": 5,
-      "note": "maxArea remains 49 as max(49, 18) = 49.",
+      "note": "Calculate area: min(8, 3) * 6 = 18. Max area remains 49.",
       "array": [
         1,
         8,
@@ -266,24 +115,7 @@
     },
     {
       "codeLine": 6,
-      "note": "height[left] (8) >= height[right] (3), so move right pointer inward.",
-      "array": [
-        1,
-        8,
-        6,
-        2,
-        5,
-        4,
-        8,
-        3,
-        7
-      ],
-      "i": 1,
-      "j": 7
-    },
-    {
-      "codeLine": 9,
-      "note": "Decrement right pointer to index 6.",
+      "note": "height[1] > height[7] (8 > 3), decrement right.",
       "array": [
         1,
         8,
@@ -300,41 +132,7 @@
     },
     {
       "codeLine": 3,
-      "note": "Check loop condition: left (1) < right (6).",
-      "array": [
-        1,
-        8,
-        6,
-        2,
-        5,
-        4,
-        8,
-        3,
-        7
-      ],
-      "i": 1,
-      "j": 6
-    },
-    {
-      "codeLine": 4,
-      "note": "Calculate area: min(8, 8) * (6 - 1) = 8 * 5 = 40.",
-      "array": [
-        1,
-        8,
-        6,
-        2,
-        5,
-        4,
-        8,
-        3,
-        7
-      ],
-      "i": 1,
-      "j": 6
-    },
-    {
-      "codeLine": 5,
-      "note": "maxArea remains 49 as max(49, 40) = 49.",
+      "note": "Calculate area: min(8, 8) * 5 = 40. Max area remains 49.",
       "array": [
         1,
         8,
@@ -351,24 +149,7 @@
     },
     {
       "codeLine": 6,
-      "note": "height[left] (8) >= height[right] (8), move right pointer inward.",
-      "array": [
-        1,
-        8,
-        6,
-        2,
-        5,
-        4,
-        8,
-        3,
-        7
-      ],
-      "i": 1,
-      "j": 6
-    },
-    {
-      "codeLine": 9,
-      "note": "Decrement right pointer to index 5.",
+      "note": "height[1] == height[6] (8 == 8), decrement right.",
       "array": [
         1,
         8,
@@ -382,174 +163,7 @@
       ],
       "i": 1,
       "j": 5
-    },
-    {
-      "codeLine": 4,
-      "note": "Calculate area: min(8, 4) * (5 - 1) = 4 * 4 = 16.",
-      "array": [
-        1,
-        8,
-        6,
-        2,
-        5,
-        4,
-        8,
-        3,
-        7
-      ],
-      "i": 1,
-      "j": 5
-    },
-    {
-      "codeLine": 9,
-      "note": "Decrement right pointer to index 4.",
-      "array": [
-        1,
-        8,
-        6,
-        2,
-        5,
-        4,
-        8,
-        3,
-        7
-      ],
-      "i": 1,
-      "j": 4
-    },
-    {
-      "codeLine": 4,
-      "note": "Calculate area: min(8, 5) * (4 - 1) = 5 * 3 = 15.",
-      "array": [
-        1,
-        8,
-        6,
-        2,
-        5,
-        4,
-        8,
-        3,
-        7
-      ],
-      "i": 1,
-      "j": 4
-    },
-    {
-      "codeLine": 9,
-      "note": "Decrement right pointer to index 3.",
-      "array": [
-        1,
-        8,
-        6,
-        2,
-        5,
-        4,
-        8,
-        3,
-        7
-      ],
-      "i": 1,
-      "j": 3
-    },
-    {
-      "codeLine": 4,
-      "note": "Calculate area: min(8, 2) * (3 - 1) = 2 * 2 = 4.",
-      "array": [
-        1,
-        8,
-        6,
-        2,
-        5,
-        4,
-        8,
-        3,
-        7
-      ],
-      "i": 1,
-      "j": 3
-    },
-    {
-      "codeLine": 9,
-      "note": "Decrement right pointer to index 2.",
-      "array": [
-        1,
-        8,
-        6,
-        2,
-        5,
-        4,
-        8,
-        3,
-        7
-      ],
-      "i": 1,
-      "j": 2
-    },
-    {
-      "codeLine": 4,
-      "note": "Calculate area: min(8, 6) * (2 - 1) = 6 * 1 = 6.",
-      "array": [
-        1,
-        8,
-        6,
-        2,
-        5,
-        4,
-        8,
-        3,
-        7
-      ],
-      "i": 1,
-      "j": 2
-    },
-    {
-      "codeLine": 9,
-      "note": "Decrement right pointer to index 1.",
-      "array": [
-        1,
-        8,
-        6,
-        2,
-        5,
-        4,
-        8,
-        3,
-        7
-      ],
-      "i": 1,
-      "j": 1
-    },
-    {
-      "codeLine": 3,
-      "note": "Check loop condition: left (1) is not < right (1). Loop terminates.",
-      "array": [
-        1,
-        8,
-        6,
-        2,
-        5,
-        4,
-        8,
-        3,
-        7
-      ],
-      "i": 1,
-      "j": 1
-    },
-    {
-      "codeLine": 10,
-      "note": "Return maxArea = 49.",
-      "array": [
-        1,
-        8,
-        6,
-        2,
-        5,
-        4,
-        8,
-        3,
-        7
-      ]
     }
-  ]
+  ],
+  "fullDescription": "<p>You are given an integer array <code>height</code> of length <code>n</code>. There are <code>n</code> vertical lines drawn such that the two endpoints of the <code>i<sup>th</sup></code> line are <code>(i, 0)</code> and <code>(i, height[i])</code>.</p>\n\n<p>Find two lines that together with the x-axis form a container, such that the container contains the most water.</p>\n\n<p>Return <em>the maximum amount of water a container can store</em>.</p>\n\n<p><strong>Notice</strong> that you may not slant the container.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n<img alt=\"\" src=\"https://s3-lc-upload.s3.amazonaws.com/uploads/2018/07/17/question_11.jpg\" style=\"width: 600px; height: 287px;\" />\n<pre>\n<strong>Input:</strong> height = [1,8,6,2,5,4,8,3,7]\n<strong>Output:</strong> 49\n<strong>Explanation:</strong> The above vertical lines are represented by array [1,8,6,2,5,4,8,3,7]. In this case, the max area of water (blue section) the container can contain is 49.\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> height = [1,1]\n<strong>Output:</strong> 1\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>n == height.length</code></li>\n\t<li><code>2 &lt;= n &lt;= 10<sup>5</sup></code></li>\n\t<li><code>0 &lt;= height[i] &lt;= 10<sup>4</sup></code></li>\n</ul>\n"
 }

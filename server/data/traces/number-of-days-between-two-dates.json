@@ -1,0 +1,55 @@
+{
+  "title": "Number of Days Between Two Dates",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Math",
+    "String"
+  ],
+  "description": "Calculate the number of days between two dates given as strings YYYY-MM-DD.",
+  "pseudocode": "1. function daysBetween(date1, date2) {\n2.   const d1 = new Date(date1);\n3.   const d2 = new Date(date2);\n4.   const diffTime = Math.abs(d2 - d1);\n5.   const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));\n6.   return diffDays;\n7. }",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Initialize Date object for '2023-01-01'",
+      "array": [
+        2023,
+        1,
+        1
+      ],
+      "curr": 2023
+    },
+    {
+      "codeLine": 3,
+      "note": "Initialize Date object for '2023-01-05'",
+      "array": [
+        2023,
+        1,
+        5
+      ],
+      "curr": 2023
+    },
+    {
+      "codeLine": 4,
+      "note": "Calculate absolute difference in milliseconds",
+      "array": [
+        345600000
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Convert milliseconds to days: 345600000 / 86400000",
+      "array": [
+        4
+      ],
+      "curr": 345600000
+    },
+    {
+      "codeLine": 6,
+      "note": "Return result",
+      "array": [
+        4
+      ]
+    }
+  ]
+}

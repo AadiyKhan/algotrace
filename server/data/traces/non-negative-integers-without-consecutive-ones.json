@@ -1,76 +1,99 @@
 {
-  "title": "Non-Negative Integers without Consecutive Ones",
+  "title": "Non-negative Integers without Consecutive Ones",
   "difficulty": "Hard",
   "type": "array",
   "tags": [
     "Dynamic Programming",
     "Bit Manipulation"
   ],
-  "description": "Find the count of non-negative integers less than or equal to n, whose binary representations do not contain consecutive ones.",
+  "description": "Count integers in range [0, n] with no consecutive 1s in binary.",
   "target": 5,
-  "pseudocode": "1: binary = n.toString(2)\n2: dp = new Array(binary.length).fill(0)\n3: dp[0] = 1, dp[1] = 2\n4: for i from 2 to binary.length-1:\n5:   dp[i] = dp[i-1] + dp[i-2]\n6: result = 0, prev_bit = 0\n7: for i from binary.length-1 down to 0:\n8:   if (binary[bit_pos] == '1'):\n9:     result += dp[bit_pos]\n10:    if (prev_bit == 1) return result\n11:    prev_bit = 1\n12: return result + 1",
+  "pseudocode": "1. Convert n to binary string\n2. Initialize fib array f[0]=1, f[1]=2, f[i]=f[i-1]+f[i-2]\n3. Iterate from bits high to low\n4. If bit is 1, add f[i] to result, check for consecutive ones\n5. Return result + 1",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Convert n=5 to binary string '101'",
+      "note": "Binary representation of 5 is '101'",
       "array": [
         1,
         0,
         1
-      ]
+      ],
+      "curr": 5
     },
     {
       "codeLine": 2,
-      "note": "Initialize DP table for lengths",
+      "note": "Fibonacci sequence: f[0]=1, f[1]=2, f[2]=3",
       "array": [
         1,
         2,
         3
-      ]
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Check bit at index 2 (value 1)",
+      "array": [
+        1,
+        0,
+        1
+      ],
+      "i": 2,
+      "curr": 2
     },
     {
       "codeLine": 4,
-      "note": "Calculate Fibonacci-like sequence for bit patterns",
+      "note": "Bit is 1, add f[2] (3) to result. Result = 3",
       "array": [
         1,
-        2,
-        3
-      ]
+        0,
+        1
+      ],
+      "i": 2,
+      "curr": 1
     },
     {
-      "codeLine": 7,
-      "note": "Iterate bits from left to right. bit_pos = 2 (msb)",
-      "i": 2
+      "codeLine": 3,
+      "note": "Check bit at index 1 (value 0)",
+      "array": [
+        1,
+        0,
+        1
+      ],
+      "i": 1,
+      "curr": 1
     },
     {
-      "codeLine": 8,
-      "note": "Bit is 1, add dp[2] (3) to result",
-      "i": 2
+      "codeLine": 3,
+      "note": "Check bit at index 0 (value 1)",
+      "array": [
+        1,
+        0,
+        1
+      ],
+      "i": 0,
+      "curr": 0
     },
     {
-      "codeLine": 9,
-      "note": "Result becomes 3",
-      "i": 2
+      "codeLine": 4,
+      "note": "Bit is 1, add f[0] (1) to result. Result = 4",
+      "array": [
+        1,
+        0,
+        1
+      ],
+      "i": 0,
+      "curr": 1
     },
     {
-      "codeLine": 7,
-      "note": "Next bit_pos = 1",
-      "i": 1
-    },
-    {
-      "codeLine": 7,
-      "note": "Next bit_pos = 0",
-      "i": 0
-    },
-    {
-      "codeLine": 8,
-      "note": "Bit is 1, add dp[0] (1) to result. Result = 4",
-      "i": 0
-    },
-    {
-      "codeLine": 12,
-      "note": "Return result + 1 = 5",
-      "i": 0
+      "codeLine": 5,
+      "note": "Final calculation: Result + 1 = 5",
+      "array": [
+        1,
+        0,
+        1
+      ],
+      "curr": 1
     }
   ]
 }

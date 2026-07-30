@@ -1,0 +1,68 @@
+{
+  "title": "Check If a String Can Break Another String",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "String",
+    "Greedy",
+    "Sorting"
+  ],
+  "description": "Determine if a permutation of s1 can break a permutation of s2 by sorting both strings and comparing characters at each index.",
+  "target": null,
+  "pseudocode": "1. Sort s1 as s1_sorted\n2. Sort s2 as s2_sorted\n3. Check if s1_sorted >= s2_sorted for all i\n4. Check if s2_sorted >= s1_sorted for all i\n5. Return result",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Sort s1: 'abc' -> 'a', 'b', 'c'",
+      "array": [
+        "a",
+        "b",
+        "c"
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Sort s2: 'xya' -> 'a', 'x', 'y'",
+      "array": [
+        "a",
+        "x",
+        "y"
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Comparing s1_sorted[i] >= s2_sorted[i]: 'a'>='a'(T), 'b'>='x'(F)",
+      "i": 0,
+      "array": [
+        "a",
+        "b",
+        "c"
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Comparing s2_sorted[i] >= s1_sorted[i]: 'a'>='a'(T), 'x'>='b'(T), 'y'>='c'(T)",
+      "i": 1,
+      "array": [
+        "a",
+        "x",
+        "y"
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Found that s2_sorted breaks s1_sorted. Returning true.",
+      "array": [
+        "a",
+        "x",
+        "y"
+      ],
+      "curr": 2
+    }
+  ]
+}

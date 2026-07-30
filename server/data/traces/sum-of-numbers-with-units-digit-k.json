@@ -1,0 +1,68 @@
+{
+  "title": "Sum of Numbers With Units Digit K",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Math",
+    "Dynamic Programming",
+    "Greedy"
+  ],
+  "description": "Find the minimum size of a set of integers with units digit k that sum to num.",
+  "target": 58,
+  "pseudocode": "1. If num == 0 return 0\n2. For i from 1 to 10:\n3.   If (num - i * k) % 10 == 0 and (num - i * k) >= 0:\n4.     Return i\n5. Return -1",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Check if num is 0",
+      "array": [
+        58
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Start loop to check set sizes i from 1 to 10",
+      "array": [
+        58
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Check i=1: (58 - 9) = 49. 49 % 10 != 0.",
+      "array": [
+        58
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Increment i to 2",
+      "array": [
+        58
+      ],
+      "i": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Check i=2: (58 - 2*9) = 58 - 18 = 40. 40 % 10 == 0 and 40 >= 0.",
+      "array": [
+        58
+      ],
+      "i": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Condition met, return size i=2",
+      "array": [
+        58
+      ],
+      "i": 2,
+      "curr": 2
+    }
+  ]
+}

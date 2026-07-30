@@ -1,0 +1,176 @@
+{
+  "title": "Frog Position After T Seconds",
+  "difficulty": "Hard",
+  "type": "graph",
+  "tags": [
+    "Graph",
+    "DFS",
+    "Probability"
+  ],
+  "description": "Calculate the probability that a frog is at a specific target node after t seconds, starting from node 1.",
+  "target": 4,
+  "pseudocode": "1. queue = [{node: 1, prob: 1.0}]\n2. visited = {1}\n3. for time in 0 to t-1:\n4.   next_layer = []\n5.   for each {u, prob} in queue:\n6.     neighbors = adj[u] - visited\n7.     for v in neighbors:\n8.       next_layer.append({node: v, prob: prob / neighbors.length})\n9.   queue = next_layer\n10.  visited.add(all nodes in next_layer)\n11. return probability of target",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize queue with start node 1 at probability 1.0",
+      "graphNodes": [
+        {
+          "id": 1,
+          "val": 1
+        },
+        {
+          "id": 2,
+          "val": 2
+        },
+        {
+          "id": 3,
+          "val": 3
+        },
+        {
+          "id": 4,
+          "val": 4
+        }
+      ],
+      "graphEdges": [
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          4
+        ]
+      ],
+      "visited": [
+        1
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Time step 0: Frog at 1, neighbors are 2 and 3. Probability splits.",
+      "graphNodes": [
+        {
+          "id": 1,
+          "val": 1
+        },
+        {
+          "id": 2,
+          "val": 2
+        },
+        {
+          "id": 3,
+          "val": 3
+        },
+        {
+          "id": 4,
+          "val": 4
+        }
+      ],
+      "graphEdges": [
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          4
+        ]
+      ],
+      "visited": [
+        1
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "At time 1, frog is at 2 or 3 with 0.5 probability each.",
+      "graphNodes": [
+        {
+          "id": 1,
+          "val": 1
+        },
+        {
+          "id": 2,
+          "val": 2
+        },
+        {
+          "id": 3,
+          "val": 3
+        },
+        {
+          "id": 4,
+          "val": 4
+        }
+      ],
+      "graphEdges": [
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          4
+        ]
+      ],
+      "visited": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "codeLine": 9,
+      "note": "At time 2, frog moves from 2 to 4. Probability = 0.5 * 1.0 = 0.5",
+      "graphNodes": [
+        {
+          "id": 1,
+          "val": 1
+        },
+        {
+          "id": 2,
+          "val": 2
+        },
+        {
+          "id": 3,
+          "val": 3
+        },
+        {
+          "id": 4,
+          "val": 4
+        }
+      ],
+      "graphEdges": [
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          4
+        ]
+      ],
+      "visited": [
+        1,
+        2,
+        3,
+        4
+      ]
+    }
+  ]
+}

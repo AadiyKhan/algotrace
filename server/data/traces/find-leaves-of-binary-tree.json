@@ -4,15 +4,16 @@
   "type": "tree",
   "tags": [
     "Tree",
-    "DFS",
+    "Depth-First Search",
     "Binary Tree"
   ],
-  "description": "Collect and remove all leaves of a binary tree level by level until the tree is empty.",
-  "pseudocode": "1. function getHeight(node) {\n2.   if (!node) return -1;\n3.   let leftHeight = getHeight(node.left);\n4.   let rightHeight = getHeight(node.right);\n5.   let height = Math.max(leftHeight, rightHeight) + 1;\n6.   result[height].push(node.val);\n7.   return height;\n8. }",
+  "description": "Collect and remove leaves of a binary tree level by level until empty.",
+  "target": null,
+  "pseudocode": "1. dfs(node, result):\n2. if !node return -1\n3. height = 1 + max(dfs(node.left), dfs(node.right))\n4. result[height].append(node.val)\n5. return height",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Starting DFS to find height of nodes. Tree: [1,2,3,4,5]",
+      "note": "Initialize DFS to find depths of nodes in [1, 2, 3, 4, 5].",
       "treeNodes": [
         {
           "id": 0,
@@ -44,77 +45,193 @@
           "left": null,
           "right": null
         }
-      ]
-    },
-    {
-      "codeLine": 3,
-      "note": "Traversing to node 4 (leaf), height will be 0",
-      "curr": 3
-    },
-    {
-      "codeLine": 6,
-      "note": "Node 4 is a leaf (height 0), added to result[0]",
-      "visited": [
-        3
-      ]
-    },
-    {
-      "codeLine": 3,
-      "note": "Traversing to node 5 (leaf), height will be 0",
-      "curr": 4
-    },
-    {
-      "codeLine": 6,
-      "note": "Node 5 is a leaf (height 0), added to result[0]",
-      "visited": [
-        3,
-        4
-      ]
-    },
-    {
-      "codeLine": 5,
-      "note": "Node 2 has children 4,5. Height is max(0,0)+1 = 1",
+      ],
       "curr": 1
     },
     {
-      "codeLine": 6,
-      "note": "Node 2 is level 1, added to result[1]",
-      "visited": [
-        3,
-        4,
-        1
-      ]
+      "codeLine": 3,
+      "note": "Reached leaf node 4 (height 0), add to result.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 4,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 5,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 4
+    },
+    {
+      "codeLine": 3,
+      "note": "Reached leaf node 5 (height 0), add to result.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 4,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 5,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 5
+    },
+    {
+      "codeLine": 3,
+      "note": "Reached leaf node 3 (height 0), add to result.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 4,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 5,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 3
     },
     {
       "codeLine": 4,
-      "note": "Node 3 is leaf, height 0",
+      "note": "Node 2 (height 1) processed after children 4 and 5.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 4,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 5,
+          "left": null,
+          "right": null
+        }
+      ],
       "curr": 2
     },
     {
-      "codeLine": 6,
-      "note": "Node 3 is level 0, added to result[0]",
-      "visited": [
-        3,
-        4,
-        1,
-        2
-      ]
-    },
-    {
-      "codeLine": 5,
-      "note": "Node 1 has children 2 (h=1) and 3 (h=0). Height is max(1,0)+1 = 2",
-      "curr": 0
-    },
-    {
-      "codeLine": 6,
-      "note": "Node 1 is level 2, added to result[2]",
-      "visited": [
-        3,
-        4,
-        1,
-        2,
-        0
-      ]
+      "codeLine": 4,
+      "note": "Root node 1 (height 2) processed last.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 4,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 5,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 1
     }
   ]
 }

@@ -1,0 +1,87 @@
+{
+  "title": "Closest Divisors",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Math"
+  ],
+  "description": "Find two integers whose product is num+1 or num+2 with the smallest absolute difference.",
+  "target": 8,
+  "pseudocode": "1. For val in [num+2, num+1]:\n2.   root = sqrt(val)\n3.   For i from root down to 1:\n4.     If val % i == 0:\n5.       Return [i, val/i]",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Start searching divisors for num + 2 = 10",
+      "array": [
+        10
+      ],
+      "i": null,
+      "curr": 2
+    },
+    {
+      "codeLine": 2,
+      "note": "Calculate square root of 10, approx 3.16",
+      "array": [
+        10
+      ],
+      "i": 3,
+      "curr": 10
+    },
+    {
+      "codeLine": 3,
+      "note": "Check i = 3: 10 % 3 != 0",
+      "array": [
+        10
+      ],
+      "i": 3,
+      "curr": 3
+    },
+    {
+      "codeLine": 3,
+      "note": "Check i = 2: 10 % 2 == 0. Found factors [2, 5]",
+      "array": [
+        2,
+        5
+      ],
+      "i": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 1,
+      "note": "Switch to num + 1 = 9",
+      "array": [
+        9
+      ],
+      "i": null,
+      "curr": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Calculate square root of 9, which is 3",
+      "array": [
+        9
+      ],
+      "i": 3,
+      "curr": 9
+    },
+    {
+      "codeLine": 4,
+      "note": "Check i = 3: 9 % 3 == 0. Found factors [3, 3]",
+      "array": [
+        3,
+        3
+      ],
+      "i": 3,
+      "curr": 3
+    },
+    {
+      "codeLine": 5,
+      "note": "Difference between 3 and 3 is 0, which is smaller than difference between 2 and 5 (3). Return [3, 3]",
+      "array": [
+        3,
+        3
+      ],
+      "curr": 3
+    }
+  ]
+}

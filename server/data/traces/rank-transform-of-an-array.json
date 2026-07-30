@@ -1,0 +1,50 @@
+{
+  "title": "Rank Transform of an Array",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Sorting",
+    "Hash Table"
+  ],
+  "description": "Replace each element in an array with its rank, where rank is determined by the element's position in the sorted unique elements.",
+  "pseudocode": "1. sorted = [...new Set(arr)].sort((a,b) => a-b)\n2. rankMap = new Map()\n3. for(i=0; i<sorted.length; i++) rankMap.set(sorted[i], i+1)\n4. result = arr.map(x => rankMap.get(x))",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Get unique elements and sort them: [40, 10, 20, 30, 10] -> [10, 20, 30, 40]",
+      "array": [
+        10,
+        20,
+        30,
+        40
+      ],
+      "curr": 40
+    },
+    {
+      "codeLine": 3,
+      "note": "Map ranks: 10->1, 20->2, 30->3, 40->4",
+      "i": 0,
+      "array": [
+        10,
+        20,
+        30,
+        40
+      ],
+      "curr": 10
+    },
+    {
+      "codeLine": 4,
+      "note": "Transform original array [40, 10, 20, 30, 10] using rankMap",
+      "i": 0,
+      "array": [
+        4,
+        1,
+        2,
+        3,
+        1
+      ],
+      "curr": 40
+    }
+  ]
+}

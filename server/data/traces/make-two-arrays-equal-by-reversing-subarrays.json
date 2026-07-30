@@ -1,0 +1,116 @@
+{
+  "title": "Make Two Arrays Equal by Reversing Subarrays",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "Sorting"
+  ],
+  "description": "Determine if two arrays can be made equal by reversing subarrays, which is equivalent to checking if they have the same frequency of elements.",
+  "target": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "pseudocode": "1. Create frequency map for target\n2. Decrement counts using arr elements\n3. If all counts are zero, return true",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize frequency map from target [1, 2, 3, 4]",
+      "array": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "visited": [
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Process arr[0]=2, decrement count for 2",
+      "array": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "visited": [
+        1,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Process arr[1]=4, decrement count for 4",
+      "array": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "visited": [
+        1,
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Process arr[2]=1, decrement count for 1",
+      "array": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "visited": [
+        0,
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Process arr[3]=3, decrement count for 3",
+      "array": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "visited": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "All frequencies are zero, return true",
+      "array": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "visited": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ]
+}

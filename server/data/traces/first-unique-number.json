@@ -1,0 +1,71 @@
+{
+  "title": "First Unique Number",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "Design"
+  ],
+  "description": "Maintain a queue of unique numbers and a frequency map to identify the first non-repeating integer.",
+  "target": null,
+  "pseudocode": "1. map = new Map(); queue = [];\n2. for num in nums: add(num);\n3. function add(num):\n4.   map.set(num, (map.get(num) || 0) + 1);\n5.   if (map.get(num) == 1) queue.push(num);\n6. function showFirstUnique():\n7.   while (queue.length > 0 && map.get(queue[0]) > 1) queue.shift();\n8.   return queue.length > 0 ? queue[0] : -1;",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Initializing with [2, 3, 2]",
+      "array": [
+        2,
+        3,
+        2
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Processing 2: map={2:1}, queue=[2]",
+      "array": [
+        2
+      ],
+      "i": 0,
+      "curr": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Processing 3: map={2:1, 3:1}, queue=[2, 3]",
+      "array": [
+        2,
+        3
+      ],
+      "i": 1,
+      "curr": 3
+    },
+    {
+      "codeLine": 4,
+      "note": "Processing second 2: map={2:2, 3:1}",
+      "array": [
+        2,
+        3,
+        2
+      ],
+      "i": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 7,
+      "note": "showFirstUnique: 2 is not unique, removing from queue",
+      "array": [
+        3
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 8,
+      "note": "Returning 3 as the first unique number",
+      "array": [
+        3
+      ],
+      "curr": 3
+    }
+  ]
+}

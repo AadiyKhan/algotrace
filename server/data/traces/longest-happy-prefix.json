@@ -1,0 +1,93 @@
+{
+  "title": "Longest Happy Prefix",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "String",
+    "KMP Algorithm"
+  ],
+  "description": "Find the longest prefix of a string that is also a suffix (excluding the full string itself) using KMP failure function.",
+  "target": "level",
+  "pseudocode": "1: lps = new Array(n).fill(0)\n2: j = 0\n3: for i from 1 to n-1:\n4:   while j > 0 and s[i] != s[j]: j = lps[j-1]\n5:   if s[i] == s[j]: j++\n6:   lps[i] = j\n7: return s.substring(0, j)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize LPS table with zeros for string 'level'.",
+      "array": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Start loop at index i=1 ('e'). s[1] != s[0] ('e' != 'l').",
+      "array": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "i": 1,
+      "j": 0,
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Move to index i=2 ('v'). s[2] != s[0] ('v' != 'l').",
+      "array": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "i": 2,
+      "j": 0,
+      "curr": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Move to index i=3 ('e'). s[3] != s[0] ('e' != 'l').",
+      "array": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "i": 3,
+      "j": 0,
+      "curr": 3
+    },
+    {
+      "codeLine": 5,
+      "note": "Move to index i=4 ('l'). s[4] == s[0] ('l' == 'l'). Increment j.",
+      "array": [
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "i": 4,
+      "j": 1,
+      "curr": 4
+    },
+    {
+      "codeLine": 7,
+      "note": "Final j=1. Prefix 'l' matches suffix 'l'.",
+      "array": [
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "curr": 1
+    }
+  ]
+}

@@ -3,38 +3,86 @@
   "difficulty": "Hard",
   "type": "matrix",
   "tags": [
+    "Array",
     "Matrix",
-    "DFS",
-    "Graph",
-    "Geometry"
+    "Depth-First Search"
   ],
-  "description": "Count the number of distinct islands, where islands are considered the same if they are rotations or reflections of each other.",
-  "pseudocode": "1. Find all islands using DFS\n2. For each island, generate all 8 symmetries (rotations/reflections)\n3. Normalize each symmetry by shifting to (0,0)\n4. Store the lexicographically smallest normalized form in a Set\n5. Return set size",
+  "description": "Count distinct islands in a grid considering rotation and reflection symmetries.",
+  "target": 1,
+  "pseudocode": "1. Find all islands using DFS\n2. For each island, generate all 8 canonical representations (rotations/reflections)\n3. Normalize representations by shifting to origin\n4. Add smallest representation to a set\n5. Return size of the set",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initial grid setup with two shapes that are rotations of each other",
+      "note": "Traversing grid to find the first island at (0,0)",
       "matrix": [
         [
           1,
           1,
+          0,
+          0,
           0
         ],
         [
           1,
           0,
+          0,
+          0,
           0
         ],
         [
           0,
           0,
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
           1
         ]
+      ],
+      "visited": [],
+      "curr": [
+        0,
+        0
       ]
     },
     {
       "codeLine": 1,
-      "note": "DFS identifies the first island at [(0,0), (0,1), (1,0)]",
+      "note": "DFS complete for island at [(0,0), (0,1), (1,0)]",
+      "matrix": [
+        [
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          1
+        ]
+      ],
       "visited": [
         [
           0,
@@ -52,44 +100,204 @@
     },
     {
       "codeLine": 2,
-      "note": "Calculating 8 symmetries for island 1",
-      "curr": [
-        0,
-        0
-      ]
-    },
-    {
-      "codeLine": 3,
-      "note": "Normalizing shape 1 relative to its top-left coordinate",
-      "curr": [
-        0,
-        0
+      "note": "Generating 8 canonical forms for the first island",
+      "matrix": [
+        [
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          1
+        ]
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
       ]
     },
     {
       "codeLine": 1,
-      "note": "DFS identifies the second island at [(2,2)]",
+      "note": "Found second island at (2,4)",
+      "matrix": [
+        [
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          1
+        ]
+      ],
       "visited": [
         [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
           2,
-          2
+          4
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          3,
+          4
         ]
       ]
     },
     {
       "codeLine": 4,
-      "note": "Comparing normalized forms; adding unique shapes to set",
-      "curr": [
-        2,
-        2
+      "note": "Comparing canonical forms. The two islands are distinct under rotation/reflection.",
+      "matrix": [
+        [
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          1
+        ]
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          3,
+          4
+        ]
       ]
     },
     {
       "codeLine": 5,
-      "note": "Final count of distinct islands",
-      "curr": [
-        2,
-        2
+      "note": "Final count of distinct islands is 2",
+      "matrix": [
+        [
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          1
+        ]
       ]
     }
   ]

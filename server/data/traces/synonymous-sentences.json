@@ -1,0 +1,50 @@
+{
+  "title": "Synonymous Sentences",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "String",
+    "Backtracking"
+  ],
+  "description": "Generate all possible synonymous sentences given a list of synonym pairs.",
+  "target": "text = 'happy joy', synonyms = [['happy', 'joy'], ['cheerful', 'glad']]",
+  "pseudocode": "1. Build adjacency list of synonyms\n2. Use DFS to generate all combinations\n3. Sort result list lexicographically",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Building synonym map: {happy: [joy], joy: [happy], cheerful: [glad], glad: [cheerful]}",
+      "array": [
+        "happy",
+        "joy"
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "DFS path 1: starting with 'happy', replaces with 'joy'",
+      "array": [
+        "joy",
+        "joy"
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "DFS path 2: keeping original 'happy' and 'joy'",
+      "array": [
+        "happy",
+        "joy"
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Sorting results lexicographically",
+      "array": [
+        "happy joy",
+        "joy joy"
+      ]
+    }
+  ]
+}

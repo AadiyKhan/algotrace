@@ -1,0 +1,121 @@
+{
+  "title": "All Elements in Two Binary Search Trees",
+  "difficulty": "Medium",
+  "type": "tree",
+  "tags": [
+    "Tree",
+    "Binary Search Tree",
+    "Depth-First Search",
+    "Sorting"
+  ],
+  "description": "Return a list of all elements from two binary search trees sorted in ascending order.",
+  "pseudocode": "1. function traverse(node, list) { if (!node) return; traverse(node.left, list); list.push(node.val); traverse(node.right, list); }\n2. function getAllElements(root1, root2) { let l1 = [], l2 = []; traverse(root1, l1); traverse(root2, l2); return merge(l1, l2); }",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Traversing first tree (root1: [2, 1, 4])",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 2,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 4,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 1,
+      "note": "List 1 updated after in-order traversal: [1, 2, 4]",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 2,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 4,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 1,
+      "note": "Traversing second tree (root2: [1, 0, 3])",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 0,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 1,
+      "note": "List 2 updated after in-order traversal: [0, 1, 3]",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 0,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 2,
+      "note": "Merging sorted lists [1, 2, 4] and [0, 1, 3] into result: [0, 1, 1, 2, 3, 4]",
+      "treeNodes": [],
+      "curr": 1
+    }
+  ]
+}

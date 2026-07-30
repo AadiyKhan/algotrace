@@ -1,0 +1,87 @@
+{
+  "title": "Robot Bounded In Circle",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Math",
+    "String",
+    "Simulation"
+  ],
+  "description": "Determine if the robot stays within a bounded circle by simulating movement.",
+  "target": true,
+  "pseudocode": "1. x, y = 0, 0; dx, dy = 0, 1\n2. for char in instructions:\n3.   if char == 'G': x += dx; y += dy\n4.   else if char == 'L': dx, dy = -dy, dx\n5.   else if char == 'R': dx, dy = dy, -dx\n6. return (x == 0 and y == 0) or (dx != 0 or dy != 1)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize position at (0,0) facing North (0,1).",
+      "array": [
+        0,
+        0
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Process 'G': Move North to (0, 1).",
+      "array": [
+        0,
+        1
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Process 'G': Move North to (0, 2).",
+      "array": [
+        0,
+        2
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Process 'L': Turn left, now facing West (-1, 0).",
+      "array": [
+        0,
+        2
+      ],
+      "curr": -1
+    },
+    {
+      "codeLine": 4,
+      "note": "Process 'L': Turn left, now facing South (0, -1).",
+      "array": [
+        0,
+        2
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Process 'G': Move South to (0, 1).",
+      "array": [
+        0,
+        1
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Process 'G': Move South to (0, 0).",
+      "array": [
+        0,
+        0
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Final position is (0,0), returns true.",
+      "array": [
+        0,
+        0
+      ],
+      "curr": 0
+    }
+  ]
+}

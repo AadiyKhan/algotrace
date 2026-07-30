@@ -3,20 +3,17 @@
   "difficulty": "Easy",
   "type": "array",
   "tags": [
-    "Dynamic Programming",
     "Math",
-    "Memoization"
+    "Dynamic Programming"
   ],
-  "description": "You are climbing a staircase. It takes n steps to reach the top. Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?",
-  "target": 4,
-  "pseudocode": "function climbStairs(n):\n  if n <= 2 return n\n  dp = array of size n + 1\n  dp[1] = 1, dp[2] = 2\n  for i = 3 to n:\n    dp[i] = dp[i - 1] + dp[i - 2]\n  return dp[n]",
+  "description": "Calculate the number of ways to reach the top of n stairs taking 1 or 2 steps at a time.",
+  "target": 2,
+  "pseudocode": "1. dp = array of size n+1 initialized to 0\n2. dp[0] = 1, dp[1] = 1\n3. for i from 2 to n:\n4.   dp[i] = dp[i-1] + dp[i-2]\n5. return dp[n]",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Start function climbStairs with target n = 4.",
+      "note": "Initialize DP array of size 3 for n=2",
       "array": [
-        0,
-        0,
         0,
         0,
         0
@@ -24,84 +21,42 @@
     },
     {
       "codeLine": 2,
-      "note": "Check condition n <= 2. Since 4 > 2, proceed to DP initialization.",
+      "note": "Set base cases for 0 and 1 step",
       "array": [
-        0,
-        0,
-        0,
-        0,
+        1,
+        1,
         0
       ]
     },
     {
       "codeLine": 3,
-      "note": "Initialize base cases: 1 way to reach step 1, 2 ways to reach step 2.",
+      "note": "Start loop to calculate ways for 2 steps",
       "array": [
-        0,
         1,
-        2,
-        0,
+        1,
         0
-      ]
+      ],
+      "i": 2
     },
     {
       "codeLine": 4,
-      "note": "Start loop at i = 3 to calculate ways for step 3.",
+      "note": "dp[2] = dp[1] + dp[0] = 1 + 1 = 2",
       "array": [
-        0,
         1,
-        2,
-        0,
-        0
+        1,
+        2
       ],
-      "i": 3
+      "i": 2
     },
     {
       "codeLine": 5,
-      "note": "Calculate dp[3] = dp[2] + dp[1] = 2 + 1 = 3.",
+      "note": "Return final result at dp[2]",
       "array": [
-        0,
         1,
-        2,
-        3,
-        0
-      ],
-      "i": 3
-    },
-    {
-      "codeLine": 4,
-      "note": "Increment loop counter to i = 4.",
-      "array": [
-        0,
         1,
-        2,
-        3,
-        0
-      ],
-      "i": 4
-    },
-    {
-      "codeLine": 5,
-      "note": "Calculate dp[4] = dp[3] + dp[2] = 3 + 2 = 5.",
-      "array": [
-        0,
-        1,
-        2,
-        3,
-        5
-      ],
-      "i": 4
-    },
-    {
-      "codeLine": 6,
-      "note": "Return dp[4] = 5. There are 5 distinct ways to climb 4 stairs.",
-      "array": [
-        0,
-        1,
-        2,
-        3,
-        5
+        2
       ]
     }
-  ]
+  ],
+  "fullDescription": "<p>You are climbing a staircase. It takes <code>n</code> steps to reach the top.</p>\n\n<p>Each time you can either climb <code>1</code> or <code>2</code> steps. In how many distinct ways can you climb to the top?</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> n = 2\n<strong>Output:</strong> 2\n<strong>Explanation:</strong> There are two ways to climb to the top.\n1. 1 step + 1 step\n2. 2 steps\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> n = 3\n<strong>Output:</strong> 3\n<strong>Explanation:</strong> There are three ways to climb to the top.\n1. 1 step + 1 step + 1 step\n2. 1 step + 2 steps\n3. 2 steps + 1 step\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= n &lt;= 45</code></li>\n</ul>\n"
 }

@@ -21,14 +21,16 @@
       "array": [
         5
       ],
-      "i": 0
+      "i": 0,
+      "curr": 5
     },
     {
       "codeLine": 7,
       "note": "5 is positive, push to stack",
       "array": [
         5
-      ]
+      ],
+      "curr": 5
     },
     {
       "codeLine": 2,
@@ -37,7 +39,8 @@
         5,
         10
       ],
-      "i": 1
+      "i": 1,
+      "curr": 10
     },
     {
       "codeLine": 7,
@@ -45,7 +48,8 @@
       "array": [
         5,
         10
-      ]
+      ],
+      "curr": 10
     },
     {
       "codeLine": 2,
@@ -55,7 +59,8 @@
         10,
         -5
       ],
-      "i": 2
+      "i": 2,
+      "curr": -5
     },
     {
       "codeLine": 3,
@@ -64,7 +69,8 @@
         5,
         10,
         -5
-      ]
+      ],
+      "curr": 10
     },
     {
       "codeLine": 4,
@@ -72,7 +78,8 @@
       "array": [
         5,
         10
-      ]
+      ],
+      "curr": 10
     },
     {
       "codeLine": 2,
@@ -82,7 +89,8 @@
         10,
         -12
       ],
-      "i": 3
+      "i": 3,
+      "curr": -12
     },
     {
       "codeLine": 3,
@@ -91,7 +99,8 @@
         5,
         10,
         -12
-      ]
+      ],
+      "curr": 10
     },
     {
       "codeLine": 4,
@@ -99,7 +108,8 @@
       "array": [
         5,
         -12
-      ]
+      ],
+      "curr": 10
     },
     {
       "codeLine": 3,
@@ -107,21 +117,24 @@
       "array": [
         5,
         -12
-      ]
+      ],
+      "curr": 5
     },
     {
       "codeLine": 4,
       "note": "5 < 12, 5 destroyed",
       "array": [
         -12
-      ]
+      ],
+      "curr": 5
     },
     {
       "codeLine": 7,
       "note": "-12 has no collision, push to stack",
       "array": [
         -12
-      ]
+      ],
+      "curr": -12
     }
   ]
 }

@@ -1,0 +1,74 @@
+{
+  "title": "The k-th Lexicographical String of All Happy Strings of Length n",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "String",
+    "Backtracking",
+    "Recursion"
+  ],
+  "description": "Find the k-th lexicographical happy string of length n, where a happy string contains no same adjacent characters.",
+  "target": "k = 3, n = 3",
+  "pseudocode": "function getHappyString(n, k) {\n  let res = [];\n  function backtrack(s) {\n    if (s.length === n) { res.push(s); return; }\n    for (let char of ['a', 'b', 'c']) {\n      if (s.length === 0 || s[s.length - 1] !== char) {\n        backtrack(s + char);\n      }\n    }\n  }\n  backtrack('');\n  return res[k - 1] || '';\n}",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize result array to store happy strings.",
+      "array": []
+    },
+    {
+      "codeLine": 4,
+      "note": "Start backtracking with an empty string.",
+      "array": []
+    },
+    {
+      "codeLine": 5,
+      "note": "First branch: choose 'a'.",
+      "array": [
+        "a"
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Second depth: choose 'b' (cannot choose 'a').",
+      "array": [
+        "a",
+        "b"
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Third depth: choose 'a'. Found 'aba'.",
+      "array": [
+        "aba"
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Third depth: choose 'c'. Found 'abc'.",
+      "array": [
+        "aba",
+        "abc"
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Backtrack to 'a', choose 'c'.",
+      "array": [
+        "aba",
+        "abc",
+        "aca"
+      ]
+    },
+    {
+      "codeLine": 11,
+      "note": "Reached 3 strings, stop and return the 3rd index (k-1).",
+      "array": [
+        "aba",
+        "abc",
+        "aca"
+      ],
+      "curr": 3
+    }
+  ]
+}

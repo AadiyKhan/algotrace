@@ -16,7 +16,8 @@
       "array": [
         0
       ],
-      "i": 9
+      "i": 9,
+      "curr": 9
     },
     {
       "codeLine": 3,
@@ -24,7 +25,8 @@
       "array": [
         0
       ],
-      "i": 8
+      "i": 8,
+      "curr": 48
     },
     {
       "codeLine": 3,
@@ -32,7 +34,8 @@
       "array": [
         0
       ],
-      "i": 8
+      "i": 8,
+      "curr": 48
     },
     {
       "codeLine": 4,
@@ -40,7 +43,8 @@
       "array": [
         8
       ],
-      "i": 8
+      "i": 8,
+      "curr": 0
     },
     {
       "codeLine": 6,
@@ -48,7 +52,8 @@
       "array": [
         8
       ],
-      "i": 8
+      "i": 8,
+      "curr": 48
     },
     {
       "codeLine": 3,
@@ -56,7 +61,8 @@
       "array": [
         8
       ],
-      "i": 7
+      "i": 7,
+      "curr": 6
     },
     {
       "codeLine": 3,
@@ -64,7 +70,8 @@
       "array": [
         8
       ],
-      "i": 6
+      "i": 6,
+      "curr": 6
     },
     {
       "codeLine": 3,
@@ -72,7 +79,8 @@
       "array": [
         8
       ],
-      "i": 6
+      "i": 6,
+      "curr": 6
     },
     {
       "codeLine": 4,
@@ -80,7 +88,8 @@
       "array": [
         68
       ],
-      "i": 6
+      "i": 6,
+      "curr": 8
     },
     {
       "codeLine": 6,
@@ -88,14 +97,16 @@
       "array": [
         68
       ],
-      "i": 6
+      "i": 6,
+      "curr": 6
     },
     {
       "codeLine": 8,
       "note": "Loop finished, return 68",
       "array": [
         68
-      ]
+      ],
+      "curr": 68
     }
   ]
 }

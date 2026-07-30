@@ -1,0 +1,117 @@
+{
+  "title": "Find the Minimum Number of Fibonacci Numbers Whose Sum Is K",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Greedy",
+    "Math"
+  ],
+  "description": "Find the minimum number of Fibonacci numbers whose sum is equal to k.",
+  "target": 19,
+  "pseudocode": "1. Generate all Fibonacci numbers <= k\n2. Iterate backwards from the largest Fibonacci number\n3. If current fib <= k, subtract it from k and increment count\n4. Repeat until k becomes 0",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Generate Fibonacci sequence up to 19: [1, 1, 2, 3, 5, 8, 13]",
+      "array": [
+        1,
+        1,
+        2,
+        3,
+        5,
+        8,
+        13
+      ],
+      "curr": 19
+    },
+    {
+      "codeLine": 2,
+      "note": "Start from largest: 13. 13 <= 19, so take 13. Remaining k: 6",
+      "array": [
+        1,
+        1,
+        2,
+        3,
+        5,
+        8,
+        13
+      ],
+      "i": 6,
+      "curr": 13
+    },
+    {
+      "codeLine": 3,
+      "note": "Next is 8. 8 > 6, skip.",
+      "array": [
+        1,
+        1,
+        2,
+        3,
+        5,
+        8,
+        13
+      ],
+      "i": 5,
+      "curr": 8
+    },
+    {
+      "codeLine": 3,
+      "note": "Next is 5. 5 <= 6, so take 5. Remaining k: 1",
+      "array": [
+        1,
+        1,
+        2,
+        3,
+        5,
+        8,
+        13
+      ],
+      "i": 4,
+      "curr": 5
+    },
+    {
+      "codeLine": 3,
+      "note": "Next is 3, 2: both > 1, skip.",
+      "array": [
+        1,
+        1,
+        2,
+        3,
+        5,
+        8,
+        13
+      ],
+      "i": 2,
+      "curr": 3
+    },
+    {
+      "codeLine": 3,
+      "note": "Next is 1. 1 <= 1, so take 1. Remaining k: 0",
+      "array": [
+        1,
+        1,
+        2,
+        3,
+        5,
+        8,
+        13
+      ],
+      "i": 0,
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "k is 0. Total count is 3 (13 + 5 + 1 = 19).",
+      "array": [
+        1,
+        1,
+        2,
+        3,
+        5,
+        8,
+        13
+      ],
+      "curr": 0
+    }
+  ]
+}

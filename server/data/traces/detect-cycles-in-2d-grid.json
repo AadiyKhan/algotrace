@@ -1,0 +1,159 @@
+{
+  "title": "Detect Cycles in 2D Grid",
+  "difficulty": "Medium",
+  "type": "matrix",
+  "tags": [
+    "Matrix",
+    "DFS",
+    "Graph"
+  ],
+  "description": "Determine if a cycle exists in a 2D grid containing characters where a cycle is a path of length 4 or more with the same character.",
+  "target": null,
+  "pseudocode": "1. function hasCycle(grid):\n2.   visited = set()\n3.   for r in rows: for c in cols:\n4.     if (r, c) not in visited:\n5.       if dfs(r, c, -1, -1, grid[r][c], visited): return true\n6.   return false\n7. function dfs(r, c, pr, pc, char, visited):\n8.   visited.add((r, c))\n9.   for dr, dc in directions:\n10.    nr, nc = r+dr, c+dc\n11.    if valid(nr, nc) and grid[nr][nc] == char:\n12.      if (nr, nc) in visited and (nr, nc) != (pr, pc): return true\n13.      if (nr, nc) not in visited and dfs(nr, nc, r, c, char, visited): return true\n14.  return false",
+  "steps": [
+    {
+      "codeLine": 3,
+      "note": "Starting DFS from cell (0,0) with character 'a'",
+      "matrix": [
+        [
+          "a",
+          "a"
+        ],
+        [
+          "a",
+          "b"
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Visiting (0,0), adding to visited set",
+      "matrix": [
+        [
+          "a",
+          "a"
+        ],
+        [
+          "a",
+          "b"
+        ]
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "codeLine": 13,
+      "note": "Moving to neighbor (0,1)",
+      "matrix": [
+        [
+          "a",
+          "a"
+        ],
+        [
+          "a",
+          "b"
+        ]
+      ],
+      "curr": [
+        0,
+        1
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "codeLine": 13,
+      "note": "Moving to neighbor (1,0)",
+      "matrix": [
+        [
+          "a",
+          "a"
+        ],
+        [
+          "a",
+          "b"
+        ]
+      ],
+      "curr": [
+        1,
+        0
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ]
+    },
+    {
+      "codeLine": 12,
+      "note": "Checking neighbor (1,1) - character 'b' != 'a', skipping",
+      "matrix": [
+        [
+          "a",
+          "a"
+        ],
+        [
+          "a",
+          "b"
+        ]
+      ],
+      "curr": [
+        1,
+        0
+      ]
+    },
+    {
+      "codeLine": 12,
+      "note": "Neighbor (0,0) is visited and not the parent (1,0), cycle detected!",
+      "matrix": [
+        [
+          "a",
+          "a"
+        ],
+        [
+          "a",
+          "b"
+        ]
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ]
+    }
+  ]
+}

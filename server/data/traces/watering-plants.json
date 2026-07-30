@@ -1,0 +1,135 @@
+{
+  "title": "Watering Plants",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Simulation",
+    "Greedy"
+  ],
+  "description": "Calculate the total steps to water a row of plants given a capacity and a refilling requirement.",
+  "target": 4,
+  "pseudocode": "1: steps = 0\n2: current_capacity = capacity\n3: for i = 0 to plants.length - 1:\n4:   if current_capacity >= plants[i]:\n5:     current_capacity -= plants[i]\n6:     steps += 1\n7:   else:\n8:     steps += (i * 2) + 1\n9:     current_capacity = capacity - plants[i]",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize steps to 0",
+      "array": [
+        2,
+        4,
+        3
+      ],
+      "i": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Initialize capacity to 4",
+      "array": [
+        2,
+        4,
+        3
+      ],
+      "curr": 4
+    },
+    {
+      "codeLine": 4,
+      "note": "Can we water plant 0 (2 units)? Yes (4 >= 2)",
+      "array": [
+        2,
+        4,
+        3
+      ],
+      "i": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Subtract 2 from capacity, current_capacity = 2",
+      "array": [
+        2,
+        4,
+        3
+      ],
+      "i": 0,
+      "curr": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Increment steps to 1",
+      "array": [
+        2,
+        4,
+        3
+      ],
+      "i": 0,
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Can we water plant 1 (4 units)? No (2 < 4). Need to refill.",
+      "array": [
+        2,
+        4,
+        3
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 8,
+      "note": "Refill: Walk back to start (1 step) and return (1 step) plus plant (1 step). Total steps = 1 + 3 = 4.",
+      "array": [
+        2,
+        4,
+        3
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 9,
+      "note": "Refill capacity: 4 - 4 = 0",
+      "array": [
+        2,
+        4,
+        3
+      ],
+      "i": 1,
+      "curr": 4
+    },
+    {
+      "codeLine": 4,
+      "note": "Can we water plant 2 (3 units)? No (0 < 3). Need to refill.",
+      "array": [
+        2,
+        4,
+        3
+      ],
+      "i": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 8,
+      "note": "Refill: Walk back (2 steps) and return (2 steps) plus plant (1 step). Total steps = 4 + 5 = 9.",
+      "array": [
+        2,
+        4,
+        3
+      ],
+      "i": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 9,
+      "note": "Refill capacity: 4 - 3 = 1",
+      "array": [
+        2,
+        4,
+        3
+      ],
+      "i": 2,
+      "curr": 4
+    }
+  ]
+}

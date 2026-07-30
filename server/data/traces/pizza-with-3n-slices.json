@@ -1,0 +1,78 @@
+{
+  "title": "Pizza With 3n Slices",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Dynamic Programming",
+    "Greedy"
+  ],
+  "description": "Select n non-adjacent slices from 3n slices to maximize sum, treating the pizza as circular.",
+  "target": 3,
+  "pseudocode": "1. function maxSizeSlices(slices) {\n2.   const n = slices.length / 3;\n3.   function helper(arr) {\n4.     let dp = Array.from({length: n + 1}, () => new Array(arr.length + 1).fill(0));\n5.     for (let i = 1; i <= n; i++) {\n6.       for (let j = 1; j <= arr.length; j++) {\n7.         dp[i][j] = Math.max(dp[i][j-1], (arr[j-1] || 0) + (dp[i-1][j-2] || 0));\n8.       }\n9.     }\n10.    return dp[n][arr.length];\n11.  }\n12.  return Math.max(helper(slices.slice(0, -1)), helper(slices.slice(1)));\n13. }",
+  "steps": [
+    {
+      "codeLine": 12,
+      "note": "Splitting circular array [1, 2, 3, 4, 5, 6] into two linear cases to break cycle.",
+      "array": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Calculating max sum for first helper case: [1, 2, 3, 4, 5] picking 2 slices.",
+      "i": 1,
+      "j": 1,
+      "array": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "DP transition: comparing current best without slice vs including current slice.",
+      "i": 1,
+      "j": 3,
+      "array": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    {
+      "codeLine": 10,
+      "note": "First helper returned max sum for first linear slice subset.",
+      "array": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    {
+      "codeLine": 12,
+      "note": "Combining results from both linear subproblems to handle circular constraint.",
+      "array": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ]
+    }
+  ]
+}

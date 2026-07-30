@@ -1,0 +1,180 @@
+{
+  "title": "Minimum Time to Collect All Apples in a Tree",
+  "difficulty": "Medium",
+  "type": "tree",
+  "tags": [
+    "Tree",
+    "DFS",
+    "Graph"
+  ],
+  "description": "Calculate the minimum time to collect all apples in a tree by returning to the root.",
+  "pseudocode": "function dfs(node, parent, apples, time) {\n  let totalTime = 0;\n  for (let child of adj[node]) {\n    if (child !== parent) {\n      let childTime = dfs(child, node, apples, time + 2);\n      if (childTime > 0 || apples[child]) totalTime += childTime + 2;\n    }\n  }\n  return totalTime;\n}",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize DFS at root (0). Tree: 0(false)->1(true), 0->2(false).",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": false,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": true,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": false,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        0
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Traverse to child node 1.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": false,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": true,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": false,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Node 1 has apple. Add 2 seconds for travel back to parent.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": false,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": true,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": false,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Backtrack to 0, move to child node 2.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": false,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": true,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": false,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Node 2 has no apple and no children with apples. Return 0.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": false,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": true,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": false,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Final total time: 2.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": false,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": true,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": false,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 2
+    }
+  ]
+}

@@ -1,0 +1,198 @@
+{
+  "title": "Most Similar Path in a Graph",
+  "difficulty": "Hard",
+  "type": "graph",
+  "tags": [
+    "Graph",
+    "Dynamic Programming"
+  ],
+  "description": "Find a path of length m-1 that minimizes the edit distance between node names and a target path string.",
+  "target": "targetPath: ['ATL', 'PEK', 'LAX']",
+  "pseudocode": "1. dp[path_idx][u] = min edit distance to reach node u at step path_idx\n2. parent[path_idx][u] = node v that leads to u\n3. For i from 1 to m-1:\n4.   For each edge (u, v):\n5.     cost = (names[v] == target[i] ? 0 : 1)\n6.     dp[i][v] = min(dp[i][v], dp[i-1][u] + cost)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize DP table with infinity, start nodes at step 0 have cost (names[u] == target[0] ? 0 : 1)",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": "JFK"
+        },
+        {
+          "id": 1,
+          "val": "ATL"
+        },
+        {
+          "id": 2,
+          "val": "LAX"
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "visited": [
+        0
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Starting step 1: Evaluating transitions from node 0 (JFK) to node 1 (ATL)",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": "JFK"
+        },
+        {
+          "id": 1,
+          "val": "ATL"
+        },
+        {
+          "id": 2,
+          "val": "LAX"
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Comparing ATL (node 1) with target[1] (PEK): names don't match, cost + 1",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": "JFK"
+        },
+        {
+          "id": 1,
+          "val": "ATL"
+        },
+        {
+          "id": 2,
+          "val": "LAX"
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Update DP[1][1] = DP[0][0] + 1 = 1",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": "JFK"
+        },
+        {
+          "id": 1,
+          "val": "ATL"
+        },
+        {
+          "id": 2,
+          "val": "LAX"
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Starting step 2: Evaluating transitions from node 1 (ATL) to node 2 (LAX)",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": "JFK"
+        },
+        {
+          "id": 1,
+          "val": "ATL"
+        },
+        {
+          "id": 2,
+          "val": "LAX"
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "i": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Final path distance calculated, backtrack to retrieve path",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": "JFK"
+        },
+        {
+          "id": 1,
+          "val": "ATL"
+        },
+        {
+          "id": 2,
+          "val": "LAX"
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "visited": [
+        0,
+        1,
+        2
+      ]
+    }
+  ]
+}

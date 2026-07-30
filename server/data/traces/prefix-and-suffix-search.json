@@ -1,0 +1,84 @@
+{
+  "title": "Prefix and Suffix Search",
+  "difficulty": "Hard",
+  "type": "tree",
+  "tags": [
+    "Trie",
+    "String",
+    "Design"
+  ],
+  "description": "Design a dictionary that supports finding the index of the word with a given prefix and suffix.",
+  "target": "f(prefix='a', suffix='e') = 0",
+  "pseudocode": "1. root = TrieNode()\n2. for index, word in enumerate(words):\n3.   for i in range(len(word) + 1):\n4.     combined = word[i:] + '#' + word\n5.     curr = root\n6.     for char in combined:\n7.       curr = curr.children[char]\n8.       curr.weight = index",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize the root of the Trie.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": "root",
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Processing word 'apple' at index 0.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": "root",
+          "left": 1,
+          "right": null
+        },
+        {
+          "id": 1,
+          "val": "e#apple",
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Creating search keys by appending suffix + # + word.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": "root",
+          "left": 1,
+          "right": null
+        },
+        {
+          "id": 1,
+          "val": "e#apple",
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 8,
+      "note": "Storing index 0 in the Trie nodes along the path for 'e#apple'.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": "root",
+          "left": 1,
+          "right": null
+        },
+        {
+          "id": 1,
+          "val": "e#apple (weight:0)",
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 0
+    }
+  ]
+}

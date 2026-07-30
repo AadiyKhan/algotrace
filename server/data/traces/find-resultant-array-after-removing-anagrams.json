@@ -1,0 +1,107 @@
+{
+  "title": "Find Resultant Array After Removing Anagrams",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "String",
+    "Sorting"
+  ],
+  "description": "Remove consecutive anagrams from an array of strings.",
+  "pseudocode": "1. result = [words[0]]\n2. for i from 1 to words.length - 1:\n3.   if sorted(words[i]) != sorted(result.last):\n4.     result.append(words[i])\n5. return result",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize result with the first word.",
+      "array": [
+        "abba",
+        "baba",
+        "bbaa",
+        "cd",
+        "cd"
+      ],
+      "result": [
+        "abba"
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Compare words[1] ('baba') with result.last ('abba'). They are anagrams, skip.",
+      "array": [
+        "abba",
+        "baba",
+        "bbaa",
+        "cd",
+        "cd"
+      ],
+      "result": [
+        "abba"
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Compare words[2] ('bbaa') with result.last ('abba'). They are anagrams, skip.",
+      "array": [
+        "abba",
+        "baba",
+        "bbaa",
+        "cd",
+        "cd"
+      ],
+      "result": [
+        "abba"
+      ],
+      "i": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Compare words[3] ('cd') with result.last ('abba'). Not anagrams, add to result.",
+      "array": [
+        "abba",
+        "baba",
+        "bbaa",
+        "cd",
+        "cd"
+      ],
+      "result": [
+        "abba",
+        "cd"
+      ],
+      "i": 3,
+      "curr": 3
+    },
+    {
+      "codeLine": 2,
+      "note": "Compare words[4] ('cd') with result.last ('cd'). They are anagrams, skip.",
+      "array": [
+        "abba",
+        "baba",
+        "bbaa",
+        "cd",
+        "cd"
+      ],
+      "result": [
+        "abba",
+        "cd"
+      ],
+      "i": 4,
+      "curr": 4
+    },
+    {
+      "codeLine": 5,
+      "note": "Return the final result array.",
+      "array": [
+        "abba",
+        "cd"
+      ],
+      "result": [
+        "abba",
+        "cd"
+      ]
+    }
+  ]
+}

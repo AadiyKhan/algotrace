@@ -1,42 +1,46 @@
 {
-  "title": "Construct The Rectangle",
+  "title": "Construct the Rectangle",
   "difficulty": "Easy",
   "type": "array",
   "tags": [
-    "Array",
     "Math"
   ],
-  "description": "Find two integers L and W such that L * W = area, L >= W, and the difference L - W is minimized.",
-  "target": 12,
-  "pseudocode": "1: W = floor(sqrt(area))\n2: while (area % W != 0) {\n3:   W--\n4: }\n5: L = area / W\n6: return [L, W]",
+  "description": "Find the dimensions L and W such that L * W = area, L >= W, and L - W is minimized.",
+  "target": 4,
+  "pseudocode": "1. W = floor(sqrt(area))\n2. while area % W != 0:\n3.   W -= 1\n4. L = area / W\n5. return [L, W]",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Calculate initial width as the square root of 12, which is 3.",
-      "i": 3
+      "note": "Initialize W to the square root of area (sqrt(4) = 2).",
+      "array": [],
+      "i": 2,
+      "curr": 4
     },
     {
       "codeLine": 2,
-      "note": "Check if 12 is divisible by 3. 12 % 3 is 0, condition is false.",
-      "i": 3
+      "note": "Check if area 4 is divisible by W=2. 4 % 2 == 0 is true.",
+      "array": [],
+      "i": 2,
+      "curr": 4
+    },
+    {
+      "codeLine": 4,
+      "note": "Calculate L = area / W = 4 / 2 = 2.",
+      "array": [
+        2,
+        2
+      ],
+      "i": 2,
+      "curr": 4
     },
     {
       "codeLine": 5,
-      "note": "Calculate length L = 12 / 3 = 4.",
-      "i": 3,
+      "note": "Return [L, W] = [2, 2].",
       "array": [
-        4,
-        3
-      ]
-    },
-    {
-      "codeLine": 6,
-      "note": "Result found: [4, 3].",
-      "i": 3,
-      "array": [
-        4,
-        3
-      ]
+        2,
+        2
+      ],
+      "curr": 2
     }
   ]
 }

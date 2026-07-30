@@ -16,7 +16,8 @@
       "note": "Initialize slow pointer at n=19",
       "array": [
         19
-      ]
+      ],
+      "curr": 19
     },
     {
       "codeLine": 2,
@@ -24,7 +25,8 @@
       "array": [
         19,
         82
-      ]
+      ],
+      "curr": 1
     },
     {
       "codeLine": 4,
@@ -32,7 +34,8 @@
       "array": [
         82,
         82
-      ]
+      ],
+      "curr": 1
     },
     {
       "codeLine": 5,
@@ -40,7 +43,8 @@
       "array": [
         82,
         100
-      ]
+      ],
+      "curr": 82
     },
     {
       "codeLine": 3,
@@ -48,7 +52,8 @@
       "array": [
         82,
         100
-      ]
+      ],
+      "curr": 82
     },
     {
       "codeLine": 4,
@@ -56,7 +61,8 @@
       "array": [
         68,
         100
-      ]
+      ],
+      "curr": 8
     },
     {
       "codeLine": 5,
@@ -64,7 +70,8 @@
       "array": [
         68,
         1
-      ]
+      ],
+      "curr": 100
     },
     {
       "codeLine": 4,
@@ -72,7 +79,8 @@
       "array": [
         100,
         1
-      ]
+      ],
+      "curr": 6
     },
     {
       "codeLine": 5,
@@ -80,7 +88,8 @@
       "array": [
         100,
         1
-      ]
+      ],
+      "curr": 1
     },
     {
       "codeLine": 6,
@@ -88,7 +97,8 @@
       "array": [
         100,
         1
-      ]
+      ],
+      "curr": 1
     }
   ]
 }

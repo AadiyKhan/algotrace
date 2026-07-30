@@ -39,7 +39,8 @@
         "great",
         "good"
       ],
-      "i": 0
+      "i": 0,
+      "curr": 1
     },
     {
       "codeLine": 5,

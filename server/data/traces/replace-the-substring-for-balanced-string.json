@@ -1,0 +1,112 @@
+{
+  "title": "Replace the Substring for Balanced String",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "String",
+    "Sliding Window",
+    "Two Pointers"
+  ],
+  "description": "Find the minimum length of the substring that can be replaced to make the string balanced (each character appears n/4 times).",
+  "target": 1,
+  "pseudocode": "1: let n = s.length, target = n / 4\n2: let count = {Q:0, W:0, E:0, R:0}\n3: for char of s: count[char]++\n4: let res = n, left = 0\n5: for right = 0 to n - 1:\n6:   count[s[right]]--\n7:   while left < n and count[Q] <= target and count[W] <= target and count[E] <= target and count[R] <= target:\n8:     res = min(res, right - left + 1)\n9:     count[s[left]]++\n10:    left++",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "String length is 4, target for each char is 1.",
+      "array": [
+        "Q",
+        "Q",
+        "Q",
+        "Q"
+      ],
+      "curr": 4
+    },
+    {
+      "codeLine": 3,
+      "note": "Count chars: Q:4, W:0, E:0, R:0",
+      "array": [
+        "Q",
+        "Q",
+        "Q",
+        "Q"
+      ],
+      "curr": 4
+    },
+    {
+      "codeLine": 6,
+      "note": "Expand right: index 0 (Q). Count: Q:3, W:0, E:0, R:0",
+      "i": 0,
+      "array": [
+        "Q",
+        "Q",
+        "Q",
+        "Q"
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Expand right: index 1 (Q). Count: Q:2, W:0, E:0, R:0",
+      "i": 1,
+      "array": [
+        "Q",
+        "Q",
+        "Q",
+        "Q"
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Expand right: index 2 (Q). Count: Q:1, W:0, E:0, R:0",
+      "i": 2,
+      "array": [
+        "Q",
+        "Q",
+        "Q",
+        "Q"
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 7,
+      "note": "Condition met! Window [0, 2] length 3",
+      "i": 2,
+      "j": 0,
+      "array": [
+        "Q",
+        "Q",
+        "Q",
+        "Q"
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 8,
+      "note": "Update result to 3",
+      "i": 2,
+      "j": 0,
+      "array": [
+        "Q",
+        "Q",
+        "Q",
+        "Q"
+      ],
+      "curr": 3
+    },
+    {
+      "codeLine": 9,
+      "note": "Shrink window. Count: Q:2, W:0, E:0, R:0",
+      "i": 2,
+      "j": 1,
+      "array": [
+        "Q",
+        "Q",
+        "Q",
+        "Q"
+      ],
+      "curr": 2
+    }
+  ]
+}

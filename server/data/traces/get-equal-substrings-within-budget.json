@@ -1,0 +1,144 @@
+{
+  "title": "Get Equal Substrings Within Budget",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Sliding Window",
+    "String"
+  ],
+  "description": "Find the maximum length of a substring such that the sum of absolute differences between corresponding characters is less than or equal to maxCost.",
+  "target": 3,
+  "pseudocode": "1. let maxLen = 0, start = 0, currentCost = 0\n2. for end from 0 to s.length - 1:\n3.   currentCost += abs(s[end] - t[end])\n4.   while currentCost > maxCost:\n5.     currentCost -= abs(s[start] - t[start])\n6.     start += 1\n7.   maxLen = max(maxLen, end - start + 1)",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Initialize sliding window with s='abcd', t='bcdf', maxCost=3. Cost array: [1, 1, 1, 1]",
+      "array": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "i": 0,
+      "curr": 3
+    },
+    {
+      "codeLine": 3,
+      "note": "Expand end to 0: currentCost = 1",
+      "array": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "i": 0,
+      "j": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 7,
+      "note": "Update maxLen = 1",
+      "array": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "i": 0,
+      "j": 0,
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Expand end to 1: currentCost = 2",
+      "array": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "i": 0,
+      "j": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "Update maxLen = 2",
+      "array": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "i": 0,
+      "j": 1,
+      "curr": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Expand end to 2: currentCost = 3",
+      "array": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "i": 0,
+      "j": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 7,
+      "note": "Update maxLen = 3",
+      "array": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "i": 0,
+      "j": 2,
+      "curr": 3
+    },
+    {
+      "codeLine": 3,
+      "note": "Expand end to 3: currentCost = 4. Exceeds maxCost!",
+      "array": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "i": 0,
+      "j": 3,
+      "curr": 3
+    },
+    {
+      "codeLine": 5,
+      "note": "Shrink window from start: currentCost = 3, start = 1",
+      "array": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "i": 1,
+      "j": 3,
+      "curr": 3
+    },
+    {
+      "codeLine": 7,
+      "note": "maxLen remains 3",
+      "array": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "i": 1,
+      "j": 3,
+      "curr": 3
+    }
+  ]
+}

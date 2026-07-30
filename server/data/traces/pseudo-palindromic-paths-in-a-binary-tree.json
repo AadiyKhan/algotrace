@@ -1,0 +1,358 @@
+{
+  "title": "Pseudo-Palindromic Paths in a Binary Tree",
+  "difficulty": "Medium",
+  "type": "tree",
+  "tags": [
+    "Tree",
+    "DFS",
+    "Bit Manipulation"
+  ],
+  "description": "Count root-to-leaf paths where values can form a palindrome.",
+  "pseudocode": "1. If node is null, return 0\n2. Update path state (XOR bit mask)\n3. If leaf, check if at most one bit is set\n4. Recurse left and right\n5. Return total count",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Start at root (2). Mask: 1 << 2 = 4 (binary 100)",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 2,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 3,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 2,
+          "val": 1,
+          "left": null,
+          "right": 5
+        },
+        {
+          "id": 3,
+          "val": 3,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 5,
+          "val": 1,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Traverse left to node 3. Mask: 4 ^ (1 << 3) = 12 (binary 1100)",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 2,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 3,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 2,
+          "val": 1,
+          "left": null,
+          "right": 5
+        },
+        {
+          "id": 3,
+          "val": 3,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 5,
+          "val": 1,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 3
+    },
+    {
+      "codeLine": 3,
+      "note": "Reached leaf 3. Mask: 12 ^ (1 << 3) = 4 (binary 100). Bit count is 1. Pseudo-palindromic!",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 2,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 3,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 2,
+          "val": 1,
+          "left": null,
+          "right": 5
+        },
+        {
+          "id": 3,
+          "val": 3,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 5,
+          "val": 1,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 3
+    },
+    {
+      "codeLine": 4,
+      "note": "Backtrack to node 3, go right to node 1. Mask: 4 ^ (1 << 1) = 6 (binary 110)",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 2,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 3,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 2,
+          "val": 1,
+          "left": null,
+          "right": 5
+        },
+        {
+          "id": 3,
+          "val": 3,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 5,
+          "val": 1,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 3
+    },
+    {
+      "codeLine": 3,
+      "note": "Reached leaf 1. Mask 6 has two bits set. Not a palindrome.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 2,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 3,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 2,
+          "val": 1,
+          "left": null,
+          "right": 5
+        },
+        {
+          "id": 3,
+          "val": 3,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 5,
+          "val": 1,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Backtrack to root, go right to node 1. Mask: 4 ^ (1 << 1) = 6 (binary 110)",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 2,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 3,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 2,
+          "val": 1,
+          "left": null,
+          "right": 5
+        },
+        {
+          "id": 3,
+          "val": 3,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 5,
+          "val": 1,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Traverse right to node 1. Mask: 6 ^ (1 << 1) = 4 (binary 100)",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 2,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 3,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 2,
+          "val": 1,
+          "left": null,
+          "right": 5
+        },
+        {
+          "id": 3,
+          "val": 3,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 5,
+          "val": 1,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Reached leaf 1. Mask 4 has one bit set. Pseudo-palindromic! Total count = 2.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 2,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 3,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 2,
+          "val": 1,
+          "left": null,
+          "right": 5
+        },
+        {
+          "id": 3,
+          "val": 3,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 5,
+          "val": 1,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 1
+    }
+  ]
+}

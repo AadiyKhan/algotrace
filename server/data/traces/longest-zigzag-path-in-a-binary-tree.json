@@ -1,0 +1,127 @@
+{
+  "title": "Longest ZigZag Path in a Binary Tree",
+  "difficulty": "Medium",
+  "type": "tree",
+  "tags": [
+    "Tree",
+    "Depth-First Search",
+    "Binary Tree"
+  ],
+  "description": "Find the longest ZigZag path in a binary tree where you alternate left and right directions.",
+  "target": 3,
+  "pseudocode": "1. dfs(node, direction, length, maxLength)\n2. if !node: return\n3. maxLength = max(maxLength, length)\n4. if direction == 'right':\n5.   dfs(node.left, 'left', length + 1, maxLength)\n6.   dfs(node.right, 'right', 1, maxLength)\n7. else:\n8.   dfs(node.right, 'right', length + 1, maxLength)\n9.   dfs(node.left, 'left', 1, maxLength)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Starting DFS from root (val 1).",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": null,
+          "right": 1
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": 2,
+          "right": 3
+        },
+        {
+          "id": 2,
+          "val": 1,
+          "left": 4,
+          "right": 5
+        },
+        {
+          "id": 3,
+          "val": 1,
+          "left": null,
+          "right": 6
+        },
+        {
+          "id": 4,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 5,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 6,
+          "val": 1,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Traversing right from root to node 1, then left to node 2.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": null,
+          "right": 1
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": 2,
+          "right": 3
+        }
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 8,
+      "note": "Traversing left from node 1, then right to node 3.",
+      "treeNodes": [
+        {
+          "id": 1,
+          "val": 1,
+          "left": 2,
+          "right": 3
+        },
+        {
+          "id": 3,
+          "val": 1,
+          "left": null,
+          "right": 6
+        }
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Reached node 6, zigzag path length reached 3.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": null,
+          "right": 1
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": 2,
+          "right": 3
+        },
+        {
+          "id": 3,
+          "val": 1,
+          "left": null,
+          "right": 6
+        }
+      ],
+      "curr": 6
+    }
+  ]
+}

@@ -4,16 +4,16 @@
   "type": "array",
   "tags": [
     "Array",
-    "String",
-    "Hash Table"
+    "Hash Table",
+    "String"
   ],
-  "description": "Check if a sequence of words is sorted lexicographically according to a custom alien alphabet.",
-  "target": "order: 'hlabcdefgijkmnopqrstuvwxyz'",
-  "pseudocode": "1. map = new Map();\n2. for (i = 0; i < order.length; i++) map.set(order[i], i);\n3. for (i = 0; i < words.length - 1; i++) {\n4.   word1 = words[i], word2 = words[i+1];\n5.   for (j = 0; j < Math.min(word1.length, word2.length); j++) {\n6.     if (word1[j] !== word2[j]) {\n7.       if (map.get(word1[j]) > map.get(word2[j])) return false;\n8.       break;\n9.     }\n10.  }\n11. }",
+  "description": "Check if words are sorted based on a custom alien alphabet order.",
+  "target": "hlabcdefgijkmnopqrstuvwxyz",
+  "pseudocode": "1. Create mapping from char to index using order\n2. Iterate through pairs of adjacent words\n3. Compare characters of current pair until mismatch or end of word\n4. If mismatch, check if order index of word1[k] > word2[k], return false\n5. If loop completes, return true",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize dictionary mapping characters to their alien rank.",
+      "note": "Creating mapping from character to its rank in the alien alphabet.",
       "array": [
         "h",
         "l",
@@ -41,12 +41,11 @@
         "x",
         "y",
         "z"
-      ],
-      "i": 0
+      ]
     },
     {
-      "codeLine": 3,
-      "note": "Compare 'hello' and 'leetcode'.",
+      "codeLine": 2,
+      "note": "Comparing adjacent words: 'hello' and 'leetcode'.",
       "array": [
         "hello",
         "leetcode"
@@ -54,28 +53,32 @@
       "i": 0
     },
     {
+      "codeLine": 3,
+      "note": "Comparing first characters: 'h' vs 'l'. Rank of 'h' is 0, rank of 'l' is 1.",
+      "array": [
+        "hello",
+        "leetcode"
+      ],
+      "i": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "0 < 1, so 'hello' comes before 'leetcode'. Words are sorted.",
+      "array": [
+        "hello",
+        "leetcode"
+      ],
+      "i": 0,
+      "curr": 0
+    },
+    {
       "codeLine": 5,
-      "note": "Comparing 'h' and 'l'. 'h' is rank 0, 'l' is rank 1.",
-      "i": 0,
-      "j": 0
-    },
-    {
-      "codeLine": 6,
-      "note": "Characters differ, compare their ranks.",
-      "i": 0,
-      "j": 0
-    },
-    {
-      "codeLine": 7,
-      "note": "Rank 0 < 1, order is correct for this pair.",
-      "i": 0,
-      "j": 0
-    },
-    {
-      "codeLine": 8,
-      "note": "Break inner loop and move to next word pair.",
-      "i": 0,
-      "j": 0
+      "note": "Finished all comparisons, returning true.",
+      "array": [
+        "hello",
+        "leetcode"
+      ]
     }
   ]
 }

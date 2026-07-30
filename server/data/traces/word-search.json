@@ -4,71 +4,92 @@
   "type": "matrix",
   "tags": [
     "Array",
+    "String",
     "Backtracking",
+    "Depth-First Search",
     "Matrix"
   ],
-  "description": "Determine if a word exists in a grid of characters by moving to adjacent cells.",
-  "target": "ABCC",
-  "pseudocode": "1. for r in rows, c in cols: \n2. if dfs(r, c, 0): return true \n3. dfs(r, c, index): \n4. if index == word.len: return true \n5. if out of bounds or board[r][c] != word[index] or visited: return false \n6. mark visited \n7. if dfs(r+1, c, index+1) or dfs(r-1, c, index+1) or dfs(r, c+1, index+1) or dfs(r, c-1, index+1): return true \n8. backtrack: unmark visited",
+  "description": "Find if a word exists in a 2D grid of characters using backtracking.",
+  "target": "ABCCED",
+  "pseudocode": "1. For each cell (r, c) in board:\n2. If board[r][c] == word[0] and dfs(r, c, 0):\n3. Return true\n4. Return false\n5. dfs(r, c, index):\n6. If index == word.length: return true\n7. If out of bounds or board[r][c] != word[index] or visited: return false\n8. Mark visited, explore neighbors, unmark visited",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Starting search at (0, 0)",
+      "note": "Starting search at (0,0) for 'A'",
       "matrix": [
         [
           "A",
-          "B"
+          "B",
+          "C",
+          "E"
         ],
         [
+          "S",
+          "F",
           "C",
-          "D"
+          "S"
+        ],
+        [
+          "A",
+          "D",
+          "E",
+          "E"
         ]
       ],
-      "curr": [
-        0,
-        0
+      "visited": []
+    },
+    {
+      "codeLine": 5,
+      "note": "Matched 'A' at (0,0), looking for 'B'",
+      "matrix": [
+        [
+          "A",
+          "B",
+          "C",
+          "E"
+        ],
+        [
+          "S",
+          "F",
+          "C",
+          "S"
+        ],
+        [
+          "A",
+          "D",
+          "E",
+          "E"
+        ]
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ]
       ]
     },
     {
       "codeLine": 5,
-      "note": "Match found at (0,0), index 0",
+      "note": "Matched 'B' at (0,1), looking for 'C'",
       "matrix": [
         [
           "A",
-          "B"
+          "B",
+          "C",
+          "E"
         ],
         [
+          "S",
+          "F",
           "C",
-          "D"
-        ]
-      ],
-      "curr": [
-        0,
-        0
-      ],
-      "visited": [
-        [
-          0,
-          0
-        ]
-      ]
-    },
-    {
-      "codeLine": 7,
-      "note": "Checking neighbor (0, 1) for 'B'",
-      "matrix": [
+          "S"
+        ],
         [
           "A",
-          "B"
-        ],
-        [
-          "C",
-          "D"
+          "D",
+          "E",
+          "E"
         ]
-      ],
-      "curr": [
-        0,
-        1
       ],
       "visited": [
         [
@@ -77,58 +98,32 @@
         ],
         [
           0,
-          1
-        ]
-      ]
-    },
-    {
-      "codeLine": 7,
-      "note": "Checking neighbor (1, 1) for 'C'",
-      "matrix": [
-        [
-          "A",
-          "B"
-        ],
-        [
-          "C",
-          "D"
-        ]
-      ],
-      "curr": [
-        1,
-        1
-      ],
-      "visited": [
-        [
-          0,
-          0
-        ],
-        [
-          0,
-          1
-        ],
-        [
-          1,
           1
         ]
       ]
     },
     {
       "codeLine": 5,
-      "note": "Neighbor (1, 0) matches 'C', index 3",
+      "note": "Matched 'C' at (0,2), looking for 'C'",
       "matrix": [
         [
           "A",
-          "B"
+          "B",
+          "C",
+          "E"
         ],
         [
+          "S",
+          "F",
           "C",
-          "D"
+          "S"
+        ],
+        [
+          "A",
+          "D",
+          "E",
+          "E"
         ]
-      ],
-      "curr": [
-        1,
-        0
       ],
       "visited": [
         [
@@ -140,26 +135,32 @@
           1
         ],
         [
-          1,
-          1
-        ],
-        [
-          1,
-          0
+          0,
+          2
         ]
       ]
     },
     {
-      "codeLine": 4,
-      "note": "Word found",
+      "codeLine": 5,
+      "note": "Matched 'C' at (1,2), looking for 'E'",
       "matrix": [
         [
           "A",
-          "B"
+          "B",
+          "C",
+          "E"
         ],
         [
+          "S",
+          "F",
           "C",
-          "D"
+          "S"
+        ],
+        [
+          "A",
+          "D",
+          "E",
+          "E"
         ]
       ],
       "visited": [
@@ -172,14 +173,161 @@
           1
         ],
         [
-          1,
-          1
+          0,
+          2
         ],
         [
           1,
+          2
+        ]
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Matched 'E' at (2,2), looking for 'D'",
+      "matrix": [
+        [
+          "A",
+          "B",
+          "C",
+          "E"
+        ],
+        [
+          "S",
+          "F",
+          "C",
+          "S"
+        ],
+        [
+          "A",
+          "D",
+          "E",
+          "E"
+        ]
+      ],
+      "visited": [
+        [
+          0,
           0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          2
+        ]
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Matched 'D' at (2,1), word found",
+      "matrix": [
+        [
+          "A",
+          "B",
+          "C",
+          "E"
+        ],
+        [
+          "S",
+          "F",
+          "C",
+          "S"
+        ],
+        [
+          "A",
+          "D",
+          "E",
+          "E"
+        ]
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          2,
+          1
+        ]
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Returning true",
+      "matrix": [
+        [
+          "A",
+          "B",
+          "C",
+          "E"
+        ],
+        [
+          "S",
+          "F",
+          "C",
+          "S"
+        ],
+        [
+          "A",
+          "D",
+          "E",
+          "E"
+        ]
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          2,
+          1
         ]
       ]
     }
-  ]
+  ],
+  "fullDescription": "<p>Given an <code>m x n</code> grid of characters <code>board</code> and a string <code>word</code>, return <code>true</code> <em>if</em> <code>word</code> <em>exists in the grid</em>.</p>\n\n<p>The word can be constructed from letters of sequentially adjacent cells, where adjacent cells are horizontally or vertically neighboring. The same letter cell may not be used more than once.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2020/11/04/word2.jpg\" style=\"width: 322px; height: 242px;\" />\n<pre>\n<strong>Input:</strong> board = [[&quot;A&quot;,&quot;B&quot;,&quot;C&quot;,&quot;E&quot;],[&quot;S&quot;,&quot;F&quot;,&quot;C&quot;,&quot;S&quot;],[&quot;A&quot;,&quot;D&quot;,&quot;E&quot;,&quot;E&quot;]], word = &quot;ABCCED&quot;\n<strong>Output:</strong> true\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2020/11/04/word-1.jpg\" style=\"width: 322px; height: 242px;\" />\n<pre>\n<strong>Input:</strong> board = [[&quot;A&quot;,&quot;B&quot;,&quot;C&quot;,&quot;E&quot;],[&quot;S&quot;,&quot;F&quot;,&quot;C&quot;,&quot;S&quot;],[&quot;A&quot;,&quot;D&quot;,&quot;E&quot;,&quot;E&quot;]], word = &quot;SEE&quot;\n<strong>Output:</strong> true\n</pre>\n\n<p><strong class=\"example\">Example 3:</strong></p>\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2020/10/15/word3.jpg\" style=\"width: 322px; height: 242px;\" />\n<pre>\n<strong>Input:</strong> board = [[&quot;A&quot;,&quot;B&quot;,&quot;C&quot;,&quot;E&quot;],[&quot;S&quot;,&quot;F&quot;,&quot;C&quot;,&quot;S&quot;],[&quot;A&quot;,&quot;D&quot;,&quot;E&quot;,&quot;E&quot;]], word = &quot;ABCB&quot;\n<strong>Output:</strong> false\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>m == board.length</code></li>\n\t<li><code>n = board[i].length</code></li>\n\t<li><code>1 &lt;= m, n &lt;= 6</code></li>\n\t<li><code>1 &lt;= word.length &lt;= 15</code></li>\n\t<li><code>board</code> and <code>word</code> consists of only lowercase and uppercase English letters.</li>\n</ul>\n\n<p>&nbsp;</p>\n<p><strong>Follow up:</strong> Could you use search pruning to make your solution faster with a larger <code>board</code>?</p>\n"
 }

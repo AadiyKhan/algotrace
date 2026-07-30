@@ -1,0 +1,75 @@
+{
+  "title": "Replace All ?'s to Avoid Consecutive Repeating Characters",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "String",
+    "Array"
+  ],
+  "description": "Replace all '?' characters in a string such that no two consecutive characters are the same.",
+  "pseudocode": "1: let chars = s.split('');\n2: for (let i = 0; i < chars.length; i++) {\n3:   if (chars[i] === '?') {\n4:     for (let charCode = 97; charCode <= 99; charCode++) {\n5:       let c = String.fromCharCode(charCode);\n6:       if ((i === 0 || chars[i - 1] !== c) && (i === chars.length - 1 || chars[i + 1] !== c)) {\n7:         chars[i] = c; break;\n8:       }\n9:     }\n10:  }\n11: }",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize char array from 'a?b'",
+      "array": [
+        "a",
+        "?",
+        "b"
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Start loop at i=0, char is 'a'",
+      "i": 0,
+      "array": [
+        "a",
+        "?",
+        "b"
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Move to i=1, char is '?'",
+      "i": 1,
+      "array": [
+        "a",
+        "?",
+        "b"
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Found '?', check candidates 'a', 'b', 'c'",
+      "i": 1,
+      "array": [
+        "a",
+        "?",
+        "b"
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Candidate 'a' fails (matches prev 'a'), candidate 'b' fails (matches next 'b'), pick 'c'",
+      "i": 1,
+      "array": [
+        "a",
+        "c",
+        "b"
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Loop finishes at i=2, char is 'b'",
+      "i": 2,
+      "array": [
+        "a",
+        "c",
+        "b"
+      ],
+      "curr": 2
+    }
+  ]
+}

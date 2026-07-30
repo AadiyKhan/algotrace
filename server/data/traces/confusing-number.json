@@ -3,42 +3,66 @@
   "difficulty": "Easy",
   "type": "array",
   "tags": [
-    "Array",
     "Math"
   ],
-  "description": "Determine if a number becomes a different valid number when rotated 180 degrees.",
-  "target": 89,
-  "pseudocode": "1. map = {0:0, 1:1, 6:9, 8:8, 9:6}\n2. original = n, rotated = 0\n3. while n > 0:\n4.   digit = n % 10\n5.   if digit not in map: return false\n6.   rotated = rotated * 10 + map[digit]\n7.   n = floor(n / 10)\n8. return rotated != original",
+  "description": "Determine if a number is confusing by rotating it 180 degrees.",
+  "target": 6,
+  "pseudocode": "1. map = {0:0, 1:1, 6:9, 8:8, 9:6}\n2. numStr = string(n)\n3. rotatedStr = ''\n4. for char in reverse(numStr):\n5.   if char not in map return false\n6.   rotatedStr += map[char]\n7. return numStr != rotatedStr",
   "steps": [
     {
+      "codeLine": 1,
+      "note": "Initialize mapping for rotatable digits.",
+      "array": [
+        0,
+        1,
+        6,
+        8,
+        9
+      ]
+    },
+    {
       "codeLine": 2,
-      "note": "Initialize original number as 89 and rotated as 0.",
-      "i": 89
+      "note": "Convert input 6 to string.",
+      "array": [
+        "6"
+      ],
+      "curr": 6
     },
     {
       "codeLine": 4,
-      "note": "Get last digit: 89 % 10 = 9.",
-      "i": 89
+      "note": "Iterate through digits in reverse.",
+      "i": 0,
+      "array": [
+        "6"
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Check if digit 6 is rotatable.",
+      "array": [
+        "6"
+      ],
+      "visited": [
+        6
+      ]
     },
     {
       "codeLine": 6,
-      "note": "Map 9 to 6. Rotated becomes 6.",
-      "i": 8
+      "note": "Map 6 to 9 and build rotated string.",
+      "array": [
+        "6"
+      ],
+      "result": "9",
+      "curr": 6
     },
     {
-      "codeLine": 4,
-      "note": "Get next digit: 8 % 10 = 8.",
-      "i": 8
-    },
-    {
-      "codeLine": 6,
-      "note": "Map 8 to 8. Rotated becomes 68.",
-      "i": 0
-    },
-    {
-      "codeLine": 8,
-      "note": "Check if 68 != 89. Returns true.",
-      "i": 0
+      "codeLine": 7,
+      "note": "Compare '6' with '9'. Since they are different, it is a confusing number.",
+      "array": [
+        "6"
+      ],
+      "result": "true",
+      "curr": 6
     }
   ]
 }

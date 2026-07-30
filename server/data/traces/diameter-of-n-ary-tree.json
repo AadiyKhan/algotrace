@@ -1,0 +1,165 @@
+{
+  "title": "Diameter of N-ary Tree",
+  "difficulty": "Medium",
+  "type": "tree",
+  "tags": [
+    "Tree",
+    "DFS",
+    "Recursion"
+  ],
+  "description": "Find the length of the diameter of an N-ary tree, defined as the longest path between any two nodes.",
+  "target": null,
+  "pseudocode": "1. let maxDiameter = 0\n2. function dfs(node):\n3.   if !node return 0\n4.   let max1 = 0, max2 = 0\n5.   for child in node.children:\n6.     let depth = dfs(child)\n7.     if depth > max1: max2 = max1, max1 = depth\n8.     else if depth > max2: max2 = depth\n9.   maxDiameter = max(maxDiameter, max1 + max2)\n10.  return max1 + 1",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Starting DFS from root (node 0)",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "children": [
+            1,
+            2
+          ]
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "children": []
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "children": []
+        }
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Visiting child node 1",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "children": [
+            1,
+            2
+          ]
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "children": []
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "children": []
+        }
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 10,
+      "note": "Child node 1 returns depth 1",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "children": [
+            1,
+            2
+          ]
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "children": []
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "children": []
+        }
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Visiting child node 2",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "children": [
+            1,
+            2
+          ]
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "children": []
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "children": []
+        }
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 10,
+      "note": "Child node 2 returns depth 1",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "children": [
+            1,
+            2
+          ]
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "children": []
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "children": []
+        }
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 9,
+      "note": "Updating maxDiameter with max1(1) + max2(1) = 2",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "children": [
+            1,
+            2
+          ]
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "children": []
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "children": []
+        }
+      ],
+      "curr": 1
+    }
+  ]
+}

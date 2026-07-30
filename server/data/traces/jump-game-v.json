@@ -1,0 +1,102 @@
+{
+  "title": "Jump Game V",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Dynamic Programming",
+    "Graph"
+  ],
+  "description": "Given an array of integers arr and an integer d, return the maximum number of jumps you can make starting from any index, jumping to an index i+k or i-k such that arr[i] > arr[j] and |i-j| <= d.",
+  "target": 3,
+  "pseudocode": "1. let dp = new Array(n).fill(1)\n2. let indices = arr.map((v, i) => [v, i]).sort((a, b) => a[0] - b[0])\n3. for [val, i] of indices:\n4.   for offset from -d to d:\n5.     let j = i + offset\n6.     if (j >= 0 && j < n && arr[j] < arr[i]):\n7.       dp[i] = Math.max(dp[i], 1 + dp[j])",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize DP table with 1s",
+      "array": [
+        1,
+        1,
+        1
+      ],
+      "i": null,
+      "curr": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Sort indices by value: arr=[6, 4, 14], d=2",
+      "array": [
+        1,
+        1,
+        1
+      ],
+      "curr": 6
+    },
+    {
+      "codeLine": 3,
+      "note": "Process smallest element (arr[1]=4) at index 1",
+      "array": [
+        1,
+        1,
+        1
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Check jumps from index 1. Can jump to index 0 (val 6 > 4 is false) and index 2 (val 14 > 4 is false).",
+      "array": [
+        1,
+        1,
+        1
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Process element (arr[0]=6) at index 0",
+      "array": [
+        1,
+        1,
+        1
+      ],
+      "i": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 7,
+      "note": "Jump to index 1 (val 4 < 6). Update dp[0] = max(1, 1 + dp[1]) = 2",
+      "array": [
+        2,
+        1,
+        1
+      ],
+      "i": 0,
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Process largest element (arr[2]=14) at index 2",
+      "array": [
+        2,
+        1,
+        1
+      ],
+      "i": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 7,
+      "note": "Jump to index 1 (val 4 < 14). Update dp[2] = max(1, 1 + dp[1]) = 2",
+      "array": [
+        2,
+        1,
+        2
+      ],
+      "i": 2,
+      "curr": 1
+    }
+  ]
+}

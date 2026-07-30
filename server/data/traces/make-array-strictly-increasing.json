@@ -1,0 +1,65 @@
+{
+  "title": "Make Array Strictly Increasing",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Dynamic Programming",
+    "Binary Search",
+    "Sorting"
+  ],
+  "description": "Find the minimum number of operations to make the array strictly increasing using elements from a second array.",
+  "target": null,
+  "pseudocode": "1. arr.sort(unique); 2. dp = { -1: 0 }; 3. for x in arr: 4.   new_dp = {}; 5.   for prev_val, cost in dp: 6.     if x > prev_val: new_dp[x] = min(new_dp[x], cost); 7.     for val in sorted_arr2: 8.       if val > prev_val: new_dp[val] = min(new_dp[val], cost + 1); 9.   dp = new_dp;",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Initialize DP with base case: previous value -1 and cost 0",
+      "array": [
+        1,
+        5
+      ],
+      "curr": -1
+    },
+    {
+      "codeLine": 3,
+      "note": "Processing first element: 1",
+      "array": [
+        1,
+        5
+      ],
+      "i": 0,
+      "curr": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Keep 1, cost remains 0",
+      "array": [
+        1,
+        5
+      ],
+      "i": 0,
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Processing second element: 5",
+      "array": [
+        1,
+        5
+      ],
+      "i": 1,
+      "curr": 5
+    },
+    {
+      "codeLine": 6,
+      "note": "5 > 1, keep 5, cost remains 0",
+      "array": [
+        1,
+        5
+      ],
+      "i": 1,
+      "curr": 5
+    }
+  ]
+}

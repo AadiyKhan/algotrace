@@ -1,0 +1,97 @@
+{
+  "title": "Last Substring in Lexicographical Order",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "String",
+    "Two Pointers"
+  ],
+  "description": "Find the lexicographically largest substring of a string s.",
+  "target": null,
+  "pseudocode": "1: let i = 0, j = 1, k = 0\n2: while j + k < s.length:\n3:   if s[i + k] == s[j + k]: k++\n4:   else if s[i + k] < s[j + k]: i = max(i + k + 1, j), j = i + 1, k = 0\n5:   else: j = j + k + 1, k = 0\n6: return s.substring(i)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize pointers: i=0, j=1, k=0.",
+      "array": [
+        "a",
+        "b",
+        "a",
+        "b",
+        "a"
+      ],
+      "i": 0,
+      "j": 1,
+      "curr": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "s[i+k] ('a') < s[j+k] ('b'). Move i forward.",
+      "array": [
+        "a",
+        "b",
+        "a",
+        "b",
+        "a"
+      ],
+      "i": 1,
+      "j": 2,
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "s[i+k] ('b') == s[j+k] ('b'). Increment k.",
+      "array": [
+        "a",
+        "b",
+        "a",
+        "b",
+        "a"
+      ],
+      "i": 1,
+      "j": 2,
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "s[i+1] ('a') == s[j+1] ('a'). Increment k.",
+      "array": [
+        "a",
+        "b",
+        "a",
+        "b",
+        "a"
+      ],
+      "i": 1,
+      "j": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "s[i+2] ('b') == s[j+2] ('b'). Increment k.",
+      "array": [
+        "a",
+        "b",
+        "a",
+        "b",
+        "a"
+      ],
+      "i": 1,
+      "j": 2,
+      "curr": 3
+    },
+    {
+      "codeLine": 6,
+      "note": "Loop ends, return substring starting at i=1.",
+      "array": [
+        "a",
+        "b",
+        "a",
+        "b",
+        "a"
+      ],
+      "i": 1,
+      "curr": 1
+    }
+  ]
+}

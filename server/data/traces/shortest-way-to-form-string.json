@@ -3,86 +3,92 @@
   "difficulty": "Medium",
   "type": "array",
   "tags": [
-    "Array",
-    "String",
     "Two Pointers",
+    "String",
     "Greedy"
   ],
-  "description": "Find the minimum number of subsequences of source needed to form target.",
-  "target": "abcbc",
-  "pseudocode": "1. count = 0, i = 0\n2. while i < target.length:\n3.   prev = i\n4.   for j in 0 to source.length - 1:\n5.     if i < target.length and source[j] == target[i]: i++\n6.   if i == prev: return -1\n7.   count++\n8. return count",
+  "description": "Find the minimum number of times the source string must be concatenated to form the target string.",
+  "target": "abc",
+  "pseudocode": "1. count = 0, i = 0\n2. while i < len(target):\n3.   prev_i = i\n4.   for j in range(len(source)):\n5.     if i < len(target) and source[j] == target[i]:\n6.       i += 1\n7.   if prev_i == i: return -1\n8.   count += 1\n9. return count",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize count to 0 and pointer i to 0.",
+      "note": "Initialize count to 0 and target pointer i to 0.",
       "array": [
         "a",
         "b",
         "c"
       ],
-      "i": 0
-    },
-    {
-      "codeLine": 2,
-      "note": "Start processing the target string.",
-      "i": 0
+      "i": 0,
+      "curr": 0
     },
     {
       "codeLine": 4,
-      "note": "Iterate through source string to match characters.",
+      "note": "Scanning source 'abc' to match target 'abc'.",
+      "array": [
+        "a",
+        "b",
+        "c"
+      ],
       "i": 0,
       "j": 0
     },
     {
       "codeLine": 5,
-      "note": "Match 'a' in source with target[0].",
+      "note": "Match source[0] 'a' with target[0] 'a'.",
+      "array": [
+        "a",
+        "b",
+        "c"
+      ],
       "i": 1,
-      "j": 0
+      "j": 0,
+      "curr": 0
     },
     {
       "codeLine": 5,
-      "note": "Match 'b' in source with target[1].",
+      "note": "Match source[1] 'b' with target[1] 'b'.",
+      "array": [
+        "a",
+        "b",
+        "c"
+      ],
       "i": 2,
-      "j": 1
+      "j": 1,
+      "curr": 1
     },
     {
       "codeLine": 5,
-      "note": "Match 'c' in source with target[2].",
+      "note": "Match source[2] 'c' with target[2] 'c'.",
+      "array": [
+        "a",
+        "b",
+        "c"
+      ],
       "i": 3,
-      "j": 2
-    },
-    {
-      "codeLine": 7,
-      "note": "Completed one full traversal of source. Increment count.",
-      "i": 3
-    },
-    {
-      "codeLine": 4,
-      "note": "Start second traversal of source.",
-      "i": 3,
-      "j": 0
-    },
-    {
-      "codeLine": 5,
-      "note": "Match 'b' in source with target[3].",
-      "i": 4,
-      "j": 1
-    },
-    {
-      "codeLine": 5,
-      "note": "Match 'c' in source with target[4].",
-      "i": 5,
-      "j": 2
-    },
-    {
-      "codeLine": 7,
-      "note": "Completed second traversal. Increment count.",
-      "i": 5
+      "j": 2,
+      "curr": 2
     },
     {
       "codeLine": 8,
-      "note": "Target fully formed. Return count = 2.",
-      "i": 5
+      "note": "Full target matched in one pass.",
+      "array": [
+        "a",
+        "b",
+        "c"
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 9,
+      "note": "Return count of 1.",
+      "array": [
+        "a",
+        "b",
+        "c"
+      ],
+      "i": 3,
+      "curr": 1
     }
   ]
 }

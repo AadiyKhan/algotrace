@@ -1,0 +1,112 @@
+{
+  "title": "Number of Ways to Build House of Cards",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Dynamic Programming",
+    "Math"
+  ],
+  "description": "Calculate number of ways to build a house of cards with N total cards given specific height constraints.",
+  "target": 16,
+  "pseudocode": "function countWays(n) {\n  let dp = new Array(n + 1).fill(0);\n  dp[0] = 1;\n  for (let h = 1; ; h++) {\n    let cards = 3 * h * h + h / 2;\n    if (cards > n) break;\n    for (let j = n; j >= cards; j--) {\n      dp[j] += dp[j - cards];\n    }\n  }\n  return dp[n];\n}",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Initialize DP table for n=16",
+      "array": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "curr": 16
+    },
+    {
+      "codeLine": 5,
+      "note": "Calculated cards for height 1: 2",
+      "array": [
+        1,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "i": 2,
+      "curr": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Calculated cards for height 2: 7",
+      "array": [
+        1,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "i": 7,
+      "curr": 2
+    },
+    {
+      "codeLine": 8,
+      "note": "Final DP state showing total ways for 16 cards",
+      "array": [
+        1,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1
+      ],
+      "curr": 16
+    }
+  ]
+}

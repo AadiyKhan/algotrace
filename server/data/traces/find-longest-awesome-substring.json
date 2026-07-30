@@ -1,0 +1,91 @@
+{
+  "title": "Find Longest Awesome Substring",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "String",
+    "Bit Manipulation",
+    "Hash Table"
+  ],
+  "description": "Find the longest substring that is an awesome string (can be rearranged to a palindrome) in a given string of digits.",
+  "target": null,
+  "pseudocode": "1. mask = 0, maxLen = 0, seen = {0: -1}\n2. for i, char in enumerate(s):\n3.   mask ^= (1 << int(char))\n4.   if mask in seen: maxLen = max(maxLen, i - seen[mask])\n5.   for j in range(10):\n6.     if (mask ^ (1 << j)) in seen: maxLen = max(maxLen, i - seen[mask ^ (1 << j)])\n7.   if mask not in seen: seen[mask] = i",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize mask and hash map with base case",
+      "array": [
+        3,
+        2,
+        4
+      ],
+      "i": null
+    },
+    {
+      "codeLine": 3,
+      "note": "Process index 0 (val 3): mask becomes 1000",
+      "array": [
+        3,
+        2,
+        4
+      ],
+      "i": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Check if mask 1000 exists in seen (No)",
+      "array": [
+        3,
+        2,
+        4
+      ],
+      "i": 0,
+      "curr": 1000
+    },
+    {
+      "codeLine": 6,
+      "note": "Check odd-length palindrome possibility by flipping bits",
+      "array": [
+        3,
+        2,
+        4
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 7,
+      "note": "Store seen[1000] = 0",
+      "array": [
+        3,
+        2,
+        4
+      ],
+      "i": 0,
+      "curr": 1000
+    },
+    {
+      "codeLine": 3,
+      "note": "Process index 1 (val 2): mask becomes 1000 ^ 0100 = 1100",
+      "array": [
+        3,
+        2,
+        4
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Check if mask 1100 exists (No)",
+      "array": [
+        3,
+        2,
+        4
+      ],
+      "i": 1,
+      "curr": 1100
+    }
+  ]
+}

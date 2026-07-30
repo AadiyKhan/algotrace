@@ -1,0 +1,204 @@
+{
+  "title": "Connecting Cities With Minimum Cost",
+  "difficulty": "Medium",
+  "type": "graph",
+  "tags": [
+    "Union-Find",
+    "Graph Theory",
+    "Minimum Spanning Tree"
+  ],
+  "description": "Find the minimum cost to connect n cities given weighted edges using Kruskal's algorithm.",
+  "target": null,
+  "pseudocode": "1. Sort all edges by weight\n2. Initialize Union-Find structure\n3. For each edge (u, v, cost):\n4. If find(u) != find(v):\n5. union(u, v), add cost to total",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Sorting edges by weight: (1,2,3), (1,3,4), (2,3,5)",
+      "graphNodes": [
+        {
+          "id": 1,
+          "val": 1
+        },
+        {
+          "id": 2,
+          "val": 2
+        },
+        {
+          "id": 3,
+          "val": 3
+        }
+      ],
+      "graphEdges": [
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "visited": [],
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Processing edge (1,2) with cost 3",
+      "graphNodes": [
+        {
+          "id": 1,
+          "val": 1
+        },
+        {
+          "id": 2,
+          "val": 2
+        },
+        {
+          "id": 3,
+          "val": 3
+        }
+      ],
+      "graphEdges": [
+        [
+          1,
+          2
+        ]
+      ],
+      "visited": [
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "1 and 2 are in different components. Union them.",
+      "graphNodes": [
+        {
+          "id": 1,
+          "val": 1
+        },
+        {
+          "id": 2,
+          "val": 2
+        },
+        {
+          "id": 3,
+          "val": 3
+        }
+      ],
+      "graphEdges": [
+        [
+          1,
+          2
+        ]
+      ],
+      "visited": [
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Processing edge (1,3) with cost 4",
+      "graphNodes": [
+        {
+          "id": 1,
+          "val": 1
+        },
+        {
+          "id": 2,
+          "val": 2
+        },
+        {
+          "id": 3,
+          "val": 3
+        }
+      ],
+      "graphEdges": [
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "visited": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "1 and 3 are in different components. Union them.",
+      "graphNodes": [
+        {
+          "id": 1,
+          "val": 1
+        },
+        {
+          "id": 2,
+          "val": 2
+        },
+        {
+          "id": 3,
+          "val": 3
+        }
+      ],
+      "graphEdges": [
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "visited": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Processing edge (2,3) with cost 5. Already connected, skip.",
+      "graphNodes": [
+        {
+          "id": 1,
+          "val": 1
+        },
+        {
+          "id": 2,
+          "val": 2
+        },
+        {
+          "id": 3,
+          "val": 3
+        }
+      ],
+      "graphEdges": [
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "visited": [
+        1,
+        2,
+        3
+      ]
+    }
+  ]
+}

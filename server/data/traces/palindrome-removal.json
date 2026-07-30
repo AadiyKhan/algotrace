@@ -1,0 +1,71 @@
+{
+  "title": "Palindrome Removal",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Dynamic Programming"
+  ],
+  "description": "Find the minimum number of moves to delete the entire array, where a move consists of removing a palindromic subarray.",
+  "target": null,
+  "pseudocode": "1. n = arr.length\n2. dp[i][j] = minimum moves for subarray [i..j]\n3. for len = 1 to n:\n4.   for i = 0 to n - len:\n5.     j = i + len - 1\n6.     if len == 1: dp[i][j] = 1\n7.     else if len == 2: dp[i][j] = (arr[i] == arr[j] ? 1 : 2)\n8.     else if arr[i] == arr[j]: dp[i][j] = dp[i+1][j-1]\n9.     else: dp[i][j] = min(dp[i][k] + dp[k+1][j]) for all k",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize DP table for array [1, 2, 1]",
+      "array": [
+        1,
+        2,
+        1
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Base case: length 1 subarrays [1], [2], [1] require 1 move each",
+      "array": [
+        1,
+        2,
+        1
+      ],
+      "i": 0,
+      "curr": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "Length 2: [1, 2] are not equal, requires 2 moves",
+      "array": [
+        1,
+        2,
+        1
+      ],
+      "i": 0,
+      "j": 1,
+      "curr": 2
+    },
+    {
+      "codeLine": 7,
+      "note": "Length 2: [2, 1] are not equal, requires 2 moves",
+      "array": [
+        1,
+        2,
+        1
+      ],
+      "i": 1,
+      "j": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 8,
+      "note": "Length 3: arr[0] == arr[2] (1 == 1), so dp[0][2] = dp[1][1] which is 1",
+      "array": [
+        1,
+        2,
+        1
+      ],
+      "i": 0,
+      "j": 2,
+      "curr": 3
+    }
+  ]
+}

@@ -1,0 +1,140 @@
+{
+  "title": "Get the Maximum Score",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Two Pointers",
+    "Dynamic Programming",
+    "Greedy"
+  ],
+  "description": "Find the maximum path sum by traversing two sorted arrays and switching at common elements.",
+  "pseudocode": "1. i = 0, j = 0, sum1 = 0, sum2 = 0\n2. while i < n1 or j < n2:\n3.   if i < n1 and (j == n2 or nums1[i] < nums2[j]): sum1 += nums1[i++]\n4.   else if j < n2 and (i == n1 or nums2[j] < nums1[i]): sum2 += nums2[j++]\n5.   else: sum1 = sum2 = max(sum1, sum2) + nums1[i], i++, j++\n6. return max(sum1, sum2) % (10^9 + 7)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize pointers and sums",
+      "array": [
+        2,
+        4,
+        5,
+        8,
+        10
+      ],
+      "i": 0,
+      "j": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Add 2 from nums1 to sum1",
+      "array": [
+        2,
+        4,
+        5,
+        8,
+        10
+      ],
+      "i": 1,
+      "j": 0,
+      "curr": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Common element 4 found, sync sums to max(2+4, 4)",
+      "array": [
+        2,
+        4,
+        5,
+        8,
+        10
+      ],
+      "i": 2,
+      "j": 1,
+      "curr": 4
+    },
+    {
+      "codeLine": 3,
+      "note": "Add 5 from nums1 to sum1",
+      "array": [
+        2,
+        4,
+        5,
+        8,
+        10
+      ],
+      "i": 3,
+      "j": 1,
+      "curr": 5
+    },
+    {
+      "codeLine": 4,
+      "note": "Add 6 from nums2 to sum2",
+      "array": [
+        2,
+        4,
+        5,
+        8,
+        10
+      ],
+      "i": 3,
+      "j": 2,
+      "curr": 6
+    },
+    {
+      "codeLine": 5,
+      "note": "Common element 8 found, sync sums to max(sum1, sum2) + 8",
+      "array": [
+        2,
+        4,
+        5,
+        8,
+        10
+      ],
+      "i": 4,
+      "j": 3,
+      "curr": 8
+    },
+    {
+      "codeLine": 3,
+      "note": "Add 10 from nums1 to sum1",
+      "array": [
+        2,
+        4,
+        5,
+        8,
+        10
+      ],
+      "i": 5,
+      "j": 3,
+      "curr": 10
+    },
+    {
+      "codeLine": 4,
+      "note": "Add 9 from nums2 to sum2",
+      "array": [
+        2,
+        4,
+        5,
+        8,
+        10
+      ],
+      "i": 5,
+      "j": 4,
+      "curr": 9
+    },
+    {
+      "codeLine": 6,
+      "note": "Return max score 30",
+      "array": [
+        2,
+        4,
+        5,
+        8,
+        10
+      ],
+      "i": 5,
+      "j": 4,
+      "curr": 30
+    }
+  ]
+}

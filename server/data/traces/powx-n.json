@@ -4,42 +4,92 @@
   "type": "array",
   "tags": [
     "Math",
-    "Recursion",
-    "Binary Exponentiation"
+    "Recursion"
   ],
-  "description": "Calculate x raised to the power n using the exponentiation by squaring method.",
-  "target": null,
-  "pseudocode": "1. function myPow(x, n) {\n2.   if (n === 0) return 1;\n3.   if (n < 0) return 1 / myPow(x, -n);\n4.   let half = myPow(x, Math.floor(n / 2));\n5.   if (n % 2 === 0) return half * half;\n6.   return x * half * half;\n7. }",
+  "description": "Calculate x raised to the power n using binary exponentiation.",
+  "target": 1024,
+  "pseudocode": "1. If n == 0 return 1\n2. If n < 0, x = 1/x, n = -n\n3. half = pow(x, n / 2)\n4. If n % 2 == 0 return half * half\n5. Else return x * half * half",
   "steps": [
     {
-      "codeLine": 4,
-      "note": "Calling myPow(2, 2) to calculate 2^2",
-      "i": "x=2, n=2"
+      "codeLine": 1,
+      "note": "Starting power calculation for x=2, n=10",
+      "array": [
+        2,
+        10
+      ],
+      "curr": 2
     },
     {
-      "codeLine": 4,
-      "note": "Recursive call: myPow(2, 1)",
-      "i": "x=2, n=1"
+      "codeLine": 3,
+      "note": "Recursively call pow(2, 5)",
+      "array": [
+        2,
+        5
+      ],
+      "curr": 2
     },
     {
-      "codeLine": 4,
-      "note": "Recursive call: myPow(2, 0)",
-      "i": "x=2, n=0"
+      "codeLine": 3,
+      "note": "Recursively call pow(2, 2)",
+      "array": [
+        2,
+        2
+      ],
+      "curr": 2
     },
     {
-      "codeLine": 2,
-      "note": "Base case reached: 2^0 = 1",
-      "i": "x=2, n=0"
+      "codeLine": 3,
+      "note": "Recursively call pow(2, 1)",
+      "array": [
+        2,
+        1
+      ],
+      "curr": 2
     },
     {
-      "codeLine": 6,
-      "note": "Calculated half=1, returning 2 * 1 * 1 = 2",
-      "i": "x=2, n=1"
+      "codeLine": 1,
+      "note": "Base case reached for pow(2, 0) = 1",
+      "array": [
+        2,
+        0
+      ],
+      "curr": 2
     },
     {
       "codeLine": 5,
-      "note": "Calculated half=2, returning 2 * 2 = 4",
-      "i": "x=2, n=2"
+      "note": "Returning 2 * 1 * 1 = 2 for pow(2, 1)",
+      "array": [
+        2,
+        1
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Returning 2 * 2 = 4 for pow(2, 2)",
+      "array": [
+        2,
+        2
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Returning 2 * 4 * 4 = 32 for pow(2, 5)",
+      "array": [
+        2,
+        5
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Returning 32 * 32 = 1024 for pow(2, 10)",
+      "array": [
+        2,
+        10
+      ],
+      "curr": 32
     }
   ]
 }

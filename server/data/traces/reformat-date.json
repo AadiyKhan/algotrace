@@ -1,0 +1,55 @@
+{
+  "title": "Reformat Date",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "String"
+  ],
+  "description": "Convert a date string from 'Day Month Year' format to 'YYYY-MM-DD' format.",
+  "target": "2052-10-20",
+  "pseudocode": "1. Split date string by space into [day, month, year]\n2. Remove ordinal suffix from day and pad to two digits\n3. Map month string to two-digit numeric string\n4. Concatenate year, month, and day with hyphens",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Split '20th Oct 2052' into parts",
+      "array": [
+        "20th",
+        "Oct",
+        "2052"
+      ],
+      "curr": 20
+    },
+    {
+      "codeLine": 2,
+      "note": "Clean '20th' to '20' and pad to '20'",
+      "array": [
+        "20",
+        "Oct",
+        "2052"
+      ],
+      "i": "20",
+      "curr": 20
+    },
+    {
+      "codeLine": 3,
+      "note": "Map 'Oct' to '10'",
+      "array": [
+        "20",
+        "10",
+        "2052"
+      ],
+      "j": "10",
+      "curr": 10
+    },
+    {
+      "codeLine": 4,
+      "note": "Join to result string",
+      "array": [
+        "2052",
+        "10",
+        "20"
+      ]
+    }
+  ]
+}

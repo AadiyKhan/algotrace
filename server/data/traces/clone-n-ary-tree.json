@@ -1,0 +1,257 @@
+{
+  "title": "Clone N-ary Tree",
+  "difficulty": "Medium",
+  "type": "tree",
+  "tags": [
+    "Hash Table",
+    "Tree",
+    "Depth-First Search"
+  ],
+  "description": "Create a deep copy of an N-ary tree.",
+  "pseudocode": "1. If root is null, return null\n2. Create new node with root.val\n3. For each child in root.children:\n4.   new_node.children.append(clone(child))\n5. Return new_node",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Starting cloning process from root node 1",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "children": [
+            1,
+            2,
+            3
+          ]
+        },
+        {
+          "id": 1,
+          "val": 3,
+          "children": [
+            4,
+            5
+          ]
+        },
+        {
+          "id": 2,
+          "val": 2,
+          "children": []
+        },
+        {
+          "id": 3,
+          "val": 4,
+          "children": []
+        },
+        {
+          "id": 4,
+          "val": 5,
+          "children": []
+        },
+        {
+          "id": 5,
+          "val": 6,
+          "children": []
+        }
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Cloning root node 1",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "children": [
+            1,
+            2,
+            3
+          ]
+        },
+        {
+          "id": 1,
+          "val": 3,
+          "children": [
+            4,
+            5
+          ]
+        },
+        {
+          "id": 2,
+          "val": 2,
+          "children": []
+        },
+        {
+          "id": 3,
+          "val": 4,
+          "children": []
+        },
+        {
+          "id": 4,
+          "val": 5,
+          "children": []
+        },
+        {
+          "id": 5,
+          "val": 6,
+          "children": []
+        },
+        {
+          "id": 6,
+          "val": 1,
+          "children": []
+        }
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Cloning child node 3 (and its children 5, 6)",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "children": [
+            1,
+            2,
+            3
+          ]
+        },
+        {
+          "id": 1,
+          "val": 3,
+          "children": [
+            4,
+            5
+          ]
+        },
+        {
+          "id": 2,
+          "val": 2,
+          "children": []
+        },
+        {
+          "id": 3,
+          "val": 4,
+          "children": []
+        },
+        {
+          "id": 4,
+          "val": 5,
+          "children": []
+        },
+        {
+          "id": 5,
+          "val": 6,
+          "children": []
+        },
+        {
+          "id": 6,
+          "val": 1,
+          "children": [
+            7
+          ]
+        },
+        {
+          "id": 7,
+          "val": 3,
+          "children": [
+            8,
+            9
+          ]
+        },
+        {
+          "id": 8,
+          "val": 5,
+          "children": []
+        },
+        {
+          "id": 9,
+          "val": 6,
+          "children": []
+        }
+      ],
+      "curr": 3
+    },
+    {
+      "codeLine": 5,
+      "note": "Returning the completed deep copy of the N-ary tree",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "children": [
+            1,
+            2,
+            3
+          ]
+        },
+        {
+          "id": 1,
+          "val": 3,
+          "children": [
+            4,
+            5
+          ]
+        },
+        {
+          "id": 2,
+          "val": 2,
+          "children": []
+        },
+        {
+          "id": 3,
+          "val": 4,
+          "children": []
+        },
+        {
+          "id": 4,
+          "val": 5,
+          "children": []
+        },
+        {
+          "id": 5,
+          "val": 6,
+          "children": []
+        },
+        {
+          "id": 6,
+          "val": 1,
+          "children": [
+            7,
+            10,
+            11
+          ]
+        },
+        {
+          "id": 7,
+          "val": 3,
+          "children": [
+            8,
+            9
+          ]
+        },
+        {
+          "id": 8,
+          "val": 5,
+          "children": []
+        },
+        {
+          "id": 9,
+          "val": 6,
+          "children": []
+        },
+        {
+          "id": 10,
+          "val": 2,
+          "children": []
+        },
+        {
+          "id": 11,
+          "val": 4,
+          "children": []
+        }
+      ],
+      "curr": 3
+    }
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "title": "Best Position for a Service Centre",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Math",
+    "Geometry",
+    "Ternary Search"
+  ],
+  "description": "Find the point that minimizes the total geometric distance to all delivery locations.",
+  "target": 0,
+  "pseudocode": "1. Set x, y to average of all coordinates\n2. Set step = 10.0, eps = 1e-7\n3. While step > eps:\n4.   For each direction in neighbors:\n5.     If new distance < current distance, move there\n6.   Else, step *= 0.5\n7. Return current minimum distance",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize centroid as starting point.",
+      "array": [
+        1,
+        1,
+        3,
+        3
+      ],
+      "i": 2,
+      "j": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Checking neighbors with current step size.",
+      "array": [
+        1,
+        1,
+        3,
+        3
+      ],
+      "i": 2,
+      "j": 2,
+      "curr": [
+        2,
+        2
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Found a better point, updating coordinates.",
+      "array": [
+        1,
+        1,
+        3,
+        3
+      ],
+      "i": 2,
+      "j": 2,
+      "curr": [
+        2.1,
+        2.1
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Step size reduced to improve precision.",
+      "array": [
+        1,
+        1,
+        3,
+        3
+      ],
+      "i": 2.05,
+      "j": 2.05
+    },
+    {
+      "codeLine": 7,
+      "note": "Converged to optimal point.",
+      "array": [
+        1,
+        1,
+        3,
+        3
+      ],
+      "i": 2,
+      "j": 2
+    }
+  ]
+}

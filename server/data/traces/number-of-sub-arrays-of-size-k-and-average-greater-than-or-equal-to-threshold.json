@@ -1,0 +1,104 @@
+{
+  "title": "Number of Sub-arrays of Size K and Average Greater than or Equal to Threshold",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Sliding Window"
+  ],
+  "description": "Count how many sub-arrays of length k have an average value >= threshold.",
+  "target": 4,
+  "pseudocode": "1. currentSum = sum of first k elements\n2. count = currentSum / k >= threshold ? 1 : 0\n3. for i from k to arr.length - 1:\n4.   currentSum += arr[i] - arr[i - k]\n5.   if currentSum / k >= threshold: count++\n6. return count",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize sum of first k=3 elements: [2, 2, 2] -> sum = 6",
+      "array": [
+        2,
+        2,
+        2,
+        8,
+        4
+      ],
+      "i": 0,
+      "curr": 3
+    },
+    {
+      "codeLine": 2,
+      "note": "Average 6/3 = 2. 2 >= 4 is false. Count = 0.",
+      "array": [
+        2,
+        2,
+        2,
+        8,
+        4
+      ],
+      "i": 0,
+      "curr": 6
+    },
+    {
+      "codeLine": 4,
+      "note": "Slide window: subtract arr[0] (2), add arr[3] (8). New sum = 6 - 2 + 8 = 12",
+      "array": [
+        2,
+        2,
+        2,
+        8,
+        4
+      ],
+      "i": 3,
+      "curr": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Average 12/3 = 4. 4 >= 4 is true. Count = 1.",
+      "array": [
+        2,
+        2,
+        2,
+        8,
+        4
+      ],
+      "i": 3,
+      "curr": 12
+    },
+    {
+      "codeLine": 4,
+      "note": "Slide window: subtract arr[1] (2), add arr[4] (4). New sum = 12 - 2 + 4 = 14",
+      "array": [
+        2,
+        2,
+        2,
+        8,
+        4
+      ],
+      "i": 4,
+      "curr": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Average 14/3 = 4.66. 4.66 >= 4 is true. Count = 2.",
+      "array": [
+        2,
+        2,
+        2,
+        8,
+        4
+      ],
+      "i": 4,
+      "curr": 14
+    },
+    {
+      "codeLine": 6,
+      "note": "End of array. Return count = 2.",
+      "array": [
+        2,
+        2,
+        2,
+        8,
+        4
+      ],
+      "curr": 2
+    }
+  ]
+}

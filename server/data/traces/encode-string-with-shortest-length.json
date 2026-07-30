@@ -1,50 +1,85 @@
 {
-  "title": "Encode String With Shortest Length",
+  "title": "Encode String with Shortest Length",
   "difficulty": "Hard",
   "type": "array",
   "tags": [
     "String",
     "Dynamic Programming"
   ],
-  "description": "Encode a string into the shortest possible string by recursively compressing repeating patterns.",
+  "description": "Encode a string into the shortest possible string by recursively finding repeating substrings.",
   "target": "aaa",
-  "pseudocode": "1. dp[n][n]\n2. for len from 1 to n:\n3.   for i from 0 to n - len:\n4.     j = i + len - 1\n5.     dp[i][j] = s.substring(i, j + 1)\n6.     for k from i to j-1:\n7.       dp[i][j] = min(dp[i][j], dp[i][k] + dp[k+1][j])\n8.     for m from 1 to len:\n9.       if len % m == 0 and (s.substring(i, j+1) is composed of repeats of length m):\n10.        dp[i][j] = min(dp[i][j], (len/m) + '[' + dp[i][i+m-1] + ']')",
+  "pseudocode": "1. Initialize dp table of size n*n\n2. For length l from 1 to n:\n3. For start i from 0 to n-l:\n4. End j = i + l - 1\n5. Check for repeating patterns and update dp table",
   "steps": [
     {
+      "codeLine": 1,
+      "note": "Initialize dp table for string 'aaa'",
+      "array": [
+        "a",
+        "a",
+        "a"
+      ],
+      "visited": []
+    },
+    {
       "codeLine": 2,
-      "note": "Initializing DP table for string 'aaa'",
+      "note": "Processing substring length 1",
       "array": [
         "a",
         "a",
         "a"
-      ]
+      ],
+      "i": 0,
+      "curr": 1
     },
     {
-      "codeLine": 3,
-      "note": "Checking substring 'aa' at index 0-1",
-      "i": 0,
+      "codeLine": 5,
+      "note": "Shortest encoding for 'a' is 'a'",
       "array": [
         "a",
+        "a",
         "a"
-      ]
+      ],
+      "i": 0
     },
     {
-      "codeLine": 9,
-      "note": "Pattern 'aa' found, compressing to '2[a]'",
+      "codeLine": 2,
+      "note": "Processing substring length 2 ('aa')",
+      "array": [
+        "a",
+        "a",
+        "a"
+      ],
       "i": 0,
-      "j": 1
+      "curr": 2
     },
     {
-      "codeLine": 3,
-      "note": "Checking entire string 'aaa' at index 0-2",
+      "codeLine": 5,
+      "note": "Shortest encoding for 'aa' is '2[a]'",
+      "array": [
+        "2[a]",
+        "a"
+      ],
       "i": 0,
-      "j": 2
+      "curr": 2
     },
     {
-      "codeLine": 10,
-      "note": "Pattern 'aaa' found, compressing to '3[a]'",
+      "codeLine": 2,
+      "note": "Processing substring length 3 ('aaa')",
+      "array": [
+        "2[a]",
+        "a"
+      ],
       "i": 0,
-      "j": 2
+      "curr": 3
+    },
+    {
+      "codeLine": 5,
+      "note": "Shortest encoding for 'aaa' is '3[a]'",
+      "array": [
+        "3[a]"
+      ],
+      "i": 0,
+      "curr": 3
     }
   ]
 }

@@ -1,62 +1,113 @@
 {
   "title": "Course Schedule",
   "difficulty": "Medium",
-  "type": "array",
+  "type": "graph",
   "tags": [
-    "Graph",
-    "DFS",
+    "Depth-First Search",
+    "Breadth-First Search",
+    "Graph Theory",
     "Topological Sort"
   ],
-  "description": "Determine if you can finish all courses given prerequisites using cycle detection in a directed graph.",
-  "target": null,
-  "pseudocode": "1. build adjacency list from prerequisites\n2. state array: 0=unvisited, 1=visiting, 2=visited\n3. for each course i: if state[i] == 0 and hasCycle(i) return false\n4. return true\n5. function hasCycle(node):\n6. state[node] = 1\n7. for neighbor in adj[node]:\n8. if state[neighbor] == 1: return true\n9. if state[neighbor] == 0 and hasCycle(neighbor): return true\n10. state[node] = 2; return false",
+  "description": "Determine if all courses can be finished given prerequisite constraints using cycle detection.",
+  "target": true,
+  "pseudocode": "1. Build adjacency list from prerequisites\n2. Track visit states: 0=unvisited, 1=visiting, 2=visited\n3. For each course, if state is 0, perform DFS\n4. If DFS encounters a node in state 1, return false (cycle)\n5. Return true if no cycles found",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Build adjacency list: 0 -> [1], 1 -> [0] (Cycle)",
-      "array": [
-        0,
+      "note": "Initialize adjacency list: 0 -> [1]",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": 0
+        },
+        {
+          "id": 1,
+          "val": 1
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ]
+      ],
+      "visited": [],
+      "curr": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Start DFS from course 0",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": 0
+        },
+        {
+          "id": 1,
+          "val": 1
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ]
+      ],
+      "curr": 0,
+      "visited": [
         0
       ]
     },
     {
       "codeLine": 3,
-      "note": "Start DFS from course 0",
-      "i": 0
-    },
-    {
-      "codeLine": 6,
-      "note": "Mark course 0 as visiting (1)",
-      "array": [
-        1,
-        0
-      ]
-    },
-    {
-      "codeLine": 7,
-      "note": "Visit neighbor of 0, which is 1",
-      "curr": 1
-    },
-    {
-      "codeLine": 6,
-      "note": "Mark course 1 as visiting (1)",
-      "array": [
-        1,
-        1
-      ]
-    },
-    {
-      "codeLine": 7,
-      "note": "Visit neighbor of 1, which is 0",
-      "curr": 0
-    },
-    {
-      "codeLine": 8,
-      "note": "Node 0 is already in state 1, cycle detected!",
+      "note": "Move to course 1",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": 0
+        },
+        {
+          "id": 1,
+          "val": 1
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ]
+      ],
+      "curr": 1,
       "visited": [
         0,
         1
       ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Finished DFS, no cycles detected",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": 0
+        },
+        {
+          "id": 1,
+          "val": 1
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ]
+      ],
+      "visited": [
+        0,
+        1
+      ],
+      "curr": 1
     }
-  ]
+  ],
+  "fullDescription": "<p>There are a total of <code>numCourses</code> courses you have to take, labeled from <code>0</code> to <code>numCourses - 1</code>. You are given an array <code>prerequisites</code> where <code>prerequisites[i] = [a<sub>i</sub>, b<sub>i</sub>]</code> indicates that you <strong>must</strong> take course <code>b<sub>i</sub></code> first if you want to take course <code>a<sub>i</sub></code>.</p>\n\n<ul>\n\t<li>For example, the pair <code>[0, 1]</code>, indicates that to take course <code>0</code> you have to first take course <code>1</code>.</li>\n</ul>\n\n<p>Return <code>true</code> if you can finish all courses. Otherwise, return <code>false</code>.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> numCourses = 2, prerequisites = [[1,0]]\n<strong>Output:</strong> true\n<strong>Explanation:</strong> There are a total of 2 courses to take. \nTo take course 1 you should have finished course 0. So it is possible.\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> numCourses = 2, prerequisites = [[1,0],[0,1]]\n<strong>Output:</strong> false\n<strong>Explanation:</strong> There are a total of 2 courses to take. \nTo take course 1 you should have finished course 0, and to take course 0 you should also have finished course 1. So it is impossible.\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= numCourses &lt;= 2000</code></li>\n\t<li><code>0 &lt;= prerequisites.length &lt;= 5000</code></li>\n\t<li><code>prerequisites[i].length == 2</code></li>\n\t<li><code>0 &lt;= a<sub>i</sub>, b<sub>i</sub> &lt; numCourses</code></li>\n\t<li>All the pairs prerequisites[i] are <strong>unique</strong>.</li>\n</ul>\n"
 }

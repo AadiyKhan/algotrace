@@ -80,7 +80,8 @@
         "n",
         "a"
       ],
-      "i": "mid=4"
+      "i": "mid=4",
+      "curr": 4
     },
     {
       "codeLine": 6,
@@ -93,7 +94,8 @@
         "n",
         "a"
       ],
-      "j": "high=3"
+      "j": "high=3",
+      "curr": 4
     },
     {
       "codeLine": 7,

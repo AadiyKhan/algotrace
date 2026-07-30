@@ -6,58 +6,76 @@
     "Array",
     "Hash Table"
   ],
-  "description": "Find a pair of candies to swap so that both Alice and Bob have the same total candy amount.",
-  "target": 5,
-  "pseudocode": "1. sumA = sum(aliceSizes)\n2. sumB = sum(bobSizes)\n3. diff = (sumA - sumB) / 2\n4. setB = new Set(bobSizes)\n5. for x in aliceSizes:\n6.   target = x - diff\n7.   if setB.has(target):\n8.     return [x, target]",
+  "description": "Find one candy box to swap such that Alice and Bob have equal total candies.",
+  "target": 1.5,
+  "pseudocode": "1. sumA = sum(aliceSizes), sumB = sum(bobSizes)\n2. diff = (sumA - sumB) / 2\n3. setB = set(bobSizes)\n4. for x in aliceSizes:\n5.   y = x - diff\n6.   if y in setB: return [x, y]",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Calculate sum of Alice's candies (1+1=2)",
+      "note": "Calculate sums: Alice sum = 2, Bob sum = 4.",
       "array": [
         1,
         1
-      ]
+      ],
+      "result": [
+        2,
+        4
+      ],
+      "curr": 2
     },
     {
       "codeLine": 2,
-      "note": "Calculate sum of Bob's candies (2+2=4)",
+      "note": "Calculate target diff: (2 - 4) / 2 = -1.",
       "array": [
-        2,
-        2
-      ]
+        1,
+        1
+      ],
+      "i": -1,
+      "curr": 2
     },
     {
       "codeLine": 3,
-      "note": "Calculate the difference needed: (2 - 4) / 2 = -1",
-      "i": -1
-    },
-    {
-      "codeLine": 4,
-      "note": "Store Bob's candies in a Set for O(1) lookup",
+      "note": "Create set of Bob's candies: {2}.",
       "array": [
-        2,
+        1,
+        1
+      ],
+      "visited": [
         2
       ]
     },
     {
+      "codeLine": 4,
+      "note": "Iterate through Alice's boxes. Current box: 1.",
+      "array": [
+        1,
+        1
+      ],
+      "i": 0,
+      "curr": 1
+    },
+    {
       "codeLine": 5,
-      "note": "Start iteration through Alice's array",
-      "i": 0
+      "note": "Calculate needed box y = x - (-1) = 2.",
+      "array": [
+        1,
+        1
+      ],
+      "i": 0,
+      "curr": 2
     },
     {
       "codeLine": 6,
-      "note": "Calculate required value from Bob: 1 - (-1) = 2",
-      "i": 0
-    },
-    {
-      "codeLine": 7,
-      "note": "Check if 2 exists in Bob's set",
-      "i": 0
-    },
-    {
-      "codeLine": 8,
-      "note": "Found swap pair [1, 2]",
-      "i": 0
+      "note": "Box 2 found in Bob's set. Return [1, 2].",
+      "array": [
+        1,
+        1
+      ],
+      "result": [
+        1,
+        2
+      ],
+      "curr": 2
     }
   ]
 }

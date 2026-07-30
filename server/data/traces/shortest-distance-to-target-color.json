@@ -1,0 +1,77 @@
+{
+  "title": "Shortest Distance to Target Color",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Binary Search",
+    "Dynamic Programming"
+  ],
+  "description": "Find the shortest distance to a target color for multiple queries in an array of colors.",
+  "pseudocode": "1. precompute[color][index] = distances\n2. For each color 1-3:\n3.   Fill indices of occurrences\n4. For each query (index, color):\n5.   Binary search for nearest color index\n6.   Return min distance",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize precomputed distance maps for each color.",
+      "array": [
+        1,
+        1,
+        2,
+        1,
+        3
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Map color 1 to indices [0, 1, 3].",
+      "array": [
+        1,
+        1,
+        2,
+        1,
+        3
+      ],
+      "i": 0,
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Processing query: index 2, color 1.",
+      "array": [
+        1,
+        1,
+        2,
+        1,
+        3
+      ],
+      "i": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Binary search for index 2 in [0, 1, 3]. Closest are 1 and 3.",
+      "array": [
+        1,
+        1,
+        2,
+        1,
+        3
+      ],
+      "i": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Distance to 1 is |2-1|=1, to 3 is |2-3|=1. Result is 1.",
+      "array": [
+        1,
+        1,
+        2,
+        1,
+        3
+      ],
+      "i": 2,
+      "curr": 1
+    }
+  ]
+}

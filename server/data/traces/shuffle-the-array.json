@@ -1,0 +1,135 @@
+{
+  "title": "Shuffle the Array",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array"
+  ],
+  "description": "Given an array nums consisting of 2n elements in the form [x1,x2,...,xn,y1,y2,...,yn]. Return the array in the form [x1,y1,x2,y2,...,xn,yn].",
+  "target": 3,
+  "pseudocode": "1. result = []\n2. for i from 0 to n-1:\n3.   result.push(nums[i])\n4.   result.push(nums[i+n])\n5. return result",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize empty result array",
+      "array": []
+    },
+    {
+      "codeLine": 2,
+      "note": "Start loop for i=0",
+      "i": 0,
+      "array": [
+        2,
+        5,
+        1,
+        3,
+        4,
+        7
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Push nums[0] (2) to result",
+      "i": 0,
+      "array": [
+        2
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Push nums[0+3] (3) to result",
+      "i": 0,
+      "array": [
+        2,
+        3
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Loop for i=1",
+      "i": 1,
+      "array": [
+        2,
+        3
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Push nums[1] (5) to result",
+      "i": 1,
+      "array": [
+        2,
+        3,
+        5
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Push nums[1+3] (4) to result",
+      "i": 1,
+      "array": [
+        2,
+        3,
+        5,
+        4
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Loop for i=2",
+      "i": 2,
+      "array": [
+        2,
+        3,
+        5,
+        4
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Push nums[2] (1) to result",
+      "i": 2,
+      "array": [
+        2,
+        3,
+        5,
+        4,
+        1
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Push nums[2+3] (7) to result",
+      "i": 2,
+      "array": [
+        2,
+        3,
+        5,
+        4,
+        1,
+        7
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Return final shuffled array",
+      "array": [
+        2,
+        3,
+        5,
+        4,
+        1,
+        7
+      ]
+    }
+  ]
+}

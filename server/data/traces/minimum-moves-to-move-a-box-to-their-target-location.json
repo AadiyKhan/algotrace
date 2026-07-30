@@ -1,0 +1,127 @@
+{
+  "title": "Minimum Moves to Move a Box to Their Target Location",
+  "difficulty": "Hard",
+  "type": "matrix",
+  "tags": [
+    "BFS",
+    "Graph",
+    "Shortest Path"
+  ],
+  "description": "Find the minimum number of pushes to move a box from a starting position to a target location in a grid, given a player position.",
+  "target": "Target Coordinate",
+  "pseudocode": "1. Initialize state as {player, box}. 2. Use BFS to explore states. 3. Player can move to adjacent empty cells. 4. If player moves to the side of the box, push the box. 5. Return min pushes when box reaches target.",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize starting state: Player at [1,1], Box at [1,2].",
+      "matrix": [
+        [
+          "#",
+          "#",
+          "#"
+        ],
+        [
+          "#",
+          "P",
+          "B"
+        ],
+        [
+          "#",
+          ".",
+          "T"
+        ]
+      ],
+      "curr": [
+        1,
+        2
+      ],
+      "prev": [
+        1,
+        1
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Player moves to [2,1] to prepare for a push.",
+      "matrix": [
+        [
+          "#",
+          "#",
+          "#"
+        ],
+        [
+          "#",
+          ".",
+          "B"
+        ],
+        [
+          "#",
+          "P",
+          "T"
+        ]
+      ],
+      "curr": [
+        1,
+        2
+      ],
+      "prev": [
+        2,
+        1
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Player pushes box from [1,2] to [2,2].",
+      "matrix": [
+        [
+          "#",
+          "#",
+          "#"
+        ],
+        [
+          "#",
+          ".",
+          "."
+        ],
+        [
+          "#",
+          "P",
+          "B"
+        ]
+      ],
+      "curr": [
+        2,
+        2
+      ],
+      "prev": [
+        2,
+        1
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Box reaches target [2,2], return total pushes: 1.",
+      "matrix": [
+        [
+          "#",
+          "#",
+          "#"
+        ],
+        [
+          "#",
+          ".",
+          "."
+        ],
+        [
+          "#",
+          "P",
+          "T"
+        ]
+      ],
+      "curr": [
+        2,
+        2
+      ]
+    }
+  ]
+}

@@ -1,0 +1,447 @@
+{
+  "title": "Alphabet Board Path",
+  "difficulty": "Medium",
+  "type": "matrix",
+  "tags": [
+    "Array",
+    "String",
+    "Math"
+  ],
+  "description": "Find the sequence of moves to reach each character in a 5x5 alphabet board.",
+  "target": "leet",
+  "pseudocode": "1. r = 0, c = 0\n2. for char in target:\n3.   tr = (ord(char) - ord('a')) // 5\n4.   tc = (ord(char) - ord('a')) % 5\n5.   move_vertical(tr - r)\n6.   move_horizontal(tc - c)\n7.   add '!'\n8.   r, c = tr, tc",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize position at 'a' (0,0)",
+      "matrix": [
+        [
+          "a",
+          "b",
+          "c",
+          "d",
+          "e"
+        ],
+        [
+          "f",
+          "g",
+          "h",
+          "i",
+          "j"
+        ],
+        [
+          "k",
+          "l",
+          "m",
+          "n",
+          "o"
+        ],
+        [
+          "p",
+          "q",
+          "r",
+          "s",
+          "t"
+        ],
+        [
+          "u",
+          "v",
+          "w",
+          "x",
+          "y"
+        ],
+        [
+          "z"
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Target 'l': tr=2, tc=1",
+      "matrix": [
+        [
+          "a",
+          "b",
+          "c",
+          "d",
+          "e"
+        ],
+        [
+          "f",
+          "g",
+          "h",
+          "i",
+          "j"
+        ],
+        [
+          "k",
+          "l",
+          "m",
+          "n",
+          "o"
+        ],
+        [
+          "p",
+          "q",
+          "r",
+          "s",
+          "t"
+        ],
+        [
+          "u",
+          "v",
+          "w",
+          "x",
+          "y"
+        ],
+        [
+          "z"
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Move down to row 2",
+      "matrix": [
+        [
+          "a",
+          "b",
+          "c",
+          "d",
+          "e"
+        ],
+        [
+          "f",
+          "g",
+          "h",
+          "i",
+          "j"
+        ],
+        [
+          "k",
+          "l",
+          "m",
+          "n",
+          "o"
+        ],
+        [
+          "p",
+          "q",
+          "r",
+          "s",
+          "t"
+        ],
+        [
+          "u",
+          "v",
+          "w",
+          "x",
+          "y"
+        ],
+        [
+          "z"
+        ]
+      ],
+      "curr": [
+        2,
+        0
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Move right to col 1",
+      "matrix": [
+        [
+          "a",
+          "b",
+          "c",
+          "d",
+          "e"
+        ],
+        [
+          "f",
+          "g",
+          "h",
+          "i",
+          "j"
+        ],
+        [
+          "k",
+          "l",
+          "m",
+          "n",
+          "o"
+        ],
+        [
+          "p",
+          "q",
+          "r",
+          "s",
+          "t"
+        ],
+        [
+          "u",
+          "v",
+          "w",
+          "x",
+          "y"
+        ],
+        [
+          "z"
+        ]
+      ],
+      "curr": [
+        2,
+        1
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Added '!' for 'l'",
+      "matrix": [
+        [
+          "a",
+          "b",
+          "c",
+          "d",
+          "e"
+        ],
+        [
+          "f",
+          "g",
+          "h",
+          "i",
+          "j"
+        ],
+        [
+          "k",
+          "l",
+          "m",
+          "n",
+          "o"
+        ],
+        [
+          "p",
+          "q",
+          "r",
+          "s",
+          "t"
+        ],
+        [
+          "u",
+          "v",
+          "w",
+          "x",
+          "y"
+        ],
+        [
+          "z"
+        ]
+      ],
+      "curr": [
+        2,
+        1
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Target 'e': tr=0, tc=4",
+      "matrix": [
+        [
+          "a",
+          "b",
+          "c",
+          "d",
+          "e"
+        ],
+        [
+          "f",
+          "g",
+          "h",
+          "i",
+          "j"
+        ],
+        [
+          "k",
+          "l",
+          "m",
+          "n",
+          "o"
+        ],
+        [
+          "p",
+          "q",
+          "r",
+          "s",
+          "t"
+        ],
+        [
+          "u",
+          "v",
+          "w",
+          "x",
+          "y"
+        ],
+        [
+          "z"
+        ]
+      ],
+      "curr": [
+        2,
+        1
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Move up to row 0",
+      "matrix": [
+        [
+          "a",
+          "b",
+          "c",
+          "d",
+          "e"
+        ],
+        [
+          "f",
+          "g",
+          "h",
+          "i",
+          "j"
+        ],
+        [
+          "k",
+          "l",
+          "m",
+          "n",
+          "o"
+        ],
+        [
+          "p",
+          "q",
+          "r",
+          "s",
+          "t"
+        ],
+        [
+          "u",
+          "v",
+          "w",
+          "x",
+          "y"
+        ],
+        [
+          "z"
+        ]
+      ],
+      "curr": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Move right to col 4",
+      "matrix": [
+        [
+          "a",
+          "b",
+          "c",
+          "d",
+          "e"
+        ],
+        [
+          "f",
+          "g",
+          "h",
+          "i",
+          "j"
+        ],
+        [
+          "k",
+          "l",
+          "m",
+          "n",
+          "o"
+        ],
+        [
+          "p",
+          "q",
+          "r",
+          "s",
+          "t"
+        ],
+        [
+          "u",
+          "v",
+          "w",
+          "x",
+          "y"
+        ],
+        [
+          "z"
+        ]
+      ],
+      "curr": [
+        0,
+        4
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Added '!' for 'e'",
+      "matrix": [
+        [
+          "a",
+          "b",
+          "c",
+          "d",
+          "e"
+        ],
+        [
+          "f",
+          "g",
+          "h",
+          "i",
+          "j"
+        ],
+        [
+          "k",
+          "l",
+          "m",
+          "n",
+          "o"
+        ],
+        [
+          "p",
+          "q",
+          "r",
+          "s",
+          "t"
+        ],
+        [
+          "u",
+          "v",
+          "w",
+          "x",
+          "y"
+        ],
+        [
+          "z"
+        ]
+      ],
+      "curr": [
+        0,
+        4
+      ]
+    }
+  ]
+}

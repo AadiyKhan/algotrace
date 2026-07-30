@@ -1,0 +1,83 @@
+{
+  "title": "Design File System",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Hash Table",
+    "String",
+    "Design"
+  ],
+  "description": "Design a file system that supports creating paths and getting values associated with them.",
+  "target": "path value",
+  "pseudocode": "1: map = {}\n2: create(path, value) {\n3:   if map.has(path) return false\n4:   parent = path.substring(0, path.lastIndexOf('/'))\n5:   if (parent != '' && !map.has(parent)) return false\n6:   map[path] = value\n7:   return true\n8: }\n9: get(path) {\n10:  return map.getOrDefault(path, -1)\n11: }",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize the file system map.",
+      "array": []
+    },
+    {
+      "codeLine": 2,
+      "note": "Create path '/a' with value 1.",
+      "array": [
+        "/a"
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Find parent of '/a', which is root ''.",
+      "array": [
+        "/a"
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Store '/a' in map.",
+      "array": [
+        "/a"
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Create path '/a/b' with value 2.",
+      "array": [
+        "/a",
+        "/a/b"
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Find parent of '/a/b', which is '/a'.",
+      "array": [
+        "/a",
+        "/a/b"
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Check if parent '/a' exists in map.",
+      "array": [
+        "/a",
+        "/a/b"
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Store '/a/b' in map.",
+      "array": [
+        "/a",
+        "/a/b"
+      ]
+    },
+    {
+      "codeLine": 9,
+      "note": "Get value for '/a/b'.",
+      "array": [
+        "/a",
+        "/a/b"
+      ]
+    }
+  ]
+}

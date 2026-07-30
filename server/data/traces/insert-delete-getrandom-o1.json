@@ -18,7 +18,8 @@
       "array": [
         10
       ],
-      "i": "10"
+      "i": "10",
+      "curr": 10
     },
     {
       "codeLine": 3,
@@ -27,14 +28,16 @@
         10,
         20
       ],
-      "i": "20"
+      "i": "20",
+      "curr": 20
     },
     {
       "codeLine": 4,
       "note": "Remove 10. Replace 10 with last element (20), then pop.",
       "array": [
         20
-      ]
+      ],
+      "curr": 10
     },
     {
       "codeLine": 5,

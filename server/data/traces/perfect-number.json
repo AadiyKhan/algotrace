@@ -14,7 +14,8 @@
       "note": "Check if 6 is less than or equal to 1. It is not.",
       "array": [
         6
-      ]
+      ],
+      "curr": 6
     },
     {
       "codeLine": 2,
@@ -22,7 +23,8 @@
       "array": [
         6
       ],
-      "i": "init"
+      "i": "init",
+      "curr": 1
     },
     {
       "codeLine": 3,
@@ -30,7 +32,8 @@
       "array": [
         6
       ],
-      "i": 2
+      "i": 2,
+      "curr": 2
     },
     {
       "codeLine": 4,
@@ -38,7 +41,8 @@
       "array": [
         6
       ],
-      "i": 2
+      "i": 2,
+      "curr": 6
     },
     {
       "codeLine": 5,
@@ -46,7 +50,8 @@
       "array": [
         6
       ],
-      "i": 2
+      "i": 2,
+      "curr": 2
     },
     {
       "codeLine": 6,
@@ -54,7 +59,8 @@
       "array": [
         6
       ],
-      "i": 2
+      "i": 2,
+      "curr": 4
     },
     {
       "codeLine": 3,
@@ -62,14 +68,16 @@
       "array": [
         6
       ],
-      "i": 3
+      "i": 3,
+      "curr": 3
     },
     {
       "codeLine": 7,
       "note": "Check if sum (6) == num (6). Returns true.",
       "array": [
         6
-      ]
+      ],
+      "curr": 6
     }
   ]
 }

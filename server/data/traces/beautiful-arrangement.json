@@ -17,7 +17,8 @@
         0,
         0
       ],
-      "visited": []
+      "visited": [],
+      "curr": 2
     },
     {
       "codeLine": 6,
@@ -97,7 +98,8 @@
         0,
         0
       ],
-      "visited": []
+      "visited": [],
+      "curr": 1
     },
     {
       "codeLine": 6,

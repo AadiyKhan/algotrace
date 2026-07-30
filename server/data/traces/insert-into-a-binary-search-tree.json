@@ -120,7 +120,8 @@
           "left": null,
           "right": null
         }
-      ]
+      ],
+      "curr": 3
     }
   ]
 }

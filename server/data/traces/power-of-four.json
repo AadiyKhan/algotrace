@@ -15,21 +15,24 @@
       "note": "Check if n is positive. n=16 is positive.",
       "array": [
         16
-      ]
+      ],
+      "curr": 16
     },
     {
       "codeLine": 2,
       "note": "Check if n is a power of two: 16 & 15 is 0. Condition holds.",
       "array": [
         16
-      ]
+      ],
+      "curr": 16
     },
     {
       "codeLine": 3,
       "note": "Verify if the set bit is in an odd position (power of 4): 16 (10000) & 0x55555555 (01010101...) is 16 (non-zero). Return true.",
       "array": [
         16
-      ]
+      ],
+      "curr": 4
     }
   ]
 }

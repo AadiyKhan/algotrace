@@ -20,7 +20,8 @@
         4,
         5,
         6
-      ]
+      ],
+      "curr": 1
     },
     {
       "codeLine": 5,
@@ -30,7 +31,8 @@
         4,
         6
       ],
-      "i": "head=2, step=2"
+      "i": "head=2, step=2",
+      "curr": 1
     },
     {
       "codeLine": 8,
@@ -40,7 +42,8 @@
         4,
         6
       ],
-      "i": "n=3, step=4"
+      "i": "n=3, step=4",
+      "curr": 3
     },
     {
       "codeLine": 5,
@@ -55,7 +58,8 @@
       "note": "n becomes 1. Loop terminates.",
       "array": [
         4
-      ]
+      ],
+      "curr": 1
     }
   ]
 }

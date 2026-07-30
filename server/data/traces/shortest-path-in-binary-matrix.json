@@ -1,0 +1,177 @@
+{
+  "title": "Shortest Path in Binary Matrix",
+  "difficulty": "Medium",
+  "type": "matrix",
+  "tags": [
+    "Array",
+    "Breadth-First Search",
+    "Matrix"
+  ],
+  "description": "Find the length of the shortest clear path in an N x N binary matrix from top-left to bottom-right.",
+  "target": 4,
+  "pseudocode": "1. queue = [[0, 0, 1]]\n2. grid[0][0] = 1\n3. while queue not empty:\n4.   r, c, dist = queue.shift()\n5.   if r == n-1 and c == n-1: return dist\n6.   for dr, dc in directions:\n7.     nr, nc = r + dr, c + dc\n8.     if valid and grid[nr][nc] == 0:\n9.       grid[nr][nc] = 1\n10.      queue.push([nr, nc, dist + 1])",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize BFS queue with starting cell [0,0] and distance 1.",
+      "matrix": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Dequeue [0,0] with distance 1.",
+      "matrix": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Checking neighbor [1,0]. It is valid and 0.",
+      "matrix": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "curr": [
+        1,
+        0
+      ]
+    },
+    {
+      "codeLine": 10,
+      "note": "Enqueue neighbor [1,0] with distance 2.",
+      "matrix": [
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "curr": [
+        1,
+        0
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Dequeue [1,0] with distance 2.",
+      "matrix": [
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "curr": [
+        1,
+        0
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Checking neighbor [1,1]. It is valid and 0.",
+      "matrix": [
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "curr": [
+        1,
+        1
+      ]
+    },
+    {
+      "codeLine": 10,
+      "note": "Enqueue neighbor [1,1] with distance 3.",
+      "matrix": [
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "curr": [
+        1,
+        1
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Dequeue [1,1] with distance 3.",
+      "matrix": [
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "curr": [
+        1,
+        1
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Reached target [1,1], return distance 3.",
+      "matrix": [
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "curr": [
+        1,
+        1
+      ]
+    }
+  ]
+}

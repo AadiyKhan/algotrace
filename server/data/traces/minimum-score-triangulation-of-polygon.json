@@ -1,0 +1,44 @@
+{
+  "title": "Minimum Score Triangulation of Polygon",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Dynamic Programming"
+  ],
+  "description": "Given a polygon's vertices, find the minimum triangulation score by partitioning into triangles.",
+  "target": 6,
+  "pseudocode": "1. If length of values < 3, return 0\n2. Calculate the product of all vertices for the triangle\n3. Return result",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize polygon with vertices [1, 2, 3]. Length is 3, which is the base case.",
+      "array": [
+        1,
+        2,
+        3
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Calculate the weight of the only possible triangle: 1 * 2 * 3 = 6.",
+      "array": [
+        1,
+        2,
+        3
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Return the final minimum score 6.",
+      "array": [
+        1,
+        2,
+        3
+      ],
+      "curr": 6
+    }
+  ]
+}

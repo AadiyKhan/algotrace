@@ -7,49 +7,18 @@
     "Depth-First Search",
     "Binary Tree"
   ],
-  "description": "Given the roots of two binary trees, determine if they are the same.",
-  "target": null,
-  "pseudocode": "1: if (!p && !q) return true;\n2: if (!p || !q || p.val !== q.val) return false;\n3: return isSameTree(p.left, q.left) && isSameTree(p.right, q.right);",
+  "description": "Check if two binary trees are identical in structure and node values.",
+  "pseudocode": "1. If p and q are both null, return true\n2. If one is null or values differ, return false\n3. Return isSameTree(p.left, q.left) AND isSameTree(p.right, q.right)",
   "steps": [
     {
-      "codeLine": 1,
-      "note": "Comparing root nodes: p(1) and q(1). Both exist, continue.",
-      "treeNodes": [
-        {
-          "id": 0,
-          "val": 1,
-          "left": 1,
-          "right": null
-        },
-        {
-          "id": 1,
-          "val": 2,
-          "left": null,
-          "right": null
-        },
-        {
-          "id": 2,
-          "val": 1,
-          "left": 3,
-          "right": null
-        },
-        {
-          "id": 3,
-          "val": 2,
-          "left": null,
-          "right": null
-        }
-      ]
-    },
-    {
       "codeLine": 2,
-      "note": "Root values are equal (1 == 1). Proceeding to children.",
+      "note": "Compare roots (1 == 1). Both exist, continue.",
       "treeNodes": [
         {
           "id": 0,
           "val": 1,
           "left": 1,
-          "right": null
+          "right": 2
         },
         {
           "id": 1,
@@ -59,53 +28,160 @@
         },
         {
           "id": 2,
-          "val": 1,
-          "left": 3,
+          "val": 3,
+          "left": null,
           "right": null
         },
         {
           "id": 3,
-          "val": 2,
-          "left": null,
-          "right": null
-        }
-      ]
-    },
-    {
-      "codeLine": 3,
-      "note": "Recursively checking left children (2 == 2).",
-      "treeNodes": [
-        {
-          "id": 0,
           "val": 1,
-          "left": 1,
-          "right": null
+          "left": 4,
+          "right": 5
         },
         {
-          "id": 1,
+          "id": 4,
           "val": 2,
           "left": null,
           "right": null
         },
         {
-          "id": 2,
-          "val": 1,
-          "left": 3,
-          "right": null
-        },
-        {
-          "id": 3,
-          "val": 2,
+          "id": 5,
+          "val": 3,
           "left": null,
           "right": null
         }
       ],
-      "visited": [
-        0,
-        1,
-        2,
-        3
-      ]
+      "curr": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Check left children (2 == 2).",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 1,
+          "left": 4,
+          "right": 5
+        },
+        {
+          "id": 4,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 5,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Check right children (3 == 3).",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 1,
+          "left": 4,
+          "right": 5
+        },
+        {
+          "id": 4,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 5,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "All subtrees match. Return true.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 1,
+          "left": 4,
+          "right": 5
+        },
+        {
+          "id": 4,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 5,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 0
     }
-  ]
+  ],
+  "fullDescription": "<p>Given the roots of two binary trees <code>p</code> and <code>q</code>, write a function to check if they are the same or not.</p>\n\n<p>Two binary trees are considered the same if they are structurally identical, and the nodes have the same value.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2020/12/20/ex1.jpg\" style=\"width: 622px; height: 182px;\" />\n<pre>\n<strong>Input:</strong> p = [1,2,3], q = [1,2,3]\n<strong>Output:</strong> true\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2020/12/20/ex2.jpg\" style=\"width: 382px; height: 182px;\" />\n<pre>\n<strong>Input:</strong> p = [1,2], q = [1,null,2]\n<strong>Output:</strong> false\n</pre>\n\n<p><strong class=\"example\">Example 3:</strong></p>\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2020/12/20/ex3.jpg\" style=\"width: 622px; height: 182px;\" />\n<pre>\n<strong>Input:</strong> p = [1,2,1], q = [1,1,2]\n<strong>Output:</strong> false\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li>The number of nodes in both trees is in the range <code>[0, 100]</code>.</li>\n\t<li><code>-10<sup>4</sup> &lt;= Node.val &lt;= 10<sup>4</sup></code></li>\n</ul>\n"
 }

@@ -1,61 +1,31 @@
 {
   "title": "Remove 9",
-  "difficulty": "Medium",
+  "difficulty": "Hard",
   "type": "array",
   "tags": [
-    "Math",
-    "Base Conversion"
+    "Math"
   ],
-  "description": "Find the n-th positive integer that does not contain the digit 9 by treating numbers as base-9 digits.",
-  "target": 10,
-  "pseudocode": "function remove9(n) {\n  let res = '';\n  while (n > 0) {\n    res = (n % 9) + res;\n    n = Math.floor(n / 9);\n  }\n  return parseInt(res);\n}",
+  "description": "Convert a base-10 number to base-9 to effectively skip the digit '9' in decimal representation.",
+  "target": 9,
+  "pseudocode": "1. Convert n to string representation in base-9\n2. Return the string as an integer",
   "steps": [
     {
+      "codeLine": 1,
+      "note": "Convert input 9 to base-9. 9 in base-10 corresponds to 10 in base-9.",
+      "array": [
+        9
+      ],
+      "i": "9",
+      "curr": 9
+    },
+    {
       "codeLine": 2,
-      "note": "Initialize result string as empty.",
-      "i": 0
-    },
-    {
-      "codeLine": 4,
-      "note": "Calculate 10 % 9 = 1, append to result.",
+      "note": "The base-9 representation is 10, which acts as the result skipping the digit 9.",
       "array": [
-        "1"
+        10
       ],
-      "i": 1
-    },
-    {
-      "codeLine": 5,
-      "note": "Update n: 10 / 9 = 1.",
-      "array": [
-        "1"
-      ],
-      "i": 1
-    },
-    {
-      "codeLine": 4,
-      "note": "Calculate 1 % 9 = 1, append to result.",
-      "array": [
-        "1",
-        "1"
-      ],
-      "i": 1
-    },
-    {
-      "codeLine": 5,
-      "note": "Update n: 1 / 9 = 0, loop terminates.",
-      "array": [
-        "1",
-        "1"
-      ],
-      "i": 0
-    },
-    {
-      "codeLine": 7,
-      "note": "Return 11 as the 10th number without digit 9.",
-      "array": [
-        1,
-        1
-      ]
+      "i": "10",
+      "curr": -9
     }
   ]
 }

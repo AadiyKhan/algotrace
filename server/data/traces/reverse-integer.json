@@ -12,62 +12,72 @@
     {
       "codeLine": 1,
       "note": "Initialize result accumulator rev = 0 for input x = 123.",
-      "array": []
+      "array": [],
+      "curr": 0
     },
     {
       "codeLine": 2,
       "note": "Check loop condition: x (123) !== 0 is true.",
-      "array": []
+      "array": [],
+      "curr": 123
     },
     {
       "codeLine": 3,
       "note": "Pop the last digit: pop = 123 % 10 = 3.",
-      "array": []
+      "array": [],
+      "curr": 123
     },
     {
       "codeLine": 4,
       "note": "Truncate x: x = Math.trunc(123 / 10) = 12.",
-      "array": []
+      "array": [],
+      "curr": 123
     },
     {
       "codeLine": 5,
       "note": "Check overflow bounds: rev (0) is within [-214748364, 214748364].",
-      "array": []
+      "array": [],
+      "curr": 0
     },
     {
       "codeLine": 6,
       "note": "Append popped digit to rev: rev = 0 * 10 + 3 = 3.",
       "array": [
         3
-      ]
+      ],
+      "curr": 0
     },
     {
       "codeLine": 2,
       "note": "Check loop condition: x (12) !== 0 is true.",
       "array": [
         3
-      ]
+      ],
+      "curr": 12
     },
     {
       "codeLine": 3,
       "note": "Pop the last digit: pop = 12 % 10 = 2.",
       "array": [
         3
-      ]
+      ],
+      "curr": 12
     },
     {
       "codeLine": 4,
       "note": "Truncate x: x = Math.trunc(12 / 10) = 1.",
       "array": [
         3
-      ]
+      ],
+      "curr": 12
     },
     {
       "codeLine": 5,
       "note": "Check overflow bounds: rev (3) is within safe range.",
       "array": [
         3
-      ]
+      ],
+      "curr": 3
     },
     {
       "codeLine": 6,
@@ -75,7 +85,8 @@
       "array": [
         3,
         2
-      ]
+      ],
+      "curr": 3
     },
     {
       "codeLine": 2,
@@ -83,7 +94,8 @@
       "array": [
         3,
         2
-      ]
+      ],
+      "curr": 1
     },
     {
       "codeLine": 3,
@@ -91,7 +103,8 @@
       "array": [
         3,
         2
-      ]
+      ],
+      "curr": 1
     },
     {
       "codeLine": 4,
@@ -99,7 +112,8 @@
       "array": [
         3,
         2
-      ]
+      ],
+      "curr": 1
     },
     {
       "codeLine": 5,
@@ -107,7 +121,8 @@
       "array": [
         3,
         2
-      ]
+      ],
+      "curr": 32
     },
     {
       "codeLine": 6,
@@ -116,7 +131,8 @@
         3,
         2,
         1
-      ]
+      ],
+      "curr": 32
     },
     {
       "codeLine": 2,
@@ -125,7 +141,8 @@
         3,
         2,
         1
-      ]
+      ],
+      "curr": 0
     },
     {
       "codeLine": 8,
@@ -134,7 +151,8 @@
         3,
         2,
         1
-      ]
+      ],
+      "curr": 321
     }
   ]
 }

@@ -1,0 +1,139 @@
+{
+  "title": "Number of Ships in a Rectangle",
+  "difficulty": "Hard",
+  "type": "matrix",
+  "tags": [
+    "Array",
+    "Divide and Conquer"
+  ],
+  "description": "Count the number of ships in a rectangular area using a Sea API.",
+  "target": 2,
+  "pseudocode": "1: function countShips(sea, topRight, bottomLeft) {\n2:   if (!sea.hasShips(topRight, bottomLeft)) return 0;\n3:   if (topRight.x == bottomLeft.x && topRight.y == bottomLeft.y) return 1;\n4:   midX = (topRight.x + bottomLeft.x) / 2;\n5:   midY = (topRight.y + bottomLeft.y) / 2;\n6:   return countShips(sea, [midX, midY], bottomLeft) + ... + countShips(sea, topRight, [midX + 1, midY + 1]);\n7: }",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Checking entire area (0,0) to (2,2). Ships exist.",
+      "matrix": [
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Splitting area into quadrants at mid (1,1).",
+      "matrix": [
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ]
+      ],
+      "curr": [
+        1,
+        1
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Recursive call on bottom-left quadrant (0,0) to (1,1).",
+      "matrix": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Found ship at (0,2). Incrementing count.",
+      "matrix": [
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ]
+      ],
+      "curr": [
+        0,
+        2
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Recursive call on top-right quadrant (2,2) to (2,2).",
+      "matrix": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ]
+      ],
+      "curr": [
+        2,
+        2
+      ]
+    }
+  ]
+}

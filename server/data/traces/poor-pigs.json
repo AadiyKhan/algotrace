@@ -7,49 +7,108 @@
     "Dynamic Programming",
     "Combinatorics"
   ],
-  "description": "Find the minimum number of pigs to find the poisoned bucket in minutesToDie given buckets, minutesToDie, and minutesToTest.",
-  "target": 5,
-  "pseudocode": "1: rounds = Math.floor(minutesToTest / minutesToDie)\n2: pigs = 0\n3: while (Math.pow(rounds + 1, pigs) < buckets) {\n4:   pigs++\n5: }\n6: return pigs",
+  "description": "Find the minimum number of pigs to identify a poisonous bucket within given time constraints.",
+  "target": 4,
+  "pseudocode": "1. rounds = minutesToTest / minutesToDie\n2. states = rounds + 1\n3. pigs = 0\n4. while Math.pow(states, pigs) < buckets:\n5.    pigs++\n6. return pigs",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Calculate how many tests can be performed per pig (rounds + 1 states).",
-      "i": 2
+      "note": "Calculate rounds: 15 / 15 = 1",
+      "array": [
+        4,
+        15,
+        15
+      ],
+      "i": 1,
+      "curr": 15
     },
     {
       "codeLine": 2,
-      "note": "Initialize pigs counter to 0.",
-      "i": 0
+      "note": "Calculate possible states per pig: 1 + 1 = 2",
+      "array": [
+        4,
+        15,
+        15
+      ],
+      "i": 2,
+      "curr": 1
     },
     {
       "codeLine": 3,
-      "note": "Check if current number of pigs can cover 5 buckets (rounds + 1 = 3).",
-      "i": 0
+      "note": "Initialize pigs = 0",
+      "array": [
+        4,
+        15,
+        15
+      ],
+      "i": 0,
+      "curr": 0
     },
     {
       "codeLine": 4,
-      "note": "Increment pigs to 1 (3^1 = 3 < 5).",
-      "i": 1
+      "note": "Check if 2^0 < 4 (True)",
+      "array": [
+        4,
+        15,
+        15
+      ],
+      "i": 0,
+      "curr": 2
     },
     {
-      "codeLine": 3,
-      "note": "Check if 1 pig can cover 5 buckets.",
-      "i": 1
+      "codeLine": 5,
+      "note": "Increment pigs to 1",
+      "array": [
+        4,
+        15,
+        15
+      ],
+      "i": 1,
+      "curr": 1
     },
     {
       "codeLine": 4,
-      "note": "Increment pigs to 2 (3^2 = 9 >= 5).",
-      "i": 2
+      "note": "Check if 2^1 < 4 (True)",
+      "array": [
+        4,
+        15,
+        15
+      ],
+      "i": 1,
+      "curr": 2
     },
     {
-      "codeLine": 3,
-      "note": "Condition 9 < 5 is false, exit loop.",
-      "i": 2
+      "codeLine": 5,
+      "note": "Increment pigs to 2",
+      "array": [
+        4,
+        15,
+        15
+      ],
+      "i": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Check if 2^2 < 4 (False, 4 is not less than 4)",
+      "array": [
+        4,
+        15,
+        15
+      ],
+      "i": 2,
+      "curr": 2
     },
     {
       "codeLine": 6,
-      "note": "Return 2 pigs.",
-      "i": 2
+      "note": "Return result 2",
+      "array": [
+        4,
+        15,
+        15
+      ],
+      "i": 2,
+      "curr": 2
     }
   ]
 }

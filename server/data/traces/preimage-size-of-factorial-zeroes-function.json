@@ -3,103 +3,51 @@
   "difficulty": "Hard",
   "type": "array",
   "tags": [
-    "Binary Search",
-    "Math"
+    "Math",
+    "Binary Search"
   ],
-  "description": "Find the number of non-negative integers x such that the factorial of x has exactly K trailing zeroes.",
-  "target": 5,
-  "pseudocode": "function trailingZeroes(n) {\n  let count = 0;\n  while (n >= 5) {\n    n = Math.floor(n / 5);\n    count += n;\n  }\n  return count;\n}\n\nlet left = 0, right = 5 * K;\nwhile (left <= right) {\n  let mid = Math.floor((left + right) / 2);\n  let val = trailingZeroes(mid);\n  if (val === K) return 5;\n  if (val < K) left = mid + 1;\n  else right = mid - 1;\n}\nreturn 0;",
+  "description": "Find the number of integers x such that the number of trailing zeroes in x! equals k.",
+  "target": 0,
+  "pseudocode": "1. Define function countZeroes(n): count factors of 5 in numbers up to n\n2. low = 0, high = 5 * k + 5\n3. Perform binary search to find the first x where countZeroes(x) >= k\n4. Perform binary search to find the first x where countZeroes(x) > k\n5. Return high_bound - low_bound",
   "steps": [
     {
-      "codeLine": 9,
-      "note": "Initialize binary search range [0, 25] for K=5",
+      "codeLine": 2,
+      "note": "Initialize binary search range for k=0. low=0, high=5.",
+      "array": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
       "i": 0,
-      "j": 25
+      "curr": 0
     },
     {
-      "codeLine": 10,
-      "note": "Calculate mid point of binary search",
-      "i": 12
-    },
-    {
-      "codeLine": 11,
-      "note": "Count trailing zeroes for 12! (12/5 = 2)",
-      "i": 12,
-      "curr": 2
-    },
-    {
-      "codeLine": 13,
-      "note": "Since 2 < 5, narrow range to [13, 25]",
-      "i": 13,
-      "j": 25
-    },
-    {
-      "codeLine": 10,
-      "note": "Calculate new mid point",
-      "i": 19
-    },
-    {
-      "codeLine": 11,
-      "note": "Count trailing zeroes for 19! (19/5 = 3)",
-      "i": 19,
-      "curr": 3
-    },
-    {
-      "codeLine": 13,
-      "note": "Since 3 < 5, narrow range to [20, 25]",
-      "i": 20,
-      "j": 25
-    },
-    {
-      "codeLine": 10,
-      "note": "Calculate new mid point",
-      "i": 22
-    },
-    {
-      "codeLine": 11,
-      "note": "Count trailing zeroes for 22! (22/5 = 4)",
-      "i": 22,
+      "codeLine": 3,
+      "note": "Binary search finds range [0, 5) where trailing zeroes = 0.",
+      "array": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "i": 5,
       "curr": 4
     },
     {
-      "codeLine": 13,
-      "note": "Since 4 < 5, narrow range to [23, 25]",
-      "i": 23,
-      "j": 25
-    },
-    {
-      "codeLine": 10,
-      "note": "Calculate mid point 24",
-      "i": 24
-    },
-    {
-      "codeLine": 11,
-      "note": "Count trailing zeroes for 24! (24/5 = 4)",
-      "i": 24,
-      "curr": 4
-    },
-    {
-      "codeLine": 13,
-      "note": "Since 4 < 5, narrow range to [25, 25]",
-      "i": 25,
-      "j": 25
-    },
-    {
-      "codeLine": 10,
-      "note": "Calculate mid point 25",
-      "i": 25
-    },
-    {
-      "codeLine": 11,
-      "note": "Count trailing zeroes for 25! (25/5 = 5, 5/5 = 1, total 6)",
-      "i": 25,
-      "curr": 6
-    },
-    {
-      "codeLine": 14,
-      "note": "Since 6 > 5, reduce right pointer",
-      "i": 25,
-      "j": 24
+      "codeLine": 5,
+      "note": "The numbers 0!, 1!, 2!, 3!, 4! all have 0 trailing zeroes. Result is 5 - 0 = 5.",
+      "array": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "i": 5,
+      "curr": 5
     }
   ]
 }

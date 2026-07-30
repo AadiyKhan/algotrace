@@ -18,21 +18,24 @@
     {
       "codeLine": 3,
       "note": "Start loop, n=6",
-      "array": []
+      "array": [],
+      "curr": 6
     },
     {
       "codeLine": 4,
       "note": "6 % 2 is 0, add to front",
       "array": [
         0
-      ]
+      ],
+      "curr": 6
     },
     {
       "codeLine": 5,
       "note": "n becomes 6 / 2 = 3",
       "array": [
         0
-      ]
+      ],
+      "curr": 6
     },
     {
       "codeLine": 4,
@@ -40,7 +43,8 @@
       "array": [
         1,
         0
-      ]
+      ],
+      "curr": 3
     },
     {
       "codeLine": 5,
@@ -48,7 +52,8 @@
       "array": [
         1,
         0
-      ]
+      ],
+      "curr": 3
     },
     {
       "codeLine": 4,
@@ -57,7 +62,8 @@
         1,
         1,
         0
-      ]
+      ],
+      "curr": 1
     },
     {
       "codeLine": 5,
@@ -66,7 +72,8 @@
         1,
         1,
         0
-      ]
+      ],
+      "curr": 1
     },
     {
       "codeLine": 6,

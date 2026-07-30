@@ -1,0 +1,102 @@
+{
+  "title": "Minimum Numbers of Function Calls to Make Target Array",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Greedy",
+    "Bit Manipulation"
+  ],
+  "description": "Find the minimum operations to obtain target array starting from all zeros using: 1) Add 1 to an element, 2) Double all elements.",
+  "target": [
+    3,
+    2
+  ],
+  "pseudocode": "1. ops = 0\n2. while any(nums > 0):\n3.   for i in range(len(nums)):\n4.     if nums[i] % 2 != 0:\n5.       nums[i] -= 1\n6.       ops += 1\n7.   if any(nums > 0):\n8.     for i in range(len(nums)):\n9.       nums[i] /= 2\n10.    ops += 1",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize operations count to 0.",
+      "array": [
+        3,
+        2
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Index 0 is odd, subtract 1.",
+      "array": [
+        2,
+        2
+      ],
+      "i": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Increment ops to 1.",
+      "array": [
+        2,
+        2
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 8,
+      "note": "Divide all by 2 (Double operation).",
+      "array": [
+        1,
+        1
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 10,
+      "note": "Increment ops to 2.",
+      "array": [
+        1,
+        1
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Index 0 is odd, subtract 1.",
+      "array": [
+        0,
+        1
+      ],
+      "i": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Increment ops to 3.",
+      "array": [
+        0,
+        1
+      ],
+      "curr": 3
+    },
+    {
+      "codeLine": 4,
+      "note": "Index 1 is odd, subtract 1.",
+      "array": [
+        0,
+        0
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Increment ops to 4.",
+      "array": [
+        0,
+        0
+      ],
+      "curr": 4
+    }
+  ]
+}

@@ -1,0 +1,221 @@
+{
+  "title": "All Ancestors of a Node in a Directed Acyclic Graph",
+  "difficulty": "Medium",
+  "type": "graph",
+  "tags": [
+    "Graph",
+    "DFS",
+    "Topological Sort"
+  ],
+  "description": "Find all ancestors of each node in a DAG, where ancestors are nodes from which there is a path to the given node.",
+  "pseudocode": "for each node in sorted nodes:\n  for neighbor in adj[node]:\n    ancestors[neighbor].add(node)\n    ancestors[neighbor].update(ancestors[node])",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize result list for nodes 0, 1, 2.",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": 0
+        },
+        {
+          "id": 1,
+          "val": 1
+        },
+        {
+          "id": 2,
+          "val": 2
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Processing node 0: neighbors are [1, 2].",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": 0
+        },
+        {
+          "id": 1,
+          "val": 1
+        },
+        {
+          "id": 2,
+          "val": 2
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Add 0 as ancestor to node 1.",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": 0
+        },
+        {
+          "id": 1,
+          "val": 1
+        },
+        {
+          "id": 2,
+          "val": 2
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "visited": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Processing node 1: neighbor is 2.",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": 0
+        },
+        {
+          "id": 1,
+          "val": 1
+        },
+        {
+          "id": 2,
+          "val": 2
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Add 1 as ancestor to node 2.",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": 0
+        },
+        {
+          "id": 1,
+          "val": 1
+        },
+        {
+          "id": 2,
+          "val": 2
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "visited": [
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Propagate ancestors from 1 to 2: 0 is added to 2's ancestors.",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": 0
+        },
+        {
+          "id": 1,
+          "val": 1
+        },
+        {
+          "id": 2,
+          "val": 2
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "visited": [
+        0,
+        2
+      ]
+    }
+  ]
+}

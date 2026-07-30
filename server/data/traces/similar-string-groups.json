@@ -19,7 +19,8 @@
         "rats",
         "arts"
       ],
-      "i": 0
+      "i": 0,
+      "curr": 3
     },
     {
       "codeLine": 3,
@@ -41,7 +42,8 @@
         "arts"
       ],
       "i": 0,
-      "j": 1
+      "j": 1,
+      "curr": 2
     },
     {
       "codeLine": 3,
@@ -63,7 +65,8 @@
         "arts"
       ],
       "i": 0,
-      "j": 2
+      "j": 2,
+      "curr": 1
     },
     {
       "codeLine": 5,
@@ -72,7 +75,8 @@
         "tars",
         "rats",
         "arts"
-      ]
+      ],
+      "curr": 1
     }
   ]
 }

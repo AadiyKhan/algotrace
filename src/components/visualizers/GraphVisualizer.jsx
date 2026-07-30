@@ -4,9 +4,9 @@ import { motion } from 'framer-motion';
 const NODE_R = 24;
 
 const LEGEND = [
-  { label: 'CURRENT',  desc: 'Active node',        stroke: '#ff0000',              dash: 'none' },
-  { label: 'PREV',     desc: 'Previously visited', stroke: 'rgba(255,255,255,0.5)', dash: '4 3'  },
-  { label: 'VISITED',  desc: 'Marked as visited',  stroke: 'rgba(255,0,0,0.4)',    dash: '2 3'  },
+  { label: 'CURRENT',  desc: 'ACTIVE NODE',        stroke: '#f59e0b',              dash: 'none' },
+  { label: 'PREV',     desc: 'PREVIOUSLY VISITED', stroke: 'rgba(255,255,255,0.8)', dash: 'none'  },
+  { label: 'VISITED',  desc: 'MARKED AS VISITED',  stroke: 'rgba(245,158,11,0.4)',  dash: 'none'  },
 ];
 
 const GraphVisualizer = ({ stepData }) => {
@@ -25,8 +25,8 @@ const GraphVisualizer = ({ stepData }) => {
 
   if (!graphNodes || !Array.isArray(graphNodes) || graphNodes.length === 0) {
     return (
-      <div className="flex items-center justify-center h-32 w-full border border-borderDark font-mono text-sm" style={{ color: 'rgba(255,255,255,0.4)' }}>
-        No graph data provided for this step.
+      <div className="flex items-center justify-center h-40 w-full border-[2px] border-white/20 font-mono text-[11px] font-bold tracking-widest uppercase bg-[#050505]" style={{ color: 'rgba(255,255,255,0.2)' }}>
+        [ EMPTY_GRAPH ]
       </div>
     );
   }
@@ -52,10 +52,10 @@ const GraphVisualizer = ({ stepData }) => {
     const isCurr    = curr === id;
     const isPrev    = prev === id;
     const isVisited = visitedSet.has(id);
-    if (isCurr)    return { fill: 'rgba(255,0,0,0.18)',        stroke: '#ff0000',               dash: 'none', color: '#fff',                   shadow: true  };
-    if (isPrev)    return { fill: 'rgba(255,255,255,0.08)',    stroke: 'rgba(255,255,255,0.5)',  dash: '4 3',  color: '#fff',                   shadow: false };
-    if (isVisited) return { fill: 'rgba(255,0,0,0.05)',        stroke: 'rgba(255,0,0,0.35)',     dash: '2 3',  color: 'rgba(255,255,255,0.55)', shadow: false };
-    return           { fill: '#110000',                        stroke: '#2a0000',                dash: 'none', color: '#6b5555',                shadow: false };
+    if (isCurr)    return { fill: 'rgba(245,158,11,0.15)',        stroke: '#f59e0b',               dash: 'none', color: '#fff',                   shadow: true  };
+    if (isPrev)    return { fill: 'rgba(255,255,255,0.05)',    stroke: 'rgba(255,255,255,0.8)',  dash: 'none',  color: '#fff',                   shadow: false };
+    if (isVisited) return { fill: 'rgba(245,158,11,0.05)',        stroke: 'rgba(245,158,11,0.4)',     dash: 'none',  color: 'rgba(255,255,255,0.7)', shadow: false };
+    return           { fill: '#050505',                        stroke: 'rgba(255,255,255,0.2)',                dash: 'none', color: 'rgba(255,255,255,0.4)',                shadow: false };
   };
 
   // Build path d for an edge with an arrowhead offset
@@ -73,23 +73,35 @@ const GraphVisualizer = ({ stepData }) => {
   };
 
   return (
-    <div className="flex flex-col gap-6 w-full max-w-4xl mx-auto items-center" ref={containerRef}>
-      <p className="label text-center">DIRECTED GRAPH</p>
+    <div className="flex flex-col gap-8 w-full max-w-5xl mx-auto p-4" ref={containerRef}>
+      <div className="flex items-center gap-4 mb-2">
+        <span className="font-mono font-bold tracking-widest text-[11px] uppercase text-white/50">DIRECTED_GRAPH</span>
+        <div className="flex-1 h-[2px] bg-white/10" />
+      </div>
 
-      <svg
-        width={size} height={size}
-        viewBox={`0 0 ${size} ${size}`}
-        style={{ display: 'block' }}
-        aria-label="Directed graph visualizer"
-      >
-        <defs>
-          <marker id="arrow" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
-            <polygon points="0 0, 8 3, 0 6" fill="#4a0000" />
-          </marker>
-          <marker id="arrow-active" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
-            <polygon points="0 0, 8 3, 0 6" fill="#ff0000" />
-          </marker>
-        </defs>
+      <div className="overflow-hidden border-[2px] border-white/20 bg-[#050505] p-8 flex justify-center">
+        <svg
+          width={size} height={size}
+          viewBox={`0 0 ${size} ${size}`}
+          style={{ display: 'block' }}
+          aria-label="Directed graph visualizer"
+        >
+          <defs>
+            <pattern id="grid-graph" width="24" height="24" patternUnits="userSpaceOnUse">
+              <path d="M 24 0 L 0 0 0 24" fill="none" stroke="rgba(255,255,255,0.03)" strokeWidth="1" />
+            </pattern>
+            <radialGradient id="node-glow-graph" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stopColor="rgba(245,158,11,0.6)" />
+              <stop offset="100%" stopColor="rgba(245,158,11,0)" />
+            </radialGradient>
+            <marker id="arrow" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+              <polygon points="0 0, 8 3, 0 6" fill="rgba(255,255,255,0.2)" />
+            </marker>
+            <marker id="arrow-active" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+              <polygon points="0 0, 8 3, 0 6" fill="#f59e0b" />
+            </marker>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#grid-graph)" />
 
         {/* Edges */}
         {edges.map((edge, i) => {
@@ -102,35 +114,49 @@ const GraphVisualizer = ({ stepData }) => {
               key={`${u}-${v}-${i}`}
               d={d}
               fill="none"
-              stroke={isActive ? '#ff0000' : '#4a0000'}
-              strokeWidth={isActive ? 2.5 : 1.5}
+              stroke={isActive ? '#f59e0b' : 'rgba(255,255,255,0.2)'}
+              strokeWidth={isActive ? 3 : 2}
               markerEnd={isActive ? 'url(#arrow-active)' : 'url(#arrow)'}
               initial={{ pathLength: 0, opacity: 0 }}
               animate={{ pathLength: 1, opacity: 1 }}
-              transition={{ duration: 0.3 }}
+              transition={{ duration: 0.4, ease: "easeOut" }}
             />
           );
         })}
 
         {/* Nodes */}
-        {graphNodes.map(node => {
+        {graphNodes.map((node, i) => {
           const pos = nodePositions[node.id];
           const s = nodeStyle(node.id);
           const isCurr = curr === node.id;
           return (
             <g key={node.id}>
-              {s.shadow && (
-                <circle cx={pos.x} cy={pos.y} r={NODE_R + 7}
-                  fill="none" stroke="rgba(255,0,0,0.2)" strokeWidth={6} />
+              {/* Breathing glow halo */}
+              {isCurr && (
+                <motion.circle
+                  cx={pos.x} cy={pos.y}
+                  r={NODE_R + 14}
+                  fill="url(#node-glow-graph)"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1, r: [NODE_R + 10, NODE_R + 18, NODE_R + 14] }}
+                  transition={{ duration: 1.2, repeat: Infinity, ease: 'easeInOut' }}
+                />
               )}
+              {/* Outer ring */}
+              {isCurr && (
+                <circle cx={pos.x} cy={pos.y} r={NODE_R + 5}
+                  fill="none" stroke="rgba(245,158,11,0.5)" strokeWidth={2} />
+              )}
+              {/* Main node */}
               <motion.circle
                 cx={pos.x} cy={pos.y} r={NODE_R}
                 fill={s.fill}
                 stroke={s.stroke}
-                strokeWidth={2}
+                strokeWidth={isCurr ? 3 : 2}
                 strokeDasharray={s.dash}
-                animate={isCurr ? { r: [NODE_R, NODE_R + 3, NODE_R] } : { r: NODE_R }}
-                transition={{ duration: 0.3 }}
+                initial={{ scale: 0, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ type: 'spring', stiffness: 250, damping: 18, delay: Math.min(i * 0.05, 0.4) }}
               />
               <text
                 x={pos.x} y={pos.y}
@@ -144,20 +170,21 @@ const GraphVisualizer = ({ stepData }) => {
             </g>
           );
         })}
-      </svg>
+        </svg>
+      </div>
 
       {/* Legend */}
-      <div className="grid grid-cols-3 gap-3 border-t border-borderDark pt-4 w-full">
+      <div className="grid grid-cols-3 gap-6 border-t-[2px] border-white/10 pt-8 mt-4 w-full">
         {LEGEND.map(({ label, desc, stroke, dash }) => (
-          <div key={label} className="p-3" style={{ background: '#110000', border: '1px solid #2a0000' }}>
-            <div className="flex items-center gap-2 mb-1">
-              <svg width={16} height={16} aria-hidden="true">
+          <div key={label} className="p-6 bg-[#050505] border-[2px] border-white/20">
+            <div className="flex items-center gap-4 mb-2">
+              <svg width={16} height={16} aria-hidden="true" className="flex-shrink-0">
                 <circle cx={8} cy={8} r={6} fill="transparent"
                   stroke={stroke} strokeWidth={2} strokeDasharray={dash} />
               </svg>
-              <span className="font-mono font-bold text-[10px]" style={{ color: stroke }}>{label}</span>
+              <span className="font-mono font-bold tracking-widest text-[11px] uppercase" style={{ color: stroke }}>{label}</span>
             </div>
-            <p className="text-[10px] leading-relaxed" style={{ color: '#6b5555' }}>{desc}</p>
+            <p className="font-mono text-[10px] uppercase tracking-widest text-white/40">{desc}</p>
           </div>
         ))}
       </div>

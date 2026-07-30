@@ -1,0 +1,67 @@
+{
+  "title": "Number of Ways to Split a String",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Math",
+    "String"
+  ],
+  "description": "Split binary string into 3 non-empty parts with equal number of '1's.",
+  "target": 3,
+  "pseudocode": "1. Count total ones in s\n2. If total % 3 != 0 return 0\n3. If total == 0 return (n-1)*(n-2)/2\n4. Find indices of ones\n5. Calculate ways by multiplying gaps between i-th and (i+1)-th one",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Counting total ones in '10101'. Total = 3.",
+      "array": [
+        "1",
+        "0",
+        "1",
+        "0",
+        "1"
+      ],
+      "curr": 10101
+    },
+    {
+      "codeLine": 4,
+      "note": "Identifying positions of ones at indices 0, 2, 4.",
+      "array": [
+        "1",
+        "0",
+        "1",
+        "0",
+        "1"
+      ],
+      "visited": [
+        0,
+        2,
+        4
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Group 1: index 0 to 1 (gap of 2), Group 2: index 2 to 3 (gap of 2). Multiplier = 2 * 2 = 4.",
+      "array": [
+        "1",
+        "0",
+        "1",
+        "0",
+        "1"
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Final calculation for 3 parts with 1 one each. Result = 4.",
+      "array": [
+        "1",
+        "0",
+        "1",
+        "0",
+        "1"
+      ],
+      "curr": 3
+    }
+  ]
+}

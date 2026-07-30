@@ -1,0 +1,237 @@
+{
+  "title": "Check If A String Is A Valid Sequence From Root To Leaves Path In A Binary Tree",
+  "difficulty": "Medium",
+  "type": "tree",
+  "tags": [
+    "Tree",
+    "DFS",
+    "Binary Tree"
+  ],
+  "description": "Determine if a given array represents a valid sequence from the root to any leaf node.",
+  "target": [
+    0,
+    1,
+    0,
+    1
+  ],
+  "pseudocode": "1. function isValid(node, index, arr):\n2.   if !node or node.val != arr[index]: return false\n3.   if index == arr.length - 1: return !node.left and !node.right\n4.   return isValid(node.left, index + 1, arr) or isValid(node.right, index + 1, arr)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Start DFS at root (ID 0) with index 0.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 0,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": 3,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 0,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 0,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Match node 0 with arr[0] (0). Match successful.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 0,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": 3,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 0,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 0,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Move to left child (ID 1) and index 1.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 0,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": 3,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 0,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 0,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Match node 1 with arr[1] (1). Match successful.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 0,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": 3,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 0,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 0,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Move to left child (ID 3) and index 2.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 0,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": 3,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 0,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 0,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 3
+    },
+    {
+      "codeLine": 2,
+      "note": "Match node 3 with arr[2] (0). Match successful.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 0,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": 3,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 0,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 0,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 3
+    },
+    {
+      "codeLine": 3,
+      "note": "Index is 3, length is 4. Not leaf yet.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 0,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": 3,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 0,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 0,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 3
+    }
+  ]
+}

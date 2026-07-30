@@ -1,0 +1,63 @@
+{
+  "title": "Intersection of Three Sorted Arrays",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Two Pointers"
+  ],
+  "description": "Find common elements among three sorted arrays using three pointers.",
+  "pseudocode": "1. i = j = k = 0\n2. while i < arr1.length && j < arr2.length && k < arr3.length:\n3. if arr1[i] == arr2[j] == arr3[k]: result.push(arr1[i]); i++; j++; k++\n4. else if arr1[i] < arr2[j]: i++\n5. else if arr2[j] < arr3[k]: j++\n6. else: k++",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize pointers for all three arrays.",
+      "array": [
+        1,
+        2,
+        4
+      ],
+      "i": 0,
+      "j": 0,
+      "k": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "arr1[0]=1, arr2[0]=2, arr3[0]=2. 1 < 2, increment i.",
+      "array": [
+        1,
+        2,
+        4
+      ],
+      "i": 1,
+      "j": 0,
+      "k": 0,
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "arr1[1]=2, arr2[0]=2, arr3[0]=2. All equal, found intersection.",
+      "array": [
+        1,
+        2,
+        4
+      ],
+      "i": 2,
+      "j": 1,
+      "k": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Loop terminates as pointer exceeds array bounds.",
+      "array": [
+        1,
+        2,
+        4
+      ],
+      "i": 3,
+      "j": 1,
+      "k": 1
+    }
+  ]
+}

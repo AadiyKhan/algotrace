@@ -1,0 +1,268 @@
+{
+  "title": "Parallel Courses",
+  "difficulty": "Medium",
+  "type": "graph",
+  "tags": [
+    "Graph Theory",
+    "Topological Sort"
+  ],
+  "description": "Determine the minimum semesters to complete all courses given prerequisites.",
+  "target": 3,
+  "pseudocode": "1. Build adjacency list and calculate in-degree for all courses.\n2. Initialize queue with courses having in-degree 0.\n3. While queue is not empty, process level by level.\n4. For each course in current level, decrement neighbor in-degrees.\n5. If neighbor in-degree becomes 0, add to next queue.\n6. Increment semester count until no more courses left.",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Build graph and calculate in-degrees: 1:[2], 2:[3], 3:[]. In-degrees: {1:0, 2:1, 3:1}",
+      "graphNodes": [
+        {
+          "id": 1,
+          "val": 1
+        },
+        {
+          "id": 2,
+          "val": 2
+        },
+        {
+          "id": 3,
+          "val": 3
+        }
+      ],
+      "graphEdges": [
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "visited": [],
+      "curr": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Initialize queue with nodes having in-degree 0.",
+      "graphNodes": [
+        {
+          "id": 1,
+          "val": 1
+        },
+        {
+          "id": 2,
+          "val": 2
+        },
+        {
+          "id": 3,
+          "val": 3
+        }
+      ],
+      "graphEdges": [
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "visited": [
+        1
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Start Semester 1: Process course 1.",
+      "graphNodes": [
+        {
+          "id": 1,
+          "val": 1
+        },
+        {
+          "id": 2,
+          "val": 2
+        },
+        {
+          "id": 3,
+          "val": 3
+        }
+      ],
+      "graphEdges": [
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "visited": [
+        1
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Decrease in-degree of course 2.",
+      "graphNodes": [
+        {
+          "id": 1,
+          "val": 1
+        },
+        {
+          "id": 2,
+          "val": 2
+        },
+        {
+          "id": 3,
+          "val": 3
+        }
+      ],
+      "graphEdges": [
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "visited": [
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Course 2 in-degree is 0, add to next queue.",
+      "graphNodes": [
+        {
+          "id": 1,
+          "val": 1
+        },
+        {
+          "id": 2,
+          "val": 2
+        },
+        {
+          "id": 3,
+          "val": 3
+        }
+      ],
+      "graphEdges": [
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "visited": [
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Start Semester 2: Process course 2.",
+      "graphNodes": [
+        {
+          "id": 1,
+          "val": 1
+        },
+        {
+          "id": 2,
+          "val": 2
+        },
+        {
+          "id": 3,
+          "val": 3
+        }
+      ],
+      "graphEdges": [
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "visited": [
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Decrease in-degree of course 3.",
+      "graphNodes": [
+        {
+          "id": 1,
+          "val": 1
+        },
+        {
+          "id": 2,
+          "val": 2
+        },
+        {
+          "id": 3,
+          "val": 3
+        }
+      ],
+      "graphEdges": [
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "visited": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Finished all courses in 3 semesters.",
+      "graphNodes": [
+        {
+          "id": 1,
+          "val": 1
+        },
+        {
+          "id": 2,
+          "val": 2
+        },
+        {
+          "id": 3,
+          "val": 3
+        }
+      ],
+      "graphEdges": [
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "visited": [
+        1,
+        2,
+        3
+      ]
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "title": "Encrypt and Decrypt Strings",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "Trie"
+  ],
+  "description": "Design an encryption/decryption system using a mapping of keys to encrypted strings and a dictionary of allowed words.",
+  "target": "decryptedCount",
+  "pseudocode": "1. Initialize dictionary map and count map\n2. For each word in dictionary: encrypt word using keys\n3. Store encrypted word in count map\n4. For decryption: lookup encrypted string in count map",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize count map for encrypted strings",
+      "array": [],
+      "visited": []
+    },
+    {
+      "codeLine": 2,
+      "note": "Encrypting 'cat' -> 'ab' using key map",
+      "array": [
+        "ab"
+      ],
+      "i": "cat"
+    },
+    {
+      "codeLine": 3,
+      "note": "Increment count of 'ab' in map",
+      "array": [
+        "ab"
+      ],
+      "i": "ab"
+    },
+    {
+      "codeLine": 4,
+      "note": "Decryption request for 'ab', returning count 1",
+      "array": [
+        "ab"
+      ],
+      "i": "ab",
+      "curr": 1
+    }
+  ]
+}

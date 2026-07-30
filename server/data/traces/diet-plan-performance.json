@@ -1,0 +1,124 @@
+{
+  "title": "Diet Plan Performance",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Sliding Window"
+  ],
+  "description": "Calculate total points based on calories consumed in K-day intervals: +1 if total > upper, -1 if total < lower, 0 otherwise.",
+  "target": 0,
+  "pseudocode": "1. total = 0, points = 0\n2. for i from 0 to calories.length - 1:\n3.   total += calories[i]\n4.   if i >= k:\n5.     total -= calories[i - k]\n6.   if i >= k - 1:\n7.     if total < lower: points -= 1\n8.     else if total > upper: points += 1",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Initialize variables with calories = [1, 2, 3], k = 2, lower = 3, upper = 4",
+      "array": [
+        1,
+        2,
+        3
+      ],
+      "i": 0,
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Add calories[0]=1 to total",
+      "array": [
+        1,
+        2,
+        3
+      ],
+      "i": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Move to index 1",
+      "array": [
+        1,
+        2,
+        3
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Add calories[1]=2 to total. total is 3",
+      "array": [
+        1,
+        2,
+        3
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Window full (i >= k-1). Compare total (3) with lower (3) and upper (4)",
+      "array": [
+        1,
+        2,
+        3
+      ],
+      "i": 1,
+      "curr": -1
+    },
+    {
+      "codeLine": 7,
+      "note": "total (3) is not less than lower (3). points remains 0",
+      "array": [
+        1,
+        2,
+        3
+      ],
+      "i": 1,
+      "curr": 3
+    },
+    {
+      "codeLine": 2,
+      "note": "Move to index 2",
+      "array": [
+        1,
+        2,
+        3
+      ],
+      "i": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Add calories[2]=3 to total. total is 6",
+      "array": [
+        1,
+        2,
+        3
+      ],
+      "i": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Remove oldest element: calories[2-2]=1. total becomes 5",
+      "array": [
+        1,
+        2,
+        3
+      ],
+      "i": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 8,
+      "note": "total (5) > upper (4). points becomes 1",
+      "array": [
+        1,
+        2,
+        3
+      ],
+      "i": 2,
+      "curr": 5
+    }
+  ]
+}

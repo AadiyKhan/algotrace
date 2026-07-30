@@ -1,0 +1,100 @@
+{
+  "title": "Reformat The String",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "String"
+  ],
+  "description": "Reformat an alphanumeric string so that no two adjacent characters are of the same type.",
+  "pseudocode": "1. Split string s into two lists: digits and letters.\n2. If absolute difference in length > 1, return empty string.\n3. Identify which list is longer.\n4. Iterate and construct the result by alternating types starting with the longer list.",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Separate 'a0b1c2' into digits ['0', '1', '2'] and letters ['a', 'b', 'c'].",
+      "array": [
+        "a",
+        "0",
+        "b",
+        "1",
+        "c",
+        "2"
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Lengths are equal (3 and 3). Difference is 0 <= 1, proceed.",
+      "array": [
+        "a",
+        "0",
+        "b",
+        "1",
+        "c",
+        "2"
+      ],
+      "curr": 3
+    },
+    {
+      "codeLine": 4,
+      "note": "Append first character from letters: 'a'.",
+      "array": [
+        "a"
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Append first character from digits: '0'. Result: 'a0'.",
+      "array": [
+        "a",
+        "0"
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Append second character from letters: 'b'. Result: 'a0b'.",
+      "array": [
+        "a",
+        "0",
+        "b"
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Append second character from digits: '1'. Result: 'a0b1'.",
+      "array": [
+        "a",
+        "0",
+        "b",
+        "1"
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Append third character from letters: 'c'. Result: 'a0b1c'.",
+      "array": [
+        "a",
+        "0",
+        "b",
+        "1",
+        "c"
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Append third character from digits: '2'. Result: 'a0b1c2'.",
+      "array": [
+        "a",
+        "0",
+        "b",
+        "1",
+        "c",
+        "2"
+      ],
+      "curr": 2
+    }
+  ]
+}

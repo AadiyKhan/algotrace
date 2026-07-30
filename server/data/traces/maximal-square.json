@@ -9,7 +9,7 @@
   ],
   "description": "Find the area of the largest square containing only 1s in a binary matrix.",
   "target": 4,
-  "pseudocode": "1. dp = Array(rows + 1, cols + 1).fill(0)\n2. maxSide = 0\n3. for i from 1 to rows:\n4.   for j from 1 to cols:\n5.     if matrix[i-1][j-1] == '1':\n6.       dp[i][j] = min(dp[i-1][j], dp[i][j-1], dp[i-1][j-1]) + 1\n7.       maxSide = max(maxSide, dp[i][j])\n8. return maxSide * maxSide",
+  "pseudocode": "1. Initialize dp matrix of size (m+1)x(n+1) with 0s\n2. For each cell (i, j) in matrix:\n3. If matrix[i][j] == '1':\n4. dp[i+1][j+1] = min(dp[i][j+1], dp[i+1][j], dp[i][j]) + 1\n5. Update maxSide = max(maxSide, dp[i+1][j+1])\n6. Return maxSide * maxSide",
   "steps": [
     {
       "codeLine": 1,
@@ -18,14 +18,39 @@
         [
           0,
           0,
-          0
-        ],
-        [
+          0,
           0,
           0,
           0
         ],
         [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
           0,
           0,
           0
@@ -33,35 +58,117 @@
       ]
     },
     {
-      "codeLine": 3,
-      "note": "Start iterating through the matrix (row 1, col 1)",
-      "i": 1,
-      "j": 1,
+      "codeLine": 4,
+      "note": "Processing (0,0): matrix is '1', dp becomes 1",
       "matrix": [
         [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "i": 0,
+      "j": 0,
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Processing (1,2): matrix is '1', dp[2][3] becomes min(0,0,0)+1 = 1",
+      "matrix": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
           1,
           0,
           0
         ],
         [
           0,
+          1,
+          0,
+          1,
+          1,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
           0,
           0
         ],
         [
           0,
           0,
+          0,
+          0,
+          0,
           0
         ]
+      ],
+      "i": 1,
+      "j": 2,
+      "curr": [
+        1,
+        2
       ]
     },
     {
-      "codeLine": 6,
-      "note": "Calculate square side at [1,1]",
-      "i": 1,
-      "j": 1,
+      "codeLine": 4,
+      "note": "Processing (2,2): neighbors (1,2), (2,1), (1,1) are all 1, dp[3][3] = min(1,1,1)+1 = 2",
       "matrix": [
         [
+          0,
+          0,
+          0,
           0,
           0,
           0
@@ -69,49 +176,51 @@
         [
           0,
           1,
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          1,
+          2,
+          1,
+          1
+        ],
+        [
+          0,
+          1,
+          1,
+          1,
+          1,
           0
         ],
         [
           0,
           0,
+          0,
+          0,
+          0,
           0
         ]
-      ]
-    },
-    {
-      "codeLine": 6,
-      "note": "Calculate square side at [2,2]",
+      ],
       "i": 2,
       "j": 2,
-      "matrix": [
-        [
-          0,
-          0,
-          0
-        ],
-        [
-          0,
-          1,
-          1
-        ],
-        [
-          0,
-          1,
-          2
-        ]
+      "curr": [
+        2,
+        2
       ]
     },
     {
-      "codeLine": 7,
-      "note": "Update maxSide to 2",
-      "i": 2,
-      "j": 2
-    },
-    {
-      "codeLine": 8,
-      "note": "Return maxSide squared (2 * 2 = 4)",
+      "codeLine": 5,
+      "note": "Max square side found is 2, area is 4",
       "matrix": [
         [
+          0,
+          0,
+          0,
           0,
           0,
           0
@@ -119,13 +228,41 @@
         [
           0,
           1,
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          1,
+          2,
+          1,
           1
         ],
         [
           0,
           1,
+          1,
+          2,
+          2,
           2
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          1,
+          0
         ]
+      ],
+      "i": 3,
+      "j": 3,
+      "curr": [
+        2,
+        4
       ]
     }
   ]

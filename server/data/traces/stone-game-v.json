@@ -1,0 +1,79 @@
+{
+  "title": "Stone Game V",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Dynamic Programming",
+    "Game Theory"
+  ],
+  "description": "Divide a row of stones into two non-empty piles, discard the pile with the larger sum, and repeat. Maximize the total score.",
+  "target": null,
+  "pseudocode": "1. function solve(l, r) {\n2.   if (l == r) return 0;\n3.   for (i = l; i < r; i++) {\n4.     leftSum = sum(l, i); rightSum = sum(i+1, r);\n5.     if (leftSum < rightSum) score = leftSum + solve(l, i);\n6.     else if (leftSum > rightSum) score = rightSum + solve(i+1, r);\n7.     else score = max(solve(l, i), solve(i+1, r)) + leftSum;\n8.     maxScore = max(maxScore, score);\n9.   }\n10.  return maxScore;\n11. }",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize memoization for range [0, 2] with stones [6, 2, 3]",
+      "array": [
+        6,
+        2,
+        3
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Split at index 0: Left [6], Right [2, 3]. Sums: 6 vs 5.",
+      "array": [
+        6,
+        2,
+        3
+      ],
+      "i": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "6 > 5, discard left (6), keep right (5). Score = 5 + solve(1, 2)",
+      "array": [
+        6,
+        2,
+        3
+      ],
+      "i": 0,
+      "curr": 6
+    },
+    {
+      "codeLine": 3,
+      "note": "Split at index 1: Left [6, 2], Right [3]. Sums: 8 vs 3.",
+      "array": [
+        6,
+        2,
+        3
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "8 > 3, discard left (8), keep right (3). Score = 3 + solve(2, 2)",
+      "array": [
+        6,
+        2,
+        3
+      ],
+      "i": 1,
+      "curr": 8
+    },
+    {
+      "codeLine": 10,
+      "note": "Returning max score 5 from sub-problems.",
+      "array": [
+        6,
+        2,
+        3
+      ],
+      "curr": 5
+    }
+  ]
+}

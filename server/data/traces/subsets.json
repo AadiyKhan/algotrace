@@ -29,7 +29,8 @@
       "array": [
         1
       ],
-      "i": 0
+      "i": 0,
+      "curr": 1
     },
     {
       "codeLine": 3,
@@ -39,7 +40,8 @@
         [
           1
         ]
-      ]
+      ],
+      "curr": 1
     },
     {
       "codeLine": 5,
@@ -48,7 +50,8 @@
         1,
         2
       ],
-      "i": 1
+      "i": 1,
+      "curr": 2
     },
     {
       "codeLine": 3,
@@ -62,19 +65,22 @@
           1,
           2
         ]
-      ]
+      ],
+      "curr": 1
     },
     {
       "codeLine": 7,
       "note": "Pop 2, backtracking",
       "array": [
         1
-      ]
+      ],
+      "curr": 2
     },
     {
       "codeLine": 7,
       "note": "Pop 1, backtracking",
-      "array": []
+      "array": [],
+      "curr": 1
     }
   ]
 }

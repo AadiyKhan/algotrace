@@ -1,0 +1,81 @@
+{
+  "title": "Day of the Year",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Math",
+    "String"
+  ],
+  "description": "Given a string date as YYYY-MM-DD, return the day number of the year.",
+  "target": "2019-01-10",
+  "pseudocode": "1. split date string into Y, M, D\n2. create array of days per month\n3. check if year is leap\n4. sum days of previous months + D",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Parsing date: 2019-01-10 into year 2019, month 1, day 10",
+      "array": [
+        2019,
+        1,
+        10
+      ],
+      "curr": 2019
+    },
+    {
+      "codeLine": 2,
+      "note": "Defining days in each month for a non-leap year",
+      "array": [
+        31,
+        28,
+        31,
+        30,
+        31,
+        30,
+        31,
+        31,
+        30,
+        31,
+        30,
+        31
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Checking leap year: 2019 % 4 != 0, not a leap year",
+      "array": [
+        31,
+        28,
+        31,
+        30,
+        31,
+        30,
+        31,
+        31,
+        30,
+        31,
+        30,
+        31
+      ],
+      "curr": 2019
+    },
+    {
+      "codeLine": 4,
+      "note": "Calculating total: month 1 has 0 full months before it, so 0 + 10 = 10",
+      "array": [
+        31,
+        28,
+        31,
+        30,
+        31,
+        30,
+        31,
+        31,
+        30,
+        31,
+        30,
+        31
+      ],
+      "i": 10,
+      "curr": 1
+    }
+  ]
+}

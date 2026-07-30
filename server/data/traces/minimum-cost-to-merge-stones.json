@@ -1,76 +1,64 @@
 {
-  "title": "Minimum Cost To Merge Stones",
+  "title": "Minimum Cost to Merge Stones",
   "difficulty": "Hard",
   "type": "array",
   "tags": [
     "Array",
-    "Dynamic Programming"
+    "Dynamic Programming",
+    "Prefix Sum"
   ],
-  "description": "Merge piles of stones into one with minimum cost, where each merge involves k consecutive piles.",
-  "target": 2,
-  "pseudocode": "1: let n = stones.length\n2: if (n - 1) % (k - 1) !== 0 return -1\n3: let dp = new Array(n).fill(0).map(() => new Array(n).fill(0))\n4: for len from k to n:\n5:   for i from 0 to n - len:\n6:     let j = i + len - 1\n7:     for m from i to j-1 step k-1:\n8:       dp[i][j] = min(dp[i][j], dp[i][m] + dp[m+1][j])\n9:     if (len - 1) % (k - 1) == 0: dp[i][j] += sum(stones[i...j])",
+  "description": "Merge k consecutive piles of stones until only one remains, minimizing the total cost.",
+  "target": 1,
+  "pseudocode": "1. If (n-1) % (k-1) != 0, return -1.\n2. Use DP table dp[i][j] for min cost to merge stones[i...j].\n3. For length len from k to n:\n4.   For i from 0 to n-len:\n5.     j = i + len - 1\n6.     dp[i][j] = min(dp[i][m] + dp[m+1][j]) for m in steps of (k-1)\n7.     If (j-i) % (k-1) == 0: dp[i][j] += sum(stones[i...j])",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize variables with stones = [3, 2, 4], k = 2",
+      "note": "Check if total reduction is possible: (4-1) % (2-1) == 0.",
       "array": [
         3,
         2,
-        4
-      ]
+        4,
+        1
+      ],
+      "curr": 4
     },
     {
-      "codeLine": 2,
-      "note": "Check if total merge is possible: (3-1) % (2-1) == 0 is true",
+      "codeLine": 3,
+      "note": "Merging piles of length 2: [3,2], [2,4], [4,1].",
       "array": [
         3,
         2,
-        4
-      ]
+        4,
+        1
+      ],
+      "curr": 2
     },
     {
-      "codeLine": 4,
-      "note": "Outer loop: length of segment is 2",
-      "i": 0,
-      "j": 1
-    },
-    {
-      "codeLine": 8,
-      "note": "Merge piles 3 and 2, cost is 5",
-      "array": [
-        3,
-        2,
-        4
-      ]
-    },
-    {
-      "codeLine": 9,
-      "note": "Accumulate sum for segment [0,1]",
+      "codeLine": 6,
+      "note": "Merge [3,2] cost 5, current state [5, 4, 1].",
       "array": [
         5,
-        4
-      ]
+        4,
+        1
+      ],
+      "curr": 3
     },
     {
-      "codeLine": 4,
-      "note": "Outer loop: length of segment is 3",
-      "i": 0,
-      "j": 2
-    },
-    {
-      "codeLine": 8,
-      "note": "Calculate min cost to merge 3 piles: min(dp[0][1]+stones[2], stones[0]+dp[1][2]) = 9",
+      "codeLine": 6,
+      "note": "Merge [4,1] cost 5, current state [5, 5].",
       "array": [
         5,
-        4
-      ]
+        5
+      ],
+      "curr": 4
     },
     {
-      "codeLine": 9,
-      "note": "Final cost calculated for entire range [0, 2]",
+      "codeLine": 6,
+      "note": "Merge [5,5] cost 10, final pile [10]. Total cost = 5 + 5 + 10 = 20.",
       "array": [
-        9
-      ]
+        10
+      ],
+      "curr": 5
     }
   ]
 }

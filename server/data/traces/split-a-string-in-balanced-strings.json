@@ -1,0 +1,217 @@
+{
+  "title": "Split a String in Balanced Strings",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "String",
+    "Greedy"
+  ],
+  "description": "Split a balanced string into the maximum number of balanced substrings where each substring has an equal number of 'L' and 'R' characters.",
+  "target": 0,
+  "pseudocode": "1. let count = 0, balance = 0\n2. for char of s:\n3.   if char == 'R' balance++ else balance--\n4.   if balance == 0 count++\n5. return count",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize balance and count to 0.",
+      "array": [
+        "R",
+        "L",
+        "R",
+        "R",
+        "L",
+        "L"
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Process first character 'R'.",
+      "i": 0,
+      "array": [
+        "R",
+        "L",
+        "R",
+        "R",
+        "L",
+        "L"
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Balance becomes 1.",
+      "i": 0,
+      "array": [
+        "R",
+        "L",
+        "R",
+        "R",
+        "L",
+        "L"
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Process second character 'L'.",
+      "i": 1,
+      "array": [
+        "R",
+        "L",
+        "R",
+        "R",
+        "L",
+        "L"
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Balance becomes 0.",
+      "i": 1,
+      "array": [
+        "R",
+        "L",
+        "R",
+        "R",
+        "L",
+        "L"
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Balance is 0, increment count to 1.",
+      "i": 1,
+      "array": [
+        "R",
+        "L",
+        "R",
+        "R",
+        "L",
+        "L"
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Process third character 'R'.",
+      "i": 2,
+      "array": [
+        "R",
+        "L",
+        "R",
+        "R",
+        "L",
+        "L"
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Balance becomes 1.",
+      "i": 2,
+      "array": [
+        "R",
+        "L",
+        "R",
+        "R",
+        "L",
+        "L"
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Process fourth character 'R'.",
+      "i": 3,
+      "array": [
+        "R",
+        "L",
+        "R",
+        "R",
+        "L",
+        "L"
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Balance becomes 2.",
+      "i": 3,
+      "array": [
+        "R",
+        "L",
+        "R",
+        "R",
+        "L",
+        "L"
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 2,
+      "note": "Process fifth character 'L'.",
+      "i": 4,
+      "array": [
+        "R",
+        "L",
+        "R",
+        "R",
+        "L",
+        "L"
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Balance becomes 1.",
+      "i": 4,
+      "array": [
+        "R",
+        "L",
+        "R",
+        "R",
+        "L",
+        "L"
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Process sixth character 'L'.",
+      "i": 5,
+      "array": [
+        "R",
+        "L",
+        "R",
+        "R",
+        "L",
+        "L"
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Balance becomes 0.",
+      "i": 5,
+      "array": [
+        "R",
+        "L",
+        "R",
+        "R",
+        "L",
+        "L"
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Balance is 0, increment count to 2.",
+      "i": 5,
+      "array": [
+        "R",
+        "L",
+        "R",
+        "R",
+        "L",
+        "L"
+      ],
+      "curr": 0
+    }
+  ]
+}

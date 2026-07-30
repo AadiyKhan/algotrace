@@ -1,0 +1,139 @@
+{
+  "title": "Group The People Given The Group Size They Belong To",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Hash Table"
+  ],
+  "description": "Group people into sub-lists such that each group contains exactly the size specified by its members.",
+  "pseudocode": "1. groups = {}\n2. result = []\n3. for i, size in enumerate(groupSizes):\n4.   if size not in groups: groups[size] = []\n5.   groups[size].push(i)\n6.   if groups[size].length == size:\n7.     result.push(groups[size])\n8.     groups[size] = []\n9. return result",
+  "steps": [
+    {
+      "codeLine": 3,
+      "note": "Start iteration: index 0, size 3",
+      "array": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        1
+      ],
+      "i": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Add index 0 to groups[3]",
+      "array": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        1
+      ],
+      "i": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Next iteration: index 1, size 3",
+      "array": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        1
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Add index 1 to groups[3]",
+      "array": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        1
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Next iteration: index 2, size 3",
+      "array": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        1
+      ],
+      "i": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "groups[3] reached size 3. Prepare to flush.",
+      "array": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        1
+      ],
+      "i": 2,
+      "curr": 3
+    },
+    {
+      "codeLine": 7,
+      "note": "Flush [0, 1, 2] to result.",
+      "array": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        1
+      ],
+      "i": 2,
+      "curr": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Final index 5, size 1",
+      "array": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        1
+      ],
+      "i": 5,
+      "curr": 5
+    },
+    {
+      "codeLine": 6,
+      "note": "groups[1] reached size 1. Flush [5] to result.",
+      "array": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        1
+      ],
+      "i": 5,
+      "curr": 1
+    }
+  ]
+}

@@ -1,63 +1,18 @@
 {
   "title": "Couples Holding Hands",
   "difficulty": "Hard",
-  "array": "array",
+  "type": "array",
   "tags": [
-    "Array",
     "Greedy",
-    "Graph"
+    "Graph Theory"
   ],
-  "description": "N couples sit in 2N seats. Find the minimum number of swaps to get all couples to sit together (0 with 1, 2 with 3, etc.).",
+  "description": "Find the minimum number of swaps to seat couples side by side.",
   "target": 1,
-  "pseudocode": "1: for i = 0 to N-1 step 2:\n2:   first = row[i]\n3:   target = first ^ 1\n4:   if row[i+1] != target:\n5:     j = findIndex(row, target)\n6:     swap(row[i+1], row[j])\n7:     swaps++",
+  "pseudocode": "1. Iterate i from 0 to n by 2\n2. If row[i] ^ 1 != row[i+1]\n3. Find position j of row[i] ^ 1\n4. Swap row[i+1] with row[j]\n5. Increment swap count",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Starting loop at index 0",
-      "array": [
-        0,
-        2,
-        1,
-        3
-      ],
-      "i": 0
-    },
-    {
-      "codeLine": 2,
-      "note": "First person at index 0 is 0",
-      "array": [
-        0,
-        2,
-        1,
-        3
-      ],
-      "i": 0
-    },
-    {
-      "codeLine": 3,
-      "note": "Expected partner for 0 is 1 (0 XOR 1)",
-      "array": [
-        0,
-        2,
-        1,
-        3
-      ],
-      "i": 0
-    },
-    {
-      "codeLine": 4,
-      "note": "Index 1 is 2, which is not 1. Must swap.",
-      "array": [
-        0,
-        2,
-        1,
-        3
-      ],
-      "i": 0
-    },
-    {
-      "codeLine": 5,
-      "note": "Found partner 1 at index 2",
+      "note": "Starting iteration at index 0.",
       "array": [
         0,
         2,
@@ -65,29 +20,80 @@
         3
       ],
       "i": 0,
-      "j": 2
+      "curr": 0
     },
     {
-      "codeLine": 6,
-      "note": "Swapping index 1 and index 2",
+      "codeLine": 2,
+      "note": "Check if pair (0, 1) is together. row[0]=0, partner is 1. row[1]=2. Not together.",
+      "array": [
+        0,
+        2,
+        1,
+        3
+      ],
+      "i": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Find partner of 0, which is 1. Found at index 2.",
+      "array": [
+        0,
+        2,
+        1,
+        3
+      ],
+      "i": 0,
+      "j": 2,
+      "curr": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Swap row[1] and row[2].",
       "array": [
         0,
         1,
         2,
         3
       ],
-      "i": 0
+      "i": 0,
+      "curr": 1
     },
     {
-      "codeLine": 7,
-      "note": "Incremented swap count to 1",
+      "codeLine": 5,
+      "note": "Increment swap count to 1.",
       "array": [
         0,
         1,
         2,
         3
       ],
-      "i": 0
+      "i": 0,
+      "curr": 1
+    },
+    {
+      "codeLine": 1,
+      "note": "Move to next pair at index 2.",
+      "array": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "i": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 2,
+      "note": "Check if pair (2, 3) is together. row[2]=2, partner is 3. row[3]=3. They are together.",
+      "array": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "i": 2,
+      "curr": 2
     }
   ]
 }

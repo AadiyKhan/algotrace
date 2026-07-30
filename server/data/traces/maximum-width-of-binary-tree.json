@@ -4,16 +4,17 @@
   "type": "tree",
   "tags": [
     "Tree",
-    "DFS",
-    "BFS"
+    "Depth-First Search",
+    "Breadth-First Search",
+    "Binary Tree"
   ],
-  "description": "Find the maximum width of a binary tree, defined as the maximum width among all levels, where the width is the distance between the leftmost and rightmost non-null nodes.",
+  "description": "Calculate the maximum width of a binary tree by tracking index positions of nodes at each level.",
   "target": 4,
-  "pseudocode": "1. queue.push({node: root, index: 0})\n2. while queue not empty:\n3.   level_size = queue.length\n4.   start = queue[0].index\n5.   for i in range(level_size):\n6.     curr = queue.shift()\n7.     if curr.node.left: queue.push({node: curr.node.left, index: 2 * curr.index})\n8.     if curr.node.right: queue.push({node: curr.node.right, index: 2 * curr.index + 1})\n9.   width = queue[queue.length-1].index - start + 1\n10.  max_width = max(max_width, width)",
+  "pseudocode": "1. queue = [(root, index 0)]\n2. max_width = 0\n3. while queue is not empty:\n4.   level_start = queue[0].index, level_end = queue[-1].index\n5.   max_width = max(max_width, level_end - level_start + 1)\n6.   for node in level:\n7.     add children to queue with indices (2*i+1, 2*i+2)",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize queue with root index 0",
+      "note": "Initialize queue with root at index 0.",
       "treeNodes": [
         {
           "id": 0,
@@ -51,55 +52,89 @@
           "left": null,
           "right": null
         }
-      ]
+      ],
+      "curr": 0
     },
     {
-      "codeLine": 3,
-      "note": "Process Level 0: Size 1",
-      "visited": [
-        0
-      ]
+      "codeLine": 4,
+      "note": "Level 0: start=0, end=0. Width = 1.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        }
+      ],
+      "curr": 0
     },
     {
-      "codeLine": 9,
-      "note": "Level 0 width: 0 - 0 + 1 = 1",
-      "visited": [
-        0
-      ]
+      "codeLine": 4,
+      "note": "Level 1: start=1, end=2. Width = 2-1+1 = 2.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 3,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 2,
+          "val": 2,
+          "left": null,
+          "right": 5
+        }
+      ],
+      "curr": 1
     },
     {
-      "codeLine": 3,
-      "note": "Process Level 1: Size 2",
-      "visited": [
-        1,
-        2
-      ]
-    },
-    {
-      "codeLine": 9,
-      "note": "Level 1 width: 2 - 1 + 1 = 2",
-      "visited": [
-        1,
-        2
-      ]
-    },
-    {
-      "codeLine": 3,
-      "note": "Process Level 2: Size 3",
-      "visited": [
-        3,
-        4,
-        5
-      ]
-    },
-    {
-      "codeLine": 9,
-      "note": "Level 2 width: 5 - 2 + 1 = 4",
-      "visited": [
-        3,
-        4,
-        5
-      ]
+      "codeLine": 4,
+      "note": "Level 2: start=3, end=6. Nodes 5, 3, null(child of 5), 9. Width = 6-3+1 = 4.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 3,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 2,
+          "val": 2,
+          "left": null,
+          "right": 5
+        },
+        {
+          "id": 3,
+          "val": 5,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 3,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 5,
+          "val": 9,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 2
     }
   ]
 }

@@ -6,39 +6,53 @@
     "Math",
     "Greedy"
   ],
-  "description": "Calculate the minimum operations to reach target from start using doubling or decrementing.",
-  "target": 10,
-  "pseudocode": "1. while target > start:\n2.   if target is even: target /= 2\n3.   else: target += 1\n4.   steps++\n5. return steps + (start - target)",
+  "description": "Calculate minimum operations to reach target from startValue using multiply by 2 or subtract 1. We work backwards from target to startValue.",
+  "target": 3,
+  "pseudocode": "1. while target > startValue:\n2.   if target is even, target /= 2\n3.   else target += 1\n4. return ops + (startValue - target)",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize: start=5, target=10, steps=0",
-      "i": 5
+      "note": "Initialize starting state with target 3 and startValue 2.",
+      "array": [
+        2,
+        3
+      ],
+      "i": 2,
+      "j": 3,
+      "curr": 3
     },
     {
       "codeLine": 2,
-      "note": "Target 10 is even, divide by 2",
-      "i": 5
+      "note": "Target 3 is odd, apply inverse of subtract 1 (add 1).",
+      "array": [
+        2,
+        4
+      ],
+      "i": 2,
+      "j": 4,
+      "curr": 3
     },
     {
       "codeLine": 2,
-      "note": "Target becomes 5",
-      "i": 5
+      "note": "Target 4 is even, apply inverse of multiply by 2 (divide by 2).",
+      "array": [
+        2,
+        2
+      ],
+      "i": 2,
+      "j": 2,
+      "curr": 4
     },
     {
       "codeLine": 4,
-      "note": "Increment step count to 1",
-      "i": 5
-    },
-    {
-      "codeLine": 1,
-      "note": "Target (5) is not greater than start (5), exit loop",
-      "i": 5
-    },
-    {
-      "codeLine": 5,
-      "note": "Return final steps: 1 + (5 - 5) = 1",
-      "i": 5
+      "note": "Target is no longer greater than startValue, return total operations (2).",
+      "array": [
+        2,
+        2
+      ],
+      "i": 2,
+      "j": 2,
+      "curr": 2
     }
   ]
 }

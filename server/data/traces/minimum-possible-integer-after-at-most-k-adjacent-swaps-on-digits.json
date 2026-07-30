@@ -1,0 +1,69 @@
+{
+  "title": "Minimum Possible Integer After At Most K Adjacent Swaps On Digits",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Greedy",
+    "String"
+  ],
+  "description": "Minimize a number by performing at most k adjacent swaps to place the smallest possible digits at the beginning.",
+  "target": "k = 2",
+  "pseudocode": "1. for i from 0 to n-1:\n2.   find smallest digit index j in [i, i+k]\n3.   shift digit at j to position i by swapping\n4.   decrement k by distance moved\n5.   if k == 0 break",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize starting index i=0, k=2.",
+      "array": [
+        4,
+        3,
+        2
+      ],
+      "i": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Smallest digit in range [0, 2] is 2 at index 2.",
+      "array": [
+        4,
+        3,
+        2
+      ],
+      "i": 0,
+      "j": 2,
+      "curr": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Swap 2 to position 0. Cost is 2 swaps (j-i). Array becomes [2, 4, 3].",
+      "array": [
+        2,
+        4,
+        3
+      ],
+      "i": 0,
+      "curr": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Decrement k by 2. New k=0.",
+      "array": [
+        2,
+        4,
+        3
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "k is 0, termination condition met.",
+      "array": [
+        2,
+        4,
+        3
+      ],
+      "curr": 0
+    }
+  ]
+}

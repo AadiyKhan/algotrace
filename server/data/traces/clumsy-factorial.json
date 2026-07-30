@@ -16,7 +16,8 @@
       "note": "Initialize stack with starting value 4",
       "array": [
         4
-      ]
+      ],
+      "curr": 4
     },
     {
       "codeLine": 4,
@@ -24,7 +25,8 @@
       "array": [
         12
       ],
-      "i": 3
+      "i": 3,
+      "curr": 4
     },
     {
       "codeLine": 5,
@@ -32,7 +34,8 @@
       "array": [
         6
       ],
-      "i": 2
+      "i": 2,
+      "curr": 12
     },
     {
       "codeLine": 6,
@@ -41,14 +44,16 @@
         6,
         1
       ],
-      "i": 1
+      "i": 1,
+      "curr": 1
     },
     {
       "codeLine": 9,
       "note": "Sum the stack elements: 6 + 1 = 7",
       "array": [
         7
-      ]
+      ],
+      "curr": 6
     }
   ]
 }

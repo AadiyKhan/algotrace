@@ -19,7 +19,8 @@
         0,
         0
       ],
-      "i": "in-degree: [0, 1, 1]"
+      "i": "in-degree: [0, 1, 1]",
+      "curr": 0
     },
     {
       "codeLine": 2,
@@ -29,7 +30,8 @@
         1,
         1
       ],
-      "i": "queue: [0]"
+      "i": "queue: [0]",
+      "curr": 0
     },
     {
       "codeLine": 4,
@@ -39,7 +41,8 @@
         1,
         1
       ],
-      "i": "result: [0]"
+      "i": "result: [0]",
+      "curr": 0
     },
     {
       "codeLine": 5,
@@ -49,7 +52,8 @@
         1,
         1
       ],
-      "i": "queue: []"
+      "i": "queue: []",
+      "curr": 0
     },
     {
       "codeLine": 6,
@@ -59,7 +63,8 @@
         1,
         1
       ],
-      "i": "result: [0, 1, 2]"
+      "i": "result: [0, 1, 2]",
+      "curr": 0
     }
   ]
 }

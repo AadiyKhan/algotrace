@@ -1,0 +1,141 @@
+{
+  "title": "Move Subtree of N-ary Tree",
+  "difficulty": "Hard",
+  "type": "tree",
+  "tags": [
+    "Tree",
+    "N-ary Tree",
+    "DFS"
+  ],
+  "description": "Move a subtree rooted at node 'p' to be a child of node 'q'. Ensure no cyclic dependency is created.",
+  "target": null,
+  "pseudocode": "1. Find parent of p (pParent)\n2. Check if q is in subtree of p (return false if true)\n3. Remove p from pParent.children\n4. Add p to q.children\n5. Return new root",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Identify p=2 and its parent, the root node 1.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "children": [
+            1,
+            2
+          ]
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "children": []
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "children": []
+        }
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 2,
+      "note": "Verify q=3 is not a descendant of p=2. Safe to proceed.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "children": [
+            1,
+            2
+          ]
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "children": []
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "children": []
+        }
+      ],
+      "curr": 3
+    },
+    {
+      "codeLine": 3,
+      "note": "Remove node 2 from root's children list.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "children": [
+            2
+          ]
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "children": []
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "children": []
+        }
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Append node 2 as a child of node 3.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "children": [
+            2
+          ]
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "children": []
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "children": [
+            1
+          ]
+        }
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Return the tree structure with node 2 moved.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "children": [
+            2
+          ]
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "children": []
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "children": [
+            1
+          ]
+        }
+      ],
+      "curr": 2
+    }
+  ]
+}

@@ -1,0 +1,265 @@
+{
+  "title": "Binary Search Tree to Greater Sum Tree",
+  "difficulty": "Medium",
+  "type": "tree",
+  "tags": [
+    "Tree",
+    "DFS",
+    "BST"
+  ],
+  "description": "Convert a BST to a Greater Tree such that every key of the original BST is changed to the original key plus the sum of all keys greater than the original key in the original BST.",
+  "target": null,
+  "pseudocode": "let sum = 0;\nfunction transform(node) {\n  if (!node) return;\n  transform(node.right);\n  sum += node.val;\n  node.val = sum;\n  transform(node.left);\n}",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize global sum variable to 0",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 4,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 6,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Traverse to rightmost node (6)",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 4,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 6,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 6
+    },
+    {
+      "codeLine": 5,
+      "note": "Add node 6 to sum",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 4,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 6,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 6
+    },
+    {
+      "codeLine": 6,
+      "note": "Update node 6 value to 6",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 4,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 6,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 6
+    },
+    {
+      "codeLine": 3,
+      "note": "Backtrack to root (4)",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 4,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 6,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 4
+    },
+    {
+      "codeLine": 5,
+      "note": "Add node 4 to sum (6+4=10)",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 10,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 6,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 4
+    },
+    {
+      "codeLine": 6,
+      "note": "Update node 4 value to 10",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 10,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 6,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 4
+    },
+    {
+      "codeLine": 7,
+      "note": "Traverse to left child (1)",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 10,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 6,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Add node 1 to sum (10+1=11)",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 10,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 11,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 6,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Update node 1 value to 11",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 10,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 11,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 6,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 1
+    }
+  ]
+}

@@ -14,7 +14,8 @@
       "codeLine": 3,
       "note": "Starting backtracking with start=1, k=2, target=7",
       "array": [],
-      "i": 1
+      "i": 1,
+      "curr": 1
     },
     {
       "codeLine": 5,
@@ -22,7 +23,8 @@
       "array": [
         1
       ],
-      "i": 1
+      "i": 1,
+      "curr": 1
     },
     {
       "codeLine": 6,
@@ -30,7 +32,8 @@
       "array": [
         1
       ],
-      "i": 2
+      "i": 2,
+      "curr": 2
     },
     {
       "codeLine": 5,
@@ -39,7 +42,8 @@
         1,
         2
       ],
-      "i": 2
+      "i": 2,
+      "curr": 2
     },
     {
       "codeLine": 6,
@@ -48,7 +52,8 @@
         1,
         2
       ],
-      "i": 3
+      "i": 3,
+      "curr": 3
     },
     {
       "codeLine": 5,
@@ -58,7 +63,8 @@
         2,
         3
       ],
-      "i": 3
+      "i": 3,
+      "curr": 3
     },
     {
       "codeLine": 7,
@@ -67,7 +73,8 @@
         1,
         2
       ],
-      "i": 3
+      "i": 3,
+      "curr": 3
     },
     {
       "codeLine": 5,
@@ -76,7 +83,8 @@
         1,
         6
       ],
-      "i": 6
+      "i": 6,
+      "curr": 6
     },
     {
       "codeLine": 2,
@@ -85,7 +93,8 @@
         1,
         6
       ],
-      "i": 6
+      "i": 6,
+      "curr": 1
     },
     {
       "codeLine": 7,
@@ -93,7 +102,8 @@
       "array": [
         1
       ],
-      "i": 6
+      "i": 6,
+      "curr": 6
     }
   ]
 }

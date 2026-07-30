@@ -15,14 +15,16 @@
       "note": "Check if n is positive. n = 8.",
       "array": [
         8
-      ]
+      ],
+      "curr": 8
     },
     {
       "codeLine": 2,
       "note": "Perform bitwise operation: 8 (1000) & 7 (0111) = 0.",
       "array": [
         8
-      ]
+      ],
+      "curr": 8
     }
   ]
 }

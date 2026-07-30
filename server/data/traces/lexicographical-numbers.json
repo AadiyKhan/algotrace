@@ -15,7 +15,8 @@
       "codeLine": 7,
       "note": "Starting DFS with i=1",
       "array": [],
-      "i": 1
+      "i": 1,
+      "curr": 1
     },
     {
       "codeLine": 3,

@@ -1,0 +1,77 @@
+{
+  "title": "Stone Game II",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Dynamic Programming",
+    "Game Theory"
+  ],
+  "description": "Alice and Bob play a game with piles of stones. They take turns picking piles from the end, with M doubling or staying same based on choices.",
+  "target": 10,
+  "pseudocode": "1. M = 1, i = 0\n2. if i + 2*M >= n: return sum(piles[i:])\n3. for x in 1 to 2*M:\n4.   res = min(res, solve(i + x, max(M, x)))\n5. return sum(piles[i:]) - res",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize starting position index 0 and M=1.",
+      "array": [
+        2,
+        7,
+        9,
+        4,
+        4
+      ],
+      "i": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Alice can choose 1 or 2 piles (x=1 or 2). Try picking 1 pile.",
+      "array": [
+        2,
+        7,
+        9,
+        4,
+        4
+      ],
+      "i": 1,
+      "curr": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Recursively calculate Bob's best score from remaining piles.",
+      "array": [
+        7,
+        9,
+        4,
+        4
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Try picking 2 piles instead.",
+      "array": [
+        2,
+        7,
+        9,
+        4,
+        4
+      ],
+      "i": 2,
+      "curr": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Compare results and return Alice's optimal max score.",
+      "array": [
+        2,
+        7,
+        9,
+        4,
+        4
+      ],
+      "i": 0
+    }
+  ]
+}

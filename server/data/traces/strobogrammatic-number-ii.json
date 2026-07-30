@@ -3,56 +3,66 @@
   "difficulty": "Medium",
   "type": "array",
   "tags": [
-    "Recursion",
-    "Math"
+    "Array",
+    "String",
+    "Recursion"
   ],
   "description": "Find all strobogrammatic numbers of length n.",
   "target": 2,
-  "pseudocode": "1. function helper(n, finalLen) {\n2.   if (n == 0) return [''];\n3.   if (n == 1) return ['0', '1', '8'];\n4.   let prev = helper(n - 2, finalLen);\n5.   let res = [];\n6.   for (let s of prev) {\n7.     if (n != finalLen) res.push('0' + s + '0');\n8.     res.push('1' + s + '1', '6' + s + '9', '8' + s + '8', '9' + s + '6');\n9.   }\n10.  return res;\n11. }",
+  "pseudocode": "1. If n == 0 return [\"\"]\n2. If n == 1 return [\"0\", \"1\", \"8\"]\n3. Recurse for n-2 and wrap with pairs: ['11', '69', '88', '96', '00']\n4. Remove strings starting with '0' if n > 1",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Starting recursion for n = 2",
-      "i": 0
+      "note": "Initialize recursion for n=2",
+      "array": [],
+      "visited": [],
+      "curr": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Recursive base case n=0 returns [\"\"]",
+      "array": [
+        ""
+      ],
+      "visited": [],
+      "curr": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Wrap n=0 result with middle pairs ['11', '69', '88', '96']",
+      "array": [
+        "11",
+        "69",
+        "88",
+        "96"
+      ],
+      "visited": [],
+      "curr": 0
     },
     {
       "codeLine": 4,
-      "note": "Recursive call for n = 0",
-      "i": 0
-    },
-    {
-      "codeLine": 2,
-      "note": "Base case n=0 reached, returning ['']",
+      "note": "Add pairs with 0: ['00'] result becomes ['11', '69', '88', '96', '00']",
       "array": [
-        ""
-      ]
+        "11",
+        "69",
+        "88",
+        "96",
+        "00"
+      ],
+      "visited": [],
+      "curr": 0
     },
     {
-      "codeLine": 6,
-      "note": "Iterating through prev results to build n=2",
-      "array": [
-        ""
-      ]
-    },
-    {
-      "codeLine": 8,
-      "note": "Adding combinations for n=2 excluding leading zero",
+      "codeLine": 4,
+      "note": "Final result filtering strings starting with 0: ['11', '69', '88', '96']",
       "array": [
         "11",
         "69",
         "88",
         "96"
-      ]
-    },
-    {
-      "codeLine": 10,
-      "note": "Final result for n=2 returned",
-      "array": [
-        "11",
-        "69",
-        "88",
-        "96"
-      ]
+      ],
+      "visited": [],
+      "curr": 0
     }
   ]
 }

@@ -1,0 +1,167 @@
+{
+  "title": "As Far From Land As Possible",
+  "difficulty": "Medium",
+  "type": "matrix",
+  "tags": [
+    "Matrix",
+    "Breadth-First Search",
+    "Graph"
+  ],
+  "description": "Find a land cell in a grid such that the distance to the nearest land cell is maximized.",
+  "target": null,
+  "pseudocode": "1. queue = all land cells; visited = all land cells\n2. while queue not empty:\n3.   curr = queue.shift()\n4.   for each neighbor of curr:\n5.     if neighbor not in visited:\n6.       visited.add(neighbor), grid[neighbor] = grid[curr] + 1\n7.       queue.push(neighbor), maxDist = max(maxDist, grid[neighbor] - 1)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize queue with land cells (0,0)",
+      "matrix": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Pop current cell (0,0) from queue",
+      "matrix": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Visit neighbor (0,1), update distance",
+      "matrix": [
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Visit neighbor (1,0), update distance",
+      "matrix": [
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          0
+        ]
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Push new cells to queue and update maxDist",
+      "matrix": [
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          0
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Visit neighbor (1,1) from (0,1)",
+      "matrix": [
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "curr": [
+        0,
+        1
+      ]
+    }
+  ]
+}

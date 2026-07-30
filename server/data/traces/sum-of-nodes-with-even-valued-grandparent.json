@@ -1,0 +1,199 @@
+{
+  "title": "Sum of Nodes with Even-Valued Grandparent",
+  "difficulty": "Medium",
+  "type": "tree",
+  "tags": [
+    "Tree",
+    "DFS",
+    "Binary Tree"
+  ],
+  "description": "Find the sum of values of nodes which have an even-valued grandparent.",
+  "pseudocode": "function sumEvenGrandparent(root, p, gp) {\n  if (!root) return 0;\n  let sum = (gp % 2 === 0) ? root.val : 0;\n  return sum + sumEvenGrandparent(root.left, root.val, p) + sumEvenGrandparent(root.right, root.val, p);\n}",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Start DFS from root (val: 6, p: null, gp: null)",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 6,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 7,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 2,
+          "val": 8,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 7,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Traverse to left child (val: 7), parent is 6, grandparent is null. Sum: 0",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 6,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 7,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 2,
+          "val": 8,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 7,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Traverse to node 2, parent is 7, grandparent is 6. 6 is even, adding 2 to total.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 6,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 7,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 2,
+          "val": 8,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 7,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 3
+    },
+    {
+      "codeLine": 4,
+      "note": "Traverse to node 7, parent is 7, grandparent is 6. 6 is even, adding 7 to total.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 6,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 7,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 2,
+          "val": 8,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 7,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 4
+    },
+    {
+      "codeLine": 4,
+      "note": "Traverse to node 8, parent is 6, grandparent is null. Sum: 2+7=9",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 6,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 7,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 2,
+          "val": 8,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 7,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 2
+    }
+  ]
+}

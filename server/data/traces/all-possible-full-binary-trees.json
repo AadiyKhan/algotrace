@@ -14,12 +14,14 @@
     {
       "codeLine": 1,
       "note": "Initialize recursion for n=3",
-      "treeNodes": []
+      "treeNodes": [],
+      "curr": 3
     },
     {
       "codeLine": 5,
       "note": "Looping through possible left subtree sizes i=1",
-      "treeNodes": []
+      "treeNodes": [],
+      "curr": 1
     },
     {
       "codeLine": 6,
@@ -31,7 +33,8 @@
           "left": null,
           "right": null
         }
-      ]
+      ],
+      "curr": 1
     },
     {
       "codeLine": 7,
@@ -43,7 +46,8 @@
           "left": null,
           "right": null
         }
-      ]
+      ],
+      "curr": -1
     },
     {
       "codeLine": 10,
@@ -67,7 +71,8 @@
           "left": null,
           "right": null
         }
-      ]
+      ],
+      "curr": 3
     },
     {
       "codeLine": 14,
@@ -91,7 +96,8 @@
           "left": null,
           "right": null
         }
-      ]
+      ],
+      "curr": 3
     }
   ]
 }

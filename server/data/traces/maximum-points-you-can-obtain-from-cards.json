@@ -1,0 +1,161 @@
+{
+  "title": "Maximum Points You Can Obtain From Cards",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Sliding Window",
+    "Prefix Sum"
+  ],
+  "description": "Calculate the maximum score by picking k cards from either the beginning or the end of an array.",
+  "target": 3,
+  "pseudocode": "1: total = sum(cardPoints)\n2: windowSum = sum(cardPoints[0...n-k-1])\n3: minWindow = windowSum\n4: for i from 0 to k-1:\n5:   windowSum = windowSum - cardPoints[i] + cardPoints[n-k+i]\n6:   minWindow = min(minWindow, windowSum)\n7: return total - minWindow",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Calculate total sum of all cards (1+2+3+4+5+6+1 = 22).",
+      "array": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        1
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Calculate initial window sum for n-k elements (n=7, k=3, window size=4). sum(1,2,3,4) = 10.",
+      "array": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        1
+      ],
+      "curr": 7
+    },
+    {
+      "codeLine": 4,
+      "note": "Start sliding window to find minimum sum of middle elements.",
+      "i": 0,
+      "array": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        1
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Slide window: remove 1, add 5. windowSum = 10 - 1 + 5 = 14.",
+      "i": 0,
+      "array": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        1
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Update minWindow = min(10, 14) = 10.",
+      "i": 0,
+      "array": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        1
+      ],
+      "curr": 10
+    },
+    {
+      "codeLine": 5,
+      "note": "Slide window: remove 2, add 6. windowSum = 14 - 2 + 6 = 18.",
+      "i": 1,
+      "array": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        1
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Update minWindow = min(10, 18) = 10.",
+      "i": 1,
+      "array": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        1
+      ],
+      "curr": 10
+    },
+    {
+      "codeLine": 5,
+      "note": "Slide window: remove 3, add 1. windowSum = 18 - 3 + 1 = 16.",
+      "i": 2,
+      "array": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        1
+      ],
+      "curr": 3
+    },
+    {
+      "codeLine": 6,
+      "note": "Update minWindow = min(10, 16) = 10.",
+      "i": 2,
+      "array": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        1
+      ],
+      "curr": 10
+    },
+    {
+      "codeLine": 7,
+      "note": "Result is total - minWindow = 22 - 10 = 12.",
+      "array": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        1
+      ],
+      "curr": 22
+    }
+  ]
+}

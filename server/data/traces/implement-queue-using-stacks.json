@@ -16,7 +16,8 @@
       "array": [
         1
       ],
-      "i": "stack1"
+      "i": "stack1",
+      "curr": 1
     },
     {
       "codeLine": 1,
@@ -25,7 +26,8 @@
         1,
         2
       ],
-      "i": "stack1"
+      "i": "stack1",
+      "curr": 2
     },
     {
       "codeLine": 2,
@@ -34,7 +36,8 @@
         2,
         1
       ],
-      "i": "stack2"
+      "i": "stack2",
+      "curr": 2
     },
     {
       "codeLine": 3,
@@ -42,7 +45,8 @@
       "array": [
         2
       ],
-      "i": "stack2"
+      "i": "stack2",
+      "curr": 1
     }
   ]
 }

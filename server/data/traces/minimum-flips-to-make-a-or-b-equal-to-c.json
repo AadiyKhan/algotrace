@@ -1,0 +1,108 @@
+{
+  "title": "Minimum Flips to Make a OR b Equal to c",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Bit Manipulation"
+  ],
+  "description": "Calculate minimum bit flips to make (a | b) == c. Given a=2 (010), b=6 (110), c=5 (101).",
+  "target": 5,
+  "pseudocode": "1. flips = 0\n2. for i from 0 to 31:\n3.   bitA = (a >> i) & 1, bitB = (b >> i) & 1, bitC = (c >> i) & 1\n4.   if bitC == 0: flips += (bitA + bitB)\n5.   else if (bitA | bitB) == 0: flips += 1\n6. return flips",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize flips to 0",
+      "array": [
+        2,
+        6,
+        5
+      ],
+      "i": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "i=0: a=010(bit 0), b=110(bit 0), c=101(bit 1). bitC is 1, (bitA|bitB) is 0. Flip needed.",
+      "array": [
+        2,
+        6,
+        5
+      ],
+      "i": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "i=0: Need 1 flip to change 0 to 1.",
+      "array": [
+        2,
+        6,
+        5
+      ],
+      "i": 0,
+      "visited": [
+        1
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "i=1: a=010(bit 1), b=110(bit 1), c=101(bit 0). bitC is 0, (bitA=1, bitB=1). Two flips needed.",
+      "array": [
+        2,
+        6,
+        5
+      ],
+      "i": 1,
+      "visited": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "i=1: flip bitA and bitB to 0. flips = 1 + 2 = 3.",
+      "array": [
+        2,
+        6,
+        5
+      ],
+      "i": 1,
+      "visited": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "i=2: a=010(bit 0), b=110(bit 1), c=101(bit 1). bitC is 1, (bitA|bitB) is 1. No flip needed.",
+      "array": [
+        2,
+        6,
+        5
+      ],
+      "i": 2,
+      "visited": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Loop finishes, return total flips 3.",
+      "array": [
+        2,
+        6,
+        5
+      ],
+      "i": 32,
+      "visited": [
+        1,
+        2,
+        3
+      ]
+    }
+  ]
+}

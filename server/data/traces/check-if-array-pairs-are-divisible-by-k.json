@@ -1,0 +1,91 @@
+{
+  "title": "Check If Array Pairs Are Divisible By K",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "Math"
+  ],
+  "description": "Determine if we can pair up all array elements such that the sum of each pair is divisible by k.",
+  "target": 5,
+  "pseudocode": "1. Initialize remainder counts array of size k with 0\n2. For each num in arr: increment counts[((num % k) + k) % k]\n3. Check counts[0] is even\n4. For i from 1 to k/2: check counts[i] == counts[k-i]\n5. If k is even: check counts[k/2] is even",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize remainder counts array of size 5",
+      "array": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        10
+      ],
+      "curr": 5
+    },
+    {
+      "codeLine": 2,
+      "note": "Calculate remainders: 1%5=1, 2%5=2, 3%5=3, 4%5=4, 5%5=0, 10%5=0",
+      "array": [
+        1,
+        2,
+        3,
+        4,
+        0,
+        0
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Counts of remainders: [0:2, 1:1, 2:1, 3:1, 4:1]",
+      "array": [
+        2,
+        1,
+        1,
+        1,
+        1
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Check count of remainder 0: counts[0] is 2, which is even. OK.",
+      "array": [
+        2,
+        1,
+        1,
+        1,
+        1
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Check pair (1, 4): counts[1] == counts[4] (1 == 1). OK.",
+      "i": 1,
+      "array": [
+        2,
+        1,
+        1,
+        1,
+        1
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Check pair (2, 3): counts[2] == counts[3] (1 == 1). OK.",
+      "i": 2,
+      "array": [
+        2,
+        1,
+        1,
+        1,
+        1
+      ],
+      "curr": 2
+    }
+  ]
+}

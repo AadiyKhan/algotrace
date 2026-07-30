@@ -1,0 +1,73 @@
+{
+  "title": "Smallest Sufficient Team",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Bitmask",
+    "Dynamic Programming"
+  ],
+  "description": "Find the smallest subset of people whose skills cover all required skills.",
+  "target": 7,
+  "pseudocode": "1. n = req_skills.length, m = people.length\n2. skill_map = map(skill: bit_index)\n3. dp = {0: []}\n4. for i from 0 to m-1:\n5.   person_mask = get_mask(people[i])\n6.   for mask, team in dp:\n7.     new_mask = mask | person_mask\n8.     if new_mask not in dp or dp[new_mask].len > team.len + 1:\n9.       dp[new_mask] = team + [i]",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Map skills to bit indices: Java:0, NodeJS:1, ReactJS:2",
+      "array": [
+        1,
+        2,
+        4
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Start processing person 0 (Java, NodeJS) -> mask 3 (binary 011)",
+      "i": 0,
+      "array": [
+        0
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 7,
+      "note": "Update dp: mask 3 is now covered by team [0]",
+      "i": 0,
+      "array": [
+        3
+      ],
+      "curr": 3
+    },
+    {
+      "codeLine": 4,
+      "note": "Processing person 1 (ReactJS) -> mask 4 (binary 100)",
+      "i": 1,
+      "array": [
+        3,
+        4
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "Combine person 1 with existing mask 3, new mask 7 (binary 111)",
+      "i": 1,
+      "array": [
+        3,
+        4,
+        7
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 9,
+      "note": "Team [0, 1] now covers all skills (mask 7)",
+      "i": 1,
+      "array": [
+        7
+      ],
+      "curr": 0
+    }
+  ]
+}

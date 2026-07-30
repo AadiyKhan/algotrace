@@ -1,0 +1,76 @@
+{
+  "title": "People Whose List Of Favorite Companies Is Not A Subset Of Another List",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "String"
+  ],
+  "description": "Find indices of companies lists that are not a subset of any other list.",
+  "target": null,
+  "pseudocode": "1. Sort lists by size descending\n2. For each list, check if it is a subset of any already accepted list\n3. If not, add to result set\n4. Return sorted result indices",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Sort lists by length descending: [A, B, C], [A, B], [C]",
+      "array": [
+        [
+          "A",
+          "B",
+          "C"
+        ],
+        [
+          "A",
+          "B"
+        ],
+        [
+          "C"
+        ]
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Check first list [A, B, C]. It is not a subset of any, keep it.",
+      "array": [
+        [
+          "A",
+          "B",
+          "C"
+        ]
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Check second list [A, B]. It is a subset of [A, B, C]. Skip it.",
+      "array": [
+        [
+          "A",
+          "B",
+          "C"
+        ]
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Check third list [C]. It is a subset of [A, B, C]. Skip it.",
+      "array": [
+        [
+          "A",
+          "B",
+          "C"
+        ]
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Return list of result indices",
+      "array": [
+        0
+      ]
+    }
+  ]
+}

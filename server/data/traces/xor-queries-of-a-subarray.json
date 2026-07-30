@@ -1,0 +1,86 @@
+{
+  "title": "Xor Queries of a Subarray",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Bit Manipulation",
+    "Prefix Sum"
+  ],
+  "description": "Compute XOR sum for various ranges [L, R] in an array efficiently using a prefix XOR array.",
+  "pseudocode": "1. prefix[0] = 0\n2. for i = 0 to n-1: prefix[i+1] = prefix[i] ^ arr[i]\n3. for each query [L, R]: return prefix[R+1] ^ prefix[L]",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize prefix array with 0.",
+      "array": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Compute prefix XOR: arr=[1, 3, 4, 8], prefix[1] = 0 ^ 1 = 1",
+      "array": [
+        0,
+        1,
+        0,
+        0
+      ],
+      "i": 0,
+      "curr": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Compute prefix XOR: prefix[2] = 1 ^ 3 = 2",
+      "array": [
+        0,
+        1,
+        2,
+        0
+      ],
+      "i": 1,
+      "curr": 2
+    },
+    {
+      "codeLine": 2,
+      "note": "Compute prefix XOR: prefix[3] = 2 ^ 4 = 6",
+      "array": [
+        0,
+        1,
+        2,
+        6
+      ],
+      "i": 2,
+      "curr": 3
+    },
+    {
+      "codeLine": 2,
+      "note": "Compute prefix XOR: prefix[4] = 6 ^ 8 = 14",
+      "array": [
+        0,
+        1,
+        2,
+        6,
+        14
+      ],
+      "i": 3,
+      "curr": 4
+    },
+    {
+      "codeLine": 3,
+      "note": "Query [1, 2]: prefix[3] ^ prefix[1] = 6 ^ 1 = 7",
+      "array": [
+        0,
+        1,
+        2,
+        6,
+        14
+      ],
+      "curr": 1
+    }
+  ]
+}

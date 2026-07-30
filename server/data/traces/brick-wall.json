@@ -30,7 +30,8 @@
         2,
         1
       ],
-      "i": 1
+      "i": 1,
+      "curr": 1
     },
     {
       "codeLine": 7,
@@ -41,7 +42,8 @@
         2,
         1
       ],
-      "i": 1
+      "i": 1,
+      "curr": 1
     },
     {
       "codeLine": 5,
@@ -52,7 +54,8 @@
         2,
         1
       ],
-      "i": 3
+      "i": 3,
+      "curr": 1
     },
     {
       "codeLine": 7,
@@ -63,7 +66,8 @@
         2,
         1
       ],
-      "i": 3
+      "i": 3,
+      "curr": 3
     },
     {
       "codeLine": 5,
@@ -73,7 +77,8 @@
         1,
         2
       ],
-      "i": 3
+      "i": 3,
+      "curr": 2
     },
     {
       "codeLine": 7,
@@ -83,13 +88,15 @@
         1,
         2
       ],
-      "i": 3
+      "i": 3,
+      "curr": 3
     },
     {
       "codeLine": 9,
       "note": "Final answer: wall height (2) - maxEdges (2) = 0.",
       "array": [],
-      "i": null
+      "i": null,
+      "curr": 2
     }
   ]
 }

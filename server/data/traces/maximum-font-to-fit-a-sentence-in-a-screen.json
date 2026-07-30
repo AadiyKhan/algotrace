@@ -1,0 +1,92 @@
+{
+  "title": "Maximum Font Size to Fit in Screen",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Binary Search"
+  ],
+  "description": "Find the largest font size such that a given string fits within a screen of dimensions width x height.",
+  "target": "Max Font Size",
+  "pseudocode": "1. low = minFontSize, high = maxFontSize\n2. while low <= high:\n3.   mid = (low + high) / 2\n4.   if canFit(mid): result = mid, low = mid + 1\n5.   else: high = mid - 1\n6. return result",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize binary search range with low=1, high=20.",
+      "array": [
+        1,
+        20
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Calculate mid font size as 10.",
+      "array": [
+        1,
+        20
+      ],
+      "i": 10,
+      "curr": 10
+    },
+    {
+      "codeLine": 4,
+      "note": "Check if font size 10 fits. It fits, store 10, search higher range [11, 20].",
+      "array": [
+        11,
+        20
+      ],
+      "i": 10,
+      "curr": 10
+    },
+    {
+      "codeLine": 3,
+      "note": "Calculate mid font size as 15.",
+      "array": [
+        11,
+        20
+      ],
+      "i": 15,
+      "curr": 15
+    },
+    {
+      "codeLine": 5,
+      "note": "Check if font size 15 fits. It does not fit, search lower range [11, 14].",
+      "array": [
+        11,
+        14
+      ],
+      "i": 15,
+      "curr": 15
+    },
+    {
+      "codeLine": 3,
+      "note": "Calculate mid font size as 12.",
+      "array": [
+        11,
+        14
+      ],
+      "i": 12,
+      "curr": 12
+    },
+    {
+      "codeLine": 4,
+      "note": "Check if font size 12 fits. It fits, store 12, search higher range [13, 14].",
+      "array": [
+        13,
+        14
+      ],
+      "i": 12,
+      "curr": 12
+    },
+    {
+      "codeLine": 6,
+      "note": "Range exhausted, return 12.",
+      "array": [
+        13,
+        14
+      ],
+      "curr": 12
+    }
+  ]
+}

@@ -1,0 +1,186 @@
+{
+  "title": "Maximum Difference Between Node And Ancestor",
+  "difficulty": "Medium",
+  "type": "tree",
+  "tags": [
+    "Tree",
+    "Depth-First Search"
+  ],
+  "description": "Find the maximum absolute difference between the value of a node and the value of any of its ancestors.",
+  "target": null,
+  "pseudocode": "1. function dfs(node, minVal, maxVal):\n2.   if !node return maxVal - minVal\n3.   minVal = min(minVal, node.val)\n4.   maxVal = max(maxVal, node.val)\n5.   return max(dfs(node.left, minVal, maxVal), dfs(node.right, minVal, maxVal))",
+  "steps": [
+    {
+      "codeLine": 3,
+      "note": "Starting at root (8), min=8, max=8",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 8,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 3,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 2,
+          "val": 10,
+          "left": null,
+          "right": 5
+        },
+        {
+          "id": 3,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 6,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 5,
+          "val": 14,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Moving to child (3), min=3, max=8",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 8,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 3,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 2,
+          "val": 10,
+          "left": null,
+          "right": 5
+        },
+        {
+          "id": 3,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 6,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 5,
+          "val": 14,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Moving to leaf (1), min=1, max=8, diff=7",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 8,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 3,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 2,
+          "val": 10,
+          "left": null,
+          "right": 5
+        },
+        {
+          "id": 3,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 6,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 5,
+          "val": 14,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 3
+    },
+    {
+      "codeLine": 5,
+      "note": "Backtracking to compare paths, max difference is 7",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 8,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 3,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 2,
+          "val": 10,
+          "left": null,
+          "right": 5
+        },
+        {
+          "id": 3,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 6,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 5,
+          "val": 14,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 0
+    }
+  ]
+}

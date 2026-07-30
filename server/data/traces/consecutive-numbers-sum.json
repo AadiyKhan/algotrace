@@ -4,71 +4,111 @@
   "type": "array",
   "tags": [
     "Math",
-    "Sliding Window"
+    "Enumeration"
   ],
-  "description": "Given an integer n, return the number of ways you can write n as the sum of consecutive positive integers.",
+  "description": "Find the number of ways to write n as a sum of consecutive positive integers.",
   "target": 5,
-  "pseudocode": "1: count = 0\n2: k = 1\n3: while k * (k + 1) / 2 <= n:\n4:   if (n - (k * (k - 1) / 2)) % k == 0:\n5:     count += 1\n6:   k += 1\n7: return count",
+  "pseudocode": "1. count = 0, k = 1\n2. while k * (k + 1) / 2 <= n:\n3.   if (n - k * (k + 1) / 2) % k == 0:\n4.     count += 1\n5.   k += 1\n6. return count",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize count to 0",
-      "i": "count=0"
+      "note": "Initialize count = 0 and k = 1.",
+      "array": [],
+      "i": 0,
+      "curr": 0
     },
     {
       "codeLine": 2,
-      "note": "Initialize number of terms k to 1",
-      "i": "k=1"
+      "note": "Check if k=1 satisfies 1*(2)/2 <= 5 (1 <= 5).",
+      "array": [],
+      "i": 1,
+      "curr": 1
     },
     {
       "codeLine": 3,
-      "note": "Check if sum of 1st k terms is <= 5",
-      "i": "k=1"
+      "note": "Check if (5 - 1) % 1 == 0. True, 5 can be written as 5.",
+      "array": [
+        5
+      ],
+      "i": 1,
+      "curr": 5
     },
     {
       "codeLine": 4,
-      "note": "Check if (5 - 0) is divisible by 1",
-      "i": "k=1"
+      "note": "Increment count to 1.",
+      "array": [
+        5
+      ],
+      "i": 1,
+      "curr": 1
     },
     {
       "codeLine": 5,
-      "note": "Increment count as 5 is a valid sum (5 itself)",
-      "i": "count=1"
+      "note": "Increment k to 2.",
+      "array": [
+        5
+      ],
+      "i": 2,
+      "curr": 2
     },
     {
-      "codeLine": 6,
-      "note": "Increment k to 2",
-      "i": "k=2"
+      "codeLine": 2,
+      "note": "Check if k=2 satisfies 2*(3)/2 <= 5 (3 <= 5).",
+      "array": [
+        5
+      ],
+      "i": 2,
+      "curr": 2
     },
     {
       "codeLine": 3,
-      "note": "Check if sum of 1st 2 terms (1+2=3) is <= 5",
-      "i": "k=2"
+      "note": "Check if (5 - 3) % 2 == 0. True, 5 = 2 + 3.",
+      "array": [
+        2,
+        3
+      ],
+      "i": 2,
+      "curr": 5
     },
     {
       "codeLine": 4,
-      "note": "Check if (5 - 1) is divisible by 2",
-      "i": "k=2"
+      "note": "Increment count to 2.",
+      "array": [
+        2,
+        3
+      ],
+      "i": 2,
+      "curr": 2
     },
     {
       "codeLine": 5,
-      "note": "Increment count as 2+3=5 is a valid sum",
-      "i": "count=2"
+      "note": "Increment k to 3.",
+      "array": [
+        2,
+        3
+      ],
+      "i": 3,
+      "curr": 3
+    },
+    {
+      "codeLine": 2,
+      "note": "Check if k=3 satisfies 3*(4)/2 <= 5 (6 <= 5). False.",
+      "array": [
+        2,
+        3
+      ],
+      "i": 3,
+      "curr": 3
     },
     {
       "codeLine": 6,
-      "note": "Increment k to 3",
-      "i": "k=3"
-    },
-    {
-      "codeLine": 3,
-      "note": "Check if sum of 1st 3 terms (1+2+3=6) is <= 5",
-      "i": "k=3"
-    },
-    {
-      "codeLine": 7,
-      "note": "Return final count",
-      "i": "count=2"
+      "note": "Return count: 2.",
+      "array": [
+        2,
+        3
+      ],
+      "i": 3,
+      "curr": 2
     }
   ]
 }

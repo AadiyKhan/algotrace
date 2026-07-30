@@ -33,7 +33,8 @@
           "left": null,
           "right": null
         }
-      ]
+      ],
+      "curr": 1
     },
     {
       "codeLine": 3,
@@ -112,7 +113,8 @@
           "left": null,
           "right": null
         }
-      ]
+      ],
+      "curr": 2
     },
     {
       "codeLine": 5,
@@ -136,7 +138,8 @@
           "left": null,
           "right": null
         }
-      ]
+      ],
+      "curr": 2
     },
     {
       "codeLine": 8,
@@ -160,7 +163,8 @@
           "left": null,
           "right": null
         }
-      ]
+      ],
+      "curr": 2
     }
   ]
 }

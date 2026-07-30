@@ -26,7 +26,11 @@
           3
         ]
       ],
-      "visited": []
+      "visited": [],
+      "curr": [
+        412503,
+        0
+      ]
     },
     {
       "codeLine": 4,

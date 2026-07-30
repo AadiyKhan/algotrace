@@ -1,0 +1,86 @@
+{
+  "title": "Increasing Decreasing String",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "String",
+    "Hash Table",
+    "Counting"
+  ],
+  "description": "Build a result string by repeatedly picking the smallest and largest characters from the remaining frequency counts.",
+  "target": "aaaabbbbcccc",
+  "pseudocode": "1. count frequencies of each char\n2. while result length < s length:\n3.   for i from 0 to 25: if count[i] > 0, append char, decrement\n4.   for i from 25 to 0: if count[i] > 0, append char, decrement",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Count frequencies: a:2, b:2, c:2",
+      "array": [
+        "a",
+        "a",
+        "b",
+        "b",
+        "c",
+        "c"
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Append smallest: 'a', 'b', 'c'",
+      "array": [
+        "a",
+        "b",
+        "c"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Append largest: 'c', 'b', 'a'",
+      "array": [
+        "a",
+        "b",
+        "c",
+        "c",
+        "b",
+        "a"
+      ],
+      "i": 25
+    },
+    {
+      "codeLine": 3,
+      "note": "Append remaining: 'a', 'b', 'c'",
+      "array": [
+        "a",
+        "b",
+        "c",
+        "c",
+        "b",
+        "a",
+        "a",
+        "b",
+        "c"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Append remaining: 'c', 'b', 'a'",
+      "array": [
+        "a",
+        "b",
+        "c",
+        "c",
+        "b",
+        "a",
+        "a",
+        "b",
+        "c",
+        "c",
+        "b",
+        "a"
+      ],
+      "i": 25
+    }
+  ]
+}

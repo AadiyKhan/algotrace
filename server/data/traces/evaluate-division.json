@@ -1,47 +1,178 @@
 {
   "title": "Evaluate Division",
   "difficulty": "Medium",
-  "type": "array",
+  "type": "graph",
   "tags": [
-    "Graph",
-    "DFS",
-    "Union-Find"
+    "Array",
+    "String",
+    "Graph Theory"
   ],
-  "description": "Evaluate equations like a/b = 2.0, b/c = 3.0 to find values of queries like a/c.",
-  "target": 6,
-  "pseudocode": "1. Build adjacency list graph from equations\n2. For each query (start, end):\n3. If start or end not in graph, return -1.0\n4. Perform DFS to find path from start to end\n5. Accumulate product of weights along path",
+  "description": "Evaluate division queries using a graph where equations are weighted directed edges.",
+  "pseudocode": "1. Build adjacency list graph from equations and values\n2. For each query (start, end):\n3.   If start or end not in graph, return -1.0\n4.   Perform DFS to find path from start to end\n5.   Multiply weights along the path and return result",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Building graph: a->b: 2.0, b->a: 0.5, b->c: 3.0, c->b: 0.33",
-      "i": "a"
+      "note": "Initialize graph with edges a->b (2.0), b->a (0.5), b->c (3.0), c->b (0.33)",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": "a"
+        },
+        {
+          "id": 1,
+          "val": "b"
+        },
+        {
+          "id": 2,
+          "val": "c"
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          1
+        ]
+      ],
+      "curr": 2
     },
     {
       "codeLine": 4,
-      "note": "Starting DFS from 'a' to find 'c'. Current path product: 1.0",
-      "curr": "a"
-    },
-    {
-      "codeLine": 5,
-      "note": "Moving from 'a' to 'b'. Path product: 1.0 * 2.0 = 2.0",
-      "curr": "b",
+      "note": "Query 1: a/c. DFS path a->b->c, result 2.0 * 3.0 = 6.0",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": "a"
+        },
+        {
+          "id": 1,
+          "val": "b"
+        },
+        {
+          "id": 2,
+          "val": "c"
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
       "visited": [
-        "a"
+        0,
+        1,
+        2
       ]
     },
     {
-      "codeLine": 5,
-      "note": "Moving from 'b' to 'c'. Path product: 2.0 * 3.0 = 6.0",
-      "curr": "c",
+      "codeLine": 4,
+      "note": "Query 2: b/a. DFS path b->a, result 0.5",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": "a"
+        },
+        {
+          "id": 1,
+          "val": "b"
+        },
+        {
+          "id": 2,
+          "val": "c"
+        }
+      ],
+      "graphEdges": [
+        [
+          1,
+          0
+        ]
+      ],
       "visited": [
-        "a",
-        "b"
+        1,
+        0
       ]
     },
     {
-      "codeLine": 5,
-      "note": "Target 'c' found. Returning result 6.0",
-      "curr": "c"
+      "codeLine": 3,
+      "note": "Query 3: a/e. Variable 'e' not in graph, return -1.0",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": "a"
+        },
+        {
+          "id": 1,
+          "val": "b"
+        },
+        {
+          "id": 2,
+          "val": "c"
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "visited": [
+        0
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Query 4: a/a. Start equals end, return 1.0",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": "a"
+        }
+      ],
+      "graphEdges": [],
+      "visited": [
+        0
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Query 5: x/x. Variable 'x' not in graph, return -1.0",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": "a"
+        },
+        {
+          "id": 1,
+          "val": "b"
+        },
+        {
+          "id": 2,
+          "val": "c"
+        }
+      ],
+      "graphEdges": [],
+      "visited": [],
+      "curr": 5
     }
   ]
 }

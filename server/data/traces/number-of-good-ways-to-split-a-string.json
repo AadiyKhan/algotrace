@@ -1,0 +1,99 @@
+{
+  "title": "Number of Good Ways to Split a String",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "String",
+    "Hash Table"
+  ],
+  "description": "Calculate number of good splits where left and right parts have equal distinct character counts.",
+  "target": 2,
+  "pseudocode": "1. Count distinct chars for right part; 2. Iterate and track left distincts; 3. Compare left and right distinct counts; 4. Increment result if equal.",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize left/right frequency maps. Right map counts all chars: a:3, c:2, b:1.",
+      "array": [
+        "a",
+        "a",
+        "c",
+        "a",
+        "b",
+        "a"
+      ],
+      "i": 0,
+      "curr": 3
+    },
+    {
+      "codeLine": 2,
+      "note": "Split at index 0 ('a', 'acaba'). Left distinct: 1, Right: 3. No match.",
+      "array": [
+        "a",
+        "a",
+        "c",
+        "a",
+        "b",
+        "a"
+      ],
+      "i": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Split at index 1 ('aa', 'caba'). Left distinct: 1, Right: 3. No match.",
+      "array": [
+        "a",
+        "a",
+        "c",
+        "a",
+        "b",
+        "a"
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Split at index 2 ('aac', 'aba'). Left distinct: 2, Right: 2. Good split!",
+      "array": [
+        "a",
+        "a",
+        "c",
+        "a",
+        "b",
+        "a"
+      ],
+      "i": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Split at index 3 ('aaca', 'ba'). Left distinct: 2, Right: 2. Good split!",
+      "array": [
+        "a",
+        "a",
+        "c",
+        "a",
+        "b",
+        "a"
+      ],
+      "i": 3,
+      "curr": 3
+    },
+    {
+      "codeLine": 3,
+      "note": "Split at index 4 ('aacab', 'a'). Left distinct: 3, Right: 1. No match.",
+      "array": [
+        "a",
+        "a",
+        "c",
+        "a",
+        "b",
+        "a"
+      ],
+      "i": 4,
+      "curr": 4
+    }
+  ]
+}

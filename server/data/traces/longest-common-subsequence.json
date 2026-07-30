@@ -1,0 +1,295 @@
+{
+  "title": "Longest Common Subsequence",
+  "difficulty": "Medium",
+  "type": "matrix",
+  "tags": [
+    "Dynamic Programming"
+  ],
+  "description": "Find the length of the longest common subsequence between two strings using a DP table.",
+  "target": 3,
+  "pseudocode": "1: m = text1.length, n = text2.length\n2: dp = new Array(m+1).fill(0).map(() => new Array(n+1).fill(0))\n3: for i = 1 to m:\n4:   for j = 1 to n:\n5:     if text1[i-1] == text2[j-1]: dp[i][j] = 1 + dp[i-1][j-1]\n6:     else: dp[i][j] = max(dp[i-1][j], dp[i][j-1])\n7: return dp[m][n]",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Initialize (m+1)x(n+1) matrix with zeros.",
+      "matrix": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "curr": [
+        1,
+        1
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Compare 'a' and 'a', match found. Set dp[1][1] = 1 + dp[0][0] = 1.",
+      "matrix": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "i": 1,
+      "j": 1,
+      "curr": [
+        1,
+        1
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Compare 'a' and 'b', no match. dp[1][2] = max(dp[0][2], dp[1][1]) = 1.",
+      "matrix": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "i": 1,
+      "j": 2,
+      "curr": [
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Compare 'a' and 'c', no match. dp[1][3] = max(dp[0][3], dp[1][2]) = 1.",
+      "matrix": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          1,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "i": 1,
+      "j": 3,
+      "curr": [
+        1,
+        3
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Compare 'c' and 'a', no match. dp[2][1] = max(dp[1][1], dp[2][0]) = 1.",
+      "matrix": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          1,
+          1
+        ],
+        [
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "i": 2,
+      "j": 1,
+      "curr": [
+        2,
+        1
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Compare 'c' and 'b', no match. dp[2][2] = max(dp[1][2], dp[2][1]) = 1.",
+      "matrix": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          1,
+          1
+        ],
+        [
+          0,
+          1,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "i": 2,
+      "j": 2,
+      "curr": [
+        2,
+        2
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Compare 'c' and 'c', match found. dp[2][3] = 1 + dp[1][2] = 2.",
+      "matrix": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          1,
+          1
+        ],
+        [
+          0,
+          1,
+          1,
+          2
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "i": 2,
+      "j": 3,
+      "curr": [
+        2,
+        3
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Compare 'e' and 'c', no match. Result remains 2.",
+      "matrix": [
+        [
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          1,
+          1
+        ],
+        [
+          0,
+          1,
+          1,
+          2
+        ],
+        [
+          0,
+          1,
+          1,
+          2
+        ]
+      ],
+      "i": 3,
+      "j": 3
+    }
+  ]
+}

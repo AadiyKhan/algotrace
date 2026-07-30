@@ -22,7 +22,8 @@
       "array": [
         "900 google.mail.com"
       ],
-      "i": 0
+      "i": 0,
+      "curr": 900
     },
     {
       "codeLine": 6,

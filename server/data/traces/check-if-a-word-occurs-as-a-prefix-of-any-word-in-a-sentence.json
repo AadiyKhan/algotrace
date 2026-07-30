@@ -1,0 +1,97 @@
+{
+  "title": "Check If a Word Occurs As a Prefix of Any Word in a Sentence",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "String"
+  ],
+  "description": "Given a sentence and a search word, return the index (1-indexed) of the first word in the sentence that starts with the search word.",
+  "target": "burg",
+  "pseudocode": "1. words = sentence.split(' ')\n2. for (i = 0; i < words.length; i++) {\n3.   if (words[i].startsWith(searchWord)) {\n4.     return i + 1\n5.   }\n6. }\n7. return -1",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Split the sentence into an array of words.",
+      "array": [
+        "i",
+        "love",
+        "burgers"
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Starting loop at index 0.",
+      "array": [
+        "i",
+        "love",
+        "burgers"
+      ],
+      "i": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Check if 'i' starts with 'burg'. No.",
+      "array": [
+        "i",
+        "love",
+        "burgers"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Increment i to 1.",
+      "array": [
+        "i",
+        "love",
+        "burgers"
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Check if 'love' starts with 'burg'. No.",
+      "array": [
+        "i",
+        "love",
+        "burgers"
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Increment i to 2.",
+      "array": [
+        "i",
+        "love",
+        "burgers"
+      ],
+      "i": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Check if 'burgers' starts with 'burg'. Yes.",
+      "array": [
+        "i",
+        "love",
+        "burgers"
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Found! Return i + 1 (3).",
+      "array": [
+        "i",
+        "love",
+        "burgers"
+      ],
+      "i": 2,
+      "curr": 1
+    }
+  ]
+}

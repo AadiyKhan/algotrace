@@ -8,65 +8,97 @@
   ],
   "description": "Convert an integer to its base 7 string representation.",
   "target": "100",
-  "pseudocode": "1: let n = Math.abs(num)\n2: let res = ''\n3: while n > 0\n4:   res = (n % 7) + res\n5:   n = Math.floor(n / 7)\n6: return num < 0 ? '-' + res : res",
+  "pseudocode": "1. if num == 0 return \"0\"\n2. isNegative = num < 0\n3. num = abs(num)\n4. res = []\n5. while num > 0:\n6.   res.append(num % 7)\n7.   num = num // 7\n8. if isNegative: res.append('-')\n9. return reverse(res).join()",
   "steps": [
     {
-      "codeLine": 1,
-      "note": "Initialize absolute value n = 100",
-      "i": 100
-    },
-    {
       "codeLine": 2,
-      "note": "Initialize result string",
-      "array": []
+      "note": "Initialize sign flag.",
+      "array": [],
+      "i": "isNegative=false"
     },
     {
-      "codeLine": 4,
-      "note": "Calculate remainder: 100 % 7 = 2. Prepend to res.",
-      "array": [
-        "2"
-      ]
-    },
-    {
-      "codeLine": 5,
-      "note": "Update n: 100 / 7 = 14",
-      "i": 14
-    },
-    {
-      "codeLine": 4,
-      "note": "Calculate remainder: 14 % 7 = 0. Prepend to res.",
-      "array": [
-        "0",
-        "2"
-      ]
+      "codeLine": 3,
+      "note": "Get absolute value of 100.",
+      "array": [],
+      "i": "num=100",
+      "curr": 100
     },
     {
       "codeLine": 5,
-      "note": "Update n: 14 / 7 = 2",
-      "i": 2
-    },
-    {
-      "codeLine": 4,
-      "note": "Calculate remainder: 2 % 7 = 2. Prepend to res.",
-      "array": [
-        "2",
-        "0",
-        "2"
-      ]
-    },
-    {
-      "codeLine": 5,
-      "note": "Update n: 2 / 7 = 0. Loop terminates.",
-      "i": 0
+      "note": "Start base 7 conversion loop.",
+      "array": [],
+      "i": "num=100",
+      "curr": 7
     },
     {
       "codeLine": 6,
-      "note": "Return final string '202'",
+      "note": "Remainder is 2.",
       "array": [
-        "2",
-        "0",
-        "2"
-      ]
+        2
+      ],
+      "i": "num=100",
+      "curr": 2
+    },
+    {
+      "codeLine": 7,
+      "note": "Update num to 14.",
+      "array": [
+        2
+      ],
+      "i": "num=14",
+      "curr": 14
+    },
+    {
+      "codeLine": 6,
+      "note": "Remainder is 0.",
+      "array": [
+        2,
+        0
+      ],
+      "i": "num=14",
+      "curr": 0
+    },
+    {
+      "codeLine": 7,
+      "note": "Update num to 2.",
+      "array": [
+        2,
+        0
+      ],
+      "i": "num=2",
+      "curr": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Remainder is 2.",
+      "array": [
+        2,
+        0,
+        2
+      ],
+      "i": "num=2",
+      "curr": 2
+    },
+    {
+      "codeLine": 7,
+      "note": "Update num to 0, loop ends.",
+      "array": [
+        2,
+        0,
+        2
+      ],
+      "i": "num=0",
+      "curr": 0
+    },
+    {
+      "codeLine": 9,
+      "note": "Reverse array [2, 0, 2] to get '202'.",
+      "array": [
+        2,
+        0,
+        2
+      ],
+      "curr": 2
     }
   ]
 }

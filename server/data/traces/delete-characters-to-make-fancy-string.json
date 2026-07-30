@@ -1,0 +1,85 @@
+{
+  "title": "Delete Characters to Make Fancy String",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "String",
+    "Array"
+  ],
+  "description": "Delete the minimum number of characters such that no three consecutive characters are equal.",
+  "pseudocode": "function makeFancyString(s) {\n  let res = [s[0]];\n  for (let i = 1; i < s.length; i++) {\n    let n = res.length;\n    if (s[i] !== res[n-1] || s[i] !== res[n-2]) {\n      res.push(s[i]);\n    }\n  }\n  return res.join('');\n}",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Initialize result array with first character.",
+      "array": [
+        "a"
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Start iteration at index 1.",
+      "array": [
+        "a"
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Check length of result array.",
+      "array": [
+        "a"
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Compare 'a' with last two characters in result. Adding new 'a'.",
+      "array": [
+        "a",
+        "a"
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Move to index 2.",
+      "array": [
+        "a",
+        "a"
+      ],
+      "i": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Compare 'a' with 'a' and 'a'. Condition fails, skip current 'a'.",
+      "array": [
+        "a",
+        "a"
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Move to index 3.",
+      "array": [
+        "a",
+        "a"
+      ],
+      "i": 3,
+      "curr": 3
+    },
+    {
+      "codeLine": 5,
+      "note": "Compare 'b' with 'a' and 'a'. Condition true, append 'b'.",
+      "array": [
+        "a",
+        "a",
+        "b"
+      ],
+      "i": 3
+    }
+  ]
+}

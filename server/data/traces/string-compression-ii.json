@@ -1,0 +1,83 @@
+{
+  "title": "String Compression II",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "String",
+    "Dynamic Programming"
+  ],
+  "description": "Minimize the run-length encoded length of a string by deleting at most k characters.",
+  "target": 2,
+  "pseudocode": "1. Initialize DP table where dp[i][k] is min length for prefix i with k deletions\n2. For each character i, decide to keep or delete\n3. If keeping, calculate contribution based on current run length\n4. Update dp table with minimum value found",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize DP table for s = 'aaabcccd' with k=2",
+      "array": [
+        "a",
+        "a",
+        "a",
+        "b",
+        "c",
+        "c",
+        "c",
+        "d"
+      ],
+      "visited": [],
+      "curr": 2
+    },
+    {
+      "codeLine": 2,
+      "note": "Evaluating deletion of 'b' (index 3)",
+      "array": [
+        "a",
+        "a",
+        "a",
+        "b",
+        "c",
+        "c",
+        "c",
+        "d"
+      ],
+      "i": 3,
+      "visited": [
+        3
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Evaluating deletion of 'd' (index 7)",
+      "array": [
+        "a",
+        "a",
+        "a",
+        "b",
+        "c",
+        "c",
+        "c",
+        "d"
+      ],
+      "i": 7,
+      "visited": [
+        3,
+        7
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Resulting string 'aaaccc' compresses to 'a3c3', length 4",
+      "array": [
+        "a",
+        "a",
+        "a",
+        "c",
+        "c",
+        "c"
+      ],
+      "visited": [
+        3,
+        7
+      ]
+    }
+  ]
+}

@@ -1,0 +1,121 @@
+{
+  "title": "Count Triplets That Can Form Two Arrays Of Equal Xor",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Math",
+    "Bit Manipulation"
+  ],
+  "description": "Find triplets (i, j, k) such that XOR of arr[i...j-1] equals XOR of arr[j...k].",
+  "target": 0,
+  "pseudocode": "1. count = 0\n2. for i = 0 to n - 1:\n3.   xorVal = 0\n4.   for k = i to n - 1:\n5.     xorVal ^= arr[k]\n6.     if xorVal == 0:\n7.       count += (k - i)\n8. return count",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize count to 0",
+      "array": [
+        2,
+        3,
+        1,
+        6,
+        7
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Start outer loop i = 0",
+      "array": [
+        2,
+        3,
+        1,
+        6,
+        7
+      ],
+      "i": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Inner loop k moves to 1, xorVal = 2 ^ 3 = 1",
+      "array": [
+        2,
+        3,
+        1,
+        6,
+        7
+      ],
+      "i": 0,
+      "j": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Inner loop k moves to 2, xorVal = 1 ^ 1 = 0",
+      "array": [
+        2,
+        3,
+        1,
+        6,
+        7
+      ],
+      "i": 0,
+      "j": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "xorVal is 0, add (k - i) = (2 - 0) = 2 to count",
+      "array": [
+        2,
+        3,
+        1,
+        6,
+        7
+      ],
+      "i": 0,
+      "j": 2,
+      "curr": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Inner loop k moves to 3, xorVal = 0 ^ 6 = 6",
+      "array": [
+        2,
+        3,
+        1,
+        6,
+        7
+      ],
+      "i": 0,
+      "j": 3,
+      "curr": 3
+    },
+    {
+      "codeLine": 4,
+      "note": "Inner loop k moves to 4, xorVal = 6 ^ 7 = 1",
+      "array": [
+        2,
+        3,
+        1,
+        6,
+        7
+      ],
+      "i": 0,
+      "j": 4,
+      "curr": 4
+    },
+    {
+      "codeLine": 8,
+      "note": "Return final count",
+      "array": [
+        2,
+        3,
+        1,
+        6,
+        7
+      ]
+    }
+  ]
+}

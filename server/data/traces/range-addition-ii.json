@@ -6,35 +6,83 @@
     "Array",
     "Math"
   ],
-  "description": "Find the count of the maximum integer in an m x n matrix after multiple range increment operations.",
-  "target": null,
-  "pseudocode": "1: minR = m, minC = n\n2: for op in ops:\n3:   minR = min(minR, op[0])\n4:   minC = min(minC, op[1])\n5: return minR * minC",
+  "description": "Find the count of maximum integers in an m x n matrix after multiple range increment operations.",
+  "target": 4,
+  "pseudocode": "1. min_a = m, min_b = n\n2. for op in ops:\n3.    min_a = min(min_a, op[0])\n4.    min_b = min(min_b, op[1])\n5. return min_a * min_b",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize minR and minC to matrix dimensions 3x3",
-      "i": 3,
-      "j": 3
+      "note": "Initialize min_a to m=3 and min_b to n=3.",
+      "array": [
+        3,
+        3
+      ],
+      "curr": 3
     },
     {
       "codeLine": 2,
-      "note": "Processing operation [2, 2]",
-      "i": 2,
-      "j": 2
+      "note": "Processing first operation [2, 2].",
+      "array": [
+        2,
+        2
+      ],
+      "i": 0,
+      "curr": 2
     },
     {
       "codeLine": 3,
-      "note": "Update minR = min(3, 2)",
-      "i": 2
+      "note": "Update min_a = min(3, 2) = 2.",
+      "array": [
+        2,
+        3
+      ],
+      "curr": 3
     },
     {
       "codeLine": 4,
-      "note": "Update minC = min(3, 2)",
-      "j": 2
+      "note": "Update min_b = min(3, 2) = 2.",
+      "array": [
+        2,
+        2
+      ],
+      "curr": 3
+    },
+    {
+      "codeLine": 2,
+      "note": "Processing second operation [3, 3].",
+      "array": [
+        3,
+        3
+      ],
+      "i": 1,
+      "curr": 3
+    },
+    {
+      "codeLine": 3,
+      "note": "Update min_a = min(2, 3) = 2.",
+      "array": [
+        2,
+        2
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Update min_b = min(2, 3) = 2.",
+      "array": [
+        2,
+        2
+      ],
+      "curr": 2
     },
     {
       "codeLine": 5,
-      "note": "Return minR * minC = 2 * 2 = 4"
+      "note": "Final calculation: 2 * 2 = 4.",
+      "array": [
+        2,
+        2
+      ],
+      "curr": 2
     }
   ]
 }

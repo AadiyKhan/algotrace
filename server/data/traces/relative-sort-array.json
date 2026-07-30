@@ -1,0 +1,99 @@
+{
+  "title": "Relative Sort Array",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "Sorting"
+  ],
+  "description": "Sort elements of arr1 such that the relative order of elements in arr1 follows the order in arr2. Remaining elements are placed at the end in ascending order.",
+  "target": null,
+  "pseudocode": "1. countMap = new Map();\n2. for (x of arr1) countMap[x] = (countMap[x] || 0) + 1;\n3. res = [];\n4. for (x of arr2) {\n5.   while (countMap[x]-- > 0) res.push(x);\n6.   delete countMap[x];\n7. }\n8. remaining = Object.keys(countMap).sort((a,b) => a-b);\n9. for (r of remaining) {\n10.  while (countMap[r]-- > 0) res.push(r);\n11. }",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Populate frequency map from arr1: [2, 3, 1, 3, 2, 4, 6, 7, 9, 2, 19]",
+      "array": [
+        2,
+        3,
+        1,
+        3,
+        2,
+        4,
+        6,
+        7,
+        9,
+        2,
+        19
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Processing arr2 elements: [2, 1, 4, 3, 9, 6]",
+      "array": [
+        2,
+        1,
+        4,
+        3,
+        9,
+        6
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Append all 2s from arr1 to result: [2, 2, 2]",
+      "array": [
+        2,
+        2,
+        2
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Append all 1s from arr1 to result: [2, 2, 2, 1]",
+      "array": [
+        2,
+        2,
+        2,
+        1
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 8,
+      "note": "Sort remaining keys [7, 19] numerically",
+      "array": [
+        2,
+        2,
+        2,
+        1,
+        4,
+        3,
+        9,
+        6
+      ],
+      "curr": 7
+    },
+    {
+      "codeLine": 10,
+      "note": "Append remaining elements 7, 19 to result",
+      "array": [
+        2,
+        2,
+        2,
+        1,
+        4,
+        3,
+        9,
+        6,
+        7,
+        19
+      ],
+      "curr": 7
+    }
+  ]
+}

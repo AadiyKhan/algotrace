@@ -1,0 +1,96 @@
+{
+  "title": "Design Skiplist",
+  "difficulty": "Hard",
+  "type": "graph",
+  "tags": [
+    "Design",
+    "Linked List",
+    "Skiplist"
+  ],
+  "description": "Design a Skiplist data structure that supports search, add, and erase operations.",
+  "pseudocode": "1. newNode = new Node(val)\n2. update = findPredecessors(val)\n3. for i = 0 to level: newNode.next[i] = update[i].next[i]\n4. for i = 0 to level: update[i].next[i] = newNode",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize a new node with value 10",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": "Head"
+        },
+        {
+          "id": 1,
+          "val": 10
+        }
+      ],
+      "graphEdges": [],
+      "curr": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Find predecessors for value 10 in the skiplist layers",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": "Head"
+        },
+        {
+          "id": 1,
+          "val": 10
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ]
+      ],
+      "visited": [
+        0
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Link the new node forward to current successors",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": "Head"
+        },
+        {
+          "id": 1,
+          "val": 10
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ]
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Update predecessor pointers to point to the new node",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": "Head"
+        },
+        {
+          "id": 1,
+          "val": 10
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ]
+      ],
+      "prev": 0,
+      "curr": 1
+    }
+  ]
+}

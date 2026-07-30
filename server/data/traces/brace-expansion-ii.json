@@ -1,0 +1,55 @@
+{
+  "title": "Brace Expansion II",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "String",
+    "Backtracking",
+    "Stack"
+  ],
+  "description": "Expand expressions like '{a,b}c{d,e}f' into a sorted list of unique strings.",
+  "target": "{a,b}c",
+  "pseudocode": "1. function expand(expr):\n2.   if not '{' in expr: return {expr}\n3.   find first brace pair {a,b...}\n4.   split into parts: prefix, content, suffix\n5.   for each item in content.split(','):\n6.     res.addAll(expand(prefix + item + suffix))\n7.   return sorted(unique(res))",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Starting expansion for '{a,b}c'",
+      "array": [
+        "{a,b}c"
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Identified brace group '{a,b}'",
+      "array": [
+        "a",
+        "b"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Splitting expression into prefix '', content 'a,b', suffix 'c'",
+      "array": [
+        "a",
+        "b"
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Recursively expanding 'ac' and 'bc'",
+      "array": [
+        "ac",
+        "bc"
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Returning sorted unique result",
+      "array": [
+        "ac",
+        "bc"
+      ]
+    }
+  ]
+}

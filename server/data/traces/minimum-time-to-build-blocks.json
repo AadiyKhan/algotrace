@@ -1,0 +1,101 @@
+{
+  "title": "Minimum Time to Build Blocks",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Dynamic Programming",
+    "Greedy",
+    "Heap"
+  ],
+  "description": "Minimize time to build blocks given building and splitting costs.",
+  "target": null,
+  "pseudocode": "1. minHeap.push(...blocks)\n2. while minHeap.size() > 1:\n3.   split = minHeap.pop()\n4.   build = minHeap.pop()\n5.   minHeap.push(build + splitCost)\n6. return minHeap.pop()",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize min-heap with blocks: [1, 2, 3], splitCost: 1",
+      "array": [
+        1,
+        2,
+        3
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Heap size > 1, entering loop",
+      "array": [
+        1,
+        2,
+        3
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Pop smallest block 1",
+      "array": [
+        2,
+        3
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Pop second smallest block 2",
+      "array": [
+        3
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Push new block: max(1, 2) + 1 = 3 into heap",
+      "array": [
+        3,
+        3
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Heap size > 1, continuing loop",
+      "array": [
+        3,
+        3
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Pop smallest block 3",
+      "array": [
+        3
+      ],
+      "curr": 3
+    },
+    {
+      "codeLine": 4,
+      "note": "Pop second smallest block 3",
+      "array": [],
+      "curr": 3
+    },
+    {
+      "codeLine": 5,
+      "note": "Push new block: max(3, 3) + 1 = 4 into heap",
+      "array": [
+        4
+      ],
+      "curr": 3
+    },
+    {
+      "codeLine": 6,
+      "note": "Return final value 4",
+      "array": [
+        4
+      ],
+      "curr": 4
+    }
+  ]
+}

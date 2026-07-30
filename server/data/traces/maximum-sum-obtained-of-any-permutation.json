@@ -1,0 +1,88 @@
+{
+  "title": "Maximum Sum Obtained of Any Permutation",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Greedy",
+    "Prefix Sum",
+    "Sorting"
+  ],
+  "description": "Maximize the sum of range queries by rearranging array elements using a frequency map of indices.",
+  "target": null,
+  "pseudocode": "1. count = new Array(n).fill(0)\n2. for [start, end] in requests: count[start]++, count[end+1]--\n3. for i from 1 to n: count[i] += count[i-1]\n4. nums.sort((a,b) => a - b)\n5. count.sort((a,b) => a - b)\n6. total = 0\n7. for i from 0 to n-1: total += nums[i] * count[i]\n8. return total",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize frequency array of size 5 with zeros",
+      "array": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "curr": 5
+    },
+    {
+      "codeLine": 2,
+      "note": "Apply difference array for requests [1, 3] and [0, 2]",
+      "array": [
+        1,
+        1,
+        -1,
+        -1,
+        0
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Compute prefix sums to get actual frequencies",
+      "array": [
+        1,
+        2,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Sort input nums [1, 2, 3, 4, 5]",
+      "array": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Sort frequencies [0, 0, 1, 1, 2]",
+      "array": [
+        0,
+        0,
+        1,
+        1,
+        2
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 7,
+      "note": "Calculate dot product: (1*0)+(2*0)+(3*1)+(4*1)+(5*2) = 17",
+      "i": 4,
+      "array": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "curr": 1
+    }
+  ]
+}

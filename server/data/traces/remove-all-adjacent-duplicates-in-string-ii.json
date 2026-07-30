@@ -1,0 +1,168 @@
+{
+  "title": "Remove All Adjacent Duplicates in String II",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "String",
+    "Stack"
+  ],
+  "description": "Remove k adjacent identical characters repeatedly until no more can be removed.",
+  "target": 2,
+  "pseudocode": "1. Initialize a stack to store pairs of [char, count]\n2. For each char in s:\n3.   If char == stack.top().char, increment count\n4.   If count == k, pop stack\n5.   Else push [char, 1]\n6. Construct result from remaining stack elements",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize empty stack",
+      "array": [],
+      "visited": []
+    },
+    {
+      "codeLine": 2,
+      "note": "Process 'a'",
+      "array": [
+        "a"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Push ['a', 1] to stack",
+      "array": [
+        [
+          "a",
+          1
+        ]
+      ],
+      "i": 0,
+      "curr": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Process 'b'",
+      "array": [
+        [
+          "a",
+          1
+        ],
+        [
+          "b",
+          1
+        ]
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Push ['b', 1] to stack",
+      "array": [
+        [
+          "a",
+          1
+        ],
+        [
+          "b",
+          1
+        ]
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Process 'c'",
+      "array": [
+        [
+          "a",
+          1
+        ],
+        [
+          "b",
+          1
+        ],
+        [
+          "c",
+          1
+        ]
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Push ['c', 1] to stack",
+      "array": [
+        [
+          "a",
+          1
+        ],
+        [
+          "b",
+          1
+        ],
+        [
+          "c",
+          1
+        ]
+      ],
+      "i": 2,
+      "curr": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Process 'd'",
+      "array": [
+        [
+          "a",
+          1
+        ],
+        [
+          "b",
+          1
+        ],
+        [
+          "c",
+          1
+        ],
+        [
+          "d",
+          1
+        ]
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 5,
+      "note": "Push ['d', 1] to stack",
+      "array": [
+        [
+          "a",
+          1
+        ],
+        [
+          "b",
+          1
+        ],
+        [
+          "c",
+          1
+        ],
+        [
+          "d",
+          1
+        ]
+      ],
+      "i": 3,
+      "curr": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Construct result string from stack",
+      "array": [
+        "a",
+        "b",
+        "c",
+        "d"
+      ]
+    }
+  ]
+}

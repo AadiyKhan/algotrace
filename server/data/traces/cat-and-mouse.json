@@ -1,41 +1,400 @@
 {
   "title": "Cat and Mouse",
   "difficulty": "Hard",
-  "type": "array",
+  "type": "graph",
   "tags": [
-    "Graph",
-    "Minimax",
-    "Game Theory"
+    "Graph Theory",
+    "Game Theory",
+    "Topological Sort"
   ],
-  "description": "Determine if the mouse can escape, the cat can catch the mouse, or if it results in a draw in a graph-based game.",
+  "description": "Determine the outcome of a game between a cat and mouse on a graph using minimax/game theory logic.",
   "target": 0,
-  "pseudocode": "1. MOUSE_MOVE = 1, CAT_MOVE = 2\n2. If mouse reaches 0, mouse wins (1)\n3. If cat reaches mouse, cat wins (2)\n4. Use memoization to track states (mouse, cat, turn)\n5. If state repeats, it is a draw (0)\n6. Recursively explore moves",
+  "pseudocode": "1. Initialize state (m, c, turn) as 0, 1, or 2.\n2. Build state graph where each node is (m, c, turn).\n3. Use topological sort to resolve game outcomes for each state.\n4. If state outcome is Mouse win, return 1; Cat win, 2; else 0.",
   "steps": [
     {
-      "codeLine": 4,
-      "note": "Initialize game state: Mouse at 1, Cat at 2, Turn is Mouse",
-      "i": 1,
-      "j": 2
+      "codeLine": 1,
+      "note": "Initialize game state: Mouse at 1, Cat at 2, Mouse's turn.",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": "Hole"
+        },
+        {
+          "id": 1,
+          "val": "M"
+        },
+        {
+          "id": 2,
+          "val": "C"
+        },
+        {
+          "id": 3,
+          "val": "3"
+        },
+        {
+          "id": 4,
+          "val": "4"
+        },
+        {
+          "id": 5,
+          "val": "5"
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          4,
+          2
+        ],
+        [
+          4,
+          3
+        ],
+        [
+          5,
+          0
+        ],
+        [
+          5,
+          2
+        ],
+        [
+          5,
+          3
+        ]
+      ],
+      "visited": [],
+      "curr": 1
     },
     {
-      "codeLine": 6,
-      "note": "Mouse moves to node 3",
-      "i": 3,
-      "j": 2,
-      "curr": 3
-    },
-    {
-      "codeLine": 6,
-      "note": "Cat moves to node 3 to intercept mouse",
-      "i": 3,
-      "j": 3,
-      "curr": 3
+      "codeLine": 2,
+      "note": "Map all possible game states (m, c, turn) for the provided graph.",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": "Hole"
+        },
+        {
+          "id": 1,
+          "val": "M"
+        },
+        {
+          "id": 2,
+          "val": "C"
+        },
+        {
+          "id": 3,
+          "val": "3"
+        },
+        {
+          "id": 4,
+          "val": "4"
+        },
+        {
+          "id": 5,
+          "val": "5"
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          4,
+          2
+        ],
+        [
+          4,
+          3
+        ],
+        [
+          5,
+          0
+        ],
+        [
+          5,
+          2
+        ],
+        [
+          5,
+          3
+        ]
+      ],
+      "visited": [
+        [
+          1,
+          2,
+          0
+        ]
+      ]
     },
     {
       "codeLine": 3,
-      "note": "Cat catches mouse at node 3, return cat wins",
-      "i": 3,
-      "j": 3
+      "note": "Propagate terminal states: Cat wins if m==c (state 2), Mouse wins if m==0 (state 1).",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": "Hole"
+        },
+        {
+          "id": 1,
+          "val": "M"
+        },
+        {
+          "id": 2,
+          "val": "C"
+        },
+        {
+          "id": 3,
+          "val": "3"
+        },
+        {
+          "id": 4,
+          "val": "4"
+        },
+        {
+          "id": 5,
+          "val": "5"
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          4,
+          2
+        ],
+        [
+          4,
+          3
+        ],
+        [
+          5,
+          0
+        ],
+        [
+          5,
+          2
+        ],
+        [
+          5,
+          3
+        ]
+      ],
+      "visited": [
+        [
+          1,
+          2,
+          0
+        ],
+        [
+          0,
+          2,
+          0
+        ],
+        [
+          2,
+          2,
+          1
+        ]
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Determine outcome of starting state (1, 2, 0) via minimax, result is 0 (Draw).",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": "Hole"
+        },
+        {
+          "id": 1,
+          "val": "M"
+        },
+        {
+          "id": 2,
+          "val": "C"
+        },
+        {
+          "id": 3,
+          "val": "3"
+        },
+        {
+          "id": 4,
+          "val": "4"
+        },
+        {
+          "id": 5,
+          "val": "5"
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          4,
+          2
+        ],
+        [
+          4,
+          3
+        ],
+        [
+          5,
+          0
+        ],
+        [
+          5,
+          2
+        ],
+        [
+          5,
+          3
+        ]
+      ],
+      "visited": [
+        [
+          1,
+          2,
+          0
+        ]
+      ]
     }
   ]
 }

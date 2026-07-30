@@ -1,0 +1,122 @@
+{
+  "title": "Distinct Echo Substrings",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "String",
+    "Hash Table",
+    "Rolling Hash"
+  ],
+  "description": "Return the number of distinct non-empty substrings that can be written as the concatenation of some string with itself.",
+  "target": null,
+  "pseudocode": "1: let seen = new Set()\n2: for length = 1 to n/2\n3:   for i = 0 to n - 2*length\n4:     if text.substring(i, i+length) == text.substring(i+length, i+2*length)\n5:       seen.add(text.substring(i, i+2*length))\n6: return seen.size",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize an empty set to track unique echo substrings.",
+      "array": [
+        "a",
+        "b",
+        "c",
+        "a",
+        "b",
+        "c"
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Start length loop. length = 1.",
+      "array": [
+        "a",
+        "b",
+        "c",
+        "a",
+        "b",
+        "c"
+      ],
+      "i": 0,
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Check substring at length 1: 'a' vs 'b' (i=0), 'b' vs 'c' (i=1), etc. No matches.",
+      "array": [
+        "a",
+        "b",
+        "c",
+        "a",
+        "b",
+        "c"
+      ],
+      "i": 0,
+      "curr": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Increase length to 2. No consecutive repeating strings found.",
+      "array": [
+        "a",
+        "b",
+        "c",
+        "a",
+        "b",
+        "c"
+      ],
+      "i": 0,
+      "curr": 2
+    },
+    {
+      "codeLine": 2,
+      "note": "Increase length to 3. Compare text[0..2] ('abc') with text[3..5] ('abc').",
+      "array": [
+        "a",
+        "b",
+        "c",
+        "a",
+        "b",
+        "c"
+      ],
+      "i": 0,
+      "curr": 3
+    },
+    {
+      "codeLine": 4,
+      "note": "Match found! 'abc' == 'abc'.",
+      "array": [
+        "a",
+        "b",
+        "c",
+        "a",
+        "b",
+        "c"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Add 'abcabc' to set.",
+      "array": [
+        "a",
+        "b",
+        "c",
+        "a",
+        "b",
+        "c"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Return set size: 1.",
+      "array": [
+        "a",
+        "b",
+        "c",
+        "a",
+        "b",
+        "c"
+      ],
+      "curr": 1
+    }
+  ]
+}

@@ -1,0 +1,116 @@
+{
+  "title": "Moving Stones Until Consecutive II",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Math",
+    "Two Pointers",
+    "Sorting"
+  ],
+  "description": "Find the minimum and maximum moves to place stones in consecutive positions given their initial coordinates.",
+  "target": null,
+  "pseudocode": "1. sort(stones)\n2. n = stones.length\n3. max_moves = max(stones[n-1]-stones[1]-n+2, stones[n-2]-stones[0]-n+2)\n4. min_moves = n\n5. left = 0\n6. for right from 0 to n-1:\n7.   while stones[right] - stones[left] >= n:\n8.     left++\n9.   if right - left + 1 == n - 1 and stones[right] - stones[left] == n - 2:\n10.    min_moves = min(min_moves, 2)\n11.  else:\n12.    min_moves = min(min_moves, n - (right - left + 1))",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Sort the stones array.",
+      "array": [
+        7,
+        4,
+        9
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Calculate maximum possible moves.",
+      "array": [
+        4,
+        7,
+        9
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Start sliding window with right = 0.",
+      "array": [
+        4,
+        7,
+        9
+      ],
+      "i": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 7,
+      "note": "Check window constraints.",
+      "array": [
+        4,
+        7,
+        9
+      ],
+      "i": 0,
+      "j": 0
+    },
+    {
+      "codeLine": 12,
+      "note": "Update min_moves for window [4].",
+      "array": [
+        4,
+        7,
+        9
+      ],
+      "i": 0,
+      "j": 0,
+      "curr": 4
+    },
+    {
+      "codeLine": 6,
+      "note": "Move right to 1.",
+      "array": [
+        4,
+        7,
+        9
+      ],
+      "i": 0,
+      "j": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 12,
+      "note": "Update min_moves for window [4, 7].",
+      "array": [
+        4,
+        7,
+        9
+      ],
+      "i": 0,
+      "j": 1,
+      "curr": 4
+    },
+    {
+      "codeLine": 6,
+      "note": "Move right to 2.",
+      "array": [
+        4,
+        7,
+        9
+      ],
+      "i": 0,
+      "j": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 12,
+      "note": "Update min_moves for window [4, 7, 9].",
+      "array": [
+        4,
+        7,
+        9
+      ],
+      "i": 0,
+      "j": 2,
+      "curr": 4
+    }
+  ]
+}

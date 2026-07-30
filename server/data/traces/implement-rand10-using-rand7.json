@@ -15,13 +15,15 @@
       "codeLine": 2,
       "note": "Generate row value from rand7()",
       "array": [],
-      "i": 2
+      "i": 2,
+      "curr": 7
     },
     {
       "codeLine": 3,
       "note": "Generate column value from rand7()",
       "array": [],
-      "i": 3
+      "i": 3,
+      "curr": 7
     },
     {
       "codeLine": 4,
@@ -29,7 +31,8 @@
       "array": [
         10
       ],
-      "i": 4
+      "i": 4,
+      "curr": 1
     },
     {
       "codeLine": 5,
@@ -37,7 +40,8 @@
       "array": [
         10
       ],
-      "i": 5
+      "i": 5,
+      "curr": 10
     },
     {
       "codeLine": 5,
@@ -45,7 +49,8 @@
       "array": [
         10
       ],
-      "i": 5
+      "i": 5,
+      "curr": 10
     }
   ]
 }

@@ -1,0 +1,82 @@
+{
+  "title": "Maximum Number Of Darts Inside Of A Circular Dartboard",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Geometry",
+    "Math"
+  ],
+  "description": "Find the maximum number of points that can be covered by a circle of radius r.",
+  "target": 2,
+  "pseudocode": "1. For each pair of points i and j:\n2. Find potential circle centers that pass through i and j at distance r\n3. For each candidate center:\n4. Count points within distance r + eps\n5. Update maxCount",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Selecting pair of points (0, 1) to form circle candidates.",
+      "array": [
+        [
+          -2,
+          0
+        ],
+        [
+          2,
+          0
+        ]
+      ],
+      "i": 0,
+      "j": 1,
+      "curr": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Calculating two possible centers equidistant to both points with radius 2.",
+      "array": [
+        [
+          -2,
+          0
+        ],
+        [
+          2,
+          0
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Counting points within radius distance from center [0, 0].",
+      "array": [
+        [
+          -2,
+          0
+        ],
+        [
+          2,
+          0
+        ]
+      ],
+      "visited": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Max darts updated to 2.",
+      "array": [
+        [
+          -2,
+          0
+        ],
+        [
+          2,
+          0
+        ]
+      ],
+      "curr": 2
+    }
+  ]
+}

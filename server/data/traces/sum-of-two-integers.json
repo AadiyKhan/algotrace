@@ -3,48 +3,60 @@
   "difficulty": "Medium",
   "type": "array",
   "tags": [
-    "Bit Manipulation",
-    "Math"
+    "Math",
+    "Bit Manipulation"
   ],
-  "description": "Calculate the sum of two integers a and b, but you are not allowed to use the operator + and -.",
+  "description": "Calculate the sum of two integers without using + or - operators using bitwise operations.",
   "target": 3,
-  "pseudocode": "1: while (b !== 0) {\n2:   let carry = a & b;\n3:   a = a ^ b;\n4:   b = carry << 1;\n5: }\n6: return a;",
+  "pseudocode": "1. while b != 0:\n2. carry = (a & b) << 1\n3. a = a ^ b\n4. b = carry\n5. return a",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize a=1, b=2. Since b is not 0, enter the loop.",
-      "i": 1,
-      "j": 2
+      "note": "Initialize a=1 (01), b=2 (10). Loop starts because b != 0.",
+      "array": [
+        1,
+        2
+      ]
     },
     {
       "codeLine": 2,
-      "note": "Calculate carry: 1 & 2 is 0 (binary 01 & 10 = 00).",
-      "i": 1,
-      "j": 2
+      "note": "Calculate carry: (01 & 10) << 1 = 0 << 1 = 0.",
+      "array": [
+        1,
+        2
+      ]
     },
     {
       "codeLine": 3,
-      "note": "Update a: 1 ^ 2 is 3 (binary 01 ^ 10 = 11).",
-      "i": 3,
-      "j": 2
+      "note": "Update a using XOR: 01 ^ 10 = 11 (3).",
+      "array": [
+        3,
+        2
+      ]
     },
     {
       "codeLine": 4,
-      "note": "Update b: carry 0 shifted left by 1 is 0.",
-      "i": 3,
-      "j": 0
+      "note": "Update b to the carry value: b = 0.",
+      "array": [
+        3,
+        0
+      ]
     },
     {
       "codeLine": 1,
-      "note": "Loop condition check: b is 0, exit loop.",
-      "i": 3,
-      "j": 0
+      "note": "Loop terminates as b is 0.",
+      "array": [
+        3,
+        0
+      ]
     },
     {
-      "codeLine": 6,
-      "note": "Return a, which is 3.",
-      "i": 3,
-      "j": 0
+      "codeLine": 5,
+      "note": "Return final value of a: 3.",
+      "array": [
+        3
+      ]
     }
-  ]
+  ],
+  "fullDescription": "<p>Given two integers <code>a</code> and <code>b</code>, return <em>the sum of the two integers without using the operators</em> <code>+</code> <em>and</em> <code>-</code>.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n<pre><strong>Input:</strong> a = 1, b = 2\n<strong>Output:</strong> 3\n</pre><p><strong class=\"example\">Example 2:</strong></p>\n<pre><strong>Input:</strong> a = 2, b = 3\n<strong>Output:</strong> 5\n</pre>\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>-1000 &lt;= a, b &lt;= 1000</code></li>\n</ul>\n"
 }

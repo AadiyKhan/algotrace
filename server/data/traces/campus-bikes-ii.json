@@ -16,7 +16,8 @@
       "codeLine": 1,
       "note": "Initialize memoization table and starting worker index 0 with mask 00 (no bikes used).",
       "i": 0,
-      "visited": []
+      "visited": [],
+      "curr": 0
     },
     {
       "codeLine": 6,

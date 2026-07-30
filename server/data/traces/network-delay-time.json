@@ -1,0 +1,213 @@
+{
+  "title": "Network Delay Time",
+  "difficulty": "Medium",
+  "type": "graph",
+  "tags": [
+    "Graph",
+    "Dijkstra",
+    "Shortest Path"
+  ],
+  "description": "Find the minimum time to send a signal to all nodes in a network given directed edges with weights.",
+  "target": 1,
+  "pseudocode": "1. Initialize distances to infinity, source to 0\n2. Use a min-priority queue to explore edges\n3. For each neighbor, if new path is shorter, update distance\n4. Return max distance found or -1 if unreachable",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize distances: {1:0, 2:inf, 3:inf}, queue: [[0, 1]]",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": 1
+        },
+        {
+          "id": 1,
+          "val": 2
+        },
+        {
+          "id": 2,
+          "val": 3
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "visited": [
+        0
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Pop node 1, explore neighbors 2 (weight 1)",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": 1
+        },
+        {
+          "id": 1,
+          "val": 2
+        },
+        {
+          "id": 2,
+          "val": 3
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "curr": 0,
+      "visited": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Update distance to node 2: 0 + 1 = 1",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": 1
+        },
+        {
+          "id": 1,
+          "val": 2
+        },
+        {
+          "id": 2,
+          "val": 3
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "curr": 1,
+      "visited": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Pop node 2, explore neighbor 3 (weight 1)",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": 1
+        },
+        {
+          "id": 1,
+          "val": 2
+        },
+        {
+          "id": 2,
+          "val": 3
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "curr": 1,
+      "visited": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Update distance to node 3: 1 + 1 = 2",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": 1
+        },
+        {
+          "id": 1,
+          "val": 2
+        },
+        {
+          "id": 2,
+          "val": 3
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "curr": 2,
+      "visited": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "All nodes reached. Max distance is 2.",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": 1
+        },
+        {
+          "id": 1,
+          "val": 2
+        },
+        {
+          "id": 2,
+          "val": 3
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "visited": [
+        0,
+        1,
+        2
+      ]
+    }
+  ]
+}

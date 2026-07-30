@@ -3,17 +3,20 @@
   "difficulty": "Hard",
   "type": "tree",
   "tags": [
-    "Tree",
     "Hash Table",
-    "BFS",
-    "Sorting"
+    "Tree",
+    "Depth-First Search",
+    "Breadth-First Search",
+    "Sorting",
+    "Binary Tree"
   ],
-  "description": "Traverse a binary tree and return the node values in vertical order, sorted by column, then row, then value.",
-  "pseudocode": "1. map = new Map()\n2. queue = [{node: root, col: 0, row: 0}]\n3. while queue not empty:\n4.   {node, col, row} = queue.shift()\n5.   if (!map.has(col)) map.set(col, [])\n6.   map.get(col).push({row, val: node.val})\n7.   if (node.left) queue.push({node: node.left, col: col-1, row: row+1})\n8.   if (node.right) queue.push({node: node.right, col: col+1, row: row+1})\n9. sort map columns and sort entries by row then val",
+  "description": "Traverse binary tree nodes by column, then row, then value.",
+  "target": null,
+  "pseudocode": "1. Create a map to store nodes by column.\n2. Perform BFS/DFS to store (row, col, value) for each node.\n3. Sort the collected data by column, then row, then value.\n4. Format the result into a list of lists.",
   "steps": [
     {
       "codeLine": 2,
-      "note": "Initialize queue with root node at (col 0, row 0)",
+      "note": "Traversing root node (3) at (0,0)",
       "treeNodes": [
         {
           "id": 0,
@@ -51,24 +54,80 @@
       ]
     },
     {
-      "codeLine": 4,
-      "note": "Process root node 3 at column 0",
-      "curr": "0",
-      "visited": [
-        0
-      ]
-    },
-    {
-      "codeLine": 7,
-      "note": "Push left child 9 to queue at col -1",
+      "codeLine": 2,
+      "note": "Traversing node 9 at (1,-1)",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 3,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 9,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 20,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 3,
+          "val": 15,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 7,
+          "left": null,
+          "right": null
+        }
+      ],
       "visited": [
         0,
         1
       ]
     },
     {
-      "codeLine": 8,
-      "note": "Push right child 20 to queue at col 1",
+      "codeLine": 2,
+      "note": "Traversing node 20 at (1,1)",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 3,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 9,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 20,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 3,
+          "val": 15,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 7,
+          "left": null,
+          "right": null
+        }
+      ],
       "visited": [
         0,
         1,
@@ -76,18 +135,40 @@
       ]
     },
     {
-      "codeLine": 4,
-      "note": "Process node 9 at col -1",
-      "curr": "1"
-    },
-    {
-      "codeLine": 4,
-      "note": "Process node 20 at col 1",
-      "curr": "2"
-    },
-    {
-      "codeLine": 7,
-      "note": "Push left child 15 of node 20 to queue at col 0",
+      "codeLine": 2,
+      "note": "Traversing node 15 at (2,0)",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 3,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 9,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 20,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 3,
+          "val": 15,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 7,
+          "left": null,
+          "right": null
+        }
+      ],
       "visited": [
         0,
         1,
@@ -96,8 +177,83 @@
       ]
     },
     {
-      "codeLine": 8,
-      "note": "Push right child 7 of node 20 to queue at col 2",
+      "codeLine": 2,
+      "note": "Traversing node 7 at (2,2)",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 3,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 9,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 20,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 3,
+          "val": 15,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 7,
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Result generated: [[9],[3,15],[20],[7]]",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 3,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 9,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 20,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 3,
+          "val": 15,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 7,
+          "left": null,
+          "right": null
+        }
+      ],
       "visited": [
         0,
         1,

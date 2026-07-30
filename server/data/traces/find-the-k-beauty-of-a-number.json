@@ -1,0 +1,101 @@
+{
+  "title": "Find the K-Beauty of a Number",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "String",
+    "Sliding Window"
+  ],
+  "description": "Find the number of substrings of length k that are divisors of the original number.",
+  "target": 2,
+  "pseudocode": "1. s = str(num)\n2. count = 0\n3. for i from 0 to len(s) - k:\n4.   sub = int(s[i:i+k])\n5.   if sub != 0 and num % sub == 0:\n6.     count += 1\n7. return count",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Convert num to string '240'",
+      "array": [
+        "2",
+        "4",
+        "0"
+      ],
+      "curr": 240
+    },
+    {
+      "codeLine": 3,
+      "note": "Start sliding window at index 0",
+      "array": [
+        "2",
+        "4",
+        "0"
+      ],
+      "i": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Extract substring '24' (int 24)",
+      "array": [
+        "2",
+        "4",
+        "0"
+      ],
+      "i": 0,
+      "curr": 24
+    },
+    {
+      "codeLine": 5,
+      "note": "240 % 24 == 0, increment count",
+      "array": [
+        "2",
+        "4",
+        "0"
+      ],
+      "i": 0,
+      "curr": 240
+    },
+    {
+      "codeLine": 3,
+      "note": "Move to index 1",
+      "array": [
+        "2",
+        "4",
+        "0"
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Extract substring '40' (int 40)",
+      "array": [
+        "2",
+        "4",
+        "0"
+      ],
+      "i": 1,
+      "curr": 40
+    },
+    {
+      "codeLine": 5,
+      "note": "240 % 40 == 0, increment count",
+      "array": [
+        "2",
+        "4",
+        "0"
+      ],
+      "i": 1,
+      "curr": 240
+    },
+    {
+      "codeLine": 7,
+      "note": "Loop finished, return count 2",
+      "array": [
+        "2",
+        "4",
+        "0"
+      ],
+      "curr": 2
+    }
+  ]
+}

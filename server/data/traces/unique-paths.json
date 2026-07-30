@@ -3,35 +3,56 @@
   "difficulty": "Medium",
   "type": "matrix",
   "tags": [
-    "Array",
+    "Math",
     "Dynamic Programming",
     "Combinatorics"
   ],
-  "description": "Find the number of unique paths to reach the bottom-right corner of an m x n grid.",
-  "target": 3,
-  "pseudocode": "1. Initialize grid[m][n] with 1s\n2. for i from 1 to m-1:\n3.   for j from 1 to n-1:\n4.     grid[i][j] = grid[i-1][j] + grid[i][j-1]\n5. return grid[m-1][n-1]",
+  "description": "Calculate unique paths from top-left to bottom-right in an m x n grid using DP.",
+  "target": 28,
+  "pseudocode": "1. Initialize m x n matrix with 1s\n2. For i from 1 to m-1:\n3.   For j from 1 to n-1:\n4.     dp[i][j] = dp[i-1][j] + dp[i][j-1]\n5. Return dp[m-1][n-1]",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize a 2x3 grid with 1s representing base cases.",
+      "note": "Initialize 3x7 grid with 1s in the first row and column.",
       "matrix": [
         [
+          1,
+          1,
+          1,
+          1,
           1,
           1,
           1
         ],
         [
           1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
           1,
-          1
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
         ]
       ]
     },
     {
       "codeLine": 4,
-      "note": "Calculate paths for grid[1][1] = grid[0][1] + grid[1][0] = 1 + 1 = 2.",
+      "note": "Calculate dp[1][1] = dp[0][1] + dp[1][0] = 1 + 1 = 2.",
       "matrix": [
         [
+          1,
+          1,
+          1,
+          1,
           1,
           1,
           1
@@ -39,7 +60,20 @@
         [
           1,
           2,
-          1
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
         ]
       ],
       "i": 1,
@@ -47,9 +81,13 @@
     },
     {
       "codeLine": 4,
-      "note": "Calculate paths for grid[1][2] = grid[0][2] + grid[1][1] = 1 + 2 = 3.",
+      "note": "Calculate dp[1][2] = dp[0][2] + dp[1][1] = 1 + 2 = 3.",
       "matrix": [
         [
+          1,
+          1,
+          1,
+          1,
           1,
           1,
           1
@@ -57,17 +95,34 @@
         [
           1,
           2,
-          3
+          3,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
         ]
       ],
       "i": 1,
       "j": 2
     },
     {
-      "codeLine": 5,
-      "note": "Return the value at bottom-right corner: 3.",
+      "codeLine": 4,
+      "note": "Filling Row 1...",
       "matrix": [
         [
+          1,
+          1,
+          1,
+          1,
           1,
           1,
           1
@@ -75,9 +130,128 @@
         [
           1,
           2,
-          3
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "i": 1,
+      "j": 6
+    },
+    {
+      "codeLine": 4,
+      "note": "Filling Row 2: dp[2][1] = dp[1][1] + dp[2][0] = 2 + 1 = 3.",
+      "matrix": [
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        [
+          1,
+          3,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "i": 2,
+      "j": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Completing grid calculation.",
+      "matrix": [
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        [
+          1,
+          3,
+          6,
+          10,
+          15,
+          21,
+          28
+        ]
+      ],
+      "i": 2,
+      "j": 6
+    },
+    {
+      "codeLine": 5,
+      "note": "Returning result at bottom-right: 28.",
+      "matrix": [
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        [
+          1,
+          3,
+          6,
+          10,
+          15,
+          21,
+          28
         ]
       ]
     }
-  ]
+  ],
+  "fullDescription": "<p>There is a robot on an <code>m x n</code> grid. The robot is initially located at the <strong>top-left corner</strong> (i.e., <code>grid[0][0]</code>). The robot tries to move to the <strong>bottom-right corner</strong> (i.e., <code>grid[m - 1][n - 1]</code>). The robot can only move either down or right at any point in time.</p>\n\n<p>Given the two integers <code>m</code> and <code>n</code>, return <em>the number of possible unique paths that the robot can take to reach the bottom-right corner</em>.</p>\n\n<p>The test cases are generated so that the answer will be less than or equal to <code>2 * 10<sup>9</sup></code>.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n<img src=\"https://assets.leetcode.com/uploads/2018/10/22/robot_maze.png\" style=\"width: 400px; height: 183px;\" />\n<pre>\n<strong>Input:</strong> m = 3, n = 7\n<strong>Output:</strong> 28\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> m = 3, n = 2\n<strong>Output:</strong> 3\n<strong>Explanation:</strong> From the top-left corner, there are a total of 3 ways to reach the bottom-right corner:\n1. Right -&gt; Down -&gt; Down\n2. Down -&gt; Down -&gt; Right\n3. Down -&gt; Right -&gt; Down\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= m, n &lt;= 100</code></li>\n</ul>\n"
 }

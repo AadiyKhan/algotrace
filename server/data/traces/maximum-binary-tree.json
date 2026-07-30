@@ -14,7 +14,8 @@
     {
       "codeLine": 1,
       "note": "Initialize construction with array [3, 2, 1]",
-      "treeNodes": []
+      "treeNodes": [],
+      "curr": 3
     },
     {
       "codeLine": 3,
@@ -26,7 +27,8 @@
           "left": null,
           "right": null
         }
-      ]
+      ],
+      "curr": 0
     },
     {
       "codeLine": 6,
@@ -38,7 +40,8 @@
           "left": null,
           "right": null
         }
-      ]
+      ],
+      "curr": 0
     },
     {
       "codeLine": 7,
@@ -56,7 +59,8 @@
           "left": null,
           "right": 2
         }
-      ]
+      ],
+      "curr": 2
     },
     {
       "codeLine": 7,
@@ -80,7 +84,8 @@
           "left": null,
           "right": null
         }
-      ]
+      ],
+      "curr": 1
     }
   ]
 }

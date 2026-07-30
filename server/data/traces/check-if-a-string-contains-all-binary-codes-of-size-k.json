@@ -1,0 +1,209 @@
+{
+  "title": "Check If A String Contains All Binary Codes Of Size K",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "String",
+    "Hash Table",
+    "Bit Manipulation"
+  ],
+  "description": "Determine if all binary codes of length k are present as substrings in s.",
+  "target": 8,
+  "pseudocode": "1: let seen = new Set()\n2: for (let i = 0; i <= s.length - k; i++) {\n3:   let sub = s.substring(i, i + k)\n4:   seen.add(sub)\n5: }\n6: return seen.size === (1 << k)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize an empty set to store unique binary codes.",
+      "array": [
+        "0",
+        "0",
+        "1",
+        "1",
+        "0"
+      ],
+      "i": null
+    },
+    {
+      "codeLine": 2,
+      "note": "Start loop to extract substring of length k=2.",
+      "array": [
+        "0",
+        "0",
+        "1",
+        "1",
+        "0"
+      ],
+      "i": 0,
+      "curr": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Extracted substring at index 0: '00'.",
+      "array": [
+        "0",
+        "0",
+        "1",
+        "1",
+        "0"
+      ],
+      "i": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Add '00' to the set.",
+      "array": [
+        "0",
+        "0",
+        "1",
+        "1",
+        "0"
+      ],
+      "i": 0,
+      "visited": [
+        "00"
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Increment i to 1.",
+      "array": [
+        "0",
+        "0",
+        "1",
+        "1",
+        "0"
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Extracted substring at index 1: '01'.",
+      "array": [
+        "0",
+        "0",
+        "1",
+        "1",
+        "0"
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Add '01' to the set.",
+      "array": [
+        "0",
+        "0",
+        "1",
+        "1",
+        "0"
+      ],
+      "i": 1,
+      "visited": [
+        "00",
+        "01"
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Increment i to 2.",
+      "array": [
+        "0",
+        "0",
+        "1",
+        "1",
+        "0"
+      ],
+      "i": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Extracted substring at index 2: '11'.",
+      "array": [
+        "0",
+        "0",
+        "1",
+        "1",
+        "0"
+      ],
+      "i": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Add '11' to the set.",
+      "array": [
+        "0",
+        "0",
+        "1",
+        "1",
+        "0"
+      ],
+      "i": 2,
+      "visited": [
+        "00",
+        "01",
+        "11"
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Increment i to 3.",
+      "array": [
+        "0",
+        "0",
+        "1",
+        "1",
+        "0"
+      ],
+      "i": 3,
+      "curr": 3
+    },
+    {
+      "codeLine": 3,
+      "note": "Extracted substring at index 3: '10'.",
+      "array": [
+        "0",
+        "0",
+        "1",
+        "1",
+        "0"
+      ],
+      "i": 3,
+      "curr": 3
+    },
+    {
+      "codeLine": 4,
+      "note": "Add '10' to the set. All binary codes {00, 01, 10, 11} found.",
+      "array": [
+        "0",
+        "0",
+        "1",
+        "1",
+        "0"
+      ],
+      "i": 3,
+      "visited": [
+        "00",
+        "01",
+        "11",
+        "10"
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Set size is 4, which equals 2^k (2^2=4). Return true.",
+      "array": [
+        "0",
+        "0",
+        "1",
+        "1",
+        "0"
+      ],
+      "curr": 4
+    }
+  ]
+}

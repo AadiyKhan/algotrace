@@ -1,0 +1,136 @@
+{
+  "title": "Shortest Path in a Grid with Obstacles Elimination",
+  "difficulty": "Hard",
+  "type": "matrix",
+  "tags": [
+    "Array",
+    "Breadth-First Search",
+    "Matrix"
+  ],
+  "description": "Find the shortest path from (0,0) to (m-1,n-1) in a grid, allowing the removal of up to k obstacles.",
+  "target": 1,
+  "pseudocode": "1. queue = [[0, 0, k, 0]]\n2. visited = {0,0,k}\n3. while queue not empty:\n4.   r, c, rem, dist = queue.shift()\n5.   if r == m-1 and c == n-1: return dist\n6.   for nr, nc in neighbors:\n7.     new_rem = rem - grid[nr][nc]\n8.     if new_rem >= 0 and (nr, nc, new_rem) not in visited:\n9.       visited.add(nr, nc, new_rem)\n10.      queue.push([nr, nc, new_rem, dist + 1])",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize BFS queue with starting position (0,0), k=1 remaining removals, and distance 0.",
+      "matrix": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Dequeuing current position [0,0] with 1 removal remaining.",
+      "matrix": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "Exploring neighbor [0,1]. Since it's an obstacle, remaining removals become 1-1=0.",
+      "matrix": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "curr": [
+        0,
+        1
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 10,
+      "note": "Adding [0,1] to queue with 0 removals and distance 1.",
+      "matrix": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "curr": [
+        0,
+        1
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Dequeuing [0,1]. Exploring neighbor [1,1].",
+      "matrix": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "curr": [
+        1,
+        1
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Reached target [1,1]. Return distance 2.",
+      "matrix": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "curr": [
+        1,
+        1
+      ]
+    }
+  ]
+}

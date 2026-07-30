@@ -19,7 +19,8 @@
           "timestamp": 10,
           "value": "bar"
         }
-      ]
+      ],
+      "curr": 10
     },
     {
       "codeLine": 2,
@@ -33,7 +34,8 @@
           "timestamp": 30,
           "value": "baz"
         }
-      ]
+      ],
+      "curr": 30
     },
     {
       "codeLine": 4,
@@ -49,7 +51,8 @@
         }
       ],
       "i": 0,
-      "j": 1
+      "j": 1,
+      "curr": 20
     },
     {
       "codeLine": 5,
@@ -124,7 +127,8 @@
           "value": "baz"
         }
       ],
-      "j": 0
+      "j": 0,
+      "curr": 30
     }
   ]
 }

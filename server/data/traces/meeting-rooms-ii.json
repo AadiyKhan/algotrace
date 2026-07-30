@@ -4,17 +4,17 @@
   "type": "array",
   "tags": [
     "Array",
-    "Sorting",
-    "Heap",
-    "Greedy"
+    "Two Pointers",
+    "Greedy",
+    "Sorting"
   ],
-  "description": "Given an array of meeting time intervals, find the minimum number of conference rooms required.",
+  "description": "Find the minimum number of conference rooms required for given meeting intervals.",
   "target": null,
-  "pseudocode": "1. starts = sorted(intervals.start)\n2. ends = sorted(intervals.end)\n3. rooms = 0, endPtr = 0\n4. for i from 0 to len(starts):\n5.   if starts[i] < ends[endPtr]: rooms++\n6.   else: endPtr++\n7. return rooms",
+  "pseudocode": "1. Separate start times and end times into sorted arrays\n2. Iterate through start times with pointer s and end times with pointer e\n3. If start[s] < end[e], increment rooms\n4. Else, increment e (a room became free)",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Sorted start times: [0, 5, 15]",
+      "note": "Sort start times [0, 5, 15] and end times [10, 20, 30]",
       "array": [
         0,
         5,
@@ -24,85 +24,48 @@
     },
     {
       "codeLine": 2,
-      "note": "Sorted end times: [10, 20, 30]",
-      "array": [
-        10,
-        20,
-        30
-      ],
-      "i": 0
-    },
-    {
-      "codeLine": 4,
-      "note": "Compare starts[0]=0 and ends[0]=10. 0 < 10, room needed.",
+      "note": "Compare start[0]=0 and end[0]=10. 0 < 10, room needed.",
       "array": [
         0,
         5,
         15
       ],
       "i": 0,
-      "curr": 0
+      "result": 1
     },
     {
-      "codeLine": 5,
-      "note": "Increment rooms to 1.",
-      "array": [
-        0,
-        5,
-        15
-      ],
-      "i": 0
-    },
-    {
-      "codeLine": 4,
-      "note": "Compare starts[1]=5 and ends[0]=10. 5 < 10, room needed.",
+      "codeLine": 3,
+      "note": "Compare start[1]=5 and end[0]=10. 5 < 10, room needed.",
       "array": [
         0,
         5,
         15
       ],
       "i": 1,
-      "curr": 0
-    },
-    {
-      "codeLine": 5,
-      "note": "Increment rooms to 2.",
-      "array": [
-        0,
-        5,
-        15
-      ],
-      "i": 1
+      "result": 2
     },
     {
       "codeLine": 4,
-      "note": "Compare starts[2]=15 and ends[0]=10. 15 >= 10, release a room.",
+      "note": "Compare start[2]=15 and end[0]=10. 15 >= 10, room freed.",
       "array": [
         0,
         5,
         15
       ],
       "i": 2,
-      "curr": 0
+      "result": 2
     },
     {
-      "codeLine": 6,
-      "note": "Increment endPtr to 1.",
+      "codeLine": 4,
+      "note": "Compare start[2]=15 and end[1]=20. 15 < 20, room needed.",
       "array": [
         0,
         5,
         15
       ],
-      "i": 2
-    },
-    {
-      "codeLine": 7,
-      "note": "Return final room count: 2.",
-      "array": [
-        0,
-        5,
-        15
-      ]
+      "i": 2,
+      "result": 2
     }
-  ]
+  ],
+  "fullDescription": "<p>Given an array of meeting time intervals <code>intervals</code> where <code>intervals[i] = [start<sub>i</sub>, end<sub>i</sub>]</code>, return the minimum number of conference rooms required.</p>\n    <p><strong>Example 1:</strong></p>\n    <pre><strong>Input:</strong> intervals = [[0,30],[5,10],[15,20]]\n<strong>Output:</strong> 2</pre>\n    <p><strong>Example 2:</strong></p>\n    <pre><strong>Input:</strong> intervals = [[7,10],[2,4]]\n<strong>Output:</strong> 1</pre>\n    <p><strong>Constraints:</strong></p>\n    <ul>\n      <li><code>1 &lt;= intervals.length &lt;= 10<sup>4</sup></code></li>\n      <li><code>0 &lt;= start<sub>i</sub> &lt; end<sub>i</sub> &lt;= 10<sup>6</sup></code></li>\n    </ul>"
 }

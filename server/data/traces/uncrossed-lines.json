@@ -1,0 +1,147 @@
+{
+  "title": "Uncrossed Lines",
+  "difficulty": "Medium",
+  "type": "matrix",
+  "tags": [
+    "Array",
+    "Dynamic Programming"
+  ],
+  "description": "Find the maximum number of connecting lines that can be drawn between two arrays without crossing, where lines connect indices i and j if nums1[i] == nums2[j].",
+  "target": 2,
+  "pseudocode": "1. dp = new Array(n+1).fill(0).map(() => new Array(m+1).fill(0));\n2. for (let i = 1; i <= n; i++) {\n3.   for (let j = 1; j <= m; j++) {\n4.     if (nums1[i-1] == nums2[j-1]) dp[i][j] = 1 + dp[i-1][j-1];\n5.     else dp[i][j] = Math.max(dp[i-1][j], dp[i][j-1]);\n6.   }\n7. }",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize DP table with size (n+1) x (m+1) filled with zeros.",
+      "matrix": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "curr": [
+        1,
+        1
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Compare nums1[0]=1 and nums2[0]=1. Match found, set dp[1][1] = 1 + dp[0][0].",
+      "matrix": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "i": 1,
+      "j": 1,
+      "curr": [
+        1,
+        0
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Compare nums1[0]=1 and nums2[1]=2. No match, take max(dp[0][1], dp[1][0]).",
+      "matrix": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          1
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "i": 1,
+      "j": 2,
+      "curr": [
+        1,
+        0
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Compare nums1[1]=2 and nums2[0]=1. No match, take max(dp[1][0], dp[2][0]).",
+      "matrix": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          1
+        ],
+        [
+          0,
+          1,
+          0
+        ]
+      ],
+      "i": 2,
+      "j": 1,
+      "curr": [
+        1,
+        1
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Compare nums1[1]=2 and nums2[1]=2. Match found, set dp[2][2] = 1 + dp[1][1] = 2.",
+      "matrix": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          1
+        ],
+        [
+          0,
+          1,
+          2
+        ]
+      ],
+      "i": 2,
+      "j": 2,
+      "curr": [
+        1,
+        1
+      ]
+    }
+  ]
+}

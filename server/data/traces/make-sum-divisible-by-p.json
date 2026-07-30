@@ -1,0 +1,157 @@
+{
+  "title": "Make Sum Divisible by P",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "Prefix Sum"
+  ],
+  "description": "Find the smallest subarray to remove such that the sum of the remaining elements is divisible by p.",
+  "target": 6,
+  "pseudocode": "1. target = sum(nums) % p\n2. if target == 0 return 0\n3. map = {0: -1}, curr = 0, res = n\n4. for i, val in enumerate(nums):\n5.   curr = (curr + val) % p\n6.   needed = (curr - target + p) % p\n7.   if needed in map: res = min(res, i - map[needed])\n8.   map[curr] = i\n9. return res if res < n else -1",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Calculate total sum % p. Sum = 10, 10 % 6 = 4.",
+      "array": [
+        3,
+        1,
+        4,
+        2
+      ],
+      "curr": 10
+    },
+    {
+      "codeLine": 4,
+      "note": "Start iteration: i = 0, val = 3. curr = 3.",
+      "array": [
+        3,
+        1,
+        4,
+        2
+      ],
+      "i": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Needed = (3 - 4 + 6) % 6 = 5. Not in map.",
+      "array": [
+        3,
+        1,
+        4,
+        2
+      ],
+      "i": 0,
+      "curr": 3
+    },
+    {
+      "codeLine": 4,
+      "note": "i = 1, val = 1. curr = (3 + 1) % 6 = 4.",
+      "array": [
+        3,
+        1,
+        4,
+        2
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Needed = (4 - 4 + 6) % 6 = 0. Found in map at index -1.",
+      "array": [
+        3,
+        1,
+        4,
+        2
+      ],
+      "i": 1,
+      "curr": 4
+    },
+    {
+      "codeLine": 7,
+      "note": "Update res = min(4, 1 - (-1)) = 2.",
+      "array": [
+        3,
+        1,
+        4,
+        2
+      ],
+      "i": 1,
+      "curr": 4
+    },
+    {
+      "codeLine": 4,
+      "note": "i = 2, val = 4. curr = (4 + 4) % 6 = 2.",
+      "array": [
+        3,
+        1,
+        4,
+        2
+      ],
+      "i": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Needed = (2 - 4 + 6) % 6 = 4. Found in map at index 1.",
+      "array": [
+        3,
+        1,
+        4,
+        2
+      ],
+      "i": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 7,
+      "note": "Update res = min(2, 2 - 1) = 1.",
+      "array": [
+        3,
+        1,
+        4,
+        2
+      ],
+      "i": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "i = 3, val = 2. curr = (2 + 2) % 6 = 4.",
+      "array": [
+        3,
+        1,
+        4,
+        2
+      ],
+      "i": 3,
+      "curr": 3
+    },
+    {
+      "codeLine": 6,
+      "note": "Needed = (4 - 4 + 6) % 6 = 0. Found in map at index -1 (length 4).",
+      "array": [
+        3,
+        1,
+        4,
+        2
+      ],
+      "i": 3,
+      "curr": 4
+    },
+    {
+      "codeLine": 9,
+      "note": "Loop finished. Smallest subarray length is 1.",
+      "array": [
+        3,
+        1,
+        4,
+        2
+      ],
+      "curr": 1
+    }
+  ]
+}

@@ -1,0 +1,114 @@
+{
+  "title": "Strange Printer II",
+  "difficulty": "Hard",
+  "type": "matrix",
+  "tags": [
+    "Matrix",
+    "Graph",
+    "Topological Sort"
+  ],
+  "description": "Determine if a grid can be printed by layering colors one by one (each color forms a rectangle).",
+  "pseudocode": "1. Identify bounds (min/max row/col) for each color\n2. Build adjacency list of color dependencies\n3. Perform topological sort on colors\n4. Return true if no cycles exist",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize color bounds for colors 1 and 2 in grid [[1,1],[2,2]]",
+      "matrix": [
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          2
+        ]
+      ],
+      "curr": [
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 1,
+      "note": "Color 1 bounds: R[0,0], C[0,1]; Color 2 bounds: R[1,1], C[0,1]",
+      "matrix": [
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          2
+        ]
+      ],
+      "curr": [
+        1,
+        0
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Check overlaps: Color 1 depends on Color 2 if color 2 exists in color 1's bounds",
+      "matrix": [
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          2
+        ]
+      ],
+      "curr": [
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Dependency: Color 1 -> Color 2",
+      "matrix": [
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          2
+        ]
+      ],
+      "curr": [
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Topological sort: No cycles found",
+      "matrix": [
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          2
+        ]
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Return true: Valid printing order exists",
+      "matrix": [
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          2
+        ]
+      ]
+    }
+  ]
+}

@@ -1,0 +1,113 @@
+{
+  "title": "Count Number of Nice Subarrays",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Sliding Window",
+    "Prefix Sum"
+  ],
+  "description": "Given an array of integers, count the number of continuous subarrays that contain exactly k odd numbers.",
+  "target": 2,
+  "pseudocode": "1: function numberOfSubarrays(nums, k) {\n2:   let count = 0, oddCount = 0, res = 0, left = 0;\n3:   let prefixMap = {0: 1};\n4:   for (let num of nums) {\n5:     if (num % 2 !== 0) oddCount++;\n6:     if (prefixMap[oddCount - k]) res += prefixMap[oddCount - k];\n7:     prefixMap[oddCount] = (prefixMap[oddCount] || 0) + 1;\n8:   }\n9:   return res;\n10: }",
+  "steps": [
+    {
+      "codeLine": 3,
+      "note": "Initialize prefixMap with count 0 having 1 occurrence",
+      "array": [
+        1,
+        1,
+        2
+      ],
+      "i": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "First element is 1 (odd), oddCount becomes 1",
+      "array": [
+        1,
+        1,
+        2
+      ],
+      "i": 0,
+      "curr": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "Update prefixMap with oddCount 1",
+      "array": [
+        1,
+        1,
+        2
+      ],
+      "i": 0,
+      "curr": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Second element is 1 (odd), oddCount becomes 2",
+      "array": [
+        1,
+        1,
+        2
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "oddCount(2) - k(2) = 0. prefixMap[0] is 1. res becomes 1",
+      "array": [
+        1,
+        1,
+        2
+      ],
+      "i": 1,
+      "curr": 2
+    },
+    {
+      "codeLine": 7,
+      "note": "Update prefixMap with oddCount 2",
+      "array": [
+        1,
+        1,
+        2
+      ],
+      "i": 1,
+      "curr": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Third element is 2 (even), oddCount remains 2",
+      "array": [
+        1,
+        1,
+        2
+      ],
+      "i": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "oddCount(2) - k(2) = 0. prefixMap[0] is 1. res becomes 2",
+      "array": [
+        1,
+        1,
+        2
+      ],
+      "i": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 9,
+      "note": "Return final result 2",
+      "array": [
+        1,
+        1,
+        2
+      ],
+      "curr": 2
+    }
+  ]
+}

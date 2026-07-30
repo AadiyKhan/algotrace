@@ -19,7 +19,8 @@
         "2",
         "?",
         "T"
-      ]
+      ],
+      "curr": 2
     },
     {
       "codeLine": 2,
@@ -44,14 +45,16 @@
       "array": [
         "2"
       ],
-      "i": 2
+      "i": 2,
+      "curr": 2
     },
     {
       "codeLine": 5,
       "note": "Final evaluation complete, result is 2.",
       "array": [
         "2"
-      ]
+      ],
+      "curr": 2
     }
   ]
 }

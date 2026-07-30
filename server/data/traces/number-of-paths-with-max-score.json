@@ -1,0 +1,87 @@
+{
+  "title": "Number of Paths with Max Score",
+  "difficulty": "Hard",
+  "type": "matrix",
+  "tags": [
+    "Array",
+    "Dynamic Programming",
+    "Matrix"
+  ],
+  "description": "Find the maximum score and the number of paths to reach the bottom-right corner of a board, starting from top-left, moving only down, right, or diagonally down-right.",
+  "target": null,
+  "pseudocode": "1. dp[n][n] = {score: 0, paths: 0}\n2. dp[n-1][n-1] = {score: 0, paths: 1}\n3. for r from n-1 down to 0:\n4.   for c from n-1 down to 0:\n5.     for (dr, dc) in [(0,1), (1,0), (1,1)]:\n6.       update dp[r][c] based on neighbor dp[r+dr][c+dc]",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Initialize bottom-right cell with score 0 and 1 path.",
+      "matrix": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "curr": [
+        1,
+        1
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Calculating paths for cell [0, 1]. Only one path from [1, 1].",
+      "matrix": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "curr": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Calculating paths for cell [1, 0]. Only one path from [1, 1].",
+      "matrix": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "curr": [
+        1,
+        0
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Calculating paths for [0, 0]. Combining paths from [0, 1], [1, 0], and [1, 1].",
+      "matrix": [
+        [
+          3,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    }
+  ]
+}

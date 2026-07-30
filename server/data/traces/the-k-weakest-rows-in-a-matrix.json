@@ -1,0 +1,231 @@
+{
+  "title": "The K Weakest Rows in a Matrix",
+  "difficulty": "Easy",
+  "type": "matrix",
+  "tags": [
+    "Array",
+    "Sorting",
+    "Heap"
+  ],
+  "description": "Find the k weakest rows in a matrix, where a row is weaker if it has fewer ones than another row, or if the number of ones is equal, the row with the smaller index is weaker.",
+  "target": 2,
+  "pseudocode": "1. strengths = []\n2. for r from 0 to rows-1:\n3.   count = sum(matrix[r])\n4.   strengths.push({row: r, count: count})\n5. strengths.sort((a, b) => a.count - b.count || a.row - b.row)\n6. result = strengths.slice(0, k).map(x => x.row)",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Initialize loop to calculate ones per row",
+      "matrix": [
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Row 0 has two 1s",
+      "matrix": [
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "i": 0,
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Store {row: 0, count: 2}",
+      "matrix": [
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "i": 0,
+      "curr": [
+        0,
+        2
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Move to row 1",
+      "matrix": [
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Row 1 has one 1",
+      "matrix": [
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "i": 1,
+      "curr": [
+        1,
+        0
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Store {row: 1, count: 1}",
+      "matrix": [
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "i": 1,
+      "curr": [
+        1,
+        1
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Move to row 2",
+      "matrix": [
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Row 2 has zero 1s",
+      "matrix": [
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "i": 2,
+      "curr": [
+        2,
+        0
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Sorting by count then index: Row 2, Row 1, Row 0",
+      "matrix": [
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "curr": [
+        2,
+        1
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Take first 2 elements: [2, 1]",
+      "matrix": [
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "curr": [
+        2,
+        2
+      ]
+    }
+  ]
+}

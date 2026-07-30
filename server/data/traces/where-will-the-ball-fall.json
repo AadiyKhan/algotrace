@@ -1,0 +1,128 @@
+{
+  "title": "Where Will The Ball Fall",
+  "difficulty": "Medium",
+  "type": "matrix",
+  "tags": [
+    "Array",
+    "Matrix",
+    "Simulation"
+  ],
+  "description": "Determine the final column position for each ball dropped into a grid of 1 and -1 (slopes).",
+  "pseudocode": "for c in range(cols):\n  curr = c\n  for r in range(rows):\n    next_c = curr + grid[r][curr]\n    if next_c < 0 or next_c >= cols or grid[r][next_c] != grid[r][curr]:\n      curr = -1; break\n    curr = next_c\n  result[c] = curr",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Starting simulation for ball at column 0.",
+      "matrix": [
+        [
+          1,
+          1
+        ],
+        [
+          -1,
+          -1
+        ]
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Ball at [0,0] encounters 1. Moves to [0,1].",
+      "matrix": [
+        [
+          1,
+          1
+        ],
+        [
+          -1,
+          -1
+        ]
+      ],
+      "curr": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Ball at [1,1] encounters -1. Moves to [1,0].",
+      "matrix": [
+        [
+          1,
+          1
+        ],
+        [
+          -1,
+          -1
+        ]
+      ],
+      "curr": [
+        1,
+        0
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Ball finished at column 0.",
+      "matrix": [
+        [
+          1,
+          1
+        ],
+        [
+          -1,
+          -1
+        ]
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 1,
+      "note": "Starting simulation for ball at column 1.",
+      "matrix": [
+        [
+          1,
+          1
+        ],
+        [
+          -1,
+          -1
+        ]
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Ball at [0,1] encounters 1. Moves to column 2 (Out of bounds).",
+      "matrix": [
+        [
+          1,
+          1
+        ],
+        [
+          -1,
+          -1
+        ]
+      ],
+      "curr": [
+        0,
+        2
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Ball hits wall, trapped.",
+      "matrix": [
+        [
+          1,
+          1
+        ],
+        [
+          -1,
+          -1
+        ]
+      ],
+      "curr": -1
+    }
+  ]
+}

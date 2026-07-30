@@ -1,0 +1,82 @@
+{
+  "title": "Search Suggestions System",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "String",
+    "Trie",
+    "Sorting"
+  ],
+  "description": "Given an array of products and a searchWord, return a list of lists of the top 3 lexicographical suggestions after each character of searchWord is typed.",
+  "target": "mobile",
+  "pseudocode": "1. products.sort()\n2. results = []\n3. prefix = ''\n4. for char in searchWord:\n5.   prefix += char\n6.   suggestions = products.filter(p => p.startsWith(prefix))\n7.   results.push(suggestions.slice(0, 3))",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Sort products lexicographically.",
+      "array": [
+        "bags",
+        "banner",
+        "mobile",
+        "mouse"
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Typing first letter 'm'.",
+      "i": "m",
+      "array": [
+        "bags",
+        "banner",
+        "mobile",
+        "mouse"
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Filtering for prefix 'm'.",
+      "array": [
+        "mobile",
+        "mouse"
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Typing second letter 'o'.",
+      "i": "mo",
+      "array": [
+        "bags",
+        "banner",
+        "mobile",
+        "mouse"
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Filtering for prefix 'mo'.",
+      "array": [
+        "mobile",
+        "mouse"
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Typing third letter 'b'.",
+      "i": "mob",
+      "array": [
+        "bags",
+        "banner",
+        "mobile",
+        "mouse"
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Filtering for prefix 'mob'.",
+      "array": [
+        "mobile"
+      ]
+    }
+  ]
+}

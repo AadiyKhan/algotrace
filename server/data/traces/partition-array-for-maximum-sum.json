@@ -1,0 +1,97 @@
+{
+  "title": "Partition Array For Maximum Sum",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Dynamic Programming"
+  ],
+  "description": "Partition the array into subarrays of length at most k such that the sum of each subarray is replaced by its maximum value.",
+  "target": 3,
+  "pseudocode": "1. dp = new Array(n + 1).fill(0)\n2. for i from 1 to n:\n3.   currMax = 0\n4.   for j from 1 to k and i - j >= 0:\n5.     currMax = max(currMax, arr[i - j])\n6.     dp[i] = max(dp[i], dp[i - j] + currMax * j)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize DP table of size n+1 with zeros.",
+      "array": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Start iteration for i = 1.",
+      "array": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Calculating max for subarray ending at 1 (k=3). currMax = 1.",
+      "array": [
+        0,
+        1,
+        0,
+        0
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Start iteration for i = 2.",
+      "array": [
+        0,
+        1,
+        0,
+        0
+      ],
+      "i": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Calculating max for subarray ending at 2. currMax = 4.",
+      "array": [
+        0,
+        1,
+        8,
+        0
+      ],
+      "i": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 2,
+      "note": "Start iteration for i = 3.",
+      "array": [
+        0,
+        1,
+        8,
+        0
+      ],
+      "i": 3,
+      "curr": 3
+    },
+    {
+      "codeLine": 6,
+      "note": "Final DP state update for i=3 using optimal partition.",
+      "array": [
+        0,
+        1,
+        8,
+        12
+      ],
+      "i": 3,
+      "curr": 3
+    }
+  ]
+}

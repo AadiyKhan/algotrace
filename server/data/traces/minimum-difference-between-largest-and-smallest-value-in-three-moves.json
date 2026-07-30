@@ -1,0 +1,143 @@
+{
+  "title": "Minimum Difference Between Largest And Smallest Value In Three Moves",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Sorting",
+    "Greedy"
+  ],
+  "description": "Minimize the difference between the maximum and minimum values of an array after performing at most three moves (changing any element to any value).",
+  "target": null,
+  "pseudocode": "1. sort(nums)\n2. if n <= 4 return 0\n3. min_diff = infinity\n4. for i from 0 to 3:\n5.   diff = nums[n - 4 + i] - nums[i]\n6.   min_diff = min(min_diff, diff)\n7. return min_diff",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Sort the input array: [1, 5, 0, 10, 14]",
+      "array": [
+        0,
+        1,
+        5,
+        10,
+        14
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Starting loop: i = 0. Comparing smallest and 4th largest.",
+      "array": [
+        0,
+        1,
+        5,
+        10,
+        14
+      ],
+      "i": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Calculating diff: nums[5-4+0] - nums[0] = nums[1] - nums[0] = 1 - 0 = 1",
+      "array": [
+        0,
+        1,
+        5,
+        10,
+        14
+      ],
+      "i": 0,
+      "curr": 5
+    },
+    {
+      "codeLine": 4,
+      "note": "Next loop: i = 1. Removing 1 smallest and 2 largest.",
+      "array": [
+        0,
+        1,
+        5,
+        10,
+        14
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Calculating diff: nums[5-4+1] - nums[1] = nums[2] - nums[1] = 5 - 1 = 4",
+      "array": [
+        0,
+        1,
+        5,
+        10,
+        14
+      ],
+      "i": 1,
+      "curr": 5
+    },
+    {
+      "codeLine": 4,
+      "note": "Next loop: i = 2.",
+      "array": [
+        0,
+        1,
+        5,
+        10,
+        14
+      ],
+      "i": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Calculating diff: nums[5-4+2] - nums[2] = nums[3] - nums[2] = 10 - 5 = 5",
+      "array": [
+        0,
+        1,
+        5,
+        10,
+        14
+      ],
+      "i": 2,
+      "curr": 5
+    },
+    {
+      "codeLine": 4,
+      "note": "Final loop: i = 3. Removing 3 smallest.",
+      "array": [
+        0,
+        1,
+        5,
+        10,
+        14
+      ],
+      "i": 3,
+      "curr": 3
+    },
+    {
+      "codeLine": 5,
+      "note": "Calculating diff: nums[5-4+3] - nums[3] = nums[4] - nums[3] = 14 - 10 = 4",
+      "array": [
+        0,
+        1,
+        5,
+        10,
+        14
+      ],
+      "i": 3,
+      "curr": 5
+    },
+    {
+      "codeLine": 7,
+      "note": "Minimum difference is 1.",
+      "array": [
+        0,
+        1,
+        5,
+        10,
+        14
+      ],
+      "curr": 1
+    }
+  ]
+}

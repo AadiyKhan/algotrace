@@ -17,7 +17,8 @@
       "note": "Insert 1: list becomes [1], map becomes {1: {0}}",
       "array": [
         1
-      ]
+      ],
+      "curr": 1
     },
     {
       "codeLine": 3,
@@ -25,7 +26,8 @@
       "array": [
         1,
         1
-      ]
+      ],
+      "curr": 1
     },
     {
       "codeLine": 3,
@@ -34,7 +36,8 @@
         1,
         1,
         2
-      ]
+      ],
+      "curr": 2
     },
     {
       "codeLine": 4,
@@ -42,7 +45,8 @@
       "array": [
         2,
         1
-      ]
+      ],
+      "curr": 1
     }
   ]
 }

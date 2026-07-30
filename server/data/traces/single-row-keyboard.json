@@ -1,0 +1,105 @@
+{
+  "title": "Single Row Keyboard",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "String"
+  ],
+  "description": "Calculate total time to type a word using a single-row keyboard given a custom layout.",
+  "target": "cba",
+  "pseudocode": "1. map = new Map();\n2. for (i=0; i<keyboard.length; i++) map[keyboard[i]] = i;\n3. totalTime = 0, curr = 0;\n4. for (char of word) {\n5.   totalTime += Math.abs(map[char] - curr);\n6.   curr = map[char];\n7. }",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize map to store indices of keyboard characters.",
+      "array": [
+        "a",
+        "b",
+        "c"
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Populate map: a=0, b=1, c=2.",
+      "array": [
+        "a",
+        "b",
+        "c"
+      ],
+      "i": 2,
+      "curr": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Initialize totalTime=0 and current finger position curr=0.",
+      "array": [
+        "a",
+        "b",
+        "c"
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Typing first character 'c'.",
+      "array": [
+        "a",
+        "b",
+        "c"
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Move from index 0 to index 2. Time: |2-0| = 2.",
+      "array": [
+        "a",
+        "b",
+        "c"
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Typing second character 'b'.",
+      "array": [
+        "a",
+        "b",
+        "c"
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Move from index 2 to index 1. Time: 2 + |1-2| = 3.",
+      "array": [
+        "a",
+        "b",
+        "c"
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Typing third character 'a'.",
+      "array": [
+        "a",
+        "b",
+        "c"
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Move from index 1 to index 0. Time: 3 + |0-1| = 4.",
+      "array": [
+        "a",
+        "b",
+        "c"
+      ],
+      "curr": 0
+    }
+  ]
+}

@@ -1,0 +1,89 @@
+{
+  "title": "Subrectangle Queries",
+  "difficulty": "Medium",
+  "type": "matrix",
+  "tags": [
+    "Array",
+    "Design",
+    "Matrix"
+  ],
+  "description": "Implement the SubrectangleQueries class with updateSubrectangle and getValue methods.",
+  "pseudocode": "1. constructor(rectangle) { this.rect = rectangle; }\n2. updateSubrectangle(r1, c1, r2, c2, newValue) {\n3.   for (let i = r1; i <= r2; i++) {\n4.     for (let j = c1; j <= c2; j++) {\n5.       this.rect[i][j] = newValue;\n6.     }\n7.   }\n8. }\n9. getValue(row, col) { return this.rect[row][col]; }",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize matrix with 1x2 rectangle [[1, 2]]",
+      "matrix": [
+        [
+          1,
+          2
+        ]
+      ],
+      "curr": [
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Starting update loop for rows, r1=0, r2=0",
+      "matrix": [
+        [
+          1,
+          2
+        ]
+      ],
+      "i": 0,
+      "curr": [
+        1,
+        0
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Starting update loop for columns, c1=1, c2=1",
+      "matrix": [
+        [
+          1,
+          2
+        ]
+      ],
+      "i": 0,
+      "j": 1,
+      "curr": [
+        1,
+        1
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Updating rectangle value at [0, 1] to 5",
+      "matrix": [
+        [
+          1,
+          5
+        ]
+      ],
+      "i": 0,
+      "j": 1,
+      "curr": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 9,
+      "note": "Querying value at [0, 1]",
+      "matrix": [
+        [
+          1,
+          5
+        ]
+      ],
+      "curr": [
+        0,
+        1
+      ]
+    }
+  ]
+}

@@ -6,47 +6,129 @@
     "Array",
     "String"
   ],
-  "description": "Remove C++ style block comments /* */ and line comments // from a list of source strings.",
-  "pseudocode": "1. let res = [], buffer = '', inBlock = false\n2. for each line in source:\n3.   for i = 0 to line.length - 1:\n4.     if inBlock:\n5.       if line[i..i+1] == '*/': inBlock = false, i++\n6.     else:\n7.       if line[i..i+1] == '/*': inBlock = true, i++\n8.       else if line[i..i+1] == '//': break\n9.       else: buffer += line[i]\n10.    if !inBlock and buffer.length > 0: res.push(buffer), buffer = ''",
+  "description": "Remove line and block comments from C++ source code.",
+  "pseudocode": "1. Initialize blocked = false, buffer = empty\n2. For each line in source:\n3.   For i from 0 to line length:\n4.     If !blocked and i+1 < len and line[i..i+1] == '/*': blocked = true, i++\n5.     Else if !blocked and i+1 < len and line[i..i+1] == '//': break\n6.     Else if blocked and i+1 < len and line[i..i+1] == '*/': blocked = false, i++\n7.     Else if !blocked: buffer += line[i]\n8.   If !blocked and buffer not empty: add buffer to result, buffer = empty",
   "steps": [
     {
-      "codeLine": 2,
-      "note": "Starting processing line 0: 'a/*comment*/b'",
+      "codeLine": 1,
+      "note": "Initialize status variables.",
       "array": [
-        "a/*comment*/b"
-      ],
-      "i": 0
+        "/*Test program */",
+        "int main()",
+        "{ ",
+        "  // variable declaration ",
+        "int a, b, c;",
+        "/*This is a test",
+        "   multiline  ",
+        "   comment for ",
+        "   testing*/",
+        "a = b + c;",
+        "}"
+      ]
     },
     {
-      "codeLine": 9,
-      "note": "Append 'a' to buffer",
-      "i": 0
+      "codeLine": 2,
+      "note": "Processing first line '/*Test program */'",
+      "array": [
+        "/*Test program */"
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Found '/*'. Set blocked = true.",
+      "array": [
+        "/*Test program */"
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Found '*/'. Set blocked = false.",
+      "array": [
+        "/*Test program */"
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Blocked is false and buffer is empty. Result remains empty.",
+      "array": []
     },
     {
       "codeLine": 7,
-      "note": "Detected /*, enter block mode",
-      "i": 1
-    },
-    {
-      "codeLine": 5,
-      "note": "Skipping comment characters",
-      "i": 10
-    },
-    {
-      "codeLine": 5,
-      "note": "Detected */, exit block mode",
-      "i": 11
-    },
-    {
-      "codeLine": 9,
-      "note": "Append 'b' to buffer",
-      "i": 12
-    },
-    {
-      "codeLine": 10,
-      "note": "End of line, push 'ab' to result",
+      "note": "Processing 'int main()'. Add to buffer.",
       "array": [
-        "ab"
+        "int main()"
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Push 'int main()' to result.",
+      "array": [
+        "int main()"
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Processing '{ '.",
+      "array": [
+        "int main()",
+        "{"
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Found '//'. Ignore rest of line.",
+      "array": [
+        "int main()",
+        "{"
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Processing 'int a, b, c;'. Append to buffer.",
+      "array": [
+        "int main()",
+        "{",
+        "int a, b, c;"
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Found '/*'. Set blocked = true.",
+      "array": [
+        "int main()",
+        "{",
+        "int a, b, c;"
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Found '*/' on line 9. Set blocked = false.",
+      "array": [
+        "int main()",
+        "{",
+        "int a, b, c;"
+      ],
+      "curr": 9
+    },
+    {
+      "codeLine": 7,
+      "note": "Processing 'a = b + c;'. Append to buffer.",
+      "array": [
+        "int main()",
+        "{",
+        "int a, b, c;",
+        "a = b + c;"
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Processing '}'. Final result.",
+      "array": [
+        "int main()",
+        "{",
+        "int a, b, c;",
+        "a = b + c;",
+        "}"
       ]
     }
   ]

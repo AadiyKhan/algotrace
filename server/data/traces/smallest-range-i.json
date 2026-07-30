@@ -18,7 +18,8 @@
         3,
         6
       ],
-      "i": "minVal=1"
+      "i": "minVal=1",
+      "curr": 1
     },
     {
       "codeLine": 2,
@@ -38,7 +39,8 @@
         3,
         6
       ],
-      "i": "diff=5"
+      "i": "diff=5",
+      "curr": 6
     },
     {
       "codeLine": 4,
@@ -48,7 +50,8 @@
         3,
         6
       ],
-      "i": "result=0"
+      "i": "result=0",
+      "curr": 3
     }
   ]
 }

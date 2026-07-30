@@ -1,0 +1,106 @@
+{
+  "title": "Largest Magic Square",
+  "difficulty": "Medium",
+  "type": "matrix",
+  "tags": [
+    "Matrix",
+    "Prefix Sum"
+  ],
+  "description": "Find the side length of the largest magic square within a given grid.",
+  "target": null,
+  "pseudocode": "1. for k = min(m, n) down to 2:\n2.   for r = 0 to m-k:\n3.     for c = 0 to n-k:\n4.       if isMagic(r, c, k):\n5.         return k",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize search for largest possible square side k",
+      "matrix": [
+        [
+          7,
+          1,
+          4
+        ],
+        [
+          1,
+          5,
+          9
+        ],
+        [
+          8,
+          3,
+          2
+        ]
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Checking square starting at (0,0) with size k=3",
+      "matrix": [
+        [
+          7,
+          1,
+          4
+        ],
+        [
+          1,
+          5,
+          9
+        ],
+        [
+          8,
+          3,
+          2
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Verify if sum of rows, cols, and diagonals are equal",
+      "matrix": [
+        [
+          7,
+          1,
+          4
+        ],
+        [
+          1,
+          5,
+          9
+        ],
+        [
+          8,
+          3,
+          2
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Magic square found, returning size 3",
+      "matrix": [
+        [
+          7,
+          1,
+          4
+        ],
+        [
+          1,
+          5,
+          9
+        ],
+        [
+          8,
+          3,
+          2
+        ]
+      ]
+    }
+  ]
+}

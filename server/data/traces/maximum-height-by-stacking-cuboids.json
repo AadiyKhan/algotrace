@@ -1,0 +1,85 @@
+{
+  "title": "Maximum Height By Stacking Cuboids",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Dynamic Programming",
+    "Sorting"
+  ],
+  "description": "Find the maximum height of a stack of cuboids where a cuboid can be placed on top of another if its dimensions are strictly smaller in all categories after rotation.",
+  "target": null,
+  "pseudocode": "1. For each cuboid, sort dimensions so width <= depth <= height.\n2. Sort all cuboids based on dimensions.\n3. dp[i] = height[i] + max(dp[j] for all valid j < i).\n4. Return max(dp).",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Sort dimensions of each cuboid: [50, 45, 20] -> [20, 45, 50]",
+      "array": [
+        [
+          20,
+          45,
+          50
+        ],
+        [
+          45,
+          20,
+          50
+        ],
+        [
+          95,
+          37,
+          53
+        ]
+      ],
+      "curr": 50
+    },
+    {
+      "codeLine": 2,
+      "note": "Sort cuboids by total dimensions",
+      "array": [
+        [
+          20,
+          45,
+          50
+        ],
+        [
+          37,
+          53,
+          95
+        ],
+        [
+          45,
+          20,
+          50
+        ]
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Calculate max height ending at index 0",
+      "array": [
+        50
+      ],
+      "i": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Calculate max height ending at index 1 (can stack 0 on 1)",
+      "array": [
+        50,
+        145
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Return max of DP array",
+      "array": [
+        50,
+        145
+      ]
+    }
+  ]
+}

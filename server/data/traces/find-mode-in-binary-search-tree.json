@@ -4,15 +4,65 @@
   "type": "tree",
   "tags": [
     "Tree",
-    "DFS",
+    "Depth-First Search",
     "Binary Search Tree"
   ],
-  "description": "Find all the mode(s) (the most frequently occurred element) in a given binary search tree.",
-  "pseudocode": "1: let modes = [], maxCount = 0, currCount = 0, prev = null\n2: function traverse(node) {\n3:   if (!node) return\n4:   traverse(node.left)\n5:   currCount = (node.val === prev) ? currCount + 1 : 1\n6:   if (currCount === maxCount) modes.push(node.val)\n7:   else if (currCount > maxCount) { modes = [node.val]; maxCount = currCount }\n8:   prev = node.val\n9:   traverse(node.right)\n10: }",
+  "description": "Find the most frequent element(s) in a BST using inorder traversal.",
+  "pseudocode": "1. Inorder traverse tree, tracking currVal, currCount, maxCount, and modes\n2. If currVal == prevVal, increment currCount\n3. Else, reset currCount = 1\n4. If currCount > maxCount, update maxCount and reset modes\n5. If currCount == maxCount, add currVal to modes",
   "steps": [
     {
+      "codeLine": 1,
+      "note": "Starting inorder traversal at root (1)",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": null,
+          "right": 1
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": 2,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 2,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 1,
+      "note": "Visiting node 1",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": null,
+          "right": 1
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": 2,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 2,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 1
+    },
+    {
       "codeLine": 2,
-      "note": "Starting traversal at root (1)",
+      "note": "Processing node 1: currCount = 1, maxCount = 1, modes = [1]",
       "treeNodes": [
         {
           "id": 0,
@@ -32,11 +82,12 @@
           "left": null,
           "right": null
         }
-      ]
+      ],
+      "curr": 1
     },
     {
-      "codeLine": 4,
-      "note": "Traversing to left child of 1 (null)",
+      "codeLine": 1,
+      "note": "Visiting node 2 (child of 1)",
       "treeNodes": [
         {
           "id": 0,
@@ -56,47 +107,83 @@
           "left": null,
           "right": null
         }
-      ]
+      ],
+      "curr": 2
     },
     {
-      "codeLine": 5,
-      "note": "Processing node 1. currCount becomes 1.",
-      "curr": "0"
+      "codeLine": 3,
+      "note": "Processing node 2: new value, currCount = 1",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": null,
+          "right": 1
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": 2,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 2,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 2
     },
     {
-      "codeLine": 7,
-      "note": "maxCount becomes 1, modes = [1]",
-      "curr": "0"
+      "codeLine": 1,
+      "note": "Visiting node 2 (leaf)",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": null,
+          "right": 1
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": 2,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 2,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 2
     },
     {
-      "codeLine": 9,
-      "note": "Moving to right subtree (root 2)",
-      "curr": "1"
-    },
-    {
-      "codeLine": 4,
-      "note": "Traversing to left child of 2",
-      "curr": "2"
-    },
-    {
-      "codeLine": 5,
-      "note": "Processing node 2. Since node.val === prev (2 === 1 is false), currCount resets to 1.",
-      "curr": "2"
-    },
-    {
-      "codeLine": 8,
-      "note": "Updating prev to 2",
-      "curr": "2"
-    },
-    {
-      "codeLine": 5,
-      "note": "Processing node 2 (parent). node.val === prev (2 === 2) is true, currCount becomes 2.",
-      "curr": "1"
-    },
-    {
-      "codeLine": 7,
-      "note": "currCount (2) > maxCount (1). modes = [2], maxCount = 2",
-      "curr": "1"
+      "codeLine": 2,
+      "note": "Processing node 2: same as prev, currCount = 2, maxCount = 2, modes = [2]",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": null,
+          "right": 1
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": 2,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 2,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 2
     }
   ]
 }

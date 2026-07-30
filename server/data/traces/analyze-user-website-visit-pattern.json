@@ -1,0 +1,53 @@
+{
+  "title": "Analyze User Website Visit Pattern",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "Sorting"
+  ],
+  "description": "Find the lexicographically smallest 3-sequence visit pattern shared by the most users.",
+  "target": "3-sequence",
+  "pseudocode": "1. map = {}\n2. for user, time, site in data: map[user].push({t: time, s: site})\n3. patterns = {}\n4. for user in map: seqs = get_all_3_seqs(map[user])\n5. for seq in unique(seqs): patterns[seq]++\n6. return seq with max count",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Group visits by user and sort by timestamp",
+      "array": [
+        "joe",
+        "james",
+        "joe"
+      ],
+      "i": "joe"
+    },
+    {
+      "codeLine": 4,
+      "note": "Generate all unique 3-sequences for user joe",
+      "array": [
+        "home",
+        "about",
+        "career"
+      ],
+      "i": "home-about-career",
+      "curr": 3
+    },
+    {
+      "codeLine": 5,
+      "note": "Update global pattern frequency map",
+      "array": [
+        "home-about-career"
+      ],
+      "visited": [
+        1
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Identify lexicographically smallest sequence with max frequency",
+      "array": [
+        "home-about-career"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,134 @@
+{
+  "title": "Maximum Number of Occurrences of a Substring",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Hash Table",
+    "String",
+    "Sliding Window"
+  ],
+  "description": "Find the maximum occurrences of a substring with at most maxLetters unique characters and length minSize.",
+  "target": 2,
+  "pseudocode": "1. Initialize countMap; 2. Iterate through s with sliding window of length minSize; 3. Check unique char count <= maxLetters; 4. Update countMap; 5. Return max value in countMap",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize countMap to store substring frequencies.",
+      "array": [
+        "a",
+        "a",
+        "b",
+        "a",
+        "b",
+        "c",
+        "a",
+        "a",
+        "b"
+      ],
+      "visited": []
+    },
+    {
+      "codeLine": 2,
+      "note": "Examine first window 'aab' (index 0-2). Unique chars: 2 (<= 2). Occurrences: 1.",
+      "array": [
+        "a",
+        "a",
+        "b",
+        "a",
+        "b",
+        "c",
+        "a",
+        "a",
+        "b"
+      ],
+      "visited": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Examine window 'aba' (index 1-3). Unique chars: 2 (<= 2). Occurrences: 1.",
+      "array": [
+        "a",
+        "a",
+        "b",
+        "a",
+        "b",
+        "c",
+        "a",
+        "a",
+        "b"
+      ],
+      "visited": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Examine window 'bab' (index 2-4). Unique chars: 2 (<= 2). Occurrences: 1.",
+      "array": [
+        "a",
+        "a",
+        "b",
+        "a",
+        "b",
+        "c",
+        "a",
+        "a",
+        "b"
+      ],
+      "visited": [
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Examine window 'aab' at end (index 6-8). Unique chars: 2 (<= 2). Occurrences: 2.",
+      "array": [
+        "a",
+        "a",
+        "b",
+        "a",
+        "b",
+        "c",
+        "a",
+        "a",
+        "b"
+      ],
+      "visited": [
+        6,
+        7,
+        8
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Maximum frequency found is 2.",
+      "array": [
+        "a",
+        "a",
+        "b",
+        "a",
+        "b",
+        "c",
+        "a",
+        "a",
+        "b"
+      ],
+      "visited": [
+        0,
+        1,
+        2,
+        6,
+        7,
+        8
+      ]
+    }
+  ]
+}

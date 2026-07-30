@@ -1,0 +1,38 @@
+{
+  "title": "Prime Palindrome",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Math",
+    "String"
+  ],
+  "description": "Find the smallest prime palindrome greater than or equal to n.",
+  "target": 13,
+  "pseudocode": "1: function isPrime(num) {\n2:   if (num < 2) return false;\n3:   for (let i = 2; i * i <= num; i++) if (num % i === 0) return false;\n4:   return true;\n5: }\n6: let curr = n;\n7: while (true) {\n8:   if (isPalindrome(curr) && isPrime(curr)) return curr;\n9:   curr++;\n10: }",
+  "steps": [
+    {
+      "codeLine": 6,
+      "note": "Initialize curr at 13.",
+      "array": [
+        13
+      ],
+      "curr": 13
+    },
+    {
+      "codeLine": 7,
+      "note": "Check if 13 is palindrome and prime.",
+      "array": [
+        13
+      ],
+      "curr": 13
+    },
+    {
+      "codeLine": 8,
+      "note": "13 is palindrome, but not prime? No, 13 is prime. Return 13.",
+      "array": [
+        13
+      ],
+      "curr": 13
+    }
+  ]
+}

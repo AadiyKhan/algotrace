@@ -3,49 +3,146 @@
   "difficulty": "Easy",
   "type": "array",
   "tags": [
+    "Array",
     "Hash Table",
-    "String",
-    "Counting"
+    "String"
   ],
-  "description": "Determine if you can construct the ransomNote using the letters from magazine.",
-  "target": "true",
-  "pseudocode": "1. map = new Map();\n2. for (char of magazine) map.set(char, (map.get(char) || 0) + 1);\n3. for (char of ransomNote) {\n4.   if (!map.get(char)) return false;\n5.   map.set(char, map.get(char) - 1);\n6. }\n7. return true;",
+  "description": "Check if ransomNote can be constructed from magazine letters.",
+  "target": null,
+  "pseudocode": "1. Create a frequency array (size 26) for magazine characters.\n2. Iterate through magazine, incrementing counts for each char.\n3. Iterate through ransomNote, decrementing counts.\n4. If count < 0, return false.\n5. Return true.",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize empty character frequency map.",
-      "array": []
+      "note": "Initialize frequency array of size 26 with zeros.",
+      "array": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "curr": 26
     },
     {
       "codeLine": 2,
-      "note": "Populate map with magazine 'aa'.",
+      "note": "Processing magazine 'b': increment index 1 (b).",
       "array": [
-        "a:2"
-      ]
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "curr": 1
     },
     {
       "codeLine": 3,
-      "note": "Start iterating through ransomNote 'a'.",
-      "i": 0
+      "note": "Processing ransomNote 'a': check index 0 (a).",
+      "array": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "i": 0,
+      "curr": 0
     },
     {
       "codeLine": 4,
-      "note": "Check if 'a' exists in map and count > 0.",
-      "i": 0
-    },
-    {
-      "codeLine": 5,
-      "note": "Decrement count of 'a' in map.",
+      "note": "Frequency at index 0 is 0; cannot satisfy ransomNote.",
       "array": [
-        "a:1"
-      ]
-    },
-    {
-      "codeLine": 7,
-      "note": "All characters processed, return true.",
-      "array": [
-        "a:1"
-      ]
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "curr": 0
     }
   ]
 }

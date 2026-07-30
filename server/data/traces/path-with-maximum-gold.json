@@ -1,0 +1,147 @@
+{
+  "title": "Path With Maximum Gold",
+  "difficulty": "Medium",
+  "type": "matrix",
+  "tags": [
+    "Array",
+    "Backtracking",
+    "Matrix",
+    "DFS"
+  ],
+  "description": "Find the maximum amount of gold you can collect in a grid, where you can move in 4 directions and cannot visit the same cell twice.",
+  "pseudocode": "function getMaximumGold(grid) {\n  let maxGold = 0;\n  for(let r=0; r<grid.length; r++) {\n    for(let c=0; c<grid[0].length; c++) {\n      if(grid[r][c] !== 0) maxGold = Math.max(maxGold, dfs(grid, r, c));\n    }\n  }\n  return maxGold;\n}\nfunction dfs(grid, r, c) {\n  let gold = grid[r][c];\n  grid[r][c] = 0;\n  let max = 0;\n  for(let [dr, dc] of [[0,1],[0,-1],[1,0],[-1,0]]) {\n    let nr = r + dr, nc = c + dc;\n    if(grid[nr] && grid[nr][nc]) max = Math.max(max, dfs(grid, nr, nc));\n  }\n  grid[r][c] = gold;\n  return gold + max;\n}",
+  "steps": [
+    {
+      "codeLine": 4,
+      "note": "Starting DFS from cell [0,0] with gold 1",
+      "matrix": [
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "codeLine": 11,
+      "note": "Temporarily marking [0,0] as 0 to avoid revisiting",
+      "matrix": [
+        [
+          0,
+          0
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 15,
+      "note": "Moving to neighbor [1,0] with gold 2",
+      "matrix": [
+        [
+          0,
+          0
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "curr": [
+        1,
+        0
+      ]
+    },
+    {
+      "codeLine": 11,
+      "note": "Temporarily marking [1,0] as 0",
+      "matrix": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          3
+        ]
+      ],
+      "curr": [
+        1,
+        0
+      ]
+    },
+    {
+      "codeLine": 15,
+      "note": "Moving to neighbor [1,1] with gold 3",
+      "matrix": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          3
+        ]
+      ],
+      "curr": [
+        1,
+        1
+      ]
+    },
+    {
+      "codeLine": 17,
+      "note": "Backtracking: restoring gold value to [1,1]",
+      "matrix": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          3
+        ]
+      ],
+      "curr": [
+        1,
+        1
+      ]
+    },
+    {
+      "codeLine": 17,
+      "note": "Backtracking: restoring gold value to [1,0]",
+      "matrix": [
+        [
+          0,
+          0
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "curr": [
+        1,
+        0
+      ]
+    }
+  ]
+}

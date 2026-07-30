@@ -7,12 +7,12 @@
     "Breadth-First Search",
     "Binary Tree"
   ],
-  "description": "Traverse a binary tree level by level using a queue.",
-  "pseudocode": "1. queue = [root]\n2. result = []\n3. while queue is not empty:\n4.   level = []\n5.   for i in range(length of queue):\n6.     node = queue.shift()\n7.     level.push(node.val)\n8.     if node.left: queue.push(node.left)\n9.     if node.right: queue.push(node.right)\n10.  result.push(level)",
+  "description": "Perform a level-order traversal of a binary tree.",
+  "pseudocode": "1. If root is null, return empty list\n2. Initialize queue with root\n3. While queue is not empty:\n4.   Get queue size, create level list\n5.   For i from 0 to size:\n6.     Dequeue node, add val to level list\n7.     If node.left exists, enqueue\n8.     If node.right exists, enqueue\n9.   Add level list to result",
   "steps": [
     {
-      "codeLine": 1,
-      "note": "Initialize queue with root node.",
+      "codeLine": 2,
+      "note": "Initialize queue with root node [3]",
       "treeNodes": [
         {
           "id": 0,
@@ -45,13 +45,11 @@
           "right": null
         }
       ],
-      "visited": [
-        0
-      ]
+      "curr": 0
     },
     {
-      "codeLine": 6,
-      "note": "Dequeue node 3, visit children.",
+      "codeLine": 4,
+      "note": "Level 1: Processing node 3",
       "treeNodes": [
         {
           "id": 0,
@@ -84,14 +82,11 @@
           "right": null
         }
       ],
-      "curr": "0",
-      "visited": [
-        0
-      ]
+      "curr": 1
     },
     {
-      "codeLine": 8,
-      "note": "Add children 9 and 20 to queue.",
+      "codeLine": 9,
+      "note": "Finished level 1, result: [[3]]",
       "treeNodes": [
         {
           "id": 0,
@@ -124,15 +119,11 @@
           "right": null
         }
       ],
-      "visited": [
-        0,
-        1,
-        2
-      ]
+      "curr": 2
     },
     {
-      "codeLine": 6,
-      "note": "Dequeue node 9.",
+      "codeLine": 4,
+      "note": "Level 2: Processing nodes 9 and 20",
       "treeNodes": [
         {
           "id": 0,
@@ -165,16 +156,11 @@
           "right": null
         }
       ],
-      "curr": "1",
-      "visited": [
-        0,
-        1,
-        2
-      ]
+      "curr": 3
     },
     {
-      "codeLine": 6,
-      "note": "Dequeue node 20, visit children 15 and 7.",
+      "codeLine": 9,
+      "note": "Finished level 2, result: [[3], [9, 20]]",
       "treeNodes": [
         {
           "id": 0,
@@ -207,14 +193,82 @@
           "right": null
         }
       ],
-      "curr": "2",
-      "visited": [
-        0,
-        1,
-        2,
-        3,
-        4
-      ]
+      "curr": 4
+    },
+    {
+      "codeLine": 4,
+      "note": "Level 3: Processing nodes 15 and 7",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 3,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 9,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 20,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 3,
+          "val": 15,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 7,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 4
+    },
+    {
+      "codeLine": 9,
+      "note": "Finished level 3, result: [[3], [9, 20], [15, 7]]",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 3,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 9,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 20,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 3,
+          "val": 15,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 7,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 4
     }
-  ]
+  ],
+  "fullDescription": "<p>Given the <code>root</code> of a binary tree, return <em>the level order traversal of its nodes&#39; values</em>. (i.e., from left to right, level by level).</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2021/02/19/tree1.jpg\" style=\"width: 277px; height: 302px;\" />\n<pre>\n<strong>Input:</strong> root = [3,9,20,null,null,15,7]\n<strong>Output:</strong> [[3],[9,20],[15,7]]\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> root = [1]\n<strong>Output:</strong> [[1]]\n</pre>\n\n<p><strong class=\"example\">Example 3:</strong></p>\n\n<pre>\n<strong>Input:</strong> root = []\n<strong>Output:</strong> []\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li>The number of nodes in the tree is in the range <code>[0, 2000]</code>.</li>\n\t<li><code>-1000 &lt;= Node.val &lt;= 1000</code></li>\n</ul>\n"
 }

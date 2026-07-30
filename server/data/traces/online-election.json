@@ -4,82 +4,142 @@
   "type": "array",
   "tags": [
     "Array",
-    "Binary Search",
-    "Hash Map"
+    "Hash Table",
+    "Binary Search"
   ],
-  "description": "Find the leader of an election at a given time using binary search on precomputed winner snapshots.",
-  "target": 12,
-  "pseudocode": "1. map = {}, maxVotes = 0, currentLeader = -1\n2. winners = []\n3. for i in range(len(persons)):\n4.   map[persons[i]]++\n5.   if map[persons[i]] >= maxVotes:\n6.     maxVotes = map[persons[i]], currentLeader = persons[i]\n7.   winners.push(currentLeader)\n8. idx = binarySearch(times, target)\n9. return winners[idx]",
+  "description": "Find the leader of an election at a given time t using precomputed lead history and binary search.",
+  "target": null,
+  "pseudocode": "1. Precompute leaders at each time t using a hash map for counts.\n2. Store pairs of (time, leader) in a list.\n3. For each query q(t), binary search for the latest time <= t.\n4. Return the leader associated with that time.",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize tracking variables",
-      "array": []
-    },
-    {
-      "codeLine": 3,
-      "note": "Process first vote at time 0: Person 0 leads",
-      "i": 0,
+      "note": "Initialize count map and leaders array.",
       "array": [
+        0,
+        1,
+        1,
+        0,
+        0,
+        1,
         0
-      ]
+      ],
+      "i": 0
     },
     {
-      "codeLine": 7,
-      "note": "Store winner at time 0",
+      "codeLine": 1,
+      "note": "Time 0: person 0 gets vote. Count: {0:1}. Current leader: 0.",
       "array": [
+        0,
+        1,
+        1,
+        0,
+        0,
+        1,
         0
-      ]
-    },
-    {
-      "codeLine": 3,
-      "note": "Process second vote at time 5: Person 1 leads",
+      ],
       "i": 1,
-      "array": [
-        0,
-        1
-      ]
+      "curr": 0
     },
     {
-      "codeLine": 7,
-      "note": "Store winner at time 5",
+      "codeLine": 1,
+      "note": "Time 5: person 1 gets vote. Count: {0:1, 1:1}. Leader: 1 (recent vote wins).",
       "array": [
         0,
-        1
-      ]
+        1,
+        1,
+        0,
+        0,
+        1,
+        0
+      ],
+      "i": 2,
+      "curr": 5
+    },
+    {
+      "codeLine": 1,
+      "note": "Time 10: person 1 gets vote. Count: {0:1, 1:2}. Leader: 1.",
+      "array": [
+        0,
+        1,
+        1,
+        0,
+        0,
+        1,
+        0
+      ],
+      "i": 3,
+      "curr": 10
+    },
+    {
+      "codeLine": 1,
+      "note": "Time 15: person 0 gets vote. Count: {0:2, 1:2}. Leader: 0 (recent vote wins).",
+      "array": [
+        0,
+        1,
+        1,
+        0,
+        0,
+        1,
+        0
+      ],
+      "i": 4,
+      "curr": 15
+    },
+    {
+      "codeLine": 2,
+      "note": "Leaders over time: [(0,0), (5,1), (10,1), (15,0), (20,0), (25,1), (30,0)]",
+      "array": [
+        0,
+        1,
+        1,
+        0,
+        0,
+        1,
+        0
+      ],
+      "curr": 0
     },
     {
       "codeLine": 3,
-      "note": "Process third vote at time 10: Person 0 ties for lead",
-      "i": 2,
+      "note": "Query q(3): Binary search time 3 in [0, 5, 10, 15, 20, 25, 30]. Latest time <= 3 is 0. Leader: 0.",
       "array": [
         0,
         1,
-        0
-      ]
-    },
-    {
-      "codeLine": 7,
-      "note": "Store winner at time 10",
-      "array": [
+        1,
+        0,
         0,
         1,
         0
-      ]
+      ],
+      "curr": 3
     },
     {
-      "codeLine": 8,
-      "note": "Binary search for time 12 in [0, 5, 10]",
-      "i": 2
-    },
-    {
-      "codeLine": 9,
-      "note": "Return winner at index 2",
+      "codeLine": 3,
+      "note": "Query q(12): Binary search time 12. Latest time <= 12 is 10. Leader: 1.",
       "array": [
         0,
         1,
+        1,
+        0,
+        0,
+        1,
         0
-      ]
+      ],
+      "curr": 12
+    },
+    {
+      "codeLine": 3,
+      "note": "Query q(25): Binary search time 25. Latest time <= 25 is 25. Leader: 1.",
+      "array": [
+        0,
+        1,
+        1,
+        0,
+        0,
+        1,
+        0
+      ],
+      "curr": 25
     }
   ]
 }

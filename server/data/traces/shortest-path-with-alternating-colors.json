@@ -1,0 +1,165 @@
+{
+  "title": "Shortest Path with Alternating Colors",
+  "difficulty": "Medium",
+  "type": "graph",
+  "tags": [
+    "Breadth-First Search",
+    "Graph Theory"
+  ],
+  "description": "Find the shortest path from node 0 to all other nodes in a graph with red and blue edges, requiring alternating colors.",
+  "target": null,
+  "pseudocode": "1. Build adjacency list for red and blue edges.\n2. Initialize queue with (0, color=null, distance=0).\n3. While queue is not empty:\n4.   Pop (curr, prev_color, dist).\n5.   Update result for curr.\n6.   For neighbors with different color edge: add to queue.",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize graph with red edges [[0,1], [1,2]] and no blue edges.",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": 0
+        },
+        {
+          "id": 1,
+          "val": 1
+        },
+        {
+          "id": 2,
+          "val": 2
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Start BFS at node 0 with distance 0.",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": 0
+        },
+        {
+          "id": 1,
+          "val": 1
+        },
+        {
+          "id": 2,
+          "val": 2
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "visited": [
+        0
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Pop node 0. Distance to 0 is 0.",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": 0
+        },
+        {
+          "id": 1,
+          "val": 1
+        },
+        {
+          "id": 2,
+          "val": 2
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Traverse red edge to node 1. Distance to 1 is 1.",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": 0
+        },
+        {
+          "id": 1,
+          "val": 1
+        },
+        {
+          "id": 2,
+          "val": 2
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "curr": 1,
+      "visited": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "No blue edge from 1 exists. Node 2 remains unreachable.",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": 0
+        },
+        {
+          "id": 1,
+          "val": 1
+        },
+        {
+          "id": 2,
+          "val": 2
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "curr": 2
+    }
+  ]
+}

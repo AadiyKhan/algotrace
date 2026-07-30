@@ -1,5 +1,5 @@
 {
-  "title": "Triples with Bitwise AND Equal to Zero",
+  "title": "Triples with Bitwise AND Equal To Zero",
   "difficulty": "Hard",
   "type": "array",
   "tags": [
@@ -7,61 +7,73 @@
     "Hash Table",
     "Bit Manipulation"
   ],
-  "description": "Find the number of triples (i, j, k) such that (A[i] & A[j] & A[k]) == 0.",
+  "description": "Count triples (i, j, k) such that nums[i] & nums[j] & nums[k] == 0.",
   "target": 0,
-  "pseudocode": "1. count = {}\n2. for x in A: for y in A:\n3.   count[x & y]++\n4. ans = 0\n5. for z in A:\n6.   for val, freq in count:\n7.     if (val & z) == 0: ans += freq",
+  "pseudocode": "1. count = map frequency of all (nums[i] & nums[j])\n2. result = 0\n3. for each num in nums:\n4.   for each val, freq in count:\n5.     if (val & num) == 0: result += freq",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize count map to store results of A[i] & A[j]",
+      "note": "Precompute frequencies of all pairs AND: [2&2=2, 2&1=0, 2&3=2, 1&2=0, 1&1=1, 1&3=1, 3&2=2, 3&1=1, 3&3=3]",
       "array": [
+        2,
         1,
-        2
+        3
+      ],
+      "visited": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        2,
+        1,
+        3
       ]
     },
     {
-      "codeLine": 2,
-      "note": "Iterate through pairs to compute ANDs (1&1=1, 1&2=0, 2&1=0, 2&2=2)",
-      "i": 0,
-      "j": 0
-    },
-    {
       "codeLine": 3,
-      "note": "Update frequency map: {1: 1, 0: 2, 2: 1}",
-      "i": 0,
-      "j": 1
-    },
-    {
-      "codeLine": 5,
-      "note": "Iterate through A to check triples with z = 1",
-      "i": 0
-    },
-    {
-      "codeLine": 6,
-      "note": "Check pairs where (val & 1) == 0: val=0 has freq 2",
+      "note": "Iterate num=2. Check pairs (val & 2 == 0). Valid pairs: (0, 0) -> freq 2. Result = 2",
+      "array": [
+        2,
+        1,
+        3
+      ],
       "i": 0,
       "curr": 2
     },
     {
-      "codeLine": 7,
-      "note": "Add freq 2 to total answer",
-      "i": 0
-    },
-    {
-      "codeLine": 5,
-      "note": "Iterate through A to check triples with z = 2",
-      "i": 1
-    },
-    {
-      "codeLine": 6,
-      "note": "Check pairs where (val & 2) == 0: val=0 has freq 2, val=1 has freq 1",
+      "codeLine": 3,
+      "note": "Iterate num=1. Check pairs (val & 1 == 0). Valid pairs: (2, 2, 2, 2) -> freq 4. Result = 6",
+      "array": [
+        2,
+        1,
+        3
+      ],
       "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Iterate num=3. Check pairs (val & 3 == 0). Valid pairs: (0, 0) -> freq 2. Result = 8",
+      "array": [
+        2,
+        1,
+        3
+      ],
+      "i": 2,
       "curr": 3
     },
     {
-      "codeLine": 7,
-      "note": "Total triples: 2 + 3 = 5",
-      "i": 1
+      "codeLine": 5,
+      "note": "Final count after evaluating all combinations is 12.",
+      "array": [
+        2,
+        1,
+        3
+      ],
+      "result": 12,
+      "curr": 12
     }
   ]
 }

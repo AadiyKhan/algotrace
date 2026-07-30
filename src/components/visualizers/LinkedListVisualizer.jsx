@@ -6,19 +6,29 @@ const NODE_H = 56;
 
 /* Pointer styles — solid/dashed/dotted for colorblind support */
 const PTR_STYLE = {
-  curr: { bg: 'rgba(255,0,0,0.15)', border: '2px solid #ff0000',              color: '#fff',                   shadow: '0 0 16px rgba(255,0,0,0.35)', labelColor: '#ff0000',              labelBg: 'rgba(255,0,0,0.1)',        labelBorder: 'rgba(255,0,0,0.4)' },
-  prev: { bg: 'rgba(255,255,255,0.08)', border: '2px dashed rgba(255,255,255,0.45)', color: '#fff',             shadow: 'none',                        labelColor: 'rgba(255,255,255,0.7)', labelBg: 'rgba(255,255,255,0.05)',   labelBorder: 'rgba(255,255,255,0.2)' },
-  next: { bg: 'rgba(255,80,0,0.1)',  border: '2px dotted rgba(255,120,0,0.6)', color: '#ffb366',               shadow: 'none',                        labelColor: '#ff8c00',              labelBg: 'rgba(255,100,0,0.08)',     labelBorder: 'rgba(255,100,0,0.3)' },
-  def:  { bg: '#110000',             border: '1px solid #2a0000',              color: '#6b5555',               shadow: 'none',                        labelColor: '',                     labelBg: '',                        labelBorder: '' },
+  curr: { bg: 'rgba(245,158,11,0.15)', border: '2px solid #f59e0b',              color: '#fff',                   shadow: '0 0 20px rgba(245,158,11,0.4)', labelColor: '#050505',              labelBg: '#f59e0b',        labelBorder: '#f59e0b' },
+  prev: { bg: 'rgba(255,255,255,0.05)', border: '2px dashed rgba(255,255,255,0.8)', color: '#fff',             shadow: 'none',                        labelColor: '#050505', labelBg: '#ffffff',   labelBorder: '#ffffff' },
+  next: { bg: 'rgba(99,102,241,0.1)',  border: '2px dotted rgba(99,102,241,0.8)', color: '#6366f1',               shadow: 'none',                        labelColor: '#050505',              labelBg: '#6366f1',     labelBorder: '#6366f1' },
+  def:  { bg: '#050505',             border: '2px solid rgba(255,255,255,0.15)',              color: 'rgba(255,255,255,0.4)',               shadow: 'none',                        labelColor: '',                     labelBg: '',                        labelBorder: '' },
 };
 
-const PointerLabel = ({ text, style }) => (
+const PointerLabel = ({ text, style, layoutId }) => (
   <motion.div
-    initial={{ opacity: 0, y: -6 }} animate={{ opacity: 1, y: 0 }}
-    exit={{ opacity: 0, y: -6 }}
-    className="font-mono font-bold text-[10px] px-2 py-0.5 border tracking-wider"
-    style={{ color: style.labelColor, background: style.labelBg, borderColor: style.labelBorder }}>
-    {text}
+    layoutId={layoutId}
+    initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }}
+    exit={{ opacity: 0, y: -10 }}
+    transition={{ type: "spring", stiffness: 300, damping: 25 }}
+    className="flex flex-col items-center z-10"
+    style={{ filter: `drop-shadow(0 0 8px ${style.labelBg}80)` }}>
+    <div 
+      className="px-2 py-0.5 rounded-[4px] font-mono font-black text-[10px] uppercase tracking-widest shadow-lg"
+      style={{ color: style.labelColor, background: style.labelBg, borderColor: style.labelBorder }}>
+      {text}
+    </div>
+    <div 
+      className="w-0 h-0 border-l-[4px] border-r-[4px] border-t-[6px] border-l-transparent border-r-transparent"
+      style={{ borderTopColor: style.labelBg }}
+    />
   </motion.div>
 );
 
@@ -54,11 +64,11 @@ const LinkedListVisualizer = ({ stepData }) => {
                 <motion.div layout className="flex flex-col items-center">
 
                   {/* Pointer label above */}
-                  <div className="h-8 flex items-end justify-center gap-1 mb-1">
+                  <div className="h-6 flex items-end justify-center gap-1 mb-1">
                     <AnimatePresence>
-                      {isPrev && <PointerLabel key="prev" text="prev" style={PTR_STYLE.prev} />}
-                      {isCurr && <PointerLabel key="curr" text="curr" style={PTR_STYLE.curr} />}
-                      {isNext && <PointerLabel key="next" text="next" style={PTR_STYLE.next} />}
+                      {isPrev && <PointerLabel key="prev" text="prev" style={PTR_STYLE.prev} layoutId="ll-ptr-prev" />}
+                      {isCurr && <PointerLabel key="curr" text="curr" style={PTR_STYLE.curr} layoutId="ll-ptr-curr" />}
+                      {isNext && <PointerLabel key="next" text="next" style={PTR_STYLE.next} layoutId="ll-ptr-next" />}
                     </AnimatePresence>
                   </div>
 
@@ -114,14 +124,14 @@ const LinkedListVisualizer = ({ stepData }) => {
               <motion.div
                 initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0 }}
                 className="flex flex-col items-center ml-2">
-                <div className="h-8 flex items-end mb-1">
-                  <PointerLabel text="curr" style={PTR_STYLE.curr} />
+                <div className="h-6 flex items-end mb-1">
+                  <PointerLabel text="curr" style={PTR_STYLE.curr} layoutId="ll-ptr-curr" />
                 </div>
                 <div className="flex items-center justify-center font-mono text-sm italic"
                   style={{
                     width: 56, height: NODE_H,
-                    border: '1px dashed rgba(255,0,0,0.3)',
-                    color: 'rgba(255,0,0,0.5)',
+                    border: '1px dashed rgba(245,158,11,0.3)',
+                    color: 'rgba(245,158,11,0.5)',
                   }}>
                   null
                 </div>
@@ -134,11 +144,11 @@ const LinkedListVisualizer = ({ stepData }) => {
       {/* Legend + variable inspector */}
       <div className="grid grid-cols-3 gap-3 border-t border-borderDark pt-6">
         {[
-          { label: 'CURR', desc: 'Current node being processed',  border: '2px solid #ff0000',               color: '#ff0000' },
+          { label: 'CURR', desc: 'Current node being processed',  border: '2px solid #6366f1',               color: '#6366f1' },
           { label: 'PREV', desc: 'Previous node (reversed so far)', border: '2px dashed rgba(255,255,255,0.5)', color: 'rgba(255,255,255,0.7)' },
           { label: 'NEXT', desc: 'Saved next before overwrite',   border: '2px dotted rgba(255,120,0,0.6)',   color: '#ff8c00' },
         ].map(({ label, desc, border, color }) => (
-          <div key={label} className="p-3" style={{ background: '#110000', border: '1px solid #2a0000' }}>
+          <div key={label} className="p-3" style={{ background: '#18181b', border: '1px solid #27272a' }}>
             <div className="flex items-center gap-2 mb-1">
               <div style={{ width: 14, height: 14, background: 'transparent', border, flexShrink: 0 }} />
               <span className="font-mono font-bold text-[10px]" style={{ color }}>{label}</span>
@@ -179,7 +189,7 @@ const ArrowBetween = ({ fromNode, toNode, nextIdx }) => {
 
   // Backward pointer (reversed)
   return (
-    <div className="flex items-center gap-0.5" style={{ color: 'rgba(255,0,0,0.5)' }}>
+    <div className="flex items-center gap-0.5" style={{ color: 'rgba(99,102,241,0.5)' }}>
       <svg width="6" height="8" viewBox="0 0 6 8" fill="currentColor">
         <path d="M6 0 L0 4 L6 8 Z" />
       </svg>

@@ -1,0 +1,193 @@
+{
+  "title": "Find Numbers With Even Number of Digits",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array"
+  ],
+  "description": "Given an array of integers, return how many of them contain an even number of digits.",
+  "target": null,
+  "pseudocode": "1: let count = 0\n2: for num of nums:\n3:   if String(num).length % 2 == 0:\n4:     count++\n5: return count",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize count to 0.",
+      "array": [
+        12,
+        345,
+        2,
+        6,
+        7896
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Check first number: 12.",
+      "array": [
+        12,
+        345,
+        2,
+        6,
+        7896
+      ],
+      "i": 0,
+      "curr": 12
+    },
+    {
+      "codeLine": 3,
+      "note": "12 has 2 digits (even).",
+      "array": [
+        12,
+        345,
+        2,
+        6,
+        7896
+      ],
+      "i": 0,
+      "curr": 12
+    },
+    {
+      "codeLine": 4,
+      "note": "Increment count to 1.",
+      "array": [
+        12,
+        345,
+        2,
+        6,
+        7896
+      ],
+      "i": 0,
+      "curr": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Check second number: 345.",
+      "array": [
+        12,
+        345,
+        2,
+        6,
+        7896
+      ],
+      "i": 1,
+      "curr": 345
+    },
+    {
+      "codeLine": 3,
+      "note": "345 has 3 digits (odd).",
+      "array": [
+        12,
+        345,
+        2,
+        6,
+        7896
+      ],
+      "i": 1,
+      "curr": 345
+    },
+    {
+      "codeLine": 2,
+      "note": "Check third number: 2.",
+      "array": [
+        12,
+        345,
+        2,
+        6,
+        7896
+      ],
+      "i": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "2 has 1 digit (odd).",
+      "array": [
+        12,
+        345,
+        2,
+        6,
+        7896
+      ],
+      "i": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 2,
+      "note": "Check fourth number: 6.",
+      "array": [
+        12,
+        345,
+        2,
+        6,
+        7896
+      ],
+      "i": 3,
+      "curr": 6
+    },
+    {
+      "codeLine": 3,
+      "note": "6 has 1 digit (odd).",
+      "array": [
+        12,
+        345,
+        2,
+        6,
+        7896
+      ],
+      "i": 3,
+      "curr": 6
+    },
+    {
+      "codeLine": 2,
+      "note": "Check fifth number: 7896.",
+      "array": [
+        12,
+        345,
+        2,
+        6,
+        7896
+      ],
+      "i": 4,
+      "curr": 7896
+    },
+    {
+      "codeLine": 3,
+      "note": "7896 has 4 digits (even).",
+      "array": [
+        12,
+        345,
+        2,
+        6,
+        7896
+      ],
+      "i": 4,
+      "curr": 7896
+    },
+    {
+      "codeLine": 4,
+      "note": "Increment count to 2.",
+      "array": [
+        12,
+        345,
+        2,
+        6,
+        7896
+      ],
+      "i": 4,
+      "curr": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Return final count: 2.",
+      "array": [
+        12,
+        345,
+        2,
+        6,
+        7896
+      ],
+      "curr": 2
+    }
+  ]
+}

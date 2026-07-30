@@ -22,7 +22,8 @@
         5,
         6,
         4
-      ]
+      ],
+      "curr": 3
     },
     {
       "codeLine": 2,
@@ -35,7 +36,8 @@
         6,
         4
       ],
-      "i": 5
+      "i": 5,
+      "curr": 4
     },
     {
       "codeLine": 3,
@@ -47,7 +49,8 @@
         4,
         5,
         6
-      ]
+      ],
+      "curr": 4
     },
     {
       "codeLine": 4,
@@ -55,7 +58,8 @@
       "array": [
         5,
         6
-      ]
+      ],
+      "curr": 2
     },
     {
       "codeLine": 2,
@@ -64,7 +68,8 @@
         5,
         6
       ],
-      "i": 1
+      "i": 1,
+      "curr": 6
     },
     {
       "codeLine": 3,
@@ -72,21 +77,24 @@
       "array": [
         5,
         6
-      ]
+      ],
+      "curr": 6
     },
     {
       "codeLine": 6,
       "note": "k=2, right.length=0. Recurse into left side",
       "array": [
         5
-      ]
+      ],
+      "curr": 2
     },
     {
       "codeLine": 5,
       "note": "Pivot 5 matches k position, return 5",
       "array": [
         5
-      ]
+      ],
+      "curr": 5
     }
   ]
 }

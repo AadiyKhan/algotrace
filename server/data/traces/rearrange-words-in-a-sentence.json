@@ -1,0 +1,51 @@
+{
+  "title": "Rearrange Words in a Sentence",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "String",
+    "Sorting"
+  ],
+  "description": "Rearrange the words in a sentence by their lengths in increasing order. If lengths are equal, maintain original relative order.",
+  "target": null,
+  "pseudocode": "1. words = text.toLowerCase().split(' ')\n2. words.sort((a, b) => a.length - b.length)\n3. words[0] = words[0][0].toUpperCase() + words[0].slice(1)\n4. return words.join(' ')",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Split the sentence into an array of lowercase words.",
+      "array": [
+        "keep",
+        "it",
+        "cool"
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Sort words by length. Since 'it' (2) < 'keep' (4) and 'cool' (4), 'it' comes first.",
+      "array": [
+        "it",
+        "keep",
+        "cool"
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Capitalize the first word of the sentence.",
+      "array": [
+        "It",
+        "keep",
+        "cool"
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Join the array back into a sentence string.",
+      "array": [
+        "It",
+        "keep",
+        "cool"
+      ]
+    }
+  ]
+}

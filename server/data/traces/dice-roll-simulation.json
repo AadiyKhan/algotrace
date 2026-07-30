@@ -1,0 +1,84 @@
+{
+  "title": "Dice Roll Simulation",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Dynamic Programming"
+  ],
+  "description": "Calculate the number of distinct sequences of length n that can be rolled with a die, subject to constraints on consecutive identical rolls.",
+  "target": 2,
+  "pseudocode": "1. dp[n][6] = number of sequences of length n ending in face i+1\n2. for i from 1 to n:\n3.   for face from 0 to 5:\n4.     for prev_face from 0 to 5:\n5.       if face != prev_face: add dp[i-1][prev_face]\n6.       else: add dp[i-1][prev_face] if roll_count <= rollMax[face]",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize DP table for sequence length 1 with 6 faces.",
+      "array": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Start processing sequence of length 2.",
+      "i": 2,
+      "array": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Calculating sequences ending in face 1 (index 0).",
+      "i": 2,
+      "curr": 0,
+      "array": [
+        5,
+        6,
+        6,
+        6,
+        6,
+        6
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Iterating through previous faces to sum valid sequences.",
+      "i": 2,
+      "curr": 0,
+      "j": 1,
+      "array": [
+        5,
+        6,
+        6,
+        6,
+        6,
+        6
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Add sequences ending in different faces.",
+      "i": 2,
+      "curr": 0,
+      "array": [
+        30,
+        30,
+        30,
+        30,
+        30,
+        30
+      ]
+    }
+  ]
+}

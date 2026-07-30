@@ -1,0 +1,40 @@
+{
+  "title": "Remove Palindromic Subsequences",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "String"
+  ],
+  "description": "Given a string consisting of 'a's and 'b's, remove palindromic subsequences to make the string empty. Return the minimum number of steps.",
+  "pseudocode": "1. if (s.length === 0) return 0;\n2. if (s === s.split('').reverse().join('')) return 1;\n3. return 2;",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Check if string is empty.",
+      "array": [
+        "a",
+        "b",
+        "a"
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Check if the entire string is a palindrome.",
+      "array": [
+        "a",
+        "b",
+        "a"
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Since 'aba' is a palindrome, return 1.",
+      "array": [
+        "a",
+        "b",
+        "a"
+      ],
+      "curr": 1
+    }
+  ]
+}

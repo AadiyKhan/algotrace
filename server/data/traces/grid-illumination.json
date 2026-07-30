@@ -1,23 +1,50 @@
 {
   "title": "Grid Illumination",
   "difficulty": "Hard",
-  "matrix": "matrix",
+  "type": "matrix",
   "tags": [
     "Array",
     "Hash Table"
   ],
-  "description": "Turn on lamps in a grid and check if a cell is illuminated, then turn off lamps in adjacent cells.",
-  "pseudocode": "1. Store lamp counts in row, col, diag, anti-diag maps\n2. For each lamp, increment maps\n3. For each query (r, c):\n4.   Check if r, c, diag, or anti-diag > 0\n5.   If yes, turn off lamps in (r,c) and neighbors",
+  "description": "Determine if a grid cell is illuminated by lamps and turn off adjacent lamps after each query.",
+  "pseudocode": "1. Store lamp counts in rows, cols, diagonals, and anti-diagonals hash maps.\n2. For each query (r, c):\n3. Check if illuminated via maps; if yes, result is 1, else 0.\n4. Turn off lamps in 3x3 area centered at (r, c) and update maps.",
   "steps": [
     {
-      "codeLine": 2,
-      "note": "Initializing lamps at (0,0) and (1,1)",
+      "codeLine": 1,
+      "note": "Initialize lamp maps with lamps [[0,0], [4,4]]",
       "matrix": [
         [
           1,
+          0,
+          0,
+          0,
           0
         ],
         [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
           0,
           1
         ]
@@ -28,63 +55,295 @@
           0
         ],
         [
+          4,
+          4
+        ]
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Process Query 0: [1, 1]",
+      "matrix": [
+        [
           1,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
           1
         ]
+      ],
+      "i": 1,
+      "j": 1,
+      "curr": [
+        0,
+        1
       ]
     },
     {
       "codeLine": 3,
-      "note": "Querying cell (0,0)",
+      "note": "Query 0 (1,1) is illuminated by lamp at (0,0) (diagonal)",
       "matrix": [
         [
           1,
+          0,
+          0,
+          0,
           0
         ],
         [
           0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
           1
         ]
       ],
-      "curr": [
-        0,
-        0
+      "visited": [
+        [
+          0,
+          0
+        ],
+        [
+          4,
+          4
+        ]
       ]
     },
     {
       "codeLine": 4,
-      "note": "Cell (0,0) is illuminated by lamp at (0,0)",
+      "note": "Turn off lamps in 3x3 area around (1,1). Lamp at (0,0) is turned off.",
       "matrix": [
         [
-          1,
+          0,
+          0,
+          0,
+          0,
           0
         ],
         [
           0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
           1
         ]
       ],
-      "curr": [
-        0,
-        0
+      "visited": [
+        [
+          4,
+          4
+        ]
       ]
     },
     {
-      "codeLine": 5,
-      "note": "Turning off lamps at (0,0) and neighbors",
+      "codeLine": 2,
+      "note": "Process Query 1: [1, 0]",
       "matrix": [
         [
+          0,
+          0,
+          0,
           0,
           0
         ],
         [
           0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
           1
         ]
       ],
+      "i": 1,
+      "j": 0,
       "curr": [
-        0,
-        0
+        1,
+        1
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Query 1 (1,0) is not illuminated",
+      "matrix": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      ],
+      "visited": [
+        [
+          4,
+          4
+        ]
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Turn off lamps in 3x3 area around (1,0). No lamps exist in range.",
+      "matrix": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      ],
+      "visited": [
+        [
+          4,
+          4
+        ]
       ]
     }
   ]

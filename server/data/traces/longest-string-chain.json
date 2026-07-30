@@ -1,0 +1,83 @@
+{
+  "title": "Longest String Chain",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "String",
+    "Dynamic Programming",
+    "Hash Table"
+  ],
+  "description": "Find the length of the longest chain of words where each word is a predecessor of the next by adding exactly one letter.",
+  "target": 4,
+  "pseudocode": "words.sort((a,b) => a.length - b.length);\nconst dp = new Map();\nlet maxChain = 1;\nfor (const word of words) {\n  dp.set(word, 1);\n  for (let i = 0; i < word.length; i++) {\n    const prev = word.slice(0, i) + word.slice(i + 1);\n    if (dp.has(prev)) {\n      dp.set(word, Math.max(dp.get(word), dp.get(prev) + 1));\n    }\n  }\n  maxChain = Math.max(maxChain, dp.get(word));\n}",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Sort words by length: ['a', 'ba', 'bca']",
+      "array": [
+        "a",
+        "ba",
+        "bca"
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Process 'a', dp: {'a': 1}",
+      "array": [
+        "a",
+        "ba",
+        "bca"
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Process 'ba', check predecessor 'a'",
+      "array": [
+        "a",
+        "ba",
+        "bca"
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Predecessor 'a' exists, update 'ba' to 2",
+      "array": [
+        "a",
+        "ba",
+        "bca"
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Process 'bca', check predecessor 'ba'",
+      "array": [
+        "a",
+        "ba",
+        "bca"
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Predecessor 'ba' exists, update 'bca' to 3",
+      "array": [
+        "a",
+        "ba",
+        "bca"
+      ],
+      "curr": 3
+    },
+    {
+      "codeLine": 11,
+      "note": "Final maxChain is 3",
+      "array": [
+        "a",
+        "ba",
+        "bca"
+      ],
+      "curr": 3
+    }
+  ]
+}

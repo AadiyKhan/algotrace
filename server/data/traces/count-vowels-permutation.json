@@ -1,0 +1,109 @@
+{
+  "title": "Count Vowels Permutation",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Dynamic Programming"
+  ],
+  "description": "Count how many strings of length n can be formed under specific vowel transition rules.",
+  "target": 2,
+  "pseudocode": "1. dp = [1, 1, 1, 1, 1] (a, e, i, o, u)\n2. for length from 2 to n:\n3.   next_dp = [0, 0, 0, 0, 0]\n4.   next_dp[0] = dp[1] + dp[2] + dp[4]\n5.   next_dp[1] = dp[0] + dp[2]\n6.   next_dp[2] = dp[1] + dp[3]\n7.   next_dp[3] = dp[2]\n8.   next_dp[4] = dp[2] + dp[3]\n9.   dp = next_dp",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize count of each vowel (a, e, i, o, u) for length 1.",
+      "array": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Starting loop for length 2.",
+      "array": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "i": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Calculate transitions: next_dp[0] (a) = e + i + u = 1+1+1 = 3.",
+      "array": [
+        3,
+        1,
+        1,
+        1,
+        1
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Calculate next_dp[1] (e) = a + i = 1+1 = 2.",
+      "array": [
+        3,
+        2,
+        1,
+        1,
+        1
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Calculate next_dp[2] (i) = e + o = 1+1 = 2.",
+      "array": [
+        3,
+        2,
+        2,
+        1,
+        1
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 7,
+      "note": "Calculate next_dp[3] (o) = i = 1.",
+      "array": [
+        3,
+        2,
+        2,
+        1,
+        1
+      ],
+      "curr": 3
+    },
+    {
+      "codeLine": 8,
+      "note": "Calculate next_dp[4] (u) = i + o = 1+1 = 2.",
+      "array": [
+        3,
+        2,
+        2,
+        1,
+        2
+      ],
+      "curr": 4
+    },
+    {
+      "codeLine": 9,
+      "note": "Update dp array for next iteration.",
+      "array": [
+        3,
+        2,
+        2,
+        1,
+        2
+      ]
+    }
+  ]
+}

@@ -15,7 +15,8 @@
       "note": "Push 5: freqMap[5] becomes 1.",
       "array": [
         5
-      ]
+      ],
+      "curr": 5
     },
     {
       "codeLine": 1,
@@ -23,7 +24,8 @@
       "array": [
         5,
         7
-      ]
+      ],
+      "curr": 7
     },
     {
       "codeLine": 1,
@@ -32,7 +34,8 @@
         5,
         7,
         5
-      ]
+      ],
+      "curr": 5
     },
     {
       "codeLine": 4,
@@ -40,7 +43,8 @@
       "array": [
         5,
         7
-      ]
+      ],
+      "curr": 2
     },
     {
       "codeLine": 5,
@@ -48,7 +52,8 @@
       "array": [
         5,
         7
-      ]
+      ],
+      "curr": 5
     }
   ]
 }

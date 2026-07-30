@@ -6,9 +6,8 @@
     "Array",
     "Sorting"
   ],
-  "description": "Merge all overlapping intervals in a given list.",
-  "target": null,
-  "pseudocode": "1. intervals.sort((a, b) => a[0] - b[0])\n2. result = [intervals[0]]\n3. for i from 1 to intervals.length - 1:\n4.   last = result[result.length - 1]\n5.   if intervals[i][0] <= last[1]:\n6.     last[1] = max(last[1], intervals[i][1])\n7.   else:\n8.     result.push(intervals[i])",
+  "description": "Merge overlapping intervals into a consolidated list.",
+  "pseudocode": "1. Sort intervals by start time.\n2. Initialize merged list with the first interval.\n3. For each subsequent interval:\n4. If current overlaps with last in merged, merge them.\n5. Else, append current to merged.",
   "steps": [
     {
       "codeLine": 1,
@@ -34,7 +33,7 @@
     },
     {
       "codeLine": 2,
-      "note": "Initialize result with the first interval.",
+      "note": "Initialize merged list with the first interval.",
       "array": [
         [
           1,
@@ -44,77 +43,40 @@
     },
     {
       "codeLine": 3,
-      "note": "Start iteration from the second interval.",
-      "i": 1,
+      "note": "Examine interval [2, 6].",
       "array": [
         [
           1,
           3
-        ],
-        [
-          2,
-          6
-        ],
-        [
-          8,
-          10
-        ],
-        [
-          15,
-          18
         ]
-      ]
+      ],
+      "i": 1
     },
     {
-      "codeLine": 5,
-      "note": "Compare current interval [2, 6] with last [1, 3]. Overlap found.",
-      "i": 1,
-      "array": [
-        [
-          1,
-          3
-        ],
-        [
-          2,
-          6
-        ]
-      ]
-    },
-    {
-      "codeLine": 6,
-      "note": "Merge intervals by updating end time.",
-      "i": 1,
+      "codeLine": 4,
+      "note": "2 <= 3, so merge [1, 3] and [2, 6] into [1, 6].",
       "array": [
         [
           1,
           6
         ]
-      ]
+      ],
+      "i": 1
     },
     {
       "codeLine": 3,
-      "note": "Move to next interval [8, 10].",
-      "i": 2,
+      "note": "Examine interval [8, 10].",
       "array": [
         [
           1,
           6
-        ],
-        [
-          8,
-          10
         ]
-      ]
-    },
-    {
-      "codeLine": 5,
-      "note": "Compare [8, 10] with [1, 6]. No overlap.",
+      ],
       "i": 2
     },
     {
-      "codeLine": 8,
-      "note": "Push [8, 10] to result.",
-      "i": 2,
+      "codeLine": 5,
+      "note": "8 > 6, no overlap. Append [8, 10].",
       "array": [
         [
           1,
@@ -124,22 +86,27 @@
           8,
           10
         ]
-      ]
+      ],
+      "i": 2
     },
     {
       "codeLine": 3,
-      "note": "Move to last interval [15, 18].",
+      "note": "Examine interval [15, 18].",
+      "array": [
+        [
+          1,
+          6
+        ],
+        [
+          8,
+          10
+        ]
+      ],
       "i": 3
     },
     {
       "codeLine": 5,
-      "note": "Compare [15, 18] with [8, 10]. No overlap.",
-      "i": 3
-    },
-    {
-      "codeLine": 8,
-      "note": "Push [15, 18] to result.",
-      "i": 3,
+      "note": "15 > 10, no overlap. Append [15, 18].",
       "array": [
         [
           1,
@@ -153,7 +120,9 @@
           15,
           18
         ]
-      ]
+      ],
+      "i": 3
     }
-  ]
+  ],
+  "fullDescription": "<p>Given an array&nbsp;of <code>intervals</code>&nbsp;where <code>intervals[i] = [start<sub>i</sub>, end<sub>i</sub>]</code>, merge all overlapping intervals, and return <em>an array of the non-overlapping intervals that cover all the intervals in the input</em>.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> intervals = [[1,3],[2,6],[8,10],[15,18]]\n<strong>Output:</strong> [[1,6],[8,10],[15,18]]\n<strong>Explanation:</strong> Since intervals [1,3] and [2,6] overlap, merge them into [1,6].\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> intervals = [[1,4],[4,5]]\n<strong>Output:</strong> [[1,5]]\n<strong>Explanation:</strong> Intervals [1,4] and [4,5] are considered overlapping.\n</pre>\n\n<p><strong class=\"example\">Example 3:</strong></p>\n\n<pre>\n<strong>Input:</strong> intervals = [[4,7],[1,4]]\n<strong>Output:</strong> [[1,7]]\n<strong>Explanation:</strong> Intervals [1,4] and [4,7] are considered overlapping.\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= intervals.length &lt;= 10<sup>4</sup></code></li>\n\t<li><code>intervals[i].length == 2</code></li>\n\t<li><code>0 &lt;= start<sub>i</sub> &lt;= end<sub>i</sub> &lt;= 10<sup>4</sup></code></li>\n</ul>\n"
 }

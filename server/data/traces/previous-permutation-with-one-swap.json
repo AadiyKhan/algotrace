@@ -1,0 +1,81 @@
+{
+  "title": "Previous Permutation With One Swap",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Greedy"
+  ],
+  "description": "Find the lexicographically largest permutation that is smaller than the given array by swapping exactly one pair of elements.",
+  "target": null,
+  "pseudocode": "1. for i = n-2 down to 0:\n2.   if arr[i] > arr[i+1]:\n3.     for j = n-1 down to i+1:\n4.       if arr[j] < arr[i] and arr[j] != arr[j-1]:\n5.         swap(arr[i], arr[j])\n6.         return arr",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize array [3, 2, 1]. Start scanning from the second-to-last element.",
+      "array": [
+        3,
+        2,
+        1
+      ],
+      "i": 1,
+      "curr": 3
+    },
+    {
+      "codeLine": 2,
+      "note": "Compare arr[1] (2) and arr[2] (1). 2 > 1 is true, found the pivot point.",
+      "array": [
+        3,
+        2,
+        1
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Search for the largest element smaller than arr[i] (2) starting from the end.",
+      "array": [
+        3,
+        2,
+        1
+      ],
+      "i": 1,
+      "j": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "arr[2] (1) is less than arr[1] (2). Condition satisfied.",
+      "array": [
+        3,
+        2,
+        1
+      ],
+      "i": 1,
+      "j": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Swap arr[1] and arr[2].",
+      "array": [
+        3,
+        1,
+        2
+      ],
+      "i": 1,
+      "j": 2,
+      "curr": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Return the modified array.",
+      "array": [
+        3,
+        1,
+        2
+      ]
+    }
+  ]
+}

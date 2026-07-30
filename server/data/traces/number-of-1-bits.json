@@ -5,39 +5,42 @@
   "tags": [
     "Bit Manipulation"
   ],
-  "description": "Count the number of set bits (1s) in an integer.",
-  "target": 0,
-  "pseudocode": "1. count = 0\n2. while n != 0:\n3.   n = n & (n - 1)\n4.   count++\n5. return count",
+  "description": "Count the number of set bits (1s) in the binary representation of an integer n.",
+  "target": 3,
+  "pseudocode": "1. count = 0\n2. while n > 0:\n3.     n = n & (n - 1)\n4.     count = count + 1\n5. return count",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize count to 0. Using n = 11 (binary 1011).",
+      "note": "Initialize count to 0.",
       "array": [
         1,
         0,
         1,
         1
-      ]
+      ],
+      "i": 0
     },
     {
       "codeLine": 2,
-      "note": "Check if n (11) is not 0. It is not.",
+      "note": "Check if n (11) is greater than 0.",
       "array": [
         1,
         0,
         1,
         1
-      ]
+      ],
+      "i": 1
     },
     {
       "codeLine": 3,
-      "note": "Clear the least significant bit: 1011 & 1010 = 1010 (10).",
+      "note": "Remove the least significant set bit using n & (n - 1). 11 (1011) becomes 10 (1010).",
       "array": [
         1,
         0,
         1,
         0
-      ]
+      ],
+      "i": 1
     },
     {
       "codeLine": 4,
@@ -47,27 +50,30 @@
         0,
         1,
         0
-      ]
+      ],
+      "i": 1
     },
     {
       "codeLine": 2,
-      "note": "Check if n (10) is not 0. It is not.",
+      "note": "Check if n (10) is greater than 0.",
       "array": [
         1,
         0,
         1,
         0
-      ]
+      ],
+      "i": 2
     },
     {
       "codeLine": 3,
-      "note": "Clear the least significant bit: 1010 & 1001 = 1000 (8).",
+      "note": "Remove the least significant set bit. 10 (1010) becomes 8 (1000).",
       "array": [
         1,
         0,
         0,
         0
-      ]
+      ],
+      "i": 2
     },
     {
       "codeLine": 4,
@@ -77,27 +83,30 @@
         0,
         0,
         0
-      ]
+      ],
+      "i": 2
     },
     {
       "codeLine": 2,
-      "note": "Check if n (8) is not 0. It is not.",
+      "note": "Check if n (8) is greater than 0.",
       "array": [
         1,
         0,
         0,
         0
-      ]
+      ],
+      "i": 3
     },
     {
       "codeLine": 3,
-      "note": "Clear the least significant bit: 1000 & 0111 = 0000 (0).",
+      "note": "Remove the least significant set bit. 8 (1000) becomes 0 (0000).",
       "array": [
         0,
         0,
         0,
         0
-      ]
+      ],
+      "i": 3
     },
     {
       "codeLine": 4,
@@ -107,27 +116,31 @@
         0,
         0,
         0
-      ]
+      ],
+      "i": 3
     },
     {
       "codeLine": 2,
-      "note": "Check if n is 0. Loop terminates.",
+      "note": "Check if n (0) is greater than 0. Condition fails.",
       "array": [
         0,
         0,
         0,
         0
-      ]
+      ],
+      "i": 3
     },
     {
       "codeLine": 5,
-      "note": "Return total count of 3.",
+      "note": "Return final count (3).",
       "array": [
         0,
         0,
         0,
         0
-      ]
+      ],
+      "i": 3
     }
-  ]
+  ],
+  "fullDescription": "<p>Given a positive integer <code>n</code>, write a function that returns the number of <span data-keyword=\"set-bit\">set bits</span> in its binary representation (also known as the <a href=\"http://en.wikipedia.org/wiki/Hamming_weight\" target=\"_blank\">Hamming weight</a>).</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<div class=\"example-block\">\n<p><strong>Input:</strong> <span class=\"example-io\">n = 11</span></p>\n\n<p><strong>Output:</strong> <span class=\"example-io\">3</span></p>\n\n<p><strong>Explanation:</strong></p>\n\n<p>The input binary string <strong>1011</strong> has a total of three set bits.</p>\n</div>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<div class=\"example-block\">\n<p><strong>Input:</strong> <span class=\"example-io\">n = 128</span></p>\n\n<p><strong>Output:</strong> <span class=\"example-io\">1</span></p>\n\n<p><strong>Explanation:</strong></p>\n\n<p>The input binary string <strong>10000000</strong> has a total of one set bit.</p>\n</div>\n\n<p><strong class=\"example\">Example 3:</strong></p>\n\n<div class=\"example-block\">\n<p><strong>Input:</strong> <span class=\"example-io\">n = 2147483645</span></p>\n\n<p><strong>Output:</strong> <span class=\"example-io\">30</span></p>\n\n<p><strong>Explanation:</strong></p>\n\n<p>The input binary string <strong>1111111111111111111111111111101</strong> has a total of thirty set bits.</p>\n</div>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= n &lt;= 2<sup>31</sup> - 1</code></li>\n</ul>\n\n<p>&nbsp;</p>\n<strong>Follow up:</strong> If this function is called many times, how would you optimize it?"
 }

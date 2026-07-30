@@ -1,0 +1,59 @@
+{
+  "title": "Number Of Ways Where Square Of Number Is Equal To Product Of Two Numbers",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "Math"
+  ],
+  "description": "Given two arrays nums1 and nums2, return the number of triplets (i, j, k) such that nums1[i]^2 = nums2[j] * nums2[k] OR nums2[i]^2 = nums1[j] * nums1[k].",
+  "pseudocode": "1. count = 0\n2. map1 = frequency of nums1, map2 = frequency of nums2\n3. for each n in nums1: count += check(n^2, map2)\n4. for each n in nums2: count += check(n^2, map1)\n5. return count",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Initialize frequency maps for nums1=[2], nums2=[4, 1]",
+      "array": [
+        2
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Checking square of 2 (which is 4) in nums2. Looking for pairs in [4, 1] that multiply to 4.",
+      "array": [
+        4,
+        1
+      ],
+      "i": 0,
+      "curr": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Found pair (4, 1) in nums2 where 4*1 = 4. Increment count.",
+      "array": [
+        4,
+        1
+      ],
+      "i": 0,
+      "curr": 4
+    },
+    {
+      "codeLine": 4,
+      "note": "Checking squares of nums2 elements in nums1. 4^2=16, 1^2=1. None exist in nums1.",
+      "array": [
+        2
+      ],
+      "i": 0,
+      "curr": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Total count is 1.",
+      "array": [
+        2
+      ],
+      "curr": 1
+    }
+  ]
+}

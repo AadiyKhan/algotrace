@@ -1,0 +1,90 @@
+{
+  "title": "Hexspeak",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "String",
+    "Math"
+  ],
+  "description": "Convert a decimal string to hexadecimal and replace digits 0 and 1 with 'O' and 'I', checking if valid.",
+  "target": "257",
+  "pseudocode": "1. hex = parseInt(n).toString(16).toUpperCase();\n2. for char in hex:\n3. if char == '0' -> replace with 'O'\n4. else if char == '1' -> replace with 'I'\n5. else if char >= 'A' && char <= 'F' -> keep\n6. else return 'ERROR'",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Convert 257 to hexadecimal: 257 becomes '101'",
+      "array": [
+        "1",
+        "0",
+        "1"
+      ],
+      "curr": 257
+    },
+    {
+      "codeLine": 2,
+      "note": "Iterate to char at index 0: '1'",
+      "array": [
+        "1",
+        "0",
+        "1"
+      ],
+      "i": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Replace '1' with 'I'",
+      "array": [
+        "I",
+        "0",
+        "1"
+      ],
+      "i": 0,
+      "curr": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Iterate to char at index 1: '0'",
+      "array": [
+        "I",
+        "0",
+        "1"
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Replace '0' with 'O'",
+      "array": [
+        "I",
+        "O",
+        "1"
+      ],
+      "i": 1,
+      "curr": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Iterate to char at index 2: '1'",
+      "array": [
+        "I",
+        "O",
+        "1"
+      ],
+      "i": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Replace '1' with 'I'",
+      "array": [
+        "I",
+        "O",
+        "I"
+      ],
+      "i": 2,
+      "curr": 1
+    }
+  ]
+}

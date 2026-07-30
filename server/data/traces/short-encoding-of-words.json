@@ -4,16 +4,16 @@
   "type": "array",
   "tags": [
     "Array",
+    "Hash Table",
     "String",
-    "Trie",
-    "Hash Table"
+    "Trie"
   ],
-  "description": "Find the length of the shortest reference string encoding of a list of words, where words are suffixes of others.",
-  "pseudocode": "1. words.sort((a, b) => b.length - a.length)\n2. let set = new Set(words)\n3. for (let word of words) {\n4.   for (let i = 1; i < word.length; i++) {\n5.     set.delete(word.substring(i))\n6.   }\n7. }\n8. return Array.from(set).reduce((acc, w) => acc + w.length + 1, 0)",
+  "description": "Calculate the length of the shortest reference string s that encodes words by removing suffixes.",
+  "pseudocode": "1. Convert words to a set for O(1) lookups.\n2. For each word in the original list:\n3. Remove all suffixes of the word from the set.\n4. Calculate the sum of (length of each remaining word + 1).",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Sort words by length descending: ['time', 'me', 'bell']",
+      "note": "Initialize a set with unique words: {'time', 'me', 'bell'}.",
       "array": [
         "time",
         "me",
@@ -22,46 +22,41 @@
     },
     {
       "codeLine": 2,
-      "note": "Initialize set with all words",
+      "note": "Processing 'time': check if any suffixes exist. 'ime', 'me', 'e' are suffixes.",
       "array": [
         "time",
         "me",
         "bell"
-      ]
-    },
-    {
-      "codeLine": 3,
-      "note": "Processing 'time'",
+      ],
       "i": 0
     },
     {
-      "codeLine": 5,
-      "note": "Delete 'ime' and 'me' from set if present",
+      "codeLine": 3,
+      "note": "Removing 'me' from the set since it is a suffix of 'time'.",
       "array": [
         "time",
         "bell"
-      ]
+      ],
+      "i": 1
     },
     {
       "codeLine": 3,
-      "note": "Processing 'bell'",
+      "note": "Processing 'bell': no suffixes found in the set.",
+      "array": [
+        "time",
+        "bell"
+      ],
       "i": 2
     },
     {
-      "codeLine": 5,
-      "note": "Delete 'ell', 'll', 'l' from set",
+      "codeLine": 4,
+      "note": "Final set contains {'time', 'bell'}. Calculation: (4+1) + (4+1) = 10.",
       "array": [
         "time",
         "bell"
-      ]
-    },
-    {
-      "codeLine": 8,
-      "note": "Calculate result: length of 'time' (4+1) + length of 'bell' (4+1) = 10",
-      "array": [
-        "time",
-        "bell"
-      ]
+      ],
+      "result": 10,
+      "curr": 4
     }
   ]
 }

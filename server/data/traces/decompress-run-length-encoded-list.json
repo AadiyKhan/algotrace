@@ -1,0 +1,85 @@
+{
+  "title": "Decompress Run-Length Encoded List",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array"
+  ],
+  "description": "Return the decompressed list given a run-length encoded array where [freq, val] pairs are provided.",
+  "pseudocode": "let res = [];\nfor (let i = 0; i < nums.length; i += 2) {\n    let freq = nums[i];\n    let val = nums[i + 1];\n    while (freq > 0) {\n        res.push(val);\n        freq--;\n    }\n}\nreturn res;",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize empty result array",
+      "array": []
+    },
+    {
+      "codeLine": 2,
+      "note": "Start loop, process first pair [1, 2]",
+      "i": 0,
+      "array": [],
+      "curr": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Push value 2 into result",
+      "i": 0,
+      "array": [
+        2
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 2,
+      "note": "Move to next pair [3, 4]",
+      "i": 2,
+      "array": [
+        2
+      ],
+      "curr": 3
+    },
+    {
+      "codeLine": 5,
+      "note": "Push value 4 (1st time)",
+      "i": 2,
+      "array": [
+        2,
+        4
+      ],
+      "curr": 4
+    },
+    {
+      "codeLine": 5,
+      "note": "Push value 4 (2nd time)",
+      "i": 2,
+      "array": [
+        2,
+        4,
+        4
+      ],
+      "curr": 4
+    },
+    {
+      "codeLine": 5,
+      "note": "Push value 4 (3rd time)",
+      "i": 2,
+      "array": [
+        2,
+        4,
+        4,
+        4
+      ],
+      "curr": 4
+    },
+    {
+      "codeLine": 9,
+      "note": "Return final decompressed array",
+      "array": [
+        2,
+        4,
+        4,
+        4
+      ]
+    }
+  ]
+}

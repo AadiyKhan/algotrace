@@ -1,0 +1,145 @@
+{
+  "title": "Minimum Moves to Reach Target with Rotations",
+  "difficulty": "Hard",
+  "type": "matrix",
+  "tags": [
+    "Array",
+    "Breadth-First Search",
+    "Matrix"
+  ],
+  "description": "Find the minimum moves to get a 1x2 snake from (0,0)-(0,1) to (n-1, n-2)-(n-1, n-1) using moves, rotations, and avoiding obstacles.",
+  "target": "n-1, n-2",
+  "pseudocode": "1. queue = [[0, 0, 0]] // r, c, state (0: horiz, 1: vert)\n2. visited = set()\n3. while queue not empty:\n4.   r, c, s = queue.shift()\n5.   if (r, c, s) == target: return moves\n6.   explore_moves(r, c, s)\n7.   explore_rotations(r, c, s)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize BFS queue with snake at (0,0) horizontally (state 0)",
+      "matrix": [
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Move snake right to (0,1)-(0,2)",
+      "matrix": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ]
+      ],
+      "curr": [
+        0,
+        1
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 7,
+      "note": "Rotate snake from horizontal to vertical at (0,1)-(1,1)",
+      "matrix": [
+        [
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ]
+      ],
+      "curr": [
+        0,
+        1
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Move snake down to (1,1)-(2,1)",
+      "matrix": [
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          1
+        ]
+      ],
+      "curr": [
+        1,
+        1
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "Rotate snake from vertical to horizontal at (2,0)-(2,1)",
+      "matrix": [
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          0,
+          0,
+          1
+        ]
+      ],
+      "curr": [
+        2,
+        0
+      ],
+      "i": 0
+    }
+  ]
+}

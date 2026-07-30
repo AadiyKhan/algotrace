@@ -1,0 +1,109 @@
+{
+  "title": "Handshakes That Don't Cross",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Math",
+    "Dynamic Programming",
+    "Combinatorics"
+  ],
+  "description": "Calculate the number of ways people sitting around a circular table can shake hands without crossing, given n people (n must be even). This is the n/2-th Catalan number.",
+  "target": 6,
+  "pseudocode": "1. dp = new Array(n/2 + 1).fill(0)\n2. dp[0] = 1\n3. for i from 1 to n/2:\n4.   for j from 0 to i-1:\n5.     dp[i] += dp[j] * dp[i - 1 - j]",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize DP table for n=6 (3 pairs). Size 4, filled with 0s.",
+      "array": [
+        1,
+        0,
+        0,
+        0
+      ],
+      "curr": 6
+    },
+    {
+      "codeLine": 2,
+      "note": "Base case: 0 pairs have 1 way (empty set).",
+      "array": [
+        1,
+        0,
+        0,
+        0
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Start calculating for i=1 (1 pair).",
+      "i": 1,
+      "array": [
+        1,
+        0,
+        0,
+        0
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Calculate dp[1] = dp[0]*dp[0] = 1.",
+      "i": 1,
+      "array": [
+        1,
+        1,
+        0,
+        0
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Start calculating for i=2 (2 pairs).",
+      "i": 2,
+      "array": [
+        1,
+        1,
+        0,
+        0
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Calculate dp[2] = dp[0]*dp[1] + dp[1]*dp[0] = 1*1 + 1*1 = 2.",
+      "i": 2,
+      "array": [
+        1,
+        1,
+        2,
+        0
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Start calculating for i=3 (3 pairs).",
+      "i": 3,
+      "array": [
+        1,
+        1,
+        2,
+        0
+      ],
+      "curr": 3
+    },
+    {
+      "codeLine": 5,
+      "note": "Calculate dp[3] = dp[0]*dp[2] + dp[1]*dp[1] + dp[2]*dp[0] = 2 + 1 + 2 = 5.",
+      "i": 3,
+      "array": [
+        1,
+        1,
+        2,
+        5
+      ],
+      "curr": 3
+    }
+  ]
+}

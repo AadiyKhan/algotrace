@@ -35,7 +35,8 @@
           "val": 3,
           "next": null
         }
-      ]
+      ],
+      "curr": 0
     },
     {
       "codeLine": 4,

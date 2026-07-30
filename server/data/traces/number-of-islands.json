@@ -3,55 +3,47 @@
   "difficulty": "Medium",
   "type": "matrix",
   "tags": [
-    "Matrix",
-    "DFS",
-    "Graph"
+    "Array",
+    "Depth-First Search",
+    "Breadth-First Search",
+    "Union-Find",
+    "Matrix"
   ],
-  "description": "Given a 2D grid of '1's (land) and '0's (water), return the number of islands.",
+  "description": "Count the number of connected components of '1's in a 2D binary grid.",
   "target": 1,
-  "pseudocode": "1. count = 0\n2. for r from 0 to rows-1:\n3.   for c from 0 to cols-1:\n4.     if grid[r][c] == '1':\n5.       count++\n6.       dfs(grid, r, c)\n7. return count",
+  "pseudocode": "1. count = 0\n2. for r from 0 to m-1: for c from 0 to n-1:\n3. if grid[r][c] == '1':\n4. count += 1, dfs(r, c)\n5. function dfs(r, c): mark grid[r][c] = '0', explore neighbors",
   "steps": [
     {
-      "codeLine": 1,
-      "note": "Initialize island count to 0",
-      "matrix": [
-        [
-          "1",
-          "0"
-        ],
-        [
-          "0",
-          "1"
-        ]
-      ],
-      "visited": []
-    },
-    {
       "codeLine": 2,
-      "note": "Starting row iteration",
+      "note": "Initialize traversal at (0,0)",
       "matrix": [
         [
+          "1",
+          "1",
+          "1",
           "1",
           "0"
         ],
         [
+          "1",
+          "1",
           "0",
-          "1"
-        ]
-      ],
-      "i": 0
-    },
-    {
-      "codeLine": 3,
-      "note": "Starting column iteration",
-      "matrix": [
-        [
           "1",
           "0"
         ],
         [
+          "1",
+          "1",
           "0",
-          "1"
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "0",
+          "0",
+          "0"
         ]
       ],
       "i": 0,
@@ -59,146 +51,152 @@
     },
     {
       "codeLine": 4,
-      "note": "Found land at [0,0], initiating DFS",
+      "note": "Land found at (0,0), increment count and start DFS",
       "matrix": [
         [
+          "0",
+          "1",
+          "1",
           "1",
           "0"
         ],
         [
+          "1",
+          "1",
           "0",
-          "1"
+          "1",
+          "0"
+        ],
+        [
+          "1",
+          "1",
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "0",
+          "0",
+          "0"
         ]
       ],
       "curr": [
         0,
         0
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "DFS exploring adjacent land connected to the first island",
+      "matrix": [
+        [
+          "0",
+          "0",
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "0",
+          "0",
+          "0"
+        ]
       ],
       "visited": [
         [
           0,
           0
-        ]
-      ]
-    },
-    {
-      "codeLine": 5,
-      "note": "Incrementing count",
-      "matrix": [
-        [
-          "0",
-          "0"
         ],
-        [
-          "0",
-          "1"
-        ]
-      ],
-      "visited": [
         [
           0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          1,
           0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          1
         ]
       ]
     },
     {
-      "codeLine": 3,
-      "note": "Checking next cell [0,1]",
+      "codeLine": 4,
+      "note": "All connected land marked as water, count islands",
       "matrix": [
         [
+          "0",
+          "0",
+          "0",
           "0",
           "0"
         ],
         [
           "0",
-          "1"
-        ]
-      ],
-      "i": 0,
-      "j": 1
-    },
-    {
-      "codeLine": 2,
-      "note": "Moving to row 1",
-      "matrix": [
-        [
+          "0",
+          "0",
           "0",
           "0"
         ],
         [
           "0",
-          "1"
-        ]
-      ],
-      "i": 1
-    },
-    {
-      "codeLine": 3,
-      "note": "Checking cell [1,1]",
-      "matrix": [
-        [
+          "0",
+          "0",
           "0",
           "0"
         ],
         [
           "0",
-          "1"
-        ]
-      ],
-      "i": 1,
-      "j": 1
-    },
-    {
-      "codeLine": 5,
-      "note": "Found second island",
-      "matrix": [
-        [
           "0",
-          "0"
-        ],
-        [
+          "0",
           "0",
           "0"
         ]
       ],
       "curr": [
-        1,
-        1
-      ],
-      "visited": [
-        [
-          0,
-          0
-        ],
-        [
-          1,
-          1
-        ]
-      ]
-    },
-    {
-      "codeLine": 7,
-      "note": "Returning total count: 2",
-      "matrix": [
-        [
-          "0",
-          "0"
-        ],
-        [
-          "0",
-          "0"
-        ]
-      ],
-      "visited": [
-        [
-          0,
-          0
-        ],
-        [
-          1,
-          1
-        ]
+        3,
+        4
       ]
     }
-  ]
+  ],
+  "fullDescription": "<p>Given an <code>m x n</code> 2D binary grid <code>grid</code> which represents a map of <code>&#39;1&#39;</code>s (land) and <code>&#39;0&#39;</code>s (water), return <em>the number of islands</em>.</p>\n\n<p>An <strong>island</strong> is surrounded by water and is formed by connecting adjacent lands horizontally or vertically. You may assume all four edges of the grid are all surrounded by water.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> grid = [\n  [&quot;1&quot;,&quot;1&quot;,&quot;1&quot;,&quot;1&quot;,&quot;0&quot;],\n  [&quot;1&quot;,&quot;1&quot;,&quot;0&quot;,&quot;1&quot;,&quot;0&quot;],\n  [&quot;1&quot;,&quot;1&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;],\n  [&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;]\n]\n<strong>Output:</strong> 1\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> grid = [\n  [&quot;1&quot;,&quot;1&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;],\n  [&quot;1&quot;,&quot;1&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;],\n  [&quot;0&quot;,&quot;0&quot;,&quot;1&quot;,&quot;0&quot;,&quot;0&quot;],\n  [&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;1&quot;,&quot;1&quot;]\n]\n<strong>Output:</strong> 3\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>m == grid.length</code></li>\n\t<li><code>n == grid[i].length</code></li>\n\t<li><code>1 &lt;= m, n &lt;= 300</code></li>\n\t<li><code>grid[i][j]</code> is <code>&#39;0&#39;</code> or <code>&#39;1&#39;</code>.</li>\n</ul>\n"
 }

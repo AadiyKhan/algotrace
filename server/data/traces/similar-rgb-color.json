@@ -3,95 +3,89 @@
   "difficulty": "Easy",
   "type": "array",
   "tags": [
+    "Math",
     "String",
-    "Math"
+    "Enumeration"
   ],
-  "description": "Minimize the similarity error between a given 7-character hex color and a shorthand format #XXYYZZ.",
+  "description": "Convert a shorthand color string like '#09f166' to the closest 'long' shorthand color '#11ee55'.",
   "target": "#09f166",
-  "pseudocode": "1. result = '#'\n2. for i = 1, 3, 5:\n3.   hexPart = color.substring(i, i+2)\n4.   val = parseInt(hexPart, 16)\n5.   closest = Math.round(val / 17)\n6.   result += (closest * 17).toString(16).padStart(2, '0')\n7. return result",
+  "pseudocode": "1. result = '#'\n2. for i from 1 to 5 step 2:\n3.   part = color.substring(i, i+2)\n4.   decimal = parseInt(part, 16)\n5.   closest = round(decimal / 17) * 17\n6.   hexPart = closest.toString(16)\n7.   result += hexPart + hexPart\n8. return result",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize result string",
-      "array": []
+      "note": "Initialize result string.",
+      "array": [
+        "#"
+      ],
+      "result": "#"
     },
     {
       "codeLine": 3,
-      "note": "Process first pair: '09'",
-      "i": 0
-    },
-    {
-      "codeLine": 4,
-      "note": "Convert '09' to decimal: 9",
-      "i": 0
+      "note": "Process first pair '09'.",
+      "array": [
+        "09"
+      ],
+      "i": 1,
+      "curr": 9
     },
     {
       "codeLine": 5,
-      "note": "Find closest multiple of 17: 9/17 ≈ 0.53, round to 1",
-      "i": 0
-    },
-    {
-      "codeLine": 6,
-      "note": "Append '11' to result",
+      "note": "Round '09' (decimal 9) to nearest multiple of 17: 0 (0x00).",
       "array": [
-        "11"
-      ]
+        "00"
+      ],
+      "i": 1,
+      "curr": 9
     },
     {
       "codeLine": 3,
-      "note": "Process second pair: 'f1'",
-      "i": 2
-    },
-    {
-      "codeLine": 4,
-      "note": "Convert 'f1' to decimal: 241",
-      "i": 2
+      "note": "Process second pair 'f1'.",
+      "array": [
+        "00",
+        "f1"
+      ],
+      "i": 3,
+      "curr": 1
     },
     {
       "codeLine": 5,
-      "note": "Find closest multiple of 17: 241/17 ≈ 14.17, round to 14 (e in hex)",
-      "i": 2
-    },
-    {
-      "codeLine": 6,
-      "note": "Append 'ee' to result",
+      "note": "Round 'f1' (decimal 241) to nearest multiple of 17: 238 (0xee).",
       "array": [
-        "11",
+        "00",
         "ee"
-      ]
+      ],
+      "i": 3,
+      "curr": 1
     },
     {
       "codeLine": 3,
-      "note": "Process third pair: '66'",
-      "i": 4
-    },
-    {
-      "codeLine": 4,
-      "note": "Convert '66' to decimal: 102",
-      "i": 4
+      "note": "Process third pair '66'.",
+      "array": [
+        "00",
+        "ee",
+        "66"
+      ],
+      "i": 5,
+      "curr": 66
     },
     {
       "codeLine": 5,
-      "note": "Find closest multiple of 17: 102/17 = 6",
-      "i": 4
-    },
-    {
-      "codeLine": 6,
-      "note": "Append '66' to result",
+      "note": "Round '66' (decimal 102) to nearest multiple of 17: 102 (0x66).",
       "array": [
-        "11",
+        "00",
         "ee",
         "66"
-      ]
+      ],
+      "i": 5,
+      "curr": 66
     },
     {
-      "codeLine": 7,
-      "note": "Return #11ee66",
+      "codeLine": 8,
+      "note": "Return final concatenated string.",
       "array": [
-        "11",
-        "ee",
-        "66"
-      ]
+        "#00ee66"
+      ],
+      "result": "#00ee66"
     }
   ]
 }

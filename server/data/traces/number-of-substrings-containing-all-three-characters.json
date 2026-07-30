@@ -1,0 +1,98 @@
+{
+  "title": "Number of Substrings Containing All Three Characters",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "String",
+    "Sliding Window"
+  ],
+  "description": "Given a string s consisting only of characters 'a', 'b' and 'c', return the number of substrings containing at least one occurrence of all these characters.",
+  "pseudocode": "1. count = {a:0, b:0, c:0}, left = 0, res = 0\n2. for right from 0 to s.length - 1:\n3.   count[s[right]]++\n4.   while count['a'] > 0 and count['b'] > 0 and count['c'] > 0:\n5.     res += s.length - right\n6.     count[s[left]]--\n7.     left++\n8. return res",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Initialize variables for string 'abcabc'",
+      "array": [
+        "a",
+        "b",
+        "c",
+        "a",
+        "b",
+        "c"
+      ],
+      "i": 0,
+      "j": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Include 'a', 'b', 'c' into window",
+      "array": [
+        "a",
+        "b",
+        "c",
+        "a",
+        "b",
+        "c"
+      ],
+      "i": 0,
+      "j": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Found valid substring 'abc'. Add remaining length (6-2=4)",
+      "array": [
+        "a",
+        "b",
+        "c",
+        "a",
+        "b",
+        "c"
+      ],
+      "i": 0,
+      "j": 2,
+      "curr": 6
+    },
+    {
+      "codeLine": 6,
+      "note": "Shrink window from left to find next valid range",
+      "array": [
+        "a",
+        "b",
+        "c",
+        "a",
+        "b",
+        "c"
+      ],
+      "i": 1,
+      "j": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Continue sliding right pointer to find next valid windows",
+      "array": [
+        "a",
+        "b",
+        "c",
+        "a",
+        "b",
+        "c"
+      ],
+      "i": 1,
+      "j": 3
+    },
+    {
+      "codeLine": 5,
+      "note": "Final count after sliding through string",
+      "array": [
+        "a",
+        "b",
+        "c",
+        "a",
+        "b",
+        "c"
+      ],
+      "i": 3,
+      "j": 5
+    }
+  ]
+}

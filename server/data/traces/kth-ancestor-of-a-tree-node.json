@@ -1,0 +1,140 @@
+{
+  "title": "Kth Ancestor Of A Tree Node",
+  "difficulty": "Hard",
+  "type": "tree",
+  "tags": [
+    "Tree",
+    "Binary Lifting",
+    "Dynamic Programming"
+  ],
+  "description": "Find the kth ancestor of a tree node using binary lifting for O(log N) query time.",
+  "target": 2,
+  "pseudocode": "1. precompute ancestors[node][i] = 2^i-th ancestor of node\n2. ancestors[node][0] = parent[node]\n3. for i = 1 to logN:\n4.   ancestors[node][i] = ancestors[ancestors[node][i-1]][i-1]\n5. getKthAncestor(node, k):\n6.   for i = 0 to logN:\n7.     if (k & (1 << i)):\n8.       node = ancestors[node][i]",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Initialize direct parents (2^0th ancestor) for nodes [0, 1, 2, 3]",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": -1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 0,
+          "left": 3,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 0,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 1,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Compute 2^1 (4th) ancestors: node 3's 2nd ancestor is 0",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": -1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 0,
+          "left": 3,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 0,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 1,
+          "left": null,
+          "right": null
+        }
+      ],
+      "i": 1,
+      "curr": 2
+    },
+    {
+      "codeLine": 7,
+      "note": "Query K=2 (binary 10): skip 2^0, jump 2^1",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": -1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 0,
+          "left": 3,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 0,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 1,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 3
+    },
+    {
+      "codeLine": 8,
+      "note": "Jump to 2^1 ancestor of node 3, which is 0",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": -1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 0,
+          "left": 3,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 0,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 1,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 0
+    }
+  ]
+}

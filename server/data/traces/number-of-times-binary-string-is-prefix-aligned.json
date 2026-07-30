@@ -1,0 +1,89 @@
+{
+  "title": "Number of Times Binary String Is Prefix-Aligned",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array"
+  ],
+  "description": "Count how many moments a binary string is prefix-aligned, meaning all bits up to the current index are 1.",
+  "target": 0,
+  "pseudocode": "1: maxVal = 0\n2: count = 0\n3: for i from 0 to n-1:\n4:   maxVal = max(maxVal, flips[i])\n5:   if maxVal == i + 1:\n6:     count++\n7: return count",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize maxVal to track the highest bit index flipped.",
+      "array": [
+        3,
+        2,
+        4,
+        1,
+        5
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "At index 0, bit is 3. maxVal becomes 3.",
+      "array": [
+        3,
+        2,
+        4,
+        1,
+        5
+      ],
+      "i": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "At index 1, bit is 2. maxVal remains 3.",
+      "array": [
+        3,
+        2,
+        4,
+        1,
+        5
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "At index 2, bit is 4. maxVal becomes 4.",
+      "array": [
+        3,
+        2,
+        4,
+        1,
+        5
+      ],
+      "i": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "At index 3, bit is 1. maxVal remains 4. Since maxVal == 4, increment count.",
+      "array": [
+        3,
+        2,
+        4,
+        1,
+        5
+      ],
+      "i": 3,
+      "curr": 3
+    },
+    {
+      "codeLine": 4,
+      "note": "At index 4, bit is 5. maxVal becomes 5. Since maxVal == 5, increment count.",
+      "array": [
+        3,
+        2,
+        4,
+        1,
+        5
+      ],
+      "i": 4,
+      "curr": 4
+    }
+  ]
+}

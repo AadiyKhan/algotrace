@@ -1,0 +1,172 @@
+{
+  "title": "Diagonal Traverse II",
+  "difficulty": "Medium",
+  "type": "matrix",
+  "tags": [
+    "Array",
+    "Sorting",
+    "Matrix"
+  ],
+  "description": "Given a 2D integer array nums, return all elements in each diagonal.",
+  "target": null,
+  "pseudocode": "1. let map = {}\n2. for r = 0 to nums.length-1\n3.   for c = 0 to nums[r].length-1\n4.     sum = r + c\n5.     if !map[sum] map[sum] = []\n6.     map[sum].push(nums[r][c])\n7. res = []\n8. for sum in keys(map)\n9.   res.push(...map[sum].reverse())",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Starting traversal of matrix [[1,2,3],[4,5,6]]",
+      "matrix": [
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          4,
+          5,
+          6
+        ]
+      ],
+      "i": 0,
+      "curr": [
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Processing element 1 at [0,0], sum = 0",
+      "matrix": [
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          4,
+          5,
+          6
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Processing element 2 at [0,1], sum = 1",
+      "matrix": [
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          4,
+          5,
+          6
+        ]
+      ],
+      "curr": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Processing element 4 at [1,0], sum = 1",
+      "matrix": [
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          4,
+          5,
+          6
+        ]
+      ],
+      "curr": [
+        1,
+        0
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Processing element 3 at [0,2], sum = 2",
+      "matrix": [
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          4,
+          5,
+          6
+        ]
+      ],
+      "curr": [
+        0,
+        2
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Processing element 5 at [1,1], sum = 2",
+      "matrix": [
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          4,
+          5,
+          6
+        ]
+      ],
+      "curr": [
+        1,
+        1
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Processing element 6 at [1,2], sum = 3",
+      "matrix": [
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          4,
+          5,
+          6
+        ]
+      ],
+      "curr": [
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 9,
+      "note": "Final result constructed by reversing diagonal lists: [1, 4, 2, 5, 3, 6]",
+      "array": [
+        1,
+        4,
+        2,
+        5,
+        3,
+        6
+      ],
+      "curr": [
+        1,
+        4
+      ]
+    }
+  ]
+}

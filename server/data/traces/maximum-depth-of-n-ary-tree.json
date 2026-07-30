@@ -32,7 +32,8 @@
           "val": 2,
           "children": []
         }
-      ]
+      ],
+      "curr": 0
     },
     {
       "codeLine": 4,
@@ -131,7 +132,8 @@
           "val": 2,
           "children": []
         }
-      ]
+      ],
+      "curr": 1
     }
   ]
 }

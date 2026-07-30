@@ -1,0 +1,76 @@
+{
+  "title": "Swap For Longest Repeated Character Substring",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Hash Table",
+    "String",
+    "Sliding Window"
+  ],
+  "description": "Find the length of the longest substring with repeated characters after at most one swap.",
+  "target": 3,
+  "pseudocode": "1. Count total occurrences of each character.\n2. Group consecutive identical characters into segments.\n3. Iterate through segments to find max length.\n4. If two segments of same char are separated by one char, try merging them.\n5. If extra characters exist, increment max length by 1.",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Count occurrences: a:3, b:2.",
+      "array": [
+        "a",
+        "b",
+        "a",
+        "b",
+        "a"
+      ],
+      "curr": 3
+    },
+    {
+      "codeLine": 2,
+      "note": "Create segments: [{char: 'a', len: 1}, {char: 'b', len: 1}, {char: 'a', len: 1}, {char: 'b', len: 1}, {char: 'a', len: 1}]",
+      "array": [
+        "a",
+        "b",
+        "a",
+        "b",
+        "a"
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Check initial longest without swaps: length 1.",
+      "array": [
+        "a",
+        "b",
+        "a",
+        "b",
+        "a"
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Look at segment 'a' (index 0) and 'a' (index 2) separated by 'b'. Merge: 1+1+1 = 3.",
+      "array": [
+        "a",
+        "b",
+        "a",
+        "b",
+        "a"
+      ],
+      "i": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Confirm 3 is the max length possible via swap.",
+      "array": [
+        "a",
+        "b",
+        "a",
+        "b",
+        "a"
+      ],
+      "curr": 3
+    }
+  ]
+}

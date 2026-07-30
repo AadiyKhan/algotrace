@@ -30,7 +30,8 @@
         "love",
         "i",
         "love"
-      ]
+      ],
+      "curr": 2
     },
     {
       "codeLine": 3,
@@ -54,7 +55,8 @@
       "array": [
         "i",
         "love"
-      ]
+      ],
+      "curr": 2
     }
   ]
 }

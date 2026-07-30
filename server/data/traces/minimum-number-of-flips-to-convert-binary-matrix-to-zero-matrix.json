@@ -1,0 +1,100 @@
+{
+  "title": "Minimum Number of Flips to Convert Binary Matrix to Zero Matrix",
+  "difficulty": "Hard",
+  "type": "matrix",
+  "tags": [
+    "Matrix",
+    "Breadth-First Search",
+    "Bit Manipulation"
+  ],
+  "description": "Find the minimum number of flips (flipping a cell and its 4 neighbors) to turn all matrix cells to 0 using BFS.",
+  "target": 0,
+  "pseudocode": "1. queue = [initial_state]\n2. visited = {initial_state}\n3. steps = 0\n4. while queue:\n5.   for _ in range(len(queue)):\n6.     curr = queue.pop(0)\n7.     if curr == 0: return steps\n8.     for i in range(rows * cols):\n9.       next_state = flip(curr, i)\n10.      if next_state not in visited:\n11.        visited.add(next_state)\n12.        queue.append(next_state)\n13.  steps += 1",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize BFS with initial matrix state [[0,1],[1,0]] (represented as bitmask 6).",
+      "matrix": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "visited": [
+        6
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Pop current state and check if it is the zero matrix.",
+      "matrix": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 9,
+      "note": "Flip cell [0,0], affecting [0,0], [0,1], and [1,0].",
+      "matrix": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 12,
+      "note": "Add new state to queue.",
+      "matrix": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "visited": [
+        6,
+        8
+      ]
+    },
+    {
+      "codeLine": 13,
+      "note": "Increment steps counter.",
+      "matrix": [
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ]
+    }
+  ]
+}

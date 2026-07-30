@@ -1,0 +1,102 @@
+{
+  "title": "Make The String Great",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "String",
+    "Stack"
+  ],
+  "description": "Remove adjacent characters that are the same letter but different case.",
+  "target": null,
+  "pseudocode": "1. stack = []\n2. for char in s:\n3.   if stack and abs(stack.last.charCodeAt() - char.charCodeAt()) == 32:\n4.     stack.pop()\n5.   else:\n6.     stack.push(char)\n7. return stack.join('')",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize empty stack",
+      "array": []
+    },
+    {
+      "codeLine": 2,
+      "note": "Processing 'l' (first char)",
+      "array": [
+        "l"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Push 'l' to stack",
+      "array": [
+        "l"
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Processing 'e' (second char)",
+      "array": [
+        "l",
+        "e"
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Push 'e' to stack",
+      "array": [
+        "l",
+        "e"
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Processing 'E' (third char)",
+      "array": [
+        "l",
+        "e",
+        "E"
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Match found: 'e' and 'E' are same letter, different case",
+      "array": [
+        "l",
+        "e",
+        "E"
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Pop 'e' from stack",
+      "array": [
+        "l"
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Processing 'e' (fourth char)",
+      "array": [
+        "l",
+        "e"
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 6,
+      "note": "Push 'e' to stack",
+      "array": [
+        "l",
+        "e"
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Return final stack result",
+      "array": [
+        "l",
+        "e"
+      ]
+    }
+  ]
+}

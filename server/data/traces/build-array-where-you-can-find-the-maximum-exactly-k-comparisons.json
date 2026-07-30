@@ -1,0 +1,57 @@
+{
+  "title": "Build Array Where You Can Find The Maximum Exactly K Comparisons",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Dynamic Programming"
+  ],
+  "description": "Find the number of ways to build an array of length n such that the maximum value is exactly k comparisons.",
+  "target": "k=2",
+  "pseudocode": "1. dp[len][max][cost] = ways to form array\n2. for length from 1 to n:\n3.   for current_max from 1 to m:\n4.     for cost from 1 to k:\n5.       dp[len][current_max][cost] += dp[len-1][current_max][cost] * current_max\n6.       dp[len][current_max][cost] += sum(dp[len-1][prev_max][cost-1]) where prev_max < current_max",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize DP table for n=2, m=3, k=2. dp[len][max][cost]",
+      "array": [
+        0,
+        0,
+        0
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 2,
+      "note": "Starting length 1, maximum value 1, cost 1",
+      "i": 1,
+      "array": [
+        1,
+        0,
+        0
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Length 2, max 2, cost 2: New max found",
+      "i": 2,
+      "j": 2,
+      "array": [
+        1,
+        2,
+        0
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Completed trace for small case: ways to achieve k=2",
+      "i": 2,
+      "array": [
+        1,
+        2,
+        3
+      ],
+      "curr": 2
+    }
+  ]
+}

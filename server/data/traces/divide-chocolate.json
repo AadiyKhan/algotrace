@@ -1,0 +1,107 @@
+{
+  "title": "Divide Chocolate",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Binary Search",
+    "Greedy"
+  ],
+  "description": "Divide a chocolate bar with sweetness levels into k+1 pieces to maximize the minimum sweetness among all pieces.",
+  "target": 12,
+  "pseudocode": "1. low = min(sweetness), high = sum(sweetness) / (k + 1)\n2. while low <= high:\n3.   mid = (low + high) // 2\n4.   if can_split(sweetness, k, mid):\n5.     ans = mid, low = mid + 1\n6.   else: high = mid - 1",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize binary search range. Low=1, High=6.",
+      "array": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "i": 1,
+      "j": 6,
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Calculate mid = 3. Check if pieces with sweetness >= 3 can be formed.",
+      "array": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "i": 3,
+      "curr": 3
+    },
+    {
+      "codeLine": 4,
+      "note": "can_split returns true. Pieces: [1+2=3], [3], [4], [5]. We have 4 pieces (k+1).",
+      "array": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "i": 3,
+      "curr": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Valid mid found. Set ans=3, try higher: low = 4.",
+      "array": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "i": 4,
+      "curr": 3
+    },
+    {
+      "codeLine": 3,
+      "note": "Calculate new mid = 5.",
+      "array": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "i": 5,
+      "curr": 5
+    },
+    {
+      "codeLine": 4,
+      "note": "can_split returns false. We cannot form 2 pieces with sum >= 5.",
+      "array": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "i": 5,
+      "curr": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Mid 5 failed. High = 4.",
+      "array": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "i": 4,
+      "curr": 5
+    }
+  ]
+}

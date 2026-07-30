@@ -1,0 +1,109 @@
+{
+  "title": "Statistics From A Large Sample",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Math",
+    "Statistics"
+  ],
+  "description": "Calculate minimum, maximum, mean, median, and mode from a given frequency array.",
+  "target": null,
+  "pseudocode": "1. min = first index with count > 0; max = last index with count > 0\n2. sum = 0; totalCount = 0; mode = 0; maxFreq = 0\n3. for i from 0 to 255:\n4.   if count[i] > 0:\n5.     sum += i * count[i]\n6.     totalCount += count[i]\n7.     if count[i] > maxFreq: mode = i; maxFreq = count[i]\n8. return [min, max, sum/totalCount, median, mode]",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Identify range boundaries: min=1, max=3",
+      "array": [
+        0,
+        2,
+        1,
+        1
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Iterate through indices to calculate statistics",
+      "i": 1,
+      "array": [
+        0,
+        2,
+        1,
+        1
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Update sum: sum = 1*2 = 2",
+      "i": 1,
+      "array": [
+        0,
+        2,
+        1,
+        1
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "Update mode: maxFreq is 2, mode is 1",
+      "i": 1,
+      "array": [
+        0,
+        2,
+        1,
+        1
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Continue iteration to index 2",
+      "i": 2,
+      "array": [
+        0,
+        2,
+        1,
+        1
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Update sum: sum = 2 + (2*1) = 4",
+      "i": 2,
+      "array": [
+        0,
+        2,
+        1,
+        1
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Continue iteration to index 3",
+      "i": 3,
+      "array": [
+        0,
+        2,
+        1,
+        1
+      ],
+      "curr": 3
+    },
+    {
+      "codeLine": 5,
+      "note": "Update sum: sum = 4 + (3*1) = 7",
+      "i": 3,
+      "array": [
+        0,
+        2,
+        1,
+        1
+      ],
+      "curr": 4
+    }
+  ]
+}

@@ -17,7 +17,8 @@
       "array": [
         "Shogun",
         "Tapioca Express"
-      ]
+      ],
+      "curr": 1
     },
     {
       "codeLine": 2,
@@ -26,7 +27,8 @@
       "array": [
         "Shogun",
         "Tapioca Express"
-      ]
+      ],
+      "curr": 1
     },
     {
       "codeLine": 2,
@@ -35,7 +37,8 @@
       "array": [
         "Shogun",
         "Tapioca Express"
-      ]
+      ],
+      "curr": 1
     },
     {
       "codeLine": 4,
@@ -44,7 +47,8 @@
       "array": [
         "Tapioca Express",
         "Shogun"
-      ]
+      ],
+      "curr": 2
     },
     {
       "codeLine": 5,
@@ -53,7 +57,8 @@
       "array": [
         "Tapioca Express",
         "Shogun"
-      ]
+      ],
+      "curr": 1
     },
     {
       "codeLine": 6,
@@ -62,7 +67,8 @@
       "array": [
         "Tapioca Express",
         "Shogun"
-      ]
+      ],
+      "curr": 1
     },
     {
       "codeLine": 7,
@@ -71,7 +77,8 @@
       "array": [
         "Tapioca Express",
         "Shogun"
-      ]
+      ],
+      "curr": 1
     },
     {
       "codeLine": 4,
@@ -80,7 +87,8 @@
       "array": [
         "Tapioca Express",
         "Shogun"
-      ]
+      ],
+      "curr": 2
     },
     {
       "codeLine": 5,
@@ -89,7 +97,8 @@
       "array": [
         "Tapioca Express",
         "Shogun"
-      ]
+      ],
+      "curr": 0
     },
     {
       "codeLine": 6,
@@ -98,7 +107,8 @@
       "array": [
         "Tapioca Express",
         "Shogun"
-      ]
+      ],
+      "curr": 0
     },
     {
       "codeLine": 8,

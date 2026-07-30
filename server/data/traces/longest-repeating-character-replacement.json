@@ -4,102 +4,114 @@
   "type": "array",
   "tags": [
     "Array",
-    "Sliding Window",
-    "Hash Table"
+    "String",
+    "Sliding Window"
   ],
-  "description": "Find the length of the longest substring containing the same letter after replacing at most k characters.",
-  "target": 2,
-  "pseudocode": "1: let maxFreq = 0, start = 0, res = 0\n2: let counts = {}\n3: for (let end = 0; end < s.length; end++) {\n4:   counts[s[end]] = (counts[s[end]] || 0) + 1\n5:   maxFreq = Math.max(maxFreq, counts[s[end]])\n6:   if ((end - start + 1) - maxFreq > k) {\n7:     counts[s[start]]--\n8:     start++\n9:   }\n10:  res = Math.max(res, end - start + 1)\n11: }",
+  "description": "Find the length of the longest substring with same letter after at most k replacements.",
+  "target": 4,
+  "pseudocode": "1. Initialize left=0, maxLen=0, maxFreq=0, counts={}\n2. Loop right from 0 to s.length-1:\n3. Update counts[s[right]], maxFreq = max(maxFreq, counts[s[right]])\n4. If (right - left + 1) - maxFreq > k:\n5. Decrement counts[s[left]], left++\n6. maxLen = max(maxLen, right - left + 1)\n7. Return maxLen",
   "steps": [
     {
-      "codeLine": 3,
-      "note": "Initialize sliding window with string 'AABAB', k=1",
+      "codeLine": 2,
+      "note": "Initialize window with right=0, s[0]='A'",
       "array": [
-        "A",
-        "A",
-        "B",
-        "A",
-        "B"
-      ],
-      "i": 0
-    },
-    {
-      "codeLine": 5,
-      "note": "Expand window, A is most frequent (count: 1)",
-      "array": [
-        "A",
         "A",
         "B",
         "A",
         "B"
       ],
       "i": 0,
-      "curr": 0
+      "visited": [
+        0
+      ],
+      "left": 0,
+      "right": 0,
+      "result": 1
     },
     {
-      "codeLine": 5,
-      "note": "Expand window, A is most frequent (count: 2)",
+      "codeLine": 3,
+      "note": "Expand window: right=1, s[1]='B', maxFreq=1",
       "array": [
-        "A",
         "A",
         "B",
         "A",
         "B"
       ],
       "i": 1,
-      "curr": 1
+      "visited": [
+        0,
+        1
+      ],
+      "left": 0,
+      "right": 1,
+      "result": 2
     },
     {
-      "codeLine": 6,
-      "note": "Window size 3, maxFreq 2. (3-2) <= 1, no shrink needed",
+      "codeLine": 3,
+      "note": "Expand window: right=2, s[2]='A', maxFreq=2",
       "array": [
-        "A",
         "A",
         "B",
         "A",
         "B"
       ],
       "i": 2,
-      "curr": 2
+      "visited": [
+        0,
+        1,
+        2
+      ],
+      "left": 0,
+      "right": 2,
+      "result": 3
+    },
+    {
+      "codeLine": 3,
+      "note": "Expand window: right=3, s[3]='B', maxFreq=2",
+      "array": [
+        "A",
+        "B",
+        "A",
+        "B"
+      ],
+      "i": 3,
+      "visited": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "left": 0,
+      "right": 3,
+      "result": 4
     },
     {
       "codeLine": 6,
-      "note": "Window size 4, maxFreq 2. (4-2) > 1, shrink window",
+      "note": "Window size 4, maxFreq 2. 4 - 2 <= 2 (k), valid window found.",
       "array": [
-        "A",
         "A",
         "B",
         "A",
         "B"
       ],
       "i": 3,
-      "prev": 0,
-      "curr": 3
+      "left": 0,
+      "right": 3,
+      "result": 4
     },
     {
-      "codeLine": 8,
-      "note": "Start pointer moves to 1",
+      "codeLine": 7,
+      "note": "Return maxLen = 4",
       "array": [
-        "A",
         "A",
         "B",
         "A",
         "B"
       ],
-      "i": 3,
-      "prev": 1
-    },
-    {
-      "codeLine": 10,
-      "note": "Max length updated to 3",
-      "array": [
-        "A",
-        "A",
-        "B",
-        "A",
-        "B"
-      ],
-      "i": 3
+      "left": 0,
+      "right": 3,
+      "result": 4
     }
-  ]
+  ],
+  "fullDescription": "<p>You are given a string <code>s</code> and an integer <code>k</code>. You can choose any character of the string and change it to any other uppercase English character. You can perform this operation at most <code>k</code> times.</p>\n\n<p>Return <em>the length of the longest substring containing the same letter you can get after performing the above operations</em>.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> s = &quot;ABAB&quot;, k = 2\n<strong>Output:</strong> 4\n<strong>Explanation:</strong> Replace the two &#39;A&#39;s with two &#39;B&#39;s or vice versa.\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> s = &quot;AABABBA&quot;, k = 1\n<strong>Output:</strong> 4\n<strong>Explanation:</strong> Replace the one &#39;A&#39; in the middle with &#39;B&#39; and form &quot;AABBBBA&quot;.\nThe substring &quot;BBBB&quot; has the longest repeating letters, which is 4.\nThere may exists other ways to achieve this answer too.</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= s.length &lt;= 10<sup>5</sup></code></li>\n\t<li><code>s</code> consists of only uppercase English letters.</li>\n\t<li><code>0 &lt;= k &lt;= s.length</code></li>\n</ul>\n"
 }

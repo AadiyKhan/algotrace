@@ -3,16 +3,19 @@
   "difficulty": "Medium",
   "type": "tree",
   "tags": [
-    "Tree",
     "Array",
-    "Recursion"
+    "Hash Table",
+    "Divide and Conquer",
+    "Tree",
+    "Binary Tree"
   ],
-  "description": "Construct a binary tree from given preorder [3,9,20,15,7] and inorder [9,3,15,20,7] traversals.",
-  "pseudocode": "1. function build(preStart, inStart, inEnd):\n2. if preStart > preorder.length or inStart > inEnd: return null\n3. root = new Node(preorder[preStart])\n4. index = map.get(root.val)\n5. root.left = build(preStart + 1, inStart, index - 1)\n6. root.right = build(preStart + (index - inStart) + 1, index + 1, inEnd)\n7. return root",
+  "description": "Construct a binary tree from its preorder and inorder traversal arrays.",
+  "target": null,
+  "pseudocode": "1. If preorder or inorder is empty, return null\n2. Root = new TreeNode(preorder[0])\n3. Mid = index of root in inorder\n4. Root.left = build(preorder[1:mid+1], inorder[0:mid])\n5. Root.right = build(preorder[mid+1:], inorder[mid+1:])\n6. Return root",
   "steps": [
     {
-      "codeLine": 3,
-      "note": "Root is 3 (preorder[0]). Split inorder: [9] and [15,20,7].",
+      "codeLine": 2,
+      "note": "Root is 3 (first element of preorder)",
       "treeNodes": [
         {
           "id": 0,
@@ -20,11 +23,25 @@
           "left": null,
           "right": null
         }
-      ]
+      ],
+      "curr": 0
     },
     {
-      "codeLine": 5,
-      "note": "Building left subtree with root 9.",
+      "codeLine": 3,
+      "note": "Found 3 at index 1 in inorder: [9, 3, 15, 20, 7]",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Building left subtree with preorder [9], inorder [9]",
       "treeNodes": [
         {
           "id": 0,
@@ -38,35 +55,49 @@
           "left": null,
           "right": null
         }
-      ]
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Building right subtree with preorder [20, 15, 7], inorder [15, 20, 7]",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 3,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 9,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 20,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 3,
+          "val": 15,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 7,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 3
     },
     {
       "codeLine": 6,
-      "note": "Building right subtree with root 20.",
-      "treeNodes": [
-        {
-          "id": 0,
-          "val": 3,
-          "left": 1,
-          "right": 2
-        },
-        {
-          "id": 1,
-          "val": 9,
-          "left": null,
-          "right": null
-        },
-        {
-          "id": 2,
-          "val": 20,
-          "left": null,
-          "right": null
-        }
-      ]
-    },
-    {
-      "codeLine": 5,
-      "note": "Building 20's left child (15).",
+      "note": "Tree construction complete",
       "treeNodes": [
         {
           "id": 0,
@@ -98,43 +129,9 @@
           "left": null,
           "right": null
         }
-      ]
-    },
-    {
-      "codeLine": 7,
-      "note": "Tree construction complete.",
-      "treeNodes": [
-        {
-          "id": 0,
-          "val": 3,
-          "left": 1,
-          "right": 2
-        },
-        {
-          "id": 1,
-          "val": 9,
-          "left": null,
-          "right": null
-        },
-        {
-          "id": 2,
-          "val": 20,
-          "left": 3,
-          "right": 4
-        },
-        {
-          "id": 3,
-          "val": 15,
-          "left": null,
-          "right": null
-        },
-        {
-          "id": 4,
-          "val": 7,
-          "left": null,
-          "right": null
-        }
-      ]
+      ],
+      "curr": 4
     }
-  ]
+  ],
+  "fullDescription": "<p>Given two integer arrays <code>preorder</code> and <code>inorder</code> where <code>preorder</code> is the preorder traversal of a binary tree and <code>inorder</code> is the inorder traversal of the same tree, construct and return <em>the binary tree</em>.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2021/02/19/tree.jpg\" style=\"width: 277px; height: 302px;\" />\n<pre>\n<strong>Input:</strong> preorder = [3,9,20,15,7], inorder = [9,3,15,20,7]\n<strong>Output:</strong> [3,9,20,null,null,15,7]\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> preorder = [-1], inorder = [-1]\n<strong>Output:</strong> [-1]\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= preorder.length &lt;= 3000</code></li>\n\t<li><code>inorder.length == preorder.length</code></li>\n\t<li><code>-3000 &lt;= preorder[i], inorder[i] &lt;= 3000</code></li>\n\t<li><code>preorder</code> and <code>inorder</code> consist of <strong>unique</strong> values.</li>\n\t<li>Each value of <code>inorder</code> also appears in <code>preorder</code>.</li>\n\t<li><code>preorder</code> is <strong>guaranteed</strong> to be the preorder traversal of the tree.</li>\n\t<li><code>inorder</code> is <strong>guaranteed</strong> to be the inorder traversal of the tree.</li>\n</ul>\n"
 }

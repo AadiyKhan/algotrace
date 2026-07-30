@@ -1,0 +1,111 @@
+{
+  "title": "Maximum Candies You Can Get From Boxes",
+  "difficulty": "Hard",
+  "type": "graph",
+  "tags": [
+    "Graph",
+    "BFS",
+    "Queue"
+  ],
+  "description": "Find the maximum number of candies reachable starting from initial boxes, considering keys found inside boxes.",
+  "target": null,
+  "pseudocode": "1: queue = initialBoxes\n2: while queue is not empty:\n3:   box = queue.shift()\n4:   candies += count[box]\n5:   for key in keys[box]: unlocked[key] = true\n6:   for nextBox in containedBoxes[box]:\n7:     if unlocked[nextBox]: queue.push(nextBox)\n8:     else: reachable[nextBox] = true",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize queue with boxes we already have: [0].",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": "Box0"
+        },
+        {
+          "id": 1,
+          "val": "Box1"
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ]
+      ],
+      "visited": [
+        0
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Pop Box 0. Add its candies to total.",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": "Box0"
+        },
+        {
+          "id": 1,
+          "val": "Box1"
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ]
+      ],
+      "visited": [
+        0
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Found key to Box 1 in Box 0. Unlocking Box 1.",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": "Box0"
+        },
+        {
+          "id": 1,
+          "val": "Box1"
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ]
+      ],
+      "visited": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Box 1 is unlocked and reachable, add to queue.",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": "Box0"
+        },
+        {
+          "id": 1,
+          "val": "Box1"
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ]
+      ],
+      "visited": [
+        0,
+        1
+      ],
+      "curr": 1
+    }
+  ]
+}

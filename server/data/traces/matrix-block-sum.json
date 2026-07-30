@@ -1,0 +1,112 @@
+{
+  "title": "Matrix Block Sum",
+  "difficulty": "Medium",
+  "type": "matrix",
+  "tags": [
+    "Array",
+    "Matrix",
+    "Prefix Sum"
+  ],
+  "description": "Given an m x n matrix mat and an integer k, return a matrix answer where each answer[i][j] is the sum of all elements mat[r][c] such that i - k <= r <= i + k and j - k <= c <= j + k.",
+  "target": 1,
+  "pseudocode": "1. Build prefix sum matrix P of size (m+1)x(n+1)\n2. For each cell (r, c) in mat:\n3.   r1 = max(0, r-k), c1 = max(0, c-k)\n4.   r2 = min(m-1, r+k), c2 = min(n-1, c+k)\n5.   ans[r][c] = P[r2+1][c2+1] - P[r1][c2+1] - P[r2+1][c1] + P[r1][c1]",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize 3x3 prefix sum matrix for 2x2 input.",
+      "matrix": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          3
+        ],
+        [
+          0,
+          4,
+          10
+        ]
+      ],
+      "curr": [
+        3,
+        3
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Calculating answer for cell (0,0) with k=1.",
+      "matrix": [
+        [
+          1,
+          3
+        ],
+        [
+          4,
+          10
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Determining bounds r1=0, c1=0 for (0,0).",
+      "matrix": [
+        [
+          1,
+          3
+        ],
+        [
+          4,
+          10
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Determining bounds r2=1, c2=1 for (0,0).",
+      "matrix": [
+        [
+          1,
+          3
+        ],
+        [
+          4,
+          10
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Apply inclusion-exclusion: ans[0][0] = P[2][2] - P[0][2] - P[2][0] + P[0][0] = 10.",
+      "matrix": [
+        [
+          10,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    }
+  ]
+}

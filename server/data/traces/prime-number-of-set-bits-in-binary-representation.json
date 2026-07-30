@@ -1,54 +1,221 @@
 {
-  "title": "Prime Number Of Set Bits In Binary Representation",
+  "title": "Prime Number of Set Bits in Binary Representation",
   "difficulty": "Easy",
   "type": "array",
   "tags": [
     "Math",
     "Bit Manipulation"
   ],
-  "description": "Count the number of integers in the range [left, right] whose binary representation has a prime number of set bits.",
-  "target": null,
-  "pseudocode": "1. count = 0\n2. for num from left to right:\n3.   bits = countSetBits(num)\n4.   if isPrime(bits): count++\n5. return count",
+  "description": "Count numbers in range [left, right] with a prime number of set bits.",
+  "target": 4,
+  "pseudocode": "1. Initialize count = 0, primes = {2, 3, 5, 7, 11, 13, 17, 19}\n2. For i from left to right:\n3.   bits = countSetBits(i)\n4.   If bits in primes, increment count\n5. Return count",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize count to 0",
-      "i": 0
+      "note": "Initialize variables.",
+      "array": [
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "i": null
     },
     {
       "codeLine": 2,
-      "note": "Start iteration at num = 6 (binary 110, 2 bits)",
-      "i": 6
+      "note": "Processing 6 (binary 110, 2 bits).",
+      "array": [
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "i": 6,
+      "curr": 6
     },
     {
       "codeLine": 3,
-      "note": "Count bits for 6: 110 has 2 bits",
-      "i": 6
+      "note": "6 has 2 bits. 2 is prime.",
+      "array": [
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "i": 6,
+      "curr": 6
     },
     {
       "codeLine": 4,
-      "note": "2 is prime, increment count",
-      "i": 6
+      "note": "Increment count to 1.",
+      "array": [
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "i": 6,
+      "curr": 1
     },
     {
       "codeLine": 2,
-      "note": "Next iteration at num = 7 (binary 111, 3 bits)",
-      "i": 7
+      "note": "Processing 7 (binary 111, 3 bits).",
+      "array": [
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "i": 7,
+      "curr": 7
     },
     {
       "codeLine": 3,
-      "note": "Count bits for 7: 111 has 3 bits",
-      "i": 7
+      "note": "7 has 3 bits. 3 is prime.",
+      "array": [
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "i": 7,
+      "curr": 7
     },
     {
       "codeLine": 4,
-      "note": "3 is prime, increment count",
-      "i": 7
+      "note": "Increment count to 2.",
+      "array": [
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "i": 7,
+      "curr": 2
+    },
+    {
+      "codeLine": 2,
+      "note": "Processing 8 (binary 1000, 1 bit).",
+      "array": [
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "i": 8,
+      "curr": 8
+    },
+    {
+      "codeLine": 3,
+      "note": "8 has 1 bit. 1 is not prime.",
+      "array": [
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "i": 8,
+      "curr": 8
+    },
+    {
+      "codeLine": 2,
+      "note": "Processing 9 (binary 1001, 2 bits).",
+      "array": [
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "i": 9,
+      "curr": 9
+    },
+    {
+      "codeLine": 3,
+      "note": "9 has 2 bits. 2 is prime.",
+      "array": [
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "i": 9,
+      "curr": 9
+    },
+    {
+      "codeLine": 4,
+      "note": "Increment count to 3.",
+      "array": [
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "i": 9,
+      "curr": 3
+    },
+    {
+      "codeLine": 2,
+      "note": "Processing 10 (binary 1010, 2 bits).",
+      "array": [
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "i": 10,
+      "curr": 10
+    },
+    {
+      "codeLine": 3,
+      "note": "10 has 2 bits. 2 is prime.",
+      "array": [
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "i": 10,
+      "curr": 10
+    },
+    {
+      "codeLine": 4,
+      "note": "Increment count to 4.",
+      "array": [
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "i": 10,
+      "curr": 4
     },
     {
       "codeLine": 5,
-      "note": "Return final count = 2",
-      "i": 7
+      "note": "Return final count: 4.",
+      "array": [
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "i": null,
+      "curr": 4
     }
   ]
 }

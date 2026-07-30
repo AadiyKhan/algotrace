@@ -1,0 +1,150 @@
+{
+  "title": "Find Latest Group of Size M",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Binary Search",
+    "Hash Table"
+  ],
+  "description": "Find the latest step where there is at least one group of ones of length m.",
+  "target": 2,
+  "pseudocode": "1. length = new Array(n + 2).fill(0)\n2. count = new Array(n + 1).fill(0)\n3. lastStep = -1\n4. for step, pos in arr:\n5.   left = length[pos - 1], right = length[pos + 1]\n6.   newLen = left + right + 1\n7.   length[pos] = length[pos - left] = length[pos + right] = newLen\n8.   count[left]--, count[right]--\n9.   count[newLen]++\n10.  if count[m] > 0: lastStep = step",
+  "steps": [
+    {
+      "codeLine": 4,
+      "note": "Starting iteration at step 1 with position 3.",
+      "array": [
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Position 3 forms a group of size 1. (left=0, right=0, newLen=1)",
+      "array": [
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0
+      ],
+      "i": 1,
+      "curr": 3
+    },
+    {
+      "codeLine": 9,
+      "note": "Count of size 1 becomes 1.",
+      "array": [
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Processing step 2 with position 5.",
+      "array": [
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0
+      ],
+      "i": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Position 5 forms a group of size 1. (left=0, right=0, newLen=1)",
+      "array": [
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0
+      ],
+      "i": 2,
+      "curr": 5
+    },
+    {
+      "codeLine": 9,
+      "note": "Count of size 1 is now 2.",
+      "array": [
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0
+      ],
+      "i": 2,
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Processing step 3 with position 4.",
+      "array": [
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        0
+      ],
+      "i": 3,
+      "curr": 3
+    },
+    {
+      "codeLine": 6,
+      "note": "Position 4 merges groups at 3 and 5. (left=1, right=1, newLen=3)",
+      "array": [
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        0
+      ],
+      "i": 3,
+      "curr": 4
+    },
+    {
+      "codeLine": 10,
+      "note": "Count of size 2 is 0, lastStep remains -1.",
+      "array": [
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        0
+      ],
+      "i": 3,
+      "curr": 2
+    }
+  ]
+}

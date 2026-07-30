@@ -1,0 +1,114 @@
+{
+  "title": "Constrained Subsequence Sum",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Dynamic Programming",
+    "Queue",
+    "Sliding Window"
+  ],
+  "description": "Find the maximum sum of a non-empty subsequence such that for every two consecutive integers in the subsequence, their indices i and j satisfy j - i <= k.",
+  "target": 2,
+  "pseudocode": "1: deque = []\n2: dp = new Array(nums.length)\n3: maxSum = -Infinity\n4: for i = 0 to nums.length - 1:\n5:   dp[i] = nums[i] + (deque.length ? dp[deque[0]] : 0)\n6:   maxSum = max(maxSum, dp[i])\n7:   while deque.length && dp[i] > dp[deque[deque.length - 1]]: deque.pop()\n8:   if dp[i] > 0: deque.push(i)\n9:   if deque.length && deque[0] == i - k: deque.shift()",
+  "steps": [
+    {
+      "codeLine": 4,
+      "note": "Initialize loop for i=0. nums=[10, -2, -10], k=2",
+      "array": [
+        10,
+        -2,
+        -10
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "dp[0] = 10 + 0 = 10",
+      "array": [
+        10,
+        -2,
+        -10
+      ],
+      "i": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 8,
+      "note": "Push index 0 to deque",
+      "array": [
+        10,
+        -2,
+        -10
+      ],
+      "i": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Loop i=1",
+      "array": [
+        10,
+        -2,
+        -10
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "dp[1] = -2 + dp[0] = 8",
+      "array": [
+        10,
+        8,
+        -10
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 8,
+      "note": "Push index 1 to deque",
+      "array": [
+        10,
+        8,
+        -10
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Loop i=2",
+      "array": [
+        10,
+        8,
+        -10
+      ],
+      "i": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "dp[2] = -10 + dp[1] = -2",
+      "array": [
+        10,
+        8,
+        -2
+      ],
+      "i": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 9,
+      "note": "Remove index 0 from deque as it is out of range k",
+      "array": [
+        10,
+        8,
+        -2
+      ],
+      "i": 2,
+      "curr": 0
+    }
+  ]
+}

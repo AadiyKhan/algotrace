@@ -1,0 +1,59 @@
+{
+  "title": "Maximum Number of Non-Overlapping Substrings",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "String",
+    "Greedy",
+    "Array"
+  ],
+  "description": "Find the maximum number of non-overlapping substrings such that every character in each substring appears only in that substring.",
+  "pseudocode": "1. Find first and last occurrence for each char\n2. For each char, expand range [first, last] to include all occurrences of chars within\n3. Filter out invalid ranges\n4. Sort ranges by end index\n5. Select non-overlapping ranges greedily",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Identifying first and last indices for 'a': [0, 2], 'b': [1, 3]",
+      "array": [
+        "a",
+        "b",
+        "a",
+        "b"
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Expand range for 'a' to include 'b' (index 1), new range [0, 3]",
+      "array": [
+        "a",
+        "b",
+        "a",
+        "b"
+      ],
+      "i": 0,
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Sort ranges: [0, 3] covers everything, select as first substring",
+      "array": [
+        "a",
+        "b",
+        "a",
+        "b"
+      ],
+      "i": 1,
+      "curr": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Final selection: result is ['abab']",
+      "array": [
+        "a",
+        "b",
+        "a",
+        "b"
+      ]
+    }
+  ]
+}

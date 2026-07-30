@@ -1,0 +1,110 @@
+{
+  "title": "Reconstruct a 2-Row Binary Matrix",
+  "difficulty": "Medium",
+  "type": "matrix",
+  "tags": [
+    "Array",
+    "Greedy",
+    "Matrix"
+  ],
+  "description": "Reconstruct a 2xN binary matrix given the sum of each row and an array of column sums.",
+  "target": "upper=1, lower=1, colSum=[1,1,1]",
+  "pseudocode": "1. initialize res = [[0]*n, [0]*n]\n2. for i in range(n):\n3.   if colSum[i] == 2: res[0][i] = 1, res[1][i] = 1, upper--, lower--\n4.   elif colSum[i] == 1:\n5.     if upper >= lower: res[0][i] = 1, upper--\n6.     else: res[1][i] = 1, lower--\n7. if upper != 0 or lower != 0: return []\n8. return res",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize result matrix with zeros",
+      "matrix": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "colSum[0] is 1, upper(1) >= lower(1), assign to row 0",
+      "matrix": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "i": 0,
+      "curr": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "colSum[1] is 1, upper(0) < lower(1), assign to row 1",
+      "matrix": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ]
+      ],
+      "i": 1,
+      "curr": [
+        1,
+        1
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "colSum[2] is 1, upper(0) < lower(0), assign to row 1",
+      "matrix": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          1
+        ]
+      ],
+      "i": 2,
+      "curr": [
+        2,
+        1
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Final matrix satisfies constraints",
+      "matrix": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          1
+        ]
+      ]
+    }
+  ]
+}

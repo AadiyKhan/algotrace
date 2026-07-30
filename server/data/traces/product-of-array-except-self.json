@@ -6,13 +6,14 @@
     "Array",
     "Prefix Sum"
   ],
-  "description": "Given an integer array nums, return an array answer such that answer[i] is equal to the product of all the elements of nums except nums[i].",
-  "pseudocode": "1. res = array of 1s, left = 1, right = 1\n2. for i in 0 to n-1: res[i] = left, left *= nums[i]\n3. for i in n-1 down to 0: res[i] *= right, right *= nums[i]",
+  "description": "Calculate product of all elements except current using prefix and suffix passes.",
+  "pseudocode": "1. Initialize answer array with 1s. 2. Calculate prefix products. 3. Calculate suffix products and multiply with answer.",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize result array and pointers",
+      "note": "Initialize answer array with 1s",
       "array": [
+        1,
         1,
         1,
         1
@@ -20,43 +21,70 @@
     },
     {
       "codeLine": 2,
-      "note": "Prefix pass: res stores product of elements to the left",
+      "note": "Calculate prefix products: index 0",
       "array": [
         1,
         1,
-        2
+        1,
+        1
       ],
       "i": 1
     },
     {
       "codeLine": 2,
-      "note": "Prefix pass: res stores product of elements to the left",
+      "note": "Calculate prefix products: index 1",
       "array": [
         1,
         1,
-        2
-      ],
-      "i": 2
-    },
-    {
-      "codeLine": 3,
-      "note": "Suffix pass: multiply res by product of elements to the right",
-      "array": [
-        2,
         2,
         1
       ],
       "i": 2
     },
     {
-      "codeLine": 3,
-      "note": "Final calculation step",
+      "codeLine": 2,
+      "note": "Calculate prefix products: index 2",
       "array": [
+        1,
+        1,
         2,
-        3,
-        1
+        6
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 3,
+      "note": "Calculate suffix products: index 2",
+      "array": [
+        1,
+        1,
+        8,
+        6
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Calculate suffix products: index 1",
+      "array": [
+        1,
+        12,
+        8,
+        6
       ],
       "i": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Calculate suffix products: index 0",
+      "array": [
+        24,
+        12,
+        8,
+        6
+      ],
+      "i": 0
     }
-  ]
+  ],
+  "fullDescription": "<p>Given an integer array <code>nums</code>, return <em>an array</em> <code>answer</code> <em>such that</em> <code>answer[i]</code> <em>is equal to the product of all the elements of</em> <code>nums</code> <em>except</em> <code>nums[i]</code>.</p>\n\n<p>The product of any prefix or suffix of <code>nums</code> is <strong>guaranteed</strong> to fit in a <strong>32-bit</strong> integer.</p>\n\n<p>You must write an algorithm that runs in&nbsp;<code>O(n)</code>&nbsp;time and without using the division operation.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n<pre><strong>Input:</strong> nums = [1,2,3,4]\n<strong>Output:</strong> [24,12,8,6]\n</pre><p><strong class=\"example\">Example 2:</strong></p>\n<pre><strong>Input:</strong> nums = [-1,1,0,-3,3]\n<strong>Output:</strong> [0,0,9,0,0]\n</pre>\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>2 &lt;= nums.length &lt;= 10<sup>5</sup></code></li>\n\t<li><code>-30 &lt;= nums[i] &lt;= 30</code></li>\n\t<li>The input is generated such that <code>answer[i]</code> is <strong>guaranteed</strong> to fit in a <strong>32-bit</strong> integer.</li>\n</ul>\n\n<p>&nbsp;</p>\n<p><strong>Follow up:</strong>&nbsp;Can you solve the problem in <code>O(1)</code>&nbsp;extra&nbsp;space complexity? (The output array <strong>does not</strong> count as extra space for space complexity analysis.)</p>\n"
 }

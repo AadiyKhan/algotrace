@@ -4,15 +4,15 @@
   "type": "tree",
   "tags": [
     "Tree",
-    "DFS",
-    "Recursion"
+    "Depth-First Search",
+    "Binary Tree"
   ],
-  "description": "Determine if two binary trees are flip equivalent by recursively checking node equality and potential swaps.",
-  "pseudocode": "function flipEquiv(root1, root2) {\n  if (!root1 && !root2) return true;\n  if (!root1 || !root2 || root1.val !== root2.val) return false;\n  return (flipEquiv(root1.left, root2.left) && flipEquiv(root1.right, root2.right)) ||\n         (flipEquiv(root1.left, root2.right) && flipEquiv(root1.right, root2.left));\n}",
+  "description": "Determine if two binary trees are flip equivalent by recursively comparing nodes and their subtrees after optional flips.",
+  "pseudocode": "1. If r1 and r2 are both null, return true\n2. If one is null or r1.val != r2.val, return false\n3. Check (flip(left, left) && flip(right, right)) || (flip(left, right) && flip(right, left))",
   "steps": [
     {
-      "codeLine": 1,
-      "note": "Initialize comparison for root nodes (1, 1).",
+      "codeLine": 2,
+      "note": "Comparing root nodes: 1 == 1. Proceed to children.",
       "treeNodes": [
         {
           "id": 0,
@@ -23,66 +23,139 @@
         {
           "id": 1,
           "val": 2,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": 5,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 4,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 5,
+          "left": 6,
+          "right": 7
+        },
+        {
+          "id": 5,
+          "val": 6,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 6,
+          "val": 7,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 7,
+          "val": 8,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Root 1's children (2, 3) do not match Root 2's children (3, 2). Attempt flip.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 2,
+          "right": 1
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": 5,
+          "right": 6
+        },
+        {
+          "id": 3,
+          "val": 4,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 5,
+          "left": 7,
+          "right": 8
+        },
+        {
+          "id": 5,
+          "val": 8,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 6,
+          "val": 7,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Checking flip equivalence for left subtrees (node 2) and right subtrees (node 3).",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 2,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 4,
           "left": null,
           "right": null
         },
         {
           "id": 2,
-          "val": 3,
-          "left": null,
-          "right": null
-        },
-        {
-          "id": 3,
-          "val": 1,
-          "left": 5,
+          "val": 5,
+          "left": 3,
           "right": 4
         },
         {
-          "id": 4,
-          "val": 2,
+          "id": 3,
+          "val": 7,
           "left": null,
           "right": null
         },
         {
-          "id": 5,
-          "val": 3,
+          "id": 4,
+          "val": 8,
           "left": null,
           "right": null
         }
-      ]
+      ],
+      "curr": 2
     },
     {
-      "codeLine": 2,
-      "note": "Roots are non-null and match (val: 1).",
-      "visited": [
-        0,
-        3
-      ]
-    },
-    {
-      "codeLine": 4,
-      "note": "Checking non-flipped path: comparing children 2/3 with 2/3.",
-      "visited": [
-        0,
-        3,
-        1,
-        4,
-        2,
-        5
-      ]
-    },
-    {
-      "codeLine": 5,
-      "note": "Checking flipped path: swapping children 2/3 to match 3/2.",
-      "visited": [
-        0,
-        3,
-        1,
-        5,
-        2,
-        4
-      ]
+      "codeLine": 1,
+      "note": "Recursive base case reached, all nodes matched successfully.",
+      "treeNodes": [],
+      "curr": 2
     }
   ]
 }

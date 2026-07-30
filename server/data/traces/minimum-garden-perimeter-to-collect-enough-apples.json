@@ -1,0 +1,59 @@
+{
+  "title": "Minimum Garden Perimeter to Collect Enough Apples",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Math",
+    "Binary Search"
+  ],
+  "description": "Find the minimum perimeter of a square plot centered at (0,0) to collect at least neededApples.",
+  "target": 1,
+  "pseudocode": "1. side = 1\n2. while apples(side) < neededApples:\n3.   side += 1\n4. return side * 8",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize side length n = 1.",
+      "array": [
+        0
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Calculate apples for n=1: 0 < 1 is true. Proceed to increment.",
+      "array": [
+        0
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Increment n to 2.",
+      "array": [
+        12
+      ],
+      "i": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 2,
+      "note": "Calculate apples for n=2: 12 >= 1. Condition fails, loop terminates.",
+      "array": [
+        12
+      ],
+      "i": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Return perimeter: 2 * 4 = 8.",
+      "array": [
+        12
+      ],
+      "i": 8,
+      "curr": 2
+    }
+  ]
+}

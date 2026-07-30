@@ -22,7 +22,8 @@
         11,
         13,
         17
-      ]
+      ],
+      "curr": 2
     },
     {
       "codeLine": 2,
@@ -35,7 +36,8 @@
         11,
         13,
         17
-      ]
+      ],
+      "curr": 0
     },
     {
       "codeLine": 5,
@@ -48,7 +50,8 @@
         null,
         null,
         null
-      ]
+      ],
+      "curr": 2
     },
     {
       "codeLine": 5,
@@ -61,7 +64,8 @@
         null,
         null,
         null
-      ]
+      ],
+      "curr": 3
     },
     {
       "codeLine": 5,
@@ -74,7 +78,8 @@
         5,
         null,
         null
-      ]
+      ],
+      "curr": 5
     },
     {
       "codeLine": 5,
@@ -87,7 +92,8 @@
         5,
         null,
         7
-      ]
+      ],
+      "curr": 7
     },
     {
       "codeLine": 5,
@@ -100,7 +106,8 @@
         5,
         null,
         7
-      ]
+      ],
+      "curr": 11
     },
     {
       "codeLine": 5,
@@ -113,7 +120,8 @@
         5,
         null,
         7
-      ]
+      ],
+      "curr": 13
     },
     {
       "codeLine": 5,
@@ -126,7 +134,8 @@
         5,
         17,
         7
-      ]
+      ],
+      "curr": 17
     }
   ]
 }

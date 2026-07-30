@@ -1,0 +1,34 @@
+{
+  "title": "Design Underground System",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Hash Table",
+    "Design"
+  ],
+  "description": "Track passenger check-ins and check-outs to calculate average travel time between stations.",
+  "pseudocode": "1. checkIn(id, stationName, t)\n2. checkOut(id, stationName, t)\n3. getAverageTime(start, end)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Passenger 1 checks into 'Leyton' at t=3",
+      "array": [],
+      "i": "checkIn(1, 'Leyton', 3)",
+      "curr": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Passenger 1 checks out at 'Waterloo' at t=8",
+      "array": [],
+      "i": "checkOut(1, 'Waterloo', 8)",
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Calculate average for route Leyton->Waterloo: (8-3)/1 = 5.0",
+      "array": [],
+      "i": "getAverageTime('Leyton', 'Waterloo')",
+      "curr": 8
+    }
+  ]
+}

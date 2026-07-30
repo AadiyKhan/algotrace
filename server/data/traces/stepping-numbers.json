@@ -1,0 +1,79 @@
+{
+  "title": "Stepping Numbers",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "BFS",
+    "DFS",
+    "Math"
+  ],
+  "description": "Find all stepping numbers in the range [low, high]. A stepping number is an integer where all adjacent digits have an absolute difference of 1.",
+  "target": "low: 0, high: 20",
+  "pseudocode": "function findStepping(low, high) {\n  let result = [];\n  for (let i = 0; i <= 9; i++) dfs(i);\n  function dfs(curr) {\n    if (curr > high) return;\n    if (curr >= low) result.push(curr);\n    if (curr === 0) return;\n    let lastDigit = curr % 10;\n    if (lastDigit > 0) dfs(curr * 10 + (lastDigit - 1));\n    if (lastDigit < 9) dfs(curr * 10 + (lastDigit + 1));\n  }\n  return result.sort((a,b) => a-b);\n}",
+  "steps": [
+    {
+      "codeLine": 3,
+      "note": "Starting DFS with single digit 1",
+      "array": [
+        1
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "1 is in range [0, 20], adding to result",
+      "array": [
+        1
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 8,
+      "note": "Exploring next digit: 1-1 = 0. New number: 10",
+      "array": [
+        1,
+        10
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "10 is in range [0, 20], adding to result",
+      "array": [
+        1,
+        10
+      ],
+      "curr": 10
+    },
+    {
+      "codeLine": 9,
+      "note": "Exploring next digit: 1+1 = 2. New number: 12",
+      "array": [
+        1,
+        10,
+        12
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "12 is in range [0, 20], adding to result",
+      "array": [
+        1,
+        10,
+        12
+      ],
+      "curr": 12
+    },
+    {
+      "codeLine": 4,
+      "note": "Reached leaf, backtracking to next starting digit",
+      "array": [
+        1,
+        10,
+        12
+      ]
+    }
+  ]
+}

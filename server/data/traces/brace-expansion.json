@@ -3,69 +3,75 @@
   "difficulty": "Medium",
   "type": "array",
   "tags": [
-    "Backtracking",
-    "String"
+    "String",
+    "Backtracking"
   ],
-  "description": "Expand a string like '{a,b}c{d,e}f' into all possible combinations lexicographically.",
-  "target": null,
-  "pseudocode": "1. function expand(s) {\n2.   let groups = parse(s);\n3.   let res = [];\n4.   function backtrack(idx, path) {\n5.     if (idx === groups.length) return res.push(path.join(''));\n6.     for (let char of groups[idx]) {\n7.       backtrack(idx + 1, [...path, char]);\n8.     }\n9.   }\n10.  backtrack(0, []);\n11.  return res.sort();\n12. }",
+  "description": "Expand a string pattern where brackets enclose comma-separated options.",
+  "target": "{a,b}c{d,e}f",
+  "pseudocode": "1. Parse string into list of sets of characters\n2. Sort characters in each set\n3. Use backtracking to generate all combinations\n4. Return sorted result",
   "steps": [
     {
-      "codeLine": 2,
-      "note": "Parsing '{a,b}c' into [['a', 'b'], ['c']]",
+      "codeLine": 1,
+      "note": "Parsing '{a,b}c{d,e}f' into list: [['a', 'b'], ['c'], ['d', 'e'], ['f']]",
       "array": [
-        "a,b",
-        "c"
+        "['a', 'b']",
+        "['c']",
+        "['d', 'e']",
+        "['f']"
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Sorting individual sets",
+      "array": [
+        "['a', 'b']",
+        "['c']",
+        "['d', 'e']",
+        "['f']"
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Backtracking: path 'a' -> 'c' -> 'd' -> 'f'",
+      "array": [
+        "acdf"
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Backtracking: path 'a' -> 'c' -> 'e' -> 'f'",
+      "array": [
+        "acdf",
+        "acef"
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Backtracking: path 'b' -> 'c' -> 'd' -> 'f'",
+      "array": [
+        "acdf",
+        "acef",
+        "bcdf"
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Backtracking: path 'b' -> 'c' -> 'e' -> 'f'",
+      "array": [
+        "acdf",
+        "acef",
+        "bcdf",
+        "bcef"
       ]
     },
     {
       "codeLine": 4,
-      "note": "Starting recursion at index 0",
-      "i": 0
-    },
-    {
-      "codeLine": 6,
-      "note": "Picking 'a' from first group",
-      "i": 0
-    },
-    {
-      "codeLine": 7,
-      "note": "Moving to index 1 with path ['a']",
-      "i": 1
-    },
-    {
-      "codeLine": 6,
-      "note": "Picking 'c' from second group",
-      "i": 1
-    },
-    {
-      "codeLine": 5,
-      "note": "Base case reached, pushing 'ac'",
+      "note": "Result sorted and returned",
       "array": [
-        "ac"
-      ]
-    },
-    {
-      "codeLine": 6,
-      "note": "Backtracking, picking 'b' from first group",
-      "i": 0
-    },
-    {
-      "codeLine": 7,
-      "note": "Moving to index 1 with path ['b']",
-      "i": 1
-    },
-    {
-      "codeLine": 6,
-      "note": "Picking 'c' from second group",
-      "i": 1
-    },
-    {
-      "codeLine": 5,
-      "note": "Base case reached, pushing 'bc'",
-      "array": [
-        "ac",
-        "bc"
+        "acdf",
+        "acef",
+        "bcdf",
+        "bcef"
       ]
     }
   ]

@@ -6,117 +6,113 @@
     "Array",
     "Dynamic Programming"
   ],
-  "description": "Find the maximum profit from buying and selling a stock given an array of daily prices.",
+  "description": "Find the maximum profit by buying on one day and selling on a future day.",
   "target": 5,
-  "pseudocode": "1. minPrice = Infinity\n2. maxProfit = 0\n3. for i = 0 to prices.length - 1:\n4.   if prices[i] < minPrice: minPrice = prices[i]\n5.   else if prices[i] - minPrice > maxProfit: maxProfit = prices[i] - minPrice\n6. return maxProfit",
+  "pseudocode": "1. minPrice = infinity, maxProfit = 0\n2. for price in prices:\n3.   minPrice = min(minPrice, price)\n4.   maxProfit = max(maxProfit, price - minPrice)\n5. return maxProfit",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize minPrice to Infinity",
+      "note": "Initialize minPrice to infinity and maxProfit to 0.",
       "array": [
         7,
         1,
         5,
-        3
-      ]
-    },
-    {
-      "codeLine": 3,
-      "note": "Start iteration at index 0 (price 7)",
-      "array": [
-        7,
-        1,
-        5,
-        3
-      ],
-      "i": 0
-    },
-    {
-      "codeLine": 4,
-      "note": "7 < Infinity, update minPrice to 7",
-      "array": [
-        7,
-        1,
-        5,
-        3
+        3,
+        6,
+        4
       ],
       "i": 0
     },
     {
       "codeLine": 3,
-      "note": "Move to index 1 (price 1)",
+      "note": "Processing 7: minPrice becomes 7.",
       "array": [
         7,
         1,
         5,
-        3
+        3,
+        6,
+        4
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Processing 1: minPrice becomes 1.",
+      "array": [
+        7,
+        1,
+        5,
+        3,
+        6,
+        4
       ],
       "i": 1
     },
     {
       "codeLine": 4,
-      "note": "1 < 7, update minPrice to 1",
+      "note": "Processing 5: maxProfit = max(0, 5-1) = 4.",
       "array": [
         7,
         1,
         5,
-        3
-      ],
-      "i": 1
-    },
-    {
-      "codeLine": 3,
-      "note": "Move to index 2 (price 5)",
-      "array": [
-        7,
-        1,
-        5,
-        3
+        3,
+        6,
+        4
       ],
       "i": 2
     },
     {
-      "codeLine": 5,
-      "note": "5 - 1 = 4, update maxProfit to 4",
+      "codeLine": 4,
+      "note": "Processing 3: maxProfit = max(4, 3-1) = 4.",
       "array": [
         7,
         1,
         5,
-        3
-      ],
-      "i": 2
-    },
-    {
-      "codeLine": 3,
-      "note": "Move to index 3 (price 3)",
-      "array": [
-        7,
-        1,
-        5,
-        3
+        3,
+        6,
+        4
       ],
       "i": 3
     },
     {
-      "codeLine": 5,
-      "note": "3 - 1 = 2, 2 is not greater than 4, no change",
+      "codeLine": 4,
+      "note": "Processing 6: maxProfit = max(4, 6-1) = 5.",
       "array": [
         7,
         1,
         5,
-        3
+        3,
+        6,
+        4
       ],
-      "i": 3
+      "i": 4
     },
     {
-      "codeLine": 6,
-      "note": "Loop ends, return maxProfit 4",
+      "codeLine": 4,
+      "note": "Processing 4: maxProfit = max(5, 4-1) = 5.",
       "array": [
         7,
         1,
         5,
-        3
+        3,
+        6,
+        4
+      ],
+      "i": 5
+    },
+    {
+      "codeLine": 5,
+      "note": "Return maxProfit 5.",
+      "array": [
+        7,
+        1,
+        5,
+        3,
+        6,
+        4
       ]
     }
-  ]
+  ],
+  "fullDescription": "<p>You are given an array <code>prices</code> where <code>prices[i]</code> is the price of a given stock on the <code>i<sup>th</sup></code> day.</p>\n\n<p>You want to maximize your profit by choosing a <strong>single day</strong> to buy one stock and choosing a <strong>different day in the future</strong> to sell that stock.</p>\n\n<p>Return <em>the maximum profit you can achieve from this transaction</em>. If you cannot achieve any profit, return <code>0</code>.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> prices = [7,1,5,3,6,4]\n<strong>Output:</strong> 5\n<strong>Explanation:</strong> Buy on day 2 (price = 1) and sell on day 5 (price = 6), profit = 6-1 = 5.\nNote that buying on day 2 and selling on day 1 is not allowed because you must buy before you sell.\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> prices = [7,6,4,3,1]\n<strong>Output:</strong> 0\n<strong>Explanation:</strong> In this case, no transactions are done and the max profit = 0.\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= prices.length &lt;= 10<sup>5</sup></code></li>\n\t<li><code>0 &lt;= prices[i] &lt;= 10<sup>4</sup></code></li>\n</ul>\n"
 }

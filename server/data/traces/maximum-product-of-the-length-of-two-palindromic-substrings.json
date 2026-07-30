@@ -1,0 +1,69 @@
+{
+  "title": "Maximum Product of the Length of Two Palindromic Substrings",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "String",
+    "Manacher's Algorithm"
+  ],
+  "description": "Find two non-overlapping palindromic substrings such that the product of their lengths is maximized.",
+  "target": null,
+  "pseudocode": "1. Run Manacher's to get max palindrome radius at each center\n2. Compute L[i]: max length palindrome ending at or before i\n3. Compute R[i]: max length palindrome starting at or after i\n4. Iterate split point i to maximize L[i] * R[i+1]",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize Manacher's radii for string 'ababa'",
+      "array": [
+        1,
+        2,
+        3,
+        2,
+        1
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Compute L array (max palindrome ending at or before index i)",
+      "array": [
+        1,
+        1,
+        3,
+        3,
+        3
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Compute R array (max palindrome starting at or after index i)",
+      "array": [
+        3,
+        3,
+        3,
+        1,
+        1
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Calculate product L[i] * R[i+1] for split point i=1",
+      "array": [
+        1,
+        3
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Calculate product L[i] * R[i+1] for split point i=2",
+      "array": [
+        3,
+        1
+      ],
+      "i": 2,
+      "curr": 1
+    }
+  ]
+}

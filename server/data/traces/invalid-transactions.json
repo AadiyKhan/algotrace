@@ -1,0 +1,98 @@
+{
+  "title": "Invalid Transactions",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "String"
+  ],
+  "description": "Identify transactions that exceed $1000 or occur within 60 minutes of another transaction by the same person in a different city.",
+  "pseudocode": "1. Initialize invalid set\n2. For each transaction i:\n3.   If amount > 1000, add to invalid\n4.   For each transaction j:\n5.     If name_i == name_j and city_i != city_j and abs(time_i - time_j) <= 60:\n6.       Add to invalid",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize invalid set and parse transactions.",
+      "array": [
+        "alice,20,800,mtv",
+        "alice,50,100,beijing"
+      ],
+      "visited": []
+    },
+    {
+      "codeLine": 2,
+      "note": "Process first transaction: i = 0 (alice, 20, 800, mtv).",
+      "array": [
+        "alice,20,800,mtv",
+        "alice,50,100,beijing"
+      ],
+      "i": 0,
+      "visited": [],
+      "curr": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Check against second transaction: j = 1 (alice, 50, 100, beijing).",
+      "array": [
+        "alice,20,800,mtv",
+        "alice,50,100,beijing"
+      ],
+      "i": 0,
+      "j": 1,
+      "visited": [],
+      "curr": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Names match, cities differ, time diff 30 <= 60. Mark i=0 invalid.",
+      "array": [
+        "alice,20,800,mtv",
+        "alice,50,100,beijing"
+      ],
+      "i": 0,
+      "j": 1,
+      "visited": [
+        0
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Process second transaction: i = 1 (alice, 50, 100, beijing).",
+      "array": [
+        "alice,20,800,mtv",
+        "alice,50,100,beijing"
+      ],
+      "i": 1,
+      "visited": [
+        0
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Check against first transaction: j = 0 (alice, 20, 800, mtv).",
+      "array": [
+        "alice,20,800,mtv",
+        "alice,50,100,beijing"
+      ],
+      "i": 1,
+      "j": 0,
+      "visited": [
+        0
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Names match, cities differ, time diff 30 <= 60. Mark i=1 invalid.",
+      "array": [
+        "alice,20,800,mtv",
+        "alice,50,100,beijing"
+      ],
+      "i": 1,
+      "j": 0,
+      "visited": [
+        0,
+        1
+      ]
+    }
+  ]
+}

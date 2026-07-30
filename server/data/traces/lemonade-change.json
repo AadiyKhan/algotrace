@@ -29,7 +29,8 @@
         20
       ],
       "i": 0,
-      "prev": "five: 1, ten: 0"
+      "prev": "five: 1, ten: 0",
+      "curr": 5
     },
     {
       "codeLine": 3,
@@ -40,7 +41,8 @@
         20
       ],
       "i": 1,
-      "prev": "five: 2, ten: 0"
+      "prev": "five: 2, ten: 0",
+      "curr": 5
     },
     {
       "codeLine": 8,
@@ -51,7 +53,8 @@
         20
       ],
       "i": 2,
-      "prev": "five: 1, ten: 0"
+      "prev": "five: 1, ten: 0",
+      "curr": 20
     }
   ]
 }

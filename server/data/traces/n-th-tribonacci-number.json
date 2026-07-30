@@ -1,0 +1,68 @@
+{
+  "title": "N-th Tribonacci Number",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Math",
+    "Dynamic Programming"
+  ],
+  "description": "Calculate the nth Tribonacci number where T0=0, T1=1, T2=1, and Tn+3 = Tn + Tn+1 + Tn+2.",
+  "target": 4,
+  "pseudocode": "1. if n < 2 return n\n2. if n == 2 return 1\n3. dp = [0, 1, 1]\n4. for i from 3 to n:\n5.   next = dp[0] + dp[1] + dp[2]\n6.   dp = [dp[1], dp[2], next]\n7. return dp[2]",
+  "steps": [
+    {
+      "codeLine": 3,
+      "note": "Initialize DP array with base cases [T0, T1, T2].",
+      "array": [
+        0,
+        1,
+        1
+      ],
+      "i": null,
+      "curr": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Start loop for i = 3.",
+      "array": [
+        0,
+        1,
+        1
+      ],
+      "i": 3,
+      "curr": 3
+    },
+    {
+      "codeLine": 5,
+      "note": "Calculate next Tribonacci number: 0 + 1 + 1 = 2.",
+      "array": [
+        0,
+        1,
+        1
+      ],
+      "i": 3,
+      "curr": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Update DP window to [1, 1, 2].",
+      "array": [
+        1,
+        1,
+        2
+      ],
+      "i": 3,
+      "curr": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "Loop finishes, return the last element.",
+      "array": [
+        1,
+        1,
+        2
+      ],
+      "i": 3
+    }
+  ]
+}

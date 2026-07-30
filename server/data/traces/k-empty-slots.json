@@ -6,39 +6,41 @@
     "Array",
     "Sliding Window"
   ],
-  "description": "Find the earliest day such that there exist two activated bulbs with exactly k empty slots between them.",
-  "target": 2,
-  "pseudocode": "1. days = new Array(flowers.length + 1);\n2. for (let i = 0; i < flowers.length; i++) days[flowers[i]] = i + 1;\n3. let left = 1, right = k + 2, res = Infinity;\n4. for (let i = 1; right < days.length; i++) {\n5.   if (days[i] > days[left] && days[i] > days[right]) continue;\n6.   if (i === right) res = Math.min(res, Math.max(days[left], days[right]));\n7.   left = i; right = i + k + 1;\n8. }",
+  "description": "Find the earliest day k empty slots exist between two bloomed flowers.",
+  "target": 1,
+  "pseudocode": "1. Create days array where days[i] is bloom day of flower at i+1\n2. Use sliding window of size k+2\n3. Slide window and check if conditions met",
   "steps": [
     {
-      "codeLine": 2,
-      "note": "Map bulb positions to the day they bloom: [null, 1, 3, 2] (1-indexed)",
+      "codeLine": 1,
+      "note": "Initialize days array from bulbs=[1,3,2], k=1",
       "array": [
-        null,
         1,
         3,
         2
-      ]
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Window starts at index 0 (left=0, right=2) for k=1",
+      "array": [
+        1,
+        3,
+        2
+      ],
+      "i": 0,
+      "curr": 0
     },
     {
       "codeLine": 3,
-      "note": "Initialize sliding window: left=1, right=3 (k=1)",
-      "i": 1
-    },
-    {
-      "codeLine": 4,
-      "note": "i=1: days[1]=1, days[3]=2. Condition i === right is false.",
-      "i": 1
-    },
-    {
-      "codeLine": 7,
-      "note": "Shift window: left=2, right=4",
-      "i": 2
-    },
-    {
-      "codeLine": 6,
-      "note": "i=2: days[2]=3, days[4]=undefined. Loop ends.",
-      "i": 2
+      "note": "Check window [1, 3, 2]. days[1]=3 is > 1 and > 2. Condition met at day 2.",
+      "array": [
+        1,
+        3,
+        2
+      ],
+      "i": 2,
+      "curr": 1
     }
   ]
 }

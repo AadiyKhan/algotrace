@@ -1,68 +1,145 @@
 {
-  "title": "Groups Of Special Equivalent Strings",
+  "title": "Groups of Special-Equivalent Strings",
   "difficulty": "Medium",
   "type": "array",
   "tags": [
     "Array",
+    "Hash Table",
     "String",
-    "Hash Table"
+    "Sorting"
   ],
-  "description": "Group strings where strings are equivalent if swapping characters at even/odd indices results in equality.",
-  "target": 2,
-  "pseudocode": "1. Set = new Set()\n2. for s of words:\n3.   count = new Array(52).fill(0)\n4.   for i in range(s.length):\n5.     idx = s.charCodeAt(i) - 97 + (i % 2 * 26)\n6.     count[idx]++\n7.   Set.add(count.join('#'))\n8. return Set.size",
+  "description": "Group strings by their character counts at even and odd indices.",
+  "target": 3,
+  "pseudocode": "1. Initialize set 'seen'\n2. For each word in words:\n3.   Count chars at even indices and odd indices separately\n4.   Form a normalized key from these counts\n5.   Add key to 'seen'\n6. Return size of 'seen'",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize an empty set to store unique character frequency signatures.",
+      "note": "Initialize an empty set to store unique normalized string representations.",
       "array": [
         "abcd",
-        "cdab"
-      ]
+        "cdab",
+        "cbad",
+        "xyzz",
+        "zzxy",
+        "zzyx"
+      ],
+      "visited": []
     },
     {
-      "codeLine": 2,
-      "note": "Processing first string 'abcd'.",
+      "codeLine": 3,
+      "note": "Process 'abcd': even indices {'a', 'c'}, odd indices {'b', 'd'}. Key: 'ac:bd'",
+      "array": [
+        "abcd",
+        "cdab",
+        "cbad",
+        "xyzz",
+        "zzxy",
+        "zzyx"
+      ],
       "i": 0,
+      "visited": [
+        "ac:bd"
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Process 'cdab': even {'c', 'a'}, odd {'d', 'b'}. Key: 'ac:bd'. Already in set.",
       "array": [
         "abcd",
-        "cdab"
-      ]
-    },
-    {
-      "codeLine": 4,
-      "note": "Calculating parity-based frequencies for 'abcd'. 'a' (even) at 0, 'b' (odd) at 1, 'c' (even) at 2, 'd' (odd) at 3.",
-      "i": 0
-    },
-    {
-      "codeLine": 7,
-      "note": "Adding signature to set. Signature: 'a':1 (even), 'c':1 (even), 'b':1 (odd), 'd':1 (odd).",
+        "cdab",
+        "cbad",
+        "xyzz",
+        "zzxy",
+        "zzyx"
+      ],
+      "i": 1,
       "visited": [
-        "abcd"
+        "ac:bd"
       ]
     },
     {
-      "codeLine": 2,
-      "note": "Processing second string 'cdab'.",
-      "i": 1
-    },
-    {
-      "codeLine": 4,
-      "note": "Calculating parity-based frequencies for 'cdab'. 'c' (even) at 0, 'd' (odd) at 1, 'a' (even) at 2, 'b' (odd) at 3.",
-      "i": 1
-    },
-    {
-      "codeLine": 7,
-      "note": "Signature generated: 'a':1 (even), 'c':1 (even), 'b':1 (odd), 'd':1 (odd). Matches 'abcd'.",
-      "visited": [
-        "abcd"
-      ]
-    },
-    {
-      "codeLine": 8,
-      "note": "Returning the size of the set, which is 1.",
+      "codeLine": 3,
+      "note": "Process 'cbad': even {'c', 'a'}, odd {'b', 'd'}. Key: 'ac:bd'. Already in set.",
       "array": [
         "abcd",
-        "cdab"
+        "cdab",
+        "cbad",
+        "xyzz",
+        "zzxy",
+        "zzyx"
+      ],
+      "i": 2,
+      "visited": [
+        "ac:bd"
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Process 'xyzz': even {'x', 'z'}, odd {'y', 'z'}. Key: 'xz:yz'. New entry.",
+      "array": [
+        "abcd",
+        "cdab",
+        "cbad",
+        "xyzz",
+        "zzxy",
+        "zzyx"
+      ],
+      "i": 3,
+      "visited": [
+        "ac:bd",
+        "xz:yz"
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Process 'zzxy': even {'z', 'x'}, odd {'z', 'y'}. Key: 'xz:yz'. Already in set.",
+      "array": [
+        "abcd",
+        "cdab",
+        "cbad",
+        "xyzz",
+        "zzxy",
+        "zzyx"
+      ],
+      "i": 4,
+      "visited": [
+        "ac:bd",
+        "xz:yz"
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Process 'zzyx': even {'z', 'y'}, odd {'z', 'x'}. Key: 'yz:xz'. New entry.",
+      "array": [
+        "abcd",
+        "cdab",
+        "cbad",
+        "xyzz",
+        "zzxy",
+        "zzyx"
+      ],
+      "i": 5,
+      "visited": [
+        "ac:bd",
+        "xz:yz",
+        "yz:xz"
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Final count of groups in the set is 3.",
+      "array": [
+        "abcd",
+        "cdab",
+        "cbad",
+        "xyzz",
+        "zzxy",
+        "zzyx"
+      ],
+      "visited": [
+        "ac:bd",
+        "xz:yz",
+        "yz:xz"
       ]
     }
   ]

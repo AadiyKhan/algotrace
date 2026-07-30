@@ -1,0 +1,96 @@
+{
+  "title": "Iterator for Combination",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Backtracking",
+    "Design",
+    "String"
+  ],
+  "description": "Design the CombinationIterator class to return combinations of a string of length combinationLength in lexicographical order.",
+  "target": 2,
+  "pseudocode": "1: function generate(start, currentPath) {\n2:   if (currentPath.length == k) { combinations.push(currentPath); return; }\n3:   for (let i = start; i < str.length; i++) {\n4:     generate(i + 1, currentPath + str[i]);\n5:   }\n6: }",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize combination generation for 'abc' with length 2",
+      "array": [
+        "a",
+        "b",
+        "c"
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Starting recursion, i=0, picking 'a'",
+      "array": [
+        "a",
+        "b",
+        "c"
+      ],
+      "i": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Recursively picking next index i=1, path becomes 'ab'",
+      "array": [
+        "a",
+        "b",
+        "c"
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Combination 'ab' found and stored",
+      "array": [
+        "a",
+        "b",
+        "c"
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Backtrack, picking next i=2 for second slot, path 'ac'",
+      "array": [
+        "a",
+        "b",
+        "c"
+      ],
+      "i": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 2,
+      "note": "Combination 'ac' found and stored",
+      "array": [
+        "a",
+        "b",
+        "c"
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Backtrack, picking next i=1 from root, path 'bc'",
+      "array": [
+        "a",
+        "b",
+        "c"
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Combination 'bc' found and stored",
+      "array": [
+        "a",
+        "b",
+        "c"
+      ]
+    }
+  ]
+}

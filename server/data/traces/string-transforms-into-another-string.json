@@ -1,0 +1,74 @@
+{
+  "title": "String Transforms Into Another String",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "String",
+    "Hash Table"
+  ],
+  "description": "Determine if string s1 can be transformed into s2 by replacing characters one by one. If s2 uses all 26 characters as mappings, transformation is only possible if there is at least one character not used in the mapping.",
+  "target": null,
+  "pseudocode": "1. if s1 == s2 return true\n2. if s2 has 26 unique chars return false\n3. map = {}\n4. for i = 0 to s1.length - 1:\n5.   if map[s1[i]] exists and map[s1[i]] != s2[i] return false\n6.   map[s1[i]] = s2[i]\n7. return true",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initial check for equality",
+      "array": [
+        "a",
+        "b",
+        "c"
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Start iteration for index 0",
+      "i": 0,
+      "array": [
+        "a",
+        "b",
+        "c"
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Mapping a to c",
+      "i": 0,
+      "array": [
+        "a",
+        "b",
+        "c"
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Iteration for index 1",
+      "i": 1,
+      "array": [
+        "a",
+        "b",
+        "c"
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Mapping b to a",
+      "i": 1,
+      "array": [
+        "a",
+        "b",
+        "c"
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Transformation possible, return true",
+      "array": [
+        "a",
+        "b",
+        "c"
+      ]
+    }
+  ]
+}

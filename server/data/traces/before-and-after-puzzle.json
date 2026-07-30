@@ -1,0 +1,66 @@
+{
+  "title": "Before and After Puzzle",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "String",
+    "Sorting"
+  ],
+  "description": "Given a list of phrases, find all unique 'before and after' puzzles formed by joining two phrases where the last word of the first equals the first word of the last.",
+  "pseudocode": "1. Store phrases in a map: first_word -> list of indices\n2. Iterate through each phrase as the 'second' phrase\n3. Find the last word of the 'first' phrase\n4. If first_word of current phrase matches, combine and add to result\n5. Sort and return unique puzzles",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Mapping starting words to indices: 'a' -> [0], 'b' -> [1, 2]",
+      "array": [
+        "a",
+        "b",
+        "b"
+      ],
+      "visited": [],
+      "curr": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Processing index 0 ('a'): No valid prefix found.",
+      "array": [
+        "a",
+        "b",
+        "b"
+      ],
+      "i": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Processing index 1 ('b'): Found match with 'a' (index 0). Result: ['a b']",
+      "array": [
+        "a",
+        "b",
+        "b"
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Processing index 2 ('b'): Found match with 'a' (index 0). Result: ['a b'] (already exists)",
+      "array": [
+        "a",
+        "b",
+        "b"
+      ],
+      "i": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Final sorted result: ['a b']",
+      "array": [
+        "a b"
+      ]
+    }
+  ]
+}

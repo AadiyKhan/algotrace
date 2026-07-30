@@ -1,0 +1,105 @@
+{
+  "title": "Longest Arithmetic Subsequence of Given Difference",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "Dynamic Programming"
+  ],
+  "description": "Find the length of the longest subsequence with a constant difference.",
+  "target": 1,
+  "pseudocode": "1. Initialize dp map\n2. For each num in arr:\n3.   prev = num - difference\n4.   dp[num] = dp.get(prev, 0) + 1\n5.   result = max(result, dp[num])\n6. Return result",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize result to 0 and dp map to empty.",
+      "array": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "visited": [],
+      "curr": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Process arr[0]=1: dp[1] = dp[0] + 1 = 1",
+      "array": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "i": 0,
+      "visited": [
+        1
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Process arr[1]=2: dp[2] = dp[1] + 1 = 2",
+      "array": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "i": 1,
+      "visited": [
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Process arr[2]=3: dp[3] = dp[2] + 1 = 3",
+      "array": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "i": 2,
+      "visited": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Process arr[3]=4: dp[4] = dp[3] + 1 = 4",
+      "array": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "i": 3,
+      "visited": [
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Return max length 4.",
+      "array": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "visited": [
+        1,
+        2,
+        3,
+        4
+      ]
+    }
+  ]
+}

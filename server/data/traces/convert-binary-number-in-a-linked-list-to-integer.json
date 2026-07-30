@@ -1,0 +1,109 @@
+{
+  "title": "Convert Binary Number in a Linked List to Integer",
+  "difficulty": "Easy",
+  "type": "linked-list",
+  "tags": [
+    "Linked List",
+    "Bit Manipulation"
+  ],
+  "description": "Convert a binary representation stored in a linked list into its decimal integer equivalent.",
+  "target": 5,
+  "pseudocode": "1: let res = 0;\n2: let curr = head;\n3: while (curr) {\n4:   res = (res << 1) | curr.val;\n5:   curr = curr.next;\n6: }\n7: return res;",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize result to 0.",
+      "nodes": [
+        {
+          "val": 1,
+          "next": 1
+        },
+        {
+          "val": 0,
+          "next": 2
+        },
+        {
+          "val": 1,
+          "next": null
+        }
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Process first node: res = (0 << 1) | 1 = 1.",
+      "nodes": [
+        {
+          "val": 1,
+          "next": 1
+        },
+        {
+          "val": 0,
+          "next": 2
+        },
+        {
+          "val": 1,
+          "next": null
+        }
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Process second node: res = (1 << 1) | 0 = 2.",
+      "nodes": [
+        {
+          "val": 1,
+          "next": 1
+        },
+        {
+          "val": 0,
+          "next": 2
+        },
+        {
+          "val": 1,
+          "next": null
+        }
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Process third node: res = (2 << 1) | 1 = 5.",
+      "nodes": [
+        {
+          "val": 1,
+          "next": 1
+        },
+        {
+          "val": 0,
+          "next": 2
+        },
+        {
+          "val": 1,
+          "next": null
+        }
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 7,
+      "note": "Loop ends, return the final result: 5.",
+      "nodes": [
+        {
+          "val": 1,
+          "next": 1
+        },
+        {
+          "val": 0,
+          "next": 2
+        },
+        {
+          "val": 1,
+          "next": null
+        }
+      ],
+      "curr": 5
+    }
+  ]
+}

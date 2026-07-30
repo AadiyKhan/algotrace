@@ -1,0 +1,140 @@
+{
+  "title": "Maximum Sum BST in Binary Tree",
+  "difficulty": "Hard",
+  "type": "tree",
+  "tags": [
+    "Tree",
+    "Binary Search Tree",
+    "Dynamic Programming"
+  ],
+  "description": "Find the maximum sum of all keys in a sub-tree which is also a Binary Search Tree (BST).",
+  "target": null,
+  "pseudocode": "1: function solve(root):\n2:   if !root: return {sum: 0, min: inf, max: -inf, isBST: true}\n3:   left = solve(root.left)\n4:   right = solve(root.right)\n5:   if left.isBST && right.isBST && left.max < root.val < right.min:\n6:     currSum = left.sum + right.sum + root.val\n7:     maxSum = max(maxSum, currSum)\n8:     return {currSum, min(left.min, root.val), max(right.max, root.val), true}\n9:   return {0, 0, 0, false}",
+  "steps": [
+    {
+      "codeLine": 3,
+      "note": "Traversing to left child of node 2 (null)",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 2,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Node 1 is a leaf, considered a BST with sum 1",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 2,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Node 3 is a leaf, considered a BST with sum 3",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 2,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 3
+    },
+    {
+      "codeLine": 6,
+      "note": "Validating parent node 2: left(1) < 2 < right(3). Subtree is a BST.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 2,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 7,
+      "note": "Sum = 1 + 2 + 3 = 6. Update max sum to 6.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 2,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 1
+    }
+  ]
+}

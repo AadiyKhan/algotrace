@@ -1,0 +1,99 @@
+{
+  "title": "Maximum Number of Balloons",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "String",
+    "Counting"
+  ],
+  "description": "Find the maximum number of instances of the word 'balloon' that can be formed using characters from a given string.",
+  "target": "balloon",
+  "pseudocode": "1. counts = {b:0, a:0, l:0, o:0, n:0}\n2. for char in text:\n3.   if char in counts: counts[char]++\n4. counts['l'] /= 2\n5. counts['o'] /= 2\n6. return min(counts.values())",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize count map for required characters",
+      "array": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Processing character 'b'",
+      "array": [
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "i": "b"
+    },
+    {
+      "codeLine": 3,
+      "note": "Processing character 'a'",
+      "array": [
+        1,
+        1,
+        0,
+        0,
+        0
+      ],
+      "i": "a"
+    },
+    {
+      "codeLine": 3,
+      "note": "Processing characters 'l', 'l', 'o', 'o', 'n'",
+      "array": [
+        1,
+        1,
+        2,
+        2,
+        1
+      ],
+      "i": "n"
+    },
+    {
+      "codeLine": 4,
+      "note": "Divide count of 'l' by 2",
+      "array": [
+        1,
+        1,
+        1,
+        2,
+        1
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Divide count of 'o' by 2",
+      "array": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Result is min(1,1,1,1,1) = 1",
+      "array": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "curr": 1
+    }
+  ]
+}

@@ -43,7 +43,8 @@
       "array": [
         "tinyurl.com/0: google.com",
         "tinyurl.com/1: leetcode.com"
-      ]
+      ],
+      "curr": 1
     }
   ]
 }

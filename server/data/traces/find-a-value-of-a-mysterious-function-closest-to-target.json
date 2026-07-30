@@ -1,0 +1,98 @@
+{
+  "title": "Find a Value of a Mysterious Function Closest to Target",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Bit Manipulation",
+    "Binary Search"
+  ],
+  "description": "Given a function func(arr, m) which returns bitwise AND of all elements in arr ANDed with m, find the value of m that minimizes |func(arr, m) - target|.",
+  "target": 12,
+  "pseudocode": "1. results = new Set()\n2. for x in arr:\n3.   new_results = {x & val for val in results}\n4.   new_results.add(x)\n5.   results = new_results\n6.   min_diff = min(min_diff, abs(val - target))",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize empty set to store unique bitwise AND results",
+      "array": [
+        9,
+        12,
+        3,
+        7
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Processing first element: 9",
+      "array": [
+        9,
+        12,
+        3,
+        7
+      ],
+      "i": 0,
+      "curr": 9
+    },
+    {
+      "codeLine": 3,
+      "note": "Set results to {9}",
+      "array": [
+        9,
+        12,
+        3,
+        7
+      ],
+      "i": 0,
+      "curr": 9
+    },
+    {
+      "codeLine": 2,
+      "note": "Processing second element: 12",
+      "array": [
+        9,
+        12,
+        3,
+        7
+      ],
+      "i": 1,
+      "curr": 12
+    },
+    {
+      "codeLine": 3,
+      "note": "Calculate ANDs: 12 & 9 = 8, and 12",
+      "array": [
+        9,
+        12,
+        3,
+        7
+      ],
+      "i": 1,
+      "curr": 12
+    },
+    {
+      "codeLine": 4,
+      "note": "Update results to {8, 12}",
+      "array": [
+        9,
+        12,
+        3,
+        7
+      ],
+      "i": 1,
+      "curr": 8
+    },
+    {
+      "codeLine": 6,
+      "note": "Closest to target 12 is 12 (diff 0)",
+      "array": [
+        9,
+        12,
+        3,
+        7
+      ],
+      "i": 1,
+      "curr": 12
+    }
+  ]
+}

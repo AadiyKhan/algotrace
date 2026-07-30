@@ -3,81 +3,75 @@
   "difficulty": "Hard",
   "type": "array",
   "tags": [
+    "Hash Table",
     "String",
     "Stack",
-    "HashMap"
+    "Sorting"
   ],
-  "description": "Parse a chemical formula string and return the count of each atom in a lexicographically sorted map.",
-  "target": "K4(ON(SO3)2)2",
-  "pseudocode": "1. stack = [Map()]\n2. for i = 0 to length - 1:\n3.   if char is '(': stack.push(Map())\n4.   else if char is ')': pop top map, multiply counts by number, merge into new top\n5.   else if char is uppercase: parse atom name and count, update top map\n6. return sorted keys and counts",
+  "description": "Parse a chemical formula and return the count of each atom in sorted order.",
+  "target": "H2O",
+  "pseudocode": "1. Initialize an empty stack of maps\n2. Iterate through formula, parsing elements, numbers, or parentheses\n3. Push/Pop maps based on parentheses and multiply counts\n4. Merge all counts into a final map\n5. Sort keys and format result string",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize empty stack with a base map.",
-      "array": []
+      "note": "Initialize empty stack with an empty count map",
+      "array": [],
+      "visited": []
     },
     {
       "codeLine": 2,
-      "note": "Processing 'K' at index 0.",
-      "i": 0
-    },
-    {
-      "codeLine": 5,
-      "note": "Parsed 'K', count 1. Added to map.",
+      "note": "Parse 'H', found atom, add to current map",
       "array": [
-        "K:1"
+        "H"
+      ],
+      "visited": [
+        1
       ]
     },
     {
       "codeLine": 2,
-      "note": "Processing '4' at index 1.",
-      "i": 1
-    },
-    {
-      "codeLine": 5,
-      "note": "Updated 'K' count to 4.",
+      "note": "Parse '2', multiply 'H' count by 2",
       "array": [
-        "K:4"
+        "H: 2"
+      ],
+      "visited": [
+        2
       ]
     },
     {
       "codeLine": 2,
-      "note": "Processing '(' at index 2.",
-      "i": 2
-    },
-    {
-      "codeLine": 3,
-      "note": "Pushed new map for parentheses scope.",
+      "note": "Parse 'O', found atom, add to current map",
       "array": [
-        "K:4",
-        "{}"
+        "H: 2",
+        "O: 1"
+      ],
+      "visited": [
+        3
       ]
-    },
-    {
-      "codeLine": 2,
-      "note": "Processing 'O' at index 3.",
-      "i": 3
-    },
-    {
-      "codeLine": 5,
-      "note": "Added 'O' to inner map.",
-      "array": [
-        "K:4",
-        "O:1"
-      ]
-    },
-    {
-      "codeLine": 2,
-      "note": "Processing ')' at index 7.",
-      "i": 7
     },
     {
       "codeLine": 4,
-      "note": "Multiply counts inside by 2 and merge into outer map.",
+      "note": "Merge maps into final count: {'H': 2, 'O': 1}",
       "array": [
-        "K:4",
-        "O:2",
-        "N:2"
+        "H: 2",
+        "O: 1"
+      ],
+      "visited": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Sort keys and format output: H2O",
+      "array": [
+        "H2O"
+      ],
+      "visited": [
+        1,
+        2,
+        3
       ]
     }
   ]

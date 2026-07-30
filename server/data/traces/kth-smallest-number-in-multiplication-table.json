@@ -1,61 +1,96 @@
 {
-  "title": "Kth Smallest Number In Multiplication Table",
+  "title": "Kth Smallest Number in Multiplication Table",
   "difficulty": "Hard",
   "type": "array",
   "tags": [
-    "Binary Search",
-    "Math"
+    "Math",
+    "Binary Search"
   ],
-  "description": "Find the kth smallest number in an m x n multiplication table using binary search on the range of possible values.",
-  "target": 5,
-  "pseudocode": "1: low = 1, high = m * n\n2: while low < high:\n3:   mid = floor((low + high) / 2)\n4:   count = 0\n5:   for i from 1 to m:\n6:     count += min(floor(mid / i), n)\n7:   if count < k: low = mid + 1\n8:   else: high = mid\n9: return low",
+  "description": "Find the kth smallest element in an m x n multiplication table using binary search on the range of possible values.",
+  "target": 3,
+  "pseudocode": "1. low = 1, high = m * n\n2. while low < high:\n3.   mid = low + (high - low) // 2\n4.   count = countElementsLessOrEqual(mid, m, n)\n5.   if count < k: low = mid + 1\n6.   else: high = mid",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize binary search range [1, 6] for 2x3 table, k=5.",
+      "note": "Initialize search range [1, 9] for 3x3 table.",
       "array": [
         1,
-        2,
-        3,
-        2,
-        4,
+        9
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "First midpoint calculation: mid = 5.",
+      "array": [
+        1,
+        9
+      ],
+      "i": 5,
+      "curr": 5
+    },
+    {
+      "codeLine": 4,
+      "note": "Count elements <= 5: (min(5,3) + min(5/2,3) + min(5/3,3)) = 3 + 2 + 1 = 6.",
+      "array": [
+        1,
+        9
+      ],
+      "i": 5,
+      "visited": [
         6
       ]
     },
     {
-      "codeLine": 3,
-      "note": "Calculate mid = (1+6)/2 = 3.",
-      "i": 0
-    },
-    {
       "codeLine": 6,
-      "note": "Count numbers <= 3: row 1 (1,2,3), row 2 (2). Total count = 4.",
-      "i": 4
-    },
-    {
-      "codeLine": 7,
-      "note": "4 < 5, so move low to mid + 1 = 4.",
-      "i": 4
+      "note": "Since count (6) >= k (5), set high = 5.",
+      "array": [
+        1,
+        5
+      ],
+      "i": 5,
+      "curr": 6
     },
     {
       "codeLine": 3,
-      "note": "Calculate mid = (4+6)/2 = 5.",
-      "i": 5
+      "note": "Midpoint calculation: mid = 3.",
+      "array": [
+        1,
+        5
+      ],
+      "i": 3,
+      "curr": 3
+    },
+    {
+      "codeLine": 4,
+      "note": "Count elements <= 3: (min(3,3) + min(3/2,3) + min(3/3,3)) = 3 + 1 + 1 = 5.",
+      "array": [
+        1,
+        5
+      ],
+      "i": 3,
+      "visited": [
+        5
+      ]
     },
     {
       "codeLine": 6,
-      "note": "Count numbers <= 5: row 1 (1,2,3), row 2 (2,4). Total count = 5.",
-      "i": 5
+      "note": "Since count (5) >= k (5), set high = 3.",
+      "array": [
+        1,
+        3
+      ],
+      "i": 3,
+      "curr": 5
     },
     {
-      "codeLine": 8,
-      "note": "5 >= 5, so move high to mid = 5.",
-      "i": 5
-    },
-    {
-      "codeLine": 9,
-      "note": "Loop ends, return low = 4.",
-      "i": 4
+      "codeLine": 2,
+      "note": "Loop terminates, low == high == 3.",
+      "array": [
+        3
+      ],
+      "i": 3,
+      "curr": 3
     }
   ]
 }

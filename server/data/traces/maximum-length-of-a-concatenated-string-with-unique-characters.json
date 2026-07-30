@@ -1,0 +1,68 @@
+{
+  "title": "Maximum Length of a Concatenated String with Unique Characters",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Backtracking",
+    "Bit Manipulation"
+  ],
+  "description": "Find the maximum length of a string formed by concatenating a subsequence of an array, such that all characters in the resulting string are unique.",
+  "target": null,
+  "pseudocode": "1. function solve(index, currentMask):\n2.   maxLen = countSetBits(currentMask)\n3.   for i from index to arr.length:\n4.     if (currentMask & bitmask[i]) == 0:\n5.       maxLen = max(maxLen, solve(i + 1, currentMask | bitmask[i]))\n6.   return maxLen",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize recursion with index 0 and mask 0.",
+      "array": [
+        "un",
+        "iq",
+        "ue"
+      ],
+      "i": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Include 'un' (mask: 0...011).",
+      "array": [
+        "un",
+        "iq",
+        "ue"
+      ],
+      "i": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Include 'iq' (mask: 0...1100). Total mask: 1111.",
+      "array": [
+        "un",
+        "iq",
+        "ue"
+      ],
+      "i": 1,
+      "curr": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Try adding 'ue', but 'u' overlaps with current mask. Skip.",
+      "array": [
+        "un",
+        "iq",
+        "ue"
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Return max length 4.",
+      "array": [
+        "un",
+        "iq",
+        "ue"
+      ],
+      "curr": 4
+    }
+  ]
+}

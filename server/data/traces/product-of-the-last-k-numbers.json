@@ -1,0 +1,90 @@
+{
+  "title": "Product of the Last K Numbers",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Design",
+    "Data Stream",
+    "Prefix Sum"
+  ],
+  "description": "Maintain a list of numbers and return the product of the last k numbers. Use a prefix product array to achieve O(1) query time.",
+  "target": null,
+  "pseudocode": "1: function add(num) {\n2:   if (num === 0) prefix = [1];\n3:   else prefix.push(prefix[prefix.length - 1] * num);\n4: }\n5: function getProduct(k) {\n6:   if (k >= prefix.length) return 0;\n7:   return prefix[prefix.length - 1] / prefix[prefix.length - 1 - k];\n8: }",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize stream: add(3)",
+      "array": [
+        1,
+        3
+      ],
+      "curr": 3
+    },
+    {
+      "codeLine": 3,
+      "note": "Add 3: prefix product becomes [1, 3]",
+      "array": [
+        1,
+        3
+      ],
+      "curr": 3
+    },
+    {
+      "codeLine": 1,
+      "note": "Add 2: prefix product becomes [1, 3, 6]",
+      "array": [
+        1,
+        3,
+        6
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Add 2: prefix product update",
+      "array": [
+        1,
+        3,
+        6
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Get product of last 2 (k=2)",
+      "array": [
+        1,
+        3,
+        6
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 7,
+      "note": "Result: prefix[2] / prefix[0] = 6 / 1 = 6",
+      "array": [
+        1,
+        3,
+        6
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 1,
+      "note": "Add 0: reset prefix list",
+      "array": [
+        1
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "0 encountered: prefix reset to [1]",
+      "array": [
+        1
+      ],
+      "curr": 0
+    }
+  ]
+}

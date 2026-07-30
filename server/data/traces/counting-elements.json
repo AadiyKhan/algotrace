@@ -1,0 +1,119 @@
+{
+  "title": "Counting Elements",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Hash Table"
+  ],
+  "description": "Given an integer array arr, count how many elements x exist such that x + 1 is also in arr.",
+  "target": null,
+  "pseudocode": "1: set = new Set(arr)\n2: count = 0\n3: for x in arr:\n4:   if set.has(x + 1):\n5:     count++\n6: return count",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Create a hash set of the input array for O(1) lookups.",
+      "array": [
+        1,
+        2,
+        3
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Start iterating through the array.",
+      "array": [
+        1,
+        2,
+        3
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Check if 1 + 1 (2) exists in set.",
+      "array": [
+        1,
+        2,
+        3
+      ],
+      "i": 0,
+      "curr": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "2 exists, increment count to 1.",
+      "array": [
+        1,
+        2,
+        3
+      ],
+      "i": 0,
+      "curr": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Move to next element.",
+      "array": [
+        1,
+        2,
+        3
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Check if 2 + 1 (3) exists in set.",
+      "array": [
+        1,
+        2,
+        3
+      ],
+      "i": 1,
+      "curr": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "3 exists, increment count to 2.",
+      "array": [
+        1,
+        2,
+        3
+      ],
+      "i": 1,
+      "curr": 3
+    },
+    {
+      "codeLine": 3,
+      "note": "Move to last element.",
+      "array": [
+        1,
+        2,
+        3
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Check if 3 + 1 (4) exists in set. It does not.",
+      "array": [
+        1,
+        2,
+        3
+      ],
+      "i": 2,
+      "curr": 3
+    },
+    {
+      "codeLine": 6,
+      "note": "Return total count of 2.",
+      "array": [
+        1,
+        2,
+        3
+      ],
+      "curr": 2
+    }
+  ]
+}

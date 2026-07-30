@@ -1,0 +1,56 @@
+{
+  "title": "Find in Mountain Array",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Binary Search",
+    "Interactive"
+  ],
+  "description": "Find the minimum index of a target value in a mountain array using binary search.",
+  "target": 3,
+  "pseudocode": "1. Find peak index using binary search\n2. Binary search target in ascending part [0, peak]\n3. If not found, binary search in descending part [peak + 1, n - 1]",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Finding the peak of the mountain array [1, 2, 3, 4, 3, 1]",
+      "array": [
+        1,
+        2,
+        3,
+        4,
+        3,
+        1
+      ],
+      "i": 3,
+      "curr": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Searching for target 3 in ascending half [0, 3]",
+      "array": [
+        1,
+        2,
+        3,
+        4,
+        3,
+        1
+      ],
+      "i": 2,
+      "curr": 3
+    },
+    {
+      "codeLine": 3,
+      "note": "Target 3 found at index 2",
+      "array": [
+        1,
+        2,
+        3,
+        4,
+        3,
+        1
+      ],
+      "curr": 2
+    }
+  ]
+}

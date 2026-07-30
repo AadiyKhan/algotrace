@@ -7,45 +7,103 @@
     "Hash Table",
     "String"
   ],
-  "description": "Group duplicate file paths by their content using a hash map.",
-  "pseudocode": "1. map = new Map()\n2. for path in paths:\n3.   parts = path.split(' ')\n4.   dir = parts[0]\n5.   for i = 1 to parts.length - 1:\n6.     file = parts[i]\n7.     content = file.split('(')[1]\n8.     name = file.split('(')[0]\n9.     fullPath = dir + '/' + name\n10.    map.get(content).push(fullPath)",
+  "description": "Group file paths that share the same file content using a hash map.",
+  "target": "Duplicate file groups",
+  "pseudocode": "1. Initialize map 'contentMap'\n2. For each path string in paths:\n3. Parse directory and files\n4. Extract content and map to path list\n5. Filter and return lists with length > 1",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize empty hash map to store content as keys and file paths as values.",
+      "note": "Initialize empty hash map to store contents as keys and lists of paths as values.",
       "array": []
     },
     {
-      "codeLine": 3,
-      "note": "Split input string into directory and individual files.",
-      "i": 0,
+      "codeLine": 2,
+      "note": "Processing path: root/a 1.txt(abcd) 2.txt(efgh)",
       "array": [
-        "root/a",
-        "1.txt(abcd)",
-        "2.txt(efgh)"
-      ]
-    },
-    {
-      "codeLine": 7,
-      "note": "Extract content 'abcd' from the first file.",
-      "i": 1,
+        "root/a/1.txt(abcd)",
+        "root/a/2.txt(efgh)"
+      ],
       "curr": 1
     },
     {
-      "codeLine": 10,
-      "note": "Store 'root/a/1.txt' under key 'abcd' in map.",
-      "i": 1
+      "codeLine": 4,
+      "note": "Mapped abcd: [root/a/1.txt], efgh: [root/a/2.txt]",
+      "array": [
+        "root/a/1.txt",
+        "root/a/2.txt"
+      ],
+      "curr": 1
     },
     {
-      "codeLine": 7,
-      "note": "Extract content 'efgh' from the second file.",
-      "i": 2,
+      "codeLine": 2,
+      "note": "Processing path: root/c 3.txt(abcd)",
+      "array": [
+        "root/a/1.txt",
+        "root/c/3.txt"
+      ],
+      "curr": 3
+    },
+    {
+      "codeLine": 4,
+      "note": "Updated abcd: [root/a/1.txt, root/c/3.txt]",
+      "array": [
+        "root/a/1.txt",
+        "root/c/3.txt"
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Processing path: root/c/d 4.txt(efgh)",
+      "array": [
+        "root/a/2.txt",
+        "root/c/d/4.txt"
+      ],
+      "curr": 4
+    },
+    {
+      "codeLine": 4,
+      "note": "Updated efgh: [root/a/2.txt, root/c/d/4.txt]",
+      "array": [
+        "root/a/2.txt",
+        "root/c/d/4.txt"
+      ],
       "curr": 2
     },
     {
-      "codeLine": 10,
-      "note": "Store 'root/a/2.txt' under key 'efgh' in map.",
-      "i": 2
+      "codeLine": 2,
+      "note": "Processing path: root 4.txt(efgh)",
+      "array": [
+        "root/a/2.txt",
+        "root/c/d/4.txt",
+        "root/4.txt"
+      ],
+      "curr": 4
+    },
+    {
+      "codeLine": 4,
+      "note": "Updated efgh: [root/a/2.txt, root/c/d/4.txt, root/4.txt]",
+      "array": [
+        "root/a/2.txt",
+        "root/c/d/4.txt",
+        "root/4.txt"
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Filtering results: returning groups with more than one file.",
+      "array": [
+        [
+          "root/a/2.txt",
+          "root/c/d/4.txt",
+          "root/4.txt"
+        ],
+        [
+          "root/a/1.txt",
+          "root/c/3.txt"
+        ]
+      ]
     }
   ]
 }

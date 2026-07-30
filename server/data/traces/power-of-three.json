@@ -6,54 +6,80 @@
     "Math",
     "Recursion"
   ],
-  "description": "Determine if an integer is a power of three.",
+  "description": "Check if an integer n is a power of three using iterative division.",
   "target": 27,
-  "pseudocode": "1: if (n <= 0) return false\n2: while (n % 3 === 0) {\n3:   n = n / 3\n4: }\n5: return n === 1",
+  "pseudocode": "1. If n <= 0 return false\n2. While n % 3 == 0\n3.   n = n / 3\n4. Return n == 1",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Check if 27 is greater than 0.",
-      "i": 27
+      "note": "Check if n is positive.",
+      "array": [
+        27
+      ]
     },
     {
       "codeLine": 2,
-      "note": "27 % 3 is 0, enter while loop.",
-      "i": 27
+      "note": "Is 27 divisible by 3?",
+      "array": [
+        27
+      ],
+      "curr": 27
     },
     {
       "codeLine": 3,
-      "note": "n = 27 / 3 = 9.",
-      "i": 9
+      "note": "27 / 3 = 9",
+      "array": [
+        9
+      ],
+      "curr": 27
     },
     {
       "codeLine": 2,
-      "note": "9 % 3 is 0, continue loop.",
-      "i": 9
+      "note": "Is 9 divisible by 3?",
+      "array": [
+        9
+      ],
+      "curr": 9
     },
     {
       "codeLine": 3,
-      "note": "n = 9 / 3 = 3.",
-      "i": 3
+      "note": "9 / 3 = 3",
+      "array": [
+        3
+      ],
+      "curr": 9
     },
     {
       "codeLine": 2,
-      "note": "3 % 3 is 0, continue loop.",
-      "i": 3
+      "note": "Is 3 divisible by 3?",
+      "array": [
+        3
+      ],
+      "curr": 3
     },
     {
       "codeLine": 3,
-      "note": "n = 3 / 3 = 1.",
-      "i": 1
+      "note": "3 / 3 = 1",
+      "array": [
+        1
+      ],
+      "curr": 3
     },
     {
       "codeLine": 2,
-      "note": "1 % 3 is 1, exit while loop.",
-      "i": 1
+      "note": "1 is not divisible by 3, exit loop.",
+      "array": [
+        1
+      ],
+      "curr": 1
     },
     {
-      "codeLine": 5,
-      "note": "Check if n equals 1. Return true.",
-      "i": 1
+      "codeLine": 4,
+      "note": "Check if n equals 1. Returns true.",
+      "array": [
+        1
+      ],
+      "curr": 1
     }
   ]
 }

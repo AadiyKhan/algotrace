@@ -5,64 +5,73 @@
   "tags": [
     "Array",
     "Math",
-    "Combinatorics",
-    "Greedy"
+    "Combinatorics"
   ],
-  "description": "Construct the kth lexicographically smallest sequence of H (horizontal) and V (vertical) moves to reach a destination.",
-  "target": "k=3",
-  "pseudocode": "1. count = combinations(h + v, h)\n2. res = ''\n3. for i from 0 to h + v - 1:\n4.   if h > 0:\n5.     count_if_H = combinations(h + v - 1, h - 1)\n6.     if k <= count_if_H:\n7.       res += 'H', h--\n8.     else:\n9.       k -= count_if_H, res += 'V', v--\n10.  else: res += 'V', v--",
+  "description": "Find the kth lexicographically smallest path from (0,0) to (row, col) using H and V moves.",
+  "target": 1,
+  "pseudocode": "1. total_steps = row + col\n2. H = col, V = row\n3. For i in 0 to total_steps - 1:\n4.   If H > 0:\n5.     count = combinations(H-1 + V, V)\n6.     If k <= count: result += 'H', H--\n7.     Else: k -= count, result += 'V', V--",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize destination (r=2, c=2) with h=2, v=2, k=3",
+      "note": "Initialize total steps = 2 + 3 = 5, H=3, V=2, k=1",
+      "array": [],
+      "i": 0,
+      "curr": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Step 0: H=3 > 0. Combinations(2+2, 2) = 6. k=1 <= 6 is True.",
       "array": [
+        "H"
+      ],
+      "i": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Step 1: H=2 > 0. Combinations(1+2, 2) = 3. k=1 <= 3 is True.",
+      "array": [
+        "H",
+        "H"
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Step 2: H=1 > 0. Combinations(0+2, 2) = 1. k=1 <= 1 is True.",
+      "array": [
+        "H",
+        "H",
+        "H"
+      ],
+      "i": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 7,
+      "note": "Step 3: H=0. Must pick 'V'. k remains 1.",
+      "array": [
+        "H",
+        "H",
+        "H",
+        "V"
+      ],
+      "i": 3,
+      "curr": 3
+    },
+    {
+      "codeLine": 7,
+      "note": "Step 4: H=0. Must pick 'V'. Final result reached.",
+      "array": [
+        "H",
         "H",
         "H",
         "V",
         "V"
-      ]
-    },
-    {
-      "codeLine": 4,
-      "note": "Can we place 'H'? Check combinations(3, 1) = 3",
-      "i": 0,
-      "curr": "H"
-    },
-    {
-      "codeLine": 6,
-      "note": "k=3 is <= 3. Place 'H'. Remaining: h=1, v=2",
-      "i": 0,
-      "curr": "H"
-    },
-    {
-      "codeLine": 4,
-      "note": "Can we place 'H'? Check combinations(2, 0) = 1",
-      "i": 1,
-      "curr": "H"
-    },
-    {
-      "codeLine": 9,
-      "note": "k=3 is > 1. Place 'V', subtract 1 from k. Remaining: h=1, v=1, k=2",
-      "i": 1,
-      "curr": "V"
-    },
-    {
-      "codeLine": 4,
-      "note": "Can we place 'H'? Check combinations(1, 0) = 1",
-      "i": 2,
-      "curr": "H"
-    },
-    {
-      "codeLine": 9,
-      "note": "k=2 is > 1. Place 'V', subtract 1 from k. Remaining: h=1, v=0, k=1",
-      "i": 2,
-      "curr": "V"
-    },
-    {
-      "codeLine": 10,
-      "note": "No 'H' left, must place 'V'",
-      "i": 3,
-      "curr": "V"
+      ],
+      "i": 4,
+      "curr": 4
     }
   ]
 }

@@ -1,0 +1,121 @@
+{
+  "title": "Longest Happy String",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Greedy",
+    "String",
+    "Heap"
+  ],
+  "description": "Construct the longest possible string given counts of 'a', 'b', and 'c' without three consecutive identical characters.",
+  "target": "a:1, b:1, c:7",
+  "pseudocode": "1: while (true) {\n2:   sort counts by frequency;\n3:   if (can append most frequent) {\n4:     append to result;\n5:   } else if (can append second most frequent) {\n6:     append to result;\n7:   } else break;\n8: }",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Sort counts: c=7, b=1, a=1",
+      "array": [
+        "c",
+        "c",
+        "c",
+        "c",
+        "c",
+        "c",
+        "c",
+        "b",
+        "a"
+      ],
+      "curr": 7
+    },
+    {
+      "codeLine": 4,
+      "note": "Append two 'c's to avoid triple consecutive",
+      "array": [
+        "c",
+        "c"
+      ],
+      "i": "c=5, b=1, a=1"
+    },
+    {
+      "codeLine": 5,
+      "note": "Append one 'b' because 'c' cannot be used",
+      "array": [
+        "c",
+        "c",
+        "b"
+      ],
+      "i": "c=5, b=0, a=1"
+    },
+    {
+      "codeLine": 4,
+      "note": "Append two 'c's",
+      "array": [
+        "c",
+        "c",
+        "b",
+        "c",
+        "c"
+      ],
+      "i": "c=3, b=0, a=1"
+    },
+    {
+      "codeLine": 5,
+      "note": "Append one 'a' because 'c' cannot be used",
+      "array": [
+        "c",
+        "c",
+        "b",
+        "c",
+        "c",
+        "a"
+      ],
+      "i": "c=3, b=0, a=0"
+    },
+    {
+      "codeLine": 4,
+      "note": "Append two 'c's",
+      "array": [
+        "c",
+        "c",
+        "b",
+        "c",
+        "c",
+        "a",
+        "c",
+        "c"
+      ],
+      "i": "c=1, b=0, a=0"
+    },
+    {
+      "codeLine": 4,
+      "note": "Append remaining 'c'",
+      "array": [
+        "c",
+        "c",
+        "b",
+        "c",
+        "c",
+        "a",
+        "c",
+        "c",
+        "c"
+      ],
+      "i": "c=0, b=0, a=0"
+    },
+    {
+      "codeLine": 7,
+      "note": "No more characters, break",
+      "array": [
+        "c",
+        "c",
+        "b",
+        "c",
+        "c",
+        "a",
+        "c",
+        "c",
+        "c"
+      ]
+    }
+  ]
+}

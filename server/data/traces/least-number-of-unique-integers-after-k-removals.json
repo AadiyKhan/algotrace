@@ -1,0 +1,52 @@
+{
+  "title": "Least Number of Unique Integers after K Removals",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "Greedy",
+    "Sorting"
+  ],
+  "description": "Remove k elements to minimize the number of unique integers remaining in the array.",
+  "target": 1,
+  "pseudocode": "1. count frequencies of each element\n2. extract frequencies and sort them ascending\n3. subtract from k while k >= freq\n4. return remaining count of frequencies",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Count frequencies: {5: 2, 4: 1}",
+      "array": [
+        5,
+        5,
+        4
+      ],
+      "curr": 5
+    },
+    {
+      "codeLine": 2,
+      "note": "Sorted frequencies: [1, 2]",
+      "array": [
+        1,
+        2
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "k=1, freq=1. Removing element 4. k becomes 0.",
+      "array": [
+        2
+      ],
+      "i": 0,
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Remaining unique integers: 1 (the element 5).",
+      "array": [
+        2
+      ],
+      "curr": 1
+    }
+  ]
+}

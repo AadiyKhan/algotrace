@@ -1,0 +1,79 @@
+{
+  "title": "Maximum Number of Words You Can Type",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "String",
+    "Hash Table"
+  ],
+  "description": "Count the number of words that can be typed given a set of broken letters.",
+  "target": "ad",
+  "pseudocode": "1. Split text into words\n2. Initialize count = 0\n3. For each word in words:\n4.   Check if any char in word is in brokenLetters\n5.   If not, increment count\n6. Return count",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Splitting 'hello world' into words list.",
+      "array": [
+        "hello",
+        "world"
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Processing first word: 'hello'. Checking if any char is in 'ad'.",
+      "array": [
+        "hello",
+        "world"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Checking 'hello': None of 'h','e','l','l','o' are in 'ad'. Word is typable.",
+      "array": [
+        "hello",
+        "world"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Word 'hello' is typable. Increment count to 1.",
+      "array": [
+        "hello",
+        "world"
+      ],
+      "i": 0,
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Processing second word: 'world'. Checking if any char is in 'ad'.",
+      "array": [
+        "hello",
+        "world"
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Checking 'world': Char 'd' is in 'ad'. Word is not typable.",
+      "array": [
+        "hello",
+        "world"
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Finished loop. Returning count 1.",
+      "array": [
+        "hello",
+        "world"
+      ],
+      "i": 1,
+      "curr": 1
+    }
+  ]
+}

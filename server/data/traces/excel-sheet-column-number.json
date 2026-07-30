@@ -6,39 +6,35 @@
     "Math",
     "String"
   ],
-  "description": "Convert a column title as it appears in an Excel sheet to its corresponding column number.",
-  "target": 28,
-  "pseudocode": "let res = 0;\nfor (let i = 0; i < s.length; i++) {\n  let digit = s.charCodeAt(i) - 64;\n  res = res * 26 + digit;\n}\nreturn res;",
+  "description": "Convert an Excel column title to its corresponding column number.",
+  "target": 1,
+  "pseudocode": "1. result = 0\n2. for char in columnTitle:\n3.   result = result * 26 + (char - 'A' + 1)\n4. return result",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize result to 0",
-      "i": null
+      "note": "Initialize result to 0.",
+      "array": [
+        "A"
+      ],
+      "result": 0,
+      "curr": 0
     },
     {
       "codeLine": 3,
-      "note": "Process character 'A': charCode is 65, so digit = 1",
-      "i": 0
+      "note": "Process character 'A': result = 0 * 26 + (65 - 65 + 1) = 1.",
+      "array": [
+        "A"
+      ],
+      "result": 1,
+      "curr": 0
     },
     {
       "codeLine": 4,
-      "note": "Update res: 0 * 26 + 1 = 1",
-      "i": 0
-    },
-    {
-      "codeLine": 3,
-      "note": "Process character 'B': charCode is 66, so digit = 2",
-      "i": 1
-    },
-    {
-      "codeLine": 4,
-      "note": "Update res: 1 * 26 + 2 = 28",
-      "i": 1
-    },
-    {
-      "codeLine": 6,
-      "note": "Return final result 28",
-      "i": 1
+      "note": "Return final result.",
+      "array": [
+        "A"
+      ],
+      "result": 1
     }
   ]
 }

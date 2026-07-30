@@ -1,0 +1,134 @@
+{
+  "title": "Lucky Numbers in a Matrix",
+  "difficulty": "Easy",
+  "type": "matrix",
+  "tags": [
+    "Array",
+    "Matrix"
+  ],
+  "description": "Find all lucky numbers in a matrix. A lucky number is an element of the matrix such that it is the minimum element in its row and maximum in its column.",
+  "pseudocode": "1. minRow = find min of each row\n2. maxCol = find max of each column\n3. for each cell (r, c):\n4.   if matrix[r][c] == minRow[r] and matrix[r][c] == maxCol[c]:\n5.     return matrix[r][c]",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Calculate minimums for each row: [3, 9, 7]",
+      "matrix": [
+        [
+          3,
+          7,
+          8
+        ],
+        [
+          9,
+          11,
+          13
+        ],
+        [
+          15,
+          16,
+          17
+        ]
+      ],
+      "curr": [
+        3,
+        9
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Calculate maximums for each column: [15, 16, 17]",
+      "matrix": [
+        [
+          3,
+          7,
+          8
+        ],
+        [
+          9,
+          11,
+          13
+        ],
+        [
+          15,
+          16,
+          17
+        ]
+      ],
+      "curr": [
+        15,
+        16
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Checking cell (0, 0) - value 3. Not a lucky number.",
+      "curr": [
+        0,
+        0
+      ],
+      "matrix": [
+        [
+          3,
+          7,
+          8
+        ],
+        [
+          9,
+          11,
+          13
+        ],
+        [
+          15,
+          16,
+          17
+        ]
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Checking cell (2, 0) - value 15. Min of row 2 (15) and Max of col 0 (15). Match!",
+      "curr": [
+        2,
+        0
+      ],
+      "matrix": [
+        [
+          3,
+          7,
+          8
+        ],
+        [
+          9,
+          11,
+          13
+        ],
+        [
+          15,
+          16,
+          17
+        ]
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Found lucky number: 15",
+      "matrix": [
+        [
+          3,
+          7,
+          8
+        ],
+        [
+          9,
+          11,
+          13
+        ],
+        [
+          15,
+          16,
+          17
+        ]
+      ]
+    }
+  ]
+}

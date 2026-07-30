@@ -1,5 +1,5 @@
 {
-  "title": "3sum",
+  "title": "3Sum",
   "difficulty": "Medium",
   "type": "array",
   "tags": [
@@ -7,495 +7,53 @@
     "Two Pointers",
     "Sorting"
   ],
-  "description": "Find all unique triplets in the array 'nums' such that their sum is zero. The solution set must not contain duplicate triplets.",
+  "description": "Find all unique triplets in the array which sum to zero.",
   "target": 0,
-  "pseudocode": "function threeSum(nums) {\n  let results = [];\n  if (nums.length < 3) {\n    return results;\n  }\n  nums.sort((a, b) => a - b); // Sort the array\n\n  for (let i = 0; i < nums.length - 2; i++) {\n    if (i > 0 && nums[i] === nums[i-1]) { // Skip duplicate for i\n      continue;\n    }\n\n    let left = i + 1;\n    let right = nums.length - 1;\n    let target = -nums[i]; // Target sum for the two pointers\n\n    while (left < right) {\n      let current_sum = nums[left] + nums[right];\n\n      if (current_sum === target) {\n        results.push([nums[i], nums[left], nums[right]]);\n        // Skip duplicates for left and right pointers\n        while (left < right && nums[left] === nums[left+1]) {\n          left++;\n        }\n        while (left < right && nums[right] === nums[right-1]) {\n          right--;\n        }\n        left++;\n        right--;\n      } else if (current_sum < target) {\n        left++;\n      } else { // current_sum > target\n        right--;\n      }\n    }\n  }\n  return results;\n}",
+  "pseudocode": "1. Sort(nums)\n2. For i from 0 to n-3:\n3.   If i > 0 and nums[i] == nums[i-1] continue\n4.   left = i + 1, right = n - 1\n5.   While left < right:\n6.     sum = nums[i] + nums[left] + nums[right]\n7.     If sum == 0: add triplet, increment left, decrement right\n8.     Else if sum < 0: increment left\n9.     Else: decrement right",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Start threeSum function."
+      "note": "Sort the input array to enable two-pointer approach.",
+      "array": [
+        -4,
+        -1,
+        -1,
+        0,
+        1,
+        2
+      ]
     },
     {
       "codeLine": 2,
-      "note": "Initialize an empty list to store the results.",
+      "note": "Starting main loop at i=0, nums[i]=-4.",
       "array": [
+        -4,
+        -1,
         -1,
         0,
         1,
-        2,
-        -1,
-        -4
-      ]
+        2
+      ],
+      "i": 0
     },
     {
-      "codeLine": 3,
-      "note": "Check if the array has at least 3 elements. (6 >= 3) is true."
+      "codeLine": 4,
+      "note": "Initialize two pointers: left=1, right=5.",
+      "array": [
+        -4,
+        -1,
+        -1,
+        0,
+        1,
+        2
+      ],
+      "i": 0,
+      "curr": 1,
+      "prev": 5
     },
     {
       "codeLine": 6,
-      "note": "Sort the input array to efficiently use the two-pointer approach and handle duplicates.",
-      "array": [
-        -4,
-        -1,
-        -1,
-        0,
-        1,
-        2
-      ]
-    },
-    {
-      "codeLine": 8,
-      "note": "Start the outer loop with 'i' for the first element of the triplet.",
-      "i": 0,
-      "array": [
-        -4,
-        -1,
-        -1,
-        0,
-        1,
-        2
-      ]
-    },
-    {
-      "codeLine": 9,
-      "note": "Check for duplicates of 'i'. Since i=0, there's no previous element to compare. (i > 0) is false."
-    },
-    {
-      "codeLine": 13,
-      "note": "Initialize the 'left' pointer to i + 1.",
-      "i": 0,
-      "left": 1,
-      "array": [
-        -4,
-        -1,
-        -1,
-        0,
-        1,
-        2
-      ]
-    },
-    {
-      "codeLine": 14,
-      "note": "Initialize the 'right' pointer to the last element of the array.",
-      "i": 0,
-      "left": 1,
-      "right": 5,
-      "array": [
-        -4,
-        -1,
-        -1,
-        0,
-        1,
-        2
-      ]
-    },
-    {
-      "codeLine": 15,
-      "note": "Calculate the 'target' sum for the two pointers (left + right) as -nums[i]. (-(-4) = 4).",
-      "i": 0,
-      "left": 1,
-      "right": 5,
-      "target": 4,
-      "array": [
-        -4,
-        -1,
-        -1,
-        0,
-        1,
-        2
-      ]
-    },
-    {
-      "codeLine": 17,
-      "note": "Start the inner two-pointer loop. Condition (left < right) (1 < 5) is true.",
-      "i": 0,
-      "left": 1,
-      "right": 5,
-      "target": 4,
-      "array": [
-        -4,
-        -1,
-        -1,
-        0,
-        1,
-        2
-      ]
-    },
-    {
-      "codeLine": 18,
-      "note": "Calculate the current sum of elements at 'left' and 'right': nums[1] + nums[5] = -1 + 2 = 1.",
-      "i": 0,
-      "left": 1,
-      "right": 5,
-      "current_sum": 1,
-      "target": 4,
-      "array": [
-        -4,
-        -1,
-        -1,
-        0,
-        1,
-        2
-      ]
-    },
-    {
-      "codeLine": 31,
-      "note": "The current sum (1) is less than the target (4). Increment 'left' to increase the sum.",
-      "i": 0,
-      "left": 1,
-      "right": 5,
-      "current_sum": 1,
-      "target": 4,
-      "array": [
-        -4,
-        -1,
-        -1,
-        0,
-        1,
-        2
-      ]
-    },
-    {
-      "codeLine": 32,
-      "note": "Increment 'left' pointer.",
-      "i": 0,
-      "left": 2,
-      "right": 5,
-      "array": [
-        -4,
-        -1,
-        -1,
-        0,
-        1,
-        2
-      ]
-    },
-    {
-      "codeLine": 17,
-      "note": "Continue inner loop. Condition (left < right) (2 < 5) is true.",
-      "i": 0,
-      "left": 2,
-      "right": 5,
-      "target": 4,
-      "array": [
-        -4,
-        -1,
-        -1,
-        0,
-        1,
-        2
-      ]
-    },
-    {
-      "codeLine": 18,
-      "note": "Calculate current sum: nums[2] + nums[5] = -1 + 2 = 1.",
-      "i": 0,
-      "left": 2,
-      "right": 5,
-      "current_sum": 1,
-      "target": 4,
-      "array": [
-        -4,
-        -1,
-        -1,
-        0,
-        1,
-        2
-      ]
-    },
-    {
-      "codeLine": 31,
-      "note": "The current sum (1) is less than the target (4). Increment 'left' to increase the sum.",
-      "i": 0,
-      "left": 2,
-      "right": 5,
-      "current_sum": 1,
-      "target": 4,
-      "array": [
-        -4,
-        -1,
-        -1,
-        0,
-        1,
-        2
-      ]
-    },
-    {
-      "codeLine": 32,
-      "note": "Increment 'left' pointer.",
-      "i": 0,
-      "left": 3,
-      "right": 5,
-      "array": [
-        -4,
-        -1,
-        -1,
-        0,
-        1,
-        2
-      ]
-    },
-    {
-      "codeLine": 17,
-      "note": "Continue inner loop. Condition (left < right) (3 < 5) is true.",
-      "i": 0,
-      "left": 3,
-      "right": 5,
-      "target": 4,
-      "array": [
-        -4,
-        -1,
-        -1,
-        0,
-        1,
-        2
-      ]
-    },
-    {
-      "codeLine": 18,
-      "note": "Calculate current sum: nums[3] + nums[5] = 0 + 2 = 2.",
-      "i": 0,
-      "left": 3,
-      "right": 5,
-      "current_sum": 2,
-      "target": 4,
-      "array": [
-        -4,
-        -1,
-        -1,
-        0,
-        1,
-        2
-      ]
-    },
-    {
-      "codeLine": 31,
-      "note": "The current sum (2) is less than the target (4). Increment 'left' to increase the sum.",
-      "i": 0,
-      "left": 3,
-      "right": 5,
-      "current_sum": 2,
-      "target": 4,
-      "array": [
-        -4,
-        -1,
-        -1,
-        0,
-        1,
-        2
-      ]
-    },
-    {
-      "codeLine": 32,
-      "note": "Increment 'left' pointer.",
-      "i": 0,
-      "left": 4,
-      "right": 5,
-      "array": [
-        -4,
-        -1,
-        -1,
-        0,
-        1,
-        2
-      ]
-    },
-    {
-      "codeLine": 17,
-      "note": "Continue inner loop. Condition (left < right) (4 < 5) is true.",
-      "i": 0,
-      "left": 4,
-      "right": 5,
-      "target": 4,
-      "array": [
-        -4,
-        -1,
-        -1,
-        0,
-        1,
-        2
-      ]
-    },
-    {
-      "codeLine": 18,
-      "note": "Calculate current sum: nums[4] + nums[5] = 1 + 2 = 3.",
-      "i": 0,
-      "left": 4,
-      "right": 5,
-      "current_sum": 3,
-      "target": 4,
-      "array": [
-        -4,
-        -1,
-        -1,
-        0,
-        1,
-        2
-      ]
-    },
-    {
-      "codeLine": 31,
-      "note": "The current sum (3) is less than the target (4). Increment 'left' to increase the sum.",
-      "i": 0,
-      "left": 4,
-      "right": 5,
-      "current_sum": 3,
-      "target": 4,
-      "array": [
-        -4,
-        -1,
-        -1,
-        0,
-        1,
-        2
-      ]
-    },
-    {
-      "codeLine": 32,
-      "note": "Increment 'left' pointer.",
-      "i": 0,
-      "left": 5,
-      "right": 5,
-      "array": [
-        -4,
-        -1,
-        -1,
-        0,
-        1,
-        2
-      ]
-    },
-    {
-      "codeLine": 17,
-      "note": "Inner loop condition (left < right) (5 < 5) is false. Inner loop ends."
-    },
-    {
-      "codeLine": 8,
-      "note": "Move to the next 'i' in the outer loop.",
-      "i": 1,
-      "array": [
-        -4,
-        -1,
-        -1,
-        0,
-        1,
-        2
-      ]
-    },
-    {
-      "codeLine": 9,
-      "note": "Check for duplicates of 'i'. (i > 0 && nums[i] === nums[i-1]) is (1 > 0 && nums[1](-1) === nums[0](-4)), which is false. Not a duplicate.",
-      "i": 1,
-      "array": [
-        -4,
-        -1,
-        -1,
-        0,
-        1,
-        2
-      ]
-    },
-    {
-      "codeLine": 13,
-      "note": "Initialize the 'left' pointer to i + 1.",
-      "i": 1,
-      "left": 2,
-      "array": [
-        -4,
-        -1,
-        -1,
-        0,
-        1,
-        2
-      ]
-    },
-    {
-      "codeLine": 14,
-      "note": "Initialize the 'right' pointer to the last element of the array.",
-      "i": 1,
-      "left": 2,
-      "right": 5,
-      "array": [
-        -4,
-        -1,
-        -1,
-        0,
-        1,
-        2
-      ]
-    },
-    {
-      "codeLine": 15,
-      "note": "Calculate the 'target' sum: -nums[i] (-(-1) = 1).",
-      "i": 1,
-      "left": 2,
-      "right": 5,
-      "target": 1,
-      "array": [
-        -4,
-        -1,
-        -1,
-        0,
-        1,
-        2
-      ]
-    },
-    {
-      "codeLine": 17,
-      "note": "Start inner two-pointer loop. Condition (left < right) (2 < 5) is true.",
-      "i": 1,
-      "left": 2,
-      "right": 5,
-      "target": 1,
-      "array": [
-        -4,
-        -1,
-        -1,
-        0,
-        1,
-        2
-      ]
-    },
-    {
-      "codeLine": 18,
-      "note": "Calculate current sum: nums[2] + nums[5] = -1 + 2 = 1.",
-      "i": 1,
-      "left": 2,
-      "right": 5,
-      "current_sum": 1,
-      "target": 1,
-      "array": [
-        -4,
-        -1,
-        -1,
-        0,
-        1,
-        2
-      ]
-    },
-    {
-      "codeLine": 20,
-      "note": "The current sum (1) equals the target (1). A triplet is found!",
-      "i": 1,
-      "left": 2,
-      "right": 5,
-      "current_sum": 1,
-      "target": 1,
-      "array": [
-        -4,
-        -1,
-        -1,
-        0,
-        1,
-        2
-      ]
-    },
-    {
-      "codeLine": 21,
-      "note": "Add the triplet [nums[i], nums[left], nums[right]] ([-1, -1, 2]) to results.",
-      "i": 1,
-      "left": 2,
-      "right": 5,
+      "note": "Calculate sum: -4 + -1 + 2 = -3. Sum < 0, move left pointer.",
       "array": [
         -4,
         -1,
@@ -504,130 +62,12 @@
         1,
         2
       ],
-      "results": [
-        [
-          -1,
-          -1,
-          2
-        ]
-      ]
+      "i": 0,
+      "curr": 2
     },
     {
-      "codeLine": 23,
-      "note": "Skip duplicate elements for the 'left' pointer. (left < right && nums[left] === nums[left+1]) is (2 < 5 && nums[2](-1) === nums[3](0)), which is false. No skip.",
-      "i": 1,
-      "left": 2,
-      "right": 5,
-      "array": [
-        -4,
-        -1,
-        -1,
-        0,
-        1,
-        2
-      ]
-    },
-    {
-      "codeLine": 26,
-      "note": "Skip duplicate elements for the 'right' pointer. (left < right && nums[right] === nums[right-1]) is (2 < 5 && nums[5](2) === nums[4](1)), which is false. No skip.",
-      "i": 1,
-      "left": 2,
-      "right": 5,
-      "array": [
-        -4,
-        -1,
-        -1,
-        0,
-        1,
-        2
-      ]
-    },
-    {
-      "codeLine": 29,
-      "note": "Increment 'left' pointer to find the next distinct pair.",
-      "i": 1,
-      "left": 3,
-      "right": 5,
-      "array": [
-        -4,
-        -1,
-        -1,
-        0,
-        1,
-        2
-      ]
-    },
-    {
-      "codeLine": 30,
-      "note": "Decrement 'right' pointer to find the next distinct pair.",
-      "i": 1,
-      "left": 3,
-      "right": 4,
-      "array": [
-        -4,
-        -1,
-        -1,
-        0,
-        1,
-        2
-      ]
-    },
-    {
-      "codeLine": 17,
-      "note": "Continue inner loop. Condition (left < right) (3 < 4) is true.",
-      "i": 1,
-      "left": 3,
-      "right": 4,
-      "target": 1,
-      "array": [
-        -4,
-        -1,
-        -1,
-        0,
-        1,
-        2
-      ]
-    },
-    {
-      "codeLine": 18,
-      "note": "Calculate current sum: nums[3] + nums[4] = 0 + 1 = 1.",
-      "i": 1,
-      "left": 3,
-      "right": 4,
-      "current_sum": 1,
-      "target": 1,
-      "array": [
-        -4,
-        -1,
-        -1,
-        0,
-        1,
-        2
-      ]
-    },
-    {
-      "codeLine": 20,
-      "note": "The current sum (1) equals the target (1). Another triplet is found!",
-      "i": 1,
-      "left": 3,
-      "right": 4,
-      "current_sum": 1,
-      "target": 1,
-      "array": [
-        -4,
-        -1,
-        -1,
-        0,
-        1,
-        2
-      ]
-    },
-    {
-      "codeLine": 21,
-      "note": "Add the triplet [nums[i], nums[left], nums[right]] ([-1, 0, 1]) to results.",
-      "i": 1,
-      "left": 3,
-      "right": 4,
+      "codeLine": 9,
+      "note": "Sum -4 + -1 + 2 = -3 < 0, increment left.",
       "array": [
         -4,
         -1,
@@ -636,25 +76,40 @@
         1,
         2
       ],
-      "results": [
-        [
-          -1,
-          -1,
-          2
-        ],
-        [
-          -1,
-          0,
-          1
-        ]
-      ]
+      "i": 0,
+      "curr": 3
     },
     {
-      "codeLine": 23,
-      "note": "Skip duplicate elements for the 'left' pointer. (left < right && nums[left] === nums[left+1]) is (3 < 4 && nums[3](0) === nums[4](1)), which is false. No skip.",
+      "codeLine": 2,
+      "note": "Move to i=1, nums[1]=-1.",
+      "array": [
+        -4,
+        -1,
+        -1,
+        0,
+        1,
+        2
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Initialize left=2, right=5.",
+      "array": [
+        -4,
+        -1,
+        -1,
+        0,
+        1,
+        2
+      ],
       "i": 1,
-      "left": 3,
-      "right": 4,
+      "curr": 2,
+      "prev": 5
+    },
+    {
+      "codeLine": 7,
+      "note": "Sum: -1 + -1 + 2 = 0. Found triplet [-1, -1, 2]. Move pointers.",
       "array": [
         -4,
         -1,
@@ -662,14 +117,14 @@
         0,
         1,
         2
-      ]
-    },
-    {
-      "codeLine": 26,
-      "note": "Skip duplicate elements for the 'right' pointer. (left < right && nums[right] === nums[right-1]) is (3 < 4 && nums[4](1) === nums[3](0)), which is false. No skip.",
+      ],
       "i": 1,
-      "left": 3,
-      "right": 4,
+      "curr": 3,
+      "prev": 4
+    },
+    {
+      "codeLine": 7,
+      "note": "Sum: -1 + 0 + 1 = 0. Found triplet [-1, 0, 1].",
       "array": [
         -4,
         -1,
@@ -677,244 +132,11 @@
         0,
         1,
         2
-      ]
-    },
-    {
-      "codeLine": 29,
-      "note": "Increment 'left' pointer.",
+      ],
       "i": 1,
-      "left": 4,
-      "right": 4,
-      "array": [
-        -4,
-        -1,
-        -1,
-        0,
-        1,
-        2
-      ]
-    },
-    {
-      "codeLine": 30,
-      "note": "Decrement 'right' pointer.",
-      "i": 1,
-      "left": 4,
-      "right": 3,
-      "array": [
-        -4,
-        -1,
-        -1,
-        0,
-        1,
-        2
-      ]
-    },
-    {
-      "codeLine": 17,
-      "note": "Inner loop condition (left < right) (4 < 3) is false. Inner loop ends."
-    },
-    {
-      "codeLine": 8,
-      "note": "Move to the next 'i' in the outer loop.",
-      "i": 2,
-      "array": [
-        -4,
-        -1,
-        -1,
-        0,
-        1,
-        2
-      ]
-    },
-    {
-      "codeLine": 9,
-      "note": "Check for duplicates of 'i'. (i > 0 && nums[i] === nums[i-1]) is (2 > 0 && nums[2](-1) === nums[1](-1)), which is true. Duplicate found.",
-      "i": 2,
-      "array": [
-        -4,
-        -1,
-        -1,
-        0,
-        1,
-        2
-      ]
-    },
-    {
-      "codeLine": 10,
-      "note": "Skip this duplicate 'i' using 'continue'."
-    },
-    {
-      "codeLine": 8,
-      "note": "Move to the next 'i' in the outer loop.",
-      "i": 3,
-      "array": [
-        -4,
-        -1,
-        -1,
-        0,
-        1,
-        2
-      ]
-    },
-    {
-      "codeLine": 9,
-      "note": "Check for duplicates of 'i'. (i > 0 && nums[i] === nums[i-1]) is (3 > 0 && nums[3](0) === nums[2](-1)), which is false. Not a duplicate.",
-      "i": 3,
-      "array": [
-        -4,
-        -1,
-        -1,
-        0,
-        1,
-        2
-      ]
-    },
-    {
-      "codeLine": 13,
-      "note": "Initialize the 'left' pointer to i + 1.",
-      "i": 3,
-      "left": 4,
-      "array": [
-        -4,
-        -1,
-        -1,
-        0,
-        1,
-        2
-      ]
-    },
-    {
-      "codeLine": 14,
-      "note": "Initialize the 'right' pointer to the last element of the array.",
-      "i": 3,
-      "left": 4,
-      "right": 5,
-      "array": [
-        -4,
-        -1,
-        -1,
-        0,
-        1,
-        2
-      ]
-    },
-    {
-      "codeLine": 15,
-      "note": "Calculate the 'target' sum: -nums[i] (-(0) = 0).",
-      "i": 3,
-      "left": 4,
-      "right": 5,
-      "target": 0,
-      "array": [
-        -4,
-        -1,
-        -1,
-        0,
-        1,
-        2
-      ]
-    },
-    {
-      "codeLine": 17,
-      "note": "Start inner two-pointer loop. Condition (left < right) (4 < 5) is true.",
-      "i": 3,
-      "left": 4,
-      "right": 5,
-      "target": 0,
-      "array": [
-        -4,
-        -1,
-        -1,
-        0,
-        1,
-        2
-      ]
-    },
-    {
-      "codeLine": 18,
-      "note": "Calculate current sum: nums[4] + nums[5] = 1 + 2 = 3.",
-      "i": 3,
-      "left": 4,
-      "right": 5,
-      "current_sum": 3,
-      "target": 0,
-      "array": [
-        -4,
-        -1,
-        -1,
-        0,
-        1,
-        2
-      ]
-    },
-    {
-      "codeLine": 33,
-      "note": "The current sum (3) is greater than the target (0). Decrement 'right' to decrease the sum.",
-      "i": 3,
-      "left": 4,
-      "right": 5,
-      "current_sum": 3,
-      "target": 0,
-      "array": [
-        -4,
-        -1,
-        -1,
-        0,
-        1,
-        2
-      ]
-    },
-    {
-      "codeLine": 34,
-      "note": "Decrement 'right' pointer.",
-      "i": 3,
-      "left": 4,
-      "right": 4,
-      "array": [
-        -4,
-        -1,
-        -1,
-        0,
-        1,
-        2
-      ]
-    },
-    {
-      "codeLine": 17,
-      "note": "Inner loop condition (left < right) (4 < 4) is false. Inner loop ends."
-    },
-    {
-      "codeLine": 8,
-      "note": "Outer loop condition (i < nums.length - 2) is (3 < 6 - 2 = 4), which is true. Increment i to 4.",
-      "i": 4,
-      "array": [
-        -4,
-        -1,
-        -1,
-        0,
-        1,
-        2
-      ]
-    },
-    {
-      "codeLine": 8,
-      "note": "Outer loop condition (i < nums.length - 2) is (4 < 6 - 2 = 4), which is false. Outer loop ends."
-    },
-    {
-      "codeLine": 38,
-      "note": "All elements have been processed. Return the collected unique triplets.",
-      "results": [
-        [
-          -1,
-          -1,
-          2
-        ],
-        [
-          -1,
-          0,
-          1
-        ]
-      ]
+      "curr": 4,
+      "prev": 3
     }
-  ]
+  ],
+  "fullDescription": "<p>Given an integer array nums, return all the triplets <code>[nums[i], nums[j], nums[k]]</code> such that <code>i != j</code>, <code>i != k</code>, and <code>j != k</code>, and <code>nums[i] + nums[j] + nums[k] == 0</code>.</p>\n\n<p>Notice that the solution set must not contain duplicate triplets.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> nums = [-1,0,1,2,-1,-4]\n<strong>Output:</strong> [[-1,-1,2],[-1,0,1]]\n<strong>Explanation:</strong> \nnums[0] + nums[1] + nums[2] = (-1) + 0 + 1 = 0.\nnums[1] + nums[2] + nums[4] = 0 + 1 + (-1) = 0.\nnums[0] + nums[3] + nums[4] = (-1) + 2 + (-1) = 0.\nThe distinct triplets are [-1,0,1] and [-1,-1,2].\nNotice that the order of the output and the order of the triplets does not matter.\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> nums = [0,1,1]\n<strong>Output:</strong> []\n<strong>Explanation:</strong> The only possible triplet does not sum up to 0.\n</pre>\n\n<p><strong class=\"example\">Example 3:</strong></p>\n\n<pre>\n<strong>Input:</strong> nums = [0,0,0]\n<strong>Output:</strong> [[0,0,0]]\n<strong>Explanation:</strong> The only possible triplet sums up to 0.\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>3 &lt;= nums.length &lt;= 3000</code></li>\n\t<li><code>-10<sup>5</sup> &lt;= nums[i] &lt;= 10<sup>5</sup></code></li>\n</ul>\n"
 }

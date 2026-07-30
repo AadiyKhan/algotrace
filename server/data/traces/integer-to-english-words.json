@@ -16,7 +16,8 @@
       "note": "Initialize result string. Num is 123.",
       "array": [
         123
-      ]
+      ],
+      "curr": 123
     },
     {
       "codeLine": 10,
@@ -24,7 +25,8 @@
       "i": 0,
       "array": [
         123
-      ]
+      ],
+      "curr": 1000
     },
     {
       "codeLine": 11,
@@ -32,7 +34,8 @@
       "i": 0,
       "array": [
         123
-      ]
+      ],
+      "curr": 123
     },
     {
       "codeLine": 12,
@@ -40,7 +43,8 @@
       "i": 0,
       "array": [
         0
-      ]
+      ],
+      "curr": 0
     },
     {
       "codeLine": 14,

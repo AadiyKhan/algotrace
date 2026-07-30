@@ -1,0 +1,75 @@
+{
+  "title": "Allocate Mailboxes",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Dynamic Programming",
+    "Sorting"
+  ],
+  "description": "Minimize total distance from houses to the nearest mailbox by placing k mailboxes.",
+  "target": 2,
+  "pseudocode": "1. houses.sort()\n2. cost[i][j] = calculate_cost(i, j)\n3. dp[k][i] = min(dp[k-1][j] + cost[j+1][i])\n4. return dp[k][n-1]",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Sort houses: [1, 4, 8, 10]",
+      "array": [
+        1,
+        4,
+        8,
+        10
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Calculate cost for range [0, 1]: median is 1 or 4, cost |1-1| + |4-1| = 3",
+      "array": [
+        1,
+        4,
+        8,
+        10
+      ],
+      "i": 0,
+      "j": 1,
+      "curr": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Solve for k=1: cost to place 1 mailbox for all houses [1, 4, 8, 10] is 9",
+      "array": [
+        1,
+        4,
+        8,
+        10
+      ],
+      "i": 3,
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Solve for k=2: split at index 1. Min cost: cost(0,1) + cost(2,3) = 3 + 2 = 5",
+      "array": [
+        1,
+        4,
+        8,
+        10
+      ],
+      "i": 3,
+      "j": 1,
+      "curr": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Final minimum distance is 5",
+      "array": [
+        1,
+        4,
+        8,
+        10
+      ],
+      "curr": 5
+    }
+  ]
+}

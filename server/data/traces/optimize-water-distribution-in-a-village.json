@@ -1,0 +1,171 @@
+{
+  "title": "Optimize Water Distribution in a Village",
+  "difficulty": "Hard",
+  "type": "graph",
+  "tags": [
+    "Graph",
+    "Minimum Spanning Tree",
+    "Union Find"
+  ],
+  "description": "Connect houses to water by either building a well or connecting to another house, minimizing total cost.",
+  "target": 3,
+  "pseudocode": "1. Add a virtual node 0 connected to each house i with weight wells[i-1]\n2. Add edges (house1, house2) with weights\n3. Sort all edges by cost\n4. Use Kruskal's algorithm (Union-Find) to connect all nodes\n5. Return sum of weights",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Created virtual node 0 and edges to houses with well costs",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": "V"
+        },
+        {
+          "id": 1,
+          "val": "H1"
+        },
+        {
+          "id": 2,
+          "val": "H2"
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Added edge between house 1 and 2",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": "V"
+        },
+        {
+          "id": 1,
+          "val": "H1"
+        },
+        {
+          "id": 2,
+          "val": "H2"
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Connected virtual node to house 1 (cheapest edge)",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": "V"
+        },
+        {
+          "id": 1,
+          "val": "H1"
+        },
+        {
+          "id": 2,
+          "val": "H2"
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ]
+      ],
+      "visited": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Connected house 1 to house 2",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": "V"
+        },
+        {
+          "id": 1,
+          "val": "H1"
+        },
+        {
+          "id": 2,
+          "val": "H2"
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "visited": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "All houses connected, return total cost",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": "V"
+        },
+        {
+          "id": 1,
+          "val": "H1"
+        },
+        {
+          "id": 2,
+          "val": "H2"
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "visited": [
+        0,
+        1,
+        2
+      ]
+    }
+  ]
+}

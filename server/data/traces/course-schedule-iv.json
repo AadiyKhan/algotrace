@@ -1,0 +1,120 @@
+{
+  "title": "Course Schedule IV",
+  "difficulty": "Medium",
+  "type": "graph",
+  "tags": [
+    "Graph Theory",
+    "DFS"
+  ],
+  "description": "Determine if course A is a prerequisite of course B using transitive closure via Floyd-Warshall.",
+  "pseudocode": "1. Initialize reachable[numCourses][numCourses] matrix to false\n2. For each [u, v] in prerequisites: reachable[u][v] = true\n3. For k, i, j in [0, numCourses-1]: reachable[i][j] = reachable[i][j] || (reachable[i][k] && reachable[k][j])\n4. For each [u, v] in queries: add reachable[u][v] to result",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize reachability matrix for 2 courses.",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": 0
+        },
+        {
+          "id": 1,
+          "val": 1
+        }
+      ],
+      "graphEdges": [],
+      "visited": [],
+      "curr": 2
+    },
+    {
+      "codeLine": 2,
+      "note": "Apply direct prerequisite [1, 0].",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": 0
+        },
+        {
+          "id": 1,
+          "val": 1
+        }
+      ],
+      "graphEdges": [
+        [
+          1,
+          0
+        ]
+      ],
+      "visited": [],
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Floyd-Warshall checks transitive paths; no indirect paths exist.",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": 0
+        },
+        {
+          "id": 1,
+          "val": 1
+        }
+      ],
+      "graphEdges": [
+        [
+          1,
+          0
+        ]
+      ],
+      "visited": [],
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Evaluating query [0, 1]: Course 0 is not a prerequisite of 1. Result: false.",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": 0
+        },
+        {
+          "id": 1,
+          "val": 1
+        }
+      ],
+      "graphEdges": [
+        [
+          1,
+          0
+        ]
+      ],
+      "visited": [],
+      "curr": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Evaluating query [1, 0]: Course 1 is a prerequisite of 0. Result: true.",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": 0
+        },
+        {
+          "id": 1,
+          "val": 1
+        }
+      ],
+      "graphEdges": [
+        [
+          1,
+          0
+        ]
+      ],
+      "visited": [
+        1,
+        0
+      ]
+    }
+  ]
+}

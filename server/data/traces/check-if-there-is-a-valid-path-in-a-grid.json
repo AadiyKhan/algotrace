@@ -1,0 +1,187 @@
+{
+  "title": "Check If There Is A Valid Path In A Grid",
+  "difficulty": "Medium",
+  "type": "matrix",
+  "tags": [
+    "Array",
+    "Matrix",
+    "BFS",
+    "Graph"
+  ],
+  "description": "Determine if a valid path exists from the top-left to the bottom-right corner of a grid containing specific street types.",
+  "target": [
+    2,
+    2
+  ],
+  "pseudocode": "1. queue = [[0, 0]]; visited = [[0,0]];\n2. while queue not empty:\n3.   r, c = queue.shift();\n4.   if r == targetR and c == targetC: return true;\n5.   for each possible neighbor (nr, nc) based on grid[r][c]:\n6.     if (nr, nc) is valid and connected and not visited:\n7.       visited.push([nr, nc]); queue.push([nr, nc]);\n8. return false;",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize BFS queue and visited set at start (0,0). Grid: [[2,4], [1,1]]",
+      "matrix": [
+        [
+          2,
+          4
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Pop [0,0] from queue. Street type 2 connects vertically.",
+      "matrix": [
+        [
+          2,
+          4
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Check neighbor [1,0] (type 1). Street 1 connects horizontally.",
+      "matrix": [
+        [
+          2,
+          4
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "curr": [
+        1,
+        0
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Found neighbor [1,0] valid, move to queue.",
+      "matrix": [
+        [
+          2,
+          4
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "curr": [
+        1,
+        0
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Explore neighbor [1,1] from [1,0]. Street 1 connects to [1,1].",
+      "matrix": [
+        [
+          2,
+          4
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "curr": [
+        1,
+        1
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Reached target [1,1]. Return true.",
+      "matrix": [
+        [
+          2,
+          4
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "curr": [
+        1,
+        1
+      ]
+    }
+  ]
+}

@@ -1,0 +1,196 @@
+{
+  "title": "Jump Game III",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "BFS",
+    "DFS"
+  ],
+  "description": "Determine if you can reach index with value 0 starting from a given index, jumping by the value at current index.",
+  "target": 0,
+  "pseudocode": "1. queue = [start]\n2. visited = {start}\n3. while queue not empty:\n4.   curr = queue.shift()\n5.   if arr[curr] == 0: return true\n6.   for next in [curr - arr[curr], curr + arr[curr]]:\n7.     if next >= 0 and next < len and next not in visited:\n8.       visited.add(next)\n9.       queue.push(next)\n10. return false",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize queue with starting index 0.",
+      "array": [
+        4,
+        2,
+        3,
+        0,
+        3,
+        1,
+        2
+      ],
+      "i": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Pop current index 0. arr[0] is 4.",
+      "array": [
+        4,
+        2,
+        3,
+        0,
+        3,
+        1,
+        2
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Calculate jumps: 0-4 (out) and 0+4=4.",
+      "array": [
+        4,
+        2,
+        3,
+        0,
+        3,
+        1,
+        2
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 9,
+      "note": "Add index 4 to queue.",
+      "array": [
+        4,
+        2,
+        3,
+        0,
+        3,
+        1,
+        2
+      ],
+      "visited": [
+        0,
+        4
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Pop index 4. arr[4] is 3.",
+      "array": [
+        4,
+        2,
+        3,
+        0,
+        3,
+        1,
+        2
+      ],
+      "curr": 4
+    },
+    {
+      "codeLine": 6,
+      "note": "Calculate jumps: 4-3=1 and 4+3=7 (out).",
+      "array": [
+        4,
+        2,
+        3,
+        0,
+        3,
+        1,
+        2
+      ],
+      "curr": 4
+    },
+    {
+      "codeLine": 9,
+      "note": "Add index 1 to queue.",
+      "array": [
+        4,
+        2,
+        3,
+        0,
+        3,
+        1,
+        2
+      ],
+      "visited": [
+        0,
+        4,
+        1
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Pop index 1. arr[1] is 2.",
+      "array": [
+        4,
+        2,
+        3,
+        0,
+        3,
+        1,
+        2
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Calculate jumps: 1-2=-1 (out) and 1+2=3.",
+      "array": [
+        4,
+        2,
+        3,
+        0,
+        3,
+        1,
+        2
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 9,
+      "note": "Add index 3 to queue.",
+      "array": [
+        4,
+        2,
+        3,
+        0,
+        3,
+        1,
+        2
+      ],
+      "visited": [
+        0,
+        4,
+        1,
+        3
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Pop index 3. arr[3] is 0.",
+      "array": [
+        4,
+        2,
+        3,
+        0,
+        3,
+        1,
+        2
+      ],
+      "curr": 3
+    },
+    {
+      "codeLine": 5,
+      "note": "Found 0! Return true.",
+      "array": [
+        4,
+        2,
+        3,
+        0,
+        3,
+        1,
+        2
+      ],
+      "curr": 0
+    }
+  ]
+}

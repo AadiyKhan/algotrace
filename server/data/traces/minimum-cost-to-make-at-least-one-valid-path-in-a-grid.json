@@ -1,0 +1,134 @@
+{
+  "title": "Minimum Cost to Make at Least One Valid Path in a Grid",
+  "difficulty": "Hard",
+  "type": "matrix",
+  "tags": [
+    "Array",
+    "Graph",
+    "Breadth-First Search",
+    "Shortest Path"
+  ],
+  "description": "Find the minimum cost to reach the bottom-right cell from the top-left using 0-1 BFS.",
+  "target": "grid[m-1][n-1]",
+  "pseudocode": "1. deque.push([0, 0, 0])\n2. dist[0][0] = 0\n3. while deque not empty:\n4.   r, c, d = deque.popleft()\n5.   for i, (dr, dc) in enumerate([[0,1],[0,-1],[1,0],[-1,0]]):\n6.     nr, nc = r + dr, c + dc\n7.     cost = d + (grid[r][c] != i + 1 ? 1 : 0)\n8.     if nr, nc in bounds and cost < dist[nr][nc]:\n9.       dist[nr][nc] = cost\n10.      if cost == d: deque.pushleft([nr, nc, cost])\n11.      else: deque.push([nr, nc, cost])",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize 0-1 BFS with start at (0,0) with cost 0.",
+      "matrix": [
+        [
+          1,
+          1
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Exploring neighbors from (0,0). Grid[0][0] is 1 (Right).",
+      "matrix": [
+        [
+          1,
+          1
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 7,
+      "note": "Moving right to (0,1). Cost is same since direction matches grid value (1).",
+      "matrix": [
+        [
+          1,
+          1
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "curr": [
+        0,
+        1
+      ],
+      "prev": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 10,
+      "note": "Pushing (0,1) to front of deque as cost didn't increase.",
+      "matrix": [
+        [
+          1,
+          1
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "curr": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Exploring neighbors from (0,1). Grid[0][1] is 1 (Right).",
+      "matrix": [
+        [
+          1,
+          1
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "curr": [
+        0,
+        1
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 7,
+      "note": "Moving down to (1,1). Direction is down (3), grid value is 1. Cost +1.",
+      "matrix": [
+        [
+          1,
+          1
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "curr": [
+        1,
+        1
+      ],
+      "prev": [
+        0,
+        1
+      ]
+    }
+  ]
+}

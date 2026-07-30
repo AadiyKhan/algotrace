@@ -1,0 +1,86 @@
+{
+  "title": "Running Sum of 1d Array",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Prefix Sum"
+  ],
+  "description": "Given an array nums, return the running sum of nums where runningSum[i] = sum(nums[0]…nums[i]).",
+  "target": null,
+  "pseudocode": "1: for (let i = 1; i < nums.length; i++) {\n2:   nums[i] += nums[i - 1];\n3: }",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize loop at index 1",
+      "array": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Update nums[1] = nums[1] + nums[0]",
+      "array": [
+        1,
+        3,
+        3,
+        4
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 1,
+      "note": "Increment i to 2",
+      "array": [
+        1,
+        3,
+        3,
+        4
+      ],
+      "i": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 2,
+      "note": "Update nums[2] = nums[2] + nums[1]",
+      "array": [
+        1,
+        3,
+        6,
+        4
+      ],
+      "i": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 1,
+      "note": "Increment i to 3",
+      "array": [
+        1,
+        3,
+        6,
+        4
+      ],
+      "i": 3,
+      "curr": 3
+    },
+    {
+      "codeLine": 2,
+      "note": "Update nums[3] = nums[3] + nums[2]",
+      "array": [
+        1,
+        3,
+        6,
+        10
+      ],
+      "i": 3,
+      "curr": 3
+    }
+  ]
+}

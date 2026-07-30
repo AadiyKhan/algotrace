@@ -1,0 +1,77 @@
+{
+  "title": "Design Browser History",
+  "difficulty": "Medium",
+  "type": "linked-list",
+  "tags": [
+    "Design",
+    "Linked List",
+    "Doubly Linked List"
+  ],
+  "description": "Implement a browser history system using a doubly linked list to support visit, back, and forward operations.",
+  "pseudocode": "class Node { constructor(url) { this.url = url; this.next = null; this.prev = null; } }\nclass BrowserHistory { constructor(homepage) { this.curr = new Node(homepage); }\nvisit(url) { let newNode = new Node(url); newNode.prev = this.curr; this.curr.next = newNode; this.curr = newNode; }\nback(steps) { while (steps > 0 && this.curr.prev) { this.curr = this.curr.prev; steps--; } return this.curr.url; }\nforward(steps) { while (steps > 0 && this.curr.next) { this.curr = this.curr.next; steps--; } return this.curr.url; } }",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Initialize history with homepage 'google.com'",
+      "nodes": [
+        {
+          "val": "google.com",
+          "prev": null,
+          "next": null
+        }
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Visit 'leetcode.com', adding it to the list",
+      "nodes": [
+        {
+          "val": "google.com",
+          "prev": null,
+          "next": 1
+        },
+        {
+          "val": "leetcode.com",
+          "prev": 0,
+          "next": null
+        }
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Move back 1 step to 'google.com'",
+      "nodes": [
+        {
+          "val": "google.com",
+          "prev": null,
+          "next": 1
+        },
+        {
+          "val": "leetcode.com",
+          "prev": 0,
+          "next": null
+        }
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Move forward 1 step to 'leetcode.com'",
+      "nodes": [
+        {
+          "val": "google.com",
+          "prev": null,
+          "next": 1
+        },
+        {
+          "val": "leetcode.com",
+          "prev": 0,
+          "next": null
+        }
+      ],
+      "curr": 1
+    }
+  ]
+}

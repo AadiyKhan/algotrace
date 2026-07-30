@@ -1,0 +1,165 @@
+{
+  "title": "Maximum Average Subtree",
+  "difficulty": "Medium",
+  "type": "tree",
+  "tags": [
+    "Tree",
+    "DFS",
+    "Binary Tree"
+  ],
+  "description": "Find the subtree with the maximum average value and return its average value.",
+  "target": null,
+  "pseudocode": "1. maxAvg = 0\n2. function dfs(node):\n3.   if !node: return [0, 0]\n4.   [leftSum, leftCount] = dfs(node.left)\n5.   [rightSum, rightCount] = dfs(node.right)\n6.   currSum = leftSum + rightSum + node.val\n7.   currCount = leftCount + rightCount + 1\n8.   maxAvg = max(maxAvg, currSum / currCount)\n9.   return [currSum, currCount]",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Starting DFS at root (val: 5)",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 5,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 9,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 5
+    },
+    {
+      "codeLine": 4,
+      "note": "Traversing to left child (val: 1)",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 5,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 9,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 8,
+      "note": "Calculated avg for leaf node (1/1 = 1.0), maxAvg = 1.0",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 5,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 9,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Traversing to right child (val: 9)",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 5,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 9,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 8,
+      "note": "Calculated avg for leaf node (9/1 = 9.0), maxAvg = 9.0",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 5,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 9,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 9
+    },
+    {
+      "codeLine": 8,
+      "note": "Backtracking to root, calculating (1+9+5)/3 = 5.0, maxAvg remains 9.0",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 5,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 9,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 0
+    }
+  ]
+}

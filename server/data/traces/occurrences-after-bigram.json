@@ -1,0 +1,112 @@
+{
+  "title": "Occurrences After Bigram",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "String"
+  ],
+  "description": "Find all words occurring after the specified 'first' and 'second' words in the text.",
+  "target": [
+    "girl",
+    "student"
+  ],
+  "pseudocode": "1. words = text.split(' ')\n2. result = []\n3. for i from 0 to words.length - 3:\n4.   if words[i] == first and words[i+1] == second:\n5.     result.append(words[i+2])\n6. return result",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Split the text into an array of words.",
+      "array": [
+        "alice",
+        "is",
+        "a",
+        "good",
+        "girl",
+        "she",
+        "is",
+        "a",
+        "good",
+        "student"
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Starting loop at index i=0.",
+      "i": 0,
+      "array": [
+        "alice",
+        "is",
+        "a",
+        "good",
+        "girl",
+        "she",
+        "is",
+        "a",
+        "good",
+        "student"
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Checking sequence at index 2 (a, good).",
+      "i": 2,
+      "array": [
+        "alice",
+        "is",
+        "a",
+        "good",
+        "girl",
+        "she",
+        "is",
+        "a",
+        "good",
+        "student"
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Found match! Appending 'girl'.",
+      "i": 2,
+      "array": [
+        "girl"
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Continuing loop to index i=7.",
+      "i": 7,
+      "array": [
+        "girl"
+      ],
+      "curr": 7
+    },
+    {
+      "codeLine": 4,
+      "note": "Checking sequence at index 7 (a, good).",
+      "i": 7,
+      "array": [
+        "girl"
+      ],
+      "curr": 7
+    },
+    {
+      "codeLine": 5,
+      "note": "Found match! Appending 'student'.",
+      "i": 7,
+      "array": [
+        "girl",
+        "student"
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Loop finished, returning result.",
+      "array": [
+        "girl",
+        "student"
+      ]
+    }
+  ]
+}

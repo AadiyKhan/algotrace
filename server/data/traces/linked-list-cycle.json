@@ -3,223 +3,237 @@
   "difficulty": "Easy",
   "type": "linked-list",
   "tags": [
+    "Hash Table",
     "Linked List",
     "Two Pointers"
   ],
   "description": "Determine if a linked list contains a cycle using Floyd's Tortoise and Hare algorithm.",
-  "pseudocode": "1: slow = head\n2: fast = head\n3: while fast and fast.next:\n4:   slow = slow.next\n5:   fast = fast.next.next\n6:   if slow == fast: return true\n7: return false",
+  "pseudocode": "1. slow = head, fast = head\n2. while fast and fast.next:\n3.   slow = slow.next\n4.   fast = fast.next.next\n5.   if slow == fast: return true\n6. return false",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize slow pointer at head.",
+      "note": "Initialize slow and fast pointers at the head (node 3).",
       "nodes": [
         {
+          "id": 0,
           "val": 3,
           "next": 1
         },
         {
+          "id": 1,
           "val": 2,
           "next": 2
         },
         {
+          "id": 2,
           "val": 0,
           "next": 3
         },
         {
+          "id": 3,
           "val": -4,
           "next": 1
         }
       ],
+      "curr": 0,
       "prev": 0
     },
     {
-      "codeLine": 2,
-      "note": "Initialize fast pointer at head.",
+      "codeLine": 3,
+      "note": "Move slow one step to node 2.",
       "nodes": [
         {
+          "id": 0,
           "val": 3,
           "next": 1
         },
         {
+          "id": 1,
           "val": 2,
           "next": 2
         },
         {
+          "id": 2,
           "val": 0,
           "next": 3
         },
         {
+          "id": 3,
           "val": -4,
           "next": 1
         }
       ],
-      "prev": 0,
-      "curr": 0
+      "curr": 1,
+      "prev": 0
     },
     {
       "codeLine": 4,
-      "note": "Slow moves one step.",
+      "note": "Move fast two steps to node 0.",
       "nodes": [
         {
+          "id": 0,
           "val": 3,
           "next": 1
         },
         {
+          "id": 1,
           "val": 2,
           "next": 2
         },
         {
+          "id": 2,
           "val": 0,
           "next": 3
         },
         {
+          "id": 3,
           "val": -4,
           "next": 1
         }
       ],
+      "curr": 2,
+      "prev": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Move slow one step to node 0.",
+      "nodes": [
+        {
+          "id": 0,
+          "val": 3,
+          "next": 1
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "next": 2
+        },
+        {
+          "id": 2,
+          "val": 0,
+          "next": 3
+        },
+        {
+          "id": 3,
+          "val": -4,
+          "next": 1
+        }
+      ],
+      "curr": 2,
+      "prev": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Move fast two steps to node 2.",
+      "nodes": [
+        {
+          "id": 0,
+          "val": 3,
+          "next": 1
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "next": 2
+        },
+        {
+          "id": 2,
+          "val": 0,
+          "next": 3
+        },
+        {
+          "id": 3,
+          "val": -4,
+          "next": 1
+        }
+      ],
+      "curr": 1,
+      "prev": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Move slow one step to node -4.",
+      "nodes": [
+        {
+          "id": 0,
+          "val": 3,
+          "next": 1
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "next": 2
+        },
+        {
+          "id": 2,
+          "val": 0,
+          "next": 3
+        },
+        {
+          "id": 3,
+          "val": -4,
+          "next": 1
+        }
+      ],
+      "curr": 3,
+      "prev": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Move fast two steps to node -4.",
+      "nodes": [
+        {
+          "id": 0,
+          "val": 3,
+          "next": 1
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "next": 2
+        },
+        {
+          "id": 2,
+          "val": 0,
+          "next": 3
+        },
+        {
+          "id": 3,
+          "val": -4,
+          "next": 1
+        }
+      ],
+      "curr": 3,
       "prev": 1
     },
     {
       "codeLine": 5,
-      "note": "Fast moves two steps.",
+      "note": "slow and fast meet at node -4, cycle detected.",
       "nodes": [
         {
+          "id": 0,
           "val": 3,
           "next": 1
         },
         {
+          "id": 1,
           "val": 2,
           "next": 2
         },
         {
+          "id": 2,
           "val": 0,
           "next": 3
         },
         {
+          "id": 3,
           "val": -4,
           "next": 1
         }
       ],
-      "prev": 1,
-      "curr": 2
-    },
-    {
-      "codeLine": 4,
-      "note": "Slow moves one step.",
-      "nodes": [
-        {
-          "val": 3,
-          "next": 1
-        },
-        {
-          "val": 2,
-          "next": 2
-        },
-        {
-          "val": 0,
-          "next": 3
-        },
-        {
-          "val": -4,
-          "next": 1
-        }
-      ],
-      "prev": 2
-    },
-    {
-      "codeLine": 5,
-      "note": "Fast moves two steps (back to index 1).",
-      "nodes": [
-        {
-          "val": 3,
-          "next": 1
-        },
-        {
-          "val": 2,
-          "next": 2
-        },
-        {
-          "val": 0,
-          "next": 3
-        },
-        {
-          "val": -4,
-          "next": 1
-        }
-      ],
-      "prev": 2,
-      "curr": 1
-    },
-    {
-      "codeLine": 4,
-      "note": "Slow moves to index 3.",
-      "nodes": [
-        {
-          "val": 3,
-          "next": 1
-        },
-        {
-          "val": 2,
-          "next": 2
-        },
-        {
-          "val": 0,
-          "next": 3
-        },
-        {
-          "val": -4,
-          "next": 1
-        }
-      ],
+      "curr": 3,
       "prev": 3
-    },
-    {
-      "codeLine": 5,
-      "note": "Fast moves two steps to index 3.",
-      "nodes": [
-        {
-          "val": 3,
-          "next": 1
-        },
-        {
-          "val": 2,
-          "next": 2
-        },
-        {
-          "val": 0,
-          "next": 3
-        },
-        {
-          "val": -4,
-          "next": 1
-        }
-      ],
-      "prev": 3,
-      "curr": 3
-    },
-    {
-      "codeLine": 6,
-      "note": "Slow equals fast, cycle detected.",
-      "nodes": [
-        {
-          "val": 3,
-          "next": 1
-        },
-        {
-          "val": 2,
-          "next": 2
-        },
-        {
-          "val": 0,
-          "next": 3
-        },
-        {
-          "val": -4,
-          "next": 1
-        }
-      ],
-      "prev": 3,
-      "curr": 3
     }
-  ]
+  ],
+  "fullDescription": "<p>Given <code>head</code>, the head of a linked list, determine if the linked list has a cycle in it.</p>\n\n<p>There is a cycle in a linked list if there is some node in the list that can be reached again by continuously following the&nbsp;<code>next</code>&nbsp;pointer. Internally, <code>pos</code>&nbsp;is used to denote the index of the node that&nbsp;tail&#39;s&nbsp;<code>next</code>&nbsp;pointer is connected to.&nbsp;<strong>Note that&nbsp;<code>pos</code>&nbsp;is not passed as a parameter</strong>.</p>\n\n<p>Return&nbsp;<code>true</code><em> if there is a cycle in the linked list</em>. Otherwise, return <code>false</code>.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2018/12/07/circularlinkedlist.png\" style=\"width: 300px; height: 97px; margin-top: 8px; margin-bottom: 8px;\" />\n<pre>\n<strong>Input:</strong> head = [3,2,0,-4], pos = 1\n<strong>Output:</strong> true\n<strong>Explanation:</strong> There is a cycle in the linked list, where the tail connects to the 1st node (0-indexed).\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2018/12/07/circularlinkedlist_test2.png\" style=\"width: 141px; height: 74px;\" />\n<pre>\n<strong>Input:</strong> head = [1,2], pos = 0\n<strong>Output:</strong> true\n<strong>Explanation:</strong> There is a cycle in the linked list, where the tail connects to the 0th node.\n</pre>\n\n<p><strong class=\"example\">Example 3:</strong></p>\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2018/12/07/circularlinkedlist_test3.png\" style=\"width: 45px; height: 45px;\" />\n<pre>\n<strong>Input:</strong> head = [1], pos = -1\n<strong>Output:</strong> false\n<strong>Explanation:</strong> There is no cycle in the linked list.\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li>The number of the nodes in the list is in the range <code>[0, 10<sup>4</sup>]</code>.</li>\n\t<li><code>-10<sup>5</sup> &lt;= Node.val &lt;= 10<sup>5</sup></code></li>\n\t<li><code>pos</code> is <code>-1</code> or a <strong>valid index</strong> in the linked-list.</li>\n</ul>\n\n<p>&nbsp;</p>\n<p><strong>Follow up:</strong> Can you solve it using <code>O(1)</code> (i.e. constant) memory?</p>\n"
 }

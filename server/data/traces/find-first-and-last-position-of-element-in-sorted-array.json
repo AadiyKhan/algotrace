@@ -40,7 +40,8 @@
       "low": 0,
       "high": 5,
       "mid": null,
-      "ans": -1
+      "ans": -1,
+      "curr": -1
     },
     {
       "codeLine": 10,
@@ -56,7 +57,8 @@
       "low": 0,
       "high": 5,
       "mid": 2,
-      "ans": -1
+      "ans": -1,
+      "curr": 0
     },
     {
       "codeLine": 14,
@@ -72,7 +74,8 @@
       "low": 3,
       "high": 5,
       "mid": 2,
-      "ans": -1
+      "ans": -1,
+      "curr": 7
     },
     {
       "codeLine": 10,
@@ -88,7 +91,8 @@
       "low": 3,
       "high": 5,
       "mid": 4,
-      "ans": -1
+      "ans": -1,
+      "curr": 3
     },
     {
       "codeLine": 11,
@@ -104,7 +108,8 @@
       "low": 3,
       "high": 3,
       "mid": 4,
-      "ans": 4
+      "ans": 4,
+      "curr": 8
     },
     {
       "codeLine": 10,
@@ -120,7 +125,8 @@
       "low": 3,
       "high": 3,
       "mid": 3,
-      "ans": 4
+      "ans": 4,
+      "curr": 3
     },
     {
       "codeLine": 11,
@@ -136,7 +142,8 @@
       "low": 3,
       "high": 2,
       "mid": 3,
-      "ans": 3
+      "ans": 3,
+      "curr": 8
     },
     {
       "codeLine": 9,
@@ -152,7 +159,8 @@
       "low": 3,
       "high": 2,
       "mid": null,
-      "ans": 3
+      "ans": 3,
+      "curr": 3
     },
     {
       "codeLine": 18,
@@ -169,7 +177,8 @@
       "high": null,
       "mid": null,
       "ans": null,
-      "first": 3
+      "first": 3,
+      "curr": 3
     },
     {
       "codeLine": 2,
@@ -186,7 +195,8 @@
       "high": null,
       "mid": null,
       "ans": null,
-      "first": 3
+      "first": 3,
+      "curr": 3
     },
     {
       "codeLine": 4,
@@ -219,7 +229,8 @@
       "low": 0,
       "high": 5,
       "mid": null,
-      "ans": -1
+      "ans": -1,
+      "curr": -1
     },
     {
       "codeLine": 23,
@@ -235,7 +246,8 @@
       "low": 0,
       "high": 5,
       "mid": 2,
-      "ans": -1
+      "ans": -1,
+      "curr": 0
     },
     {
       "codeLine": 27,
@@ -251,7 +263,8 @@
       "low": 3,
       "high": 5,
       "mid": 2,
-      "ans": -1
+      "ans": -1,
+      "curr": 7
     },
     {
       "codeLine": 23,
@@ -267,7 +280,8 @@
       "low": 3,
       "high": 5,
       "mid": 4,
-      "ans": -1
+      "ans": -1,
+      "curr": 3
     },
     {
       "codeLine": 24,
@@ -283,7 +297,8 @@
       "low": 5,
       "high": 5,
       "mid": 4,
-      "ans": 4
+      "ans": 4,
+      "curr": 8
     },
     {
       "codeLine": 23,
@@ -299,7 +314,8 @@
       "low": 5,
       "high": 5,
       "mid": 5,
-      "ans": 4
+      "ans": 4,
+      "curr": 5
     },
     {
       "codeLine": 29,
@@ -315,7 +331,8 @@
       "low": 5,
       "high": 4,
       "mid": 5,
-      "ans": 4
+      "ans": 4,
+      "curr": 10
     },
     {
       "codeLine": 22,
@@ -331,7 +348,8 @@
       "low": 5,
       "high": 4,
       "mid": null,
-      "ans": 4
+      "ans": 4,
+      "curr": 5
     },
     {
       "codeLine": 31,
@@ -349,7 +367,8 @@
       "mid": null,
       "ans": null,
       "first": 3,
-      "last": 4
+      "last": 4,
+      "curr": 4
     },
     {
       "codeLine": 5,
@@ -371,7 +390,8 @@
       "result": [
         3,
         4
-      ]
+      ],
+      "curr": 3
     }
   ]
 }

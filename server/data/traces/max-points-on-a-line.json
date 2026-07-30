@@ -4,13 +4,13 @@
   "type": "array",
   "tags": [
     "Array",
+    "Hash Table",
     "Math",
-    "Geometry",
-    "Hash Table"
+    "Geometry"
   ],
-  "description": "Given an array of points, return the maximum number of points that lie on the same straight line.",
-  "target": null,
-  "pseudocode": "1. maxPoints = 0\n2. for i = 0 to n-1:\n3.   map = {}\n4.   for j = i + 1 to n-1:\n5.     slope = getSlope(points[i], points[j])\n6.     map[slope] = (map[slope] || 0) + 1\n7.     maxPoints = max(maxPoints, map[slope] + 1)",
+  "description": "Find the maximum number of points that lie on the same straight line given an array of points.",
+  "target": 3,
+  "pseudocode": "1. maxPoints = 0\n2. For i from 0 to n-1:\n3.   For j from i+1 to n-1:\n4.     Calculate slope (dy/dx)\n5.     Count collinear points using slope map\n6.     Update maxPoints",
   "steps": [
     {
       "codeLine": 1,
@@ -27,17 +27,13 @@
         [
           3,
           3
-        ],
-        [
-          4,
-          1
         ]
-      ]
+      ],
+      "curr": 0
     },
     {
       "codeLine": 2,
-      "note": "Start outer loop i=0 at point [1, 1].",
-      "i": 0,
+      "note": "Starting outer loop with point i=0 (1,1).",
       "array": [
         [
           1,
@@ -50,60 +46,94 @@
         [
           3,
           3
+        ]
+      ],
+      "i": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Inner loop j=1 (2,2). Slope = (2-1)/(2-1) = 1.0.",
+      "array": [
+        [
+          1,
+          1
         ],
         [
-          4,
-          1
+          2,
+          2
+        ],
+        [
+          3,
+          3
         ]
-      ]
+      ],
+      "i": 0,
+      "j": 1,
+      "curr": 1
     },
     {
-      "codeLine": 4,
-      "note": "Compare point [1, 1] with [2, 2]. Slope is 1.",
+      "codeLine": 5,
+      "note": "Slope 1.0 found for point (1,1) and (2,2).",
+      "array": [
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          3,
+          3
+        ]
+      ],
       "i": 0,
-      "j": 1
+      "j": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Inner loop j=2 (3,3). Slope = (3-1)/(3-1) = 1.0.",
+      "array": [
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          3,
+          3
+        ]
+      ],
+      "i": 0,
+      "j": 2,
+      "curr": 2
     },
     {
       "codeLine": 6,
-      "note": "Store slope 1 in map. Count is 1.",
+      "note": "Three points (1,1), (2,2), (3,3) share the same slope, update maxPoints to 3.",
+      "array": [
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          3,
+          3
+        ]
+      ],
       "i": 0,
-      "j": 1
-    },
-    {
-      "codeLine": 7,
-      "note": "Update maxPoints to 2.",
-      "i": 0,
-      "j": 1
-    },
-    {
-      "codeLine": 4,
-      "note": "Compare point [1, 1] with [3, 3]. Slope is 1.",
-      "i": 0,
-      "j": 2
-    },
-    {
-      "codeLine": 6,
-      "note": "Update slope 1 in map. Count is 2.",
-      "i": 0,
-      "j": 2
-    },
-    {
-      "codeLine": 7,
-      "note": "Update maxPoints to 3.",
-      "i": 0,
-      "j": 2
-    },
-    {
-      "codeLine": 4,
-      "note": "Compare point [1, 1] with [4, 1]. Slope is 0.",
-      "i": 0,
-      "j": 3
-    },
-    {
-      "codeLine": 6,
-      "note": "Store slope 0 in map. Count is 1.",
-      "i": 0,
-      "j": 3
+      "j": 2,
+      "curr": 1
     }
   ]
 }

@@ -1,0 +1,106 @@
+{
+  "title": "Find the Longest Substring Containing Vowels in Even Counts",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "String",
+    "Bit Manipulation",
+    "Hash Table"
+  ],
+  "description": "Find the longest substring containing each vowel an even number of times.",
+  "target": null,
+  "pseudocode": "1. mask = 0, res = 0, pos = {0: -1}\n2. vowels = {a:1, e:2, i:4, o:8, u:16}\n3. for i, char in enumerate(s):\n4.   if char in vowels: mask ^= vowels[char]\n5.   if mask in pos: res = max(res, i - pos[mask])\n6.   else: pos[mask] = i\n7. return res",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize mask to 0 and position map with 0 at index -1.",
+      "array": [
+        "e",
+        "l",
+        "e",
+        "e",
+        "t"
+      ],
+      "i": -1,
+      "curr": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Process 'e': mask changes from 0 to 2 (binary 00010).",
+      "array": [
+        "e",
+        "l",
+        "e",
+        "e",
+        "t"
+      ],
+      "i": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Mask 2 not in pos, store pos[2] = 0.",
+      "array": [
+        "e",
+        "l",
+        "e",
+        "e",
+        "t"
+      ],
+      "i": 0,
+      "curr": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Process 'l': mask remains 2.",
+      "array": [
+        "e",
+        "l",
+        "e",
+        "e",
+        "t"
+      ],
+      "i": 1,
+      "curr": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Mask 2 in pos, calculate length: 1 - 0 = 1.",
+      "array": [
+        "e",
+        "l",
+        "e",
+        "e",
+        "t"
+      ],
+      "i": 1,
+      "curr": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Process 'e': mask changes from 2 to 0.",
+      "array": [
+        "e",
+        "l",
+        "e",
+        "e",
+        "t"
+      ],
+      "i": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Mask 0 in pos, calculate length: 2 - (-1) = 3.",
+      "array": [
+        "e",
+        "l",
+        "e",
+        "e",
+        "t"
+      ],
+      "i": 2,
+      "curr": 0
+    }
+  ]
+}

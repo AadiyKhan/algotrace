@@ -30,7 +30,8 @@
         "R",
         "R"
       ],
-      "i": 0
+      "i": 0,
+      "curr": 0
     },
     {
       "codeLine": 6,
@@ -51,7 +52,8 @@
         "R",
         "R"
       ],
-      "i": 1
+      "i": 1,
+      "curr": 1
     },
     {
       "codeLine": 6,
@@ -66,7 +68,8 @@
     {
       "codeLine": 8,
       "note": "Optimal path found: clearing board requires 1 ball.",
-      "array": []
+      "array": [],
+      "curr": 1
     }
   ]
 }

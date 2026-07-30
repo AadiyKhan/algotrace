@@ -3,37 +3,98 @@
   "difficulty": "Medium",
   "type": "array",
   "tags": [
-    "Stack",
     "String",
+    "Stack",
     "Recursion"
   ],
-  "description": "Decode a string where k[encoded_string] means encoded_string is repeated k times.",
-  "pseudocode": "1. stack = []; curStr = ''; curNum = 0\n2. for char in s:\n3.   if char == '[': stack.push([curStr, curNum]); curStr = ''; curNum = 0\n4.   else if char == ']': prevStr, num = stack.pop(); curStr = prevStr + curStr * num\n5.   else if isDigit(char): curNum = curNum * 10 + int(char)\n6.   else: curStr += char",
+  "description": "Decode a string where k[encoded_string] represents the encoded_string repeated k times.",
+  "pseudocode": "1. Initialize stack, curNum = 0, curStr = \"\"\n2. For char in s:\n3.   If char is digit: curNum = curNum * 10 + int(char)\n4.   If char is '[': push(curNum, curStr), reset curNum and curStr\n5.   If char is ']': prevNum, prevStr = pop(), curStr = prevStr + prevNum * curStr\n6.   If char is letter: curStr += char",
   "steps": [
     {
-      "codeLine": 2,
-      "note": "Initialize: s = '2[a]'",
-      "array": []
-    },
-    {
-      "codeLine": 5,
-      "note": "char '2' is digit, curNum = 2",
-      "i": 0
+      "codeLine": 1,
+      "note": "Initialize stack, curNum = 0, curStr = ''",
+      "array": [],
+      "curr": 0
     },
     {
       "codeLine": 3,
-      "note": "char '[' detected, push curStr('') and curNum(2) to stack",
-      "i": 1
-    },
-    {
-      "codeLine": 6,
-      "note": "char 'a' is string, curStr = 'a'",
-      "i": 2
+      "note": "Processing '3': curNum = 3",
+      "array": [],
+      "i": "3",
+      "curr": 3
     },
     {
       "codeLine": 4,
-      "note": "char ']' detected, pop stack: curStr = '' + 'a' * 2 = 'aa'",
-      "i": 3
+      "note": "Processing '[': push (3, ''), reset curNum=0, curStr=''",
+      "array": [
+        "3",
+        "[]"
+      ],
+      "curr": 3
+    },
+    {
+      "codeLine": 6,
+      "note": "Processing 'a': curStr = 'a'",
+      "array": [
+        "3",
+        "[]",
+        "a"
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Processing ']': pop (3, ''), curStr = '' + 3 * 'a' = 'aaa'",
+      "array": [
+        "aaa"
+      ],
+      "curr": 3
+    },
+    {
+      "codeLine": 3,
+      "note": "Processing '2': curNum = 2",
+      "array": [
+        "aaa"
+      ],
+      "i": "2",
+      "curr": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Processing '[': push (2, 'aaa'), reset curNum=0, curStr=''",
+      "array": [
+        "aaa",
+        "2",
+        "['aaa']"
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Processing 'b': curStr = 'b'",
+      "array": [
+        "aaa",
+        "2",
+        "['aaa']",
+        "b"
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Processing 'c': curStr = 'bc'",
+      "array": [
+        "aaa",
+        "2",
+        "['aaa']",
+        "bc"
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Processing ']': pop (2, 'aaa'), curStr = 'aaa' + 2 * 'bc' = 'aaabcbc'",
+      "array": [
+        "aaabcbc"
+      ],
+      "curr": 2
     }
   ]
 }

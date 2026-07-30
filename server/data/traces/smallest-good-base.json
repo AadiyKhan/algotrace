@@ -6,29 +6,52 @@
     "Math",
     "Binary Search"
   ],
-  "description": "Find the smallest base k >= 2 such that n can be represented as a base-k repunit (all 1s).",
-  "target": 13,
-  "pseudocode": "for (m = log2(n); m >= 2; m--) {\n  low = 2, high = n - 1;\n  while (low <= high) {\n    mid = (low + high) / 2;\n    sum = (mid^m - 1) / (mid - 1);\n    if (sum == n) return mid;\n    else if (sum < n) low = mid + 1;\n    else high = mid - 1;\n  }\n}",
+  "description": "Find the smallest base k >= 2 such that n written in base k consists only of 1s.",
+  "target": "13",
+  "pseudocode": "1. Convert n to integer n_val\n2. Iterate m from log2(n) down to 2\n3. Binary search for base k in [2, n-1]\n4. Check if 1 + k + k^2 + ... + k^(m-1) == n_val\n5. Return smallest k found",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Starting with n=13. Max possible m is log2(13) approx 3.",
-      "i": 3
+      "note": "Initialize n_val = 13",
+      "array": [
+        13
+      ],
+      "curr": 13
     },
     {
       "codeLine": 2,
-      "note": "Binary search for base k where k^2 + k + 1 = 13.",
-      "i": 3
+      "note": "Max possible m is log2(13) which is 3 (for 1+k+k^2 = 13)",
+      "array": [
+        13
+      ],
+      "i": 3,
+      "curr": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Binary search for k for m=3: range [2, 12]",
+      "array": [
+        13
+      ],
+      "i": 3,
+      "curr": 3
     },
     {
       "codeLine": 4,
-      "note": "Testing mid=3. sum = 3^2 + 3^1 + 3^0 = 9 + 3 + 1 = 13.",
-      "i": 3
+      "note": "Check k=3: 1 + 3 + 3^2 = 1 + 3 + 9 = 13. Match found.",
+      "array": [
+        13
+      ],
+      "i": 3,
+      "curr": 3
     },
     {
-      "codeLine": 6,
-      "note": "Found base 3. 13 in base 3 is '111'.",
-      "i": 3
+      "codeLine": 5,
+      "note": "Smallest good base is 3",
+      "array": [
+        13
+      ],
+      "curr": 3
     }
   ]
 }

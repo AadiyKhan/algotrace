@@ -20,7 +20,8 @@
       "note": "Operation '5': Push 5 onto the record.",
       "array": [
         5
-      ]
+      ],
+      "curr": 5
     },
     {
       "codeLine": 6,
@@ -28,7 +29,8 @@
       "array": [
         5,
         2
-      ]
+      ],
+      "curr": 2
     },
     {
       "codeLine": 4,
@@ -43,7 +45,8 @@
       "array": [
         5,
         10
-      ]
+      ],
+      "curr": 5
     },
     {
       "codeLine": 3,
@@ -52,7 +55,8 @@
         5,
         10,
         15
-      ]
+      ],
+      "curr": 5
     }
   ]
 }

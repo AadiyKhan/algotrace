@@ -15,14 +15,16 @@
       "note": "Request at t=1 arrives",
       "array": [
         1
-      ]
+      ],
+      "curr": 1
     },
     {
       "codeLine": 5,
       "note": "Return count of requests in last 3000ms",
       "array": [
         1
-      ]
+      ],
+      "curr": 3000
     },
     {
       "codeLine": 2,
@@ -30,7 +32,8 @@
       "array": [
         1,
         100
-      ]
+      ],
+      "curr": 100
     },
     {
       "codeLine": 5,
@@ -47,7 +50,8 @@
         1,
         100,
         3001
-      ]
+      ],
+      "curr": 3001
     },
     {
       "codeLine": 3,
@@ -56,7 +60,8 @@
         1,
         100,
         3001
-      ]
+      ],
+      "curr": 1
     },
     {
       "codeLine": 4,
@@ -64,7 +69,8 @@
       "array": [
         100,
         3001
-      ]
+      ],
+      "curr": 0
     },
     {
       "codeLine": 5,

@@ -1,0 +1,74 @@
+{
+  "title": "Valid Palindrome III",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "String",
+    "Dynamic Programming"
+  ],
+  "description": "Determine if string s is a k-palindrome, meaning it can become a palindrome by removing at most k characters.",
+  "target": 2,
+  "pseudocode": "1. n = s.length\n2. dp[n][n] table initialized to 0\n3. Fill dp for substrings: if s[i] == s[j], dp[i][j] = dp[i+1][j-1]\n4. Else, dp[i][j] = 1 + min(dp[i+1][j], dp[i][j-1])\n5. Return dp[0][n-1] <= k",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize variables with s = 'abcde', k = 2. Length n = 5.",
+      "array": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 2,
+      "note": "Create 5x5 DP table where dp[i][j] represents min deletions for s[i...j].",
+      "array": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "curr": 5
+    },
+    {
+      "codeLine": 3,
+      "note": "Calculating substring length 2: 'ab' -> 1 deletion.",
+      "array": [
+        0,
+        1,
+        0,
+        0,
+        0
+      ],
+      "i": 0,
+      "j": 1,
+      "curr": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Calculating substring 'abcde'. Since 'a' != 'e', take 1 + min(dp[0][3], dp[1][4]).",
+      "array": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "i": 0,
+      "j": 4,
+      "curr": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Result dp[0][4] is 4. Since 4 > k (2), return false.",
+      "array": [
+        4
+      ],
+      "curr": 0
+    }
+  ]
+}

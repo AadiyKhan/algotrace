@@ -1,0 +1,118 @@
+{
+  "title": "Max Dot Product of Two Subsequences",
+  "difficulty": "Hard",
+  "type": "matrix",
+  "tags": [
+    "Array",
+    "Dynamic Programming"
+  ],
+  "description": "Find the maximum dot product of non-empty subsequences of two arrays.",
+  "target": null,
+  "pseudocode": "1. dp[i][j] = max(nums1[i]*nums2[j], nums1[i]*nums2[j] + dp[i-1][j-1], dp[i-1][j], dp[i][j-1])\n2. Iterate through arrays to fill DP table\n3. Return dp[m-1][n-1]",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Initialize DP table for nums1=[2, -2], nums2=[3, -3]",
+      "matrix": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "curr": [
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 1,
+      "note": "Calculate dp[0][0]: 2 * 3 = 6",
+      "matrix": [
+        [
+          6,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 1,
+      "note": "Calculate dp[0][1]: max(2 * -3, 6) = 6",
+      "matrix": [
+        [
+          6,
+          6
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "curr": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 1,
+      "note": "Calculate dp[1][0]: max(-2 * 3, 6) = 6",
+      "matrix": [
+        [
+          6,
+          6
+        ],
+        [
+          6,
+          0
+        ]
+      ],
+      "curr": [
+        1,
+        0
+      ]
+    },
+    {
+      "codeLine": 1,
+      "note": "Calculate dp[1][1]: max(-2 * -3, -2 * -3 + 6, 6, 6) = 12",
+      "matrix": [
+        [
+          6,
+          6
+        ],
+        [
+          6,
+          12
+        ]
+      ],
+      "curr": [
+        1,
+        1
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Return the bottom-right value",
+      "matrix": [
+        [
+          6,
+          6
+        ],
+        [
+          6,
+          12
+        ]
+      ]
+    }
+  ]
+}

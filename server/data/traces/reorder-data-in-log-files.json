@@ -26,7 +26,8 @@
       "array": [
         "g1 act car",
         "ab1 off key"
-      ]
+      ],
+      "curr": 1
     },
     {
       "codeLine": 5,

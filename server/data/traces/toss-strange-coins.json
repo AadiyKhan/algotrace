@@ -1,0 +1,55 @@
+{
+  "title": "Toss Strange Coins",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Dynamic Programming",
+    "Probability"
+  ],
+  "description": "Find the probability of getting exactly target number of heads from coins with given probabilities.",
+  "target": 1,
+  "pseudocode": "let dp = new Array(target + 1).fill(0);\ndp[0] = 1;\nfor (let p of prob) {\n  for (let j = target; j >= 0; j--) {\n    dp[j] = dp[j] * (1 - p) + (j > 0 ? dp[j - 1] * p : 0);\n  }\n}",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize DP array with target 1: dp[0]=1, dp[1]=0.",
+      "array": [
+        1,
+        0
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Process first coin with probability 0.5.",
+      "array": [
+        1,
+        0
+      ],
+      "i": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Update dp[1] using coin 1 (p=0.5): dp[1] = 0*(0.5) + 1*(0.5) = 0.5.",
+      "array": [
+        0.5,
+        0.5
+      ],
+      "i": 0,
+      "j": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Update dp[0] using coin 1: dp[0] = 1*(0.5) = 0.5.",
+      "array": [
+        0.5,
+        0.5
+      ],
+      "i": 0,
+      "j": 0,
+      "curr": 0
+    }
+  ]
+}

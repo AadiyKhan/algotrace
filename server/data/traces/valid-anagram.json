@@ -7,13 +7,18 @@
     "Hash Table",
     "String"
   ],
-  "description": "Determine if string t is an anagram of string s by counting character frequencies.",
-  "target": true,
-  "pseudocode": "1. if s.length !== t.length return false\n2. count = new Array(26).fill(0)\n3. for i = 0 to s.length - 1\n4.   count[s.charCodeAt(i) - 97]++\n5.   count[t.charCodeAt(i) - 97]--\n6. return count.every(x => x === 0)",
+  "description": "Check if string t is an anagram of string s using a frequency count array.",
+  "target": null,
+  "pseudocode": "1. If lengths of s and t differ, return false.\n2. Initialize array count of size 26 with zeros.\n3. For each character c in s, increment count[c - 'a'].\n4. For each character c in t, decrement count[c - 'a'].\n5. If any value in count is non-zero, return false.\n6. Return true.",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Check if lengths are equal",
+      "note": "Check if lengths are equal: 'anagram' (7) and 'nagaram' (7). Equal.",
+      "array": []
+    },
+    {
+      "codeLine": 2,
+      "note": "Initialize frequency array of size 26.",
       "array": [
         0,
         0,
@@ -45,8 +50,13 @@
     },
     {
       "codeLine": 3,
-      "note": "Start loop for index i=0 ('a' from 'ab', 'b' from 'ba')",
+      "note": "Count characters in 'anagram'.",
       "array": [
+        3,
+        0,
+        0,
+        0,
+        1,
         0,
         0,
         0,
@@ -55,16 +65,11 @@
         0,
         0,
         0,
+        1,
+        1,
         0,
         0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
+        1,
         0,
         0,
         0,
@@ -73,14 +78,13 @@
         0,
         0,
         0
-      ],
-      "i": 0
+      ]
     },
     {
       "codeLine": 4,
-      "note": "Increment index for 'a' (0)",
+      "note": "Subtract character counts for 'nagaram'.",
       "array": [
-        1,
+        0,
         0,
         0,
         0,
@@ -106,111 +110,11 @@
         0,
         0,
         0
-      ],
-      "i": 0
+      ]
     },
     {
       "codeLine": 5,
-      "note": "Decrement index for 'b' (1)",
-      "array": [
-        1,
-        -1,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "i": 0
-    },
-    {
-      "codeLine": 3,
-      "note": "Next loop i=1 ('b' from 'ab', 'a' from 'ba')",
-      "array": [
-        1,
-        -1,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "i": 1
-    },
-    {
-      "codeLine": 4,
-      "note": "Increment index for 'b' (1)",
-      "array": [
-        1,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "i": 1
-    },
-    {
-      "codeLine": 5,
-      "note": "Decrement index for 'a' (0)",
+      "note": "Check if any indices in count array are non-zero.",
       "array": [
         0,
         0,
@@ -238,12 +142,11 @@
         0,
         0,
         0
-      ],
-      "i": 1
+      ]
     },
     {
       "codeLine": 6,
-      "note": "All counts are 0, return true",
+      "note": "All counts are zero, strings are anagrams. Return true.",
       "array": [
         0,
         0,
@@ -273,5 +176,6 @@
         0
       ]
     }
-  ]
+  ],
+  "fullDescription": "<p>Given two strings <code>s</code> and <code>t</code>, return <code>true</code> if <code>t</code> is an <span data-keyword=\"anagram\">anagram</span> of <code>s</code>, and <code>false</code> otherwise.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<div class=\"example-block\">\n<p><strong>Input:</strong> <span class=\"example-io\">s = &quot;anagram&quot;, t = &quot;nagaram&quot;</span></p>\n\n<p><strong>Output:</strong> <span class=\"example-io\">true</span></p>\n</div>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<div class=\"example-block\">\n<p><strong>Input:</strong> <span class=\"example-io\">s = &quot;rat&quot;, t = &quot;car&quot;</span></p>\n\n<p><strong>Output:</strong> <span class=\"example-io\">false</span></p>\n</div>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= s.length, t.length &lt;= 5 * 10<sup>4</sup></code></li>\n\t<li><code>s</code> and <code>t</code> consist of lowercase English letters.</li>\n</ul>\n\n<p>&nbsp;</p>\n<p><strong>Follow up:</strong> What if the inputs contain Unicode characters? How would you adapt your solution to such a case?</p>\n"
 }

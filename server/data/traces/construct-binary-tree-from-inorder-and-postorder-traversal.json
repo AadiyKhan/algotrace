@@ -15,7 +15,8 @@
     {
       "codeLine": 1,
       "note": "Initialize map for quick lookup: {9:0, 3:1, 15:2, 20:3, 7:4}",
-      "treeNodes": []
+      "treeNodes": [],
+      "curr": 9
     },
     {
       "codeLine": 4,
@@ -27,7 +28,8 @@
           "left": null,
           "right": null
         }
-      ]
+      ],
+      "curr": 20
     },
     {
       "codeLine": 6,
@@ -45,7 +47,8 @@
           "left": null,
           "right": null
         }
-      ]
+      ],
+      "curr": 20
     },
     {
       "codeLine": 6,
@@ -75,7 +78,8 @@
           "left": null,
           "right": null
         }
-      ]
+      ],
+      "curr": 3
     },
     {
       "codeLine": 7,
@@ -111,7 +115,8 @@
           "left": null,
           "right": null
         }
-      ]
+      ],
+      "curr": 20
     },
     {
       "codeLine": 8,
@@ -147,7 +152,8 @@
           "left": null,
           "right": null
         }
-      ]
+      ],
+      "curr": 20
     }
   ]
 }

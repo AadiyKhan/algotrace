@@ -1,0 +1,109 @@
+{
+  "title": "Find Palindrome With Fixed Length",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Math"
+  ],
+  "description": "Calculate the kth smallest palindrome of a specific length by constructing the first half and mirroring it.",
+  "target": 3,
+  "pseudocode": "1. halfLen = (intLength + 1) / 2\n2. start = 10^(halfLen - 1)\n3. for each q in queries:\n4.   half = start + q - 1\n5.   if half >= 10^halfLen: return -1\n6.   construct palindrome by mirroring half",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize half length for intLength = 3: (3+1)/2 = 2",
+      "array": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        90
+      ],
+      "curr": 3
+    },
+    {
+      "codeLine": 2,
+      "note": "Start value for half length 2 is 10^(2-1) = 10",
+      "array": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        90
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Query 1: half = 10 + 1 - 1 = 10. Palindrome: 10 + '1' = 101",
+      "array": [
+        101
+      ],
+      "i": 0,
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Query 2: half = 10 + 2 - 1 = 11. Palindrome: 11 + '1' = 111",
+      "array": [
+        101,
+        111
+      ],
+      "i": 1,
+      "curr": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Query 3: half = 10 + 3 - 1 = 12. Palindrome: 12 + '1' = 121",
+      "array": [
+        101,
+        111,
+        121
+      ],
+      "i": 2,
+      "curr": 3
+    },
+    {
+      "codeLine": 4,
+      "note": "Query 4: half = 10 + 4 - 1 = 13. Palindrome: 13 + '1' = 131",
+      "array": [
+        101,
+        111,
+        121,
+        131
+      ],
+      "i": 3,
+      "curr": 4
+    },
+    {
+      "codeLine": 4,
+      "note": "Query 5: half = 10 + 5 - 1 = 14. Palindrome: 14 + '1' = 141",
+      "array": [
+        101,
+        111,
+        121,
+        131,
+        141
+      ],
+      "i": 4,
+      "curr": 5
+    },
+    {
+      "codeLine": 4,
+      "note": "Query 90: half = 10 + 90 - 1 = 99. Palindrome: 99 + '9' = 999",
+      "array": [
+        101,
+        111,
+        121,
+        131,
+        141,
+        999
+      ],
+      "i": 5,
+      "curr": 90
+    }
+  ]
+}

@@ -1,87 +1,217 @@
 {
   "title": "Word Ladder II",
   "difficulty": "Hard",
-  "type": "array",
+  "type": "graph",
   "tags": [
-    "Breadth-First Search",
-    "Graph",
+    "Hash Table",
+    "String",
     "Backtracking",
-    "String"
+    "Breadth-First Search"
   ],
-  "description": "Find all shortest transformation sequences from beginWord to endWord using a word list.",
+  "description": "Find all shortest transformation sequences from beginWord to endWord.",
   "target": "cog",
-  "pseudocode": "1. Build adjacency list for all words\n2. BFS to find minimum distance to endWord\n3. DFS (backtracking) to collect all paths with minimum distance",
+  "pseudocode": "1. Build adjacency list for words differing by one letter\n2. Perform BFS to find shortest path distances\n3. Use backtracking to reconstruct paths from end to begin",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Building adjacency list for words: hit, hot, dot, lot, dog, cog",
-      "array": [
-        "hit",
-        "hot",
-        "dot",
-        "lot",
-        "dog",
-        "cog"
+      "note": "Initialize graph with words hit, hot, dot, dog, lot, log, cog",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": "hit"
+        },
+        {
+          "id": 1,
+          "val": "hot"
+        },
+        {
+          "id": 2,
+          "val": "dot"
+        },
+        {
+          "id": 3,
+          "val": "dog"
+        },
+        {
+          "id": 4,
+          "val": "lot"
+        },
+        {
+          "id": 5,
+          "val": "log"
+        },
+        {
+          "id": 6,
+          "val": "cog"
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          6
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          5,
+          6
+        ]
       ]
     },
     {
       "codeLine": 2,
-      "note": "BFS: Start from 'hit', distance to 'hit' is 0",
-      "i": 0,
-      "visited": [
-        0
-      ]
-    },
-    {
-      "codeLine": 2,
-      "note": "BFS: Explore 'hot', distance is 1",
-      "i": 1,
-      "visited": [
-        0,
-        1
-      ]
-    },
-    {
-      "codeLine": 2,
-      "note": "BFS: Explore 'dot' and 'lot', distance is 2",
-      "i": 2,
+      "note": "BFS calculates distance: hit:0, hot:1, dot:2, lot:2, dog:3, log:3, cog:4",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": "hit"
+        },
+        {
+          "id": 1,
+          "val": "hot"
+        },
+        {
+          "id": 2,
+          "val": "dot"
+        },
+        {
+          "id": 3,
+          "val": "dog"
+        },
+        {
+          "id": 4,
+          "val": "lot"
+        },
+        {
+          "id": 5,
+          "val": "log"
+        },
+        {
+          "id": 6,
+          "val": "cog"
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          6
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          5,
+          6
+        ]
+      ],
       "visited": [
         0,
         1,
         2,
-        3
-      ]
-    },
-    {
-      "codeLine": 2,
-      "note": "BFS: Explore 'dog', distance is 3",
-      "i": 4,
-      "visited": [
-        0,
-        1,
-        2,
-        3,
-        4
-      ]
-    },
-    {
-      "codeLine": 2,
-      "note": "BFS: Reached 'cog', distance is 4",
-      "i": 5,
-      "visited": [
-        0,
-        1,
-        2,
-        3,
         4,
-        5
+        3,
+        5,
+        6
       ]
     },
     {
       "codeLine": 3,
-      "note": "DFS: Backtrack from 'cog' to 'hit' to reconstruct shortest paths",
-      "i": 5,
-      "curr": "cog"
+      "note": "Backtrack from cog to hit to find all shortest sequences",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": "hit"
+        },
+        {
+          "id": 1,
+          "val": "hot"
+        },
+        {
+          "id": 2,
+          "val": "dot"
+        },
+        {
+          "id": 3,
+          "val": "dog"
+        },
+        {
+          "id": 4,
+          "val": "lot"
+        },
+        {
+          "id": 5,
+          "val": "log"
+        },
+        {
+          "id": 6,
+          "val": "cog"
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          6
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          5,
+          6
+        ]
+      ]
     }
   ]
 }

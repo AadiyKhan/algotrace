@@ -1,0 +1,86 @@
+{
+  "title": "Count Square Submatrices with All Ones",
+  "difficulty": "Medium",
+  "type": "matrix",
+  "tags": [
+    "Array",
+    "Dynamic Programming",
+    "Matrix"
+  ],
+  "description": "Given a m x n binary matrix, return the number of square submatrices with all ones using dynamic programming.",
+  "pseudocode": "for i from 0 to m-1:\n  for j from 0 to n-1:\n    if matrix[i][j] == 1 and i > 0 and j > 0:\n      matrix[i][j] = min(matrix[i-1][j], matrix[i][j-1], matrix[i-1][j-1]) + 1\n    count += matrix[i][j]",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize DP table based on input matrix [[0,1],[1,1]].",
+      "matrix": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "curr": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Check cell (1, 1). It is 1 and not on the boundary.",
+      "matrix": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "curr": [
+        1,
+        1
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Update cell (1, 1) based on neighbors: min(0, 1, 1) + 1 = 1.",
+      "matrix": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "curr": [
+        1,
+        1
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Sum all values in matrix: 0+1+1+2 = 4 total squares.",
+      "matrix": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "curr": [
+        0,
+        1
+      ]
+    }
+  ]
+}

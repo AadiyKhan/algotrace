@@ -1,0 +1,54 @@
+{
+  "title": "Divide Array Into Increasing Sequences",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Greedy",
+    "Math"
+  ],
+  "description": "Determine if an array can be divided into k or more non-decreasing subsequences of length at least k.",
+  "target": 3,
+  "pseudocode": "1. freq = calculateFrequency(nums)\n2. maxFreq = max(freq.values())\n3. return maxFreq * k <= nums.length",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Calculate frequency of elements: [1, 2, 2, 3, 3, 3] -> {1:1, 2:2, 3:3}",
+      "array": [
+        1,
+        2,
+        2,
+        3,
+        3,
+        3
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Identify max frequency, which is 3 (for the number 3)",
+      "array": [
+        1,
+        2,
+        2,
+        3,
+        3,
+        3
+      ],
+      "curr": 3
+    },
+    {
+      "codeLine": 3,
+      "note": "Check if maxFreq * k <= length (3 * 2 <= 6). True, it is possible.",
+      "array": [
+        1,
+        2,
+        2,
+        3,
+        3,
+        3
+      ],
+      "curr": 3
+    }
+  ]
+}

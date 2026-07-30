@@ -19,13 +19,15 @@
       "codeLine": 2,
       "note": "Start iteration for index 0 ('H')",
       "i": 0,
-      "array": []
+      "array": [],
+      "curr": 0
     },
     {
       "codeLine": 4,
       "note": "Check if 'H' (72) is uppercase",
       "i": 0,
-      "array": []
+      "array": [],
+      "curr": 72
     },
     {
       "codeLine": 5,
@@ -41,7 +43,8 @@
       "i": 1,
       "array": [
         "h"
-      ]
+      ],
+      "curr": 1
     },
     {
       "codeLine": 4,
@@ -49,7 +52,8 @@
       "i": 1,
       "array": [
         "h"
-      ]
+      ],
+      "curr": 105
     },
     {
       "codeLine": 7,

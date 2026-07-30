@@ -1,0 +1,62 @@
+{
+  "title": "Maximize The Topmost Element After K Moves",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Greedy"
+  ],
+  "description": "Find the maximum possible top element of the stack after exactly k moves.",
+  "target": null,
+  "pseudocode": "1. if k == 0 return nums[0]\n2. if k == 1 return nums[1]\n3. if n == 1 and k % 2 != 0 return -1\n4. max_val = max(nums[0...k-2])\n5. if k < n return max(max_val, nums[k])\n6. return max_val",
+  "steps": [
+    {
+      "codeLine": 4,
+      "note": "Initialize max_val by checking elements reachable before k moves.",
+      "array": [
+        3,
+        6,
+        8,
+        4,
+        1
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Update max_val with the next accessible element.",
+      "array": [
+        3,
+        6,
+        8,
+        4,
+        1
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Check if k < n to consider the element at index k.",
+      "array": [
+        3,
+        6,
+        8,
+        4,
+        1
+      ],
+      "i": 2,
+      "curr": 3
+    },
+    {
+      "codeLine": 6,
+      "note": "Return the final maximum value found.",
+      "array": [
+        3,
+        6,
+        8,
+        4,
+        1
+      ]
+    }
+  ]
+}

@@ -6,13 +6,13 @@
     "String",
     "Dynamic Programming"
   ],
-  "description": "Find the number of unique non-empty substrings of s that are present in the infinite wraparound string 'abcdefghijklmnopqrstuvwxyz...'.",
-  "target": 6,
-  "pseudocode": "1. count = new Array(26).fill(0)\n2. len = 0\n3. for i = 0 to s.length - 1:\n4.   if i > 0 and (s[i] == s[i-1] + 1 or (s[i] == 'a' and s[i-1] == 'z')):\n5.     len++\n6.   else:\n7.     len = 1\n8.   idx = s.charCodeAt(i) - 97\n9.   count[idx] = Math.max(count[idx], len)\n10. return count.reduce((a, b) => a + b, 0)",
+  "description": "Calculate the number of unique substrings of s that appear in the infinite wraparound string.",
+  "target": 1,
+  "pseudocode": "1. count = array(26, 0)\n2. maxLength = 0\n3. for i from 0 to s.length - 1:\n4.   if i > 0 and (s[i] - s[i-1] == 1 or s[i-1] - s[i] == 25):\n5.     maxLength += 1\n6.   else:\n7.     maxLength = 1\n8.   count[s[i] - 'a'] = max(count[s[i] - 'a'], maxLength)\n9. return sum(count)",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize count array to store max length of substring ending at each character",
+      "note": "Initialize count array of size 26 with zeros to track max length ending at each character.",
       "array": [
         0,
         0,
@@ -40,12 +40,13 @@
         0,
         0,
         0
-      ]
+      ],
+      "i": 0,
+      "curr": 26
     },
     {
       "codeLine": 3,
-      "note": "Processing character 'a' at index 0",
-      "i": 0,
+      "note": "Starting iteration over input string 'a'.",
       "array": [
         0,
         0,
@@ -73,103 +74,82 @@
         0,
         0,
         0
-      ]
-    },
-    {
-      "codeLine": 7,
-      "note": "First char, set current consecutive length to 1",
+      ],
       "i": 0
     },
     {
-      "codeLine": 9,
-      "note": "Update count for 'a' to max(0, 1)",
-      "array": [
-        1,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
-      ]
-    },
-    {
-      "codeLine": 3,
-      "note": "Processing character 'b' at index 1",
-      "i": 1
-    },
-    {
-      "codeLine": 5,
-      "note": "'b' follows 'a', increment consecutive length to 2",
-      "i": 1
-    },
-    {
-      "codeLine": 9,
-      "note": "Update count for 'b' to max(0, 2)",
-      "array": [
-        1,
-        2,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
-      ]
-    },
-    {
-      "codeLine": 3,
-      "note": "Processing character 'z' at index 2",
-      "i": 2
-    },
-    {
       "codeLine": 7,
-      "note": "'z' does not follow 'b', reset length to 1",
-      "i": 2
+      "note": "First character 'a', set maxLength to 1.",
+      "array": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "i": 0,
+      "curr": 1
+    },
+    {
+      "codeLine": 8,
+      "note": "Update count for 'a' (index 0) with max length 1.",
+      "array": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "i": 0,
+      "curr": 0
     },
     {
       "codeLine": 9,
-      "note": "Update count for 'z' to max(0, 1)",
+      "note": "Return sum of count array, which is 1.",
       "array": [
         1,
-        2,
         0,
         0,
         0,
@@ -193,40 +173,10 @@
         0,
         0,
         0,
-        1
-      ]
-    },
-    {
-      "codeLine": 10,
-      "note": "Summing values: 1 + 2 + 1 = 4 total unique substrings",
-      "array": [
-        1,
-        2,
         0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        1
-      ]
+        0
+      ],
+      "curr": 1
     }
   ]
 }

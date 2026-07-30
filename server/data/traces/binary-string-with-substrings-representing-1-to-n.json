@@ -3,61 +3,122 @@
   "difficulty": "Medium",
   "type": "array",
   "tags": [
+    "Hash Table",
     "String",
-    "Binary"
+    "Bit Manipulation"
   ],
-  "description": "Check if all integers from 1 to n appear as binary substrings in s.",
+  "description": "Check if every integer from 1 to n has its binary representation as a substring in s.",
   "target": 3,
-  "pseudocode": "1. for i = n down to 1:\n2.   binary = i.toString(2)\n3.   if (!s.includes(binary)) return false\n4. return true",
+  "pseudocode": "1. For i from n down to 1:\n2.   binary_val = bin(i)[2:]\n3.   if binary_val not in s: return false\n4. return true",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Starting loop with i = 3 (n = 3, s = '0110')",
-      "i": 3
+      "note": "Starting loop from n = 3 down to 1.",
+      "array": [
+        3,
+        2,
+        1
+      ],
+      "i": 3,
+      "curr": 3
     },
     {
       "codeLine": 2,
-      "note": "Converting 3 to binary: '11'",
-      "i": 3
+      "note": "Binary of 3 is '11'. Checking if '11' is in '0110'.",
+      "array": [
+        3,
+        2,
+        1
+      ],
+      "i": 3,
+      "curr": 3
     },
     {
       "codeLine": 3,
-      "note": "Checking if '11' is in '0110'",
-      "i": 3
+      "note": "'11' is found in '0110'. Continue.",
+      "array": [
+        3,
+        2,
+        1
+      ],
+      "i": 3,
+      "curr": 11
     },
     {
       "codeLine": 1,
-      "note": "Decrementing i to 2",
-      "i": 2
+      "note": "Decrementing to i = 2.",
+      "array": [
+        3,
+        2,
+        1
+      ],
+      "i": 2,
+      "curr": 2
     },
     {
       "codeLine": 2,
-      "note": "Converting 2 to binary: '10'",
-      "i": 2
+      "note": "Binary of 2 is '10'. Checking if '10' is in '0110'.",
+      "array": [
+        3,
+        2,
+        1
+      ],
+      "i": 2,
+      "curr": 2
     },
     {
       "codeLine": 3,
-      "note": "Checking if '10' is in '0110'",
-      "i": 2
+      "note": "'10' is found in '0110'. Continue.",
+      "array": [
+        3,
+        2,
+        1
+      ],
+      "i": 2,
+      "curr": 10
     },
     {
       "codeLine": 1,
-      "note": "Decrementing i to 1",
-      "i": 1
+      "note": "Decrementing to i = 1.",
+      "array": [
+        3,
+        2,
+        1
+      ],
+      "i": 1,
+      "curr": 1
     },
     {
       "codeLine": 2,
-      "note": "Converting 1 to binary: '1'",
-      "i": 1
+      "note": "Binary of 1 is '1'. Checking if '1' is in '0110'.",
+      "array": [
+        3,
+        2,
+        1
+      ],
+      "i": 1,
+      "curr": 1
     },
     {
       "codeLine": 3,
-      "note": "Checking if '1' is in '0110'",
-      "i": 1
+      "note": "'1' is found in '0110'. All numbers checked.",
+      "array": [
+        3,
+        2,
+        1
+      ],
+      "i": 1,
+      "curr": 1
     },
     {
       "codeLine": 4,
-      "note": "All substrings found, returning true"
+      "note": "All integers 1 to 3 found. Return true.",
+      "array": [
+        3,
+        2,
+        1
+      ],
+      "curr": 1
     }
   ]
 }

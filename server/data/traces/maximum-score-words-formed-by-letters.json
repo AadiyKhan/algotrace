@@ -1,0 +1,116 @@
+{
+  "title": "Maximum Score Words Formed by Letters",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Backtracking",
+    "Counting"
+  ],
+  "description": "Find the maximum score of a valid subset of words using given character counts.",
+  "target": 23,
+  "pseudocode": "1. function backtrack(index, current_letters, current_score):\n2.   if index == words.length: update max_score; return\n3.   backtrack(index + 1, current_letters, current_score) // Skip word\n4.   if word[index] can be formed:\n5.     backtrack(index + 1, current_letters - word[index], current_score + score[word[index]])",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Starting backtracking with empty set, max score = 0.",
+      "array": [
+        "dog",
+        "cat",
+        "dad",
+        "good"
+      ],
+      "i": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Evaluating 'dog': valid, try including it.",
+      "array": [
+        "dog"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Included 'dog', score = 10, letters remaining: [a,a,c,d,d,g,o].",
+      "array": [
+        "dog"
+      ],
+      "i": 1,
+      "curr": 10
+    },
+    {
+      "codeLine": 3,
+      "note": "Skipping 'cat'.",
+      "array": [
+        "dog"
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Including 'dad', score = 10+11=21, letters remaining: [a,c,g,o].",
+      "array": [
+        "dog",
+        "dad"
+      ],
+      "i": 3,
+      "curr": 10
+    },
+    {
+      "codeLine": 3,
+      "note": "Skipping 'good' as letters are insufficient.",
+      "array": [
+        "dog",
+        "dad"
+      ],
+      "i": 4
+    },
+    {
+      "codeLine": 4,
+      "note": "Backtrack: Try subset without 'dog', starting with 'dad'.",
+      "array": [
+        "dad"
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Including 'dad', score = 11, letters remaining: [a,c,d,d,g,o,o].",
+      "array": [
+        "dad"
+      ],
+      "i": 3,
+      "curr": 11
+    },
+    {
+      "codeLine": 3,
+      "note": "Skipping 'cat'.",
+      "array": [
+        "dad"
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 5,
+      "note": "Including 'good', score = 11+12=23, letters remaining: [a,c].",
+      "array": [
+        "dad",
+        "good"
+      ],
+      "i": 4,
+      "curr": 11
+    },
+    {
+      "codeLine": 2,
+      "note": "All words processed, max score updated to 23.",
+      "array": [
+        "dad",
+        "good"
+      ],
+      "i": 4,
+      "curr": 23
+    }
+  ]
+}

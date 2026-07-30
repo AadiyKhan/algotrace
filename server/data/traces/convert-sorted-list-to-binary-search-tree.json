@@ -15,12 +15,14 @@
     {
       "codeLine": 1,
       "note": "Initialize conversion with linked list: [-10, -3, 0, 5, 9]",
-      "treeNodes": []
+      "treeNodes": [],
+      "curr": -10
     },
     {
       "codeLine": 3,
       "note": "Find the middle element of the list to serve as the root: 0",
-      "treeNodes": []
+      "treeNodes": [],
+      "curr": 0
     },
     {
       "codeLine": 4,
@@ -32,7 +34,8 @@
           "left": null,
           "right": null
         }
-      ]
+      ],
+      "curr": 0
     },
     {
       "codeLine": 5,
@@ -56,7 +59,8 @@
           "left": null,
           "right": null
         }
-      ]
+      ],
+      "curr": -10
     },
     {
       "codeLine": 6,
@@ -92,7 +96,8 @@
           "left": null,
           "right": null
         }
-      ]
+      ],
+      "curr": 5
     },
     {
       "codeLine": 7,
@@ -128,7 +133,8 @@
           "left": null,
           "right": null
         }
-      ]
+      ],
+      "curr": 5
     }
   ]
 }

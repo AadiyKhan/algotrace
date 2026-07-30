@@ -15,56 +15,64 @@
       "note": "Initialize n=6, ans=0, divisor d=2.",
       "array": [
         6
-      ]
+      ],
+      "curr": 6
     },
     {
       "codeLine": 3,
       "note": "Check if 6 is divisible by 2.",
       "array": [
         6
-      ]
+      ],
+      "curr": 6
     },
     {
       "codeLine": 4,
       "note": "6 is divisible by 2. Add 2 to ans, divide 6 by 2 to get 3.",
       "array": [
         3
-      ]
+      ],
+      "curr": 6
     },
     {
       "codeLine": 4,
       "note": "Check if 3 is divisible by 2. It is not.",
       "array": [
         3
-      ]
+      ],
+      "curr": 3
     },
     {
       "codeLine": 5,
       "note": "Increment d to 3.",
       "array": [
         3
-      ]
+      ],
+      "curr": 3
     },
     {
       "codeLine": 3,
       "note": "Check if 3 is divisible by 3.",
       "array": [
         3
-      ]
+      ],
+      "curr": 3
     },
     {
       "codeLine": 4,
       "note": "3 is divisible by 3. Add 3 to ans (total 5), divide 3 by 3 to get 1.",
       "array": [
         1
-      ]
+      ],
+      "curr": 3
     },
     {
       "codeLine": 2,
       "note": "n is now 1, terminate loop.",
       "array": [
         1
-      ]
+      ],
+      "curr": 1
     }
   ]
 }

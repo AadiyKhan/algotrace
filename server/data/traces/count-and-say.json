@@ -3,57 +3,80 @@
   "difficulty": "Medium",
   "type": "array",
   "tags": [
-    "String",
-    "Recursion"
+    "String"
   ],
-  "description": "Generate the nth term of the count-and-say sequence.",
-  "target": 3,
-  "pseudocode": "1. result = '1'\n2. for i = 1 to n-1:\n3.   next = ''\n4.   count = 1\n5.   for j = 1 to length(result):\n6.     if result[j] == result[j-1] count++\n7.     else: next += count + result[j-1]; count = 1\n8.   next += count + result[last]\n9.   result = next",
+  "description": "Generate the nth count-and-say sequence by performing run-length encoding on the previous term.",
+  "target": 4,
+  "pseudocode": "1. result = '1'\n2. for i from 2 to n:\n3.   curr = ''\n4.   count = 1\n5.   for j from 1 to result.length:\n6.     if result[j] == result[j-1]: count++\n7.     else: curr += count + result[j-1]; count = 1\n8.   result = curr + count + result[last]",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize result with '1'.",
+      "note": "Initialize sequence with n=1",
       "array": [
-        1
-      ]
+        "1"
+      ],
+      "curr": 1
     },
     {
       "codeLine": 2,
-      "note": "Start loop for i=1.",
-      "i": 1
+      "note": "Start loop for i = 2",
+      "array": [
+        "1"
+      ],
+      "i": 2,
+      "curr": 2
     },
     {
       "codeLine": 5,
-      "note": "Process result '1'. Loop finishes for current i.",
-      "i": 1,
-      "j": 0
-    },
-    {
-      "codeLine": 8,
-      "note": "Append count and value to get '11'.",
+      "note": "RLE of '1' results in '11'",
       "array": [
-        1,
-        1
-      ]
+        "1",
+        "1"
+      ],
+      "i": 2,
+      "curr": 1
     },
     {
       "codeLine": 2,
-      "note": "Start loop for i=2.",
-      "i": 2
-    },
-    {
-      "codeLine": 6,
-      "note": "Compare result[1] with result[0]. Count becomes 2.",
-      "i": 2,
-      "j": 1
-    },
-    {
-      "codeLine": 8,
-      "note": "Append count and value to get '21'.",
+      "note": "Start loop for i = 3",
       "array": [
-        2,
-        1
-      ]
+        "1",
+        "1"
+      ],
+      "i": 3,
+      "curr": 3
+    },
+    {
+      "codeLine": 5,
+      "note": "RLE of '11' results in '21'",
+      "array": [
+        "2",
+        "1"
+      ],
+      "i": 3,
+      "curr": 11
+    },
+    {
+      "codeLine": 2,
+      "note": "Start loop for i = 4",
+      "array": [
+        "2",
+        "1"
+      ],
+      "i": 4,
+      "curr": 4
+    },
+    {
+      "codeLine": 5,
+      "note": "RLE of '21' results in '1211'",
+      "array": [
+        "1",
+        "2",
+        "1",
+        "1"
+      ],
+      "i": 4,
+      "curr": 21
     }
   ]
 }

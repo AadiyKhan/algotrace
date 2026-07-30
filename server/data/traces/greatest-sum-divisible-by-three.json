@@ -1,0 +1,86 @@
+{
+  "title": "Greatest Sum Divisible By Three",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Dynamic Programming"
+  ],
+  "description": "Find the maximum sum of elements divisible by three.",
+  "target": 0,
+  "pseudocode": "1. dp = [0, -inf, -inf]\n2. for num in nums:\n3.   new_dp = [...dp]\n4.   for i in range(3):\n5.     rem = (dp[i] + num) % 3\n6.     new_dp[rem] = max(new_dp[rem], dp[i] + num)\n7.   dp = new_dp\n8. return dp[0]",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize DP array where dp[i] is max sum with remainder i",
+      "array": [
+        0,
+        -999,
+        -999
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Process first number: 3",
+      "array": [
+        0,
+        -999,
+        -999
+      ],
+      "i": 3,
+      "curr": 3
+    },
+    {
+      "codeLine": 6,
+      "note": "Update remainders for 3 (3 % 3 = 0)",
+      "array": [
+        3,
+        -999,
+        -999
+      ],
+      "curr": 3
+    },
+    {
+      "codeLine": 2,
+      "note": "Process second number: 6",
+      "array": [
+        3,
+        -999,
+        -999
+      ],
+      "i": 6,
+      "curr": 6
+    },
+    {
+      "codeLine": 6,
+      "note": "Update remainders for 6 (6 % 3 = 0, 3+6=9 % 3 = 0)",
+      "array": [
+        9,
+        -999,
+        -999
+      ],
+      "curr": 6
+    },
+    {
+      "codeLine": 2,
+      "note": "Process third number: 1",
+      "array": [
+        9,
+        -999,
+        -999
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Update remainders for 1 (1 % 3 = 1, 9+1=10 % 3 = 1)",
+      "array": [
+        9,
+        10,
+        -999
+      ],
+      "curr": 1
+    }
+  ]
+}

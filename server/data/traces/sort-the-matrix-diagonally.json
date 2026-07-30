@@ -1,0 +1,185 @@
+{
+  "title": "Sort the Matrix Diagonally",
+  "difficulty": "Medium",
+  "type": "matrix",
+  "tags": [
+    "Array",
+    "Matrix",
+    "Sorting"
+  ],
+  "description": "Sort each diagonal of an m x n matrix in ascending order from top-left to bottom-right.",
+  "pseudocode": "1. for r from 0 to m-1: sortDiagonal(r, 0)\n2. for c from 1 to n-1: sortDiagonal(0, c)\n3. function sortDiagonal(r, c):\n4.   values = [], i = r, j = c\n5.   while i < m and j < n: push grid[i][j], i++, j++\n6.   values.sort()\n7.   i = r, j = c\n8.   while i < m and j < n: grid[i][j] = values.pop(), i++, j++",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Starting to process diagonals starting from the first column",
+      "matrix": [
+        [
+          3,
+          3,
+          1
+        ],
+        [
+          2,
+          2,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ]
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Collecting values from diagonal starting at [0, 0]: [3, 2, 1]",
+      "matrix": [
+        [
+          3,
+          3,
+          1
+        ],
+        [
+          2,
+          2,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Sorted values for diagonal starting at [0, 0]: [1, 2, 3]",
+      "matrix": [
+        [
+          3,
+          3,
+          1
+        ],
+        [
+          2,
+          2,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Writing sorted values back to diagonal [0, 0]",
+      "matrix": [
+        [
+          1,
+          3,
+          1
+        ],
+        [
+          2,
+          2,
+          1
+        ],
+        [
+          1,
+          1,
+          3
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Processing diagonal starting at [0, 1]",
+      "matrix": [
+        [
+          1,
+          3,
+          1
+        ],
+        [
+          2,
+          2,
+          1
+        ],
+        [
+          1,
+          1,
+          3
+        ]
+      ],
+      "curr": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Collecting values from diagonal starting at [0, 1]: [3, 2]",
+      "matrix": [
+        [
+          1,
+          3,
+          1
+        ],
+        [
+          2,
+          2,
+          1
+        ],
+        [
+          1,
+          1,
+          3
+        ]
+      ],
+      "curr": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Writing sorted values back to diagonal [0, 1]",
+      "matrix": [
+        [
+          1,
+          2,
+          1
+        ],
+        [
+          2,
+          3,
+          1
+        ],
+        [
+          1,
+          1,
+          3
+        ]
+      ],
+      "curr": [
+        0,
+        1
+      ]
+    }
+  ]
+}

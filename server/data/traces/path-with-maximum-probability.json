@@ -1,0 +1,213 @@
+{
+  "title": "Path with Maximum Probability",
+  "difficulty": "Medium",
+  "type": "graph",
+  "tags": [
+    "Array",
+    "Graph Theory",
+    "Heap"
+  ],
+  "description": "Find the path with the maximum probability of success between start and end nodes using Dijkstra-like approach.",
+  "target": 0.25,
+  "pseudocode": "1. Initialize probabilities array with 0, start node with 1.0\n2. Use Max-Heap to store (probability, node)\n3. While heap is not empty:\n4. Pop node with max probability\n5. If current prob > stored prob, continue\n6. For each neighbor, calculate new probability\n7. If new probability > neighbor's current, update and push to heap",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize probabilities: [1.0, 0, 0] for nodes 0, 1, 2",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": 1
+        },
+        {
+          "id": 1,
+          "val": 0
+        },
+        {
+          "id": 2,
+          "val": 0
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Push start node 0 into max-heap",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": 1
+        },
+        {
+          "id": 1,
+          "val": 0
+        },
+        {
+          "id": 2,
+          "val": 0
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Pop node 0 (prob 1.0). Explore neighbors 1 (0.5) and 2 (0.2).",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": 1
+        },
+        {
+          "id": 1,
+          "val": 0.5
+        },
+        {
+          "id": 2,
+          "val": 0.2
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Pop node 1 (prob 0.5). Explore neighbor 2. New prob: 0.5 * 0.5 = 0.25.",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": 1
+        },
+        {
+          "id": 1,
+          "val": 0.5
+        },
+        {
+          "id": 2,
+          "val": 0.25
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "Update node 2 probability to 0.25 since 0.25 > 0.2.",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": 1
+        },
+        {
+          "id": 1,
+          "val": 0.5
+        },
+        {
+          "id": 2,
+          "val": 0.25
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Pop node 2. Reached destination with max probability 0.25.",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": 1
+        },
+        {
+          "id": 1,
+          "val": 0.5
+        },
+        {
+          "id": 2,
+          "val": 0.25
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "curr": 2
+    }
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "title": "Fair Distribution of Cookies",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Backtracking",
+    "Bitmask"
+  ],
+  "description": "Distribute cookies to k children to minimize the maximum number of cookies any child receives.",
+  "target": 0,
+  "pseudocode": "function distribute(cookies, k) {\n  let distribution = new Array(k).fill(0);\n  let minMax = Infinity;\n  function backtrack(idx) {\n    if (idx === cookies.length) {\n      minMax = Math.min(minMax, Math.max(...distribution));\n      return;\n    }\n    for (let i = 0; i < k; i++) {\n      distribution[i] += cookies[idx];\n      if (distribution[i] < minMax) backtrack(idx + 1);\n      distribution[i] -= cookies[idx];\n    }\n  }\n  backtrack(0);\n  return minMax;\n}",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Initialize distribution array for 2 children",
+      "array": [
+        0,
+        0
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 9,
+      "note": "Assign first cookie (val: 8) to first child",
+      "array": [
+        8,
+        0
+      ],
+      "i": 0,
+      "curr": 8
+    },
+    {
+      "codeLine": 9,
+      "note": "Assign second cookie (val: 15) to second child",
+      "array": [
+        8,
+        15
+      ],
+      "i": 1,
+      "curr": 15
+    },
+    {
+      "codeLine": 4,
+      "note": "Base case reached, current max is 15",
+      "array": [
+        8,
+        15
+      ],
+      "curr": 15
+    },
+    {
+      "codeLine": 11,
+      "note": "Backtrack, removing second cookie from second child",
+      "array": [
+        8,
+        0
+      ]
+    },
+    {
+      "codeLine": 9,
+      "note": "Assign second cookie to first child",
+      "array": [
+        23,
+        0
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Base case reached, current max is 23. Result remains 15.",
+      "array": [
+        23,
+        0
+      ],
+      "curr": 23
+    }
+  ]
+}

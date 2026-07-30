@@ -1,0 +1,78 @@
+{
+  "title": "Best Team With No Conflicts",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Dynamic Programming",
+    "Sorting"
+  ],
+  "description": "Find the maximum score of a team where no younger player has a higher score than an older player.",
+  "target": null,
+  "pseudocode": "1. Combine scores and ages into pairs\n2. Sort by age ascending, then score ascending\n3. dp[i] = score[i] + max(dp[j]) for all j < i if score[j] <= score[i]\n4. Result is max(dp)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Pairing: (1, 4), (2, 5), (3, 6) where pairs are [age, score]",
+      "array": [
+        4,
+        5,
+        6
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Sorted players by age (and score): [4, 5, 6]",
+      "array": [
+        4,
+        5,
+        6
+      ],
+      "i": 0,
+      "curr": 4
+    },
+    {
+      "codeLine": 3,
+      "note": "Initialize DP table with individual scores",
+      "array": [
+        4,
+        5,
+        6
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Processing index 1: score 5 >= 4, update dp[1] = 4 + 5 = 9",
+      "array": [
+        4,
+        9,
+        6
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Processing index 2: score 6 >= 9, update dp[2] = 9 + 6 = 15",
+      "array": [
+        4,
+        9,
+        15
+      ],
+      "i": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Max value is 15",
+      "array": [
+        4,
+        9,
+        15
+      ],
+      "curr": 15
+    }
+  ]
+}

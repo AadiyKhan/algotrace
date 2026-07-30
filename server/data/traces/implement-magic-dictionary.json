@@ -1,98 +1,95 @@
 {
   "title": "Implement Magic Dictionary",
   "difficulty": "Medium",
-  "type": "tree",
+  "type": "array",
   "tags": [
-    "Trie",
     "Hash Table",
-    "String"
+    "String",
+    "Depth-First Search",
+    "Design",
+    "Trie"
   ],
-  "description": "Design a dictionary that can search if a word exists by changing exactly one character.",
-  "target": "hello",
-  "pseudocode": "1. Build Trie from dict\n2. For search(word):\n3. dfs(node, index, diffCount)\n4. If diffCount == 1 and node.isEnd and index == length, return true\n5. If diffCount > 1, return false\n6. For each char c in node.children:\n7. If c == word[index], dfs(child, index+1, diffCount)\n8. Else, dfs(child, index+1, diffCount+1)",
+  "description": "Determine if a string can match a dictionary word by changing exactly one character.",
+  "pseudocode": "1. Build a dictionary set from input words\n2. For each searchWord, iterate through dictionary words\n3. Check if lengths differ; if equal, count character differences\n4. If count of differences is exactly 1, return true\n5. Return false",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Building Trie with ['hello']",
-      "treeNodes": [
-        {
-          "id": 0,
-          "val": "root",
-          "left": 1,
-          "right": null
-        },
-        {
-          "id": 1,
-          "val": "h",
-          "left": 2,
-          "right": null
-        },
-        {
-          "id": 2,
-          "val": "e",
-          "left": 3,
-          "right": null
-        },
-        {
-          "id": 3,
-          "val": "l",
-          "left": 4,
-          "right": null
-        },
-        {
-          "id": 4,
-          "val": "l",
-          "left": 5,
-          "right": null
-        },
-        {
-          "id": 5,
-          "val": "o",
-          "left": null,
-          "right": null
-        }
+      "note": "Build dictionary with ['hello', 'leetcode']",
+      "array": [
+        "hello",
+        "leetcode"
       ]
     },
     {
-      "codeLine": 3,
-      "note": "Searching 'hallo': start DFS from root",
-      "curr": 0,
-      "i": 0
-    },
-    {
-      "codeLine": 7,
-      "note": "Match 'h' at index 0",
-      "curr": 1,
-      "i": 1
-    },
-    {
-      "codeLine": 8,
-      "note": "Mismatch 'a' vs 'e', increment diffCount to 1",
-      "curr": 2,
-      "i": 2
-    },
-    {
-      "codeLine": 7,
-      "note": "Match 'l' at index 2",
-      "curr": 3,
-      "i": 3
-    },
-    {
-      "codeLine": 7,
-      "note": "Match 'l' at index 3",
-      "curr": 4,
-      "i": 4
-    },
-    {
-      "codeLine": 7,
-      "note": "Match 'o' at index 4",
-      "curr": 5,
-      "i": 5
+      "codeLine": 2,
+      "note": "Searching 'hello': length matches 'hello', diffs=0",
+      "array": [
+        "hello",
+        "leetcode"
+      ],
+      "i": 0,
+      "curr": 0
     },
     {
       "codeLine": 4,
-      "note": "diffCount is 1 and index is 5, return True",
-      "curr": 5
+      "note": "Result for 'hello' is false (needs exactly 1 diff)",
+      "array": [
+        "hello",
+        "leetcode"
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Searching 'hhllo': compare with 'hello', diffs=1 (h vs e)",
+      "array": [
+        "hello",
+        "leetcode"
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Result for 'hhllo' is true",
+      "array": [
+        "hello",
+        "leetcode"
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Searching 'hell': lengths differ, skip",
+      "array": [
+        "hello",
+        "leetcode"
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Result for 'hell' is false",
+      "array": [
+        "hello",
+        "leetcode"
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Searching 'leetcoded': lengths differ, skip",
+      "array": [
+        "hello",
+        "leetcode"
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 5,
+      "note": "Result for 'leetcoded' is false",
+      "array": [
+        "hello",
+        "leetcode"
+      ]
     }
   ]
 }

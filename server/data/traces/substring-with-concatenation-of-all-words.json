@@ -76,13 +76,15 @@
           "foo": 1,
           "bar": 1
         }
-      }
+      },
+      "curr": 1
     },
     {
       "codeLine": 19,
       "note": "Start the outer loop with 'offset = 0' (first possible starting position).",
       "array": "barfoothefoobarman",
-      "i": 0
+      "i": 0,
+      "curr": 0
     },
     {
       "codeLine": 20,
@@ -99,7 +101,8 @@
       "left": 0,
       "extra": {
         "count": 0
-      }
+      },
+      "curr": 0
     },
     {
       "codeLine": 22,
@@ -1129,7 +1132,8 @@
       "note": "Initialize 'left' pointer for offset 1 to 1.",
       "array": "barfoothefoobarman",
       "i": 1,
-      "left": 1
+      "left": 1,
+      "curr": 1
     },
     {
       "codeLine": 21,
@@ -1139,7 +1143,8 @@
       "left": 1,
       "extra": {
         "count": 0
-      }
+      },
+      "curr": 0
     },
     {
       "codeLine": 22,
@@ -1455,7 +1460,8 @@
       "note": "Initialize 'left' pointer for offset 2 to 2.",
       "array": "barfoothefoobarman",
       "i": 2,
-      "left": 2
+      "left": 2,
+      "curr": 2
     },
     {
       "codeLine": 21,
@@ -1465,7 +1471,8 @@
       "left": 2,
       "extra": {
         "count": 0
-      }
+      },
+      "curr": 0
     },
     {
       "codeLine": 22,

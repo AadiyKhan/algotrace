@@ -1,0 +1,72 @@
+{
+  "title": "Minimum Distance To Type A Word Using Two Fingers",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Dynamic Programming",
+    "String"
+  ],
+  "description": "Minimize total movement distance for two fingers to type a word on a 5x6 grid.",
+  "target": "CA",
+  "pseudocode": "1. dp[finger1][finger2] = 0\n2. for char in word:\n3.   next = getPos(char)\n4.   new_dp = {} \n5.   for (f1, f2), dist in dp:\n6.     new_dp[next][f2] = min(dist + move(f1, next))\n7.     new_dp[f1][next] = min(dist + move(f2, next))\n8. dp = new_dp",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize DP table with fingers at null (start position).",
+      "array": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Processing first character 'C' (pos 0,2). Move finger 1 to C.",
+      "array": [
+        2,
+        0
+      ],
+      "i": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Finger 1 moves to 'C'. Distance from start to C is 0.",
+      "array": [
+        2,
+        0
+      ],
+      "i": 0,
+      "curr": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Processing second character 'A' (pos 0,0).",
+      "array": [
+        2,
+        0
+      ],
+      "i": 1,
+      "curr": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Move finger 1 from 'C'(0,2) to 'A'(0,0). Distance = |0-0| + |0-2| = 2.",
+      "array": [
+        0,
+        0
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "Move finger 2 from null to 'A'(0,0). Distance = 0.",
+      "array": [
+        0,
+        0
+      ],
+      "i": 1,
+      "curr": 2
+    }
+  ]
+}

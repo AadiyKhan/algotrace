@@ -42,14 +42,16 @@
       "note": "Get last 4 bits of 26 (1010 in binary, which is 10/a)",
       "array": [
         "a"
-      ]
+      ],
+      "curr": 4
     },
     {
       "codeLine": 6,
       "note": "Unsigned shift 26 by 4 bits to get 1",
       "array": [
         "a"
-      ]
+      ],
+      "curr": 26
     },
     {
       "codeLine": 5,
@@ -57,7 +59,8 @@
       "array": [
         "1",
         "a"
-      ]
+      ],
+      "curr": 4
     },
     {
       "codeLine": 6,
@@ -65,7 +68,8 @@
       "array": [
         "1",
         "a"
-      ]
+      ],
+      "curr": 1
     },
     {
       "codeLine": 7,

@@ -1,0 +1,109 @@
+{
+  "title": "Corporate Flight Bookings",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Difference Array",
+    "Prefix Sum"
+  ],
+  "description": "Calculate total flight bookings for n flights given multiple booking ranges [first, last, seats].",
+  "target": null,
+  "pseudocode": "1. diff = new Array(n + 2).fill(0)\n2. for [first, last, seats] of bookings:\n3.   diff[first] += seats\n4.   diff[last + 1] -= seats\n5. res = [], current = 0\n6. for i = 1 to n:\n7.   current += diff[i]\n8.   res.push(current)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize difference array of size n+2 (n=3 here).",
+      "array": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Apply first booking [1, 2, 10]: add 10 to index 1.",
+      "array": [
+        0,
+        10,
+        0,
+        0,
+        0
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Apply first booking [1, 2, 10]: subtract 10 from index 3.",
+      "array": [
+        0,
+        10,
+        0,
+        -10,
+        0
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Apply second booking [2, 3, 5]: add 5 to index 2.",
+      "array": [
+        0,
+        10,
+        5,
+        -10,
+        0
+      ],
+      "i": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Apply second booking [2, 3, 5]: subtract 5 from index 4.",
+      "array": [
+        0,
+        10,
+        5,
+        -10,
+        -5
+      ],
+      "i": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 7,
+      "note": "Prefix sum calculation: index 1, current = 10.",
+      "array": [
+        10
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "Prefix sum calculation: index 2, current = 10 + 5 = 15.",
+      "array": [
+        10,
+        15
+      ],
+      "i": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 7,
+      "note": "Prefix sum calculation: index 3, current = 15 - 10 = 5.",
+      "array": [
+        10,
+        15,
+        5
+      ],
+      "i": 3,
+      "curr": 3
+    }
+  ]
+}

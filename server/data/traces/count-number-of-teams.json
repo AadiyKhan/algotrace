@@ -1,0 +1,130 @@
+{
+  "title": "Count Number Of Teams",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Dynamic Programming"
+  ],
+  "description": "Find the number of teams (i, j, k) such that ratings are increasing or decreasing.",
+  "target": null,
+  "pseudocode": "1. count = 0\n2. for j from 1 to n-2:\n3.   leftLess = count elements < rating[j] in [0...j-1]\n4.   leftGreater = count elements > rating[j] in [0...j-1]\n5.   rightLess = count elements < rating[j] in [j+1...n-1]\n6.   rightGreater = count elements > rating[j] in [j+1...n-1]\n7.   count += (leftLess * rightGreater) + (leftGreater * rightLess)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize count to 0",
+      "array": [
+        2,
+        5,
+        3,
+        4,
+        1
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Start loop at middle index j=1 (value 5)",
+      "array": [
+        2,
+        5,
+        3,
+        4,
+        1
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Left of 5: [2]. Less = 1, Greater = 0",
+      "array": [
+        2,
+        5,
+        3,
+        4,
+        1
+      ],
+      "i": 1,
+      "curr": 5
+    },
+    {
+      "codeLine": 5,
+      "note": "Right of 5: [3, 4, 1]. Less = 2 (3, 1), Greater = 1 (4)",
+      "array": [
+        2,
+        5,
+        3,
+        4,
+        1
+      ],
+      "i": 1,
+      "curr": 5
+    },
+    {
+      "codeLine": 7,
+      "note": "Calculate teams for index 1: (1*1) + (0*2) = 1. Total count = 1",
+      "array": [
+        2,
+        5,
+        3,
+        4,
+        1
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Move to middle index j=2 (value 3)",
+      "array": [
+        2,
+        5,
+        3,
+        4,
+        1
+      ],
+      "i": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Left of 3: [2, 5]. Less = 1 (2), Greater = 1 (5)",
+      "array": [
+        2,
+        5,
+        3,
+        4,
+        1
+      ],
+      "i": 2,
+      "curr": 3
+    },
+    {
+      "codeLine": 5,
+      "note": "Right of 3: [4, 1]. Less = 1 (1), Greater = 1 (4)",
+      "array": [
+        2,
+        5,
+        3,
+        4,
+        1
+      ],
+      "i": 2,
+      "curr": 3
+    },
+    {
+      "codeLine": 7,
+      "note": "Calculate teams for index 2: (1*1) + (1*1) = 2. Total count = 3",
+      "array": [
+        2,
+        5,
+        3,
+        4,
+        1
+      ],
+      "i": 2,
+      "curr": 2
+    }
+  ]
+}

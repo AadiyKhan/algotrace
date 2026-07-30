@@ -1,0 +1,102 @@
+{
+  "title": "Apply Discount Every n Orders",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "Design"
+  ],
+  "description": "Calculate the bill for each customer, applying a discount every nth customer.",
+  "target": 50,
+  "pseudocode": "1. count++\n2. if (count % n == 0) {\n3.   total = sum(prices) * (1 - discount / 100)\n4. } else {\n5.   total = sum(prices)\n6. }",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "First customer arrives, increment count.",
+      "array": [
+        100,
+        200
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Check if count (1) is divisible by n (3). False.",
+      "array": [
+        100,
+        200
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Calculate total without discount: 300.",
+      "array": [
+        100,
+        200
+      ],
+      "i": 1,
+      "curr": 300
+    },
+    {
+      "codeLine": 1,
+      "note": "Second customer arrives, increment count.",
+      "array": [
+        50,
+        50
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 2,
+      "note": "Check if count (2) is divisible by n (3). False.",
+      "array": [
+        50,
+        50
+      ],
+      "i": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Calculate total without discount: 100.",
+      "array": [
+        50,
+        50
+      ],
+      "i": 2,
+      "curr": 100
+    },
+    {
+      "codeLine": 1,
+      "note": "Third customer arrives, increment count.",
+      "array": [
+        100,
+        100
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 2,
+      "note": "Check if count (3) is divisible by n (3). True.",
+      "array": [
+        100,
+        100
+      ],
+      "i": 3,
+      "curr": 3
+    },
+    {
+      "codeLine": 3,
+      "note": "Apply 50% discount: 200 * (1 - 0.5) = 100.",
+      "array": [
+        100,
+        100
+      ],
+      "i": 3,
+      "curr": 50
+    }
+  ]
+}

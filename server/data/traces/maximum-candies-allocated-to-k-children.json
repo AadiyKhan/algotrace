@@ -1,0 +1,123 @@
+{
+  "title": "Maximum Candies Allocated to K Children",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Binary Search"
+  ],
+  "description": "Find the maximum number of candies each child can receive such that each child gets an equal number of candies, given k children.",
+  "target": 11,
+  "pseudocode": "1. low = 1, high = max(candies)\n2. while low <= high:\n3.   mid = floor((low + high) / 2)\n4.   if count(mid) >= k: ans = mid, low = mid + 1\n5.   else: high = mid - 1\n6. return ans",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize binary search range. candies=[5, 8, 6], k=3.",
+      "array": [
+        5,
+        8,
+        6
+      ],
+      "curr": 5
+    },
+    {
+      "codeLine": 3,
+      "note": "Calculate mid = (1 + 8) / 2 = 4.",
+      "array": [
+        5,
+        8,
+        6
+      ],
+      "i": 4,
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Check count for 4: 5//4 + 8//4 + 6//4 = 1+2+1 = 4. 4 >= 3 is true.",
+      "array": [
+        5,
+        8,
+        6
+      ],
+      "i": 4,
+      "curr": 4
+    },
+    {
+      "codeLine": 4,
+      "note": "Update ans = 4, low = 5.",
+      "array": [
+        5,
+        8,
+        6
+      ],
+      "i": 5,
+      "curr": 4
+    },
+    {
+      "codeLine": 3,
+      "note": "Calculate mid = (5 + 8) / 2 = 6.",
+      "array": [
+        5,
+        8,
+        6
+      ],
+      "i": 6,
+      "curr": 5
+    },
+    {
+      "codeLine": 4,
+      "note": "Check count for 6: 5//6 + 8//6 + 6//6 = 0+1+1 = 2. 2 >= 3 is false.",
+      "array": [
+        5,
+        8,
+        6
+      ],
+      "i": 6,
+      "curr": 6
+    },
+    {
+      "codeLine": 5,
+      "note": "Update high = 5.",
+      "array": [
+        5,
+        8,
+        6
+      ],
+      "i": 5,
+      "curr": 5
+    },
+    {
+      "codeLine": 3,
+      "note": "Calculate mid = (5 + 5) / 2 = 5.",
+      "array": [
+        5,
+        8,
+        6
+      ],
+      "i": 5,
+      "curr": 5
+    },
+    {
+      "codeLine": 4,
+      "note": "Check count for 5: 5//5 + 8//5 + 6//5 = 1+1+1 = 3. 3 >= 3 is true.",
+      "array": [
+        5,
+        8,
+        6
+      ],
+      "i": 5,
+      "curr": 5
+    },
+    {
+      "codeLine": 4,
+      "note": "Update ans = 5, low = 6.",
+      "array": [
+        5,
+        8,
+        6
+      ],
+      "i": 6,
+      "curr": 5
+    }
+  ]
+}

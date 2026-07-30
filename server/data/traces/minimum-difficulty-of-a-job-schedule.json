@@ -1,0 +1,80 @@
+{
+  "title": "Minimum Difficulty of a Job Schedule",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Dynamic Programming"
+  ],
+  "description": "Partition an array into d subarrays to minimize the sum of the maximums of each subarray.",
+  "target": 7,
+  "pseudocode": "1. If length < d return -1\n2. Initialize dp table with infinity\n3. Base case: day 1 difficulty = max(jobDifficulty[0...i])\n4. For day = 2 to d:\n5.   For i = day-1 to n-1:\n6.     For j = day-2 to i-1:\n7.       dp[day][i] = min(dp[day][i], dp[day-1][j] + max(jobDifficulty[j+1...i]))",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Verify job count (6) >= days (2). Valid.",
+      "array": [
+        6,
+        5,
+        4,
+        3,
+        2,
+        1
+      ],
+      "curr": 6
+    },
+    {
+      "codeLine": 3,
+      "note": "Day 1: Set initial max values [6, 6, 6, 6, 6, 6]",
+      "array": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Starting DP for Day 2",
+      "array": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6
+      ],
+      "i": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 7,
+      "note": "Day 2, Job 5: Split at index 4. Max(6,5,4,3,2) + 1 = 6 + 1 = 7.",
+      "array": [
+        6,
+        6,
+        6,
+        6,
+        7
+      ],
+      "i": 5,
+      "curr": 2
+    },
+    {
+      "codeLine": 7,
+      "note": "Result found: Minimum difficulty is 7.",
+      "array": [
+        6,
+        5,
+        4,
+        3,
+        2,
+        1
+      ],
+      "curr": 7
+    }
+  ]
+}

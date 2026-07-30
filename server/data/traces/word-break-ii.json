@@ -3,72 +3,78 @@
   "difficulty": "Hard",
   "type": "array",
   "tags": [
-    "Backtracking",
+    "Array",
+    "String",
     "Dynamic Programming",
-    "Memoization"
+    "Backtracking"
   ],
-  "description": "Given a string s and a dictionary of strings wordDict, add spaces in s to construct a sentence where each word is a valid dictionary word.",
+  "description": "Partition string 's' into valid dictionary words using backtracking with memoization.",
   "target": "catsanddog",
-  "pseudocode": "1. memo = {}\n2. function backtrack(s):\n3.   if s in memo: return memo[s]\n4.   if s == '': return ['']\n5.   res = []\n6.   for word in wordDict:\n7.     if s.startsWith(word):\n8.       subSentences = backtrack(s.slice(word.length))\n9.       for sub in subSentences:\n10.        res.append((word + (sub ? ' ' : '') + sub).trim())\n11.  memo[s] = res\n12.  return res",
+  "pseudocode": "1. memo = {}\n2. function solve(s):\n3.   if s in memo: return memo[s]\n4.   if s is empty: return ['']\n5.   res = []\n6.   for word in wordDict:\n7.     if s starts with word:\n8.       subSentences = solve(s[len(word):])\n9.       for sub in subSentences:\n10.        res.append((word + ' ' + sub).trim())\n11.  memo[s] = res\n12.  return res",
   "steps": [
     {
       "codeLine": 2,
-      "note": "Starting recursion for 'catsanddog' with wordDict ['cat', 'cats', 'and', 'sand', 'dog']",
+      "note": "Starting backtracking on 'catsanddog'",
       "array": [
-        "c",
-        "a",
-        "t",
-        "s",
-        "a",
-        "n",
-        "d",
-        "d",
-        "o",
-        "g"
+        "catsanddog"
       ]
     },
     {
       "codeLine": 6,
-      "note": "Checking word 'cat'. Matches prefix.",
-      "i": 0
+      "note": "Checking word 'cat'",
+      "array": [
+        "cat",
+        "sanddog"
+      ]
     },
     {
       "codeLine": 8,
-      "note": "Recursive call for remaining string 'sanddog'",
-      "i": 3
-    },
-    {
-      "codeLine": 6,
-      "note": "Checking word 'sand'. Matches prefix of 'sanddog'.",
-      "i": 3
-    },
-    {
-      "codeLine": 8,
-      "note": "Recursive call for remaining string 'dog'",
-      "i": 7
-    },
-    {
-      "codeLine": 6,
-      "note": "Checking word 'dog'. Matches prefix of 'dog'.",
-      "i": 7
-    },
-    {
-      "codeLine": 4,
-      "note": "Base case reached for empty string, returning ['']",
-      "i": 10
+      "note": "Recurse on 'sanddog'",
+      "array": [
+        "sand",
+        "dog"
+      ]
     },
     {
       "codeLine": 10,
-      "note": "Combining results: 'cat' + ' ' + 'sand' + ' ' + 'dog'",
-      "i": 10
+      "note": "Found path: 'cat sand dog'",
+      "array": [
+        "cat",
+        "sand",
+        "dog"
+      ]
     },
     {
-      "codeLine": 11,
-      "note": "Memoizing results for current suffixes",
-      "visited": [
-        0,
-        3,
-        7
+      "codeLine": 6,
+      "note": "Checking word 'cats'",
+      "array": [
+        "cats",
+        "anddog"
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Recurse on 'anddog'",
+      "array": [
+        "and",
+        "dog"
+      ]
+    },
+    {
+      "codeLine": 10,
+      "note": "Found path: 'cats and dog'",
+      "array": [
+        "cats",
+        "and",
+        "dog"
+      ]
+    },
+    {
+      "codeLine": 12,
+      "note": "Returning results: ['cat sand dog', 'cats and dog']",
+      "array": [
+        "cats and dog",
+        "cat sand dog"
       ]
     }
   ]

@@ -4,15 +4,16 @@
   "type": "tree",
   "tags": [
     "Tree",
-    "DFS",
-    "BFS"
+    "Depth-First Search",
+    "Breadth-First Search",
+    "Binary Tree"
   ],
-  "description": "Determine if a binary tree is a mirror of itself (symmetric around its center).",
-  "pseudocode": "function isSymmetric(root) {\n  if (!root) return true;\n  return check(root.left, root.right);\n}\nfunction check(n1, n2) {\n  if (!n1 && !n2) return true;\n  if (!n1 || !n2 || n1.val !== n2.val) return false;\n  return check(n1.left, n2.right) && check(n1.right, n2.left);\n}",
+  "description": "Determine if a binary tree is a mirror image of itself.",
+  "pseudocode": "1. If root is null, return true\n2. Call isMirror(root.left, root.right)\n3. isMirror(n1, n2):\n4. If n1 and n2 are null, return true\n5. If n1 or n2 is null, or n1.val != n2.val, return false\n6. Return isMirror(n1.left, n2.right) AND isMirror(n1.right, n2.left)",
   "steps": [
     {
       "codeLine": 2,
-      "note": "Initialize check on root left and right children.",
+      "note": "Comparing root's left child (2) and right child (2)",
       "treeNodes": [
         {
           "id": 0,
@@ -24,47 +25,128 @@
           "id": 1,
           "val": 2,
           "left": 3,
-          "right": null
+          "right": 4
         },
         {
           "id": 2,
           "val": 2,
-          "left": null,
-          "right": 3
+          "left": 5,
+          "right": 6
         },
         {
           "id": 3,
           "val": 3,
           "left": null,
           "right": null
+        },
+        {
+          "id": 4,
+          "val": 4,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 5,
+          "val": 4,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 6,
+          "val": 3,
+          "left": null,
+          "right": null
         }
-      ]
+      ],
+      "curr": 2
     },
     {
       "codeLine": 6,
-      "note": "Comparing left child (2) and right child (2). Values match.",
-      "visited": [
-        1,
-        2
-      ]
+      "note": "Comparing left subtrees of nodes 1 and 2: node 3 and node 6",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 2,
+          "val": 2,
+          "left": 5,
+          "right": 6
+        },
+        {
+          "id": 3,
+          "val": 3,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 6,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 1
     },
     {
-      "codeLine": 7,
-      "note": "Recursively check outer children (left.left vs right.right).",
-      "visited": [
-        1,
-        2,
-        3
-      ]
+      "codeLine": 6,
+      "note": "Comparing outer nodes: left.left (3) and right.right (3). Vals match.",
+      "treeNodes": [
+        {
+          "id": 3,
+          "val": 3,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 6,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 3
     },
     {
-      "codeLine": 5,
-      "note": "Reached leaf nodes (null), returning true for this branch.",
-      "visited": [
-        1,
-        2,
-        3
-      ]
+      "codeLine": 6,
+      "note": "Comparing inner nodes: left.right (4) and right.left (4). Vals match.",
+      "treeNodes": [
+        {
+          "id": 4,
+          "val": 4,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 5,
+          "val": 4,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 4
+    },
+    {
+      "codeLine": 6,
+      "note": "All subtrees match, tree is symmetric.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        }
+      ],
+      "curr": 4
     }
   ]
 }

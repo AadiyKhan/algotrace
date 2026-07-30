@@ -6,38 +6,38 @@
     "Array",
     "Dynamic Programming"
   ],
-  "description": "Determine the maximum amount of money you can rob tonight without alerting the police (cannot rob adjacent houses).",
-  "pseudocode": "function rob(nums) {\n  let prev2 = 0;\n  let prev1 = 0;\n  for (let num of nums) {\n    let temp = prev1;\n    prev1 = Math.max(prev2 + num, prev1);\n    prev2 = temp;\n  }\n  return prev1;\n}",
+  "description": "Calculate the maximum amount of money that can be robbed without hitting adjacent houses.",
+  "target": 4,
+  "pseudocode": "1. Initialize prev2 = 0, prev1 = 0\n2. For each num in nums:\n3. current = max(prev1, prev2 + num)\n4. prev2 = prev1\n5. prev1 = current\n6. Return prev1",
   "steps": [
     {
-      "codeLine": 2,
-      "note": "Initialize prev2 to 0",
+      "codeLine": 1,
+      "note": "Initialize variables prev2 (i-2) and prev1 (i-1) to 0.",
       "array": [
+        1,
         2,
-        7,
-        9,
         3,
         1
-      ]
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Processing first house (val=1).",
+      "array": [
+        1,
+        2,
+        3,
+        1
+      ],
+      "i": 0
     },
     {
       "codeLine": 3,
-      "note": "Initialize prev1 to 0",
+      "note": "current = max(0, 0 + 1) = 1.",
       "array": [
+        1,
         2,
-        7,
-        9,
-        3,
-        1
-      ]
-    },
-    {
-      "codeLine": 4,
-      "note": "Start loop: num = 2",
-      "array": [
-        2,
-        7,
-        9,
         3,
         1
       ],
@@ -45,44 +45,32 @@
     },
     {
       "codeLine": 5,
-      "note": "Store prev1 in temp (temp = 0)",
+      "note": "Update prev1 to 1, prev2 to 0.",
       "array": [
+        1,
         2,
-        7,
-        9,
         3,
         1
-      ]
+      ],
+      "i": 0
     },
     {
-      "codeLine": 6,
-      "note": "Update prev1: max(0 + 2, 0) = 2",
+      "codeLine": 2,
+      "note": "Processing second house (val=2).",
       "array": [
+        1,
         2,
-        7,
-        9,
         3,
         1
-      ]
+      ],
+      "i": 1
     },
     {
-      "codeLine": 7,
-      "note": "Update prev2: prev2 becomes 0",
+      "codeLine": 3,
+      "note": "current = max(1, 0 + 2) = 2.",
       "array": [
+        1,
         2,
-        7,
-        9,
-        3,
-        1
-      ]
-    },
-    {
-      "codeLine": 4,
-      "note": "Loop: num = 7",
-      "array": [
-        2,
-        7,
-        9,
         3,
         1
       ],
@@ -90,44 +78,32 @@
     },
     {
       "codeLine": 5,
-      "note": "Store prev1 in temp (temp = 2)",
+      "note": "Update prev1 to 2, prev2 to 1.",
       "array": [
+        1,
         2,
-        7,
-        9,
         3,
         1
-      ]
+      ],
+      "i": 1
     },
     {
-      "codeLine": 6,
-      "note": "Update prev1: max(0 + 7, 2) = 7",
+      "codeLine": 2,
+      "note": "Processing third house (val=3).",
       "array": [
+        1,
         2,
-        7,
-        9,
         3,
         1
-      ]
+      ],
+      "i": 2
     },
     {
-      "codeLine": 7,
-      "note": "Update prev2: prev2 becomes 2",
+      "codeLine": 3,
+      "note": "current = max(2, 1 + 3) = 4.",
       "array": [
+        1,
         2,
-        7,
-        9,
-        3,
-        1
-      ]
-    },
-    {
-      "codeLine": 4,
-      "note": "Loop: num = 9",
-      "array": [
-        2,
-        7,
-        9,
         3,
         1
       ],
@@ -135,36 +111,47 @@
     },
     {
       "codeLine": 5,
-      "note": "Store prev1 in temp (temp = 7)",
+      "note": "Update prev1 to 4, prev2 to 2.",
       "array": [
+        1,
         2,
-        7,
-        9,
         3,
         1
-      ]
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 2,
+      "note": "Processing fourth house (val=1).",
+      "array": [
+        1,
+        2,
+        3,
+        1
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 3,
+      "note": "current = max(4, 2 + 1) = 4.",
+      "array": [
+        1,
+        2,
+        3,
+        1
+      ],
+      "i": 3
     },
     {
       "codeLine": 6,
-      "note": "Update prev1: max(2 + 9, 7) = 11",
+      "note": "Return final max 4.",
       "array": [
+        1,
         2,
-        7,
-        9,
-        3,
-        1
-      ]
-    },
-    {
-      "codeLine": 7,
-      "note": "Update prev2: prev2 becomes 7",
-      "array": [
-        2,
-        7,
-        9,
         3,
         1
       ]
     }
-  ]
+  ],
+  "fullDescription": "<p>You are a professional robber planning to rob houses along a street. Each house has a certain amount of money stashed, the only constraint stopping you from robbing each of them is that adjacent houses have security systems connected and <b>it will automatically contact the police if two adjacent houses were broken into on the same night</b>.</p>\n\n<p>Given an integer array <code>nums</code> representing the amount of money of each house, return <em>the maximum amount of money you can rob tonight <b>without alerting the police</b></em>.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> nums = [1,2,3,1]\n<strong>Output:</strong> 4\n<strong>Explanation:</strong> Rob house 1 (money = 1) and then rob house 3 (money = 3).\nTotal amount you can rob = 1 + 3 = 4.\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> nums = [2,7,9,3,1]\n<strong>Output:</strong> 12\n<strong>Explanation:</strong> Rob house 1 (money = 2), rob house 3 (money = 9) and rob house 5 (money = 1).\nTotal amount you can rob = 2 + 9 + 1 = 12.\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= nums.length &lt;= 100</code></li>\n\t<li><code>0 &lt;= nums[i] &lt;= 400</code></li>\n</ul>\n"
 }

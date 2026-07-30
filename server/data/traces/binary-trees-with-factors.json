@@ -4,12 +4,13 @@
   "type": "array",
   "tags": [
     "Array",
+    "Hash Table",
     "Dynamic Programming",
-    "Hash Table"
+    "Sorting"
   ],
-  "description": "Given an array of unique integers, return the number of binary trees you can make such that each non-leaf node has a value equal to the product of its two children.",
-  "target": null,
-  "pseudocode": "1. arr.sort((a, b) => a - b)\n2. dp = new Map()\n3. for i from 0 to arr.length - 1:\n4.   dp.set(arr[i], 1)\n5.   for j from 0 to i - 1:\n6.     if arr[i] % arr[j] === 0:\n7.       right = arr[i] / arr[j]\n8.       if dp.has(right):\n9.         dp.set(arr[i], dp.get(arr[i]) + dp.get(arr[j]) * dp.get(right))\n10. return sum(dp.values()) % (10^9 + 7)",
+  "description": "Calculate the number of binary trees possible where each non-leaf node is the product of its children.",
+  "target": 3,
+  "pseudocode": "1. Sort arr; 2. Initialize dp map with each element as 1; 3. For each i in arr: For each j in arr where j <= i: If i % j == 0 and i/j in dp: dp[i] += dp[j] * dp[i/j]; 4. Return sum(dp.values()) % 10^9+7",
   "steps": [
     {
       "codeLine": 1,
@@ -17,72 +18,54 @@
       "array": [
         2,
         4
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 2,
+      "note": "Initialize dp table: {2: 1, 4: 1}",
+      "array": [
+        2,
+        4
+      ],
+      "visited": [
+        1,
+        1
       ]
     },
     {
       "codeLine": 3,
-      "note": "Process arr[0] = 2",
-      "i": 0,
+      "note": "Processing 2: No factors found, count remains 1",
       "array": [
         2,
         4
-      ]
-    },
-    {
-      "codeLine": 4,
-      "note": "Initialize dp[2] = 1",
-      "array": [
-        2,
-        4
-      ]
+      ],
+      "i": 2,
+      "curr": 2
     },
     {
       "codeLine": 3,
-      "note": "Process arr[1] = 4",
-      "i": 1,
+      "note": "Processing 4: Factor 2 found (4/2 = 2). dp[4] += dp[2] * dp[2] -> 1 + 1*1 = 2",
       "array": [
         2,
         4
+      ],
+      "i": 4,
+      "visited": [
+        1,
+        2
       ]
     },
     {
       "codeLine": 4,
-      "note": "Initialize dp[4] = 1",
+      "note": "Summing dp values: 1 + 2 = 3",
       "array": [
         2,
         4
-      ]
-    },
-    {
-      "codeLine": 5,
-      "note": "Inner loop j=0, arr[0]=2",
-      "i": 1,
-      "j": 0
-    },
-    {
-      "codeLine": 6,
-      "note": "Check if 4 % 2 == 0",
-      "i": 1,
-      "j": 0
-    },
-    {
-      "codeLine": 7,
-      "note": "Right child = 4 / 2 = 2",
-      "i": 1,
-      "j": 0
-    },
-    {
-      "codeLine": 9,
-      "note": "Update dp[4] = dp[4] + dp[2] * dp[2] = 1 + 1 * 1 = 2",
-      "i": 1,
-      "j": 0
-    },
-    {
-      "codeLine": 10,
-      "note": "Return sum of dp values (1 + 2 = 3)",
-      "array": [
-        2,
-        4
+      ],
+      "visited": [
+        1,
+        2
       ]
     }
   ]

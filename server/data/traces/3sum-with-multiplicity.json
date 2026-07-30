@@ -4,29 +4,117 @@
   "type": "array",
   "tags": [
     "Array",
-    "Two Pointers",
-    "Hash Table"
+    "Hash Table",
+    "Two Pointers"
   ],
   "description": "Find the number of tuples (i, j, k) such that i < j < k and arr[i] + arr[j] + arr[k] == target.",
   "target": 8,
-  "pseudocode": "1: count = {}\n2: for x in arr: count[x] = (count[x] || 0) + 1\n3: res = 0\n4: keys = sorted(count.keys())\n5: for i in keys:\n6:   for j in keys:\n7:     k = target - i - j\n8:     if k in count:\n9:       if i == j == k: res += count[i]*(count[i]-1)*(count[i]-2)/6\n10:      else if i == j < k: res += count[i]*(count[i]-1)/2 * count[k]\n11:      else if i < j < k: res += count[i] * count[j] * count[k]",
+  "pseudocode": "1. Count frequencies of each number in arr\n2. Iterate through unique keys i and j in the frequency map\n3. Calculate remaining needed value k = target - i - j\n4. If k exists in frequency map, calculate combinations and add to count\n5. Return total count % (10^9 + 7)",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize frequency map for arr = [1, 1, 2, 2, 3, 3, 4], target = 8",
+      "note": "Initialize frequency map: {1: 2, 2: 2, 3: 2, 4: 2, 5: 2}",
       "array": [
         1,
         1,
         2,
         2,
         3,
+        3,
+        4,
+        4,
+        5,
+        5
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Pick i=1, j=2. Calculate k = 8 - 1 - 2 = 5.",
+      "array": [
+        1,
+        1,
+        2,
+        2,
+        3,
+        3,
+        4,
+        4,
+        5,
+        5
+      ],
+      "i": 1,
+      "j": 2,
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Frequency of 1 is 2, 2 is 2, 5 is 2. Combinations: 2*2*2 = 8.",
+      "array": [
+        1,
+        1,
+        2,
+        2,
+        3,
+        3,
+        4,
+        4,
+        5,
+        5
+      ],
+      "i": 1,
+      "j": 2,
+      "visited": [
+        1,
+        2,
+        5
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Pick i=1, j=3. Calculate k = 8 - 1 - 3 = 4.",
+      "array": [
+        1,
+        1,
+        2,
+        2,
+        3,
+        3,
+        4,
+        4,
+        5,
+        5
+      ],
+      "i": 1,
+      "j": 3,
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Frequency of 1 is 2, 3 is 2, 4 is 2. Combinations: 2*2*2 = 8. Total = 16.",
+      "array": [
+        1,
+        1,
+        2,
+        2,
+        3,
+        3,
+        4,
+        4,
+        5,
+        5
+      ],
+      "i": 1,
+      "j": 3,
+      "visited": [
+        1,
         3,
         4
       ]
     },
     {
       "codeLine": 2,
-      "note": "Count frequencies: {1:2, 2:2, 3:2, 4:1}",
+      "note": "Pick i=2, j=2. Calculate k = 8 - 2 - 2 = 4.",
       "array": [
         1,
         1,
@@ -34,66 +122,94 @@
         2,
         3,
         3,
+        4,
+        4,
+        5,
+        5
+      ],
+      "i": 2,
+      "j": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Choose two 2s from two: C(2,2)=1. Frequency of 4 is 2. Combinations: 1*2 = 2. Total = 18.",
+      "array": [
+        1,
+        1,
+        2,
+        2,
+        3,
+        3,
+        4,
+        4,
+        5,
+        5
+      ],
+      "i": 2,
+      "j": 2,
+      "visited": [
+        2,
         4
       ]
     },
     {
+      "codeLine": 2,
+      "note": "Pick i=2, j=3. Calculate k = 8 - 2 - 3 = 3.",
+      "array": [
+        1,
+        1,
+        2,
+        2,
+        3,
+        3,
+        4,
+        4,
+        5,
+        5
+      ],
+      "i": 2,
+      "j": 3,
+      "curr": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Choose two 3s from two: C(2,2)=1. Frequency of 2 is 2. Combinations: 1*2 = 2. Total = 20.",
+      "array": [
+        1,
+        1,
+        2,
+        2,
+        3,
+        3,
+        4,
+        4,
+        5,
+        5
+      ],
+      "i": 2,
+      "j": 3,
+      "visited": [
+        2,
+        3
+      ]
+    },
+    {
       "codeLine": 5,
-      "note": "Start iteration with i = 1",
-      "i": 1
-    },
-    {
-      "codeLine": 6,
-      "note": "Inner loop j = 3",
-      "i": 1,
-      "j": 3
-    },
-    {
-      "codeLine": 7,
-      "note": "Calculate k = 8 - 1 - 3 = 4",
-      "i": 1,
-      "j": 3
-    },
-    {
-      "codeLine": 11,
-      "note": "Valid triplet (1, 3, 4) found: count[1]*count[3]*count[4] = 2*2*1 = 4",
-      "i": 1,
-      "j": 3
-    },
-    {
-      "codeLine": 6,
-      "note": "Inner loop j = 4",
-      "i": 1,
-      "j": 4
-    },
-    {
-      "codeLine": 7,
-      "note": "Calculate k = 8 - 1 - 4 = 3, which is < j, skip",
-      "i": 1,
-      "j": 4
-    },
-    {
-      "codeLine": 5,
-      "note": "Next i = 2",
-      "i": 2
-    },
-    {
-      "codeLine": 6,
-      "note": "Inner loop j = 2",
-      "i": 2,
-      "j": 2
-    },
-    {
-      "codeLine": 7,
-      "note": "Calculate k = 8 - 2 - 2 = 4",
-      "i": 2,
-      "j": 2
-    },
-    {
-      "codeLine": 10,
-      "note": "Valid triplet (2, 2, 4) found: count[2]*(count[2]-1)/2 * count[4] = 1 * 1 = 1",
-      "i": 2,
-      "j": 2
+      "note": "Finished iterations. Final answer is 20.",
+      "array": [
+        1,
+        1,
+        2,
+        2,
+        3,
+        3,
+        4,
+        4,
+        5,
+        5
+      ],
+      "curr": 20
     }
   ]
 }

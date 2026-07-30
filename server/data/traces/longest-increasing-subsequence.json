@@ -4,82 +4,194 @@
   "type": "array",
   "tags": [
     "Array",
-    "Dynamic Programming",
-    "Binary Search"
+    "Binary Search",
+    "Dynamic Programming"
   ],
-  "description": "Find the length of the longest strictly increasing subsequence in an array.",
-  "target": null,
-  "pseudocode": "1. tails = []\n2. for x in nums:\n3.   if not tails or x > tails[-1]:\n4.     tails.append(x)\n5.   else:\n6.     idx = binary_search(tails, x)\n7.     tails[idx] = x",
+  "description": "Find the length of the longest strictly increasing subsequence using patience sorting/tails array.",
+  "target": 4,
+  "pseudocode": "1. Initialize an empty list 'tails'\n2. For each num in nums:\n3.   If num > all elements in tails, append num\n4.   Else, replace the smallest element in tails >= num with num\n5. Return length of tails",
   "steps": [
     {
       "codeLine": 1,
       "note": "Initialize tails array as empty.",
-      "array": []
-    },
-    {
-      "codeLine": 2,
-      "note": "Processing first element: 10.",
       "array": [
-        10
+        10,
+        9,
+        2,
+        5,
+        3,
+        7,
+        101,
+        18
       ],
-      "i": 0
+      "visited": []
     },
     {
       "codeLine": 3,
-      "note": "10 is greater than last element, append.",
+      "note": "Process 10: tails is empty, append 10.",
       "array": [
+        10,
+        9,
+        2,
+        5,
+        3,
+        7,
+        101,
+        18
+      ],
+      "visited": [
         10
-      ],
-      "i": 0
-    },
-    {
-      "codeLine": 2,
-      "note": "Processing second element: 9.",
-      "array": [
-        10
-      ],
-      "i": 1
-    },
-    {
-      "codeLine": 6,
-      "note": "9 is smaller, find position to replace in tails.",
-      "array": [
-        9
-      ],
-      "i": 1
-    },
-    {
-      "codeLine": 2,
-      "note": "Processing third element: 2.",
-      "array": [
-        9
-      ],
-      "i": 2
-    },
-    {
-      "codeLine": 6,
-      "note": "2 is smaller, replace 9 with 2.",
-      "array": [
-        2
-      ],
-      "i": 2
-    },
-    {
-      "codeLine": 2,
-      "note": "Processing fourth element: 5.",
-      "array": [
-        2
-      ],
-      "i": 3
+      ]
     },
     {
       "codeLine": 4,
-      "note": "5 is greater than 2, append.",
+      "note": "Process 9: 9 < 10, replace 10 with 9.",
       "array": [
+        10,
+        9,
+        2,
+        5,
+        3,
+        7,
+        101,
+        18
+      ],
+      "visited": [
+        9
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Process 2: 2 < 9, replace 9 with 2.",
+      "array": [
+        10,
+        9,
+        2,
+        5,
+        3,
+        7,
+        101,
+        18
+      ],
+      "visited": [
+        2
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Process 5: 5 > 2, append 5.",
+      "array": [
+        10,
+        9,
+        2,
+        5,
+        3,
+        7,
+        101,
+        18
+      ],
+      "visited": [
         2,
         5
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Process 3: 3 < 5, replace 5 with 3.",
+      "array": [
+        10,
+        9,
+        2,
+        5,
+        3,
+        7,
+        101,
+        18
       ],
-      "i": 3
+      "visited": [
+        2,
+        3
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Process 7: 7 > 3, append 7.",
+      "array": [
+        10,
+        9,
+        2,
+        5,
+        3,
+        7,
+        101,
+        18
+      ],
+      "visited": [
+        2,
+        3,
+        7
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Process 101: 101 > 7, append 101.",
+      "array": [
+        10,
+        9,
+        2,
+        5,
+        3,
+        7,
+        101,
+        18
+      ],
+      "visited": [
+        2,
+        3,
+        7,
+        101
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Process 18: 18 < 101, replace 101 with 18.",
+      "array": [
+        10,
+        9,
+        2,
+        5,
+        3,
+        7,
+        101,
+        18
+      ],
+      "visited": [
+        2,
+        3,
+        7,
+        18
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Length of tails is 4. Return 4.",
+      "array": [
+        10,
+        9,
+        2,
+        5,
+        3,
+        7,
+        101,
+        18
+      ],
+      "visited": [
+        2,
+        3,
+        7,
+        18
+      ]
     }
-  ]
+  ],
+  "fullDescription": "<p>Given an integer array <code>nums</code>, return <em>the length of the longest <strong>strictly increasing </strong></em><span data-keyword=\"subsequence-array\"><em><strong>subsequence</strong></em></span>.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> nums = [10,9,2,5,3,7,101,18]\n<strong>Output:</strong> 4\n<strong>Explanation:</strong> The longest increasing subsequence is [2,3,7,101], therefore the length is 4.\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> nums = [0,1,0,3,2,3]\n<strong>Output:</strong> 4\n</pre>\n\n<p><strong class=\"example\">Example 3:</strong></p>\n\n<pre>\n<strong>Input:</strong> nums = [7,7,7,7,7,7,7]\n<strong>Output:</strong> 1\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= nums.length &lt;= 2500</code></li>\n\t<li><code>-10<sup>4</sup> &lt;= nums[i] &lt;= 10<sup>4</sup></code></li>\n</ul>\n\n<p>&nbsp;</p>\n<p><b>Follow up:</b>&nbsp;Can you come up with an algorithm that runs in&nbsp;<code>O(n log(n))</code> time complexity?</p>\n"
 }

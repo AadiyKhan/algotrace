@@ -1,0 +1,128 @@
+{
+  "title": "String Matching in an Array",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "String",
+    "String Matching"
+  ],
+  "description": "Identify strings in an array that appear as substrings in other strings within the same array.",
+  "pseudocode": "1. Initialize empty result list.\n2. Loop i through each word in words.\n3. Loop j through each word in words.\n4. If i != j and words[j] contains words[i], add words[i] to result and break.",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize result array.",
+      "array": [
+        "mass",
+        "as",
+        "hero",
+        "superhero"
+      ],
+      "visited": []
+    },
+    {
+      "codeLine": 2,
+      "note": "Checking word at index 0 ('mass').",
+      "array": [
+        "mass",
+        "as",
+        "hero",
+        "superhero"
+      ],
+      "i": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "'mass' is not a substring of others.",
+      "array": [
+        "mass",
+        "as",
+        "hero",
+        "superhero"
+      ],
+      "i": 0,
+      "visited": []
+    },
+    {
+      "codeLine": 2,
+      "note": "Checking word at index 1 ('as').",
+      "array": [
+        "mass",
+        "as",
+        "hero",
+        "superhero"
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "'as' is a substring of 'mass'. Adding to result.",
+      "array": [
+        "mass",
+        "as",
+        "hero",
+        "superhero"
+      ],
+      "i": 1,
+      "visited": [
+        "as"
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Checking word at index 2 ('hero').",
+      "array": [
+        "mass",
+        "as",
+        "hero",
+        "superhero"
+      ],
+      "i": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "'hero' is a substring of 'superhero'. Adding to result.",
+      "array": [
+        "mass",
+        "as",
+        "hero",
+        "superhero"
+      ],
+      "i": 2,
+      "visited": [
+        "as",
+        "hero"
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Checking word at index 3 ('superhero').",
+      "array": [
+        "mass",
+        "as",
+        "hero",
+        "superhero"
+      ],
+      "i": 3,
+      "curr": 3
+    },
+    {
+      "codeLine": 4,
+      "note": "Iteration complete, returning final list.",
+      "array": [
+        "mass",
+        "as",
+        "hero",
+        "superhero"
+      ],
+      "visited": [
+        "as",
+        "hero"
+      ]
+    }
+  ]
+}
