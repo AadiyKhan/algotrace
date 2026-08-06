@@ -1,0 +1,56 @@
+{
+  "title": "Sell Diminishing-Valued Colored Balls",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Greedy",
+    "Binary Search"
+  ],
+  "description": "Calculate maximum profit by selling k balls, where each color's value diminishes after each sale.",
+  "target": 3,
+  "pseudocode": "1. inventory.sort((a, b) => b - a);\n2. low = 0, high = inventory[0];\n3. while (low <= high) {\n4.   mid = Math.floor((low + high) / 2);\n5.   if (countBalls(mid) >= orders) low = mid + 1;\n6.   else high = mid - 1;\n7. }",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Sort inventory descending: [3, 5] -> [5, 3].",
+      "array": [
+        5,
+        3
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Initialize binary search range [0, 5].",
+      "array": [
+        5,
+        3
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Calculate mid: 2.",
+      "array": [
+        5,
+        3
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Count balls with value > 2: (5,4,3) from first, (3) from second. Total 4 >= 3. Adjust low.",
+      "array": [
+        5,
+        3
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "New mid: 4. Count balls > 4: (5) from first. Total 1 < 3. Adjust high.",
+      "array": [
+        5,
+        3
+      ]
+    }
+  ]
+}

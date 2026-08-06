@@ -5,119 +5,91 @@
   "tags": [
     "Array",
     "Stack",
-    "Dynamic Programming"
+    "Greedy"
   ],
-  "description": "Given an array of leaf values, build a binary tree such that every non-leaf node's value is the product of the largest leaf values in its left and right subtree, minimizing the sum of all non-leaf nodes.",
+  "description": "Construct a binary tree from array leaves with minimal non-leaf node sum, where each non-leaf node is the product of the max leaf in left and right subtrees.",
   "target": 32,
-  "pseudocode": "1: res = 0\n2: stack = [infinity]\n3: for val in arr:\n4:   while stack.peek() <= val:\n5:     mid = stack.pop()\n6:     res += mid * min(stack.peek(), val)\n7:   stack.push(val)\n8: while stack.length > 2:\n9:   res += stack.pop() * stack.peek()",
+  "pseudocode": "1. Initialize stack with infinity. 2. For each num in arr: 3. While stack.top <= num: 4. mid = stack.pop(), res += mid * min(stack.top, num). 5. stack.push(num). 6. While stack size > 2: res += stack.pop() * stack.top.",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize result to 0",
+      "note": "Initialize stack with infinity to handle boundaries.",
       "array": [
         6,
         2,
         4
+      ],
+      "visited": [],
+      "curr": -1
+    },
+    {
+      "codeLine": 5,
+      "note": "Push 6 to stack.",
+      "array": [
+        6,
+        2,
+        4
+      ],
+      "visited": [
+        0
       ],
       "curr": 0
     },
     {
       "codeLine": 3,
-      "note": "Process element 6",
+      "note": "2 is less than 6, push 2.",
       "array": [
         6,
         2,
         4
       ],
-      "i": 0,
-      "curr": 6
-    },
-    {
-      "codeLine": 7,
-      "note": "Push 6 to stack",
-      "array": [
-        6,
-        2,
-        4
+      "visited": [
+        0,
+        1
       ],
-      "i": 0,
-      "curr": 6
-    },
-    {
-      "codeLine": 3,
-      "note": "Process element 2",
-      "array": [
-        6,
-        2,
-        4
-      ],
-      "i": 1,
-      "curr": 2
-    },
-    {
-      "codeLine": 7,
-      "note": "Push 2 to stack",
-      "array": [
-        6,
-        2,
-        4
-      ],
-      "i": 1,
-      "curr": 2
-    },
-    {
-      "codeLine": 3,
-      "note": "Process element 4",
-      "array": [
-        6,
-        2,
-        4
-      ],
-      "i": 2,
-      "curr": 4
+      "curr": 1
     },
     {
       "codeLine": 4,
-      "note": "Current 4 > stack top 2",
+      "note": "4 is greater than 2, pop 2. Cost += 2 * min(6, 4) = 8.",
       "array": [
         6,
         2,
         4
       ],
-      "i": 2,
-      "curr": 4
+      "visited": [
+        0
+      ],
+      "curr": 1
     },
     {
-      "codeLine": 6,
-      "note": "Pop 2, res += 2 * min(6, 4) = 8",
+      "codeLine": 5,
+      "note": "Push 4 to stack.",
       "array": [
         6,
         2,
         4
       ],
-      "i": 2,
+      "visited": [
+        0,
+        2
+      ],
       "curr": 2
     },
     {
-      "codeLine": 7,
-      "note": "Push 4 to stack",
+      "codeLine": 6,
+      "note": "Remaining stack [6, 4]. Cost += 6 * 4 = 24. Total = 8 + 24 = 32.",
       "array": [
         6,
         2,
         4
       ],
-      "i": 2,
-      "curr": 4
-    },
-    {
-      "codeLine": 9,
-      "note": "Final calculation: pop 4, res += 4 * 6 = 24",
-      "array": [
-        6,
-        2,
-        4
+      "visited": [
+        0,
+        2
       ],
-      "curr": 4
+      "curr": 2
     }
-  ]
+  ],
+  "fullDescription": "<p>Given an array <code>arr</code> of positive integers, consider all binary trees such that:</p>\n\n<ul>\n\t<li>Each node has either <code>0</code> or <code>2</code> children;</li>\n\t<li>The values of <code>arr</code> correspond to the values of each <strong>leaf</strong> in an in-order traversal of the tree.</li>\n\t<li>The value of each non-leaf node is equal to the product of the largest leaf value in its left and right subtree, respectively.</li>\n</ul>\n\n<p>Among all possible binary trees considered, return <em>the smallest possible sum of the values of each non-leaf node</em>. It is guaranteed this sum fits into a <strong>32-bit</strong> integer.</p>\n\n<p>A node is a <strong>leaf</strong> if and only if it has zero children.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2021/08/10/tree1.jpg\" style=\"width: 500px; height: 169px;\" />\n<pre>\n<strong>Input:</strong> arr = [6,2,4]\n<strong>Output:</strong> 32\n<strong>Explanation:</strong> There are two possible trees shown.\nThe first has a non-leaf node sum 36, and the second has non-leaf node sum 32.\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2021/08/10/tree2.jpg\" style=\"width: 224px; height: 145px;\" />\n<pre>\n<strong>Input:</strong> arr = [4,11]\n<strong>Output:</strong> 44\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>2 &lt;= arr.length &lt;= 40</code></li>\n\t<li><code>1 &lt;= arr[i] &lt;= 15</code></li>\n\t<li>It is guaranteed that the answer fits into a <strong>32-bit</strong> signed integer (i.e., it is less than 2<sup>31</sup>).</li>\n</ul>\n"
 }

@@ -5,154 +5,102 @@
   "tags": [
     "Math"
   ],
-  "description": "Given a signed 32-bit integer x, return x with its digits reversed. If reversing x causes the value to go outside the signed 32-bit integer range [-2^31, 2^31 - 1], then return 0.",
-  "target": 123,
-  "pseudocode": "let rev = 0;\nwhile (x !== 0) {\n  let pop = x % 10;\n  x = Math.trunc(x / 10);\n  if (rev > 214748364 || rev < -214748364) return 0;\n  rev = rev * 10 + pop;\n}\nreturn rev;",
+  "description": "Reverse the digits of a 32-bit signed integer.",
+  "target": 321,
+  "pseudocode": "1. Initialize rev = 0\n2. While x != 0:\n3. pop = x % 10\n4. x = x / 10\n5. rev = rev * 10 + pop\n6. Return rev",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize result accumulator rev = 0 for input x = 123.",
-      "array": [],
+      "note": "Initialize result variable rev to 0.",
+      "array": [
+        1,
+        2,
+        3
+      ],
+      "visited": [],
       "curr": 0
     },
     {
-      "codeLine": 2,
-      "note": "Check loop condition: x (123) !== 0 is true.",
-      "array": [],
-      "curr": 123
-    },
-    {
       "codeLine": 3,
-      "note": "Pop the last digit: pop = 123 % 10 = 3.",
-      "array": [],
-      "curr": 123
-    },
-    {
-      "codeLine": 4,
-      "note": "Truncate x: x = Math.trunc(123 / 10) = 12.",
-      "array": [],
-      "curr": 123
+      "note": "Pop the last digit of 123, which is 3.",
+      "array": [
+        1,
+        2
+      ],
+      "visited": [
+        2
+      ],
+      "curr": 2
     },
     {
       "codeLine": 5,
-      "note": "Check overflow bounds: rev (0) is within [-214748364, 214748364].",
-      "array": [],
-      "curr": 0
-    },
-    {
-      "codeLine": 6,
-      "note": "Append popped digit to rev: rev = 0 * 10 + 3 = 3.",
+      "note": "Update rev to 3.",
       "array": [
-        3
+        1,
+        2
       ],
-      "curr": 0
-    },
-    {
-      "codeLine": 2,
-      "note": "Check loop condition: x (12) !== 0 is true.",
-      "array": [
-        3
+      "visited": [
+        2
       ],
-      "curr": 12
+      "curr": 2
     },
     {
       "codeLine": 3,
-      "note": "Pop the last digit: pop = 12 % 10 = 2.",
+      "note": "Pop the next digit, which is 2.",
       "array": [
-        3
+        1
       ],
-      "curr": 12
-    },
-    {
-      "codeLine": 4,
-      "note": "Truncate x: x = Math.trunc(12 / 10) = 1.",
-      "array": [
-        3
-      ],
-      "curr": 12
-    },
-    {
-      "codeLine": 5,
-      "note": "Check overflow bounds: rev (3) is within safe range.",
-      "array": [
-        3
-      ],
-      "curr": 3
-    },
-    {
-      "codeLine": 6,
-      "note": "Append popped digit to rev: rev = 3 * 10 + 2 = 32.",
-      "array": [
-        3,
-        2
-      ],
-      "curr": 3
-    },
-    {
-      "codeLine": 2,
-      "note": "Check loop condition: x (1) !== 0 is true.",
-      "array": [
-        3,
-        2
-      ],
-      "curr": 1
-    },
-    {
-      "codeLine": 3,
-      "note": "Pop the last digit: pop = 1 % 10 = 1.",
-      "array": [
-        3,
-        2
-      ],
-      "curr": 1
-    },
-    {
-      "codeLine": 4,
-      "note": "Truncate x: x = Math.trunc(1 / 10) = 0.",
-      "array": [
-        3,
-        2
+      "visited": [
+        2,
+        1
       ],
       "curr": 1
     },
     {
       "codeLine": 5,
-      "note": "Check overflow bounds: rev (32) is within safe range.",
+      "note": "Update rev to 3 * 10 + 2 = 32.",
       "array": [
-        3,
-        2
+        1
       ],
-      "curr": 32
-    },
-    {
-      "codeLine": 6,
-      "note": "Append popped digit to rev: rev = 32 * 10 + 1 = 321.",
-      "array": [
-        3,
+      "visited": [
         2,
         1
       ],
-      "curr": 32
+      "curr": 1
     },
     {
-      "codeLine": 2,
-      "note": "Check loop condition: x (0) !== 0 is false. Loop terminates.",
-      "array": [
-        3,
+      "codeLine": 3,
+      "note": "Pop the last digit, which is 1.",
+      "array": [],
+      "visited": [
         2,
-        1
+        1,
+        0
       ],
       "curr": 0
     },
     {
-      "codeLine": 8,
-      "note": "Return reversed integer 321.",
-      "array": [
-        3,
+      "codeLine": 5,
+      "note": "Update rev to 32 * 10 + 1 = 321.",
+      "array": [],
+      "visited": [
         2,
-        1
+        1,
+        0
       ],
-      "curr": 321
+      "curr": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Return the reversed integer 321.",
+      "array": [],
+      "visited": [
+        2,
+        1,
+        0
+      ],
+      "curr": null
     }
-  ]
+  ],
+  "fullDescription": "<p>Given a signed 32-bit integer <code>x</code>, return <code>x</code><em> with its digits reversed</em>. If reversing <code>x</code> causes the value to go outside the signed 32-bit integer range <code>[-2<sup>31</sup>, 2<sup>31</sup> - 1]</code>, then return <code>0</code>.</p>\n\n<p><strong>Assume the environment does not allow you to store 64-bit integers (signed or unsigned).</strong></p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> x = 123\n<strong>Output:</strong> 321\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> x = -123\n<strong>Output:</strong> -321\n</pre>\n\n<p><strong class=\"example\">Example 3:</strong></p>\n\n<pre>\n<strong>Input:</strong> x = 120\n<strong>Output:</strong> 21\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>-2<sup>31</sup> &lt;= x &lt;= 2<sup>31</sup> - 1</code></li>\n</ul>\n"
 }

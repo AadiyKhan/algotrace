@@ -7,83 +7,95 @@
     "Hash Table",
     "Design"
   ],
-  "description": "Design a HashSet using a boolean array as the underlying structure for keys up to 10^6.",
-  "target": null,
-  "pseudocode": "1. Initialize boolean array set of size 1000001\n2. add(key): set[key] = true\n3. remove(key): set[key] = false\n4. contains(key): return set[key]",
+  "description": "Design a HashSet using an array-based bucket approach.",
+  "pseudocode": "1. initialize buckets array\n2. hash = key % size\n3. add: if not in bucket, append\n4. contains: check if key exists in bucket\n5. remove: find and delete key",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize empty HashSet represented by boolean array.",
-      "array": []
+      "note": "Initialize empty HashSet.",
+      "array": [],
+      "visited": []
     },
     {
-      "codeLine": 2,
+      "codeLine": 3,
       "note": "Add 1 to HashSet.",
       "array": [
         1
       ],
-      "curr": 1
+      "visited": [
+        1
+      ]
     },
     {
-      "codeLine": 2,
+      "codeLine": 3,
       "note": "Add 2 to HashSet.",
       "array": [
         1,
         2
       ],
-      "curr": 2
+      "visited": [
+        1,
+        2
+      ]
     },
     {
       "codeLine": 4,
-      "note": "Check if 1 exists (True).",
+      "note": "Check if 1 exists: True.",
       "array": [
         1,
         2
       ],
-      "curr": 1
+      "visited": [
+        1
+      ]
     },
     {
       "codeLine": 4,
-      "note": "Check if 3 exists (False).",
+      "note": "Check if 3 exists: False.",
       "array": [
         1,
         2
       ],
-      "curr": 3
-    },
-    {
-      "codeLine": 2,
-      "note": "Add 2 (already exists).",
-      "array": [
-        1,
-        2
-      ],
-      "curr": 2
-    },
-    {
-      "codeLine": 4,
-      "note": "Check if 2 exists (True).",
-      "array": [
-        1,
-        2
-      ],
-      "curr": 2
+      "visited": []
     },
     {
       "codeLine": 3,
-      "note": "Remove 2 from HashSet.",
+      "note": "Add 2 again, no change.",
       "array": [
-        1
+        1,
+        2
       ],
-      "curr": 2
+      "visited": [
+        2
+      ]
     },
     {
       "codeLine": 4,
-      "note": "Check if 2 exists (False).",
+      "note": "Check if 2 exists: True.",
+      "array": [
+        1,
+        2
+      ],
+      "visited": [
+        2
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Remove 2.",
       "array": [
         1
       ],
-      "curr": 2
+      "visited": []
+    },
+    {
+      "codeLine": 4,
+      "note": "Check if 2 exists: False.",
+      "array": [
+        1
+      ],
+      "visited": []
     }
-  ]
+  ],
+  "fullDescription": "<p>Design a HashSet without using any built-in hash table libraries.</p>\n\n<p>Implement <code>MyHashSet</code> class:</p>\n\n<ul>\n\t<li><code>void add(key)</code> Inserts the value <code>key</code> into the HashSet.</li>\n\t<li><code>bool contains(key)</code> Returns whether the value <code>key</code> exists in the HashSet or not.</li>\n\t<li><code>void remove(key)</code> Removes the value <code>key</code> in the HashSet. If <code>key</code> does not exist in the HashSet, do nothing.</li>\n</ul>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<pre>\n<strong>Input</strong>\n[&quot;MyHashSet&quot;, &quot;add&quot;, &quot;add&quot;, &quot;contains&quot;, &quot;contains&quot;, &quot;add&quot;, &quot;contains&quot;, &quot;remove&quot;, &quot;contains&quot;]\n[[], [1], [2], [1], [3], [2], [2], [2], [2]]\n<strong>Output</strong>\n[null, null, null, true, false, null, true, null, false]\n\n<strong>Explanation</strong>\nMyHashSet myHashSet = new MyHashSet();\nmyHashSet.add(1);      // set = [1]\nmyHashSet.add(2);      // set = [1, 2]\nmyHashSet.contains(1); // return True\nmyHashSet.contains(3); // return False, (not found)\nmyHashSet.add(2);      // set = [1, 2]\nmyHashSet.contains(2); // return True\nmyHashSet.remove(2);   // set = [1]\nmyHashSet.contains(2); // return False, (already removed)</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>0 &lt;= key &lt;= 10<sup>6</sup></code></li>\n\t<li>At most <code>10<sup>4</sup></code> calls will be made to <code>add</code>, <code>remove</code>, and <code>contains</code>.</li>\n</ul>\n"
 }

@@ -3,59 +3,67 @@
   "difficulty": "Medium",
   "type": "array",
   "tags": [
+    "Hash Table",
     "String",
     "Greedy",
-    "Heap",
-    "Hash Table"
+    "Heap"
   ],
   "description": "Rearrange characters in a string such that no two adjacent characters are the same.",
-  "target": "aab",
-  "pseudocode": "1. count frequencies of all chars\n2. store in max-heap\n3. extract two most frequent and append to result\n4. decrement counts and push back to heap\n5. if remaining count exists, push to heap\n6. return result if length matches input",
+  "target": "aba",
+  "pseudocode": "1. Count character frequencies.\n2. Use a max-heap to store characters by frequency.\n3. Poll the most frequent char and append to result.\n4. Save the char to put back after the next step to avoid adjacency.",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Count frequencies: {a: 2, b: 1}",
+      "note": "Count frequencies: {'a': 2, 'b': 1}",
       "array": [
         "a",
         "a",
         "b"
       ],
-      "curr": 2
+      "visited": []
+    },
+    {
+      "codeLine": 2,
+      "note": "Initialize max-heap with ('a', 2) and ('b', 1)",
+      "array": [
+        "a",
+        "a",
+        "b"
+      ],
+      "visited": []
     },
     {
       "codeLine": 3,
-      "note": "Extract 'a' and 'b', append 'ab'",
-      "array": [
-        "a",
-        "b"
-      ]
-    },
-    {
-      "codeLine": 4,
-      "note": "Decrement counts: {a: 1, b: 0}",
+      "note": "Pop 'a' (count 2), result: 'a'",
       "array": [
         "a",
         "b"
       ],
-      "curr": 1
-    },
-    {
-      "codeLine": 3,
-      "note": "Extract 'a', append 'aba'",
-      "array": [
-        "a",
-        "b",
-        "a"
+      "visited": [
+        0
       ]
     },
     {
-      "codeLine": 6,
-      "note": "Final string 'aba' valid, return result",
+      "codeLine": 3,
+      "note": "Pop 'b' (count 1), result: 'ab'",
       "array": [
-        "a",
-        "b",
         "a"
+      ],
+      "visited": [
+        0,
+        2
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Pop 'a' (count 1), result: 'aba'",
+      "array": [],
+      "visited": [
+        0,
+        2,
+        1
       ]
     }
-  ]
+  ],
+  "fullDescription": "<p>Given a string <code>s</code>, rearrange the characters of <code>s</code> so that any two adjacent characters are not the same.</p>\n\n<p>Return <em>any possible rearrangement of</em> <code>s</code> <em>or return</em> <code>&quot;&quot;</code> <em>if not possible</em>.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n<pre><strong>Input:</strong> s = \"aab\"\n<strong>Output:</strong> \"aba\"\n</pre><p><strong class=\"example\">Example 2:</strong></p>\n<pre><strong>Input:</strong> s = \"aaab\"\n<strong>Output:</strong> \"\"\n</pre>\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= s.length &lt;= 500</code></li>\n\t<li><code>s</code> consists of lowercase English letters.</li>\n</ul>\n"
 }

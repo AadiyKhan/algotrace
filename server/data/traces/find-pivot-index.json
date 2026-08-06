@@ -6,52 +6,32 @@
     "Array",
     "Prefix Sum"
   ],
-  "description": "Find the leftmost index where the sum of numbers to the left equals the sum of numbers to the right.",
+  "description": "Find the index where sum of elements to the left equals sum of elements to the right.",
   "target": null,
-  "pseudocode": "1. totalSum = sum(nums)\n2. leftSum = 0\n3. for i from 0 to nums.length - 1:\n4.   if leftSum == (totalSum - leftSum - nums[i]): return i\n5.   leftSum += nums[i]\n6. return -1",
+  "pseudocode": "1. totalSum = sum(nums)\n2. leftSum = 0\n3. for i from 0 to len(nums)-1:\n4.   rightSum = totalSum - leftSum - nums[i]\n5.   if leftSum == rightSum return i\n6.   leftSum += nums[i]\n7. return -1",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Calculate total sum of array: 1 + 7 + 3 + 6 = 17",
+      "note": "Calculate total sum of the array: 1+7+3+6+5+6 = 28",
       "array": [
         1,
         7,
         3,
+        6,
+        5,
         6
       ],
-      "curr": 1
+      "visited": []
     },
     {
-      "codeLine": 2,
-      "note": "Initialize leftSum to 0",
+      "codeLine": 3,
+      "note": "Start iteration at index 0",
       "array": [
         1,
         7,
         3,
-        6
-      ],
-      "i": 0,
-      "curr": 0
-    },
-    {
-      "codeLine": 4,
-      "note": "Check i=0: leftSum=0, rightSum=17-0-1=16. 0 != 16.",
-      "array": [
-        1,
-        7,
-        3,
-        6
-      ],
-      "i": 0,
-      "curr": 0
-    },
-    {
-      "codeLine": 5,
-      "note": "Update leftSum to 0 + 1 = 1",
-      "array": [
-        1,
-        7,
-        3,
+        6,
+        5,
         6
       ],
       "i": 0,
@@ -59,74 +39,164 @@
     },
     {
       "codeLine": 4,
-      "note": "Check i=1: leftSum=1, rightSum=17-1-7=9. 1 != 9.",
+      "note": "Calculate rightSum: 28 - 0 - 1 = 27. leftSum=0, rightSum=27",
       "array": [
         1,
         7,
         3,
+        6,
+        5,
+        6
+      ],
+      "i": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Update leftSum: 0 + 1 = 1",
+      "array": [
+        1,
+        7,
+        3,
+        6,
+        5,
+        6
+      ],
+      "i": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Move to index 1",
+      "array": [
+        1,
+        7,
+        3,
+        6,
+        5,
         6
       ],
       "i": 1,
       "curr": 1
     },
     {
-      "codeLine": 5,
-      "note": "Update leftSum to 1 + 7 = 8",
+      "codeLine": 4,
+      "note": "Calculate rightSum: 28 - 1 - 7 = 20. leftSum=1, rightSum=20",
       "array": [
         1,
         7,
         3,
+        6,
+        5,
         6
       ],
       "i": 1,
       "curr": 1
     },
     {
-      "codeLine": 4,
-      "note": "Check i=2: leftSum=8, rightSum=17-8-3=6. 8 != 6.",
+      "codeLine": 6,
+      "note": "Update leftSum: 1 + 7 = 8",
       "array": [
         1,
         7,
         3,
+        6,
+        5,
+        6
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Move to index 2",
+      "array": [
+        1,
+        7,
+        3,
+        6,
+        5,
         6
       ],
       "i": 2,
       "curr": 2
     },
     {
-      "codeLine": 5,
-      "note": "Update leftSum to 8 + 3 = 11",
+      "codeLine": 4,
+      "note": "Calculate rightSum: 28 - 8 - 3 = 17. leftSum=8, rightSum=17",
       "array": [
         1,
         7,
         3,
+        6,
+        5,
         6
       ],
       "i": 2,
-      "curr": 8
+      "curr": 2
     },
     {
-      "codeLine": 4,
-      "note": "Check i=3: leftSum=11, rightSum=17-11-6=0. 11 != 0.",
+      "codeLine": 6,
+      "note": "Update leftSum: 8 + 3 = 11",
       "array": [
         1,
         7,
         3,
+        6,
+        5,
+        6
+      ],
+      "i": 2,
+      "curr": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Move to index 3",
+      "array": [
+        1,
+        7,
+        3,
+        6,
+        5,
         6
       ],
       "i": 3,
       "curr": 3
     },
     {
-      "codeLine": 6,
-      "note": "Loop finished, no pivot found. Return -1.",
+      "codeLine": 4,
+      "note": "Calculate rightSum: 28 - 11 - 6 = 11. leftSum=11, rightSum=11",
       "array": [
         1,
         7,
         3,
+        6,
+        5,
         6
       ],
-      "curr": -1
+      "i": 3,
+      "curr": 3
+    },
+    {
+      "codeLine": 5,
+      "note": "Found pivot index: leftSum == rightSum (11 == 11)",
+      "array": [
+        1,
+        7,
+        3,
+        6,
+        5,
+        6
+      ],
+      "i": 3,
+      "curr": 3,
+      "visited": [
+        0,
+        1,
+        2,
+        3
+      ]
     }
-  ]
+  ],
+  "fullDescription": "<p>Given an array of integers <code>nums</code>, calculate the <strong>pivot index</strong> of this array.</p>\n\n<p>The <strong>pivot index</strong> is the index where the sum of all the numbers <strong>strictly</strong> to the left of the index is equal to the sum of all the numbers <strong>strictly</strong> to the index&#39;s right.</p>\n\n<p>If the index is on the left edge of the array, then the left sum is <code>0</code> because there are no elements to the left. This also applies to the right edge of the array.</p>\n\n<p>Return <em>the <strong>leftmost pivot index</strong></em>. If no such index exists, return <code>-1</code>.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> nums = [1,7,3,6,5,6]\n<strong>Output:</strong> 3\n<strong>Explanation:</strong>\nThe pivot index is 3.\nLeft sum = nums[0] + nums[1] + nums[2] = 1 + 7 + 3 = 11\nRight sum = nums[4] + nums[5] = 5 + 6 = 11\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> nums = [1,2,3]\n<strong>Output:</strong> -1\n<strong>Explanation:</strong>\nThere is no index that satisfies the conditions in the problem statement.</pre>\n\n<p><strong class=\"example\">Example 3:</strong></p>\n\n<pre>\n<strong>Input:</strong> nums = [2,1,-1]\n<strong>Output:</strong> 0\n<strong>Explanation:</strong>\nThe pivot index is 0.\nLeft sum = 0 (no elements to the left of index 0)\nRight sum = nums[1] + nums[2] = 1 + -1 = 0\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= nums.length &lt;= 10<sup>4</sup></code></li>\n\t<li><code>-1000 &lt;= nums[i] &lt;= 1000</code></li>\n</ul>\n\n<p>&nbsp;</p>\n<p><strong>Note:</strong> This question is the same as&nbsp;1991:&nbsp;<a href=\"https://leetcode.com/problems/find-the-middle-index-in-array/\" target=\"_blank\">https://leetcode.com/problems/find-the-middle-index-in-array/</a></p>\n"
 }

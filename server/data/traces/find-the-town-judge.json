@@ -1,86 +1,107 @@
 {
   "title": "Find the Town Judge",
   "difficulty": "Easy",
-  "type": "array",
+  "type": "graph",
   "tags": [
     "Array",
-    "Graph",
-    "Counting"
+    "Hash Table",
+    "Graph Theory"
   ],
-  "description": "Find the town judge who is trusted by everyone else and trusts no one.",
-  "target": 3,
-  "pseudocode": "1. trusts = [[1,3],[2,3]]\n2. scores = new Array(n+1).fill(0)\n3. for [a, b] of trusts:\n4.   scores[a]--\n5.   scores[b]++\n6. for i from 1 to n:\n7.   if scores[i] == n - 1 return i\n8. return -1",
+  "description": "Identify the town judge who is trusted by everyone else and trusts no one.",
+  "target": 2,
+  "pseudocode": "1. Initialize trustScores array of size n+1 with 0s\n2. For each [a, b] in trust: decrement trustScores[a], increment trustScores[b]\n3. For i from 1 to n: if trustScores[i] == n - 1 return i\n4. Return -1",
   "steps": [
     {
+      "codeLine": 1,
+      "note": "Initialize scores array for 2 people. Index 0 unused.",
+      "graphNodes": [
+        {
+          "id": 1,
+          "val": 1
+        },
+        {
+          "id": 2,
+          "val": 2
+        }
+      ],
+      "graphEdges": [],
+      "visited": [],
+      "curr": 0
+    },
+    {
       "codeLine": 2,
-      "note": "Initialize scores array for 3 people (index 0 unused).",
-      "array": [
-        0,
-        0,
-        0,
-        0
+      "note": "Processing trust [1, 2]: 1 loses a trust point, 2 gains one.",
+      "graphNodes": [
+        {
+          "id": 1,
+          "val": 1
+        },
+        {
+          "id": 2,
+          "val": 2
+        }
       ],
-      "curr": 3
-    },
-    {
-      "codeLine": 4,
-      "note": "Person 1 trusts 3, decrement score[1].",
-      "array": [
-        0,
-        -1,
-        0,
-        0
+      "graphEdges": [
+        [
+          1,
+          2
+        ]
       ],
-      "i": 1,
-      "curr": 1
-    },
-    {
-      "codeLine": 5,
-      "note": "Person 1 trusts 3, increment score[3].",
-      "array": [
-        0,
-        -1,
-        0,
-        1
+      "visited": [
+        1,
+        2
       ],
-      "i": 1,
-      "curr": 1
-    },
-    {
-      "codeLine": 4,
-      "note": "Person 2 trusts 3, decrement score[2].",
-      "array": [
-        0,
-        -1,
-        -1,
-        1
-      ],
-      "i": 2,
       "curr": 2
     },
     {
-      "codeLine": 5,
-      "note": "Person 2 trusts 3, increment score[3].",
-      "array": [
-        0,
-        -1,
-        -1,
-        2
+      "codeLine": 3,
+      "note": "Checking candidate 1: score is -1, not equal to n-1 (1).",
+      "graphNodes": [
+        {
+          "id": 1,
+          "val": 1
+        },
+        {
+          "id": 2,
+          "val": 2
+        }
       ],
-      "i": 2,
-      "curr": 2
+      "graphEdges": [
+        [
+          1,
+          2
+        ]
+      ],
+      "visited": [
+        1
+      ],
+      "curr": 1
     },
     {
-      "codeLine": 7,
-      "note": "Check index 3: score is 2 (n-1), match found.",
-      "array": [
-        0,
-        -1,
-        -1,
+      "codeLine": 3,
+      "note": "Checking candidate 2: score is 1, equals n-1 (1). Found judge!",
+      "graphNodes": [
+        {
+          "id": 1,
+          "val": 1
+        },
+        {
+          "id": 2,
+          "val": 2
+        }
+      ],
+      "graphEdges": [
+        [
+          1,
+          2
+        ]
+      ],
+      "visited": [
+        1,
         2
       ],
-      "i": 3,
-      "curr": 3
+      "curr": 2
     }
-  ]
+  ],
+  "fullDescription": "<p>In a town, there are <code>n</code> people labeled from <code>1</code> to <code>n</code>. There is a rumor that one of these people is secretly the town judge.</p>\n\n<p>If the town judge exists, then:</p>\n\n<ol>\n\t<li>The town judge trusts nobody.</li>\n\t<li>Everybody (except for the town judge) trusts the town judge.</li>\n\t<li>There is exactly one person that satisfies properties <strong>1</strong> and <strong>2</strong>.</li>\n</ol>\n\n<p>You are given an array <code>trust</code> where <code>trust[i] = [a<sub>i</sub>, b<sub>i</sub>]</code> representing that the person labeled <code>a<sub>i</sub></code> trusts the person labeled <code>b<sub>i</sub></code>. If a trust relationship does not exist in <code>trust</code> array, then such a trust relationship does not exist.</p>\n\n<p>Return <em>the label of the town judge if the town judge exists and can be identified, or return </em><code>-1</code><em> otherwise</em>.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> n = 2, trust = [[1,2]]\n<strong>Output:</strong> 2\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> n = 3, trust = [[1,3],[2,3]]\n<strong>Output:</strong> 3\n</pre>\n\n<p><strong class=\"example\">Example 3:</strong></p>\n\n<pre>\n<strong>Input:</strong> n = 3, trust = [[1,3],[2,3],[3,1]]\n<strong>Output:</strong> -1\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= n &lt;= 1000</code></li>\n\t<li><code>0 &lt;= trust.length &lt;= 10<sup>4</sup></code></li>\n\t<li><code>trust[i].length == 2</code></li>\n\t<li>All the pairs of <code>trust</code> are <strong>unique</strong>.</li>\n\t<li><code>a<sub>i</sub> != b<sub>i</sub></code></li>\n\t<li><code>1 &lt;= a<sub>i</sub>, b<sub>i</sub> &lt;= n</code></li>\n</ul>\n"
 }

@@ -1,5 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import useChatStore from '../../store/useChatStore';
 
 const Pointer = ({ label, layoutId, color = '#f59e0b', textColor = '#050505' }) => (
   <motion.div 
@@ -25,6 +26,7 @@ const Pointer = ({ label, layoutId, color = '#f59e0b', textColor = '#050505' }) 
 
 /* ─── Two Sum Visualizer ─────────────────────────────────────── */
 const TwoSumViz = ({ stepData, target }) => {
+  const { askQuestion } = useChatStore();
   const { array = [], i = null, j = null } = stepData;
   const currentMap = stepData.currentMap || stepData.map || {};
   const complement = i !== null && array[i] !== undefined ? target - array[i] : null;
@@ -65,7 +67,8 @@ const TwoSumViz = ({ stepData, target }) => {
 
                   {/* Cell */}
                   <motion.div
-                    className="min-w-[56px] min-h-[56px] flex items-center justify-center font-mono font-black text-lg z-0"
+                    onClick={() => askQuestion(`Explain what the element with value ${val} at index ${idx} represents in this Two Sum step.`)}
+                    className="min-w-[56px] min-h-[56px] flex items-center justify-center font-mono font-black text-lg z-0 cursor-pointer hover:border-amber-500 transition-colors"
                     style={{
                       background: isFound ? 'rgba(245,158,11,0.2)' : isI ? 'rgba(245,158,11,0.1)' : isJ ? 'rgba(255,255,255,0.08)' : 'rgba(255,255,255,0.02)',
                       border: `2px solid ${isFound ? '#f59e0b' : isI ? 'rgba(245,158,11,0.6)' : isJ ? 'rgba(255,255,255,0.5)' : 'rgba(255,255,255,0.15)'}`,
@@ -73,6 +76,7 @@ const TwoSumViz = ({ stepData, target }) => {
                       boxShadow: isFound ? '0 0 30px rgba(245,158,11,0.3)' : 'none',
                     }}
                     animate={isFound ? { scale: [1, 1.12, 1] } : {}}
+                    whileHover={{ scale: 1.05 }}
                     transition={{ duration: 0.3 }}>
                     {val}
                   </motion.div>
@@ -164,6 +168,7 @@ const TwoSumViz = ({ stepData, target }) => {
 
 /* ─── Binary Search Visualizer ───────────────────────────────── */
 const BinarySearchViz = ({ stepData, target }) => {
+  const { askQuestion } = useChatStore();
   const { array = [], i: left = null, j: right = null, currentMap = {} } = stepData;
   const mid = currentMap?.mid ?? null;
 
@@ -223,13 +228,15 @@ const BinarySearchViz = ({ stepData, target }) => {
                       </div>
 
                       <motion.div
-                        className="min-w-[50px] min-h-[50px] flex items-center justify-center font-mono font-black text-lg z-0 relative"
+                        onClick={() => askQuestion(`Explain what the element with value ${val} at index ${idx} represents right now in this Binary Search step.`)}
+                        className="min-w-[50px] min-h-[50px] flex items-center justify-center font-mono font-black text-lg z-0 relative cursor-pointer hover:border-amber-500 transition-colors"
                         style={{
                           background: bg, border: `2px solid ${border}`, color,
                           boxShadow: isTarget ? '0 0 30px rgba(245,158,11,0.3)' : 'none',
                           opacity: !inRange ? 0.3 : 1,
                         }}
                         animate={isTarget ? { scale: [1, 1.12, 1] } : {}}
+                        whileHover={{ scale: 1.05 }}
                         transition={{ duration: 0.3 }}>
                         {val}
                       </motion.div>
@@ -263,7 +270,7 @@ const BinarySearchViz = ({ stepData, target }) => {
 /* ─── Merge Intervals Visualizer ───────────────────────────────── */
 const MergeIntervalsViz = ({ stepData }) => {
   let { array = [], i = null, currentMap = {} } = stepData;
-  const merged = currentMap?.merged || [];
+  const merged = currentMap?.merged || stepData.result || [];
 
   return (
     <div className="flex flex-col gap-10 w-full p-4">
@@ -348,6 +355,7 @@ const MergeIntervalsViz = ({ stepData }) => {
 
 /* ─── Generic Array Visualizer (fallback) ────────────────────── */
 const GenericArrayViz = ({ stepData }) => {
+  const { askQuestion } = useChatStore();
   const { array = [], visited = [], queue = [], result = [], i = null, currentMap = {} } = stepData;
   const stackArr = currentMap?.stack ?? null;
 
@@ -397,14 +405,16 @@ const GenericArrayViz = ({ stepData }) => {
                         {isActive && <Pointer label="i" layoutId={`generic-pointer-${label}`} />}
                       </div>
                       <motion.div
-                        className="min-w-[56px] w-auto min-h-[56px] h-auto py-2 px-3 flex items-center justify-center font-mono font-black text-lg text-center break-all relative z-0"
+                        onClick={() => askQuestion(`Explain what the value ${displayVal} at index ${idx} in the ${label} array represents in this step.`)}
+                        className="min-w-[56px] w-auto min-h-[56px] h-auto py-2 px-3 flex items-center justify-center font-mono font-black text-lg text-center break-all relative z-0 cursor-pointer hover:border-amber-500 transition-colors"
                         style={{
                           background: isActive ? 'rgba(245,158,11,0.15)' : 'rgba(255,255,255,0.02)',
                           border: `2px solid ${isActive ? '#f59e0b' : 'rgba(255,255,255,0.15)'}`,
                           color: isActive ? '#fff' : 'rgba(255,255,255,0.7)',
                           boxShadow: isActive ? '0 0 20px rgba(245,158,11,0.2)' : 'none',
                         }}
-                        animate={isActive ? { scale: [1, 1.1, 1] } : {}}>
+                        animate={isActive ? { scale: [1, 1.1, 1] } : {}}
+                        whileHover={{ scale: 1.05 }}>
                         {displayVal}
                       </motion.div>
                       <span className="font-mono text-[10px] font-bold text-white/30 tracking-widest mt-1">[{idx}]</span>
@@ -465,6 +475,33 @@ const GenericArrayViz = ({ stepData }) => {
           </div>
         </div>
       )}
+
+      {/* Results Section */}
+      {(stepData.results || stepData.result) && Array.isArray(stepData.results || stepData.result) && (
+        <div className="flex flex-col gap-4 mt-4 w-full border-t-[2px] border-white/10 pt-8">
+          <div className="flex items-center gap-4">
+            <span className="font-mono font-bold tracking-widest text-[11px] uppercase text-white/50">FOUND_RESULTS</span>
+            <div className="flex-1 h-[2px] bg-white/10" />
+          </div>
+          <div className="flex flex-wrap gap-4">
+            {(stepData.results || stepData.result).length === 0 ? (
+              <span className="font-mono text-[12px] text-white/30 uppercase tracking-widest">[ NONE YET ]</span>
+            ) : (
+              (stepData.results || stepData.result).map((item, idx) => (
+                <motion.div 
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  key={idx} 
+                  className="px-4 py-2 border-[2px] border-amber-500 bg-amber-500/10 text-amber-500 font-mono font-bold text-sm tracking-widest uppercase"
+                >
+                  {typeof item === 'object' ? JSON.stringify(item) : item}
+                </motion.div>
+              ))
+            )}
+          </div>
+        </div>
+      )}
+
     </div>
   );
 };
@@ -718,6 +755,7 @@ const TwoPointerViz = ({ stepData }) => {
 
 /* ─── DP Array Visualizer ────────────────────────────────────── */
 const DPViz = ({ stepData }) => {
+  const { askQuestion } = useChatStore();
   const raw = stepData.dp ?? stepData.memo ?? stepData.table ?? stepData.array ?? [];
   const dp = Array.isArray(raw) ? raw : [];
   const curr = stepData.curr ?? stepData.i ?? null;
@@ -773,7 +811,8 @@ const DPViz = ({ stepData }) => {
                     {isCurr && <Pointer label="i" layoutId="dp-ptr-i" />}
                   </div>
                   <motion.div
-                    className="min-w-[52px] min-h-[52px] flex items-center justify-center font-mono font-black text-base"
+                    onClick={() => askQuestion(`Explain what the dynamic programming value ${val !== null && val !== undefined ? String(val) : 'infinity'} at index ${idx} represents right now.`)}
+                    className="min-w-[52px] min-h-[52px] flex items-center justify-center font-mono font-black text-base cursor-pointer hover:border-amber-500 transition-colors"
                     style={{
                       background: isCurr ? 'rgba(245,158,11,0.2)' : isFilled ? 'rgba(245,158,11,0.06)' : 'rgba(255,255,255,0.02)',
                       border: `2px solid ${isCurr ? '#f59e0b' : isFilled ? 'rgba(245,158,11,0.3)' : 'rgba(255,255,255,0.1)'}`,
@@ -781,6 +820,7 @@ const DPViz = ({ stepData }) => {
                       boxShadow: isCurr ? '0 0 20px rgba(245,158,11,0.3)' : 'none',
                     }}
                     animate={isCurr ? { scale: [1, 1.08, 1] } : {}}
+                    whileHover={{ scale: 1.05 }}
                     transition={{ duration: 0.3 }}
                   >{val !== null && val !== undefined ? String(val) : '∞'}</motion.div>
                   <span className="font-mono text-[10px] font-bold text-white/25 tracking-widest mt-1">[{idx}]</span>

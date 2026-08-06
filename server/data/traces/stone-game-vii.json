@@ -1,0 +1,77 @@
+{
+  "title": "Stone Game VII",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Dynamic Programming",
+    "Game Theory"
+  ],
+  "description": "Alice and Bob play a game with a row of stones. Alice removes a stone from either end. The player who removes the stones gains points equal to the sum of remaining stones. Maximize Alice's score difference.",
+  "target": null,
+  "pseudocode": "1. n = stones.length\n2. dp[i][j] = max(sum(i+1, j) - dp[i+1][j], sum(i, j-1) - dp[i][j-1])\n3. return dp[0][n-1]",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize DP table for stones [5, 3, 1]. n = 3.",
+      "array": [
+        5,
+        3,
+        1
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Base case: length 1 intervals [i, i] are 0 score.",
+      "array": [
+        5,
+        3,
+        1
+      ],
+      "i": 0,
+      "j": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Calculate dp[0][1] (stones [5, 3]): Alice takes 5 (sum 3) or 3 (sum 5). Max is 3.",
+      "array": [
+        5,
+        3,
+        1
+      ],
+      "i": 0,
+      "j": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Calculate dp[1][2] (stones [3, 1]): Alice takes 3 (sum 1) or 1 (sum 3). Max is 1.",
+      "array": [
+        5,
+        3,
+        1
+      ],
+      "i": 1,
+      "j": 2
+    },
+    {
+      "codeLine": 2,
+      "note": "Calculate dp[0][2] (stones [5, 3, 1]): Alice takes 5 (sum 4 - dp[1][2]=1 = 3) or 1 (sum 8 - dp[0][1]=3 = 5). Max is 5.",
+      "array": [
+        5,
+        3,
+        1
+      ],
+      "i": 0,
+      "j": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Final result for game is dp[0][2] = 5.",
+      "array": [
+        5,
+        3,
+        1
+      ]
+    }
+  ]
+}

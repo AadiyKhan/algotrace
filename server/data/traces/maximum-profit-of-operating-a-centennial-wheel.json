@@ -1,0 +1,95 @@
+{
+  "title": "Maximum Profit Of Operating A Centennial Wheel",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Simulation",
+    "Math"
+  ],
+  "description": "Calculate the maximum profit of a Ferris wheel by boarding groups of up to 4 people, charging $a$ per person, and paying $b$ to run the wheel.",
+  "target": null,
+  "pseudocode": "let people = 0, rot = 0, profit = 0, maxProfit = -1, bestRot = -1;\nfor (let i = 0; i < customers.length || people > 0; i++) {\n  people += (customers[i] || 0);\n  let boarding = Math.min(people, 4);\n  people -= boarding;\n  profit += boarding * boardingCost - runningCost;\n  rot++;\n  if (profit > maxProfit) { maxProfit = profit; bestRot = rot; }\n}\nreturn maxProfit > 0 ? bestRot : -1;",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Initialize boarding process for first group",
+      "array": [
+        8,
+        3
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Add 8 customers to queue, board 4 people",
+      "array": [
+        8,
+        3
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Update profit: 4*boardingCost - runningCost",
+      "array": [
+        4,
+        3
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Update maxProfit with current rotation 1",
+      "i": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Process next rotation, 4 remain from first group + 3 new",
+      "array": [
+        0,
+        3
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Board 4 people from the remaining queue",
+      "array": [
+        0,
+        3
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Update profit: previous + 4*boardingCost - runningCost",
+      "array": [
+        0,
+        3
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Remaining people queue is 3, process last rotation",
+      "array": [
+        0,
+        0
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Board remaining 3 people",
+      "array": [
+        0,
+        0
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 8,
+      "note": "Return best rotation index",
+      "i": 2
+    }
+  ]
+}

@@ -1,0 +1,83 @@
+{
+  "title": "Defuse the Bomb",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Sliding Window"
+  ],
+  "description": "Replace every number in an array with the sum of the next k numbers if k > 0, previous k if k < 0, or 0 if k = 0.",
+  "target": 3,
+  "pseudocode": "1. n = code.length\n2. res = new Array(n).fill(0)\n3. if k == 0 return res\n4. start = k > 0 ? 1 : n + k\n5. end = k > 0 ? k : n - 1\n6. sum = sum of range [start, end]\n7. for i = 0 to n - 1:\n8.   res[i] = sum\n9.   sum -= code[start % n]\n10.  start++\n11.  end++\n12.  sum += code[end % n]",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize n = 3",
+      "array": [
+        5,
+        7,
+        1
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Calculate initial window sum (k=1): code[1] = 7",
+      "array": [
+        5,
+        7,
+        1
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 8,
+      "note": "Store sum 7 into res[0]",
+      "array": [
+        7,
+        0,
+        0
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 9,
+      "note": "Slide window: remove code[1]",
+      "array": [
+        7,
+        0,
+        0
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 12,
+      "note": "Add next element code[2] = 1",
+      "array": [
+        7,
+        1,
+        0
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 8,
+      "note": "Store sum 1 into res[1]",
+      "array": [
+        7,
+        1,
+        0
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 12,
+      "note": "Add next element code[0] = 5",
+      "array": [
+        7,
+        1,
+        5
+      ],
+      "i": 2
+    }
+  ]
+}

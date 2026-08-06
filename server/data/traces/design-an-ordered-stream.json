@@ -1,0 +1,90 @@
+{
+  "title": "Design An Ordered Stream",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Design",
+    "Hash Table"
+  ],
+  "description": "Maintain a stream of values and return a chunk of values whenever the next expected index is inserted.",
+  "target": 1,
+  "pseudocode": "1: ptr = 1\n2: stream = new Array(n + 1)\n3: if idKey == ptr:\n4:   stream[idKey] = value\n5:   res = []\n6:   while ptr < stream.length and stream[ptr]:\n7:     res.push(stream[ptr])\n8:     ptr++\n9:   return res\n10: else:\n11:   stream[idKey] = value\n12:   return []",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize ptr to 1",
+      "array": [
+        null,
+        null,
+        null,
+        null
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Insert idKey 3, value 'ccccc'. 3 != ptr(1)",
+      "array": [
+        null,
+        null,
+        null,
+        "ccccc"
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 11,
+      "note": "idKey != ptr, store value and return empty",
+      "array": [
+        null,
+        null,
+        null,
+        "ccccc"
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Insert idKey 1, value 'aaaaa'. 1 == ptr(1)",
+      "array": [
+        null,
+        "aaaaa",
+        null,
+        "ccccc"
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "ptr is 1, stream[1] exists. Start chunking.",
+      "array": [
+        null,
+        "aaaaa",
+        null,
+        "ccccc"
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "Push 'aaaaa' to result",
+      "array": [
+        null,
+        "aaaaa",
+        null,
+        "ccccc"
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Increment ptr to 2. stream[2] is null, stop.",
+      "array": [
+        null,
+        "aaaaa",
+        null,
+        "ccccc"
+      ],
+      "i": 2
+    }
+  ]
+}

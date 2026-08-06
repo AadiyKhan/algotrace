@@ -4,79 +4,100 @@
   "type": "array",
   "tags": [
     "Array",
-    "Dynamic Programming"
+    "Dynamic Programming",
+    "Memoization"
   ],
-  "description": "Remove boxes of the same color to maximize points, where points are gained by (k * k) for k consecutive boxes.",
+  "description": "Calculate maximum points by removing continuous color blocks.",
   "target": 23,
-  "pseudocode": "1. memo = {}\n2. function solve(l, r, k):\n3.   if l > r: return 0\n4.   if memo[l][r][k] exists: return memo[l][r][k]\n5.   res = (k+1)^2 + solve(l+1, r, 0)\n6.   for i from l+1 to r:\n7.     if boxes[i] == boxes[l]:\n8.       res = max(res, solve(l+1, i-1, 0) + solve(i, r, k+1))\n9.   memo[l][r][k] = res\n10.  return res",
+  "pseudocode": "1. Define dp(l, r, k) as max points for boxes[l..r] with k boxes of color boxes[r] attached to the right.\n2. If l > r, return 0.\n3. Case 1: Remove boxes[r] along with its k copies: dp(l, r-1, 0) + (k+1)^2.\n4. Case 2: Try merging boxes[r] with earlier boxes of the same color: for i in l..r-1, if boxes[i] == boxes[r], dp(l, i, k+1) + dp(i+1, r-1, 0).",
   "steps": [
     {
-      "codeLine": 2,
-      "note": "Starting recursion with boxes [1, 3, 2, 2, 2], solve(0, 4, 0)",
+      "codeLine": 1,
+      "note": "Initialize memoization table and start recursion on the full range [0, 8] with k=0.",
       "array": [
         1,
         3,
         2,
         2,
-        2
+        2,
+        3,
+        4,
+        3,
+        1
+      ],
+      "i": 0,
+      "curr": 8
+    },
+    {
+      "codeLine": 3,
+      "note": "Removing the single box at index 8 (color 1). Points = (0+1)^2 = 1.",
+      "array": [
+        1,
+        3,
+        2,
+        2,
+        2,
+        3,
+        4,
+        3
+      ],
+      "curr": 7
+    },
+    {
+      "codeLine": 4,
+      "note": "Searching for matches for color 3 (boxes[7]). Found at index 5.",
+      "array": [
+        1,
+        3,
+        2,
+        2,
+        2,
+        3,
+        4
+      ],
+      "i": 5,
+      "curr": 7
+    },
+    {
+      "codeLine": 3,
+      "note": "Removing block of three 2s (index 2-4). Points = 3*3 = 9.",
+      "array": [
+        1,
+        3,
+        3,
+        4,
+        3,
+        1
+      ],
+      "curr": 4
+    },
+    {
+      "codeLine": 4,
+      "note": "Merging remaining 3s (indices 1, 5, 7). Total 3 boxes. Points = 3*3 = 9.",
+      "array": [
+        1,
+        3,
+        3,
+        3,
+        1
+      ],
+      "curr": 5
+    },
+    {
+      "codeLine": 3,
+      "note": "Removing final 1s (indices 0, 8). Total 2 boxes. Points = 2*2 = 4.",
+      "array": [
+        1,
+        1
       ],
       "curr": 1
     },
     {
-      "codeLine": 5,
-      "note": "Removing box at index 0 (val 1), gaining 1*1 points",
-      "array": [
-        3,
-        2,
-        2,
-        2
-      ],
-      "i": 0,
+      "codeLine": 4,
+      "note": "Final state reached. Total points: 1 + 9 + 9 + 4 = 23.",
+      "array": [],
       "curr": 0
-    },
-    {
-      "codeLine": 6,
-      "note": "Evaluating group of 2s starting at index 2",
-      "array": [
-        2,
-        2,
-        2
-      ],
-      "i": 2,
-      "curr": 2
-    },
-    {
-      "codeLine": 8,
-      "note": "Merging box at index 2 with subsequent 2s, k becomes 2",
-      "array": [
-        2,
-        2,
-        2
-      ],
-      "i": 2,
-      "curr": 2
-    },
-    {
-      "codeLine": 5,
-      "note": "Calculating points for 3 boxes of color 2 (3*3 = 9)",
-      "array": [
-        2,
-        2,
-        2
-      ],
-      "i": 2,
-      "curr": 3
-    },
-    {
-      "codeLine": 9,
-      "note": "Final DP state computed, memoizing result for the range",
-      "array": [
-        1,
-        3,
-        2,
-        2,
-        2
-      ]
     }
-  ]
+  ],
+  "fullDescription": "<p>You are given several <code>boxes</code> with different colors represented by different positive numbers.</p>\n\n<p>You may experience several rounds to remove boxes until there is no box left. Each time you can choose some continuous boxes with the same color (i.e., composed of <code>k</code> boxes, <code>k &gt;= 1</code>), remove them and get <code>k * k</code> points.</p>\n\n<p>Return <em>the maximum points you can get</em>.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> boxes = [1,3,2,2,2,3,4,3,1]\n<strong>Output:</strong> 23\n<strong>Explanation:</strong>\n[1, 3, 2, 2, 2, 3, 4, 3, 1] \n----&gt; [1, 3, 3, 4, 3, 1] (3*3=9 points) \n----&gt; [1, 3, 3, 3, 1] (1*1=1 points) \n----&gt; [1, 1] (3*3=9 points) \n----&gt; [] (2*2=4 points)\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> boxes = [1,1,1]\n<strong>Output:</strong> 9\n</pre>\n\n<p><strong class=\"example\">Example 3:</strong></p>\n\n<pre>\n<strong>Input:</strong> boxes = [1]\n<strong>Output:</strong> 1\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= boxes.length &lt;= 100</code></li>\n\t<li><code>1 &lt;= boxes[i]&nbsp;&lt;= 100</code></li>\n</ul>\n"
 }

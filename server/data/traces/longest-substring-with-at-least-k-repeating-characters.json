@@ -1,20 +1,20 @@
 {
-  "title": "Longest Substring With At Least K Repeating Characters",
+  "title": "Longest Substring with At Least K Repeating Characters",
   "difficulty": "Medium",
   "type": "array",
   "tags": [
-    "Array",
+    "Hash Table",
     "String",
     "Divide and Conquer",
     "Sliding Window"
   ],
   "description": "Find the length of the longest substring where every character appears at least k times.",
   "target": 3,
-  "pseudocode": "1. function longestSubstring(s, k) {\n2.   if (s.length < k) return 0;\n3.   let counts = {};\n4.   for (let char of s) counts[char] = (counts[char] || 0) + 1;\n5.   for (let char in counts) {\n6.     if (counts[char] < k) {\n7.       return Math.max(...s.split(char).map(sub => longestSubstring(sub, k)));\n8.     }\n9.   }\n10.  return s.length;\n11. }",
+  "pseudocode": "1. Count frequency of all characters in string s.\n2. Identify characters with frequency < k.\n3. If no such characters exist, return length of s.\n4. Split string at indices of rare characters.\n5. Recursively solve for substrings and return max length.",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Starting execution with s = 'aaabb', k = 3",
+      "note": "Count frequencies: a=3, b=2. k=3.",
       "array": [
         "a",
         "a",
@@ -22,51 +22,59 @@
         "b",
         "b"
       ],
-      "curr": 3
+      "visited": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Character 'b' has frequency 2, which is less than k=3.",
+      "array": [
+        "a",
+        "a",
+        "a",
+        "b",
+        "b"
+      ],
+      "i": 3,
+      "visited": [
+        3,
+        4
+      ]
     },
     {
       "codeLine": 4,
-      "note": "Counting character frequencies: {a: 3, b: 2}",
-      "array": [
-        "a",
-        "a",
-        "a",
-        "b",
-        "b"
-      ],
-      "curr": 3
-    },
-    {
-      "codeLine": 6,
-      "note": "Char 'b' count (2) is less than k (3). Splitting at 'b'",
-      "array": [
-        "a",
-        "a",
-        "a",
-        "b",
-        "b"
-      ],
-      "curr": 2
-    },
-    {
-      "codeLine": 7,
-      "note": "Recursive call on substring 'aaa', length is 3",
+      "note": "Split at index 3. Substring to evaluate: 'aaa'.",
       "array": [
         "a",
         "a",
         "a"
       ],
-      "curr": 3
+      "i": 0,
+      "visited": [
+        0,
+        1,
+        2
+      ]
     },
     {
-      "codeLine": 10,
-      "note": "Base case reached: all chars count >= k, returning length 3",
+      "codeLine": 5,
+      "note": "Frequency of 'a' in 'aaa' is 3 (>= k). Max length is 3.",
       "array": [
         "a",
         "a",
         "a"
       ],
-      "curr": 3
+      "visited": [
+        0,
+        1,
+        2
+      ]
     }
-  ]
+  ],
+  "fullDescription": "<p>Given a string <code>s</code> and an integer <code>k</code>, return <em>the length of the longest substring of</em> <code>s</code> <em>such that the frequency of each character in this substring is greater than or equal to</em> <code>k</code>.</p>\n\n<p data-pm-slice=\"1 1 []\">if no such substring exists, return 0.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> s = &quot;aaabb&quot;, k = 3\n<strong>Output:</strong> 3\n<strong>Explanation:</strong> The longest substring is &quot;aaa&quot;, as &#39;a&#39; is repeated 3 times.\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> s = &quot;ababbc&quot;, k = 2\n<strong>Output:</strong> 5\n<strong>Explanation:</strong> The longest substring is &quot;ababb&quot;, as &#39;a&#39; is repeated 2 times and &#39;b&#39; is repeated 3 times.\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= s.length &lt;= 10<sup>4</sup></code></li>\n\t<li><code>s</code> consists of only lowercase English letters.</li>\n\t<li><code>1 &lt;= k &lt;= 10<sup>5</sup></code></li>\n</ul>\n"
 }

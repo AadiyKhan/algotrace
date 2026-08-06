@@ -1,144 +1,241 @@
 {
   "title": "Employee Importance",
   "difficulty": "Medium",
-  "type": "tree",
+  "type": "graph",
   "tags": [
-    "DFS",
+    "Array",
     "Hash Table",
-    "Tree"
+    "Tree",
+    "Depth-First Search",
+    "Breadth-First Search"
   ],
-  "description": "Find the total importance value of an employee and all their direct and indirect subordinates.",
+  "description": "Calculate total importance of an employee and all their subordinates using DFS.",
   "target": 1,
-  "pseudocode": "1. map = new Map(employees.map(e => [e.id, e]))\n2. function getTotal(id) {\n3.   emp = map.get(id)\n4.   sum = emp.importance\n5.   for (subId of emp.subordinates) {\n6.     sum += getTotal(subId)\n7.   }\n8.   return sum\n9. }",
+  "pseudocode": "1. map = {id: employee object}\n2. total = 0\n3. stack = [id]\n4. while stack not empty:\n5.   curr = stack.pop()\n6.   emp = map[curr]\n7.   total += emp.importance\n8.   for sub in emp.subordinates: stack.push(sub)",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Map created: {1: [5, [2, 3]], 2: [3, []], 3: [3, []]}",
-      "treeNodes": [
+      "note": "Mapping employees for O(1) access: {1: [5, [2,3]], 2: [3, []], 3: [3, []]}",
+      "graphNodes": [
         {
           "id": 1,
-          "val": 5,
-          "left": 2,
-          "right": 3
+          "val": 5
         },
         {
           "id": 2,
-          "val": 3,
-          "left": null,
-          "right": null
+          "val": 3
         },
         {
           "id": 3,
-          "val": 3,
-          "left": null,
-          "right": null
+          "val": 3
         }
       ],
-      "curr": 1
+      "graphEdges": [
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "visited": []
     },
     {
-      "codeLine": 3,
-      "note": "Get employee 1, importance = 5",
-      "treeNodes": [
+      "codeLine": 4,
+      "note": "Starting DFS from ID 1",
+      "graphNodes": [
         {
           "id": 1,
-          "val": 5,
-          "left": 2,
-          "right": 3
+          "val": 5
         },
         {
           "id": 2,
-          "val": 3,
-          "left": null,
-          "right": null
+          "val": 3
         },
         {
           "id": 3,
-          "val": 3,
-          "left": null,
-          "right": null
+          "val": 3
         }
       ],
-      "curr": 0
+      "graphEdges": [
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "curr": 1,
+      "visited": []
     },
     {
-      "codeLine": 6,
-      "note": "Traverse to subordinate 2",
-      "treeNodes": [
+      "codeLine": 7,
+      "note": "Adding ID 1 importance (5), total = 5",
+      "graphNodes": [
         {
           "id": 1,
-          "val": 5,
-          "left": 2,
-          "right": 3
+          "val": 5
         },
         {
           "id": 2,
-          "val": 3,
-          "left": null,
-          "right": null
+          "val": 3
         },
         {
           "id": 3,
-          "val": 3,
-          "left": null,
-          "right": null
+          "val": 3
         }
       ],
-      "curr": 1
-    },
-    {
-      "codeLine": 6,
-      "note": "Traverse to subordinate 3",
-      "treeNodes": [
-        {
-          "id": 1,
-          "val": 5,
-          "left": 2,
-          "right": 3
-        },
-        {
-          "id": 2,
-          "val": 3,
-          "left": null,
-          "right": null
-        },
-        {
-          "id": 3,
-          "val": 3,
-          "left": null,
-          "right": null
-        }
+      "graphEdges": [
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ]
       ],
-      "curr": 2
-    },
-    {
-      "codeLine": 8,
-      "note": "Return total importance: 5 + 3 + 3 = 11",
-      "treeNodes": [
-        {
-          "id": 1,
-          "val": 5,
-          "left": 2,
-          "right": 3
-        },
-        {
-          "id": 2,
-          "val": 3,
-          "left": null,
-          "right": null
-        },
-        {
-          "id": 3,
-          "val": 3,
-          "left": null,
-          "right": null
-        }
-      ],
+      "curr": 1,
       "visited": [
-        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Pop subordinate 3 from stack",
+      "graphNodes": [
+        {
+          "id": 1,
+          "val": 5
+        },
+        {
+          "id": 2,
+          "val": 3
+        },
+        {
+          "id": 3,
+          "val": 3
+        }
+      ],
+      "graphEdges": [
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "curr": 3,
+      "visited": [
+        1
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Adding ID 3 importance (3), total = 8",
+      "graphNodes": [
+        {
+          "id": 1,
+          "val": 5
+        },
+        {
+          "id": 2,
+          "val": 3
+        },
+        {
+          "id": 3,
+          "val": 3
+        }
+      ],
+      "graphEdges": [
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "curr": 3,
+      "visited": [
         1,
+        3
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Pop subordinate 2 from stack",
+      "graphNodes": [
+        {
+          "id": 1,
+          "val": 5
+        },
+        {
+          "id": 2,
+          "val": 3
+        },
+        {
+          "id": 3,
+          "val": 3
+        }
+      ],
+      "graphEdges": [
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "curr": 2,
+      "visited": [
+        1,
+        3
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Adding ID 2 importance (3), total = 11",
+      "graphNodes": [
+        {
+          "id": 1,
+          "val": 5
+        },
+        {
+          "id": 2,
+          "val": 3
+        },
+        {
+          "id": 3,
+          "val": 3
+        }
+      ],
+      "graphEdges": [
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "curr": 2,
+      "visited": [
+        1,
+        3,
         2
       ]
     }
-  ]
+  ],
+  "fullDescription": "<p>You have a data structure of employee information, including the employee&#39;s unique ID, importance value, and direct subordinates&#39; IDs.</p>\n\n<p>You are given an array of employees <code>employees</code> where:</p>\n\n<ul>\n\t<li><code>employees[i].id</code> is the ID of the <code>i<sup>th</sup></code> employee.</li>\n\t<li><code>employees[i].importance</code> is the importance value of the <code>i<sup>th</sup></code> employee.</li>\n\t<li><code>employees[i].subordinates</code> is a list of the IDs of the direct subordinates of the <code>i<sup>th</sup></code> employee.</li>\n</ul>\n\n<p>Given an integer <code>id</code> that represents an employee&#39;s ID, return <em>the <strong>total</strong> importance value of this employee and all their direct and indirect subordinates</em>.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2021/05/31/emp1-tree.jpg\" style=\"width: 400px; height: 258px;\" />\n<pre>\n<strong>Input:</strong> employees = [[1,5,[2,3]],[2,3,[]],[3,3,[]]], id = 1\n<strong>Output:</strong> 11\n<strong>Explanation:</strong> Employee 1 has an importance value of 5 and has two direct subordinates: employee 2 and employee 3.\nThey both have an importance value of 3.\nThus, the total importance value of employee 1 is 5 + 3 + 3 = 11.\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2021/05/31/emp2-tree.jpg\" style=\"width: 362px; height: 361px;\" />\n<pre>\n<strong>Input:</strong> employees = [[1,2,[5]],[5,-3,[]]], id = 5\n<strong>Output:</strong> -3\n<strong>Explanation:</strong> Employee 5 has an importance value of -3 and has no direct subordinates.\nThus, the total importance value of employee 5 is -3.\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= employees.length &lt;= 2000</code></li>\n\t<li><code>1 &lt;= employees[i].id &lt;= 2000</code></li>\n\t<li>All <code>employees[i].id</code> are <strong>unique</strong>.</li>\n\t<li><code>-100 &lt;= employees[i].importance &lt;= 100</code></li>\n\t<li>One employee has at most one direct leader and may have several subordinates.</li>\n\t<li>The IDs in <code>employees[i].subordinates</code> are valid IDs.</li>\n</ul>\n"
 }

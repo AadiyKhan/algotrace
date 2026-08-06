@@ -4,88 +4,174 @@
   "type": "array",
   "tags": [
     "Array",
+    "Dynamic Programming",
     "Stack",
     "Monotonic Stack"
   ],
-  "description": "Find the sum of minimums of all subarrays of an array using a monotonic stack to track the nearest smaller elements.",
+  "description": "Calculate sum of minimums of all subarrays using a monotonic stack to find next smaller elements.",
   "target": 17,
-  "pseudocode": "1: stack = []\n2: sum = 0\n3: arr = [3, 1, 2]\n4: for i from 0 to n:\n5:   while stack and arr[stack.top] > arr[i]:\n6:     pop = stack.pop()\n7:     sum += arr[pop] * (i - pop) * (pop - prev_stack_top)\n8:   stack.push(i)",
+  "pseudocode": "1. Initialize stack = [], sum = 0, n = arr.length\n2. For i from 0 to n:\n3.   While stack not empty and (i == n or arr[i] < arr[stack.top()]):\n4.     mid = stack.pop(), left = stack.isEmpty ? -1 : stack.top(), right = i\n5.     sum += (mid - left) * (right - mid) * arr[mid]\n6.   stack.push(i)\n7. Return sum",
   "steps": [
     {
-      "codeLine": 3,
-      "note": "Initialize array [3, 1, 2]",
+      "codeLine": 2,
+      "note": "Initialize variables, start iterating through array [3, 1, 2, 4]",
       "array": [
         3,
         1,
-        2
+        2,
+        4
       ],
-      "curr": 3
+      "i": 0,
+      "visited": []
     },
     {
-      "codeLine": 8,
+      "codeLine": 6,
       "note": "Push index 0 (val 3) onto stack",
       "array": [
         3,
         1,
-        2
+        2,
+        4
       ],
       "i": 0,
+      "visited": [
+        0
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "arr[1] (1) < arr[0] (3), entering while loop",
+      "array": [
+        3,
+        1,
+        2,
+        4
+      ],
+      "i": 1,
       "curr": 0
     },
     {
       "codeLine": 5,
-      "note": "Current val 1 is smaller than 3, trigger pop",
+      "note": "Pop 0: count subarrays where 3 is min: (0 - (-1)) * (1 - 0) * 3 = 3. Sum = 3.",
       "array": [
         3,
         1,
-        2
+        2,
+        4
       ],
       "i": 1,
-      "curr": 1
+      "visited": []
     },
     {
       "codeLine": 6,
-      "note": "Pop 0 (val 3), calc contribution: 3 * (1-0) * (0 - (-1)) = 3",
-      "array": [
-        3,
-        1,
-        2
-      ],
-      "i": 1,
-      "curr": 0
-    },
-    {
-      "codeLine": 8,
       "note": "Push index 1 (val 1) onto stack",
       "array": [
         3,
         1,
-        2
+        2,
+        4
       ],
       "i": 1,
-      "curr": 1
+      "visited": [
+        1
+      ]
     },
     {
-      "codeLine": 5,
-      "note": "Current val 2 is not smaller than 1, push index 2",
-      "array": [
-        3,
-        1,
-        2
-      ],
-      "i": 2,
-      "curr": 2
-    },
-    {
-      "codeLine": 8,
+      "codeLine": 6,
       "note": "Push index 2 (val 2) onto stack",
       "array": [
         3,
         1,
-        2
+        2,
+        4
       ],
       "i": 2,
-      "curr": 2
+      "visited": [
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Push index 3 (val 4) onto stack",
+      "array": [
+        3,
+        1,
+        2,
+        4
+      ],
+      "i": 3,
+      "visited": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Reached end (i=4). Process remaining stack indices.",
+      "array": [
+        3,
+        1,
+        2,
+        4
+      ],
+      "i": 4,
+      "curr": 3
+    },
+    {
+      "codeLine": 5,
+      "note": "Pop 3 (val 4): (3 - 2) * (4 - 3) * 4 = 4. Sum = 3 + 4 = 7.",
+      "array": [
+        3,
+        1,
+        2,
+        4
+      ],
+      "i": 4,
+      "visited": [
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Pop 2 (val 2): (2 - 1) * (4 - 2) * 2 = 4. Sum = 7 + 4 = 11.",
+      "array": [
+        3,
+        1,
+        2,
+        4
+      ],
+      "i": 4,
+      "visited": [
+        1
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Pop 1 (val 1): (1 - (-1)) * (4 - 1) * 1 = 6. Sum = 11 + 6 = 17.",
+      "array": [
+        3,
+        1,
+        2,
+        4
+      ],
+      "i": 4,
+      "visited": []
+    },
+    {
+      "codeLine": 7,
+      "note": "Calculation complete, return total 17.",
+      "array": [
+        3,
+        1,
+        2,
+        4
+      ],
+      "i": 4,
+      "visited": []
     }
-  ]
+  ],
+  "fullDescription": "<p>Given an array of integers arr, find the sum of <code>min(b)</code>, where <code>b</code> ranges over every (contiguous) subarray of <code>arr</code>. Since the answer may be large, return the answer <strong>modulo</strong> <code>10<sup>9</sup> + 7</code>.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> arr = [3,1,2,4]\n<strong>Output:</strong> 17\n<strong>Explanation:</strong> \nSubarrays are [3], [1], [2], [4], [3,1], [1,2], [2,4], [3,1,2], [1,2,4], [3,1,2,4]. \nMinimums are 3, 1, 2, 4, 1, 1, 2, 1, 1, 1.\nSum is 17.\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> arr = [11,81,94,43,3]\n<strong>Output:</strong> 444\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= arr.length &lt;= 3 * 10<sup>4</sup></code></li>\n\t<li><code>1 &lt;= arr[i] &lt;= 3 * 10<sup>4</sup></code></li>\n</ul>\n"
 }

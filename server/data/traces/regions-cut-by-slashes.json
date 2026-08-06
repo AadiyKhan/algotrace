@@ -4,31 +4,148 @@
   "type": "matrix",
   "tags": [
     "Array",
-    "Graph",
-    "DFS",
-    "Union Find"
+    "Depth-First Search",
+    "Union-Find",
+    "Matrix"
   ],
-  "description": "Calculate the number of regions in an N x N grid formed by slashes, backslashes, and spaces.",
+  "description": "Divide each 1x1 cell into a 3x3 subgrid to represent slashes and count connected components (regions) using DFS.",
   "target": 2,
-  "pseudocode": "1. scale grid to 3x3 per cell\n2. fill 1 for slashes, 0 for spaces\n3. count connected components of 0s using DFS\n4. return count",
+  "pseudocode": "1. Scale grid to (N*3)x(N*3)\n2. Fill subgrids based on '/' or '\\'\n3. Iterate through cells and perform DFS to count connected components of '0's",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Scale grid /1/ to 3x3 blocks. Cell (0,1) with '/' becomes diagonal.",
+      "note": "Scale grid to 6x6. Each 2x2 cell becomes a 3x3 subgrid.",
       "matrix": [
         [
           0,
           0,
-          1
+          1,
+          0,
+          0,
+          0
         ],
         [
           0,
           1,
+          0,
+          0,
+          0,
           0
         ],
         [
           1,
           0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Start DFS from (0,0). Count first region.",
+      "matrix": [
+        [
+          1,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
           0
         ]
       ],
@@ -39,22 +156,55 @@
     },
     {
       "codeLine": 3,
-      "note": "Start DFS from (0,0) to find first region.",
+      "note": "DFS complete for first region. Moving to find next unvisited cell.",
       "matrix": [
         [
+          1,
+          1,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
           0,
           0,
           1
-        ],
-        [
-          0,
-          1,
-          0
-        ],
-        [
-          1,
-          0,
-          0
         ]
       ],
       "visited": [
@@ -67,33 +217,78 @@
           1
         ],
         [
+          0,
+          2
+        ],
+        [
           1,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
           0
         ]
       ],
       "curr": [
         0,
-        0
+        3
       ]
     },
     {
       "codeLine": 3,
-      "note": "DFS complete for first region. Count = 1.",
+      "note": "Found second region. DFS marks connected component.",
       "matrix": [
         [
-          0,
-          0,
+          1,
+          1,
+          1,
+          1,
+          1,
           1
         ],
         [
-          0,
           1,
-          0
+          1,
+          1,
+          1,
+          1,
+          1
         ],
         [
           1,
-          0,
-          0
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
         ]
       ],
       "visited": [
@@ -106,112 +301,147 @@
           1
         ],
         [
+          0,
+          2
+        ],
+        [
           1,
           0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          4,
+          0
+        ],
+        [
+          4,
+          1
+        ],
+        [
+          4,
+          2
+        ],
+        [
+          4,
+          3
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          5,
+          0
+        ],
+        [
+          5,
+          1
+        ],
+        [
+          5,
+          2
+        ],
+        [
+          5,
+          3
+        ],
+        [
+          5,
+          4
+        ],
+        [
+          5,
+          5
         ]
       ],
       "curr": [
-        1,
-        2
-      ]
-    },
-    {
-      "codeLine": 3,
-      "note": "Start DFS from (1,2) to find second region.",
-      "matrix": [
-        [
-          0,
-          0,
-          1
-        ],
-        [
-          0,
-          1,
-          0
-        ],
-        [
-          1,
-          0,
-          0
-        ]
-      ],
-      "visited": [
-        [
-          0,
-          0
-        ],
-        [
-          0,
-          1
-        ],
-        [
-          1,
-          0
-        ],
-        [
-          1,
-          2
-        ],
-        [
-          2,
-          1
-        ],
-        [
-          2,
-          2
-        ]
-      ],
-      "curr": [
-        1,
-        2
-      ]
-    },
-    {
-      "codeLine": 4,
-      "note": "All components visited. Total regions = 2.",
-      "matrix": [
-        [
-          0,
-          0,
-          1
-        ],
-        [
-          0,
-          1,
-          0
-        ],
-        [
-          1,
-          0,
-          0
-        ]
-      ],
-      "visited": [
-        [
-          0,
-          0
-        ],
-        [
-          0,
-          1
-        ],
-        [
-          1,
-          0
-        ],
-        [
-          1,
-          2
-        ],
-        [
-          2,
-          1
-        ],
-        [
-          2,
-          2
-        ]
+        5,
+        5
       ]
     }
-  ]
+  ],
+  "fullDescription": "<p>An <code>n x n</code> grid is composed of <code>1 x 1</code> squares where each <code>1 x 1</code> square consists of a <code>&#39;/&#39;</code>, <code>&#39;\\&#39;</code>, or blank space <code>&#39; &#39;</code>. These characters divide the square into contiguous regions.</p>\n\n<p>Given the grid <code>grid</code> represented as a string array, return <em>the number of regions</em>.</p>\n\n<p>Note that backslash characters are escaped, so a <code>&#39;\\&#39;</code> is represented as <code>&#39;\\\\&#39;</code>.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2018/12/15/1.png\" style=\"width: 200px; height: 200px;\" />\n<pre>\n<strong>Input:</strong> grid = [&quot; /&quot;,&quot;/ &quot;]\n<strong>Output:</strong> 2\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2018/12/15/2.png\" style=\"width: 200px; height: 198px;\" />\n<pre>\n<strong>Input:</strong> grid = [&quot; /&quot;,&quot;  &quot;]\n<strong>Output:</strong> 1\n</pre>\n\n<p><strong class=\"example\">Example 3:</strong></p>\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2018/12/15/4.png\" style=\"width: 200px; height: 200px;\" />\n<pre>\n<strong>Input:</strong> grid = [&quot;/\\\\&quot;,&quot;\\\\/&quot;]\n<strong>Output:</strong> 5\n<strong>Explanation: </strong>Recall that because \\ characters are escaped, &quot;\\\\/&quot; refers to \\/, and &quot;/\\\\&quot; refers to /\\.\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>n == grid.length == grid[i].length</code></li>\n\t<li><code>1 &lt;= n &lt;= 30</code></li>\n\t<li><code>grid[i][j]</code> is either <code>&#39;/&#39;</code>, <code>&#39;\\&#39;</code>, or <code>&#39; &#39;</code>.</li>\n</ul>\n"
 }

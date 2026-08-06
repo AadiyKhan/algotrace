@@ -7,13 +7,13 @@
     "Depth-First Search",
     "Binary Search Tree"
   ],
-  "description": "Calculate the sum of values of all nodes in a BST within the inclusive range [low, high].",
+  "description": "Calculate the sum of all node values within the range [low, high] in a BST.",
   "target": 32,
-  "pseudocode": "1. if node is null return 0\n2. if node.val < low, return rangeSum(node.right)\n3. if node.val > high, return rangeSum(node.left)\n4. return node.val + rangeSum(node.left) + rangeSum(node.right)",
+  "pseudocode": "1. If node is null, return 0\n2. If node.val < low, return rangeSum(node.right)\n3. If node.val > high, return rangeSum(node.left)\n4. Return node.val + rangeSum(node.left) + rangeSum(node.right)",
   "steps": [
     {
       "codeLine": 4,
-      "note": "Starting DFS at root (10). 10 is in range [7, 15]. Add 10.",
+      "note": "Start at root (10). 10 is in range [7, 15]. Add 10.",
       "treeNodes": [
         {
           "id": 0,
@@ -52,11 +52,140 @@
           "right": null
         }
       ],
-      "curr": 10
+      "curr": 0
     },
     {
-      "codeLine": 2,
-      "note": "Traversing left to node 5. 5 < low(7), explore right only.",
+      "codeLine": 4,
+      "note": "Traverse left to 5. 5 < 7, so ignore 5 and its left child 3, search right.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 10,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 5,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 2,
+          "val": 15,
+          "left": null,
+          "right": 5
+        },
+        {
+          "id": 3,
+          "val": 3,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 7,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 5,
+          "val": 18,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Node 7 is in range [7, 15]. Add 7.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 10,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 5,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 2,
+          "val": 15,
+          "left": null,
+          "right": 5
+        },
+        {
+          "id": 3,
+          "val": 3,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 7,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 5,
+          "val": 18,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 4
+    },
+    {
+      "codeLine": 4,
+      "note": "Traverse right to 15. 15 is in range [7, 15]. Add 15.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 10,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 5,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 2,
+          "val": 15,
+          "left": null,
+          "right": 5
+        },
+        {
+          "id": 3,
+          "val": 3,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 7,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 5,
+          "val": 18,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Traverse right to 18. 18 > 15, prune search. Return 10 + 7 + 15 = 32.",
       "treeNodes": [
         {
           "id": 0,
@@ -96,135 +225,7 @@
         }
       ],
       "curr": 5
-    },
-    {
-      "codeLine": 4,
-      "note": "Node 7 is in range [7, 15]. Add 7. Total sum: 17.",
-      "treeNodes": [
-        {
-          "id": 0,
-          "val": 10,
-          "left": 1,
-          "right": 2
-        },
-        {
-          "id": 1,
-          "val": 5,
-          "left": 3,
-          "right": 4
-        },
-        {
-          "id": 2,
-          "val": 15,
-          "left": null,
-          "right": 5
-        },
-        {
-          "id": 3,
-          "val": 3,
-          "left": null,
-          "right": null
-        },
-        {
-          "id": 4,
-          "val": 7,
-          "left": null,
-          "right": null
-        },
-        {
-          "id": 5,
-          "val": 18,
-          "left": null,
-          "right": null
-        }
-      ],
-      "curr": 7
-    },
-    {
-      "codeLine": 4,
-      "note": "Traversing to node 15. 15 is in range [7, 15]. Add 15. Total sum: 32.",
-      "treeNodes": [
-        {
-          "id": 0,
-          "val": 10,
-          "left": 1,
-          "right": 2
-        },
-        {
-          "id": 1,
-          "val": 5,
-          "left": 3,
-          "right": 4
-        },
-        {
-          "id": 2,
-          "val": 15,
-          "left": null,
-          "right": 5
-        },
-        {
-          "id": 3,
-          "val": 3,
-          "left": null,
-          "right": null
-        },
-        {
-          "id": 4,
-          "val": 7,
-          "left": null,
-          "right": null
-        },
-        {
-          "id": 5,
-          "val": 18,
-          "left": null,
-          "right": null
-        }
-      ],
-      "curr": 15
-    },
-    {
-      "codeLine": 3,
-      "note": "Node 18 > high(15). Skip sub-tree.",
-      "treeNodes": [
-        {
-          "id": 0,
-          "val": 10,
-          "left": 1,
-          "right": 2
-        },
-        {
-          "id": 1,
-          "val": 5,
-          "left": 3,
-          "right": 4
-        },
-        {
-          "id": 2,
-          "val": 15,
-          "left": null,
-          "right": 5
-        },
-        {
-          "id": 3,
-          "val": 3,
-          "left": null,
-          "right": null
-        },
-        {
-          "id": 4,
-          "val": 7,
-          "left": null,
-          "right": null
-        },
-        {
-          "id": 5,
-          "val": 18,
-          "left": null,
-          "right": null
-        }
-      ],
-      "curr": 18
     }
-  ]
+  ],
+  "fullDescription": "<p>Given the <code>root</code> node of a binary search tree and two integers <code>low</code> and <code>high</code>, return <em>the sum of values of all nodes with a value in the <strong>inclusive</strong> range </em><code>[low, high]</code>.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2020/11/05/bst1.jpg\" style=\"width: 400px; height: 222px;\" />\n<pre>\n<strong>Input:</strong> root = [10,5,15,3,7,null,18], low = 7, high = 15\n<strong>Output:</strong> 32\n<strong>Explanation:</strong> Nodes 7, 10, and 15 are in the range [7, 15]. 7 + 10 + 15 = 32.\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2020/11/05/bst2.jpg\" style=\"width: 400px; height: 335px;\" />\n<pre>\n<strong>Input:</strong> root = [10,5,15,3,7,13,18,1,null,6], low = 6, high = 10\n<strong>Output:</strong> 23\n<strong>Explanation:</strong> Nodes 6, 7, and 10 are in the range [6, 10]. 6 + 7 + 10 = 23.\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li>The number of nodes in the tree is in the range <code>[1, 2 * 10<sup>4</sup>]</code>.</li>\n\t<li><code>1 &lt;= Node.val &lt;= 10<sup>5</sup></code></li>\n\t<li><code>1 &lt;= low &lt;= high &lt;= 10<sup>5</sup></code></li>\n\t<li>All <code>Node.val</code> are <strong>unique</strong>.</li>\n</ul>\n"
 }

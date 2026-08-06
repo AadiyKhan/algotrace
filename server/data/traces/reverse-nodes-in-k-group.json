@@ -6,13 +6,13 @@
     "Linked List",
     "Recursion"
   ],
-  "description": "Reverse nodes of a linked list k at a time.",
+  "description": "Reverse nodes in a linked list k at a time.",
   "target": 2,
-  "pseudocode": "1. check if k nodes exist. 2. reverse k nodes. 3. recurse for next group. 4. connect head to result.",
+  "pseudocode": "1. Count k nodes; 2. Reverse current group; 3. Recursively call for next group; 4. Connect reversed segments.",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize starting at head [1,2,3,4,5], k=2. First group found: [1,2].",
+      "note": "Initialize head as [1, 2, 3, 4, 5], k = 2. Group 1: [1, 2].",
       "nodes": [
         {
           "id": 0,
@@ -40,11 +40,11 @@
           "next": null
         }
       ],
-      "curr": 1
+      "curr": 0
     },
     {
       "codeLine": 2,
-      "note": "Reverse the first group [1,2] -> [2,1].",
+      "note": "Reverse the first group [1, 2] to [2, 1].",
       "nodes": [
         {
           "id": 0,
@@ -76,7 +76,7 @@
     },
     {
       "codeLine": 3,
-      "note": "Recurse on the remaining list starting at node [3,4,5]. Next group: [3,4].",
+      "note": "Move to the next group [3, 4].",
       "nodes": [
         {
           "id": 0,
@@ -86,15 +86,47 @@
         {
           "id": 1,
           "val": 1,
-          "next": 3
-        },
-        {
-          "id": 3,
-          "val": 4,
           "next": 2
         },
         {
           "id": 2,
+          "val": 4,
+          "next": 3
+        },
+        {
+          "id": 3,
+          "val": 3,
+          "next": 4
+        },
+        {
+          "id": 4,
+          "val": 5,
+          "next": null
+        }
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Reverse the second group [3, 4] to [4, 3]. Connect 1 to 4.",
+      "nodes": [
+        {
+          "id": 0,
+          "val": 2,
+          "next": 1
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "next": 2
+        },
+        {
+          "id": 2,
+          "val": 4,
+          "next": 3
+        },
+        {
+          "id": 3,
           "val": 3,
           "next": 4
         },
@@ -108,7 +140,7 @@
     },
     {
       "codeLine": 4,
-      "note": "Final connection. Node 1 points to 4. 5 remains unchanged as it is not a complete group.",
+      "note": "Remaining node [5] is less than k, leave it as is.",
       "nodes": [
         {
           "id": 0,
@@ -118,15 +150,15 @@
         {
           "id": 1,
           "val": 1,
-          "next": 3
-        },
-        {
-          "id": 3,
-          "val": 4,
           "next": 2
         },
         {
           "id": 2,
+          "val": 4,
+          "next": 3
+        },
+        {
+          "id": 3,
           "val": 3,
           "next": 4
         },
@@ -136,7 +168,8 @@
           "next": null
         }
       ],
-      "curr": 1
+      "curr": 4
     }
-  ]
+  ],
+  "fullDescription": "<p>Given the <code>head</code> of a linked list, reverse the nodes of the list <code>k</code> at a time, and return <em>the modified list</em>.</p>\n\n<p><code>k</code> is a positive integer and is less than or equal to the length of the linked list. If the number of nodes is not a multiple of <code>k</code> then left-out nodes, in the end, should remain as it is.</p>\n\n<p>You may not alter the values in the list&#39;s nodes, only nodes themselves may be changed.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2020/10/03/reverse_ex1.jpg\" style=\"width: 542px; height: 222px;\" />\n<pre>\n<strong>Input:</strong> head = [1,2,3,4,5], k = 2\n<strong>Output:</strong> [2,1,4,3,5]\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2020/10/03/reverse_ex2.jpg\" style=\"width: 542px; height: 222px;\" />\n<pre>\n<strong>Input:</strong> head = [1,2,3,4,5], k = 3\n<strong>Output:</strong> [3,2,1,4,5]\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li>The number of nodes in the list is <code>n</code>.</li>\n\t<li><code>1 &lt;= k &lt;= n &lt;= 5000</code></li>\n\t<li><code>0 &lt;= Node.val &lt;= 1000</code></li>\n</ul>\n\n<p>&nbsp;</p>\n<p><strong>Follow-up:</strong> Can you solve the problem in <code>O(1)</code> extra memory space?</p>\n"
 }

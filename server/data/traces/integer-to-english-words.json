@@ -7,51 +7,63 @@
     "String",
     "Recursion"
   ],
-  "description": "Convert a non-negative integer to its English words representation.",
-  "target": "123",
-  "pseudocode": "1. function helper(num) {\n2.   if (num == 0) return '';\n3.   if (num < 20) return below20[num] + ' ';\n4.   if (num < 100) return tens[Math.floor(num/10)] + ' ' + helper(num % 10);\n5.   return below20[Math.floor(num/100)] + ' Hundred ' + helper(num % 100);\n6. }\n7. function numberToWords(num) {\n8.   if (num == 0) return 'Zero';\n9.   let res = '';\n10.  for (let i = 0; i < 4; i++) {\n11.    if (num % 1000 != 0) res = helper(num % 1000) + thousands[i] + ' ' + res;\n12.    num = Math.floor(num / 1000);\n13.  }\n14.  return res.trim();\n15. }",
+  "description": "Convert a non-negative integer num to its English words representation.",
+  "target": 123,
+  "pseudocode": "1. If num == 0 return 'Zero'\n2. Define helper function for chunks less than 1000\n3. Divide num into billions, millions, thousands, and remainder\n4. Convert each chunk to words and append magnitude",
   "steps": [
     {
-      "codeLine": 8,
-      "note": "Initialize result string. Num is 123.",
+      "codeLine": 1,
+      "note": "Initialize num = 123.",
       "array": [
         123
       ],
-      "curr": 123
+      "visited": []
     },
     {
-      "codeLine": 10,
-      "note": "Start loop for chunks of 1000. i = 0.",
-      "i": 0,
+      "codeLine": 3,
+      "note": "Break down 123. Hundreds = 1, Remainder = 23.",
       "array": [
         123
       ],
-      "curr": 1000
-    },
-    {
-      "codeLine": 11,
-      "note": "Process 123. Helper returns 'One Hundred Twenty Three '.",
-      "i": 0,
-      "array": [
+      "visited": [
         123
-      ],
-      "curr": 123
+      ]
     },
     {
-      "codeLine": 12,
-      "note": "num becomes 0.",
-      "i": 0,
+      "codeLine": 4,
+      "note": "Process '1' as 'One Hundred'.",
       "array": [
-        0
+        1,
+        23
       ],
-      "curr": 0
+      "visited": [
+        1
+      ]
     },
     {
-      "codeLine": 14,
-      "note": "Return trimmed string.",
+      "codeLine": 4,
+      "note": "Process '23' as 'Twenty Three'.",
       "array": [
-        0
+        1,
+        23
+      ],
+      "visited": [
+        1,
+        23
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Final result combined: 'One Hundred Twenty Three'.",
+      "array": [
+        1,
+        23
+      ],
+      "visited": [
+        1,
+        23
       ]
     }
-  ]
+  ],
+  "fullDescription": "<p>Convert a non-negative integer <code>num</code> to its English words representation.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> num = 123\n<strong>Output:</strong> &quot;One Hundred Twenty Three&quot;\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> num = 12345\n<strong>Output:</strong> &quot;Twelve Thousand Three Hundred Forty Five&quot;\n</pre>\n\n<p><strong class=\"example\">Example 3:</strong></p>\n\n<pre>\n<strong>Input:</strong> num = 1234567\n<strong>Output:</strong> &quot;One Million Two Hundred Thirty Four Thousand Five Hundred Sixty Seven&quot;\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>0 &lt;= num &lt;= 2<sup>31</sup> - 1</code></li>\n</ul>\n"
 }

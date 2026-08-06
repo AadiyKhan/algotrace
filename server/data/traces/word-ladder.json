@@ -1,142 +1,369 @@
 {
   "title": "Word Ladder",
   "difficulty": "Hard",
-  "type": "array",
+  "type": "graph",
   "tags": [
-    "BFS",
-    "Graph",
-    "String"
+    "Hash Table",
+    "String",
+    "Breadth-First Search"
   ],
-  "description": "Find the length of the shortest transformation sequence from beginWord to endWord, changing one letter at a time.",
+  "description": "Find the length of the shortest transformation sequence from beginWord to endWord using BFS.",
   "target": "cog",
-  "pseudocode": "1. queue = [[beginWord, 1]]\n2. visited = {beginWord}\n3. while queue not empty:\n4.   word, dist = queue.shift()\n5.   if word == endWord: return dist\n6.   for each neighbor of word in wordList:\n7.     if neighbor not in visited:\n8.       visited.add(neighbor)\n9.       queue.push([neighbor, dist + 1])",
+  "pseudocode": "1. Initialize queue with [beginWord, 1]\n2. While queue is not empty:\n3. Pop word, level from queue\n4. If word == endWord, return level\n5. For each neighbor in wordList differing by one letter:\n6. Add neighbor to queue with level + 1 and mark visited",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize BFS queue with beginWord and distance 1.",
-      "array": [
-        "hit",
-        "hot",
-        "dot",
-        "dog",
-        "cog"
+      "note": "Initialize BFS queue with hit at level 1.",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": "hit"
+        },
+        {
+          "id": 1,
+          "val": "hot"
+        },
+        {
+          "id": 2,
+          "val": "dot"
+        },
+        {
+          "id": 3,
+          "val": "dog"
+        },
+        {
+          "id": 4,
+          "val": "lot"
+        },
+        {
+          "id": 5,
+          "val": "log"
+        },
+        {
+          "id": 6,
+          "val": "cog"
+        }
       ],
-      "curr": 1
-    },
-    {
-      "codeLine": 4,
-      "note": "Dequeue 'hit', distance 1.",
-      "array": [
-        "hit",
-        "hot",
-        "dot",
-        "dog",
-        "cog"
+      "graphEdges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          3,
+          6
+        ],
+        [
+          5,
+          6
+        ]
       ],
-      "i": "hit",
-      "curr": 1
-    },
-    {
-      "codeLine": 6,
-      "note": "Explore neighbors of 'hit' (e.g., 'hot').",
-      "array": [
-        "hit",
-        "hot",
-        "dot",
-        "dog",
-        "cog"
-      ],
+      "curr": 0,
       "visited": [
-        "hit"
+        0
       ]
     },
     {
-      "codeLine": 9,
-      "note": "Enqueue 'hot' with distance 2.",
-      "array": [
-        "hit",
-        "hot",
-        "dot",
-        "dog",
-        "cog"
+      "codeLine": 3,
+      "note": "Pop hit. Explore neighbors: hot.",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": "hit"
+        },
+        {
+          "id": 1,
+          "val": "hot"
+        },
+        {
+          "id": 2,
+          "val": "dot"
+        },
+        {
+          "id": 3,
+          "val": "dog"
+        },
+        {
+          "id": 4,
+          "val": "lot"
+        },
+        {
+          "id": 5,
+          "val": "log"
+        },
+        {
+          "id": 6,
+          "val": "cog"
+        }
       ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          6
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          5,
+          6
+        ]
+      ],
+      "curr": 1,
       "visited": [
-        "hit",
-        "hot"
-      ]
-    },
-    {
-      "codeLine": 4,
-      "note": "Dequeue 'hot', distance 2. Explore neighbors.",
-      "array": [
-        "hit",
-        "hot",
-        "dot",
-        "dog",
-        "cog"
-      ],
-      "i": "hot",
-      "curr": 2
-    },
-    {
-      "codeLine": 9,
-      "note": "Enqueue 'dot' and 'dog' with distance 3.",
-      "array": [
-        "hit",
-        "hot",
-        "dot",
-        "dog",
-        "cog"
-      ],
-      "visited": [
-        "hit",
-        "hot",
-        "dot",
-        "dog"
-      ]
-    },
-    {
-      "codeLine": 4,
-      "note": "Dequeue 'dog', distance 3. Explore neighbors.",
-      "array": [
-        "hit",
-        "hot",
-        "dot",
-        "dog",
-        "cog"
-      ],
-      "i": "dog",
-      "curr": 3
-    },
-    {
-      "codeLine": 9,
-      "note": "Enqueue 'cog' with distance 4.",
-      "array": [
-        "hit",
-        "hot",
-        "dot",
-        "dog",
-        "cog"
-      ],
-      "visited": [
-        "hit",
-        "hot",
-        "dot",
-        "dog",
-        "cog"
+        0,
+        1
       ]
     },
     {
       "codeLine": 5,
-      "note": "Found endWord 'cog', return distance 5 (or 4 depending on sequence).",
-      "array": [
-        "hit",
-        "hot",
-        "dot",
-        "dog",
-        "cog"
+      "note": "Pop hot. Explore neighbors: dot, lot.",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": "hit"
+        },
+        {
+          "id": 1,
+          "val": "hot"
+        },
+        {
+          "id": 2,
+          "val": "dot"
+        },
+        {
+          "id": 3,
+          "val": "dog"
+        },
+        {
+          "id": 4,
+          "val": "lot"
+        },
+        {
+          "id": 5,
+          "val": "log"
+        },
+        {
+          "id": 6,
+          "val": "cog"
+        }
       ],
-      "curr": 5
+      "graphEdges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          6
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          5,
+          6
+        ]
+      ],
+      "curr": 2,
+      "visited": [
+        0,
+        1,
+        2,
+        4
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Pop dot. Explore neighbor: dog.",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": "hit"
+        },
+        {
+          "id": 1,
+          "val": "hot"
+        },
+        {
+          "id": 2,
+          "val": "dot"
+        },
+        {
+          "id": 3,
+          "val": "dog"
+        },
+        {
+          "id": 4,
+          "val": "lot"
+        },
+        {
+          "id": 5,
+          "val": "log"
+        },
+        {
+          "id": 6,
+          "val": "cog"
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          6
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          5,
+          6
+        ]
+      ],
+      "curr": 3,
+      "visited": [
+        0,
+        1,
+        2,
+        4,
+        3
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Pop dog. Explore neighbor: cog. Found target!",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": "hit"
+        },
+        {
+          "id": 1,
+          "val": "hot"
+        },
+        {
+          "id": 2,
+          "val": "dot"
+        },
+        {
+          "id": 3,
+          "val": "dog"
+        },
+        {
+          "id": 4,
+          "val": "lot"
+        },
+        {
+          "id": 5,
+          "val": "log"
+        },
+        {
+          "id": 6,
+          "val": "cog"
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          6
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          5,
+          6
+        ]
+      ],
+      "curr": 6,
+      "visited": [
+        0,
+        1,
+        2,
+        4,
+        3,
+        6
+      ]
     }
-  ]
+  ],
+  "fullDescription": "<p>A <strong>transformation sequence</strong> from word <code>beginWord</code> to word <code>endWord</code> using a dictionary <code>wordList</code> is a sequence of words <code>beginWord -&gt; s<sub>1</sub> -&gt; s<sub>2</sub> -&gt; ... -&gt; s<sub>k</sub></code> such that:</p>\n\n<ul>\n\t<li>Every adjacent pair of words differs by a single letter.</li>\n\t<li>Every <code>s<sub>i</sub></code> for <code>1 &lt;= i &lt;= k</code> is in <code>wordList</code>. Note that <code>beginWord</code> does not need to be in <code>wordList</code>.</li>\n\t<li><code>s<sub>k</sub> == endWord</code></li>\n</ul>\n\n<p>Given two words, <code>beginWord</code> and <code>endWord</code>, and a dictionary <code>wordList</code>, return <em>the <strong>number of words</strong> in the <strong>shortest transformation sequence</strong> from</em> <code>beginWord</code> <em>to</em> <code>endWord</code><em>, or </em><code>0</code><em> if no such sequence exists.</em></p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> beginWord = &quot;hit&quot;, endWord = &quot;cog&quot;, wordList = [&quot;hot&quot;,&quot;dot&quot;,&quot;dog&quot;,&quot;lot&quot;,&quot;log&quot;,&quot;cog&quot;]\n<strong>Output:</strong> 5\n<strong>Explanation:</strong> One shortest transformation sequence is &quot;hit&quot; -&gt; &quot;hot&quot; -&gt; &quot;dot&quot; -&gt; &quot;dog&quot; -&gt; cog&quot;, which is 5 words long.\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> beginWord = &quot;hit&quot;, endWord = &quot;cog&quot;, wordList = [&quot;hot&quot;,&quot;dot&quot;,&quot;dog&quot;,&quot;lot&quot;,&quot;log&quot;]\n<strong>Output:</strong> 0\n<strong>Explanation:</strong> The endWord &quot;cog&quot; is not in wordList, therefore there is no valid transformation sequence.\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= beginWord.length &lt;= 10</code></li>\n\t<li><code>endWord.length == beginWord.length</code></li>\n\t<li><code>1 &lt;= wordList.length &lt;= 5000</code></li>\n\t<li><code>wordList[i].length == beginWord.length</code></li>\n\t<li><code>beginWord</code>, <code>endWord</code>, and <code>wordList[i]</code> consist of lowercase English letters.</li>\n\t<li><code>beginWord != endWord</code></li>\n\t<li>All the words in <code>wordList</code> are <strong>unique</strong>.</li>\n</ul>\n"
 }

@@ -1,0 +1,119 @@
+{
+  "title": "Cat and Mouse II",
+  "difficulty": "Hard",
+  "type": "graph",
+  "tags": [
+    "Graph",
+    "Breadth-First Search",
+    "Game Theory",
+    "Minimax"
+  ],
+  "description": "Determine if the mouse can reach the food before the cat catches it or the mouse runs out of moves, using game theory and BFS.",
+  "target": "mouseCanWin",
+  "pseudocode": "1. queue = init_states(cat_pos, mouse_pos)\n2. while queue is not empty:\n3.   state = queue.pop()\n4.   if state is win/loss, propagate result to parents\n5.   if all children are losing, state is winning",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize BFS with cat at [0,0], mouse at [2,2], food at [0,2]. Max moves = 10.",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": "Cat"
+        },
+        {
+          "id": 1,
+          "val": "Mouse"
+        },
+        {
+          "id": 2,
+          "val": "Food"
+        }
+      ],
+      "graphEdges": [],
+      "visited": []
+    },
+    {
+      "codeLine": 2,
+      "note": "Starting BFS exploration for turn 1 (mouse moves).",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": "Cat"
+        },
+        {
+          "id": 1,
+          "val": "Mouse"
+        },
+        {
+          "id": 2,
+          "val": "Food"
+        }
+      ],
+      "curr": [
+        2,
+        2
+      ],
+      "visited": []
+    },
+    {
+      "codeLine": 5,
+      "note": "Mouse moves to [1,2], adjacent to food.",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": "Cat"
+        },
+        {
+          "id": 1,
+          "val": "Mouse"
+        },
+        {
+          "id": 2,
+          "val": "Food"
+        }
+      ],
+      "curr": [
+        1,
+        2
+      ],
+      "visited": [
+        [
+          2,
+          2
+        ]
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Mouse reaches food at [0,2]. Mouse wins.",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": "Cat"
+        },
+        {
+          "id": 1,
+          "val": "Mouse"
+        },
+        {
+          "id": 2,
+          "val": "Food"
+        }
+      ],
+      "curr": [
+        0,
+        2
+      ],
+      "visited": [
+        [
+          2,
+          2
+        ],
+        [
+          1,
+          2
+        ]
+      ]
+    }
+  ]
+}

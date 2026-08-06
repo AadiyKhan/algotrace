@@ -4,16 +4,163 @@
   "type": "tree",
   "tags": [
     "Tree",
-    "Depth-First Search",
-    "Binary Tree"
+    "Depth-First Search"
   ],
-  "description": "Find the sum of all left leaves in a binary tree.",
+  "description": "Calculate the sum of all left leaves in a binary tree.",
   "target": 24,
-  "pseudocode": "1. If node is null, return 0\n2. If left child is a leaf, return left.val + dfs(right)\n3. Otherwise, return dfs(left) + dfs(right)",
+  "pseudocode": "1. if root is null, return 0\n2. if left child exists and is leaf, add its value\n3. recursively call for left and right subtrees",
   "steps": [
     {
       "codeLine": 3,
-      "note": "Starting DFS at root (val: 3)",
+      "note": "Traversing to the root node (3)",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 3,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 9,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 20,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 3,
+          "val": 15,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 7,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Traversing to left child (9)",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 3,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 9,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 20,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 3,
+          "val": 15,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 7,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Node 9 is a left leaf, add to sum (Sum = 9)",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 3,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 9,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 20,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 3,
+          "val": 15,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 7,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Traversing to right child (20)",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 3,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 9,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 20,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 3,
+          "val": 15,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 7,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Traversing to left child of 20 (15)",
       "treeNodes": [
         {
           "id": 0,
@@ -50,7 +197,7 @@
     },
     {
       "codeLine": 2,
-      "note": "Checking node 9: It is a left leaf",
+      "note": "Node 15 is a left leaf, add to sum (Sum = 9 + 15 = 24)",
       "treeNodes": [
         {
           "id": 0,
@@ -83,11 +230,11 @@
           "right": null
         }
       ],
-      "curr": 9
+      "curr": 3
     },
     {
       "codeLine": 3,
-      "note": "Moving to right subtree (node 20)",
+      "note": "Traversing to right child of 20 (7), not a left leaf",
       "treeNodes": [
         {
           "id": 0,
@@ -120,118 +267,8 @@
           "right": null
         }
       ],
-      "curr": 20
-    },
-    {
-      "codeLine": 2,
-      "note": "Checking node 15: It is a left leaf",
-      "treeNodes": [
-        {
-          "id": 0,
-          "val": 3,
-          "left": 1,
-          "right": 2
-        },
-        {
-          "id": 1,
-          "val": 9,
-          "left": null,
-          "right": null
-        },
-        {
-          "id": 2,
-          "val": 20,
-          "left": 3,
-          "right": 4
-        },
-        {
-          "id": 3,
-          "val": 15,
-          "left": null,
-          "right": null
-        },
-        {
-          "id": 4,
-          "val": 7,
-          "left": null,
-          "right": null
-        }
-      ],
-      "curr": 15
-    },
-    {
-      "codeLine": 3,
-      "note": "Checking node 7: It is a leaf but right child, return 0",
-      "treeNodes": [
-        {
-          "id": 0,
-          "val": 3,
-          "left": 1,
-          "right": 2
-        },
-        {
-          "id": 1,
-          "val": 9,
-          "left": null,
-          "right": null
-        },
-        {
-          "id": 2,
-          "val": 20,
-          "left": 3,
-          "right": 4
-        },
-        {
-          "id": 3,
-          "val": 15,
-          "left": null,
-          "right": null
-        },
-        {
-          "id": 4,
-          "val": 7,
-          "left": null,
-          "right": null
-        }
-      ],
-      "curr": 7
-    },
-    {
-      "codeLine": 3,
-      "note": "Final sum calculation: 9 + 15 = 24",
-      "treeNodes": [
-        {
-          "id": 0,
-          "val": 3,
-          "left": 1,
-          "right": 2
-        },
-        {
-          "id": 1,
-          "val": 9,
-          "left": null,
-          "right": null
-        },
-        {
-          "id": 2,
-          "val": 20,
-          "left": 3,
-          "right": 4
-        },
-        {
-          "id": 3,
-          "val": 15,
-          "left": null,
-          "right": null
-        },
-        {
-          "id": 4,
-          "val": 7,
-          "left": null,
-          "right": null
-        }
-      ],
-      "curr": 9
+      "curr": 4
     }
-  ]
+  ],
+  "fullDescription": "<p>Given the <code>root</code> of a binary tree, return <em>the sum of all left leaves.</em></p>\n\n<p>A <strong>leaf</strong> is a node with no children. A <strong>left leaf</strong> is a leaf that is the left child of another node.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2021/04/08/leftsum-tree.jpg\" style=\"width: 277px; height: 302px;\" />\n<pre>\n<strong>Input:</strong> root = [3,9,20,null,null,15,7]\n<strong>Output:</strong> 24\n<strong>Explanation:</strong> There are two left leaves in the binary tree, with values 9 and 15 respectively.\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> root = [1]\n<strong>Output:</strong> 0\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li>The number of nodes in the tree is in the range <code>[1, 1000]</code>.</li>\n\t<li><code>-1000 &lt;= Node.val &lt;= 1000</code></li>\n</ul>\n"
 }

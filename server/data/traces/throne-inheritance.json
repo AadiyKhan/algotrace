@@ -1,0 +1,162 @@
+{
+  "title": "Throne Inheritance",
+  "difficulty": "Medium",
+  "type": "tree",
+  "tags": [
+    "Tree",
+    "DFS",
+    "Design"
+  ],
+  "description": "Maintain a family tree inheritance order, accounting for births, deaths, and current succession.",
+  "target": "King",
+  "pseudocode": "1. tree = {king: []}\n2. birth(parent, child) -> tree[parent].push(child)\n3. death(name) -> dead.add(name)\n4. getInheritance() -> dfs(king, result)\n5. function dfs(u, result):\n6.   if u not in dead: result.push(u)\n7.   for child in tree[u]: dfs(child, result)",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "King births Alice",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": "King",
+          "left": 1,
+          "right": null
+        },
+        {
+          "id": 1,
+          "val": "Alice",
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Alice births Bob",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": "King",
+          "left": 1,
+          "right": null
+        },
+        {
+          "id": 1,
+          "val": "Alice",
+          "left": 2,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": "Bob",
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Alice dies",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": "King",
+          "left": 1,
+          "right": null
+        },
+        {
+          "id": 1,
+          "val": "Alice",
+          "left": 2,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": "Bob",
+          "left": null,
+          "right": null
+        }
+      ],
+      "visited": [
+        1
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "DFS check: King is alive, add to inheritance",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": "King",
+          "left": 1,
+          "right": null
+        },
+        {
+          "id": 1,
+          "val": "Alice",
+          "left": 2,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": "Bob",
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": "King"
+    },
+    {
+      "codeLine": 6,
+      "note": "DFS check: Alice is dead, skip",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": "King",
+          "left": 1,
+          "right": null
+        },
+        {
+          "id": 1,
+          "val": "Alice",
+          "left": 2,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": "Bob",
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": "Alice",
+      "visited": [
+        1
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "DFS check: Bob is alive, add to inheritance",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": "King",
+          "left": 1,
+          "right": null
+        },
+        {
+          "id": 1,
+          "val": "Alice",
+          "left": 2,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": "Bob",
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": "Bob"
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "title": "Smallest String With A Given Numeric Value",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "String",
+    "Greedy"
+  ],
+  "description": "Construct a string of length n with a total numeric value k, where 'a'=1, 'b'=2, ..., 'z'=26. Use the lexicographically smallest string possible.",
+  "target": 18,
+  "pseudocode": "1. result = array of 'a' filled n times\n2. k = k - n\n3. i = n - 1\n4. while k > 0:\n5.   add = min(k, 25)\n6.   result[i] += add\n7.   k -= add\n8.   i -= 1",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize result array of length 3 with 'a' (value 1)",
+      "array": [
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Subtract n from k: k = 18 - 3 = 15",
+      "array": [
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Determine addition for index 2: min(15, 25) = 15",
+      "i": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Update result[2]: 1 + 15 = 16 (p)",
+      "array": [
+        1,
+        1,
+        16
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Update k: 15 - 15 = 0",
+      "array": [
+        1,
+        1,
+        16
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Decrement i to 1. Loop terminates as k is 0.",
+      "array": [
+        1,
+        1,
+        16
+      ]
+    }
+  ]
+}

@@ -1,114 +1,205 @@
 {
-  "title": "Most Stones Removed With Same Row or Column",
+  "title": "Most Stones Removed with Same Row or Column",
   "difficulty": "Medium",
-  "type": "array",
+  "type": "graph",
   "tags": [
-    "Graph",
-    "DFS",
-    "Union Find"
+    "Hash Table",
+    "Depth-First Search",
+    "Union-Find",
+    "Graph Theory"
   ],
-  "description": "Remove the maximum number of stones such that each stone removed shares a row or column with another stone remaining on the grid.",
-  "target": 3,
-  "pseudocode": "1. visited = new Set()\n2. for stone in stones:\n3.   if stone not in visited:\n4.     dfs(stone)\n5.     count++\n6. return stones.length - count",
+  "description": "Calculate the maximum number of stones that can be removed by treating connected components as graphs where edges represent shared row or column indices.",
+  "target": 5,
+  "pseudocode": "1. Build adjacency graph where stones are nodes connected by same row/column.\n2. Initialize visited set.\n3. For each stone, if not visited, perform DFS to traverse the connected component.\n4. Count = total stones - number of connected components.",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize visited set to keep track of processed stones.",
-      "array": [
-        [
-          0,
-          0
-        ],
+      "note": "Initialize graph with 6 nodes based on stones input.",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": "[0,0]"
+        },
+        {
+          "id": 1,
+          "val": "[0,1]"
+        },
+        {
+          "id": 2,
+          "val": "[1,0]"
+        },
+        {
+          "id": 3,
+          "val": "[1,2]"
+        },
+        {
+          "id": 4,
+          "val": "[2,1]"
+        },
+        {
+          "id": 5,
+          "val": "[2,2]"
+        }
+      ],
+      "graphEdges": [
         [
           0,
           1
+        ],
+        [
+          0,
+          2
         ],
         [
           1,
-          1
-        ]
-      ]
-    },
-    {
-      "codeLine": 2,
-      "note": "Start iteration at first stone [0,0].",
-      "i": 0,
-      "array": [
-        [
-          0,
-          0
+          4
         ],
         [
-          0,
-          1
+          2,
+          3
         ],
         [
-          1,
-          1
+          4,
+          5
+        ],
+        [
+          3,
+          5
         ]
       ],
+      "visited": [],
       "curr": 0
     },
     {
-      "codeLine": 4,
-      "note": "DFS traverses all connected stones sharing rows or columns.",
+      "codeLine": 3,
+      "note": "Starting DFS from node 0 (Component 1).",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": "[0,0]"
+        },
+        {
+          "id": 1,
+          "val": "[0,1]"
+        },
+        {
+          "id": 2,
+          "val": "[1,0]"
+        },
+        {
+          "id": 3,
+          "val": "[1,2]"
+        },
+        {
+          "id": 4,
+          "val": "[2,1]"
+        },
+        {
+          "id": 5,
+          "val": "[2,2]"
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          3,
+          5
+        ]
+      ],
       "visited": [
         0,
         1,
-        2
+        2,
+        3,
+        4,
+        5
       ],
-      "array": [
-        [
-          0,
-          0
-        ],
-        [
-          0,
-          1
-        ],
-        [
-          1,
-          1
-        ]
-      ]
+      "curr": 5
     },
     {
-      "codeLine": 5,
-      "note": "Increment component count after completing DFS.",
-      "i": 1,
-      "array": [
-        [
-          0,
-          0
-        ],
+      "codeLine": 4,
+      "note": "Traversal complete. Only 1 connected component found. Stones - Components = 6 - 1 = 5.",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": "[0,0]"
+        },
+        {
+          "id": 1,
+          "val": "[0,1]"
+        },
+        {
+          "id": 2,
+          "val": "[1,0]"
+        },
+        {
+          "id": 3,
+          "val": "[1,2]"
+        },
+        {
+          "id": 4,
+          "val": "[2,1]"
+        },
+        {
+          "id": 5,
+          "val": "[2,2]"
+        }
+      ],
+      "graphEdges": [
         [
           0,
           1
+        ],
+        [
+          0,
+          2
         ],
         [
           1,
-          1
-        ]
-      ]
-    },
-    {
-      "codeLine": 6,
-      "note": "Total stones (3) - 1 component = 2 stones can be removed.",
-      "array": [
-        [
-          0,
-          0
+          4
         ],
         [
-          0,
-          1
+          2,
+          3
         ],
         [
-          1,
-          1
+          4,
+          5
+        ],
+        [
+          3,
+          5
         ]
       ],
-      "curr": 3
+      "visited": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "curr": 5
     }
-  ]
+  ],
+  "fullDescription": "<p>On a 2D plane, we place <code>n</code> stones at some integer coordinate points. Each coordinate point may have at most one stone.</p>\n\n<p>A stone can be removed if it shares either <strong>the same row or the same column</strong> as another stone that has not been removed.</p>\n\n<p>Given an array <code>stones</code> of length <code>n</code> where <code>stones[i] = [x<sub>i</sub>, y<sub>i</sub>]</code> represents the location of the <code>i<sup>th</sup></code> stone, return <em>the largest possible number of stones that can be removed</em>.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> stones = [[0,0],[0,1],[1,0],[1,2],[2,1],[2,2]]\n<strong>Output:</strong> 5\n<strong>Explanation:</strong> One way to remove 5 stones is as follows:\n1. Remove stone [2,2] because it shares the same row as [2,1].\n2. Remove stone [2,1] because it shares the same column as [0,1].\n3. Remove stone [1,2] because it shares the same row as [1,0].\n4. Remove stone [1,0] because it shares the same column as [0,0].\n5. Remove stone [0,1] because it shares the same row as [0,0].\nStone [0,0] cannot be removed since it does not share a row/column with another stone still on the plane.\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> stones = [[0,0],[0,2],[1,1],[2,0],[2,2]]\n<strong>Output:</strong> 3\n<strong>Explanation:</strong> One way to make 3 moves is as follows:\n1. Remove stone [2,2] because it shares the same row as [2,0].\n2. Remove stone [2,0] because it shares the same column as [0,0].\n3. Remove stone [0,2] because it shares the same row as [0,0].\nStones [0,0] and [1,1] cannot be removed since they do not share a row/column with another stone still on the plane.\n</pre>\n\n<p><strong class=\"example\">Example 3:</strong></p>\n\n<pre>\n<strong>Input:</strong> stones = [[0,0]]\n<strong>Output:</strong> 0\n<strong>Explanation:</strong> [0,0] is the only stone on the plane, so you cannot remove it.\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= stones.length &lt;= 1000</code></li>\n\t<li><code>0 &lt;= x<sub>i</sub>, y<sub>i</sub> &lt;= 10<sup>4</sup></code></li>\n\t<li>No two stones are at the same coordinate point.</li>\n</ul>\n"
 }

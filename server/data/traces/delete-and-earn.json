@@ -4,78 +4,89 @@
   "type": "array",
   "tags": [
     "Array",
+    "Hash Table",
     "Dynamic Programming"
   ],
-  "description": "Given an array nums, delete nums[i] to earn nums[i] points. After choosing, delete all elements equal to nums[i] - 1 and nums[i] + 1. Return the maximum points.",
-  "target": null,
-  "pseudocode": "1. maxVal = max(nums)\n2. freq = array of size maxVal + 1\n3. for n in nums: freq[n] += n\n4. prev2 = 0, prev1 = 0\n5. for i in 1..maxVal:\n6.   curr = max(prev1, prev2 + freq[i])\n7.   prev2 = prev1\n8.   prev1 = curr\n9. return prev1",
+  "description": "Maximize points by picking nums[i] and deleting neighbors.",
+  "target": 6,
+  "pseudocode": "1. Create points array where points[i] is sum of i in nums\n2. Initialize prev = 0, curr = 0\n3. For i in range(len(points)):\n4.   new_curr = max(curr, prev + points[i])\n5.   prev = curr\n6.   curr = new_curr\n7. Return curr",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Find max value to determine DP array size. Input: [2, 2, 3]",
+      "note": "Initialize points array based on frequency. For nums=[3,4,2], range is 0-4. points = [0, 0, 2, 3, 4]",
       "array": [
+        0,
+        0,
         2,
-        2,
-        3
+        3,
+        4
       ],
-      "curr": 2
+      "visited": []
     },
     {
       "codeLine": 3,
-      "note": "Populate frequency array where index is value and value is sum of occurrences.",
+      "note": "Start iteration at i = 0",
       "array": [
         0,
         0,
-        4,
-        3
-      ]
-    },
-    {
-      "codeLine": 6,
-      "note": "Calculate max for i=1: max(0, 0 + 0) = 0",
-      "array": [
-        0,
-        0,
-        4,
-        3
+        2,
+        3,
+        4
       ],
-      "i": 1,
-      "curr": 1
+      "i": 0,
+      "curr": 0
     },
     {
-      "codeLine": 6,
-      "note": "Calculate max for i=2: max(0, 0 + 4) = 4",
+      "codeLine": 4,
+      "note": "Calculate new_curr for i=2: max(0, 0 + 2) = 2",
       "array": [
         0,
         0,
-        4,
-        3
+        2,
+        3,
+        4
       ],
       "i": 2,
       "curr": 2
     },
     {
-      "codeLine": 6,
-      "note": "Calculate max for i=3: max(4, 0 + 3) = 4",
+      "codeLine": 4,
+      "note": "Calculate new_curr for i=3: max(2, 0 + 3) = 3",
       "array": [
         0,
         0,
-        4,
-        3
+        2,
+        3,
+        4
       ],
       "i": 3,
       "curr": 3
     },
     {
-      "codeLine": 9,
-      "note": "Final result returned is 4",
+      "codeLine": 4,
+      "note": "Calculate new_curr for i=4: max(3, 2 + 4) = 6",
       "array": [
         0,
         0,
-        4,
-        3
+        2,
+        3,
+        4
       ],
-      "curr": 4
+      "i": 4,
+      "curr": 6
+    },
+    {
+      "codeLine": 7,
+      "note": "Final max points earned is 6",
+      "array": [
+        0,
+        0,
+        2,
+        3,
+        4
+      ],
+      "curr": 6
     }
-  ]
+  ],
+  "fullDescription": "<p>You are given an integer array <code>nums</code>. You want to maximize the number of points you get by performing the following operation any number of times:</p>\n\n<ul>\n\t<li>Pick any <code>nums[i]</code> and delete it to earn <code>nums[i]</code> points. Afterwards, you must delete <b>every</b> element equal to <code>nums[i] - 1</code> and <strong>every</strong> element equal to <code>nums[i] + 1</code>.</li>\n</ul>\n\n<p>Return <em>the <strong>maximum number of points</strong> you can earn by applying the above operation some number of times</em>.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> nums = [3,4,2]\n<strong>Output:</strong> 6\n<strong>Explanation:</strong> You can perform the following operations:\n- Delete 4 to earn 4 points. Consequently, 3 is also deleted. nums = [2].\n- Delete 2 to earn 2 points. nums = [].\nYou earn a total of 6 points.\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> nums = [2,2,3,3,3,4]\n<strong>Output:</strong> 9\n<strong>Explanation:</strong> You can perform the following operations:\n- Delete a 3 to earn 3 points. All 2&#39;s and 4&#39;s are also deleted. nums = [3,3].\n- Delete a 3 again to earn 3 points. nums = [3].\n- Delete a 3 once more to earn 3 points. nums = [].\nYou earn a total of 9 points.</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= nums.length &lt;= 2 * 10<sup>4</sup></code></li>\n\t<li><code>1 &lt;= nums[i] &lt;= 10<sup>4</sup></code></li>\n</ul>\n"
 }

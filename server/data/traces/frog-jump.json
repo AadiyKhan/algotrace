@@ -6,12 +6,31 @@
     "Array",
     "Dynamic Programming"
   ],
-  "description": "Determine if a frog can cross a river by jumping on stones with variable jump sizes.",
-  "pseudocode": "1. Initialize map stone_jumps {stone_pos: set of jump_sizes}\n2. stone_jumps[0] = {0}\n3. For each stone in stones:\n4.   For each k in stone_jumps[stone]:\n5.     For jump in {k-1, k, k+1}:\n6.       If stone + jump exists in stones and jump > 0:\n7.         Add jump to stone_jumps[stone + jump]",
+  "description": "Determine if a frog can reach the last stone by jumping k-1, k, or k+1 units.",
+  "target": 17,
+  "pseudocode": "1. Create a map of stone positions to possible jump distances.\n2. Add initial jump 1 to stone at index 1.\n3. Iterate through each stone and its possible jumps.\n4. For each jump k, check if stones at pos+k-1, pos+k, or pos+k+1 exist.\n5. If last stone is reached, return true.",
   "steps": [
     {
+      "codeLine": 1,
+      "note": "Initialize DP map with stone at 0 having jump set {0}.",
+      "array": [
+        0,
+        1,
+        3,
+        5,
+        6,
+        8,
+        12,
+        17
+      ],
+      "visited": [
+        0
+      ],
+      "curr": 0
+    },
+    {
       "codeLine": 2,
-      "note": "Initialize starting position at index 0 with jump 0.",
+      "note": "First jump must be 1 unit to stone 1.",
       "array": [
         0,
         1,
@@ -22,44 +41,15 @@
         12,
         17
       ],
-      "i": 0,
-      "curr": 0
-    },
-    {
-      "codeLine": 4,
-      "note": "At stone 0, frog makes first jump of 1 unit to reach stone 1.",
-      "array": [
+      "visited": [
         0,
-        1,
-        3,
-        5,
-        6,
-        8,
-        12,
-        17
+        1
       ],
-      "i": 1,
-      "curr": 0
-    },
-    {
-      "codeLine": 5,
-      "note": "At stone 1 (k=1), possible jumps are 0, 1, 2. Jump 2 reaches stone 3.",
-      "array": [
-        0,
-        1,
-        3,
-        5,
-        6,
-        8,
-        12,
-        17
-      ],
-      "i": 2,
       "curr": 1
     },
     {
-      "codeLine": 5,
-      "note": "At stone 3 (k=2), possible jumps are 1, 2, 3. Jump 2 reaches stone 5.",
+      "codeLine": 3,
+      "note": "At stone 1, jump k=1. Possible next jumps: 0, 1, 2.",
       "array": [
         0,
         1,
@@ -70,12 +60,37 @@
         12,
         17
       ],
-      "i": 3,
+      "visited": [
+        0,
+        1,
+        2
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "From stone 3 (index 2), jump k=2 to stone 5 (index 3).",
+      "array": [
+        0,
+        1,
+        3,
+        5,
+        6,
+        8,
+        12,
+        17
+      ],
+      "visited": [
+        0,
+        1,
+        2,
+        3
+      ],
       "curr": 3
     },
     {
-      "codeLine": 5,
-      "note": "At stone 5 (k=2), possible jumps are 1, 2, 3. Jump 1 reaches stone 6.",
+      "codeLine": 4,
+      "note": "From stone 5 (index 3), jump k=1 to stone 6 (index 4).",
       "array": [
         0,
         1,
@@ -86,12 +101,41 @@
         12,
         17
       ],
-      "i": 4,
+      "visited": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "curr": 4
+    },
+    {
+      "codeLine": 4,
+      "note": "From stone 6 (index 4), jump k=2 to stone 8 (index 5).",
+      "array": [
+        0,
+        1,
+        3,
+        5,
+        6,
+        8,
+        12,
+        17
+      ],
+      "visited": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
       "curr": 5
     },
     {
-      "codeLine": 5,
-      "note": "At stone 6 (k=1), possible jumps are 0, 1, 2. Jump 2 reaches stone 8.",
+      "codeLine": 4,
+      "note": "From stone 8 (index 5), jump k=4 to stone 12 (index 6).",
       "array": [
         0,
         1,
@@ -102,12 +146,20 @@
         12,
         17
       ],
-      "i": 5,
+      "visited": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
       "curr": 6
     },
     {
       "codeLine": 5,
-      "note": "At stone 8 (k=2), possible jumps are 1, 2, 3. Jump 4 reaches stone 12.",
+      "note": "From stone 12 (index 6), jump k=5 to stone 17 (index 7). Reachable!",
       "array": [
         0,
         1,
@@ -118,24 +170,18 @@
         12,
         17
       ],
-      "i": 6,
-      "curr": 8
-    },
-    {
-      "codeLine": 6,
-      "note": "At stone 12 (k=4), possible jumps are 3, 4, 5. Jump 5 reaches stone 17 (Target).",
-      "array": [
+      "visited": [
         0,
         1,
+        2,
         3,
+        4,
         5,
         6,
-        8,
-        12,
-        17
+        7
       ],
-      "i": 7,
-      "curr": 12
+      "curr": 7
     }
-  ]
+  ],
+  "fullDescription": "<p>A frog is crossing a river. The river is divided into some number of units, and at each unit, there may or may not exist a stone. The frog can jump on a stone, but it must not jump into the water.</p>\n\n<p>Given a list of <code>stones</code>&nbsp;positions (in units) in sorted <strong>ascending order</strong>, determine if the frog can cross the river by landing on the last stone. Initially, the frog is on the first stone and assumes the first jump must be <code>1</code> unit.</p>\n\n<p>If the frog&#39;s last jump was <code>k</code> units, its next jump must be either <code>k - 1</code>, <code>k</code>, or <code>k + 1</code> units. The frog can only jump in the forward direction.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> stones = [0,1,3,5,6,8,12,17]\n<strong>Output:</strong> true\n<strong>Explanation:</strong> The frog can jump to the last stone by jumping 1 unit to the 2nd stone, then 2 units to the 3rd stone, then 2 units to the 4th stone, then 3 units to the 6th stone, 4 units to the 7th stone, and 5 units to the 8th stone.\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> stones = [0,1,2,3,4,8,9,11]\n<strong>Output:</strong> false\n<strong>Explanation:</strong> There is no way to jump to the last stone as the gap between the 5th and 6th stone is too large.\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>2 &lt;= stones.length &lt;= 2000</code></li>\n\t<li><code>0 &lt;= stones[i] &lt;= 2<sup>31</sup> - 1</code></li>\n\t<li><code>stones[0] == 0</code></li>\n\t<li><code>stones</code>&nbsp;is sorted in a strictly increasing order.</li>\n</ul>\n"
 }

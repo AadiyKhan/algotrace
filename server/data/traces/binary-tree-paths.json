@@ -3,16 +3,18 @@
   "difficulty": "Easy",
   "type": "tree",
   "tags": [
+    "String",
+    "Backtracking",
     "Tree",
-    "DFS",
-    "Recursion"
+    "Depth-First Search",
+    "Binary Tree"
   ],
-  "description": "Given a binary tree, return all root-to-leaf paths.",
-  "pseudocode": "1. paths = []\n2. function dfs(node, path):\n3.   if not node: return\n4.   path += str(node.val)\n5.   if not node.left and not node.right:\n6.     paths.push(path)\n7.   else:\n8.     dfs(node.left, path + '->')\n9.     dfs(node.right, path + '->')",
+  "description": "Find all root-to-leaf paths in a binary tree.",
+  "pseudocode": "1. If node is null, return\n2. Append node.val to current path\n3. If node is leaf, add path to results\n4. Else, recurse left and right",
   "steps": [
     {
       "codeLine": 2,
-      "note": "Starting DFS from root (node 1)",
+      "note": "Start DFS at root (1). Path: ['1']",
       "treeNodes": [
         {
           "id": 0,
@@ -24,22 +26,26 @@
           "id": 1,
           "val": 2,
           "left": null,
-          "right": null
+          "right": 3
         },
         {
           "id": 2,
           "val": 3,
           "left": null,
           "right": null
+        },
+        {
+          "id": 3,
+          "val": 5,
+          "left": null,
+          "right": null
         }
       ],
-      "visited": [
-        0
-      ]
+      "curr": 0
     },
     {
       "codeLine": 4,
-      "note": "Visiting node 1, path is '1'",
+      "note": "Move to left child (2). Path: ['1', '2']",
       "treeNodes": [
         {
           "id": 0,
@@ -51,22 +57,26 @@
           "id": 1,
           "val": 2,
           "left": null,
-          "right": null
+          "right": 3
         },
         {
           "id": 2,
           "val": 3,
           "left": null,
           "right": null
+        },
+        {
+          "id": 3,
+          "val": 5,
+          "left": null,
+          "right": null
         }
       ],
-      "visited": [
-        0
-      ]
+      "curr": 1
     },
     {
-      "codeLine": 8,
-      "note": "Going left to node 2",
+      "codeLine": 4,
+      "note": "Move to right child of (2), node (5). Path: ['1', '2', '5']",
       "treeNodes": [
         {
           "id": 0,
@@ -78,23 +88,26 @@
           "id": 1,
           "val": 2,
           "left": null,
-          "right": null
+          "right": 3
         },
         {
           "id": 2,
           "val": 3,
           "left": null,
           "right": null
+        },
+        {
+          "id": 3,
+          "val": 5,
+          "left": null,
+          "right": null
         }
       ],
-      "visited": [
-        0,
-        1
-      ]
+      "curr": 3
     },
     {
-      "codeLine": 6,
-      "note": "Reached leaf 2, adding path '1->2' to list",
+      "codeLine": 3,
+      "note": "Node (5) is a leaf. Add '1->2->5' to results.",
       "treeNodes": [
         {
           "id": 0,
@@ -106,23 +119,26 @@
           "id": 1,
           "val": 2,
           "left": null,
-          "right": null
+          "right": 3
         },
         {
           "id": 2,
           "val": 3,
           "left": null,
           "right": null
+        },
+        {
+          "id": 3,
+          "val": 5,
+          "left": null,
+          "right": null
         }
       ],
-      "visited": [
-        0,
-        1
-      ]
+      "curr": 3
     },
     {
-      "codeLine": 9,
-      "note": "Going right to node 3",
+      "codeLine": 4,
+      "note": "Backtrack to root, move to right child (3). Path: ['1', '3']",
       "treeNodes": [
         {
           "id": 0,
@@ -134,23 +150,26 @@
           "id": 1,
           "val": 2,
           "left": null,
-          "right": null
+          "right": 3
         },
         {
           "id": 2,
           "val": 3,
           "left": null,
           "right": null
+        },
+        {
+          "id": 3,
+          "val": 5,
+          "left": null,
+          "right": null
         }
       ],
-      "visited": [
-        0,
-        2
-      ]
+      "curr": 2
     },
     {
-      "codeLine": 6,
-      "note": "Reached leaf 3, adding path '1->3' to list",
+      "codeLine": 3,
+      "note": "Node (3) is a leaf. Add '1->3' to results.",
       "treeNodes": [
         {
           "id": 0,
@@ -162,19 +181,23 @@
           "id": 1,
           "val": 2,
           "left": null,
-          "right": null
+          "right": 3
         },
         {
           "id": 2,
           "val": 3,
           "left": null,
           "right": null
+        },
+        {
+          "id": 3,
+          "val": 5,
+          "left": null,
+          "right": null
         }
       ],
-      "visited": [
-        0,
-        2
-      ]
+      "curr": 2
     }
-  ]
+  ],
+  "fullDescription": "<p>Given the <code>root</code> of a binary tree, return <em>all root-to-leaf paths in <strong>any order</strong></em>.</p>\n\n<p>A <strong>leaf</strong> is a node with no children.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2021/03/12/paths-tree.jpg\" style=\"width: 207px; height: 293px;\" />\n<pre>\n<strong>Input:</strong> root = [1,2,3,null,5]\n<strong>Output:</strong> [&quot;1-&gt;2-&gt;5&quot;,&quot;1-&gt;3&quot;]\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> root = [1]\n<strong>Output:</strong> [&quot;1&quot;]\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li>The number of nodes in the tree is in the range <code>[1, 100]</code>.</li>\n\t<li><code>-100 &lt;= Node.val &lt;= 100</code></li>\n</ul>\n"
 }

@@ -1,0 +1,140 @@
+{
+  "title": "Check If Two Expression Trees Are Equivalent",
+  "difficulty": "Medium",
+  "type": "tree",
+  "tags": [
+    "Tree",
+    "Binary Tree",
+    "DFS"
+  ],
+  "description": "Determine if two expression trees evaluate to the same value by comparing their structure and operands.",
+  "pseudocode": "1. function check(root1, root2):\n2.   if !root1 and !root2: return true\n3.   if !root1 or !root2: return false\n4.   if root1.val != root2.val: return false\n5.   return check(root1.left, root2.left) and check(root1.right, root2.right)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Comparing root nodes ('+'). They match.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": "+",
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 3,
+          "val": "+",
+          "left": 4,
+          "right": 5
+        },
+        {
+          "id": 1,
+          "val": "3",
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": "2",
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": "2",
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 5,
+          "val": "3",
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Recursing into left children: '3' vs '2'.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": "+",
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 3,
+          "val": "+",
+          "left": 4,
+          "right": 5
+        },
+        {
+          "id": 1,
+          "val": "3",
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": "2",
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": "2",
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 5,
+          "val": "3",
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Values '3' and '2' do not match. Returning false.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": "+",
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 3,
+          "val": "+",
+          "left": 4,
+          "right": 5
+        },
+        {
+          "id": 1,
+          "val": "3",
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": "2",
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": "2",
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 5,
+          "val": "3",
+          "left": null,
+          "right": null
+        }
+      ]
+    }
+  ]
+}

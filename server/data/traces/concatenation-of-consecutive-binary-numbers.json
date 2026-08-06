@@ -1,0 +1,88 @@
+{
+  "title": "Concatenation of Consecutive Binary Numbers",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Math",
+    "Bit Manipulation"
+  ],
+  "description": "Concatenate the binary representation of integers from 1 to n and return the result modulo 10^9 + 7.",
+  "target": 3,
+  "pseudocode": "1. ans = 0\n2. for i = 1 to n:\n3.   shift = i.bitLength()\n4.   ans = ((ans << shift) | i) % MOD",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize ans to 0.",
+      "array": [],
+      "i": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Start loop for i=1.",
+      "array": [],
+      "i": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Bit length of 1 is 1.",
+      "array": [],
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Shift ans left by 1 and OR with 1. ans = 1.",
+      "array": [
+        1
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Loop for i=2.",
+      "array": [
+        1
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Bit length of 2 (binary 10) is 2.",
+      "array": [
+        1
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Shift ans (1) left by 2 (result 4) and OR with 2. ans = 6 (binary 110).",
+      "array": [
+        6
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 2,
+      "note": "Loop for i=3.",
+      "array": [
+        6
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 3,
+      "note": "Bit length of 3 (binary 11) is 2.",
+      "array": [
+        6
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 4,
+      "note": "Shift ans (6) left by 2 (result 24) and OR with 3. ans = 27 (binary 11011).",
+      "array": [
+        27
+      ],
+      "i": 3
+    }
+  ]
+}

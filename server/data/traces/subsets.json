@@ -7,56 +7,67 @@
     "Backtracking",
     "Bit Manipulation"
   ],
-  "description": "Given an integer array nums of unique elements, return all possible subsets (the power set).",
-  "target": null,
-  "pseudocode": "1: result = []\n2: function backtrack(start, currentSubset):\n3:   result.push([...currentSubset])\n4:   for i from start to nums.length - 1:\n5:     currentSubset.push(nums[i])\n6:     backtrack(i + 1, currentSubset)\n7:     currentSubset.pop()",
+  "description": "Generate all possible subsets of an array of unique integers using backtracking.",
+  "pseudocode": "1. result = []\n2. backtrack(start, currentSubset)\n3. result.append(currentSubset)\n4. for i from start to nums.length - 1:\n5.   backtrack(i + 1, currentSubset + [nums[i]])",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize result array",
-      "array": []
+      "note": "Initialize result array.",
+      "array": [
+        1,
+        2,
+        3
+      ],
+      "result": []
+    },
+    {
+      "codeLine": 2,
+      "note": "Start backtracking with empty subset.",
+      "array": [
+        1,
+        2,
+        3
+      ],
+      "result": [],
+      "curr": 0
     },
     {
       "codeLine": 3,
-      "note": "Add empty subset",
+      "note": "Add empty set to result.",
       "array": [
+        1,
+        2,
+        3
+      ],
+      "result": [
         []
       ]
     },
     {
       "codeLine": 5,
-      "note": "Push first element (1)",
+      "note": "Add 1 to subset, recurse.",
       "array": [
-        1
+        1,
+        2,
+        3
       ],
-      "i": 0,
-      "curr": 1
-    },
-    {
-      "codeLine": 3,
-      "note": "Add subset [1]",
-      "array": [
+      "result": [
         [],
         [
           1
         ]
       ],
-      "curr": 1
+      "curr": 0
     },
     {
       "codeLine": 5,
-      "note": "Push second element (2)",
+      "note": "Add 2 to subset, recurse.",
       "array": [
         1,
-        2
+        2,
+        3
       ],
-      "i": 1,
-      "curr": 2
-    },
-    {
-      "codeLine": 3,
-      "note": "Add subset [1, 2]",
-      "array": [
+      "result": [
         [],
         [
           1
@@ -69,18 +80,164 @@
       "curr": 1
     },
     {
-      "codeLine": 7,
-      "note": "Pop 2, backtracking",
+      "codeLine": 5,
+      "note": "Add 3 to subset, recurse.",
       "array": [
-        1
+        1,
+        2,
+        3
+      ],
+      "result": [
+        [],
+        [
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          2,
+          3
+        ]
       ],
       "curr": 2
     },
     {
-      "codeLine": 7,
-      "note": "Pop 1, backtracking",
-      "array": [],
+      "codeLine": 3,
+      "note": "Add 2 alone to result.",
+      "array": [
+        1,
+        2,
+        3
+      ],
+      "result": [
+        [],
+        [
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          2
+        ]
+      ],
       "curr": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Add 3 to subset [2].",
+      "array": [
+        1,
+        2,
+        3
+      ],
+      "result": [
+        [],
+        [
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          2
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Add 3 alone to result.",
+      "array": [
+        1,
+        2,
+        3
+      ],
+      "result": [
+        [],
+        [
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          2
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3
+        ]
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Add 1 to 3 to result.",
+      "array": [
+        1,
+        2,
+        3
+      ],
+      "result": [
+        [],
+        [
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          2,
+          3
+        ],
+        [
+          2
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "curr": 0
     }
-  ]
+  ],
+  "fullDescription": "<p>Given an integer array <code>nums</code> of <strong>unique</strong> elements, return <em>all possible</em> <span data-keyword=\"subset\"><em>subsets</em></span> <em>(the power set)</em>.</p>\n\n<p>The solution set <strong>must not</strong> contain duplicate subsets. Return the solution in <strong>any order</strong>.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> nums = [1,2,3]\n<strong>Output:</strong> [[],[1],[2],[1,2],[3],[1,3],[2,3],[1,2,3]]\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> nums = [0]\n<strong>Output:</strong> [[],[0]]\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= nums.length &lt;= 10</code></li>\n\t<li><code>-10 &lt;= nums[i] &lt;= 10</code></li>\n\t<li>All the numbers of&nbsp;<code>nums</code> are <strong>unique</strong>.</li>\n</ul>\n"
 }

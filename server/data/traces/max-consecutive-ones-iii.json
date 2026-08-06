@@ -4,108 +4,171 @@
   "type": "array",
   "tags": [
     "Array",
-    "Sliding Window",
-    "Two Pointers"
+    "Sliding Window"
   ],
-  "description": "Find the maximum number of consecutive 1s in an array if you can flip at most k 0s.",
+  "description": "Find the maximum number of consecutive 1s in a binary array if you can flip at most k 0s.",
   "target": 2,
-  "pseudocode": "let left = 0, right = 0, zeros = 0, maxLen = 0;\nwhile (right < nums.length) {\n  if (nums[right] === 0) zeros++;\n  while (zeros > k) {\n    if (nums[left] === 0) zeros--;\n    left++;\n  }\n  maxLen = Math.max(maxLen, right - left + 1);\n  right++;\n}",
+  "pseudocode": "1. Initialize left=0, zeroCount=0, maxLen=0\n2. Iterate right from 0 to nums.length-1\n3. If nums[right] is 0, increment zeroCount\n4. While zeroCount > k, if nums[left] is 0, decrement zeroCount; increment left\n5. Update maxLen = max(maxLen, right - left + 1)\n6. Return maxLen",
   "steps": [
     {
       "codeLine": 2,
-      "note": "Initialize pointers and counters. Input: [1, 0, 1], k: 1",
+      "note": "Starting sliding window with right at index 0.",
       "array": [
         1,
-        0,
-        1
-      ],
-      "i": 0,
-      "j": 0,
-      "curr": 1
-    },
-    {
-      "codeLine": 3,
-      "note": "Right index is 0, nums[0] is 1. zeros remains 0.",
-      "array": [
+        1,
         1,
         0,
-        1
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0
       ],
       "i": 0,
-      "j": 0,
+      "visited": [],
       "curr": 0
     },
     {
-      "codeLine": 7,
-      "note": "Update maxLen: max(0, 0-0+1) = 1.",
+      "codeLine": 3,
+      "note": "Expanding right; nums[2] is 1, no zeros added.",
       "array": [
         1,
-        0,
-        1
-      ],
-      "i": 0,
-      "j": 0,
-      "curr": 0
-    },
-    {
-      "codeLine": 2,
-      "note": "Move right to 1. nums[1] is 0, increment zeros.",
-      "array": [
+        1,
         1,
         0,
-        1
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0
       ],
-      "i": 0,
-      "j": 1,
-      "curr": 1
+      "i": 2,
+      "curr": 2
     },
     {
       "codeLine": 3,
-      "note": "zeros is 1, not > k. Skip inner loop.",
+      "note": "Right at index 3, nums[3] is 0. zeroCount becomes 1.",
       "array": [
         1,
+        1,
+        1,
         0,
-        1
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0
       ],
-      "i": 0,
-      "j": 1,
-      "curr": 1
+      "i": 3,
+      "curr": 3
     },
     {
-      "codeLine": 7,
-      "note": "Update maxLen: max(1, 1-0+1) = 2.",
+      "codeLine": 3,
+      "note": "Right at index 4, nums[4] is 0. zeroCount becomes 2.",
       "array": [
         1,
+        1,
+        1,
         0,
-        1
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0
       ],
-      "i": 0,
-      "j": 1,
-      "curr": 1
+      "i": 4,
+      "curr": 4
     },
     {
-      "codeLine": 2,
-      "note": "Move right to 2. nums[2] is 1.",
+      "codeLine": 3,
+      "note": "Right at index 5, nums[5] is 0. zeroCount becomes 3. Exceeds k=2.",
       "array": [
         1,
+        1,
+        1,
         0,
-        1
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0
       ],
-      "i": 0,
-      "j": 2,
-      "curr": 2
+      "i": 5,
+      "curr": 5
     },
     {
-      "codeLine": 7,
-      "note": "Update maxLen: max(2, 2-0+1) = 3.",
+      "codeLine": 4,
+      "note": "Shrink left until zeroCount <= 2. Left moves to 4.",
       "array": [
         1,
+        1,
+        1,
         0,
-        1
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0
       ],
-      "i": 0,
-      "j": 2,
-      "curr": 2
+      "i": 5,
+      "curr": 4,
+      "visited": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Current valid window [4, 5], maxLen updated to 6 at later stage.",
+      "array": [
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0
+      ],
+      "i": 9,
+      "curr": 9
+    },
+    {
+      "codeLine": 6,
+      "note": "Final maxLen calculated as 6.",
+      "array": [
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0
+      ],
+      "i": 10,
+      "curr": 10
     }
-  ]
+  ],
+  "fullDescription": "<p>Given a binary array <code>nums</code> and an integer <code>k</code>, return <em>the maximum number of consecutive </em><code>1</code><em>&#39;s in the array if you can flip at most</em> <code>k</code> <code>0</code>&#39;s.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> nums = [1,1,1,0,0,0,1,1,1,1,0], k = 2\n<strong>Output:</strong> 6\n<strong>Explanation:</strong> [1,1,1,0,0,<u><strong>1</strong>,1,1,1,1,<strong>1</strong></u>]\nBolded numbers were flipped from 0 to 1. The longest subarray is underlined.</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> nums = [0,0,1,1,0,0,1,1,1,0,1,1,0,0,0,1,1,1,1], k = 3\n<strong>Output:</strong> 10\n<strong>Explanation:</strong> [0,0,<u>1,1,<strong>1</strong>,<strong>1</strong>,1,1,1,<strong>1</strong>,1,1</u>,0,0,0,1,1,1,1]\nBolded numbers were flipped from 0 to 1. The longest subarray is underlined.\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= nums.length &lt;= 10<sup>5</sup></code></li>\n\t<li><code>nums[i]</code> is either 0 or 1.</li>\n\t<li><code>0 &lt;= k &lt;= nums.length</code></li>\n</ul>\n"
 }

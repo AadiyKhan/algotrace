@@ -1,0 +1,166 @@
+{
+  "title": "Min Cost to Connect All Points",
+  "difficulty": "Medium",
+  "type": "graph",
+  "tags": [
+    "Graph",
+    "Minimum Spanning Tree",
+    "Prim's Algorithm"
+  ],
+  "description": "Find the minimum cost to connect all points using Prim's algorithm, where cost is the Manhattan distance.",
+  "target": 0,
+  "pseudocode": "1. Initialize minHeap, visited set, and totalCost = 0\n2. Start from point 0, push (0, 0) to minHeap\n3. While visited.size < points.length:\n4. Pop (cost, u) from minHeap\n5. If u in visited, continue\n6. Add cost to totalCost, add u to visited\n7. For each neighbor v, push (dist, v) to minHeap",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize heap and visited set.",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": "(0,0)"
+        },
+        {
+          "id": 1,
+          "val": "(2,2)"
+        },
+        {
+          "id": 2,
+          "val": "(3,10)"
+        }
+      ],
+      "graphEdges": [],
+      "visited": []
+    },
+    {
+      "codeLine": 2,
+      "note": "Start at node 0.",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": "(0,0)"
+        },
+        {
+          "id": 1,
+          "val": "(2,2)"
+        },
+        {
+          "id": 2,
+          "val": "(3,10)"
+        }
+      ],
+      "visited": [
+        0
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Calculating distances from 0 to 1 (4) and 2 (13). Push to heap.",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": "(0,0)"
+        },
+        {
+          "id": 1,
+          "val": "(2,2)"
+        },
+        {
+          "id": 2,
+          "val": "(3,10)"
+        }
+      ],
+      "visited": [
+        0
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Extract minimum edge to node 1 (cost 4).",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": "(0,0)"
+        },
+        {
+          "id": 1,
+          "val": "(2,2)"
+        },
+        {
+          "id": 2,
+          "val": "(3,10)"
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ]
+      ],
+      "visited": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Calculating distance from 1 to 2 (9).",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": "(0,0)"
+        },
+        {
+          "id": 1,
+          "val": "(2,2)"
+        },
+        {
+          "id": 2,
+          "val": "(3,10)"
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ]
+      ],
+      "visited": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Extract minimum edge to node 2 (cost 9).",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": "(0,0)"
+        },
+        {
+          "id": 1,
+          "val": "(2,2)"
+        },
+        {
+          "id": 2,
+          "val": "(3,10)"
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "visited": [
+        0,
+        1,
+        2
+      ]
+    }
+  ]
+}

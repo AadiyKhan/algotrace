@@ -4,15 +4,17 @@
   "type": "tree",
   "tags": [
     "Tree",
-    "DFS",
-    "Recursion"
+    "Depth-First Search",
+    "Breadth-First Search",
+    "Binary Tree"
   ],
-  "description": "Merge two binary trees by summing overlapping nodes; if one node is null, the other takes its place.",
-  "pseudocode": "1: function merge(t1, t2) {\n2:   if (!t1) return t2;\n3:   if (!t2) return t1;\n4:   t1.val += t2.val;\n5:   t1.left = merge(t1.left, t2.left);\n6:   t1.right = merge(t1.right, t2.right);\n7:   return t1;\n8: }",
+  "description": "Merge two binary trees by summing overlapping node values.",
+  "pseudocode": "1. if not t1 return t2\n2. if not t2 return t1\n3. t1.val += t2.val\n4. t1.left = merge(t1.left, t2.left)\n5. t1.right = merge(t1.right, t2.right)\n6. return t1",
   "steps": [
     {
-      "codeLine": 4,
-      "note": "Initialize merge at root (1+2=3)",
+      "codeLine": 3,
+      "note": "Merging root nodes: 1 + 2 = 3",
+      "curr": 0,
       "treeNodes": [
         {
           "id": 0,
@@ -22,24 +24,83 @@
         },
         {
           "id": 1,
-          "val": 3,
-          "left": null,
-          "right": null
+          "val": 4,
+          "left": 3,
+          "right": 4
         },
         {
           "id": 2,
           "val": 5,
           "left": null,
+          "right": 5
+        },
+        {
+          "id": 3,
+          "val": 5,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 4,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 5,
+          "val": 7,
+          "left": null,
           "right": null
         }
-      ],
-      "visited": [
-        0
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Merging left subtrees: 3 + 1 = 4",
+      "curr": 1,
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 3,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 4,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 2,
+          "val": 5,
+          "left": null,
+          "right": 5
+        },
+        {
+          "id": 3,
+          "val": 5,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 4,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 5,
+          "val": 7,
+          "left": null,
+          "right": null
+        }
       ]
     },
     {
       "codeLine": 5,
-      "note": "Merge left child (1+3=4)",
+      "note": "Merging right subtrees: 2 + 3 = 5",
+      "curr": 2,
       "treeNodes": [
         {
           "id": 0,
@@ -50,78 +111,35 @@
         {
           "id": 1,
           "val": 4,
-          "left": null,
-          "right": null
+          "left": 3,
+          "right": 4
         },
         {
           "id": 2,
           "val": 5,
           "left": null,
-          "right": null
-        }
-      ],
-      "visited": [
-        0,
-        1
-      ]
-    },
-    {
-      "codeLine": 6,
-      "note": "Merge right child (2+4=6)",
-      "treeNodes": [
-        {
-          "id": 0,
-          "val": 3,
-          "left": 1,
-          "right": 2
+          "right": 5
         },
         {
-          "id": 1,
+          "id": 3,
+          "val": 5,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
           "val": 4,
           "left": null,
           "right": null
         },
         {
-          "id": 2,
-          "val": 6,
+          "id": 5,
+          "val": 7,
           "left": null,
           "right": null
         }
-      ],
-      "visited": [
-        0,
-        1,
-        2
-      ]
-    },
-    {
-      "codeLine": 7,
-      "note": "Merge complete",
-      "treeNodes": [
-        {
-          "id": 0,
-          "val": 3,
-          "left": 1,
-          "right": 2
-        },
-        {
-          "id": 1,
-          "val": 4,
-          "left": null,
-          "right": null
-        },
-        {
-          "id": 2,
-          "val": 6,
-          "left": null,
-          "right": null
-        }
-      ],
-      "visited": [
-        0,
-        1,
-        2
       ]
     }
-  ]
+  ],
+  "fullDescription": "<p>You are given two binary trees <code>root1</code> and <code>root2</code>.</p>\n\n<p>Imagine that when you put one of them to cover the other, some nodes of the two trees are overlapped while the others are not. You need to merge the two trees into a new binary tree. The merge rule is that if two nodes overlap, then sum node values up as the new value of the merged node. Otherwise, the NOT null node will be used as the node of the new tree.</p>\n\n<p>Return <em>the merged tree</em>.</p>\n\n<p><strong>Note:</strong> The merging process must start from the root nodes of both trees.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2021/02/05/merge.jpg\" style=\"width: 600px; height: 163px;\" />\n<pre>\n<strong>Input:</strong> root1 = [1,3,2,5], root2 = [2,1,3,null,4,null,7]\n<strong>Output:</strong> [3,4,5,5,4,null,7]\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> root1 = [1], root2 = [1,2]\n<strong>Output:</strong> [2,2]\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li>The number of nodes in both trees is in the range <code>[0, 2000]</code>.</li>\n\t<li><code>-10<sup>4</sup> &lt;= Node.val &lt;= 10<sup>4</sup></code></li>\n</ul>\n"
 }

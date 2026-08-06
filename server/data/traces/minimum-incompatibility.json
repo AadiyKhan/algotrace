@@ -1,0 +1,74 @@
+{
+  "title": "Minimum Incompatibility",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Dynamic Programming",
+    "Bitmask",
+    "Backtracking"
+  ],
+  "description": "Divide an array of size n into n/k subsets of size k, minimizing the sum of differences between max and min in each subset.",
+  "target": null,
+  "pseudocode": "1. k = nums.length / k_subsets\n2. memo = {}\n3. function solve(mask):\n4.   if mask == (1 << n) - 1: return 0\n5.   if mask in memo: return memo[mask]\n6.   first = find_first_unset_bit(mask)\n7.   generate_valid_subsets(first, mask, [])\n8.   return res",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize variables with nums=[1,2,1,2] and k=2. Subset size = 2.",
+      "array": [
+        1,
+        2,
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Starting recursion with empty mask (0).",
+      "array": [
+        1,
+        2,
+        1,
+        2
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Identify index 0 as the first available element for the new subset.",
+      "curr": 0
+    },
+    {
+      "codeLine": 7,
+      "note": "Finding a subset of size 2 starting with index 0: {nums[0], nums[1]} = {1, 2}. Diff = 1.",
+      "array": [
+        1,
+        2,
+        1,
+        2
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 8,
+      "note": "Recursively call for remaining elements {nums[2], nums[3]} = {1, 2}. Diff = 1.",
+      "array": [
+        1,
+        2,
+        1,
+        2
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 4,
+      "note": "All elements used (mask full). Return total sum of differences: 1 + 1 = 2.",
+      "array": [
+        1,
+        2,
+        1,
+        2
+      ]
+    }
+  ]
+}

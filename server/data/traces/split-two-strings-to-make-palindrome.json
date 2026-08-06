@@ -1,0 +1,79 @@
+{
+  "title": "Split Two Strings to Make Palindrome",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "String",
+    "Two Pointers",
+    "Greedy"
+  ],
+  "description": "Determine if you can form a palindrome by splitting two strings a and b at the same index and concatenating prefix of one with suffix of the other.",
+  "target": null,
+  "pseudocode": "function check(a, b) {\n  const isPali = (s, i, j) => {\n    while (i < j && s[i] == s[j]) { i++; j--; }\n    return i >= j;\n  };\n  let i = 0, j = a.length - 1;\n  while (i < j && a[i] == b[j]) { i++; j--; }\n  return isPali(a, i, j) || isPali(b, i, j);\n}",
+  "steps": [
+    {
+      "codeLine": 6,
+      "note": "Initialize pointers i=0, j=len-1 for strings 'ulac' and 'jalu'",
+      "array": [
+        "ulac",
+        "jalu"
+      ],
+      "i": 0,
+      "j": 3
+    },
+    {
+      "codeLine": 7,
+      "note": "Compare a[0]('u') and b[3]('u'). Match! Increment i, decrement j.",
+      "array": [
+        "ulac",
+        "jalu"
+      ],
+      "i": 1,
+      "j": 2
+    },
+    {
+      "codeLine": 7,
+      "note": "Compare a[1]('l') and b[2]('l'). Match! Increment i, decrement j.",
+      "array": [
+        "ulac",
+        "jalu"
+      ],
+      "i": 2,
+      "j": 1
+    },
+    {
+      "codeLine": 8,
+      "note": "Pointers crossed. Check if remaining substring of a or b is palindrome.",
+      "array": [
+        "ulac",
+        "jalu"
+      ],
+      "i": 2,
+      "j": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Checking remaining substring 'ac' from string a. Not a palindrome.",
+      "array": [
+        "ulac",
+        "jalu"
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Checking remaining substring 'ja' from string b. Not a palindrome.",
+      "array": [
+        "ulac",
+        "jalu"
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Return false, no valid split found.",
+      "array": [
+        "ulac",
+        "jalu"
+      ]
+    }
+  ]
+}

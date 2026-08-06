@@ -7,58 +7,26 @@
     "Breadth-First Search",
     "Matrix"
   ],
-  "description": "Determine the minimum minutes to rot all fresh oranges in a grid using BFS.",
-  "target": 4,
-  "pseudocode": "1. queue = all rotten oranges\n2. minutes = 0\n3. while queue is not empty and fresh oranges > 0:\n4.   for each orange in current queue level:\n5.     poll current [r, c]\n6.     check neighbors, if fresh, turn rotten, add to queue\n7.   minutes++\n8. return fresh == 0 ? minutes : -1",
+  "description": "Calculate minimum minutes to rot all fresh oranges using BFS.",
+  "pseudocode": "1. Find all rotten oranges and add to queue. 2. While queue is not empty, process level by level. 3. For each orange, rot adjacent fresh neighbors. 4. Return time if no fresh oranges remain.",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize queue with rotten oranges at [0,0]",
+      "note": "Initialize queue with starting rotten orange at (0,0).",
       "matrix": [
         [
           2,
+          1,
           1
         ],
         [
-          0,
-          1
-        ]
-      ],
-      "visited": [
-        [
-          0,
+          1,
+          1,
           0
-        ]
-      ]
-    },
-    {
-      "codeLine": 4,
-      "note": "Process rotten orange at [0,0]",
-      "matrix": [
-        [
-          2,
-          1
         ],
         [
           0,
-          1
-        ]
-      ],
-      "curr": [
-        0,
-        0
-      ]
-    },
-    {
-      "codeLine": 6,
-      "note": "Rot neighbor at [0,1], add to queue",
-      "matrix": [
-        [
-          2,
-          2
-        ],
-        [
-          0,
+          1,
           1
         ]
       ],
@@ -70,56 +38,66 @@
         [
           0,
           0
-        ],
-        [
-          0,
-          1
         ]
       ]
     },
     {
-      "codeLine": 7,
-      "note": "Increment minutes to 1",
+      "codeLine": 2,
+      "note": "Minute 1: Process rotten orange (0,0), rot neighbors (0,1) and (1,0).",
       "matrix": [
         [
           2,
-          2
-        ],
-        [
-          0,
+          2,
           1
-        ]
-      ]
-    },
-    {
-      "codeLine": 4,
-      "note": "Process newly rotten orange at [0,1]",
-      "matrix": [
+        ],
         [
           2,
-          2
+          1,
+          0
         ],
         [
           0,
+          1,
           1
         ]
       ],
       "curr": [
         0,
-        1
-      ]
-    },
-    {
-      "codeLine": 6,
-      "note": "Rot neighbor at [1,1], add to queue",
-      "matrix": [
+        0
+      ],
+      "visited": [
         [
-          2,
-          2
+          0,
+          0
         ],
         [
           0,
-          2
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Minute 2: Rot neighbor (1,1) from (0,1) and (1,0).",
+      "matrix": [
+        [
+          2,
+          2,
+          1
+        ],
+        [
+          2,
+          2,
+          0
+        ],
+        [
+          0,
+          1,
+          1
         ]
       ],
       "curr": [
@@ -137,17 +115,54 @@
         ],
         [
           1,
+          0
+        ],
+        [
+          1,
           1
         ]
       ]
     },
     {
-      "codeLine": 7,
-      "note": "Increment minutes to 2",
+      "codeLine": 3,
+      "note": "Minute 3: Rot neighbor (0,2) from (0,1).",
       "matrix": [
         [
           2,
+          2,
           2
+        ],
+        [
+          2,
+          2,
+          0
+        ],
+        [
+          0,
+          1,
+          1
+        ]
+      ],
+      "curr": [
+        0,
+        2
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
         ],
         [
           0,
@@ -156,18 +171,136 @@
       ]
     },
     {
-      "codeLine": 8,
-      "note": "All fresh oranges rotted, return minutes",
+      "codeLine": 3,
+      "note": "Minute 4: Rot neighbor (2,1) from (1,1).",
       "matrix": [
         [
+          2,
           2,
           2
         ],
         [
+          2,
+          2,
+          0
+        ],
+        [
           0,
+          2,
+          1
+        ]
+      ],
+      "curr": [
+        2,
+        1
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          2,
+          1
+        ]
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Minute 4: Rot final neighbor (2,2) from (2,1).",
+      "matrix": [
+        [
+          2,
+          2,
+          2
+        ],
+        [
+          2,
+          2,
+          0
+        ],
+        [
+          0,
+          2,
+          2
+        ]
+      ],
+      "curr": [
+        2,
+        2
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
           2
         ]
       ]
+    },
+    {
+      "codeLine": 4,
+      "note": "All fresh oranges rotted. Return 4 minutes.",
+      "matrix": [
+        [
+          2,
+          2,
+          2
+        ],
+        [
+          2,
+          2,
+          0
+        ],
+        [
+          0,
+          2,
+          2
+        ]
+      ],
+      "curr": [
+        2,
+        2
+      ]
     }
-  ]
+  ],
+  "fullDescription": "<p>You are given an <code>m x n</code> <code>grid</code> where each cell can have one of three values:</p>\n\n<ul>\n\t<li><code>0</code> representing an empty cell,</li>\n\t<li><code>1</code> representing a fresh orange, or</li>\n\t<li><code>2</code> representing a rotten orange.</li>\n</ul>\n\n<p>Every minute, any fresh orange that is <strong>4-directionally adjacent</strong> to a rotten orange becomes rotten.</p>\n\n<p>Return <em>the minimum number of minutes that must elapse until no cell has a fresh orange</em>. If <em>this is impossible, return</em> <code>-1</code>.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2019/02/16/oranges.png\" style=\"width: 650px; height: 137px;\" />\n<pre>\n<strong>Input:</strong> grid = [[2,1,1],[1,1,0],[0,1,1]]\n<strong>Output:</strong> 4\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> grid = [[2,1,1],[0,1,1],[1,0,1]]\n<strong>Output:</strong> -1\n<strong>Explanation:</strong> The orange in the bottom left corner (row 2, column 0) is never rotten, because rotting only happens 4-directionally.\n</pre>\n\n<p><strong class=\"example\">Example 3:</strong></p>\n\n<pre>\n<strong>Input:</strong> grid = [[0,2]]\n<strong>Output:</strong> 0\n<strong>Explanation:</strong> Since there are already no fresh oranges at minute 0, the answer is just 0.\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>m == grid.length</code></li>\n\t<li><code>n == grid[i].length</code></li>\n\t<li><code>1 &lt;= m, n &lt;= 10</code></li>\n\t<li><code>grid[i][j]</code> is <code>0</code>, <code>1</code>, or <code>2</code>.</li>\n</ul>\n"
 }

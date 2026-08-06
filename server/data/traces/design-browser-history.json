@@ -1,77 +1,131 @@
 {
   "title": "Design Browser History",
   "difficulty": "Medium",
-  "type": "linked-list",
+  "type": "array",
   "tags": [
-    "Design",
+    "Array",
     "Linked List",
-    "Doubly Linked List"
+    "Design"
   ],
-  "description": "Implement a browser history system using a doubly linked list to support visit, back, and forward operations.",
-  "pseudocode": "class Node { constructor(url) { this.url = url; this.next = null; this.prev = null; } }\nclass BrowserHistory { constructor(homepage) { this.curr = new Node(homepage); }\nvisit(url) { let newNode = new Node(url); newNode.prev = this.curr; this.curr.next = newNode; this.curr = newNode; }\nback(steps) { while (steps > 0 && this.curr.prev) { this.curr = this.curr.prev; steps--; } return this.curr.url; }\nforward(steps) { while (steps > 0 && this.curr.next) { this.curr = this.curr.next; steps--; } return this.curr.url; } }",
+  "description": "Maintain browser history using a dynamic array where visiting a new site clears forward history.",
+  "target": "leetcode.com",
+  "pseudocode": "1. history = [homepage], curr = 0, last = 0\n2. visit(url): truncate history at curr + 1, append url, curr++, last = curr\n3. back(steps): curr = max(0, curr - steps), return history[curr]\n4. forward(steps): curr = min(last, curr + steps), return history[curr]",
   "steps": [
     {
-      "codeLine": 2,
-      "note": "Initialize history with homepage 'google.com'",
-      "nodes": [
-        {
-          "val": "google.com",
-          "prev": null,
-          "next": null
-        }
+      "codeLine": 1,
+      "note": "Initialize history with leetcode.com",
+      "array": [
+        "leetcode.com"
       ],
       "curr": 0
     },
     {
+      "codeLine": 2,
+      "note": "Visit google.com",
+      "array": [
+        "leetcode.com",
+        "google.com"
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Visit facebook.com",
+      "array": [
+        "leetcode.com",
+        "google.com",
+        "facebook.com"
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 2,
+      "note": "Visit youtube.com",
+      "array": [
+        "leetcode.com",
+        "google.com",
+        "facebook.com",
+        "youtube.com"
+      ],
+      "curr": 3
+    },
+    {
       "codeLine": 3,
-      "note": "Visit 'leetcode.com', adding it to the list",
-      "nodes": [
-        {
-          "val": "google.com",
-          "prev": null,
-          "next": 1
-        },
-        {
-          "val": "leetcode.com",
-          "prev": 0,
-          "next": null
-        }
+      "note": "Back 1 step",
+      "array": [
+        "leetcode.com",
+        "google.com",
+        "facebook.com",
+        "youtube.com"
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Back 1 step",
+      "array": [
+        "leetcode.com",
+        "google.com",
+        "facebook.com",
+        "youtube.com"
       ],
       "curr": 1
     },
     {
       "codeLine": 4,
-      "note": "Move back 1 step to 'google.com'",
-      "nodes": [
-        {
-          "val": "google.com",
-          "prev": null,
-          "next": 1
-        },
-        {
-          "val": "leetcode.com",
-          "prev": 0,
-          "next": null
-        }
+      "note": "Forward 1 step",
+      "array": [
+        "leetcode.com",
+        "google.com",
+        "facebook.com",
+        "youtube.com"
       ],
-      "curr": 0
+      "curr": 2
     },
     {
-      "codeLine": 5,
-      "note": "Move forward 1 step to 'leetcode.com'",
-      "nodes": [
-        {
-          "val": "google.com",
-          "prev": null,
-          "next": 1
-        },
-        {
-          "val": "leetcode.com",
-          "prev": 0,
-          "next": null
-        }
+      "codeLine": 2,
+      "note": "Visit linkedin.com (clears youtube.com)",
+      "array": [
+        "leetcode.com",
+        "google.com",
+        "facebook.com",
+        "linkedin.com"
+      ],
+      "curr": 3
+    },
+    {
+      "codeLine": 4,
+      "note": "Forward 2 steps (limited to current end)",
+      "array": [
+        "leetcode.com",
+        "google.com",
+        "facebook.com",
+        "linkedin.com"
+      ],
+      "curr": 3
+    },
+    {
+      "codeLine": 3,
+      "note": "Back 2 steps",
+      "array": [
+        "leetcode.com",
+        "google.com",
+        "facebook.com",
+        "linkedin.com"
       ],
       "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Back 7 steps (limited to index 0)",
+      "array": [
+        "leetcode.com",
+        "google.com",
+        "facebook.com",
+        "linkedin.com"
+      ],
+      "curr": 0
     }
-  ]
+  ],
+  "fullDescription": "<p>You have a <strong>browser</strong> of one tab where you start on the <code>homepage</code> and you can visit another <code>url</code>, get back in the history number of <code>steps</code> or move forward in the history number of <code>steps</code>.</p>\n\n<p>Implement the <code>BrowserHistory</code> class:</p>\n\n<ul>\n\t<li><code>BrowserHistory(string homepage)</code> Initializes the object with the <code>homepage</code>&nbsp;of the browser.</li>\n\t<li><code>void visit(string url)</code>&nbsp;Visits&nbsp;<code>url</code> from the current page. It clears up all the forward history.</li>\n\t<li><code>string back(int steps)</code>&nbsp;Move <code>steps</code> back in history. If you can only return <code>x</code> steps in the history and <code>steps &gt; x</code>, you will&nbsp;return only <code>x</code> steps. Return the current <code>url</code>&nbsp;after moving back in history <strong>at most</strong> <code>steps</code>.</li>\n\t<li><code>string forward(int steps)</code>&nbsp;Move <code>steps</code> forward in history. If you can only forward <code>x</code> steps in the history and <code>steps &gt; x</code>, you will&nbsp;forward only&nbsp;<code>x</code> steps. Return the current <code>url</code>&nbsp;after forwarding in history <strong>at most</strong> <code>steps</code>.</li>\n</ul>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example:</strong></p>\n\n<pre>\n<b>Input:</b>\n[&quot;BrowserHistory&quot;,&quot;visit&quot;,&quot;visit&quot;,&quot;visit&quot;,&quot;back&quot;,&quot;back&quot;,&quot;forward&quot;,&quot;visit&quot;,&quot;forward&quot;,&quot;back&quot;,&quot;back&quot;]\n[[&quot;leetcode.com&quot;],[&quot;google.com&quot;],[&quot;facebook.com&quot;],[&quot;youtube.com&quot;],[1],[1],[1],[&quot;linkedin.com&quot;],[2],[2],[7]]\n<b>Output:</b>\n[null,null,null,null,&quot;facebook.com&quot;,&quot;google.com&quot;,&quot;facebook.com&quot;,null,&quot;linkedin.com&quot;,&quot;google.com&quot;,&quot;leetcode.com&quot;]\n\n<b>Explanation:</b>\nBrowserHistory browserHistory = new BrowserHistory(&quot;leetcode.com&quot;);\nbrowserHistory.visit(&quot;google.com&quot;);       // You are in &quot;leetcode.com&quot;. Visit &quot;google.com&quot;\nbrowserHistory.visit(&quot;facebook.com&quot;);     // You are in &quot;google.com&quot;. Visit &quot;facebook.com&quot;\nbrowserHistory.visit(&quot;youtube.com&quot;);      // You are in &quot;facebook.com&quot;. Visit &quot;youtube.com&quot;\nbrowserHistory.back(1);                   // You are in &quot;youtube.com&quot;, move back to &quot;facebook.com&quot; return &quot;facebook.com&quot;\nbrowserHistory.back(1);                   // You are in &quot;facebook.com&quot;, move back to &quot;google.com&quot; return &quot;google.com&quot;\nbrowserHistory.forward(1);                // You are in &quot;google.com&quot;, move forward to &quot;facebook.com&quot; return &quot;facebook.com&quot;\nbrowserHistory.visit(&quot;linkedin.com&quot;);     // You are in &quot;facebook.com&quot;. Visit &quot;linkedin.com&quot;\nbrowserHistory.forward(2);                // You are in &quot;linkedin.com&quot;, you cannot move forward any steps.\nbrowserHistory.back(2);                   // You are in &quot;linkedin.com&quot;, move back two steps to &quot;facebook.com&quot; then to &quot;google.com&quot;. return &quot;google.com&quot;\nbrowserHistory.back(7);                   // You are in &quot;google.com&quot;, you can move back only one step to &quot;leetcode.com&quot;. return &quot;leetcode.com&quot;\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= homepage.length &lt;= 20</code></li>\n\t<li><code>1 &lt;= url.length &lt;= 20</code></li>\n\t<li><code>1 &lt;= steps &lt;= 100</code></li>\n\t<li><code>homepage</code> and <code>url</code> consist of&nbsp; &#39;.&#39; or lower case English letters.</li>\n\t<li>At most <code>5000</code>&nbsp;calls will be made to <code>visit</code>, <code>back</code>, and <code>forward</code>.</li>\n</ul>\n"
 }

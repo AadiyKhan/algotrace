@@ -10,7 +10,7 @@
   ],
   "description": "Find the maximum number of points that lie on the same straight line given an array of points.",
   "target": 3,
-  "pseudocode": "1. maxPoints = 0\n2. For i from 0 to n-1:\n3.   For j from i+1 to n-1:\n4.     Calculate slope (dy/dx)\n5.     Count collinear points using slope map\n6.     Update maxPoints",
+  "pseudocode": "1. maxPoints = 0\n2. For i from 0 to n-1:\n3.   map = {}\n4.   For j from i+1 to n-1:\n5.     slope = getSlope(points[i], points[j])\n6.     map[slope]++\n7.     maxPoints = max(maxPoints, map[slope] + 1)",
   "steps": [
     {
       "codeLine": 1,
@@ -29,11 +29,11 @@
           3
         ]
       ],
-      "curr": 0
+      "visited": []
     },
     {
       "codeLine": 2,
-      "note": "Starting outer loop with point i=0 (1,1).",
+      "note": "Starting outer loop with i = 0 (point [1,1]).",
       "array": [
         [
           1,
@@ -49,11 +49,13 @@
         ]
       ],
       "i": 0,
-      "curr": 0
+      "visited": [
+        0
+      ]
     },
     {
-      "codeLine": 3,
-      "note": "Inner loop j=1 (2,2). Slope = (2-1)/(2-1) = 1.0.",
+      "codeLine": 4,
+      "note": "Checking j = 1 (point [2,2]). Slope = (2-1)/(2-1) = 1.0.",
       "array": [
         [
           1,
@@ -70,11 +72,14 @@
       ],
       "i": 0,
       "j": 1,
-      "curr": 1
+      "visited": [
+        0,
+        1
+      ]
     },
     {
-      "codeLine": 5,
-      "note": "Slope 1.0 found for point (1,1) and (2,2).",
+      "codeLine": 7,
+      "note": "Max points on line containing index 0 and 1 is 2.",
       "array": [
         [
           1,
@@ -91,11 +96,14 @@
       ],
       "i": 0,
       "j": 1,
-      "curr": 1
+      "visited": [
+        0,
+        1
+      ]
     },
     {
-      "codeLine": 3,
-      "note": "Inner loop j=2 (3,3). Slope = (3-1)/(3-1) = 1.0.",
+      "codeLine": 4,
+      "note": "Checking j = 2 (point [3,3]). Slope = (3-1)/(3-1) = 1.0.",
       "array": [
         [
           1,
@@ -112,11 +120,15 @@
       ],
       "i": 0,
       "j": 2,
-      "curr": 2
+      "visited": [
+        0,
+        1,
+        2
+      ]
     },
     {
-      "codeLine": 6,
-      "note": "Three points (1,1), (2,2), (3,3) share the same slope, update maxPoints to 3.",
+      "codeLine": 7,
+      "note": "Slope 1.0 found again, count increases to 3. Updating maxPoints to 3.",
       "array": [
         [
           1,
@@ -133,7 +145,35 @@
       ],
       "i": 0,
       "j": 2,
-      "curr": 1
+      "visited": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Outer loop finishes. Returning maxPoints = 3.",
+      "array": [
+        [
+          1,
+          1
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          3,
+          3
+        ]
+      ],
+      "visited": [
+        0,
+        1,
+        2
+      ]
     }
-  ]
+  ],
+  "fullDescription": "<p>Given an array of <code>points</code> where <code>points[i] = [x<sub>i</sub>, y<sub>i</sub>]</code> represents a point on the <strong>X-Y</strong> plane, return <em>the maximum number of points that lie on the same straight line</em>.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2021/02/25/plane1.jpg\" style=\"width: 300px; height: 294px;\" />\n<pre>\n<strong>Input:</strong> points = [[1,1],[2,2],[3,3]]\n<strong>Output:</strong> 3\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2021/02/25/plane2.jpg\" style=\"width: 300px; height: 294px;\" />\n<pre>\n<strong>Input:</strong> points = [[1,1],[3,2],[5,3],[4,1],[2,3],[1,4]]\n<strong>Output:</strong> 4\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= points.length &lt;= 300</code></li>\n\t<li><code>points[i].length == 2</code></li>\n\t<li><code>-10<sup>4</sup> &lt;= x<sub>i</sub>, y<sub>i</sub> &lt;= 10<sup>4</sup></code></li>\n\t<li>All the <code>points</code> are <strong>unique</strong>.</li>\n</ul>\n"
 }

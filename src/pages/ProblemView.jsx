@@ -14,6 +14,7 @@ import TreeVisualizer from '../components/visualizers/TreeVisualizer';
 import GraphVisualizer from '../components/visualizers/GraphVisualizer';
 import PseudocodeBlock from '../components/PseudocodeBlock';
 import ErrorBoundary from '../components/ErrorBoundary';
+import ChatAssistant from '../components/ChatAssistant';
 
 const SPEED_PRESETS = [
   { label: '0.5x', value: 3000 },
@@ -299,7 +300,7 @@ const ProblemView = () => {
     switch (problemData.type) {
       case 'array':       return <ArrayVisualizer stepData={stepData} target={problemData.target} problemId={id} allSteps={problemData.steps} currentStep={currentStep} />;
       case 'linked-list': return <LinkedListVisualizer stepData={stepData} />;
-      case 'matrix':      return <MatrixVisualizer stepData={stepData} />;
+      case 'matrix':      return <MatrixVisualizer stepData={stepData} problemId={id} />;
       case 'tree':        return <TreeVisualizer stepData={stepData} />;
       case 'graph':       return <GraphVisualizer stepData={stepData} />;
       default:            return <div className="text-zinc-500 font-mono text-xs uppercase tracking-widest">UNKNOWN TYPE: {problemData.type}</div>;
@@ -528,6 +529,8 @@ const ProblemView = () => {
 
         </PanelGroup>
       </div>
+      
+      <ChatAssistant problemData={problemData} stepData={stepData} />
     </div>
   );
 };

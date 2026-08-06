@@ -3,18 +3,37 @@
   "difficulty": "Hard",
   "type": "matrix",
   "tags": [
+    "Array",
+    "Heap (Priority Queue)",
     "Matrix",
-    "Graph",
-    "Dijkstra",
-    "Binary Search"
+    "Dijkstra's Algorithm"
   ],
-  "description": "Find the minimum time to reach the bottom-right cell from the top-left in a grid where each cell has an elevation that rises over time.",
+  "description": "Find the minimum time to reach the bottom-right corner using a priority queue (Dijkstra's).",
   "target": 3,
-  "pseudocode": "1. Initialize priority queue with [grid[0][0], 0, 0]\n2. Keep track of visited cells\n3. While queue is not empty:\n4.   Pop [time, r, c] with minimum time\n5.   If r, c is bottom-right, return time\n6.   For each neighbor (nr, nc):\n7.     If not visited:\n8.       New time = max(time, grid[nr][nc])\n9.       Push [new_time, nr, nc] to queue",
+  "pseudocode": "1. minHeap.push([grid[0][0], 0, 0])\n2. while minHeap:\n3.   t, r, c = minHeap.pop()\n4.   if r == n-1 and c == n-1: return t\n5.   for dr, dc in directions:\n6.     if neighbor in bounds and not visited:\n7.       visited.add(neighbor)\n8.       minHeap.push([max(t, grid[nr][nc]), nr, nc])",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize PQ with starting cell (0,0) with time 0",
+      "note": "Initialize min-heap with starting point (0,0) at elevation 0.",
+      "matrix": [
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "visited": [],
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Pop [0, 0, 0] from heap. Current time t=0.",
       "matrix": [
         [
           0,
@@ -30,11 +49,15 @@
           0,
           0
         ]
+      ],
+      "curr": [
+        0,
+        0
       ]
     },
     {
-      "codeLine": 4,
-      "note": "Pop (0, 0, 0) from PQ",
+      "codeLine": 8,
+      "note": "Check neighbors (0,1) and (1,0). Push [max(0, 2), 0, 1] and [max(0, 1), 1, 0] to heap.",
       "matrix": [
         [
           0,
@@ -44,28 +67,6 @@
           1,
           3
         ]
-      ],
-      "curr": [
-        0,
-        0
-      ]
-    },
-    {
-      "codeLine": 6,
-      "note": "Check neighbor (0, 1) with value 2",
-      "matrix": [
-        [
-          0,
-          2
-        ],
-        [
-          1,
-          3
-        ]
-      ],
-      "curr": [
-        0,
-        0
       ],
       "visited": [
         [
@@ -75,12 +76,20 @@
         [
           0,
           1
+        ],
+        [
+          1,
+          0
         ]
+      ],
+      "curr": [
+        0,
+        0
       ]
     },
     {
-      "codeLine": 8,
-      "note": "Update max time to max(0, 2) = 2",
+      "codeLine": 3,
+      "note": "Pop [1, 1, 0] from heap. Current time t=1.",
       "matrix": [
         [
           0,
@@ -89,6 +98,92 @@
         [
           1,
           3
+        ]
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "curr": [
+        1,
+        0
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Check neighbor (1,1). Push [max(1, 3), 1, 1] to heap.",
+      "matrix": [
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "curr": [
+        1,
+        0
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Pop [2, 0, 1] from heap. Current time t=2.",
+      "matrix": [
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
         ]
       ],
       "curr": [
@@ -97,76 +192,8 @@
       ]
     },
     {
-      "codeLine": 6,
-      "note": "Check neighbor (1, 0) with value 1",
-      "matrix": [
-        [
-          0,
-          2
-        ],
-        [
-          1,
-          3
-        ]
-      ],
-      "curr": [
-        0,
-        0
-      ],
-      "visited": [
-        [
-          0,
-          0
-        ],
-        [
-          0,
-          1
-        ],
-        [
-          1,
-          0
-        ]
-      ]
-    },
-    {
-      "codeLine": 8,
-      "note": "Update max time to max(0, 1) = 1",
-      "matrix": [
-        [
-          0,
-          2
-        ],
-        [
-          1,
-          3
-        ]
-      ],
-      "curr": [
-        1,
-        0
-      ]
-    },
-    {
-      "codeLine": 4,
-      "note": "Pop (1, 1, 0) from PQ (minimum time path)",
-      "matrix": [
-        [
-          0,
-          2
-        ],
-        [
-          1,
-          3
-        ]
-      ],
-      "curr": [
-        1,
-        0
-      ]
-    },
-    {
-      "codeLine": 9,
-      "note": "Push neighbor (1, 1) with value 3. Time = max(1, 3) = 3",
+      "codeLine": 3,
+      "note": "Pop [3, 1, 1] from heap. Reached bottom-right.",
       "matrix": [
         [
           0,
@@ -193,20 +220,6 @@
         [
           1,
           1
-        ]
-      ]
-    },
-    {
-      "codeLine": 5,
-      "note": "Reached target (1, 1) at time 3",
-      "matrix": [
-        [
-          0,
-          2
-        ],
-        [
-          1,
-          3
         ]
       ],
       "curr": [
@@ -214,5 +227,6 @@
         1
       ]
     }
-  ]
+  ],
+  "fullDescription": "<p>You are given an <code>n x n</code> integer matrix <code>grid</code> where each value <code>grid[i][j]</code> represents the elevation at that point <code>(i, j)</code>.</p>\n\n<p>It starts raining, and water gradually rises over time. At time <code>t</code>, the water level is <code>t</code>, meaning <strong>any</strong> cell with elevation less than equal to <code>t</code> is submerged or reachable.</p>\n\n<p>You can swim from a square to another 4-directionally adjacent square if and only if the elevation of both squares individually are at most <code>t</code>. You can swim infinite distances in zero time. Of course, you must stay within the boundaries of the grid during your swim.</p>\n\n<p>Return <em>the minimum time until you can reach the bottom right square </em><code>(n - 1, n - 1)</code><em> if you start at the top left square </em><code>(0, 0)</code>.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2021/06/29/swim1-grid.jpg\" style=\"width: 164px; height: 165px;\" />\n<pre>\n<strong>Input:</strong> grid = [[0,2],[1,3]]\n<strong>Output:</strong> 3\nExplanation:\nAt time 0, you are in grid location (0, 0).\nYou cannot go anywhere else because 4-directionally adjacent neighbors have a higher elevation than t = 0.\nYou cannot reach point (1, 1) until time 3.\nWhen the depth of water is 3, we can swim anywhere inside the grid.\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2021/06/29/swim2-grid-1.jpg\" style=\"width: 404px; height: 405px;\" />\n<pre>\n<strong>Input:</strong> grid = [[0,1,2,3,4],[24,23,22,21,5],[12,13,14,15,16],[11,17,18,19,20],[10,9,8,7,6]]\n<strong>Output:</strong> 16\n<strong>Explanation:</strong> The final route is shown.\nWe need to wait until time 16 so that (0, 0) and (4, 4) are connected.\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>n == grid.length</code></li>\n\t<li><code>n == grid[i].length</code></li>\n\t<li><code>1 &lt;= n &lt;= 50</code></li>\n\t<li><code>0 &lt;= grid[i][j] &lt;&nbsp;n<sup>2</sup></code></li>\n\t<li>Each value <code>grid[i][j]</code> is <strong>unique</strong>.</li>\n</ul>\n"
 }

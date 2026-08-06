@@ -4,57 +4,45 @@
   "type": "array",
   "tags": [
     "Math",
-    "Stack",
-    "String"
+    "String",
+    "Stack"
   ],
-  "description": "Evaluate a mathematical expression string containing non-negative integers, +, -, *, and / operators.",
-  "target": null,
-  "pseudocode": "1. let stack = [], num = 0, op = '+';\n2. for (let i = 0; i < s.length; i++) {\n3.   if (isDigit(s[i])) num = num * 10 + parseInt(s[i]);\n4.   if (!isDigit(s[i]) && s[i] !== ' ' || i === s.length - 1) {\n5.     if (op === '+') stack.push(num);\n6.     else if (op === '-') stack.push(-num);\n7.     else if (op === '*') stack.push(stack.pop() * num);\n8.     else if (op === '/') stack.push(Math.trunc(stack.pop() / num));\n9.     op = s[i]; num = 0;\n10.  }\n11. }\n12. return stack.reduce((a, b) => a + b, 0);",
+  "description": "Evaluate a mathematical expression string with +, -, *, / operators.",
+  "target": 7,
+  "pseudocode": "1. Initialize stack, currNum=0, lastOp='+'\n2. For each char c in s:\n3. If c is digit, currNum = currNum*10 + int(c)\n4. If c is operator or last char:\n5. If lastOp == '+', push currNum\n6. If lastOp == '-', push -currNum\n7. If lastOp == '*', pop top, multiply by currNum, push\n8. If lastOp == '/', pop top, divide by currNum, push\n9. Update lastOp, reset currNum\n10. Return sum of stack",
   "steps": [
     {
-      "codeLine": 2,
-      "note": "Initialize variables with s = '3+2*2'",
-      "array": [
-        3,
-        2,
-        2
-      ],
-      "i": 0,
-      "curr": 3
+      "codeLine": 1,
+      "note": "Initialize variables: stack=[], currNum=0, lastOp='+'",
+      "array": []
     },
     {
       "codeLine": 3,
-      "note": "Read '3', update num = 3",
-      "array": [
-        3,
-        2,
-        2
-      ],
-      "i": 0,
-      "curr": 3
-    },
-    {
-      "codeLine": 5,
-      "note": "Encountered '+', push 3 to stack",
+      "note": "Processing '3': currNum becomes 3",
       "array": [
         3
       ],
-      "i": 1,
-      "curr": 3
+      "i": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Reached '+': lastOp was '+', push 3 to stack",
+      "array": [
+        3
+      ],
+      "i": 1
     },
     {
       "codeLine": 3,
-      "note": "Read '2', update num = 2",
+      "note": "Processing '2': currNum becomes 2",
       "array": [
-        3,
-        2
+        3
       ],
-      "i": 2,
-      "curr": 2
+      "i": 2
     },
     {
-      "codeLine": 9,
-      "note": "Encountered '*', update op to '*'",
+      "codeLine": 7,
+      "note": "Reached '*': lastOp was '+', push 2 (currNum) to stack",
       "array": [
         3,
         2
@@ -63,32 +51,30 @@
     },
     {
       "codeLine": 3,
-      "note": "Read '2', update num = 2",
+      "note": "Processing '2': currNum becomes 2",
       "array": [
         3,
         2
       ],
-      "i": 4,
-      "curr": 2
+      "i": 4
     },
     {
       "codeLine": 7,
-      "note": "Execute '* ': pop 2, multiply by 2, push 4",
+      "note": "End of string: lastOp was '*', pop 2, multiply by 2, push 4",
       "array": [
         3,
         4
       ],
-      "i": 4,
-      "curr": 2
+      "i": 4
     },
     {
-      "codeLine": 12,
-      "note": "Final sum of stack [3, 4] = 7",
+      "codeLine": 10,
+      "note": "Sum the stack: 3 + 4 = 7",
       "array": [
         3,
         4
-      ],
-      "curr": 3
+      ]
     }
-  ]
+  ],
+  "fullDescription": "<p>Given a string <code>s</code> which represents an expression, <em>evaluate this expression and return its value</em>.&nbsp;</p>\n\n<p>The integer division should truncate toward zero.</p>\n\n<p>You may assume that the given expression is always valid. All intermediate results will be in the range of <code>[-2<sup>31</sup>, 2<sup>31</sup> - 1]</code>.</p>\n\n<p><strong>Note:</strong> You are not allowed to use any built-in function which evaluates strings as mathematical expressions, such as <code>eval()</code>.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n<pre><strong>Input:</strong> s = \"3+2*2\"\n<strong>Output:</strong> 7\n</pre><p><strong class=\"example\">Example 2:</strong></p>\n<pre><strong>Input:</strong> s = \" 3/2 \"\n<strong>Output:</strong> 1\n</pre><p><strong class=\"example\">Example 3:</strong></p>\n<pre><strong>Input:</strong> s = \" 3+5 / 2 \"\n<strong>Output:</strong> 5\n</pre>\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= s.length &lt;= 3 * 10<sup>5</sup></code></li>\n\t<li><code>s</code> consists of integers and operators <code>(&#39;+&#39;, &#39;-&#39;, &#39;*&#39;, &#39;/&#39;)</code> separated by some number of spaces.</li>\n\t<li><code>s</code> represents a valid expression.</li>\n\t<li>All the integers in the expression are non-negative integers in the range <code>[0, 2<sup>31</sup> - 1]</code>.</li>\n\t<li>The answer is <strong>guaranteed</strong> to fit in a <strong>32-bit integer</strong>.</li>\n</ul>\n"
 }

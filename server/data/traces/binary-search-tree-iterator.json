@@ -3,17 +3,18 @@
   "difficulty": "Medium",
   "type": "tree",
   "tags": [
-    "Tree",
     "Stack",
-    "Design"
+    "Tree",
+    "Design",
+    "Binary Search Tree"
   ],
-  "description": "Implement an iterator over a binary search tree that returns nodes in in-order traversal.",
+  "description": "Implement an iterator over the in-order traversal of a binary search tree using a stack.",
   "target": null,
-  "pseudocode": "1: function pushLeft(node) {\n2:   while (node) {\n3:     stack.push(node);\n4:     node = node.left;\n5:   }\n6: }\n7: function next() {\n8:   let node = stack.pop();\n9:   pushLeft(node.right);\n10:  return node.val;\n11: }",
+  "pseudocode": "1. Initialize stack with all left children from root\n2. next(): pop node, push all left children of node.right, return node.val\n3. hasNext(): return !stack.isEmpty()",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize stack with left-most path of root",
+      "note": "Initialize stack with [7, 3]. Pointer at null.",
       "treeNodes": [
         {
           "id": 0,
@@ -46,14 +47,52 @@
           "right": null
         }
       ],
+      "curr": null,
+      "visited": []
+    },
+    {
+      "codeLine": 2,
+      "note": "next() called. Pop 3 from stack.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 7,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 3,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 15,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 3,
+          "val": 9,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 20,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 1,
       "visited": [
-        0,
         1
       ]
     },
     {
-      "codeLine": 8,
-      "note": "Pop node from stack for next() call",
+      "codeLine": 2,
+      "note": "next() called. Pop 7 from stack.",
       "treeNodes": [
         {
           "id": 0,
@@ -86,13 +125,15 @@
           "right": null
         }
       ],
+      "curr": 0,
       "visited": [
+        1,
         0
       ]
     },
     {
-      "codeLine": 10,
-      "note": "Returned node value: 3",
+      "codeLine": 3,
+      "note": "hasNext() called. Stack contains [15]. Return true.",
       "treeNodes": [
         {
           "id": 0,
@@ -125,13 +166,15 @@
           "right": null
         }
       ],
+      "curr": 0,
       "visited": [
+        1,
         0
       ]
     },
     {
-      "codeLine": 8,
-      "note": "Pop next node from stack",
+      "codeLine": 2,
+      "note": "next() called. Pop 15, push 9 to stack.",
       "treeNodes": [
         {
           "id": 0,
@@ -164,48 +207,144 @@
           "right": null
         }
       ],
+      "curr": 2,
       "visited": [
-        0
-      ]
-    },
-    {
-      "codeLine": 10,
-      "note": "Returned node value: 7",
-      "treeNodes": [
-        {
-          "id": 0,
-          "val": 7,
-          "left": 1,
-          "right": 2
-        },
-        {
-          "id": 1,
-          "val": 3,
-          "left": null,
-          "right": null
-        },
-        {
-          "id": 2,
-          "val": 15,
-          "left": 3,
-          "right": 4
-        },
-        {
-          "id": 3,
-          "val": 9,
-          "left": null,
-          "right": null
-        },
-        {
-          "id": 4,
-          "val": 20,
-          "left": null,
-          "right": null
-        }
-      ],
-      "visited": [
+        1,
+        0,
         2
       ]
+    },
+    {
+      "codeLine": 2,
+      "note": "next() called. Pop 9.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 7,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 3,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 15,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 3,
+          "val": 9,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 20,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 3,
+      "visited": [
+        1,
+        0,
+        2,
+        3
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "next() called. Pop 20.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 7,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 3,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 15,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 3,
+          "val": 9,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 20,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 4,
+      "visited": [
+        1,
+        0,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "hasNext() called. Stack empty. Return false.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 7,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 3,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 15,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 3,
+          "val": 9,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 20,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 4,
+      "visited": [
+        1,
+        0,
+        2,
+        3,
+        4
+      ]
     }
-  ]
+  ],
+  "fullDescription": "<p>Implement the <code>BSTIterator</code> class that represents an iterator over the <strong><a href=\"https://en.wikipedia.org/wiki/Tree_traversal#In-order_(LNR)\" target=\"_blank\">in-order traversal</a></strong> of a binary search tree (BST):</p>\n\n<ul>\n\t<li><code>BSTIterator(TreeNode root)</code> Initializes an object of the <code>BSTIterator</code> class. The <code>root</code> of the BST is given as part of the constructor. The pointer should be initialized to a non-existent number smaller than any element in the BST.</li>\n\t<li><code>boolean hasNext()</code> Returns <code>true</code> if there exists a number in the traversal to the right of the pointer, otherwise returns <code>false</code>.</li>\n\t<li><code>int next()</code> Moves the pointer to the right, then returns the number at the pointer.</li>\n</ul>\n\n<p>Notice that by initializing the pointer to a non-existent smallest number, the first call to <code>next()</code> will return the smallest element in the BST.</p>\n\n<p>You may assume that <code>next()</code> calls will always be valid. That is, there will be at least a next number in the in-order traversal when <code>next()</code> is called.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2018/12/25/bst-tree.png\" style=\"width: 189px; height: 178px;\" />\n<pre>\n<strong>Input</strong>\n[&quot;BSTIterator&quot;, &quot;next&quot;, &quot;next&quot;, &quot;hasNext&quot;, &quot;next&quot;, &quot;hasNext&quot;, &quot;next&quot;, &quot;hasNext&quot;, &quot;next&quot;, &quot;hasNext&quot;]\n[[[7, 3, 15, null, null, 9, 20]], [], [], [], [], [], [], [], [], []]\n<strong>Output</strong>\n[null, 3, 7, true, 9, true, 15, true, 20, false]\n\n<strong>Explanation</strong>\nBSTIterator bSTIterator = new BSTIterator([7, 3, 15, null, null, 9, 20]);\nbSTIterator.next();    // return 3\nbSTIterator.next();    // return 7\nbSTIterator.hasNext(); // return True\nbSTIterator.next();    // return 9\nbSTIterator.hasNext(); // return True\nbSTIterator.next();    // return 15\nbSTIterator.hasNext(); // return True\nbSTIterator.next();    // return 20\nbSTIterator.hasNext(); // return False\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li>The number of nodes in the tree is in the range <code>[1, 10<sup>5</sup>]</code>.</li>\n\t<li><code>0 &lt;= Node.val &lt;= 10<sup>6</sup></code></li>\n\t<li>At most <code>10<sup>5</sup></code> calls will be made to <code>hasNext</code>, and <code>next</code>.</li>\n</ul>\n\n<p>&nbsp;</p>\n<p><strong>Follow up:</strong></p>\n\n<ul>\n\t<li>Could you implement <code>next()</code> and <code>hasNext()</code> to run in average <code>O(1)</code> time and use&nbsp;<code>O(h)</code> memory, where <code>h</code> is the height of the tree?</li>\n</ul>\n"
 }

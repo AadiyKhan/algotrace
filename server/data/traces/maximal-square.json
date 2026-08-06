@@ -9,11 +9,11 @@
   ],
   "description": "Find the area of the largest square containing only 1s in a binary matrix.",
   "target": 4,
-  "pseudocode": "1. Initialize dp matrix of size (m+1)x(n+1) with 0s\n2. For each cell (i, j) in matrix:\n3. If matrix[i][j] == '1':\n4. dp[i+1][j+1] = min(dp[i][j+1], dp[i+1][j], dp[i][j]) + 1\n5. Update maxSide = max(maxSide, dp[i+1][j+1])\n6. Return maxSide * maxSide",
+  "pseudocode": "1. Initialize dp matrix of size (m+1)x(n+1) with 0s\n2. Iterate through each cell (i, j) of input matrix\n3. If matrix[i][j] is '1', update dp[i+1][j+1] = min(dp[i][j+1], dp[i+1][j], dp[i][j]) + 1\n4. Track max square side length found so far\n5. Return maxSide * maxSide",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize DP table with zeros",
+      "note": "Initialize DP table with zeros to store square side lengths.",
       "matrix": [
         [
           0,
@@ -58,8 +58,8 @@
       ]
     },
     {
-      "codeLine": 4,
-      "note": "Processing (0,0): matrix is '1', dp becomes 1",
+      "codeLine": 3,
+      "note": "Processing cell (0,0) with value '1'. dp[1][1] becomes 1.",
       "matrix": [
         [
           0,
@@ -103,15 +103,11 @@
         ]
       ],
       "i": 0,
-      "j": 0,
-      "curr": [
-        0,
-        0
-      ]
+      "j": 0
     },
     {
-      "codeLine": 4,
-      "note": "Processing (1,2): matrix is '1', dp[2][3] becomes min(0,0,0)+1 = 1",
+      "codeLine": 3,
+      "note": "Processing cell (1,0) with value '1'. dp[2][1] becomes 1.",
       "matrix": [
         [
           0,
@@ -125,7 +121,7 @@
           0,
           1,
           0,
-          1,
+          0,
           0,
           0
         ],
@@ -133,9 +129,9 @@
           0,
           1,
           0,
-          1,
-          1,
-          1
+          0,
+          0,
+          0
         ],
         [
           0,
@@ -155,15 +151,11 @@
         ]
       ],
       "i": 1,
-      "j": 2,
-      "curr": [
-        1,
-        2
-      ]
+      "j": 0
     },
     {
-      "codeLine": 4,
-      "note": "Processing (2,2): neighbors (1,2), (2,1), (1,1) are all 1, dp[3][3] = min(1,1,1)+1 = 2",
+      "codeLine": 3,
+      "note": "Processing cell (2,1) with '1'. Neighbors dp[2][1], dp[3][1], dp[2][2] are all 1, so dp[3][2] = 2.",
       "matrix": [
         [
           0,
@@ -177,24 +169,24 @@
           0,
           1,
           0,
-          1,
+          0,
           0,
           0
         ],
         [
           0,
           1,
-          1,
-          2,
-          1,
-          1
+          0,
+          0,
+          0,
+          0
         ],
         [
           0,
           1,
-          1,
-          1,
-          1,
+          2,
+          0,
+          0,
           0
         ],
         [
@@ -207,15 +199,59 @@
         ]
       ],
       "i": 2,
-      "j": 2,
-      "curr": [
-        2,
-        2
-      ]
+      "j": 1
     },
     {
-      "codeLine": 5,
-      "note": "Max square side found is 2, area is 4",
+      "codeLine": 3,
+      "note": "Processing cell (1,3) with '1'. Neighbors allow dp[2][4] = 1.",
+      "matrix": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          1,
+          2,
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "i": 1,
+      "j": 3
+    },
+    {
+      "codeLine": 4,
+      "note": "Max side length is found to be 2. Area = 2*2 = 4.",
       "matrix": [
         [
           0,
@@ -236,8 +272,8 @@
         [
           0,
           1,
+          0,
           1,
-          2,
           1,
           1
         ],
@@ -245,7 +281,7 @@
           0,
           1,
           1,
-          2,
+          1,
           2,
           2
         ],
@@ -259,11 +295,8 @@
         ]
       ],
       "i": 3,
-      "j": 3,
-      "curr": [
-        2,
-        4
-      ]
+      "j": 4
     }
-  ]
+  ],
+  "fullDescription": "<p>Given an <code>m x n</code> binary <code>matrix</code> filled with <code>0</code>&#39;s and <code>1</code>&#39;s, <em>find the largest square containing only</em> <code>1</code>&#39;s <em>and return its area</em>.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2020/11/26/max1grid.jpg\" style=\"width: 400px; height: 319px;\" />\n<pre>\n<strong>Input:</strong> matrix = [[&quot;1&quot;,&quot;0&quot;,&quot;1&quot;,&quot;0&quot;,&quot;0&quot;],[&quot;1&quot;,&quot;0&quot;,&quot;1&quot;,&quot;1&quot;,&quot;1&quot;],[&quot;1&quot;,&quot;1&quot;,&quot;1&quot;,&quot;1&quot;,&quot;1&quot;],[&quot;1&quot;,&quot;0&quot;,&quot;0&quot;,&quot;1&quot;,&quot;0&quot;]]\n<strong>Output:</strong> 4\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2020/11/26/max2grid.jpg\" style=\"width: 165px; height: 165px;\" />\n<pre>\n<strong>Input:</strong> matrix = [[&quot;0&quot;,&quot;1&quot;],[&quot;1&quot;,&quot;0&quot;]]\n<strong>Output:</strong> 1\n</pre>\n\n<p><strong class=\"example\">Example 3:</strong></p>\n\n<pre>\n<strong>Input:</strong> matrix = [[&quot;0&quot;]]\n<strong>Output:</strong> 0\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>m == matrix.length</code></li>\n\t<li><code>n == matrix[i].length</code></li>\n\t<li><code>1 &lt;= m, n &lt;= 300</code></li>\n\t<li><code>matrix[i][j]</code> is <code>&#39;0&#39;</code> or <code>&#39;1&#39;</code>.</li>\n</ul>\n"
 }

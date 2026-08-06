@@ -4,17 +4,17 @@
   "type": "array",
   "tags": [
     "Array",
-    "Sliding Window",
     "Queue",
+    "Sliding Window",
     "Heap"
   ],
-  "description": "Find the maximum value of |yi - yj| + |xi - xj| given points sorted by x where |xi - xj| <= k.",
-  "target": null,
-  "pseudocode": "1. Initialize deque to store indices\n2. result = -infinity\n3. for i = 0 to points.length - 1:\n4.   while deque not empty and points[i][0] - points[deque[0]][0] > k:\n5.     deque.shift()\n6.   if deque not empty:\n7.     result = max(result, points[i][1] + points[i][0] + points[deque[0]][1] - points[deque[0]][0])\n8.   while deque not empty and points[deque[back]][1] - points[deque[back]][0] <= points[i][1] - points[i][0]:\n9.     deque.pop()\n10.  deque.push(i)",
+  "description": "Find the maximum value of yi + yj + |xi - xj| with xj - xi <= k using a monotonic queue.",
+  "target": 4,
+  "pseudocode": "1. Initialize deque to store [yi - xi, xi]\n2. Initialize max_val = -infinity\n3. For each point [xj, yj] in points:\n4.   Remove points from deque where xj - xi > k\n5.   If deque not empty, max_val = max(max_val, yj + xj + deque.front().yi_minus_xi)\n6.   While deque not empty and deque.back().yi_minus_xi <= yj - xj: pop_back\n7.   Push [yj - xj, xj] to deque",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize result and empty deque.",
+      "note": "Initialize empty deque and max_val",
       "array": [
         [
           1,
@@ -33,11 +33,12 @@
           -10
         ]
       ],
-      "i": null
+      "visited": [],
+      "curr": -1
     },
     {
-      "codeLine": 10,
-      "note": "Add point 0 to deque.",
+      "codeLine": 3,
+      "note": "Process point [1, 3]",
       "array": [
         [
           1,
@@ -56,12 +57,38 @@
           -10
         ]
       ],
-      "i": 0,
+      "visited": [],
+      "curr": 0
+    },
+    {
+      "codeLine": 7,
+      "note": "Push [3-1, 1] = [2, 1] to deque",
+      "array": [
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          5,
+          10
+        ],
+        [
+          6,
+          -10
+        ]
+      ],
+      "visited": [
+        0
+      ],
       "curr": 0
     },
     {
       "codeLine": 3,
-      "note": "Process point 1.",
+      "note": "Process point [2, 0]",
       "array": [
         [
           1,
@@ -80,12 +107,41 @@
           -10
         ]
       ],
-      "i": 1,
+      "visited": [
+        0
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Calculate val: 0 + 2 + 2 = 4. Update max_val = 4",
+      "array": [
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          5,
+          10
+        ],
+        [
+          6,
+          -10
+        ]
+      ],
+      "visited": [
+        0,
+        1
+      ],
       "curr": 1
     },
     {
       "codeLine": 7,
-      "note": "Calculate value: 0 + 2 + 3 - 1 = 4. Update result.",
+      "note": "Push [0-2, 2] = [-2, 2] to deque",
       "array": [
         [
           1,
@@ -104,12 +160,15 @@
           -10
         ]
       ],
-      "i": 1,
-      "curr": 0
+      "visited": [
+        0,
+        1
+      ],
+      "curr": 1
     },
     {
       "codeLine": 3,
-      "note": "Process point 2.",
+      "note": "Process point [5, 10]",
       "array": [
         [
           1,
@@ -128,12 +187,15 @@
           -10
         ]
       ],
-      "i": 2,
+      "visited": [
+        0,
+        1
+      ],
       "curr": 2
     },
     {
       "codeLine": 4,
-      "note": "Check constraint: 5 - 1 = 4 > k (assume k=3). Pop point 0.",
+      "note": "Pop [1, 3] because 5 - 1 > 1",
       "array": [
         [
           1,
@@ -152,12 +214,15 @@
           -10
         ]
       ],
-      "i": 2,
-      "curr": 5
+      "visited": [
+        1,
+        2
+      ],
+      "curr": 2
     },
     {
-      "codeLine": 10,
-      "note": "Push index 2 to deque.",
+      "codeLine": 7,
+      "note": "Push [10-5, 5] = [5, 5] to deque",
       "array": [
         [
           1,
@@ -176,12 +241,15 @@
           -10
         ]
       ],
-      "i": 2,
+      "visited": [
+        1,
+        2
+      ],
       "curr": 2
     },
     {
       "codeLine": 3,
-      "note": "Process point 3. Value: -10 + 6 + 10 - 5 = 1. Result remains 4.",
+      "note": "Process point [6, -10]",
       "array": [
         [
           1,
@@ -200,8 +268,66 @@
           -10
         ]
       ],
-      "i": 3,
+      "visited": [
+        1,
+        2
+      ],
+      "curr": 3
+    },
+    {
+      "codeLine": 4,
+      "note": "Pop [2, 0] because 6 - 2 > 1",
+      "array": [
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          5,
+          10
+        ],
+        [
+          6,
+          -10
+        ]
+      ],
+      "visited": [
+        2,
+        3
+      ],
+      "curr": 3
+    },
+    {
+      "codeLine": 5,
+      "note": "Calculate val: -10 + 6 + 5 = 1. Max remains 4",
+      "array": [
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          5,
+          10
+        ],
+        [
+          6,
+          -10
+        ]
+      ],
+      "visited": [
+        2,
+        3
+      ],
       "curr": 3
     }
-  ]
+  ],
+  "fullDescription": "<p>You are given an array <code>points</code> containing the coordinates of points on a 2D plane, sorted by the x-values, where <code>points[i] = [x<sub>i</sub>, y<sub>i</sub>]</code> such that <code>x<sub>i</sub> &lt; x<sub>j</sub></code> for all <code>1 &lt;= i &lt; j &lt;= points.length</code>. You are also given an integer <code>k</code>.</p>\n\n<p>Return <em>the maximum value of the equation </em><code>y<sub>i</sub> + y<sub>j</sub> + |x<sub>i</sub> - x<sub>j</sub>|</code> where <code>|x<sub>i</sub> - x<sub>j</sub>| &lt;= k</code> and <code>1 &lt;= i &lt; j &lt;= points.length</code>.</p>\n\n<p>It is guaranteed that there exists at least one pair of points that satisfy the constraint <code>|x<sub>i</sub> - x<sub>j</sub>| &lt;= k</code>.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> points = [[1,3],[2,0],[5,10],[6,-10]], k = 1\n<strong>Output:</strong> 4\n<strong>Explanation:</strong> The first two points satisfy the condition |x<sub>i</sub> - x<sub>j</sub>| &lt;= 1 and if we calculate the equation we get 3 + 0 + |1 - 2| = 4. Third and fourth points also satisfy the condition and give a value of 10 + -10 + |5 - 6| = 1.\nNo other pairs satisfy the condition, so we return the max of 4 and 1.\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> points = [[0,0],[3,0],[9,2]], k = 3\n<strong>Output:</strong> 3\n<strong>Explanation: </strong>Only the first two points have an absolute difference of 3 or less in the x-values, and give the value of 0 + 0 + |0 - 3| = 3.\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>2 &lt;= points.length &lt;= 10<sup>5</sup></code></li>\n\t<li><code>points[i].length == 2</code></li>\n\t<li><code>-10<sup>8</sup> &lt;= x<sub>i</sub>, y<sub>i</sub> &lt;= 10<sup>8</sup></code></li>\n\t<li><code>0 &lt;= k &lt;= 2 * 10<sup>8</sup></code></li>\n\t<li><code>x<sub>i</sub> &lt; x<sub>j</sub></code> for all <code>1 &lt;= i &lt; j &lt;= points.length</code></li>\n\t<li><code>x<sub>i</sub></code> form a strictly increasing sequence.</li>\n</ul>\n"
 }

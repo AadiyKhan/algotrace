@@ -1,0 +1,108 @@
+{
+  "title": "Find the Most Competitive Subsequence",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Stack",
+    "Greedy",
+    "Monotonic Stack"
+  ],
+  "description": "Find the most competitive subsequence of size k using a monotonic stack approach.",
+  "target": 2,
+  "pseudocode": "1. Initialize an empty stack.\n2. Iterate through each number in nums.\n3. While stack not empty, current number is smaller than stack top, and we have enough remaining elements to fill k, pop stack.\n4. If stack size < k, push current number.\n5. Return stack.",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Start processing nums = [3, 5, 2, 6], k = 2.",
+      "array": [
+        3,
+        5,
+        2,
+        6
+      ],
+      "visited": [],
+      "curr": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Push 3 to stack.",
+      "array": [
+        3
+      ],
+      "visited": [
+        0
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Compare 5 with 3. 5 > 3, no pop.",
+      "array": [
+        3,
+        5
+      ],
+      "visited": [
+        0,
+        1
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Compare 2 with 5. 2 < 5, pop 5. Remaining elements [6] (count 1) + current stack size (1) >= k (2).",
+      "array": [
+        3
+      ],
+      "visited": [
+        0
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Compare 2 with 3. 2 < 3, pop 3. Remaining elements [6] (count 1) + current stack size (0) < k (2). Stop popping.",
+      "array": [],
+      "visited": [],
+      "curr": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Push 2 to stack.",
+      "array": [
+        2
+      ],
+      "visited": [
+        2
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Compare 6 with 2. 6 > 2, no pop.",
+      "array": [
+        2,
+        6
+      ],
+      "visited": [
+        2,
+        3
+      ],
+      "curr": 3
+    },
+    {
+      "codeLine": 5,
+      "note": "Finished processing. Result is [2, 6].",
+      "array": [
+        2,
+        6
+      ],
+      "visited": [
+        2,
+        3
+      ],
+      "curr": 3
+    }
+  ],
+  "fullDescription": "<p>Given an integer array <code>nums</code> and a positive integer <code>k</code>, return <em>the most<strong> competitive</strong> subsequence of </em><code>nums</code> <em>of size </em><code>k</code>.</p>\n\n<p>An array&#39;s subsequence is a resulting sequence obtained by erasing some (possibly zero) elements from the array.</p>\n\n<p>We define that a subsequence <code>a</code> is more <strong>competitive</strong> than a subsequence <code>b</code> (of the same length) if in the first position where <code>a</code> and <code>b</code> differ, subsequence <code>a</code> has a number <strong>less</strong> than the corresponding number in <code>b</code>. For example, <code>[1,3,4]</code> is more competitive than <code>[1,3,5]</code> because the first position they differ is at the final number, and <code>4</code> is less than <code>5</code>.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> nums = [3,5,2,6], k = 2\n<strong>Output:</strong> [2,6]\n<strong>Explanation:</strong> Among the set of every possible subsequence: {[3,5], [3,2], [3,6], [5,2], [5,6], [2,6]}, [2,6] is the most competitive.\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> nums = [2,4,3,3,5,4,9,6], k = 4\n<strong>Output:</strong> [2,3,3,4]\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= nums.length &lt;= 10<sup>5</sup></code></li>\n\t<li><code>0 &lt;= nums[i] &lt;= 10<sup>9</sup></code></li>\n\t<li><code>1 &lt;= k &lt;= nums.length</code></li>\n</ul>\n"
+}

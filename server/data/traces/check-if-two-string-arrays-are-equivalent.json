@@ -1,0 +1,37 @@
+{
+  "title": "Check If Two String Arrays Are Equivalent",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "String"
+  ],
+  "description": "Determine if two string arrays represent the same string by concatenating all elements.",
+  "pseudocode": "1. let s1 = word1.join('');\n2. let s2 = word2.join('');\n3. return s1 === s2;",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Concatenating word1 ['a', 'bc'] into 'abc'.",
+      "array": [
+        "a",
+        "bc"
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Concatenating word2 ['ab', 'c'] into 'abc'.",
+      "array": [
+        "ab",
+        "c"
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Comparing 'abc' === 'abc', result is true.",
+      "array": [
+        "a",
+        "bc"
+      ]
+    }
+  ]
+}

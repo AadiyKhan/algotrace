@@ -4,86 +4,242 @@
   "type": "array",
   "tags": [
     "Array",
-    "Two Pointers",
-    "Stack"
+    "Two Pointers"
   ],
-  "description": "Given n non-negative integers representing an elevation map where the width of each bar is 1, compute how much water it can trap after raining.",
+  "description": "Compute units of trapped rain water between bars of an elevation map using two pointers.",
   "target": 6,
-  "pseudocode": "let left = 0, right = height.length - 1;\nlet leftMax = 0, rightMax = 0, total = 0;\nwhile (left < right) {\n  if (height[left] < height[right]) {\n    height[left] >= leftMax ? leftMax = height[left] : total += leftMax - height[left];\n    left++;\n  } else {\n    height[right] >= rightMax ? rightMax = height[right] : total += rightMax - height[right];\n    right--;\n  }\n}",
+  "pseudocode": "1. left = 0, right = n-1, leftMax = 0, rightMax = 0, water = 0\n2. while left < right:\n3. if height[left] < height[right]:\n4. if height[left] >= leftMax: leftMax = height[left]\n5. else: water += leftMax - height[left]\n6. left++\n7. else:\n8. if height[right] >= rightMax: rightMax = height[right]\n9. else: water += rightMax - height[right]\n10. right--",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize pointers at ends of array.",
+      "note": "Initialize pointers and max trackers.",
       "array": [
         0,
         1,
         0,
-        2
+        2,
+        1,
+        0,
+        1,
+        3,
+        2,
+        1,
+        2,
+        1
       ],
       "i": 0,
-      "j": 3
+      "j": 11,
+      "visited": []
+    },
+    {
+      "codeLine": 3,
+      "note": "Compare height[0] (0) and height[11] (1). Since 0 < 1, move left.",
+      "array": [
+        0,
+        1,
+        0,
+        2,
+        1,
+        0,
+        1,
+        3,
+        2,
+        1,
+        2,
+        1
+      ],
+      "curr": 0
     },
     {
       "codeLine": 4,
-      "note": "Compare heights at left and right pointers.",
+      "note": "height[0] (0) <= leftMax (0). Update leftMax to 0.",
       "array": [
         0,
         1,
         0,
-        2
+        2,
+        1,
+        0,
+        1,
+        3,
+        2,
+        1,
+        2,
+        1
       ],
-      "i": 0,
-      "j": 3
+      "curr": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Increment left pointer to 1.",
+      "array": [
+        0,
+        1,
+        0,
+        2,
+        1,
+        0,
+        1,
+        3,
+        2,
+        1,
+        2,
+        1
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Compare height[1] (1) and height[11] (1). They are equal, enter else.",
+      "array": [
+        0,
+        1,
+        0,
+        2,
+        1,
+        0,
+        1,
+        3,
+        2,
+        1,
+        2,
+        1
+      ],
+      "curr": 11
+    },
+    {
+      "codeLine": 8,
+      "note": "height[11] (1) >= rightMax (0). Update rightMax to 1.",
+      "array": [
+        0,
+        1,
+        0,
+        2,
+        1,
+        0,
+        1,
+        3,
+        2,
+        1,
+        2,
+        1
+      ],
+      "curr": 11
+    },
+    {
+      "codeLine": 10,
+      "note": "Decrement right pointer to 10.",
+      "array": [
+        0,
+        1,
+        0,
+        2,
+        1,
+        0,
+        1,
+        3,
+        2,
+        1,
+        2,
+        1
+      ],
+      "curr": 10
+    },
+    {
+      "codeLine": 3,
+      "note": "Compare height[1] (1) and height[10] (2). 1 < 2, enter if.",
+      "array": [
+        0,
+        1,
+        0,
+        2,
+        1,
+        0,
+        1,
+        3,
+        2,
+        1,
+        2,
+        1
+      ],
+      "curr": 1
     },
     {
       "codeLine": 5,
-      "note": "Left is smaller, update leftMax and move pointer.",
+      "note": "height[1] (1) > leftMax (0). Update leftMax to 1.",
       "array": [
         0,
         1,
         0,
-        2
-      ],
-      "i": 1,
-      "j": 3
-    },
-    {
-      "codeLine": 5,
-      "note": "Process index 1, leftMax becomes 1.",
-      "array": [
-        0,
+        2,
         1,
         0,
-        2
+        1,
+        3,
+        2,
+        1,
+        2,
+        1
       ],
-      "i": 2,
-      "j": 3,
       "curr": 1
     },
     {
       "codeLine": 6,
-      "note": "Water trapped at index 2 = leftMax(1) - height(0) = 1.",
+      "note": "Increment left pointer to 2. Water trapped: 0.",
       "array": [
         0,
         1,
         0,
-        2
+        2,
+        1,
+        0,
+        1,
+        3,
+        2,
+        1,
+        2,
+        1
       ],
-      "i": 3,
-      "j": 3,
       "curr": 2
     },
     {
       "codeLine": 3,
-      "note": "Loop ends as left is no longer < right.",
+      "note": "Compare height[2] (0) and height[10] (2). 0 < 2, enter if.",
       "array": [
         0,
         1,
         0,
-        2
+        2,
+        1,
+        0,
+        1,
+        3,
+        2,
+        1,
+        2,
+        1
       ],
-      "i": 3,
-      "j": 3
+      "curr": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Add trapped water: leftMax (1) - height[2] (0) = 1. Total: 1.",
+      "array": [
+        0,
+        1,
+        0,
+        2,
+        1,
+        0,
+        1,
+        3,
+        2,
+        1,
+        2,
+        1
+      ],
+      "curr": 2
     }
-  ]
+  ],
+  "fullDescription": "<p>Given <code>n</code> non-negative integers representing an elevation map where the width of each bar is <code>1</code>, compute how much water it can trap after raining.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n<img src=\"https://assets.leetcode.com/uploads/2018/10/22/rainwatertrap.png\" style=\"width: 412px; height: 161px;\" />\n<pre>\n<strong>Input:</strong> height = [0,1,0,2,1,0,1,3,2,1,2,1]\n<strong>Output:</strong> 6\n<strong>Explanation:</strong> The above elevation map (black section) is represented by array [0,1,0,2,1,0,1,3,2,1,2,1]. In this case, 6 units of rain water (blue section) are being trapped.\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> height = [4,2,0,3,2,5]\n<strong>Output:</strong> 9\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>n == height.length</code></li>\n\t<li><code>1 &lt;= n &lt;= 2 * 10<sup>4</sup></code></li>\n\t<li><code>0 &lt;= height[i] &lt;= 10<sup>5</sup></code></li>\n</ul>\n"
 }

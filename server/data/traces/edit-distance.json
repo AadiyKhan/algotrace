@@ -3,80 +3,62 @@
   "difficulty": "Medium",
   "type": "matrix",
   "tags": [
-    "Dynamic Programming",
-    "String"
+    "String",
+    "Dynamic Programming"
   ],
-  "description": "Calculate minimum operations to convert word1 to word2 using insert, delete, or replace.",
-  "target": "word1: 'cat', word2: 'cut'",
-  "pseudocode": "1: let dp = new Array(m+1).fill(0).map(() => new Array(n+1).fill(0));\n2: for(i=0; i<=m; i++) dp[i][0] = i;\n3: for(j=0; j<=n; j++) dp[0][j] = j;\n4: for(i=1; i<=m; i++)\n5:   for(j=1; j<=n; j++)\n6:     if(word1[i-1] === word2[j-1]) dp[i][j] = dp[i-1][j-1];\n7:     else dp[i][j] = 1 + Math.min(dp[i-1][j], dp[i][j-1], dp[i-1][j-1]);",
+  "description": "Calculate minimum operations to convert word1 to word2 using DP matrix.",
+  "target": 3,
+  "pseudocode": "1. Initialize (m+1)x(n+1) matrix\n2. Fill first row/col with index\n3. For i, j: if char match, diagonal value; else 1 + min(up, left, diag)",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize DP table with size 4x4.",
+      "note": "Initialize 6x4 DP matrix for 'horse' and 'ros'",
       "matrix": [
         [
           0,
+          1,
+          2,
+          3
+        ],
+        [
+          1,
           0,
           0,
           0
         ],
         [
-          0,
-          0,
-          0,
-          0
-        ],
-        [
-          0,
+          2,
           0,
           0,
           0
         ],
         [
+          3,
           0,
+          0,
+          0
+        ],
+        [
+          4,
+          0,
+          0,
+          0
+        ],
+        [
+          5,
           0,
           0,
           0
         ]
       ],
       "curr": [
-        4,
-        4
-      ]
-    },
-    {
-      "codeLine": 2,
-      "note": "Fill base cases for empty word2.",
-      "matrix": [
-        [
-          0,
-          0,
-          0,
-          0
-        ],
-        [
-          1,
-          0,
-          0,
-          0
-        ],
-        [
-          2,
-          0,
-          0,
-          0
-        ],
-        [
-          3,
-          0,
-          0,
-          0
-        ]
+        0,
+        0
       ]
     },
     {
       "codeLine": 3,
-      "note": "Fill base cases for empty word1.",
+      "note": "Compare 'h' and 'r': mismatch, min(1,1,0)+1 = 1",
       "matrix": [
         [
           0,
@@ -86,7 +68,7 @@
         ],
         [
           1,
-          0,
+          1,
           0,
           0
         ],
@@ -101,14 +83,28 @@
           0,
           0,
           0
+        ],
+        [
+          4,
+          0,
+          0,
+          0
+        ],
+        [
+          5,
+          0,
+          0,
+          0
         ]
+      ],
+      "curr": [
+        1,
+        1
       ]
     },
     {
-      "codeLine": 6,
-      "note": "Compare 'c' == 'c', carry over diagonal value.",
-      "i": 1,
-      "j": 1,
+      "codeLine": 3,
+      "note": "Compare 'ho' and 'r': 1 + min(1, 2, 1) = 2",
       "matrix": [
         [
           0,
@@ -118,13 +114,13 @@
         ],
         [
           1,
-          0,
-          0,
+          1,
+          2,
           0
         ],
         [
           2,
-          0,
+          2,
           0,
           0
         ],
@@ -133,14 +129,28 @@
           0,
           0,
           0
+        ],
+        [
+          4,
+          0,
+          0,
+          0
+        ],
+        [
+          5,
+          0,
+          0,
+          0
         ]
+      ],
+      "curr": [
+        2,
+        1
       ]
     },
     {
-      "codeLine": 7,
-      "note": "Compare 'a' != 'u', take min(top, left, diag) + 1.",
-      "i": 2,
-      "j": 2,
+      "codeLine": 3,
+      "note": "Compare 'hor' and 'ro': match! Take diagonal 1",
       "matrix": [
         [
           0,
@@ -150,23 +160,86 @@
         ],
         [
           1,
-          0,
+          1,
+          2,
+          3
+        ],
+        [
+          2,
+          2,
           1,
           2
         ],
         [
+          3,
+          3,
+          2,
+          1
+        ],
+        [
+          4,
+          4,
+          3,
+          2
+        ],
+        [
+          5,
+          5,
+          4,
+          3
+        ]
+      ],
+      "curr": [
+        3,
+        2
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Final cell [5,3] calculated as 3",
+      "matrix": [
+        [
+          0,
+          1,
+          2,
+          3
+        ],
+        [
+          1,
+          1,
+          2,
+          3
+        ],
+        [
+          2,
           2,
           1,
-          1,
-          0
+          2
         ],
         [
           3,
+          3,
           2,
-          1,
           1
+        ],
+        [
+          4,
+          4,
+          3,
+          2
+        ],
+        [
+          5,
+          5,
+          4,
+          3
         ]
+      ],
+      "curr": [
+        5,
+        3
       ]
     }
-  ]
+  ],
+  "fullDescription": "<p>Given two strings <code>word1</code> and <code>word2</code>, return <em>the minimum number of operations required to convert <code>word1</code> to <code>word2</code></em>.</p>\n\n<p>You have the following three operations permitted on a word:</p>\n\n<ul>\n\t<li>Insert a character</li>\n\t<li>Delete a character</li>\n\t<li>Replace a character</li>\n</ul>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> word1 = &quot;horse&quot;, word2 = &quot;ros&quot;\n<strong>Output:</strong> 3\n<strong>Explanation:</strong> \nhorse -&gt; rorse (replace &#39;h&#39; with &#39;r&#39;)\nrorse -&gt; rose (remove &#39;r&#39;)\nrose -&gt; ros (remove &#39;e&#39;)\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> word1 = &quot;intention&quot;, word2 = &quot;execution&quot;\n<strong>Output:</strong> 5\n<strong>Explanation:</strong> \nintention -&gt; inention (remove &#39;t&#39;)\ninention -&gt; enention (replace &#39;i&#39; with &#39;e&#39;)\nenention -&gt; exention (replace &#39;n&#39; with &#39;x&#39;)\nexention -&gt; exection (replace &#39;n&#39; with &#39;c&#39;)\nexection -&gt; execution (insert &#39;u&#39;)\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>0 &lt;= word1.length, word2.length &lt;= 500</code></li>\n\t<li><code>word1</code> and <code>word2</code> consist of lowercase English letters.</li>\n</ul>\n"
 }

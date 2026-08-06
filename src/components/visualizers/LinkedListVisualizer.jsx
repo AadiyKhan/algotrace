@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import useChatStore from '../../store/useChatStore';
 
 const NODE_W = 56;
 const NODE_H = 56;
@@ -33,6 +34,7 @@ const PointerLabel = ({ text, style, layoutId }) => (
 );
 
 const LinkedListVisualizer = ({ stepData }) => {
+  const { askQuestion } = useChatStore();
   const { nodes, curr, prev, nextPtr } = stepData;
 
   const getStyle = (idx) => {
@@ -75,9 +77,11 @@ const LinkedListVisualizer = ({ stepData }) => {
                   {/* Node: [val | →] */}
                   <motion.div
                     layout
-                    className="flex items-stretch"
+                    onClick={() => askQuestion(`Explain what node with value ${node.val} at index ${idx} represents in the linked list right now.`)}
+                    className="flex items-stretch cursor-pointer hover:border-amber-500 transition-colors"
                     style={{ border: s.border, boxShadow: s.shadow }}
                     animate={isCurr ? { scale: [1, 1.06, 1] } : { scale: 1 }}
+                    whileHover={{ scale: 1.05 }}
                     transition={{ duration: 0.25 }}>
 
                     {/* Value cell */}
@@ -140,6 +144,33 @@ const LinkedListVisualizer = ({ stepData }) => {
           </AnimatePresence>
         </div>
       </div>
+
+
+      {/* Results Section */}
+      {(stepData.results || stepData.result) && Array.isArray(stepData.results || stepData.result) && (
+        <div className="flex flex-col gap-4 mt-4 w-full border-t-[2px] border-white/10 pt-8">
+          <div className="flex items-center gap-4">
+            <span className="font-mono font-bold tracking-widest text-[11px] uppercase text-white/50">FOUND_RESULTS</span>
+            <div className="flex-1 h-[2px] bg-white/10" />
+          </div>
+          <div className="flex flex-wrap gap-4">
+            {(stepData.results || stepData.result).length === 0 ? (
+              <span className="font-mono text-[12px] text-white/30 uppercase tracking-widest">[ NONE YET ]</span>
+            ) : (
+              (stepData.results || stepData.result).map((item, idx) => (
+                <motion.div 
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  key={idx} 
+                  className="px-4 py-2 border-[2px] border-amber-500 bg-amber-500/10 text-amber-500 font-mono font-bold text-sm tracking-widest uppercase"
+                >
+                  {typeof item === 'object' ? JSON.stringify(item) : item}
+                </motion.div>
+              ))
+            )}
+          </div>
+        </div>
+      )}
 
       {/* Legend + variable inspector */}
       <div className="grid grid-cols-3 gap-3 border-t border-borderDark pt-6">

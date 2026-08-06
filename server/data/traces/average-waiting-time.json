@@ -1,0 +1,54 @@
+{
+  "title": "Average Waiting Time",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Simulation"
+  ],
+  "description": "Calculate the average waiting time for customers given their arrival time and prep time.",
+  "target": 2.5,
+  "pseudocode": "let currentTime = 0;\nlet totalWait = 0;\nfor (let [arrival, time] of customers) {\n  currentTime = Math.max(currentTime, arrival) + time;\n  totalWait += (currentTime - arrival);\n}\nreturn totalWait / customers.length;",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize currentTime to 0",
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Processing first customer: arrives at 1, takes 2",
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "currentTime = max(0, 1) + 2 = 3",
+      "i": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Wait time = 3 - 1 = 2, totalWait = 2",
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Processing second customer: arrives at 2, takes 5",
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "currentTime = max(3, 2) + 5 = 8",
+      "i": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Wait time = 8 - 2 = 6, totalWait = 8",
+      "i": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "Return average = 8 / 2 = 4.0",
+      "i": 1
+    }
+  ]
+}

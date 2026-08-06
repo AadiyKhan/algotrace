@@ -8,79 +8,62 @@
     "Sorting",
     "Heap"
   ],
-  "description": "Calculate minimum cost to hire k workers by sorting workers by wage-to-quality ratio and using a max-heap to maintain quality sum.",
-  "target": 105,
-  "pseudocode": "1. Create workers list with [ratio, quality]\n2. Sort workers by ratio\n3. Initialize max-heap for quality and sumQuality = 0\n4. For each worker in sorted list:\n5. Add worker.quality to heap and sumQuality\n6. If heap size > k, remove max quality and subtract from sumQuality\n7. If heap size == k, calculate current cost = sumQuality * ratio, update minCost",
+  "description": "Calculate minimum cost to hire k workers by sorting workers by wage-to-quality ratio and maintaining a max-heap of qualities.",
+  "pseudocode": "1. Create workers list with [ratio, quality, wage].\n2. Sort workers by ratio ascending.\n3. Use max-heap to track highest qualities.\n4. Iterate through workers, calculate cost based on current max ratio.",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Calculate ratios: (70/10=7.0, 50/20=2.5, 30/5=6.0). Pairs: [2.5, 20], [6.0, 5], [7.0, 10]",
+      "note": "Created worker pairs: [7.0, 10], [2.5, 20], [6.0, 5].",
+      "array": [
+        7,
+        2.5,
+        6
+      ],
+      "visited": []
+    },
+    {
+      "codeLine": 2,
+      "note": "Sorted by ratio: Worker 1 (2.5, 20), Worker 2 (6.0, 5), Worker 0 (7.0, 10).",
       "array": [
         2.5,
         6,
         7
       ],
-      "curr": 70
+      "visited": [
+        1,
+        2,
+        0
+      ]
     },
     {
-      "codeLine": 4,
-      "note": "Processing worker with ratio 2.5 (quality 20). Heap: [20], sumQuality: 20",
+      "codeLine": 3,
+      "note": "Pushing worker 1 into heap: Sum quality = 20.",
       "array": [
-        20
+        2.5
       ],
       "i": 0,
-      "curr": 2
+      "curr": 0
     },
     {
       "codeLine": 4,
-      "note": "Processing worker with ratio 6.0 (quality 5). Heap: [20, 5], sumQuality: 25",
+      "note": "Pushing worker 2 into heap: Sum quality = 25. Cost = 25 * 6.0 = 150.",
       "array": [
-        20,
-        5
+        2.5,
+        6
       ],
       "i": 1,
-      "curr": 6
-    },
-    {
-      "codeLine": 7,
-      "note": "Heap size is k=2. Cost = 25 * 6.0 = 150.0. MinCost = 150.0",
-      "array": [
-        20,
-        5
-      ],
-      "i": 1,
-      "curr": 2
+      "curr": 1
     },
     {
       "codeLine": 4,
-      "note": "Processing worker with ratio 7.0 (quality 10). Heap adds 10: [20, 5, 10]",
+      "note": "Pushing worker 0, popping max quality (20). Sum quality = 5+10 = 15. Cost = 15 * 7.0 = 105.",
       "array": [
-        20,
-        5,
-        10
+        6,
+        7
       ],
       "i": 2,
-      "curr": 7
-    },
-    {
-      "codeLine": 6,
-      "note": "Heap size > k. Remove max quality (20). Heap: [5, 10], sumQuality: 15",
-      "array": [
-        5,
-        10
-      ],
-      "i": 2,
-      "curr": 20
-    },
-    {
-      "codeLine": 7,
-      "note": "Cost = 15 * 7.0 = 105.0. MinCost = 105.0",
-      "array": [
-        5,
-        10
-      ],
-      "i": 2,
-      "curr": 15
+      "curr": 2
     }
-  ]
+  ],
+  "fullDescription": "<p>There are <code>n</code> workers. You are given two integer arrays <code>quality</code> and <code>wage</code> where <code>quality[i]</code> is the quality of the <code>i<sup>th</sup></code> worker and <code>wage[i]</code> is the minimum wage expectation for the <code>i<sup>th</sup></code> worker.</p>\n\n<p>We want to hire exactly <code>k</code> workers to form a <strong>paid group</strong>. To hire a group of <code>k</code> workers, we must pay them according to the following rules:</p>\n\n<ol>\n\t<li>Every worker in the paid group must be paid at least their minimum wage expectation.</li>\n\t<li>In the group, each worker&#39;s pay must be directly proportional to their quality. This means if a worker&rsquo;s quality is double that of another worker in the group, then they must be paid twice as much as the other worker.</li>\n</ol>\n\n<p>Given the integer <code>k</code>, return <em>the least amount of money needed to form a paid group satisfying the above conditions</em>. Answers within <code>10<sup>-5</sup></code> of the actual answer will be accepted.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> quality = [10,20,5], wage = [70,50,30], k = 2\n<strong>Output:</strong> 105.00000\n<strong>Explanation:</strong> We pay 70 to 0<sup>th</sup> worker and 35 to 2<sup>nd</sup> worker.\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> quality = [3,1,10,10,1], wage = [4,8,2,2,7], k = 3\n<strong>Output:</strong> 30.66667\n<strong>Explanation:</strong> We pay 4 to 0<sup>th</sup> worker, 13.33333 to 2<sup>nd</sup> and 3<sup>rd</sup> workers separately.\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>n == quality.length == wage.length</code></li>\n\t<li><code>1 &lt;= k &lt;= n &lt;= 10<sup>4</sup></code></li>\n\t<li><code>1 &lt;= quality[i], wage[i] &lt;= 10<sup>4</sup></code></li>\n</ul>\n"
 }

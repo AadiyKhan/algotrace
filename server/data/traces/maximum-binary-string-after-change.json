@@ -1,0 +1,95 @@
+{
+  "title": "Maximum Binary String After Change",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "String",
+    "Greedy"
+  ],
+  "description": "Transform a binary string by replacing '00' with '10' or '10' with '01' to make the string lexicographically largest.",
+  "target": "11110",
+  "pseudocode": "1: countZeros = 0\n2: firstZero = -1\n3: for i from 0 to n-1:\n4:   if s[i] == '0':\n5:     countZeros++\n6:     if firstZero == -1: firstZero = i\n7: res = array of '1's\n8: if countZeros > 0:\n9:   res[firstZero + countZeros - 1] = '0'",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize count of zeros.",
+      "array": [
+        "0",
+        "0",
+        "0",
+        "1",
+        "0"
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Iterate through the string to count zeros and find first zero index.",
+      "array": [
+        "0",
+        "0",
+        "0",
+        "1",
+        "0"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "First zero found at index 0, count incremented.",
+      "array": [
+        "0",
+        "0",
+        "0",
+        "1",
+        "0"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Second zero found, count incremented.",
+      "array": [
+        "0",
+        "0",
+        "0",
+        "1",
+        "0"
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Third zero found, count incremented.",
+      "array": [
+        "0",
+        "0",
+        "0",
+        "1",
+        "0"
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 7,
+      "note": "Initialize result array with all '1's.",
+      "array": [
+        "1",
+        "1",
+        "1",
+        "1",
+        "1"
+      ]
+    },
+    {
+      "codeLine": 9,
+      "note": "Place the single '0' at (firstZero + countZeros - 1) which is (0 + 4 - 1) = 3.",
+      "array": [
+        "1",
+        "1",
+        "1",
+        "0",
+        "1"
+      ]
+    }
+  ]
+}

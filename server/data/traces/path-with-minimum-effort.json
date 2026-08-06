@@ -1,0 +1,141 @@
+{
+  "title": "Path With Minimum Effort",
+  "difficulty": "Medium",
+  "type": "matrix",
+  "tags": [
+    "Graph",
+    "Dijkstra",
+    "Binary Search"
+  ],
+  "description": "Find a path from (0,0) to (rows-1, cols-1) that minimizes the maximum absolute difference in heights between adjacent cells.",
+  "target": 0,
+  "pseudocode": "1. Initialize efforts matrix with infinity, set (0,0) to 0\n2. Use a min-priority queue to store [effort, r, c]\n3. While queue is not empty:\n4. Pop [effort, r, c] with minimum effort\n5. If (r,c) is target, return effort\n6. For each neighbor (nr, nc):\n7. NewEffort = max(effort, abs(grid[r][c] - grid[nr][nc]))\n8. If NewEffort < efforts[nr][nc]: update efforts, push to queue",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize effort matrix with infinity, start at (0,0)",
+      "matrix": [
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Extract [0, 0, 0] from queue",
+      "matrix": [
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Evaluate neighbor (0, 1): diff is |2-1| = 1. New effort is 1.",
+      "matrix": [
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "curr": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Evaluate neighbor (1, 0): diff is |3-1| = 2. New effort is 2.",
+      "matrix": [
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "curr": [
+        1,
+        0
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Pop [1, 0, 1] from queue",
+      "matrix": [
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "curr": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Evaluate neighbor (1, 1) from (0, 1): diff is |4-2| = 2. Effort is max(1, 2) = 2.",
+      "matrix": [
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "curr": [
+        1,
+        1
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Reached target (1, 1), minimum effort is 2",
+      "matrix": [
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "curr": [
+        1,
+        1
+      ]
+    }
+  ]
+}

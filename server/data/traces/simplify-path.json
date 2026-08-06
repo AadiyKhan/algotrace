@@ -6,77 +6,69 @@
     "String",
     "Stack"
   ],
-  "description": "Given an absolute path for a Unix-style file system, simplify it to the canonical path.",
-  "target": "/home/user/Documents",
-  "pseudocode": "1. components = path.split('/')\n2. stack = []\n3. for part in components:\n4.   if part == '..' and stack: stack.pop()\n5.   elif part != '.' and part != '' and part != '..': stack.push(part)\n6. return '/' + stack.join('/')",
+  "description": "Simplify an absolute Unix-style path by removing trailing slashes, handling '.' and '..', and collapsing multiple slashes.",
+  "target": "/home",
+  "pseudocode": "1. Split path by '/' into components\n2. Iterate through components\n3. If component is '..' pop stack if not empty\n4. If component is valid name (not '' or '.'), push to stack\n5. Join stack with '/' and prepend root '/'",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Split input path '/a/./b/../../c/' by '/'",
+      "note": "Split path '/home/' into components: ['', 'home', '']",
       "array": [
         "",
-        "a",
-        ".",
-        "b",
-        "..",
-        "..",
-        "c",
+        "home",
         ""
+      ],
+      "visited": []
+    },
+    {
+      "codeLine": 2,
+      "note": "Processing first component: '' (ignored)",
+      "array": [
+        "",
+        "home",
+        ""
+      ],
+      "i": 0,
+      "curr": 0,
+      "visited": [
+        0
       ]
     },
     {
-      "codeLine": 3,
-      "note": "Process component 'a'",
+      "codeLine": 4,
+      "note": "Processing second component: 'home' (pushed to stack)",
+      "array": [
+        "home"
+      ],
       "i": 1,
-      "array": [
-        "a"
+      "curr": 1,
+      "visited": [
+        0,
+        1
       ]
     },
     {
-      "codeLine": 3,
-      "note": "Process component '.' - skip",
+      "codeLine": 2,
+      "note": "Processing third component: '' (ignored)",
+      "array": [
+        "home"
+      ],
       "i": 2,
-      "array": [
-        "a"
+      "curr": 2,
+      "visited": [
+        0,
+        1,
+        2
       ]
-    },
-    {
-      "codeLine": 3,
-      "note": "Process component 'b'",
-      "i": 3,
-      "array": [
-        "a",
-        "b"
-      ]
-    },
-    {
-      "codeLine": 4,
-      "note": "Process '..' - pop 'b'",
-      "i": 4,
-      "array": [
-        "a"
-      ]
-    },
-    {
-      "codeLine": 4,
-      "note": "Process '..' - pop 'a'",
-      "i": 5,
-      "array": []
     },
     {
       "codeLine": 5,
-      "note": "Process 'c' - push to stack",
-      "i": 6,
+      "note": "Final canonical path construction: '/home'",
       "array": [
-        "c"
-      ]
-    },
-    {
-      "codeLine": 6,
-      "note": "Join stack into canonical path '/c'",
-      "array": [
-        "c"
-      ]
+        "home"
+      ],
+      "curr": 1
     }
-  ]
+  ],
+  "fullDescription": "<p>You are given an <em>absolute</em> path for a Unix-style file system, which always begins with a slash <code>&#39;/&#39;</code>. Your task is to transform this absolute path into its <strong>simplified canonical path</strong>.</p>\n\n<p>The <em>rules</em> of a Unix-style file system are as follows:</p>\n\n<ul>\n\t<li>A single period <code>&#39;.&#39;</code> represents the current directory.</li>\n\t<li>A double period <code>&#39;..&#39;</code> represents the previous/parent directory.</li>\n\t<li>Multiple consecutive slashes such as <code>&#39;//&#39;</code> and <code>&#39;///&#39;</code> are treated as a single slash <code>&#39;/&#39;</code>.</li>\n\t<li>Any sequence of periods that does <strong>not match</strong> the rules above should be treated as a <strong>valid directory or</strong> <strong>file </strong><strong>name</strong>. For example, <code>&#39;...&#39; </code>and <code>&#39;....&#39;</code> are valid directory or file names.</li>\n</ul>\n\n<p>The simplified canonical path should follow these <em>rules</em>:</p>\n\n<ul>\n\t<li>The path must start with a single slash <code>&#39;/&#39;</code>.</li>\n\t<li>Directories within the path must be separated by exactly one slash <code>&#39;/&#39;</code>.</li>\n\t<li>The path must not end with a slash <code>&#39;/&#39;</code>, unless it is the root directory.</li>\n\t<li>The path must not have any single or double periods (<code>&#39;.&#39;</code> and <code>&#39;..&#39;</code>) used to denote current or parent directories.</li>\n</ul>\n\n<p>Return the <strong>simplified canonical path</strong>.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<div class=\"example-block\">\n<p><strong>Input:</strong> <span class=\"example-io\">path = &quot;/home/&quot;</span></p>\n\n<p><strong>Output:</strong> <span class=\"example-io\">&quot;/home&quot;</span></p>\n\n<p><strong>Explanation:</strong></p>\n\n<p>The trailing slash should be removed.</p>\n</div>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<div class=\"example-block\">\n<p><strong>Input:</strong> <span class=\"example-io\">path = &quot;/home//foo/&quot;</span></p>\n\n<p><strong>Output:</strong> <span class=\"example-io\">&quot;/home/foo&quot;</span></p>\n\n<p><strong>Explanation:</strong></p>\n\n<p>Multiple consecutive slashes are replaced by a single one.</p>\n</div>\n\n<p><strong class=\"example\">Example 3:</strong></p>\n\n<div class=\"example-block\">\n<p><strong>Input:</strong> <span class=\"example-io\">path = &quot;/home/user/Documents/../Pictures&quot;</span></p>\n\n<p><strong>Output:</strong> <span class=\"example-io\">&quot;/home/user/Pictures&quot;</span></p>\n\n<p><strong>Explanation:</strong></p>\n\n<p>A double period <code>&quot;..&quot;</code> refers to the directory up a level (the parent directory).</p>\n</div>\n\n<p><strong class=\"example\">Example 4:</strong></p>\n\n<div class=\"example-block\">\n<p><strong>Input:</strong> <span class=\"example-io\">path = &quot;/../&quot;</span></p>\n\n<p><strong>Output:</strong> <span class=\"example-io\">&quot;/&quot;</span></p>\n\n<p><strong>Explanation:</strong></p>\n\n<p>Going one level up from the root directory is not possible.</p>\n</div>\n\n<p><strong class=\"example\">Example 5:</strong></p>\n\n<div class=\"example-block\">\n<p><strong>Input:</strong> <span class=\"example-io\">path = &quot;/.../a/../b/c/../d/./&quot;</span></p>\n\n<p><strong>Output:</strong> <span class=\"example-io\">&quot;/.../b/d&quot;</span></p>\n\n<p><strong>Explanation:</strong></p>\n\n<p><code>&quot;...&quot;</code> is a valid name for a directory in this problem.</p>\n</div>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= path.length &lt;= 3000</code></li>\n\t<li><code>path</code> consists of English letters, digits, period <code>&#39;.&#39;</code>, slash <code>&#39;/&#39;</code> or <code>&#39;_&#39;</code>.</li>\n\t<li><code>path</code> is a valid absolute Unix path.</li>\n</ul>\n"
 }

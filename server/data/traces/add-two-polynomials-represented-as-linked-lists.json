@@ -1,0 +1,101 @@
+{
+  "title": "Add Two Polynomials Represented as Linked Lists",
+  "difficulty": "Medium",
+  "type": "linked-list",
+  "tags": [
+    "Linked List",
+    "Math"
+  ],
+  "description": "Add two polynomials represented by linked lists where each node contains a coefficient and exponent.",
+  "pseudocode": "1: function addPoly(l1, l2):\n2:   dummy = new Node()\n3:   curr = dummy\n4:   while l1 or l2:\n5:     if l1.exp == l2.exp: sum = l1.coeff + l2.coeff; l1=l1.next; l2=l2.next\n6:     else if l1.exp > l2.exp: sum = l1.coeff; l1=l1.next\n7:     else: sum = l2.coeff; l2=l2.next\n8:     curr.next = new Node(sum)\n9:     curr = curr.next",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Initialize dummy node to track the head of the result list.",
+      "nodes": [
+        {
+          "val": "0,0",
+          "next": null
+        }
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Compare exponents of current nodes (2x^2 + 1x^0) and (3x^2 + 4x^1).",
+      "nodes": [
+        {
+          "val": "2,2",
+          "next": 1
+        },
+        {
+          "val": "1,0",
+          "next": null
+        },
+        {
+          "val": "3,2",
+          "next": 3
+        },
+        {
+          "val": "4,1",
+          "next": null
+        }
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Exponents match (2 == 3): add coefficients (2+3 = 5).",
+      "nodes": [
+        {
+          "val": "5,2",
+          "next": null
+        }
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Append result node 5x^2 to the list.",
+      "nodes": [
+        {
+          "val": "0,0",
+          "next": 4
+        },
+        {
+          "val": "5,2",
+          "next": null
+        }
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Compare remaining nodes: (1x^0) and (4x^1). 1 < 4, process 4x^1.",
+      "nodes": [
+        {
+          "val": "5,2",
+          "next": 5
+        },
+        {
+          "val": "4,1",
+          "next": null
+        }
+      ]
+    },
+    {
+      "codeLine": 9,
+      "note": "Append result node 4x^1 to the list.",
+      "nodes": [
+        {
+          "val": "5,2",
+          "next": 5
+        },
+        {
+          "val": "4,1",
+          "next": 6
+        },
+        {
+          "val": "1,0",
+          "next": null
+        }
+      ]
+    }
+  ]
+}

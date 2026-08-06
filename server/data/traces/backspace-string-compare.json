@@ -5,89 +5,144 @@
   "tags": [
     "Array",
     "String",
-    "Stack",
     "Two Pointers"
   ],
-  "description": "Compare two strings S and T. '#' represents a backspace character. Return true if they are equal after processing backspaces.",
-  "pseudocode": "function backspaceCompare(S, T) {\n  const build = (s) => {\n    let res = [];\n    for (let char of s) {\n      if (char !== '#') res.push(char);\n      else res.pop();\n    }\n    return res.join('');\n  };\n  return build(S) === build(T);\n}",
+  "description": "Compare two strings s and t after processing '#' as backspaces.",
+  "pseudocode": "1. Initialize pointer i at s.length-1, j at t.length-1\n2. While i >= 0 or j >= 0\n3. Find next valid character for s and t\n4. If characters at i and j don't match, return false\n5. Decrement pointers and repeat\n6. Return true",
   "steps": [
     {
-      "codeLine": 3,
-      "note": "Initialize result array for string S ('ab#c')",
-      "array": []
+      "codeLine": 1,
+      "note": "Initialize pointers at the end of strings 'ab#c' and 'ad#c'.",
+      "array": [
+        "a",
+        "b",
+        "#",
+        "c",
+        "a",
+        "d",
+        "#",
+        "c"
+      ],
+      "i": 3,
+      "j": 3,
+      "visited": []
     },
     {
-      "codeLine": 5,
-      "note": "Push 'a' to stack",
+      "codeLine": 3,
+      "note": "Comparing s[3]='c' and t[3]='c'. They match.",
       "array": [
-        "a"
+        "a",
+        "b",
+        "#",
+        "c",
+        "a",
+        "d",
+        "#",
+        "c"
+      ],
+      "i": 3,
+      "j": 3,
+      "visited": [
+        3,
+        7
       ]
     },
     {
       "codeLine": 5,
-      "note": "Push 'b' to stack",
+      "note": "Moving pointers to previous indices.",
       "array": [
         "a",
-        "b"
+        "b",
+        "#",
+        "c",
+        "a",
+        "d",
+        "#",
+        "c"
+      ],
+      "i": 2,
+      "j": 2,
+      "visited": [
+        3,
+        7
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Processing backspace: skip 'b' in s and 'd' in t.",
+      "array": [
+        "a",
+        "b",
+        "#",
+        "c",
+        "a",
+        "d",
+        "#",
+        "c"
+      ],
+      "i": 0,
+      "j": 0,
+      "visited": [
+        3,
+        7,
+        1,
+        5,
+        2,
+        6
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Comparing s[0]='a' and t[0]='a'. They match.",
+      "array": [
+        "a",
+        "b",
+        "#",
+        "c",
+        "a",
+        "d",
+        "#",
+        "c"
+      ],
+      "i": 0,
+      "j": 0,
+      "visited": [
+        3,
+        7,
+        1,
+        5,
+        2,
+        6,
+        0,
+        4
       ]
     },
     {
       "codeLine": 6,
-      "note": "Encountered '#', pop 'b'",
-      "array": [
-        "a"
-      ]
-    },
-    {
-      "codeLine": 5,
-      "note": "Push 'c' to stack",
+      "note": "All characters processed, return true.",
       "array": [
         "a",
+        "b",
+        "#",
+        "c",
+        "a",
+        "d",
+        "#",
         "c"
-      ]
-    },
-    {
-      "codeLine": 3,
-      "note": "Initialize result array for string T ('ad#c')",
-      "array": []
-    },
-    {
-      "codeLine": 5,
-      "note": "Push 'a' to stack",
-      "array": [
-        "a"
-      ]
-    },
-    {
-      "codeLine": 5,
-      "note": "Push 'd' to stack",
-      "array": [
-        "a",
-        "d"
-      ]
-    },
-    {
-      "codeLine": 6,
-      "note": "Encountered '#', pop 'd'",
-      "array": [
-        "a"
-      ]
-    },
-    {
-      "codeLine": 5,
-      "note": "Push 'c' to stack",
-      "array": [
-        "a",
-        "c"
-      ]
-    },
-    {
-      "codeLine": 8,
-      "note": "Compare 'ac' === 'ac', return true",
-      "array": [
-        "a",
-        "c"
+      ],
+      "i": -1,
+      "j": -1,
+      "visited": [
+        3,
+        7,
+        1,
+        5,
+        2,
+        6,
+        0,
+        4
       ]
     }
-  ]
+  ],
+  "fullDescription": "<p>Given two strings <code>s</code> and <code>t</code>, return <code>true</code> <em>if they are equal when both are typed into empty text editors</em>. <code>&#39;#&#39;</code> means a backspace character.</p>\n\n<p>Note that after backspacing an empty text, the text will continue empty.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> s = &quot;ab#c&quot;, t = &quot;ad#c&quot;\n<strong>Output:</strong> true\n<strong>Explanation:</strong> Both s and t become &quot;ac&quot;.\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> s = &quot;ab##&quot;, t = &quot;c#d#&quot;\n<strong>Output:</strong> true\n<strong>Explanation:</strong> Both s and t become &quot;&quot;.\n</pre>\n\n<p><strong class=\"example\">Example 3:</strong></p>\n\n<pre>\n<strong>Input:</strong> s = &quot;a#c&quot;, t = &quot;b&quot;\n<strong>Output:</strong> false\n<strong>Explanation:</strong> s becomes &quot;c&quot; while t becomes &quot;b&quot;.\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code><span>1 &lt;= s.length, t.length &lt;= 200</span></code></li>\n\t<li><span><code>s</code> and <code>t</code> only contain lowercase letters and <code>&#39;#&#39;</code> characters.</span></li>\n</ul>\n\n<p>&nbsp;</p>\n<p><strong>Follow up:</strong> Can you solve it in <code>O(n)</code> time and <code>O(1)</code> space?</p>\n"
 }

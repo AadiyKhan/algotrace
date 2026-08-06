@@ -7,13 +7,12 @@
     "Depth-First Search",
     "Binary Tree"
   ],
-  "description": "Find the length of the longest path between any two nodes in a binary tree.",
-  "target": 3,
-  "pseudocode": "1: let maxDiameter = 0\n2: function depth(node) {\n3:   if (!node) return 0\n4:   let left = depth(node.left)\n5:   let right = depth(node.right)\n6:   maxDiameter = Math.max(maxDiameter, left + right)\n7:   return Math.max(left, right) + 1\n8: }\n9: depth(root)",
+  "description": "Calculate the diameter of a binary tree, defined as the longest path between any two nodes.",
+  "pseudocode": "1. diameter = 0\n2. def depth(node):\n3.   if not node: return 0\n4.   left = depth(node.left)\n5.   right = depth(node.right)\n6.   diameter = max(diameter, left + right)\n7.   return max(left, right) + 1",
   "steps": [
     {
-      "codeLine": 9,
-      "note": "Starting DFS from root (ID: 0)",
+      "codeLine": 2,
+      "note": "Starting DFS traversal from root (ID 0)",
       "treeNodes": [
         {
           "id": 0,
@@ -24,12 +23,24 @@
         {
           "id": 1,
           "val": 2,
-          "left": null,
-          "right": null
+          "left": 3,
+          "right": 4
         },
         {
           "id": 2,
           "val": 3,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 4,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 5,
           "left": null,
           "right": null
         }
@@ -38,7 +49,7 @@
     },
     {
       "codeLine": 4,
-      "note": "Traversing to left child (ID: 1)",
+      "note": "Traversing to left child of 1",
       "treeNodes": [
         {
           "id": 0,
@@ -49,127 +60,252 @@
         {
           "id": 1,
           "val": 2,
-          "left": null,
-          "right": null
+          "left": 3,
+          "right": 4
         },
         {
           "id": 2,
           "val": 3,
           "left": null,
           "right": null
-        }
-      ],
-      "visited": [
-        0,
-        1
-      ]
-    },
-    {
-      "codeLine": 7,
-      "note": "Leaf node ID 1 returns height 1",
-      "treeNodes": [
-        {
-          "id": 0,
-          "val": 1,
-          "left": 1,
-          "right": 2
         },
         {
-          "id": 1,
-          "val": 2,
+          "id": 3,
+          "val": 4,
           "left": null,
           "right": null
         },
         {
-          "id": 2,
-          "val": 3,
-          "left": null,
-          "right": null
-        }
-      ],
-      "visited": [
-        0
-      ]
-    },
-    {
-      "codeLine": 5,
-      "note": "Traversing to right child (ID: 2)",
-      "treeNodes": [
-        {
-          "id": 0,
-          "val": 1,
-          "left": 1,
-          "right": 2
-        },
-        {
-          "id": 1,
-          "val": 2,
-          "left": null,
-          "right": null
-        },
-        {
-          "id": 2,
-          "val": 3,
-          "left": null,
-          "right": null
-        }
-      ],
-      "visited": [
-        0,
-        2
-      ]
-    },
-    {
-      "codeLine": 7,
-      "note": "Leaf node ID 2 returns height 1",
-      "treeNodes": [
-        {
-          "id": 0,
-          "val": 1,
-          "left": 1,
-          "right": 2
-        },
-        {
-          "id": 1,
-          "val": 2,
-          "left": null,
-          "right": null
-        },
-        {
-          "id": 2,
-          "val": 3,
-          "left": null,
-          "right": null
-        }
-      ],
-      "visited": [
-        0
-      ]
-    },
-    {
-      "codeLine": 6,
-      "note": "Updating maxDiameter: 1 + 1 = 2",
-      "treeNodes": [
-        {
-          "id": 0,
-          "val": 1,
-          "left": 1,
-          "right": 2
-        },
-        {
-          "id": 1,
-          "val": 2,
-          "left": null,
-          "right": null
-        },
-        {
-          "id": 2,
-          "val": 3,
+          "id": 4,
+          "val": 5,
           "left": null,
           "right": null
         }
       ],
       "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Reached leaf node 4",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 4,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 5,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 3
+    },
+    {
+      "codeLine": 7,
+      "note": "Leaf node returns depth 1",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 4,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 5,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Traversing to right child of 2",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 4,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 5,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 4
+    },
+    {
+      "codeLine": 6,
+      "note": "Updating diameter at node 2: left(1) + right(1) = 2",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 4,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 5,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Traversing to right child of root",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 4,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 5,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Updating diameter at root: left(2) + right(1) = 3",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 4,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 5,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 0
     }
-  ]
+  ],
+  "fullDescription": "<p>Given the <code>root</code> of a binary tree, return <em>the length of the <strong>diameter</strong> of the tree</em>.</p>\n\n<p>The <strong>diameter</strong> of a binary tree is the <strong>length</strong> of the longest path between any two nodes in a tree. This path may or may not pass through the <code>root</code>.</p>\n\n<p>The <strong>length</strong> of a path between two nodes is represented by the number of edges between them.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2021/03/06/diamtree.jpg\" style=\"width: 292px; height: 302px;\" />\n<pre>\n<strong>Input:</strong> root = [1,2,3,4,5]\n<strong>Output:</strong> 3\n<strong>Explanation:</strong> 3 is the length of the path [4,2,1,3] or [5,2,1,3].\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> root = [1,2]\n<strong>Output:</strong> 1\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li>The number of nodes in the tree is in the range <code>[1, 10<sup>4</sup>]</code>.</li>\n\t<li><code>-100 &lt;= Node.val &lt;= 100</code></li>\n</ul>\n"
 }

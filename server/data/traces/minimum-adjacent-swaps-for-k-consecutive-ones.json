@@ -1,0 +1,80 @@
+{
+  "title": "Minimum Adjacent Swaps for K Consecutive Ones",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Sliding Window",
+    "Prefix Sum"
+  ],
+  "description": "Find the minimum number of adjacent swaps to group K ones together.",
+  "target": 3,
+  "pseudocode": "1. ones = indices of all 1s in nums\n2. Calculate prefix sums of ones\n3. For each window of size K:\n4.   Find median index\n5.   Calculate swaps using prefix sums\n6.   Update minSwaps",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Identify indices of all ones",
+      "array": [
+        1,
+        0,
+        1,
+        0,
+        1
+      ],
+      "i": "[0, 2, 4]"
+    },
+    {
+      "codeLine": 3,
+      "note": "Initialize sliding window for K=2",
+      "array": [
+        1,
+        0,
+        1,
+        0,
+        1
+      ],
+      "i": 0,
+      "j": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Calculate cost for current window [0, 2] (median at index 2)",
+      "array": [
+        1,
+        0,
+        1,
+        0,
+        1
+      ],
+      "i": 0,
+      "j": 1,
+      "curr": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Swaps required: |0 - 1| + |2 - 2| = 1 swap",
+      "array": [
+        1,
+        0,
+        1,
+        0,
+        1
+      ],
+      "i": 0,
+      "j": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Update minSwaps = 1",
+      "array": [
+        1,
+        0,
+        1,
+        0,
+        1
+      ],
+      "i": 0,
+      "j": 1
+    }
+  ]
+}

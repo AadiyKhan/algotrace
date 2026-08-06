@@ -1,0 +1,153 @@
+{
+  "title": "Find Nearest Right Node in Binary Tree",
+  "difficulty": "Medium",
+  "type": "tree",
+  "tags": [
+    "Tree",
+    "Breadth-First Search"
+  ],
+  "description": "Given the root of a binary tree and a node u in the tree, return the nearest node on the same level that is to the right of u. Return null if u is the rightmost node of its level.",
+  "target": 4,
+  "pseudocode": "1. queue = [root]\n2. while queue is not empty:\n3.   size = queue.length\n4.   for i from 0 to size-1:\n5.     curr = queue.shift()\n6.     if curr == target:\n7.       return i < size - 1 ? queue[0] : null\n8.     if curr.left: queue.push(curr.left)\n9.     if curr.right: queue.push(curr.right)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize queue with root (1)",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": 3,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": 4
+        },
+        {
+          "id": 3,
+          "val": 5,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 6,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Process root (1)",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": 3,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": 4
+        },
+        {
+          "id": 3,
+          "val": 5,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 6,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 8,
+      "note": "Add children of 1 to queue",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": 3,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": 4
+        },
+        {
+          "id": 3,
+          "val": 5,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 6,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Process node 2",
+      "curr": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Is node 2 the target? No.",
+      "curr": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Process node 3",
+      "curr": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Is node 3 the target? No.",
+      "curr": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Process node 4",
+      "curr": 4
+    },
+    {
+      "codeLine": 6,
+      "note": "Found target! Return null since it's the last node in the queue level.",
+      "curr": 4
+    }
+  ]
+}

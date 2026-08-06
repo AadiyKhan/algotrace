@@ -4,15 +4,15 @@
   "type": "tree",
   "tags": [
     "Tree",
-    "DFS",
-    "Recursion"
+    "Depth-First Search",
+    "Binary Tree"
   ],
-  "description": "Determine if a binary tree is height-balanced (difference between depths of two subtrees is at most 1).",
-  "pseudocode": "1: function checkHeight(node) {\n2:   if (!node) return 0;\n3:   left = checkHeight(node.left);\n4:   right = checkHeight(node.right);\n5:   if (left == -1 || right == -1 || abs(left - right) > 1) return -1;\n6:   return max(left, right) + 1;\n7: }",
+  "description": "Determine if a binary tree is height-balanced by comparing heights of subtrees.",
+  "pseudocode": "1. If node is null, return 0\n2. Get height of left subtree\n3. Get height of right subtree\n4. If left or right unbalanced, return -1\n5. If diff between left and right > 1, return -1\n6. Return max(left, right) + 1",
   "steps": [
     {
-      "codeLine": 3,
-      "note": "Traversing to left child of node 0 (ID 1)",
+      "codeLine": 1,
+      "note": "Traversing to left child 9 of node 3.",
       "treeNodes": [
         {
           "id": 0,
@@ -49,7 +49,7 @@
     },
     {
       "codeLine": 6,
-      "note": "Left leaf node 9 returns height 1",
+      "note": "Left subtree height of 9 is 1.",
       "treeNodes": [
         {
           "id": 0,
@@ -85,8 +85,8 @@
       "curr": 1
     },
     {
-      "codeLine": 4,
-      "note": "Traversing to right subtree root (ID 2)",
+      "codeLine": 2,
+      "note": "Traversing to right child 20 of node 3.",
       "treeNodes": [
         {
           "id": 0,
@@ -122,8 +122,8 @@
       "curr": 2
     },
     {
-      "codeLine": 6,
-      "note": "Right subtree returns height 2",
+      "codeLine": 2,
+      "note": "Calculating height of right subtree 20.",
       "treeNodes": [
         {
           "id": 0,
@@ -156,11 +156,48 @@
           "right": null
         }
       ],
-      "curr": 0
+      "curr": 3
+    },
+    {
+      "codeLine": 6,
+      "note": "Height of right subtree 20 is 2.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 3,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 9,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 20,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 3,
+          "val": 15,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 7,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 2
     },
     {
       "codeLine": 5,
-      "note": "Root height difference |1 - 2| <= 1, tree is balanced",
+      "note": "Comparing heights of left (1) and right (2). Diff is 1, balanced.",
       "treeNodes": [
         {
           "id": 0,
@@ -195,5 +232,6 @@
       ],
       "curr": 0
     }
-  ]
+  ],
+  "fullDescription": "<p>Given a binary tree, determine if it is <span data-keyword=\"height-balanced\"><strong>height-balanced</strong></span>.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2020/10/06/balance_1.jpg\" style=\"width: 342px; height: 221px;\" />\n<pre>\n<strong>Input:</strong> root = [3,9,20,null,null,15,7]\n<strong>Output:</strong> true\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2020/10/06/balance_2.jpg\" style=\"width: 452px; height: 301px;\" />\n<pre>\n<strong>Input:</strong> root = [1,2,2,3,3,null,null,4,4]\n<strong>Output:</strong> false\n</pre>\n\n<p><strong class=\"example\">Example 3:</strong></p>\n\n<pre>\n<strong>Input:</strong> root = []\n<strong>Output:</strong> true\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li>The number of nodes in the tree is in the range <code>[0, 5000]</code>.</li>\n\t<li><code>-10<sup>4</sup> &lt;= Node.val &lt;= 10<sup>4</sup></code></li>\n</ul>\n"
 }

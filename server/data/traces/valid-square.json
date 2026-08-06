@@ -3,32 +3,39 @@
   "difficulty": "Medium",
   "type": "array",
   "tags": [
-    "Array",
     "Math",
     "Geometry"
   ],
-  "description": "Determine if four given points can form a square.",
-  "target": null,
-  "pseudocode": "1. Calculate squared distances between all pairs of points\n2. Store distances in a list\n3. Sort the distances\n4. A square exists if the 4 smallest distances (sides) are equal and > 0, and the 2 largest distances (diagonals) are equal and > 0",
+  "description": "Determine if four points form a square by calculating distances between all pairs.",
+  "target": true,
+  "pseudocode": "1. Collect all points into an array\n2. Calculate all pairwise squared distances\n3. Sort the distances\n4. Check if first 4 distances are equal (sides) and last 2 are equal (diagonals)\n5. Return true if all conditions are met",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Calculating distances for points: [0,0], [1,1], [1,0], [0,1]",
+      "note": "Collect points: p1=[0,0], p2=[1,1], p3=[1,0], p4=[0,1]",
       "array": [
-        0,
-        0,
-        1,
-        1,
-        1,
-        0,
-        0,
-        1
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ]
       ],
-      "curr": 0
+      "visited": []
     },
     {
       "codeLine": 2,
-      "note": "Squared distances: [1, 1, 1, 1, 2, 2]",
+      "note": "Calculating squared distances: d(p1,p3)=1, d(p1,p4)=1, d(p3,p2)=1, d(p4,p2)=1, d(p1,p2)=2, d(p3,p4)=2",
       "array": [
         1,
         1,
@@ -37,7 +44,14 @@
         2,
         2
       ],
-      "curr": 1
+      "visited": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
     },
     {
       "codeLine": 3,
@@ -50,11 +64,11 @@
         2,
         2
       ],
-      "curr": 1
+      "visited": []
     },
     {
       "codeLine": 4,
-      "note": "Check sides (indices 0-3) are equal and > 0, and diagonals (indices 4-5) are equal and > 0. Valid square identified.",
+      "note": "Check: 4 sides equal (1), 2 diagonals equal (2), and side > 0",
       "array": [
         1,
         1,
@@ -63,7 +77,28 @@
         2,
         2
       ],
-      "curr": 0
+      "visited": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "All conditions met, returning true",
+      "array": [
+        1,
+        1,
+        1,
+        1,
+        2,
+        2
+      ],
+      "visited": []
     }
-  ]
+  ],
+  "fullDescription": "<p>Given the coordinates of four points in 2D space <code>p1</code>, <code>p2</code>, <code>p3</code> and <code>p4</code>, return <code>true</code> <em>if the four points construct a square</em>.</p>\n\n<p>The coordinate of a point <code>p<sub>i</sub></code> is represented as <code>[x<sub>i</sub>, y<sub>i</sub>]</code>. The input is <strong>not</strong> given in any order.</p>\n\n<p>A <strong>valid square</strong> has four equal sides with positive length and four equal angles (90-degree angles).</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> p1 = [0,0], p2 = [1,1], p3 = [1,0], p4 = [0,1]\n<strong>Output:</strong> true\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> p1 = [0,0], p2 = [1,1], p3 = [1,0], p4 = [0,12]\n<strong>Output:</strong> false\n</pre>\n\n<p><strong class=\"example\">Example 3:</strong></p>\n\n<pre>\n<strong>Input:</strong> p1 = [1,0], p2 = [-1,0], p3 = [0,1], p4 = [0,-1]\n<strong>Output:</strong> true\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>p1.length == p2.length == p3.length == p4.length == 2</code></li>\n\t<li><code>-10<sup>4</sup> &lt;= x<sub>i</sub>, y<sub>i</sub> &lt;= 10<sup>4</sup></code></li>\n</ul>\n"
 }

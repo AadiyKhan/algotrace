@@ -6,30 +6,29 @@
     "Array",
     "Dynamic Programming"
   ],
-  "description": "Generate the first numRows of Pascal's triangle where each number is the sum of the two numbers above it.",
+  "description": "Generate the first 5 rows of Pascal's Triangle.",
   "target": 5,
-  "pseudocode": "1. Initialize triangle = []\n2. For i from 0 to numRows - 1:\n3.   row = [1] * (i + 1)\n4.   For j from 1 to i - 1:\n5.     row[j] = triangle[i-1][j-1] + triangle[i-1][j]\n6.   triangle.append(row)\n7. Return triangle",
+  "pseudocode": "1. Initialize triangle as empty list\n2. For i from 0 to numRows-1:\n3.   Create row of length i+1 filled with 1s\n4.   For j from 1 to i-1:\n5.     row[j] = triangle[i-1][j-1] + triangle[i-1][j]\n6.   Add row to triangle",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize empty triangle structure.",
-      "array": []
+      "note": "Initialize empty triangle list.",
+      "array": [],
+      "visited": []
     },
     {
-      "codeLine": 2,
-      "note": "Starting loop for row 0.",
-      "i": 0,
+      "codeLine": 3,
+      "note": "Row 0: [1]",
       "array": [
         [
           1
         ]
       ],
-      "curr": 0
+      "i": 0
     },
     {
-      "codeLine": 6,
-      "note": "Row 1: Initialize [1, 1].",
-      "i": 1,
+      "codeLine": 3,
+      "note": "Row 1: [1, 1]",
       "array": [
         [
           1
@@ -39,12 +38,50 @@
           1
         ]
       ],
-      "curr": 1
+      "i": 1
     },
     {
-      "codeLine": 6,
-      "note": "Row 2: Calculate middle element 1+1=2.",
+      "codeLine": 3,
+      "note": "Row 2: Start with [1, 1, 1]",
+      "array": [
+        [
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ]
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Row 2: Update index 1 to 1+1=2",
+      "array": [
+        [
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          2,
+          1
+        ]
+      ],
       "i": 2,
+      "j": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Row 3: Start with [1, 1, 1, 1]",
       "array": [
         [
           1
@@ -57,14 +94,45 @@
           1,
           2,
           1
+        ],
+        [
+          1,
+          1,
+          1,
+          1
         ]
       ],
-      "curr": 2
+      "i": 3
     },
     {
-      "codeLine": 6,
-      "note": "Row 3: Calculate middle elements 1+2=3, 2+1=3.",
+      "codeLine": 5,
+      "note": "Row 3: Update indices 1 and 2",
+      "array": [
+        [
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          2,
+          1
+        ],
+        [
+          1,
+          3,
+          3,
+          1
+        ]
+      ],
       "i": 3,
+      "j": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Row 4: Start with [1, 1, 1, 1, 1]",
       "array": [
         [
           1
@@ -83,73 +151,50 @@
           3,
           3,
           1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1
         ]
       ],
-      "curr": 3
+      "i": 4
     },
     {
-      "codeLine": 6,
-      "note": "Row 4: Calculate middle elements 1+3=4, 3+3=6, 3+1=4.",
+      "codeLine": 5,
+      "note": "Row 4: Update indices 1, 2, and 3",
+      "array": [
+        [
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          2,
+          1
+        ],
+        [
+          1,
+          3,
+          3,
+          1
+        ],
+        [
+          1,
+          4,
+          6,
+          4,
+          1
+        ]
+      ],
       "i": 4,
-      "array": [
-        [
-          1
-        ],
-        [
-          1,
-          1
-        ],
-        [
-          1,
-          2,
-          1
-        ],
-        [
-          1,
-          3,
-          3,
-          1
-        ],
-        [
-          1,
-          4,
-          6,
-          4,
-          1
-        ]
-      ],
-      "curr": 4
-    },
-    {
-      "codeLine": 7,
-      "note": "Return completed triangle.",
-      "array": [
-        [
-          1
-        ],
-        [
-          1,
-          1
-        ],
-        [
-          1,
-          2,
-          1
-        ],
-        [
-          1,
-          3,
-          3,
-          1
-        ],
-        [
-          1,
-          4,
-          6,
-          4,
-          1
-        ]
-      ]
+      "j": 3
     }
-  ]
+  ],
+  "fullDescription": "<p>Given an integer <code>numRows</code>, return the first numRows of <strong>Pascal&#39;s triangle</strong>.</p>\n\n<p>In <strong>Pascal&#39;s triangle</strong>, each number is the sum of the two numbers directly above it as shown:</p>\n<img alt=\"\" src=\"https://upload.wikimedia.org/wikipedia/commons/0/0d/PascalTriangleAnimated2.gif\" style=\"height:240px; width:260px\" />\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n<pre><strong>Input:</strong> numRows = 5\n<strong>Output:</strong> [[1],[1,1],[1,2,1],[1,3,3,1],[1,4,6,4,1]]\n</pre><p><strong class=\"example\">Example 2:</strong></p>\n<pre><strong>Input:</strong> numRows = 1\n<strong>Output:</strong> [[1]]\n</pre>\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= numRows &lt;= 30</code></li>\n</ul>\n"
 }

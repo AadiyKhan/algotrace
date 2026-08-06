@@ -4,98 +4,68 @@
   "type": "array",
   "tags": [
     "Math",
-    "String"
+    "String",
+    "Simulation"
   ],
-  "description": "Multiply two non-negative integers represented as strings.",
+  "description": "Calculate the product of two non-negative integers represented as strings without using BigInteger libraries.",
   "target": "6",
-  "pseudocode": "1. let res = new Array(n + m).fill(0)\n2. for i = n - 1 down to 0:\n3.   for j = m - 1 down to 0:\n4.     let mul = (num1[i]) * (num2[j])\n5.     let sum = mul + res[i + j + 1]\n6.     res[i + j + 1] = sum % 10\n7.     res[i + j] += Math.floor(sum / 10)",
+  "pseudocode": "1. Initialize result array of size n+m with zeros\n2. Iterate through num1 from right to left (i)\n3. Iterate through num2 from right to left (j)\n4. Calculate product of digits and add to result[i+j+1]\n5. Handle carry and update result[i+j]\n6. Convert result array to string, skipping leading zeros",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize result array of size len1 + len2 with zeros.",
+      "note": "Initialize result array of size 2 (len(num1)+len(num2)) with zeros.",
       "array": [
         0,
-        0,
-        0,
         0
-      ],
-      "curr": 1
+      ]
     },
     {
       "codeLine": 2,
-      "note": "Start outer loop i = 0 for num1 = '2'.",
+      "note": "Start outer loop: i = 0 (representing '2').",
       "array": [
-        0,
-        0,
         0,
         0
       ],
-      "i": 0,
-      "curr": 0
+      "i": 0
     },
     {
       "codeLine": 3,
-      "note": "Start inner loop j = 0 for num2 = '3'.",
+      "note": "Start inner loop: j = 0 (representing '3').",
       "array": [
-        0,
-        0,
         0,
         0
       ],
       "i": 0,
-      "j": 0,
-      "curr": 0
+      "j": 0
     },
     {
       "codeLine": 4,
-      "note": "Calculate product 2 * 3 = 6.",
+      "note": "Multiply 2 * 3 = 6. Add to index i+j+1 (1).",
       "array": [
-        0,
-        0,
-        0,
-        0
-      ],
-      "i": 0,
-      "j": 0,
-      "curr": 2
-    },
-    {
-      "codeLine": 5,
-      "note": "Add product to existing value at res[i+j+1].",
-      "array": [
-        0,
-        0,
-        0,
-        6
-      ],
-      "i": 0,
-      "j": 0,
-      "curr": 1
-    },
-    {
-      "codeLine": 6,
-      "note": "Update res[i+j+1] with modulo 10.",
-      "array": [
-        0,
-        0,
-        0,
-        6
-      ],
-      "i": 0,
-      "j": 0,
-      "curr": 1
-    },
-    {
-      "codeLine": 7,
-      "note": "Add carry to res[i+j], resulting in final array.",
-      "array": [
-        0,
-        0,
         0,
         6
       ],
       "i": 0,
       "j": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Check for carry: 6 < 10, no carry update needed.",
+      "array": [
+        0,
+        6
+      ],
+      "i": 0,
+      "j": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Convert array [0, 6] to string, skip leading 0. Result: '6'.",
+      "array": [
+        0,
+        6
+      ]
     }
-  ]
+  ],
+  "fullDescription": "<p>Given two non-negative integers <code>num1</code> and <code>num2</code> represented as strings, return the product of <code>num1</code> and <code>num2</code>, also represented as a string.</p>\n\n<p><strong>Note:</strong>&nbsp;You must not use any built-in BigInteger library or convert the inputs to integer directly.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n<pre><strong>Input:</strong> num1 = \"2\", num2 = \"3\"\n<strong>Output:</strong> \"6\"\n</pre><p><strong class=\"example\">Example 2:</strong></p>\n<pre><strong>Input:</strong> num1 = \"123\", num2 = \"456\"\n<strong>Output:</strong> \"56088\"\n</pre>\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= num1.length, num2.length &lt;= 200</code></li>\n\t<li><code>num1</code> and <code>num2</code> consist of digits only.</li>\n\t<li>Both <code>num1</code> and <code>num2</code>&nbsp;do not contain any leading zero, except the number <code>0</code> itself.</li>\n</ul>\n"
 }

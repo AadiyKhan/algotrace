@@ -7,66 +7,62 @@
     "Math",
     "Sorting"
   ],
-  "description": "Find the maximum product of three numbers in an array, which can be the product of the three largest numbers or the two smallest numbers and the largest.",
-  "pseudocode": "1. sort(nums)\n2. n = nums.length\n3. option1 = nums[n-1] * nums[n-2] * nums[n-3]\n4. option2 = nums[0] * nums[1] * nums[n-1]\n5. return max(option1, option2)",
+  "description": "Find the maximum product of three numbers in an array by sorting and comparing the product of the three largest numbers vs the product of the two smallest and the largest.",
+  "target": 6,
+  "pseudocode": "1. Sort the array nums in ascending order.\n2. Calculate product1 = nums[n-1] * nums[n-2] * nums[n-3].\n3. Calculate product2 = nums[0] * nums[1] * nums[n-1].\n4. Return max(product1, product2).",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Sorting the array to identify potential candidates.",
+      "note": "Sort the array [1, 2, 3] in ascending order.",
       "array": [
-        -10,
-        -10,
         1,
-        3,
-        5
-      ]
+        2,
+        3
+      ],
+      "visited": []
     },
     {
       "codeLine": 2,
-      "note": "Determining array length.",
+      "note": "Calculate product1 = 3 * 2 * 1 = 6.",
       "array": [
-        -10,
-        -10,
         1,
-        3,
-        5
+        2,
+        3
+      ],
+      "visited": [
+        0,
+        1,
+        2
       ]
     },
     {
       "codeLine": 3,
-      "note": "Calculating product of three largest numbers: 1 * 3 * 5 = 15.",
+      "note": "Calculate product2 = 1 * 2 * 3 = 6.",
       "array": [
-        -10,
-        -10,
         1,
-        3,
-        5
+        2,
+        3
       ],
-      "curr": 1
+      "visited": [
+        0,
+        1,
+        2
+      ]
     },
     {
       "codeLine": 4,
-      "note": "Calculating product of two smallest and one largest number: -10 * -10 * 5 = 500.",
+      "note": "Compare max(6, 6) and return 6.",
       "array": [
-        -10,
-        -10,
         1,
-        3,
-        5
+        2,
+        3
       ],
-      "curr": -10
-    },
-    {
-      "codeLine": 5,
-      "note": "Returning the maximum of 15 and 500.",
-      "array": [
-        -10,
-        -10,
+      "visited": [
+        0,
         1,
-        3,
-        5
-      ],
-      "curr": 15
+        2
+      ]
     }
-  ]
+  ],
+  "fullDescription": "<p>Given an integer array <code>nums</code>, <em>find three numbers whose product is maximum and return the maximum product</em>.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n<pre><strong>Input:</strong> nums = [1,2,3]\n<strong>Output:</strong> 6\n</pre><p><strong class=\"example\">Example 2:</strong></p>\n<pre><strong>Input:</strong> nums = [1,2,3,4]\n<strong>Output:</strong> 24\n</pre><p><strong class=\"example\">Example 3:</strong></p>\n<pre><strong>Input:</strong> nums = [-1,-2,-3]\n<strong>Output:</strong> -6\n</pre>\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>3 &lt;= nums.length &lt;=&nbsp;10<sup>4</sup></code></li>\n\t<li><code>-1000 &lt;= nums[i] &lt;= 1000</code></li>\n</ul>\n"
 }

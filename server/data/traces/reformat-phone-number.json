@@ -1,0 +1,86 @@
+{
+  "title": "Reformat Phone Number",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "String",
+    "Simulation"
+  ],
+  "description": "Reformat a phone string by removing spaces and dashes, then grouping digits into blocks of 3, with special handling for the last 4 digits.",
+  "pseudocode": "1. s = s.replace(/[- ]/g, '')\n2. result = []\n3. while s.length > 4:\n4.   result.push(s.slice(0, 3))\n5.   s = s.slice(3)\n6. if s.length == 4:\n7.   result.push(s.slice(0, 2) + '-' + s.slice(2))\n8. else:\n9.   result.push(s)\n10. return result.join('-')",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Clean the input string '1-23-45 6' to '123456'",
+      "array": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6"
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Length is 6, which is > 4. Enter loop.",
+      "array": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6"
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Push first block of 3: '123'",
+      "array": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6"
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Update remaining string to '456'",
+      "array": [
+        "4",
+        "5",
+        "6"
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Length is 3, which is not > 4. Exit loop.",
+      "array": [
+        "4",
+        "5",
+        "6"
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Length is 3. Jump to else branch.",
+      "array": [
+        "4",
+        "5",
+        "6"
+      ]
+    },
+    {
+      "codeLine": 9,
+      "note": "Push remaining '456'. Final result: '123-456'",
+      "array": [
+        "4",
+        "5",
+        "6"
+      ]
+    }
+  ]
+}

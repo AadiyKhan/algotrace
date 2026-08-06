@@ -7,25 +7,13 @@
     "Two Pointers",
     "Sorting"
   ],
-  "description": "Find all unique triplets in the array which sum to zero.",
+  "description": "Find all unique triplets in the array that sum to zero.",
   "target": 0,
-  "pseudocode": "1. Sort(nums)\n2. For i from 0 to n-3:\n3.   If i > 0 and nums[i] == nums[i-1] continue\n4.   left = i + 1, right = n - 1\n5.   While left < right:\n6.     sum = nums[i] + nums[left] + nums[right]\n7.     If sum == 0: add triplet, increment left, decrement right\n8.     Else if sum < 0: increment left\n9.     Else: decrement right",
+  "pseudocode": "1. Sort nums\n2. For i from 0 to n-1:\n3. If i > 0 and nums[i] == nums[i-1] continue\n4. Set left = i + 1, right = n - 1\n5. While left < right:\n6. Sum = nums[i] + nums[left] + nums[right]\n7. If Sum == 0: add triplet, move pointers\n8. If Sum < 0: left++\n9. Else: right--",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Sort the input array to enable two-pointer approach.",
-      "array": [
-        -4,
-        -1,
-        -1,
-        0,
-        1,
-        2
-      ]
-    },
-    {
-      "codeLine": 2,
-      "note": "Starting main loop at i=0, nums[i]=-4.",
+      "note": "Sort the array to facilitate two-pointer approach.",
       "array": [
         -4,
         -1,
@@ -37,8 +25,8 @@
       "i": 0
     },
     {
-      "codeLine": 4,
-      "note": "Initialize two pointers: left=1, right=5.",
+      "codeLine": 2,
+      "note": "Start iteration with i = 0, nums[i] = -4.",
       "array": [
         -4,
         -1,
@@ -48,8 +36,21 @@
         2
       ],
       "i": 0,
-      "curr": 1,
-      "prev": 5
+      "curr": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Initialize left = 1, right = 5.",
+      "array": [
+        -4,
+        -1,
+        -1,
+        0,
+        1,
+        2
+      ],
+      "i": 0,
+      "curr": 1
     },
     {
       "codeLine": 6,
@@ -66,8 +67,8 @@
       "curr": 2
     },
     {
-      "codeLine": 9,
-      "note": "Sum -4 + -1 + 2 = -3 < 0, increment left.",
+      "codeLine": 8,
+      "note": "Sum < 0, move left pointer again.",
       "array": [
         -4,
         -1,
@@ -81,7 +82,7 @@
     },
     {
       "codeLine": 2,
-      "note": "Move to i=1, nums[1]=-1.",
+      "note": "Move to i = 1, nums[i] = -1.",
       "array": [
         -4,
         -1,
@@ -90,11 +91,26 @@
         1,
         2
       ],
-      "i": 1
+      "i": 1,
+      "curr": 1
     },
     {
       "codeLine": 4,
-      "note": "Initialize left=2, right=5.",
+      "note": "Initialize left = 2, right = 5.",
+      "array": [
+        -4,
+        -1,
+        -1,
+        0,
+        1,
+        2
+      ],
+      "i": 1,
+      "curr": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Sum: -1 + -1 + 2 = 0. Found triplet [-1, -1, 2].",
       "array": [
         -4,
         -1,
@@ -105,11 +121,15 @@
       ],
       "i": 1,
       "curr": 2,
-      "prev": 5
+      "visited": [
+        1,
+        2,
+        5
+      ]
     },
     {
       "codeLine": 7,
-      "note": "Sum: -1 + -1 + 2 = 0. Found triplet [-1, -1, 2]. Move pointers.",
+      "note": "Move pointers, skip duplicates.",
       "array": [
         -4,
         -1,
@@ -119,11 +139,10 @@
         2
       ],
       "i": 1,
-      "curr": 3,
-      "prev": 4
+      "curr": 3
     },
     {
-      "codeLine": 7,
+      "codeLine": 6,
       "note": "Sum: -1 + 0 + 1 = 0. Found triplet [-1, 0, 1].",
       "array": [
         -4,
@@ -134,8 +153,12 @@
         2
       ],
       "i": 1,
-      "curr": 4,
-      "prev": 3
+      "curr": 3,
+      "visited": [
+        1,
+        3,
+        4
+      ]
     }
   ],
   "fullDescription": "<p>Given an integer array nums, return all the triplets <code>[nums[i], nums[j], nums[k]]</code> such that <code>i != j</code>, <code>i != k</code>, and <code>j != k</code>, and <code>nums[i] + nums[j] + nums[k] == 0</code>.</p>\n\n<p>Notice that the solution set must not contain duplicate triplets.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> nums = [-1,0,1,2,-1,-4]\n<strong>Output:</strong> [[-1,-1,2],[-1,0,1]]\n<strong>Explanation:</strong> \nnums[0] + nums[1] + nums[2] = (-1) + 0 + 1 = 0.\nnums[1] + nums[2] + nums[4] = 0 + 1 + (-1) = 0.\nnums[0] + nums[3] + nums[4] = (-1) + 2 + (-1) = 0.\nThe distinct triplets are [-1,0,1] and [-1,-1,2].\nNotice that the order of the output and the order of the triplets does not matter.\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> nums = [0,1,1]\n<strong>Output:</strong> []\n<strong>Explanation:</strong> The only possible triplet does not sum up to 0.\n</pre>\n\n<p><strong class=\"example\">Example 3:</strong></p>\n\n<pre>\n<strong>Input:</strong> nums = [0,0,0]\n<strong>Output:</strong> [[0,0,0]]\n<strong>Explanation:</strong> The only possible triplet sums up to 0.\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>3 &lt;= nums.length &lt;= 3000</code></li>\n\t<li><code>-10<sup>5</sup> &lt;= nums[i] &lt;= 10<sup>5</sup></code></li>\n</ul>\n"

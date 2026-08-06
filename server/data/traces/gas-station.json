@@ -6,26 +6,13 @@
     "Array",
     "Greedy"
   ],
-  "description": "Find the starting gas station index such that you can travel around the circuit once in a clockwise direction.",
-  "target": null,
-  "pseudocode": "1: total_tank = 0, curr_tank = 0, start_index = 0\n2: for i from 0 to gas.length - 1:\n3:   total_tank += gas[i] - cost[i]\n4:   curr_tank += gas[i] - cost[i]\n5:   if curr_tank < 0:\n6:     start_index = i + 1\n7:     curr_tank = 0\n8: return total_tank >= 0 ? start_index : -1",
+  "description": "Find the starting gas station index to complete a circular trip.",
+  "target": 3,
+  "pseudocode": "1. total_tank = 0, curr_tank = 0, start_index = 0\n2. For i from 0 to n-1:\n3.   total_tank += gas[i] - cost[i]\n4.   curr_tank += gas[i] - cost[i]\n5.   If curr_tank < 0:\n6.     start_index = i + 1\n7.     curr_tank = 0\n8. Return total_tank >= 0 ? start_index : -1",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize trackers: total_tank and curr_tank to 0, start_index to 0.",
-      "array": [
-        1,
-        2,
-        3,
-        4,
-        5
-      ],
-      "i": null,
-      "curr": 0
-    },
-    {
-      "codeLine": 3,
-      "note": "Processing station 0: net gain is 1-3 = -2. total_tank = -2, curr_tank = -2.",
+      "note": "Initialize variables to track global balance and current segment balance.",
       "array": [
         1,
         2,
@@ -37,8 +24,8 @@
       "curr": 0
     },
     {
-      "codeLine": 5,
-      "note": "curr_tank is negative, reset start_index to 1 and curr_tank to 0.",
+      "codeLine": 4,
+      "note": "i=0: Tank becomes -2. Reset start_index to 1, curr_tank to 0.",
       "array": [
         1,
         2,
@@ -47,11 +34,14 @@
         5
       ],
       "i": 0,
-      "curr": 1
+      "curr": 0,
+      "visited": [
+        0
+      ]
     },
     {
-      "codeLine": 3,
-      "note": "Processing station 1: net gain is 2-4 = -2. total_tank = -4, curr_tank = -2.",
+      "codeLine": 4,
+      "note": "i=1: Tank becomes -2. Reset start_index to 2, curr_tank to 0.",
       "array": [
         1,
         2,
@@ -60,24 +50,15 @@
         5
       ],
       "i": 1,
-      "curr": 1
+      "curr": 1,
+      "visited": [
+        0,
+        1
+      ]
     },
     {
-      "codeLine": 5,
-      "note": "curr_tank is negative, reset start_index to 2 and curr_tank to 0.",
-      "array": [
-        1,
-        2,
-        3,
-        4,
-        5
-      ],
-      "i": 1,
-      "curr": 2
-    },
-    {
-      "codeLine": 3,
-      "note": "Processing station 2: net gain is 3-1 = 2. total_tank = -2, curr_tank = 2.",
+      "codeLine": 4,
+      "note": "i=2: Tank becomes -2. Reset start_index to 3, curr_tank to 0.",
       "array": [
         1,
         2,
@@ -86,11 +67,16 @@
         5
       ],
       "i": 2,
-      "curr": 2
+      "curr": 2,
+      "visited": [
+        0,
+        1,
+        2
+      ]
     },
     {
-      "codeLine": 3,
-      "note": "Processing station 3: net gain is 4-2 = 2. total_tank = 0, curr_tank = 4.",
+      "codeLine": 4,
+      "note": "i=3: Gas(4) - Cost(1) = 3. curr_tank = 3.",
       "array": [
         1,
         2,
@@ -99,11 +85,17 @@
         5
       ],
       "i": 3,
-      "curr": 3
+      "curr": 3,
+      "visited": [
+        0,
+        1,
+        2,
+        3
+      ]
     },
     {
-      "codeLine": 3,
-      "note": "Processing station 4: net gain is 5-2 = 3. total_tank = 3, curr_tank = 7.",
+      "codeLine": 4,
+      "note": "i=4: Gas(5) - Cost(2) = 3. curr_tank = 3 + 3 = 6.",
       "array": [
         1,
         2,
@@ -112,11 +104,18 @@
         5
       ],
       "i": 4,
-      "curr": 4
+      "curr": 4,
+      "visited": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
     },
     {
       "codeLine": 8,
-      "note": "Loop finished. total_tank (3) >= 0, returning start_index (2).",
+      "note": "Total tank >= 0, return start_index 3.",
       "array": [
         1,
         2,
@@ -124,8 +123,9 @@
         4,
         5
       ],
-      "i": null,
+      "i": 4,
       "curr": 3
     }
-  ]
+  ],
+  "fullDescription": "<p>There are <code>n</code> gas stations along a circular route, where the amount of gas at the <code>i<sup>th</sup></code> station is <code>gas[i]</code>.</p>\n\n<p>You have a car with an unlimited gas tank and it costs <code>cost[i]</code> of gas to travel from the <code>i<sup>th</sup></code> station to its next <code>(i + 1)<sup>th</sup></code> station. You begin the journey with an empty tank at one of the gas stations.</p>\n\n<p>Given two integer arrays <code>gas</code> and <code>cost</code>, return <em>the starting gas station&#39;s index if you can travel around the circuit once in the clockwise direction, otherwise return</em> <code>-1</code>. If there exists a solution, it is <strong>guaranteed</strong> to be <strong>unique</strong>.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> gas = [1,2,3,4,5], cost = [3,4,5,1,2]\n<strong>Output:</strong> 3\n<strong>Explanation:</strong>\nStart at station 3 (index 3) and fill up with 4 unit of gas. Your tank = 0 + 4 = 4\nTravel to station 4. Your tank = 4 - 1 + 5 = 8\nTravel to station 0. Your tank = 8 - 2 + 1 = 7\nTravel to station 1. Your tank = 7 - 3 + 2 = 6\nTravel to station 2. Your tank = 6 - 4 + 3 = 5\nTravel to station 3. The cost is 5. Your gas is just enough to travel back to station 3.\nTherefore, return 3 as the starting index.\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> gas = [2,3,4], cost = [3,4,3]\n<strong>Output:</strong> -1\n<strong>Explanation:</strong>\nYou can&#39;t start at station 0 or 1, as there is not enough gas to travel to the next station.\nLet&#39;s start at station 2 and fill up with 4 unit of gas. Your tank = 0 + 4 = 4\nTravel to station 0. Your tank = 4 - 3 + 2 = 3\nTravel to station 1. Your tank = 3 - 3 + 3 = 3\nYou cannot travel back to station 2, as it requires 4 unit of gas but you only have 3.\nTherefore, you can&#39;t travel around the circuit once no matter where you start.\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>n == gas.length == cost.length</code></li>\n\t<li><code>1 &lt;= n &lt;= 10<sup>5</sup></code></li>\n\t<li><code>0 &lt;= gas[i], cost[i] &lt;= 10<sup>4</sup></code></li>\n\t<li>The input is generated such that the answer is unique.</li>\n</ul>\n"
 }

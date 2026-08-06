@@ -1,0 +1,84 @@
+{
+  "title": "Put Boxes Into The Warehouse I",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Greedy",
+    "Sorting"
+  ],
+  "description": "Place boxes into a warehouse with a given height profile such that no box is taller than the warehouse height at its position.",
+  "target": null,
+  "pseudocode": "1. warehouse[i] = min(warehouse[i], warehouse[i-1])\n2. sort boxes ascending\n3. i = warehouse.length - 1\n4. for box of boxes:\n5.   while i >= 0 and warehouse[i] < box:\n6.     i--\n7.   if i >= 0:\n8.     count++, i--",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Normalize warehouse heights: make each position the minimum height of all positions to its left.",
+      "array": [
+        4,
+        3,
+        2,
+        2
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Sort boxes in ascending order.",
+      "array": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Process first box (1).",
+      "i": 3,
+      "array": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Box (1) fits in warehouse[3] (2).",
+      "i": 3
+    },
+    {
+      "codeLine": 8,
+      "note": "Placed box 1 at position 3, moving to position 2.",
+      "i": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Process second box (2).",
+      "i": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Box (2) fits in warehouse[2] (2).",
+      "i": 2
+    },
+    {
+      "codeLine": 8,
+      "note": "Placed box 2 at position 2, moving to position 1.",
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Process third box (3).",
+      "i": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Warehouse[1] (3) is >= box (3).",
+      "i": 1
+    },
+    {
+      "codeLine": 8,
+      "note": "Placed box 3 at position 1, done.",
+      "i": 0
+    }
+  ]
+}

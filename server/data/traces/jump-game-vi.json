@@ -1,0 +1,103 @@
+{
+  "title": "Jump Game VI",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Dynamic Programming",
+    "Monotonic Queue"
+  ],
+  "description": "Find the maximum score reaching the last index by jumping at most k steps, using a monotonic deque to maintain the maximum sliding window.",
+  "target": 0,
+  "pseudocode": "1. deque = [0]\n2. dp = new Array(n).fill(0)\n3. dp[0] = nums[0]\n4. for i = 1 to n-1:\n5.   if deque[0] < i - k: deque.shift()\n6.   dp[i] = nums[i] + dp[deque[0]]\n7.   while deque.length > 0 and dp[i] >= dp[deque[deque.length-1]]: deque.pop()\n8.   deque.push(i)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize deque with index 0.",
+      "array": [
+        1,
+        -1,
+        -2,
+        4
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Process index 1: window is valid.",
+      "array": [
+        1,
+        0,
+        -2,
+        4
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "dp[1] = nums[1] + dp[0] = -1 + 1 = 0.",
+      "array": [
+        1,
+        0,
+        -2,
+        4
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "Maintain monotonic property: 0 < 1, so keep 0 in deque.",
+      "array": [
+        1,
+        0,
+        -2,
+        4
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Process index 2: window valid.",
+      "array": [
+        1,
+        0,
+        -1,
+        4
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "dp[2] = nums[2] + dp[0] = -2 + 1 = -1.",
+      "array": [
+        1,
+        0,
+        -1,
+        4
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Process index 3: window valid.",
+      "array": [
+        1,
+        0,
+        -1,
+        5
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 6,
+      "note": "dp[3] = nums[3] + dp[1] = 4 + 0 = 4.",
+      "array": [
+        1,
+        0,
+        -1,
+        4
+      ],
+      "i": 3
+    }
+  ]
+}

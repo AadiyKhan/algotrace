@@ -6,22 +6,30 @@
     "Array",
     "Depth-First Search",
     "Breadth-First Search",
+    "Union-Find",
     "Matrix"
   ],
-  "description": "Given an m x n matrix board containing 'X' and 'O', capture all regions that are 4-directionally surrounded by 'X'.",
-  "target": null,
-  "pseudocode": "1. For each cell on the boundary: if 'O', trigger DFS\n2. DFS marks 'O' as 'T' (temporary)\n3. Iterate board: replace 'O' with 'X', 'T' with 'O'",
+  "description": "Capture all regions of 'O's that are completely surrounded by 'X's by marking them as 'X'.",
+  "pseudocode": "1. For every boundary cell, if it is 'O', start DFS to mark connected 'O's as 'T'.\n2. Iterate through the matrix, change all 'O' to 'X' (captured).\n3. Iterate through the matrix, change all 'T' to 'O' (not captured).",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Traversing boundary to find 'O's connected to edges",
+      "note": "Traversing boundaries to find 'O's connected to edges. Starting DFS from (1, 1).",
       "matrix": [
         [
           "X",
           "X",
+          "X",
           "X"
         ],
         [
+          "X",
+          "O",
+          "O",
+          "X"
+        ],
+        [
+          "X",
           "X",
           "O",
           "X"
@@ -29,33 +37,48 @@
         [
           "X",
           "O",
+          "X",
           "X"
         ]
       ],
       "curr": [
         1,
         1
-      ]
+      ],
+      "visited": []
     },
     {
-      "codeLine": 2,
-      "note": "DFS marks boundary-connected 'O' as 'T'",
+      "codeLine": 1,
+      "note": "Marking 'O' at (1, 1) and (1, 2) and (2, 2) as 'T' because they are connected to boundary 'O' at (3, 1).",
       "matrix": [
         [
           "X",
           "X",
+          "X",
           "X"
         ],
         [
+          "X",
+          "T",
+          "T",
+          "X"
+        ],
+        [
+          "X",
           "X",
           "T",
           "X"
         ],
         [
           "X",
-          "T",
+          "O",
+          "X",
           "X"
         ]
+      ],
+      "curr": [
+        2,
+        2
       ],
       "visited": [
         [
@@ -63,31 +86,85 @@
           1
         ],
         [
+          1,
+          2
+        ],
+        [
           2,
-          1
+          2
         ]
       ]
     },
     {
-      "codeLine": 3,
-      "note": "Replacing non-captured 'O's (none) and restoring 'T's",
+      "codeLine": 2,
+      "note": "Final sweep: Change remaining 'O' to 'X'. (1,1), (1,2), (2,2) are 'T' so they remain.",
       "matrix": [
         [
           "X",
           "X",
+          "X",
           "X"
         ],
         [
           "X",
-          "O",
+          "T",
+          "T",
           "X"
         ],
         [
           "X",
-          "O",
+          "X",
+          "T",
+          "X"
+        ],
+        [
+          "X",
+          "X",
+          "X",
           "X"
         ]
-      ]
+      ],
+      "curr": [
+        3,
+        1
+      ],
+      "visited": []
+    },
+    {
+      "codeLine": 3,
+      "note": "Revert 'T' to 'O'.",
+      "matrix": [
+        [
+          "X",
+          "X",
+          "X",
+          "X"
+        ],
+        [
+          "X",
+          "O",
+          "O",
+          "X"
+        ],
+        [
+          "X",
+          "X",
+          "O",
+          "X"
+        ],
+        [
+          "X",
+          "X",
+          "X",
+          "X"
+        ]
+      ],
+      "curr": [
+        3,
+        1
+      ],
+      "visited": []
     }
-  ]
+  ],
+  "fullDescription": "<p>You are given an <code>m x n</code> matrix <code>board</code> containing <strong>letters</strong> <code>&#39;X&#39;</code> and <code>&#39;O&#39;</code>, <strong>capture regions</strong> that are <strong>surrounded</strong>:</p>\n\n<ul>\n\t<li><strong>Connect</strong>: A cell is connected to adjacent cells horizontally or vertically.</li>\n\t<li><strong>Region</strong>: To form a region <strong>connect every</strong> <code>&#39;O&#39;</code> cell.</li>\n\t<li><strong>Surround</strong>: A region is surrounded if none of the <code>&#39;O&#39;</code> cells in that region are on the edge of the board. Such regions are <strong>completely enclosed </strong>by <code>&#39;X&#39;</code> cells.</li>\n</ul>\n\n<p>To capture a <strong>surrounded region</strong>, replace all <code>&#39;O&#39;</code>s with <code>&#39;X&#39;</code>s <strong>in-place</strong> within the original board. You do not need to return anything.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<div class=\"example-block\">\n<p><strong>Input:</strong> <span class=\"example-io\">board = [[&quot;X&quot;,&quot;X&quot;,&quot;X&quot;,&quot;X&quot;],[&quot;X&quot;,&quot;O&quot;,&quot;O&quot;,&quot;X&quot;],[&quot;X&quot;,&quot;X&quot;,&quot;O&quot;,&quot;X&quot;],[&quot;X&quot;,&quot;O&quot;,&quot;X&quot;,&quot;X&quot;]]</span></p>\n\n<p><strong>Output:</strong> <span class=\"example-io\">[[&quot;X&quot;,&quot;X&quot;,&quot;X&quot;,&quot;X&quot;],[&quot;X&quot;,&quot;X&quot;,&quot;X&quot;,&quot;X&quot;],[&quot;X&quot;,&quot;X&quot;,&quot;X&quot;,&quot;X&quot;],[&quot;X&quot;,&quot;O&quot;,&quot;X&quot;,&quot;X&quot;]]</span></p>\n\n<p><strong>Explanation:</strong></p>\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2021/02/19/xogrid.jpg\" style=\"width: 367px; height: 158px;\" />\n<p>In the above diagram, the bottom region is not captured because it is on the edge of the board and cannot be surrounded.</p>\n</div>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<div class=\"example-block\">\n<p><strong>Input:</strong> <span class=\"example-io\">board = [[&quot;X&quot;]]</span></p>\n\n<p><strong>Output:</strong> <span class=\"example-io\">[[&quot;X&quot;]]</span></p>\n</div>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>m == board.length</code></li>\n\t<li><code>n == board[i].length</code></li>\n\t<li><code>1 &lt;= m, n &lt;= 200</code></li>\n\t<li><code>board[i][j]</code> is <code>&#39;X&#39;</code> or <code>&#39;O&#39;</code>.</li>\n</ul>\n"
 }

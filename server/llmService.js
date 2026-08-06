@@ -81,4 +81,43 @@ async function generateTrace(problemData, userCode = null, language = 'Auto') {
   }
 }
 
-module.exports = { generateTrace };
+async function chatWithContext(problemContext, stepContext, history, message) {
+  if (!process.env.GEMINI_API_KEY) {
+    throw new Error("GEMINI_API_KEY is not set. Please add it to your environment variables.");
+  }
+
+  const model = genAI.getGenerativeModel({ model: "gemini-3.1-flash-lite" });
+
+  const systemInstruction = `You are the AlgoTrace AI Assistant, an expert tutor for algorithms and data structures.
+The user is currently tracing an algorithm step-by-step.
+Your goal is to answer their questions based on the CURRENT state of the algorithm. Keep your answers concise and directly answer the question. Format responses in Markdown.
+
+--- PROBLEM CONTEXT ---
+Title: ${problemContext.title || 'Unknown'}
+Difficulty: ${problemContext.difficulty || 'Unknown'}
+Tags: ${(problemContext.tags || []).join(', ')}
+Description: ${problemContext.description || 'Unknown'}
+
+--- CURRENT STEP CONTEXT ---
+Active Pseudocode Line: ${stepContext.codeLine || 'Unknown'}
+Active Node/Index (curr): ${JSON.stringify(stepContext.curr || null)}
+Explanation of this step: ${stepContext.note || 'None'}
+Full State Data: ${JSON.stringify(stepContext)}
+`;
+
+  const chatHistory = (history || []).map(msg => `${msg.role.toUpperCase()}: ${msg.content}`).join('\n\n');
+  const prompt = `--- CHAT HISTORY ---\n${chatHistory}\n\nUSER: ${message}`;
+
+  try {
+    const result = await model.generateContent([
+      { text: systemInstruction },
+      { text: prompt }
+    ]);
+    return result.response.text().trim();
+  } catch (error) {
+    console.error("Chat Generation failed:", error);
+    throw new Error("Failed to generate response: " + error.message);
+  }
+}
+
+module.exports = { generateTrace, chatWithContext };

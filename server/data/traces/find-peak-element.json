@@ -6,13 +6,13 @@
     "Array",
     "Binary Search"
   ],
-  "description": "Find a peak element in an array where a peak is an element strictly greater than its neighbors.",
+  "description": "Find a peak element in an array where nums[i] > nums[i-1] and nums[i] > nums[i+1].",
   "target": null,
-  "pseudocode": "1: low = 0, high = nums.length - 1\n2: while low < high:\n3:   mid = Math.floor((low + high) / 2)\n4:   if nums[mid] > nums[mid + 1]: high = mid\n5:   else: low = mid + 1\n6: return low",
+  "pseudocode": "1. left = 0, right = n - 1\n2. while left < right:\n3. mid = left + (right - left) // 2\n4. if nums[mid] < nums[mid + 1]: left = mid + 1\n5. else: right = mid\n6. return left",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize search range pointers",
+      "note": "Initialize pointers left and right",
       "array": [
         1,
         2,
@@ -20,46 +20,23 @@
         1
       ],
       "i": 0,
-      "j": 3
-    },
-    {
-      "codeLine": 2,
-      "note": "Enter loop, low < high (0 < 3)",
-      "array": [
-        1,
-        2,
-        3,
-        1
-      ],
-      "i": 0,
-      "j": 3,
       "curr": 0
     },
     {
       "codeLine": 3,
-      "note": "Calculate mid index",
+      "note": "Calculate mid index: (0 + 3) // 2 = 1",
       "array": [
         1,
         2,
         3,
         1
       ],
+      "i": 1,
       "curr": 1
     },
     {
       "codeLine": 4,
-      "note": "Check if nums[1] > nums[2] (2 > 3 is false)",
-      "array": [
-        1,
-        2,
-        3,
-        1
-      ],
-      "curr": 1
-    },
-    {
-      "codeLine": 5,
-      "note": "Condition false, move low to mid + 1",
+      "note": "Compare nums[1] (2) and nums[2] (3). Since 2 < 3, move left to mid + 1 (2)",
       "array": [
         1,
         2,
@@ -67,47 +44,11 @@
         1
       ],
       "i": 2,
-      "j": 3,
-      "curr": 1
-    },
-    {
-      "codeLine": 2,
-      "note": "Check loop condition (2 < 3)",
-      "array": [
-        1,
-        2,
-        3,
-        1
-      ],
-      "i": 2,
-      "j": 3,
       "curr": 2
     },
     {
       "codeLine": 3,
-      "note": "Calculate new mid index",
-      "array": [
-        1,
-        2,
-        3,
-        1
-      ],
-      "curr": 2
-    },
-    {
-      "codeLine": 4,
-      "note": "Check if nums[2] > nums[3] (3 > 1 is true)",
-      "array": [
-        1,
-        2,
-        3,
-        1
-      ],
-      "curr": 2
-    },
-    {
-      "codeLine": 4,
-      "note": "Condition true, move high to mid",
+      "note": "Calculate mid index: (2 + 3) // 2 = 2",
       "array": [
         1,
         2,
@@ -115,19 +56,31 @@
         1
       ],
       "i": 2,
-      "j": 2
+      "curr": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Compare nums[2] (3) and nums[3] (1). Since 3 > 1, update right to mid (2)",
+      "array": [
+        1,
+        2,
+        3,
+        1
+      ],
+      "i": 2,
+      "curr": 2
     },
     {
       "codeLine": 6,
-      "note": "Loop terminates, peak found at index 2",
+      "note": "Loop terminates, left pointer at index 2 is the peak",
       "array": [
         1,
         2,
         3,
         1
       ],
-      "i": 2,
       "curr": 2
     }
-  ]
+  ],
+  "fullDescription": "<p>A peak element is an element that is strictly greater than its neighbors.</p>\n\n<p>Given a <strong>0-indexed</strong> integer array <code>nums</code>, find a peak element, and return its index. If the array contains multiple peaks, return the index to <strong>any of the peaks</strong>.</p>\n\n<p>You may imagine that <code>nums[-1] = nums[n] = -&infin;</code>. In other words, an element is always considered to be strictly greater than a neighbor that is outside the array.</p>\n\n<p>You must write an algorithm that runs in <code>O(log n)</code> time.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> nums = [1,2,3,1]\n<strong>Output:</strong> 2\n<strong>Explanation:</strong> 3 is a peak element and your function should return the index number 2.</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> nums = [1,2,1,3,5,6,4]\n<strong>Output:</strong> 5\n<strong>Explanation:</strong> Your function can return either index number 1 where the peak element is 2, or index number 5 where the peak element is 6.</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= nums.length &lt;= 1000</code></li>\n\t<li><code>-2<sup>31</sup> &lt;= nums[i] &lt;= 2<sup>31</sup> - 1</code></li>\n\t<li><code>nums[i] != nums[i + 1]</code> for all valid <code>i</code>.</li>\n</ul>\n"
 }

@@ -1,0 +1,101 @@
+{
+  "title": "Slowest Key",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "String"
+  ],
+  "description": "Find the character that had the longest duration in a sequence of key presses.",
+  "target": "longest duration",
+  "pseudocode": "1. maxDur = releaseTimes[0], res = keysPressed[0]\n2. for i from 1 to n-1:\n3.   dur = releaseTimes[i] - releaseTimes[i-1]\n4.   if dur > maxDur or (dur == maxDur and keysPressed[i] > res):\n5.     maxDur = dur, res = keysPressed[i]\n6. return res",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize maxDur and res with the first key press.",
+      "array": [
+        9,
+        29,
+        49,
+        50
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Calculate duration for second key: 29 - 9 = 20.",
+      "array": [
+        9,
+        29,
+        49,
+        50
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "20 > 9, update maxDur and res to 'b'.",
+      "array": [
+        9,
+        29,
+        49,
+        50
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Calculate duration for third key: 49 - 29 = 20.",
+      "array": [
+        9,
+        29,
+        49,
+        50
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "20 == 20, check lexicographical order 'c' > 'b'. Update res to 'c'.",
+      "array": [
+        9,
+        29,
+        49,
+        50
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Calculate duration for fourth key: 50 - 49 = 1.",
+      "array": [
+        9,
+        29,
+        49,
+        50
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 4,
+      "note": "1 < 20, no update.",
+      "array": [
+        9,
+        29,
+        49,
+        50
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 6,
+      "note": "Return final result 'c'.",
+      "array": [
+        9,
+        29,
+        49,
+        50
+      ]
+    }
+  ]
+}

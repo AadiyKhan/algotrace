@@ -1,0 +1,134 @@
+{
+  "title": "Richest Customer Wealth",
+  "difficulty": "Easy",
+  "type": "matrix",
+  "tags": [
+    "Array",
+    "Matrix"
+  ],
+  "description": "Calculate the maximum wealth among all customers, where each customer's wealth is the sum of money in their bank accounts.",
+  "target": 10,
+  "pseudocode": "let maxWealth = 0;\nfor (let i = 0; i < accounts.length; i++) {\n  let currentWealth = 0;\n  for (let j = 0; j < accounts[i].length; j++) {\n    currentWealth += accounts[i][j];\n  }\n  maxWealth = Math.max(maxWealth, currentWealth);\n}\nreturn maxWealth;",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize maxWealth to 0",
+      "matrix": [
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          4
+        ]
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Start loop for customer i=0",
+      "matrix": [
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Summing accounts for customer 0: 1 + 2 = 3",
+      "matrix": [
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "i": 0,
+      "j": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Update maxWealth to 3",
+      "matrix": [
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Start loop for customer i=1",
+      "matrix": [
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Summing accounts for customer 1: 3 + 4 = 7",
+      "matrix": [
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "i": 1,
+      "j": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Update maxWealth to 7",
+      "matrix": [
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 8,
+      "note": "Return maxWealth 7",
+      "matrix": [
+        [
+          1,
+          2
+        ],
+        [
+          3,
+          4
+        ]
+      ]
+    }
+  ]
+}

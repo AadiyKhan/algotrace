@@ -1,0 +1,158 @@
+{
+  "title": "Find Valid Matrix Given Row and Column Sums",
+  "difficulty": "Medium",
+  "type": "matrix",
+  "tags": [
+    "Array",
+    "Greedy",
+    "Matrix"
+  ],
+  "description": "Construct a matrix where the sum of each row and column matches given input arrays by greedily picking the minimum of available row and column sums.",
+  "pseudocode": "for i = 0 to rows-1:\n  for j = 0 to cols-1:\n    val = min(rowSum[i], colSum[j])\n    matrix[i][j] = val\n    rowSum[i] -= val\n    colSum[j] -= val",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize matrix with rowSum=[3, 8] and colSum=[4, 7].",
+      "matrix": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "i": 0,
+      "j": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Min(rowSum[0]=3, colSum[0]=4) is 3.",
+      "matrix": [
+        [
+          3,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "i": 0,
+      "j": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Update rowSum[0]=0, colSum[0]=1.",
+      "matrix": [
+        [
+          3,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "i": 0,
+      "j": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Move to second column of first row.",
+      "matrix": [
+        [
+          3,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "i": 0,
+      "j": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Min(rowSum[0]=0, colSum[1]=7) is 0.",
+      "matrix": [
+        [
+          3,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "i": 0,
+      "j": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Move to next row.",
+      "matrix": [
+        [
+          3,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "i": 1,
+      "j": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Min(rowSum[1]=8, colSum[0]=1) is 1.",
+      "matrix": [
+        [
+          3,
+          0
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "i": 1,
+      "j": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Update rowSum[1]=7, colSum[0]=0.",
+      "matrix": [
+        [
+          3,
+          0
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "i": 1,
+      "j": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Min(rowSum[1]=7, colSum[1]=7) is 7.",
+      "matrix": [
+        [
+          3,
+          0
+        ],
+        [
+          1,
+          7
+        ]
+      ],
+      "i": 1,
+      "j": 1
+    }
+  ]
+}

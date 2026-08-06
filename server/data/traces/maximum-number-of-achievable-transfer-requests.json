@@ -1,0 +1,49 @@
+{
+  "title": "Maximum Number of Achievable Transfer Requests",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Backtracking",
+    "Bitmask"
+  ],
+  "description": "Find the maximum number of requests that can be fulfilled such that the net change in each building's population is zero.",
+  "target": 0,
+  "pseudocode": "function solve(index, count, net) {\n  if (index == requests.length) {\n    if (net.every(x => x == 0)) return count;\n    return 0;\n  }\n  // Option 1: Include request\n  net[requests[index][0]]--;\n  net[requests[index][1]]++;\n  let res = solve(index + 1, count + 1, net);\n  // Backtrack\n  net[requests[index][0]]++;\n  net[requests[index][1]]--;\n  // Option 2: Skip request\n  return Math.max(res, solve(index + 1, count, net));\n}",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize recursion with index 0, count 0, and net change array [0,0]. Requests: [[0,1], [1,0]]",
+      "array": [
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Include request [0, 1]. Net change becomes [-1, 1].",
+      "array": [
+        -1,
+        1
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Move to index 1. Include request [1, 0]. Net change becomes [0, 0].",
+      "array": [
+        0,
+        0
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Reached index 2. All net changes are 0. Valid count is 2.",
+      "array": [
+        0,
+        0
+      ]
+    }
+  ]
+}

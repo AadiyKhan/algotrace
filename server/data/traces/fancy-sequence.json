@@ -1,0 +1,63 @@
+{
+  "title": "Fancy Sequence",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Math",
+    "Design"
+  ],
+  "description": "Implement a sequence that supports append, increment all, multiply all, and get index operations.",
+  "target": null,
+  "pseudocode": "1. append(val): val = (val - add) * modInv(mul)\n2. addAll(inc): add += inc\n3. multAll(m): mul *= m; add *= m\n4. getIndex(i): return (arr[i] * mul + add) % MOD",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Append value 2. Initial state: add=0, mul=1",
+      "array": [
+        2
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Add 3 to all. add becomes 3.",
+      "array": [
+        2
+      ]
+    },
+    {
+      "codeLine": 1,
+      "note": "Append value 5. Stored as (5-3)/1 = 2.",
+      "array": [
+        2,
+        2
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Multiply all by 2. mul=2, add=6.",
+      "array": [
+        2,
+        2
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Get index 0: (2 * 2 + 6) = 10.",
+      "array": [
+        2,
+        2
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Get index 1: (2 * 2 + 6) = 10.",
+      "array": [
+        2,
+        2
+      ],
+      "i": 1
+    }
+  ]
+}

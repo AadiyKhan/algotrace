@@ -1,0 +1,152 @@
+{
+  "title": "Merge In Between Linked Lists",
+  "difficulty": "Medium",
+  "type": "linked-list",
+  "tags": [
+    "Linked List"
+  ],
+  "description": "Remove nodes from list1 between a and b, and insert list2 in their place.",
+  "target": null,
+  "pseudocode": "1. prev = list1; for (i = 0; i < a - 1; i++) prev = prev.next;\n2. end = prev; for (i = 0; i < (b - a + 2); i++) end = end.next;\n3. prev.next = list2;\n4. curr = list2; while (curr.next) curr = curr.next;\n5. curr.next = end;",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Traversing to node before index a",
+      "nodes": [
+        {
+          "val": 0,
+          "next": 1
+        },
+        {
+          "val": 1,
+          "next": 2
+        },
+        {
+          "val": 2,
+          "next": 3
+        },
+        {
+          "val": 3,
+          "next": 4
+        },
+        {
+          "val": 4,
+          "next": 5
+        },
+        {
+          "val": 5,
+          "next": null
+        }
+      ],
+      "prev": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Finding the end node after index b",
+      "nodes": [
+        {
+          "val": 0,
+          "next": 1
+        },
+        {
+          "val": 1,
+          "next": 2
+        },
+        {
+          "val": 2,
+          "next": 3
+        },
+        {
+          "val": 3,
+          "next": 4
+        },
+        {
+          "val": 4,
+          "next": 5
+        },
+        {
+          "val": 5,
+          "next": null
+        }
+      ],
+      "prev": 0,
+      "curr": 4
+    },
+    {
+      "codeLine": 3,
+      "note": "Connecting list1 prefix to list2",
+      "nodes": [
+        {
+          "val": 0,
+          "next": 6
+        },
+        {
+          "val": 6,
+          "next": 7
+        },
+        {
+          "val": 7,
+          "next": null
+        },
+        {
+          "val": 4,
+          "next": 5
+        },
+        {
+          "val": 5,
+          "next": null
+        }
+      ],
+      "prev": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Finding tail of list2",
+      "nodes": [
+        {
+          "val": 0,
+          "next": 6
+        },
+        {
+          "val": 6,
+          "next": 7
+        },
+        {
+          "val": 7,
+          "next": null
+        },
+        {
+          "val": 4,
+          "next": 5
+        },
+        {
+          "val": 5,
+          "next": null
+        }
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Connecting tail of list2 to list1 suffix",
+      "nodes": [
+        {
+          "val": 0,
+          "next": 6
+        },
+        {
+          "val": 6,
+          "next": 7
+        },
+        {
+          "val": 7,
+          "next": 5
+        },
+        {
+          "val": 5,
+          "next": null
+        }
+      ]
+    }
+  ]
+}

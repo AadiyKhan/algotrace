@@ -1,0 +1,134 @@
+{
+  "title": "Widest Vertical Area Between Two Points Containing No Points",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Sorting",
+    "Geometry"
+  ],
+  "description": "Find the maximum width between two vertical lines such that no points are between them.",
+  "target": null,
+  "pseudocode": "1. Extract x-coordinates from points\n2. Sort x-coordinates in ascending order\n3. Initialize maxWidth = 0\n4. Loop i from 1 to x.length - 1:\n5.   diff = x[i] - x[i-1]\n6.   maxWidth = max(maxWidth, diff)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Extract x-coordinates from points [[8,7],[9,9],[7,4],[9,7]]",
+      "array": [
+        8,
+        9,
+        7,
+        9
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Sort the x-coordinates",
+      "array": [
+        7,
+        8,
+        9,
+        9
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Start iteration at index 1",
+      "array": [
+        7,
+        8,
+        9,
+        9
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Calculate difference between index 1 and 0",
+      "array": [
+        7,
+        8,
+        9,
+        9
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Update maxWidth to 1",
+      "array": [
+        7,
+        8,
+        9,
+        9
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Iterate to index 2",
+      "array": [
+        7,
+        8,
+        9,
+        9
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Calculate difference between index 2 and 1",
+      "array": [
+        7,
+        8,
+        9,
+        9
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "maxWidth remains 1",
+      "array": [
+        7,
+        8,
+        9,
+        9
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Iterate to index 3",
+      "array": [
+        7,
+        8,
+        9,
+        9
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 5,
+      "note": "Calculate difference between index 3 and 2",
+      "array": [
+        7,
+        8,
+        9,
+        9
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 6,
+      "note": "maxWidth remains 1",
+      "array": [
+        7,
+        8,
+        9,
+        9
+      ],
+      "i": 3
+    }
+  ]
+}

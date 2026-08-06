@@ -1,0 +1,131 @@
+{
+  "title": "Maximum Repeating Substring",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "String",
+    "Dynamic Programming"
+  ],
+  "description": "Find the maximum number of times the string 'word' repeats as a substring in 'sequence'.",
+  "target": "ab",
+  "pseudocode": "let count = 0; let sub = word; while (sequence.includes(sub)) { count++; sub += word; } return count;",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize count to 0 and current substring search pattern as 'ab'.",
+      "array": [
+        "a",
+        "b",
+        "a",
+        "b",
+        "a",
+        "b"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Check if 'ab' exists in 'ababab'. It exists.",
+      "array": [
+        "a",
+        "b",
+        "a",
+        "b",
+        "a",
+        "b"
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Increment count to 1 and update pattern to 'abab'.",
+      "array": [
+        "a",
+        "b",
+        "a",
+        "b",
+        "a",
+        "b"
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Check if 'abab' exists in 'ababab'. It exists.",
+      "array": [
+        "a",
+        "b",
+        "a",
+        "b",
+        "a",
+        "b"
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 2,
+      "note": "Increment count to 2 and update pattern to 'ababab'.",
+      "array": [
+        "a",
+        "b",
+        "a",
+        "b",
+        "a",
+        "b"
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 2,
+      "note": "Check if 'ababab' exists in 'ababab'. It exists.",
+      "array": [
+        "a",
+        "b",
+        "a",
+        "b",
+        "a",
+        "b"
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 2,
+      "note": "Increment count to 3 and update pattern to 'abababab'.",
+      "array": [
+        "a",
+        "b",
+        "a",
+        "b",
+        "a",
+        "b"
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 2,
+      "note": "Check if 'abababab' exists in 'ababab'. It does not. Terminate.",
+      "array": [
+        "a",
+        "b",
+        "a",
+        "b",
+        "a",
+        "b"
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 3,
+      "note": "Return the final count: 3.",
+      "array": [
+        "a",
+        "b",
+        "a",
+        "b",
+        "a",
+        "b"
+      ],
+      "i": 3
+    }
+  ]
+}

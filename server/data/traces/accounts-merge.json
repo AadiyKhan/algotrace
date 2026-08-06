@@ -1,55 +1,91 @@
 {
   "title": "Accounts Merge",
   "difficulty": "Medium",
-  "type": "array",
+  "type": "graph",
   "tags": [
-    "Graph",
-    "Union-Find",
-    "Depth-First Search"
+    "Array",
+    "Hash Table",
+    "String",
+    "Depth-First Search",
+    "Union-Find"
   ],
-  "description": "Merge overlapping email accounts using Union-Find to group emails belonging to the same user.",
-  "target": "Merged list of accounts",
-  "pseudocode": "1. parent = {}; for email in emails: parent[email] = email\n2. for account in accounts: first = account[1]\n3. for i from 1 to len(account)-1: union(first, account[i])\n4. groups = defaultdict(list)\n5. for email in parent: root = find(email); groups[root].push(email)\n6. for root in groups: sort(groups[root]); result.push([name] + groups[root])",
+  "description": "Merge accounts by connecting emails that belong to the same person through common email addresses.",
+  "pseudocode": "1. Build adjacency graph of emails per name.\n2. For each account, union all emails.\n3. Perform DFS/BFS on connected components to group emails.\n4. Sort emails for each person and add their name.",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize Union-Find structure. Each email is its own parent.",
-      "array": [
-        "john@mail.com",
-        "john_ny@mail.com",
-        "john00@mail.com"
+      "note": "Building graph: nodes are emails, edges exist between emails in the same account.",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": "johnsmith@mail.com"
+        },
+        {
+          "id": 1,
+          "val": "john_newyork@mail.com"
+        },
+        {
+          "id": 2,
+          "val": "john00@mail.com"
+        },
+        {
+          "id": 3,
+          "val": "mary@mail.com"
+        },
+        {
+          "id": 4,
+          "val": "johnnybravo@mail.com"
+        }
       ],
-      "i": 0
+      "graphEdges": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "curr": 0,
+      "visited": []
     },
     {
-      "codeLine": 3,
-      "note": "Union john@mail.com and john_ny@mail.com.",
-      "array": [
-        "john@mail.com",
-        "john@mail.com",
-        "john00@mail.com"
+      "codeLine": 2,
+      "note": "Unioning emails from first two accounts: johnsmith, john_newyork, john00 linked.",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": "johnsmith@mail.com"
+        },
+        {
+          "id": 1,
+          "val": "john_newyork@mail.com"
+        },
+        {
+          "id": 2,
+          "val": "john00@mail.com"
+        },
+        {
+          "id": 3,
+          "val": "mary@mail.com"
+        },
+        {
+          "id": 4,
+          "val": "johnnybravo@mail.com"
+        }
       ],
-      "i": 1
-    },
-    {
-      "codeLine": 3,
-      "note": "Union john@mail.com and john00@mail.com.",
-      "array": [
-        "john@mail.com",
-        "john@mail.com",
-        "john@mail.com"
+      "graphEdges": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ]
       ],
-      "i": 2,
-      "curr": 0
-    },
-    {
-      "codeLine": 5,
-      "note": "Grouping emails by their ultimate root parent.",
-      "array": [
-        "john@mail.com",
-        "john@mail.com",
-        "john@mail.com"
-      ],
+      "curr": 2,
       "visited": [
         0,
         1,
@@ -57,18 +93,91 @@
       ]
     },
     {
-      "codeLine": 6,
-      "note": "Sorting individual account lists and formatting the output.",
-      "array": [
-        "john@mail.com",
-        "john00@mail.com",
-        "john_ny@mail.com"
+      "codeLine": 3,
+      "note": "DFS for merged group: John's merged emails found.",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": "johnsmith@mail.com"
+        },
+        {
+          "id": 1,
+          "val": "john_newyork@mail.com"
+        },
+        {
+          "id": 2,
+          "val": "john00@mail.com"
+        },
+        {
+          "id": 3,
+          "val": "mary@mail.com"
+        },
+        {
+          "id": 4,
+          "val": "johnnybravo@mail.com"
+        }
       ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "curr": 3,
       "visited": [
         0,
         1,
         2
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Finalizing result: Mary and remaining individual accounts added.",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": "johnsmith@mail.com"
+        },
+        {
+          "id": 1,
+          "val": "john_newyork@mail.com"
+        },
+        {
+          "id": 2,
+          "val": "john00@mail.com"
+        },
+        {
+          "id": 3,
+          "val": "mary@mail.com"
+        },
+        {
+          "id": 4,
+          "val": "johnnybravo@mail.com"
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "curr": 4,
+      "visited": [
+        0,
+        1,
+        2,
+        3,
+        4
       ]
     }
-  ]
+  ],
+  "fullDescription": "<p>Given a list of <code>accounts</code> where each element <code>accounts[i]</code> is a list of strings, where the first element <code>accounts[i][0]</code> is a name, and the rest of the elements are <strong>emails</strong> representing emails of the account.</p>\n\n<p>Now, we would like to merge these accounts. Two accounts definitely belong to the same person if there is some common email to both accounts. Note that even if two accounts have the same name, they may belong to different people as people could have the same name. A person can have any number of accounts initially, but all of their accounts definitely have the same name.</p>\n\n<p>After merging the accounts, return the accounts in the following format: the first element of each account is the name, and the rest of the elements are emails <strong>in sorted order</strong>. The accounts themselves can be returned in <strong>any order</strong>.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> accounts = [[&quot;John&quot;,&quot;johnsmith@mail.com&quot;,&quot;john_newyork@mail.com&quot;],[&quot;John&quot;,&quot;johnsmith@mail.com&quot;,&quot;john00@mail.com&quot;],[&quot;Mary&quot;,&quot;mary@mail.com&quot;],[&quot;John&quot;,&quot;johnnybravo@mail.com&quot;]]\n<strong>Output:</strong> [[&quot;John&quot;,&quot;john00@mail.com&quot;,&quot;john_newyork@mail.com&quot;,&quot;johnsmith@mail.com&quot;],[&quot;Mary&quot;,&quot;mary@mail.com&quot;],[&quot;John&quot;,&quot;johnnybravo@mail.com&quot;]]\n<strong>Explanation:</strong>\nThe first and second John&#39;s are the same person as they have the common email &quot;johnsmith@mail.com&quot;.\nThe third John and Mary are different people as none of their email addresses are used by other accounts.\nWe could return these lists in any order, for example the answer [[&#39;Mary&#39;, &#39;mary@mail.com&#39;], [&#39;John&#39;, &#39;johnnybravo@mail.com&#39;], \n[&#39;John&#39;, &#39;john00@mail.com&#39;, &#39;john_newyork@mail.com&#39;, &#39;johnsmith@mail.com&#39;]] would still be accepted.\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> accounts = [[&quot;Gabe&quot;,&quot;Gabe0@m.co&quot;,&quot;Gabe3@m.co&quot;,&quot;Gabe1@m.co&quot;],[&quot;Kevin&quot;,&quot;Kevin3@m.co&quot;,&quot;Kevin5@m.co&quot;,&quot;Kevin0@m.co&quot;],[&quot;Ethan&quot;,&quot;Ethan5@m.co&quot;,&quot;Ethan4@m.co&quot;,&quot;Ethan0@m.co&quot;],[&quot;Hanzo&quot;,&quot;Hanzo3@m.co&quot;,&quot;Hanzo1@m.co&quot;,&quot;Hanzo0@m.co&quot;],[&quot;Fern&quot;,&quot;Fern5@m.co&quot;,&quot;Fern1@m.co&quot;,&quot;Fern0@m.co&quot;]]\n<strong>Output:</strong> [[&quot;Ethan&quot;,&quot;Ethan0@m.co&quot;,&quot;Ethan4@m.co&quot;,&quot;Ethan5@m.co&quot;],[&quot;Gabe&quot;,&quot;Gabe0@m.co&quot;,&quot;Gabe1@m.co&quot;,&quot;Gabe3@m.co&quot;],[&quot;Hanzo&quot;,&quot;Hanzo0@m.co&quot;,&quot;Hanzo1@m.co&quot;,&quot;Hanzo3@m.co&quot;],[&quot;Kevin&quot;,&quot;Kevin0@m.co&quot;,&quot;Kevin3@m.co&quot;,&quot;Kevin5@m.co&quot;],[&quot;Fern&quot;,&quot;Fern0@m.co&quot;,&quot;Fern1@m.co&quot;,&quot;Fern5@m.co&quot;]]\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= accounts.length &lt;= 1000</code></li>\n\t<li><code>2 &lt;= accounts[i].length &lt;= 10</code></li>\n\t<li><code>1 &lt;= accounts[i][j].length &lt;= 30</code></li>\n\t<li><code>accounts[i][0]</code> consists of English letters.</li>\n\t<li><code>accounts[i][j] (for j &gt; 0)</code> is a valid email.</li>\n</ul>\n"
 }

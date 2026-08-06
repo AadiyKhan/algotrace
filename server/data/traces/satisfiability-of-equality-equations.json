@@ -1,45 +1,95 @@
 {
   "title": "Satisfiability of Equality Equations",
   "difficulty": "Medium",
-  "type": "array",
+  "type": "graph",
   "tags": [
-    "Graph",
+    "Array",
+    "String",
     "Union-Find",
-    "String"
+    "Graph Theory"
   ],
-  "description": "Determine if a system of equality and inequality equations is satisfiable using Union-Find.",
-  "target": null,
-  "pseudocode": "1. parent = Array(26).fill(0).map((_, i) => i)\n2. find = (i) => parent[i] === i ? i : (parent[i] = find(parent[i]))\n3. for (eq of equations) if (eq[1] === '=') parent[find(eq.charCodeAt(0)-97)] = find(eq.charCodeAt(3)-97)\n4. for (eq of equations) if (eq[1] === '!' && find(eq.charCodeAt(0)-97) === find(eq.charCodeAt(3)-97)) return false\n5. return true",
+  "description": "Determine if equality and inequality equations can be simultaneously satisfied using Union-Find to group connected variables.",
+  "pseudocode": "1. Initialize DSU parent array for letters 'a'-'z'\n2. For each eq in equations if '==', union the two variables\n3. For each eq in equations if '!=', check if roots are same\n4. If roots are same for '!=', return false; else return true",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize parent array where each letter points to itself (a=0, b=1, c=2)",
-      "array": [
-        0,
-        1,
-        2
+      "note": "Initialize disjoint set union (DSU) where every variable 'a'-'z' is its own parent.",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": "a"
+        },
+        {
+          "id": 1,
+          "val": "b"
+        }
       ],
+      "graphEdges": [],
       "curr": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Process 'a==b': union 'a' and 'b'. 'b' now points to 'a'.",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": "a"
+        },
+        {
+          "id": 1,
+          "val": "b"
+        }
+      ],
+      "graphEdges": [
+        [
+          1,
+          0
+        ]
+      ],
+      "curr": 1
     },
     {
       "codeLine": 3,
-      "note": "Process 'a==b': Union 'a' and 'b'. Parent of 0 becomes 1.",
-      "array": [
-        1,
-        1,
-        2
+      "note": "Process 'b!=a': Check if find(b) == find(a). Since find(b) is 'a' and find(a) is 'a', they are in the same set.",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": "a"
+        },
+        {
+          "id": 1,
+          "val": "b"
+        }
       ],
-      "curr": 0
+      "graphEdges": [
+        [
+          1,
+          0
+        ]
+      ],
+      "curr": 1
     },
     {
       "codeLine": 4,
-      "note": "Process 'a!=b': Find(a) is 1, Find(b) is 1. Since 1 == 1, return false.",
-      "array": [
-        1,
-        1,
-        2
+      "note": "Conflict detected: find(b) == find(a) but equation is '!='. Return false.",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": "a"
+        },
+        {
+          "id": 1,
+          "val": "b"
+        }
+      ],
+      "graphEdges": [
+        [
+          1,
+          0
+        ]
       ],
       "curr": 1
     }
-  ]
+  ],
+  "fullDescription": "<p>You are given an array of strings <code>equations</code> that represent relationships between variables where each string <code>equations[i]</code> is of length <code>4</code> and takes one of two different forms: <code>&quot;x<sub>i</sub>==y<sub>i</sub>&quot;</code> or <code>&quot;x<sub>i</sub>!=y<sub>i</sub>&quot;</code>.Here, <code>x<sub>i</sub></code> and <code>y<sub>i</sub></code> are lowercase letters (not necessarily different) that represent one-letter variable names.</p>\n\n<p>Return <code>true</code><em> if it is possible to assign integers to variable names so as to satisfy all the given equations, or </em><code>false</code><em> otherwise</em>.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> equations = [&quot;a==b&quot;,&quot;b!=a&quot;]\n<strong>Output:</strong> false\n<strong>Explanation:</strong> If we assign say, a = 1 and b = 1, then the first equation is satisfied, but not the second.\nThere is no way to assign the variables to satisfy both equations.\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> equations = [&quot;b==a&quot;,&quot;a==b&quot;]\n<strong>Output:</strong> true\n<strong>Explanation:</strong> We could assign a = 1 and b = 1 to satisfy both equations.\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= equations.length &lt;= 500</code></li>\n\t<li><code>equations[i].length == 4</code></li>\n\t<li><code>equations[i][0]</code> is a lowercase letter.</li>\n\t<li><code>equations[i][1]</code> is either <code>&#39;=&#39;</code> or <code>&#39;!&#39;</code>.</li>\n\t<li><code>equations[i][2]</code> is <code>&#39;=&#39;</code>.</li>\n\t<li><code>equations[i][3]</code> is a lowercase letter.</li>\n</ul>\n"
 }

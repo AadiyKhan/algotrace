@@ -1,30 +1,40 @@
 {
   "title": "Count Different Palindromic Subsequences",
   "difficulty": "Hard",
-  "type": "matrix",
+  "type": "array",
   "tags": [
-    "Dynamic Programming",
-    "String"
+    "Array",
+    "String",
+    "Dynamic Programming"
   ],
-  "description": "Given a string, find the number of different non-empty palindromic subsequences.",
-  "target": null,
-  "pseudocode": "1. n = s.length\n2. dp = new Array(n).fill(0).map(() => new Array(n).fill(0))\n3. for i from n-1 to 0:\n4.   dp[i][i] = 1\n5.   for j from i+1 to n-1:\n6.     if s[i] == s[j]:\n7.       dp[i][j] = dp[i+1][j-1] * 2 + (inner_logic)\n8.     else:\n9.       dp[i][j] = dp[i+1][j] + dp[i][j-1] - dp[i+1][j-1]",
+  "description": "Calculate the number of distinct non-empty palindromic subsequences in a string using DP.",
+  "target": 6,
+  "pseudocode": "1. Initialize dp[n][n] table with 0s\n2. For i from n-1 to 0: dp[i][i] = 1\n3. For length len from 2 to n:\n4.   For i from 0 to n-len:\n5.     j = i + len - 1\n6.     If s[i] == s[j]: calculate based on inner range matches\n7.     Else: dp[i][j] = dp[i+1][j] + dp[i][j-1] - dp[i+1][j-1]\n8. Return dp[0][n-1]",
   "steps": [
     {
-      "codeLine": 2,
-      "note": "Initialize DP table for string 'aba'",
-      "matrix": [
+      "codeLine": 1,
+      "note": "Initialize DP table for 'bccb' (n=4)",
+      "array": [
         [
           1,
+          0,
           0,
           0
         ],
         [
           0,
           1,
+          0,
           0
         ],
         [
+          0,
+          0,
+          1,
+          0
+        ],
+        [
+          0,
           0,
           0,
           1
@@ -32,80 +42,133 @@
       ]
     },
     {
-      "codeLine": 4,
-      "note": "Base case: single characters are palindromes",
-      "matrix": [
+      "codeLine": 3,
+      "note": "Processing length 2: Subsequences 'bc', 'cc', 'cb'",
+      "array": [
         [
           1,
           0,
-          0
-        ],
-        [
-          0,
-          1,
-          0
-        ],
-        [
-          0,
-          0,
-          1
-        ]
-      ],
-      "i": 0
-    },
-    {
-      "codeLine": 6,
-      "note": "Check s[0] ('a') == s[2] ('a')",
-      "matrix": [
-        [
-          1,
-          0,
-          5
-        ],
-        [
-          0,
-          1,
-          0
-        ],
-        [
-          0,
-          0,
-          1
-        ]
-      ],
-      "i": 0,
-      "j": 2,
-      "curr": [
-        0,
-        2
-      ]
-    },
-    {
-      "codeLine": 9,
-      "note": "Calculating dp[0][1] for 'ab'",
-      "matrix": [
-        [
-          1,
           2,
-          5
+          0
         ],
         [
           0,
           1,
+          0,
           2
         ],
         [
           0,
           0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
           1
         ]
       ],
       "i": 0,
-      "j": 1,
-      "curr": [
-        0,
-        1
-      ]
+      "curr": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Processing inner 'cc', dp[1][2] = 2 ('c', 'cc')",
+      "array": [
+        [
+          1,
+          0,
+          2,
+          0
+        ],
+        [
+          0,
+          1,
+          2,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1
+        ]
+      ],
+      "i": 1,
+      "curr": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Processing length 3: Subsequences 'bcc', 'ccb'",
+      "array": [
+        [
+          1,
+          0,
+          2,
+          3
+        ],
+        [
+          0,
+          1,
+          2,
+          3
+        ],
+        [
+          0,
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1
+        ]
+      ],
+      "i": 0,
+      "curr": 3
+    },
+    {
+      "codeLine": 6,
+      "note": "Processing outer 'b...b', s[0]==s[3], expand range",
+      "array": [
+        [
+          1,
+          0,
+          2,
+          6
+        ],
+        [
+          0,
+          1,
+          2,
+          3
+        ],
+        [
+          0,
+          0,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          1
+        ]
+      ],
+      "i": 0,
+      "curr": 3
     }
-  ]
+  ],
+  "fullDescription": "<p>Given a string s, return <em>the number of different non-empty palindromic subsequences in</em> <code>s</code>. Since the answer may be very large, return it <strong>modulo</strong> <code>10<sup>9</sup> + 7</code>.</p>\n\n<p>A subsequence of a string is obtained by deleting zero or more characters from the string.</p>\n\n<p>A sequence is palindromic if it is equal to the sequence reversed.</p>\n\n<p>Two sequences <code>a<sub>1</sub>, a<sub>2</sub>, ...</code> and <code>b<sub>1</sub>, b<sub>2</sub>, ...</code> are different if there is some <code>i</code> for which <code>a<sub>i</sub> != b<sub>i</sub></code>.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> s = &quot;bccb&quot;\n<strong>Output:</strong> 6\n<strong>Explanation:</strong> The 6 different non-empty palindromic subsequences are &#39;b&#39;, &#39;c&#39;, &#39;bb&#39;, &#39;cc&#39;, &#39;bcb&#39;, &#39;bccb&#39;.\nNote that &#39;bcb&#39; is counted only once, even though it occurs twice.\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> s = &quot;abcdabcdabcdabcdabcdabcdabcdabcddcbadcbadcbadcbadcbadcbadcbadcba&quot;\n<strong>Output:</strong> 104860361\n<strong>Explanation:</strong> There are 3104860382 different non-empty palindromic subsequences, which is 104860361 modulo 10<sup>9</sup> + 7.\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= s.length &lt;= 1000</code></li>\n\t<li><code>s[i]</code> is either <code>&#39;a&#39;</code>, <code>&#39;b&#39;</code>, <code>&#39;c&#39;</code>, or <code>&#39;d&#39;</code>.</li>\n</ul>\n"
 }

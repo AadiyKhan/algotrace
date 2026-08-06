@@ -7,100 +7,136 @@
     "Dynamic Programming",
     "Backtracking"
   ],
-  "description": "Generate all combinations of well-formed parentheses for n=3.",
+  "description": "Generate all combinations of n pairs of well-formed parentheses using backtracking.",
   "target": 3,
-  "pseudocode": "1. function backtrack(result, current_string, open, close, max):\n2.   if length of current_string == max * 2: add current_string to result; return\n3.   if open < max: backtrack(result, current_string + '(', open + 1, close, max)\n4.   if close < open: backtrack(result, current_string + ')', open, close + 1, max)",
+  "pseudocode": "1. function backtrack(result, current, open, close, max):\n2.   if current length == max * 2: add current to result; return\n3.   if open < max: backtrack(result, current + '(', open + 1, close, max)\n4.   if close < open: backtrack(result, current + ')', open, close + 1, max)",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize result array and start backtracking.",
-      "array": []
+      "note": "Initialize backtracking with n=3",
+      "array": [],
+      "visited": []
     },
     {
       "codeLine": 3,
-      "note": "Add '(', open=1, close=0.",
+      "note": "Add '(': open=1, close=0",
       "array": [
         "("
       ],
-      "curr": 1
+      "visited": []
     },
     {
       "codeLine": 3,
-      "note": "Add '(', open=2, close=0.",
+      "note": "Add '(': open=2, close=0",
       "array": [
-        "(("
+        "((",
+        "("
       ],
-      "curr": 2
+      "visited": []
     },
     {
       "codeLine": 3,
-      "note": "Add '(', open=3, close=0.",
+      "note": "Add '(': open=3, close=0",
       "array": [
-        "((("
+        "(((",
+        "((",
+        "("
       ],
-      "curr": 3
+      "visited": []
     },
     {
       "codeLine": 4,
-      "note": "Add ')', open=3, close=1.",
+      "note": "Add ')': open=3, close=1",
       "array": [
-        "((()"
+        "((()",
+        "(((",
+        "((",
+        "("
       ],
-      "curr": 3
+      "visited": []
     },
     {
       "codeLine": 4,
-      "note": "Add ')', open=3, close=2.",
+      "note": "Add ')': open=3, close=2",
       "array": [
-        "((())"
+        "((())",
+        "((()",
+        "(((",
+        "((",
+        "("
       ],
-      "curr": 3
+      "visited": []
     },
     {
       "codeLine": 4,
-      "note": "Add ')', open=3, close=3, complete first combination.",
+      "note": "Add ')': open=3, close=3, sequence complete",
       "array": [
         "((()))"
       ],
-      "curr": 3
-    },
-    {
-      "codeLine": 4,
-      "note": "Backtrack to add second combination: (()())",
-      "array": [
-        "((()))",
-        "(()())"
+      "visited": [
+        0
       ]
     },
     {
       "codeLine": 4,
-      "note": "Backtrack to add third combination: (())()",
+      "note": "Backtrack to add next valid sequence",
+      "array": [
+        "((()))",
+        "(()())"
+      ],
+      "visited": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Backtrack to add next valid sequence",
       "array": [
         "((()))",
         "(()())",
         "(())()"
+      ],
+      "visited": [
+        0,
+        1,
+        2
       ]
     },
     {
-      "codeLine": 3,
-      "note": "Backtrack to add fourth combination: ()(())",
+      "codeLine": 4,
+      "note": "Backtrack to add next valid sequence",
       "array": [
         "((()))",
         "(()())",
         "(())()",
         "()(())"
+      ],
+      "visited": [
+        0,
+        1,
+        2,
+        3
       ]
     },
     {
-      "codeLine": 3,
-      "note": "Backtrack to add fifth combination: ()()()",
+      "codeLine": 4,
+      "note": "Backtrack to add final valid sequence",
       "array": [
         "((()))",
         "(()())",
         "(())()",
         "()(())",
         "()()()"
+      ],
+      "visited": [
+        0,
+        1,
+        2,
+        3,
+        4
       ]
     }
-  ]
+  ],
+  "fullDescription": "<p>Given <code>n</code> pairs of parentheses, write a function to <em>generate all combinations of well-formed parentheses</em>.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n<pre><strong>Input:</strong> n = 3\n<strong>Output:</strong> [\"((()))\",\"(()())\",\"(())()\",\"()(())\",\"()()()\"]\n</pre><p><strong class=\"example\">Example 2:</strong></p>\n<pre><strong>Input:</strong> n = 1\n<strong>Output:</strong> [\"()\"]\n</pre>\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= n &lt;= 8</code></li>\n</ul>\n"
 }

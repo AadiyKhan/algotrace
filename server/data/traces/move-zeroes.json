@@ -6,13 +6,12 @@
     "Array",
     "Two Pointers"
   ],
-  "description": "Given an integer array nums, move all 0's to the end of it while maintaining the relative order of the non-zero elements.",
-  "target": null,
-  "pseudocode": "1. let lastNonZero = 0\n2. for i = 0 to nums.length - 1:\n3.   if nums[i] != 0:\n4.     swap(nums[i], nums[lastNonZero])\n5.     lastNonZero++",
+  "description": "Move all 0's to the end of the array while maintaining the relative order of non-zero elements.",
+  "pseudocode": "1. initialize left pointer: insertPos = 0\n2. for i from 0 to length - 1:\n3.   if nums[i] != 0:\n4.     swap nums[insertPos], nums[i]\n5.     insertPos++",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize lastNonZero pointer to 0",
+      "note": "Initialize insertPos to 0.",
       "array": [
         0,
         1,
@@ -21,11 +20,12 @@
         12
       ],
       "i": 0,
-      "curr": 0
+      "curr": 0,
+      "visited": []
     },
     {
       "codeLine": 2,
-      "note": "Start loop, i=0, nums[0] is 0",
+      "note": "i=0: nums[0] is 0, skip.",
       "array": [
         0,
         1,
@@ -34,37 +34,12 @@
         12
       ],
       "i": 0,
-      "curr": 0
+      "curr": 0,
+      "visited": []
     },
     {
       "codeLine": 3,
-      "note": "nums[0] is 0, skip swap",
-      "array": [
-        0,
-        1,
-        0,
-        3,
-        12
-      ],
-      "i": 0,
-      "curr": 0
-    },
-    {
-      "codeLine": 2,
-      "note": "Loop, i=1, nums[1] is 1",
-      "array": [
-        0,
-        1,
-        0,
-        3,
-        12
-      ],
-      "i": 1,
-      "curr": 1
-    },
-    {
-      "codeLine": 4,
-      "note": "Swap nums[1] and nums[0]",
+      "note": "i=1: nums[1] is 1 (non-zero), swap with insertPos 0.",
       "array": [
         1,
         0,
@@ -73,11 +48,14 @@
         12
       ],
       "i": 1,
-      "curr": 1
+      "curr": 1,
+      "visited": [
+        0
+      ]
     },
     {
       "codeLine": 5,
-      "note": "Increment lastNonZero to 1",
+      "note": "Increment insertPos to 1.",
       "array": [
         1,
         0,
@@ -86,11 +64,14 @@
         12
       ],
       "i": 1,
-      "curr": 1
+      "curr": 1,
+      "visited": [
+        0
+      ]
     },
     {
       "codeLine": 2,
-      "note": "Loop, i=2, nums[2] is 0, skip",
+      "note": "i=2: nums[2] is 0, skip.",
       "array": [
         1,
         0,
@@ -99,24 +80,14 @@
         12
       ],
       "i": 2,
-      "curr": 2
+      "curr": 2,
+      "visited": [
+        0
+      ]
     },
     {
-      "codeLine": 2,
-      "note": "Loop, i=3, nums[3] is 3",
-      "array": [
-        1,
-        0,
-        0,
-        3,
-        12
-      ],
-      "i": 3,
-      "curr": 3
-    },
-    {
-      "codeLine": 4,
-      "note": "Swap nums[3] and nums[1]",
+      "codeLine": 3,
+      "note": "i=3: nums[3] is 3 (non-zero), swap with insertPos 1.",
       "array": [
         1,
         3,
@@ -125,11 +96,15 @@
         12
       ],
       "i": 3,
-      "curr": 3
+      "curr": 3,
+      "visited": [
+        0,
+        1
+      ]
     },
     {
       "codeLine": 5,
-      "note": "Increment lastNonZero to 2",
+      "note": "Increment insertPos to 2.",
       "array": [
         1,
         3,
@@ -138,24 +113,15 @@
         12
       ],
       "i": 3,
-      "curr": 2
+      "curr": 3,
+      "visited": [
+        0,
+        1
+      ]
     },
     {
-      "codeLine": 2,
-      "note": "Loop, i=4, nums[4] is 12",
-      "array": [
-        1,
-        3,
-        0,
-        0,
-        12
-      ],
-      "i": 4,
-      "curr": 4
-    },
-    {
-      "codeLine": 4,
-      "note": "Swap nums[4] and nums[2]",
+      "codeLine": 3,
+      "note": "i=4: nums[4] is 12 (non-zero), swap with insertPos 2.",
       "array": [
         1,
         3,
@@ -164,11 +130,16 @@
         0
       ],
       "i": 4,
-      "curr": 4
+      "curr": 4,
+      "visited": [
+        0,
+        1,
+        2
+      ]
     },
     {
       "codeLine": 5,
-      "note": "Increment lastNonZero to 3",
+      "note": "Final state achieved.",
       "array": [
         1,
         3,
@@ -177,7 +148,13 @@
         0
       ],
       "i": 4,
-      "curr": 3
+      "curr": 4,
+      "visited": [
+        0,
+        1,
+        2
+      ]
     }
-  ]
+  ],
+  "fullDescription": "<p>Given an integer array <code>nums</code>, move all <code>0</code>&#39;s to the end of it while maintaining the relative order of the non-zero elements.</p>\n\n<p><strong>Note</strong> that you must do this in-place without making a copy of the array.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n<pre><strong>Input:</strong> nums = [0,1,0,3,12]\n<strong>Output:</strong> [1,3,12,0,0]\n</pre><p><strong class=\"example\">Example 2:</strong></p>\n<pre><strong>Input:</strong> nums = [0]\n<strong>Output:</strong> [0]\n</pre>\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= nums.length &lt;= 10<sup>4</sup></code></li>\n\t<li><code>-2<sup>31</sup> &lt;= nums[i] &lt;= 2<sup>31</sup> - 1</code></li>\n</ul>\n\n<p>&nbsp;</p>\n<strong>Follow up:</strong> Could you minimize the total number of operations done?"
 }

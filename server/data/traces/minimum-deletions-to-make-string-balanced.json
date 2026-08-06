@@ -1,0 +1,81 @@
+{
+  "title": "Minimum Deletions to Make String Balanced",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "String",
+    "Dynamic Programming",
+    "Stack"
+  ],
+  "description": "Remove the minimum number of characters to make the string balanced, where no 'b' precedes an 'a'.",
+  "target": null,
+  "pseudocode": "1. countB = 0\n2. deletions = 0\n3. for char in s:\n4.   if char == 'b':\n5.     countB++\n6.   else:\n7.     if countB > 0:\n8.       deletions++\n9.       countB--",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize count of 'b's seen so far.",
+      "array": [
+        "a",
+        "a",
+        "b",
+        "a"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Processing index 0 ('a'). No 'b' seen yet.",
+      "array": [
+        "a",
+        "a",
+        "b",
+        "a"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Processing index 1 ('a'). No 'b' seen yet.",
+      "array": [
+        "a",
+        "a",
+        "b",
+        "a"
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Processing index 2 ('b'). Increment countB.",
+      "array": [
+        "a",
+        "a",
+        "b",
+        "a"
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Processing index 3 ('a'). 'b' has been seen, delete this 'a'.",
+      "array": [
+        "a",
+        "a",
+        "b",
+        "a"
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 8,
+      "note": "Increment deletions count to 1.",
+      "array": [
+        "a",
+        "a",
+        "b",
+        "a"
+      ],
+      "i": 3
+    }
+  ]
+}

@@ -1,125 +1,138 @@
 {
   "title": "Flatten Nested List Iterator",
   "difficulty": "Medium",
-  "type": "tree",
+  "type": "array",
   "tags": [
     "Stack",
-    "Design",
-    "Tree"
+    "Tree",
+    "Design"
   ],
-  "description": "Flatten a nested list of integers using a stack-based iterator approach.",
-  "pseudocode": "1: function flatten(nestedList) {\n2:   stack = [...nestedList].reverse();\n3: }\n4: function next() {\n5:   return stack.pop().getInteger();\n6: }\n7: function hasNext() {\n8:   while (stack.length > 0 && !stack[stack.length-1].isInteger()) {\n9:     curr = stack.pop().getList();\n10:    for (i = curr.length - 1; i >= 0; i--) stack.push(curr[i]);\n11:  }\n12:  return stack.length > 0;\n13: }",
+  "description": "Flatten a nested list of integers using an iterator.",
+  "target": [
+    1,
+    1,
+    2,
+    1,
+    1
+  ],
+  "pseudocode": "1. stack = reverse(nestedList)\n2. while hasNext():\n3.    res.append(next())\n4. return res",
   "steps": [
     {
+      "codeLine": 1,
+      "note": "Initialize stack with reversed nestedList to process from left to right: [[1,1], 2, [1,1]]",
+      "array": [],
+      "visited": [],
+      "i": null,
+      "curr": null
+    },
+    {
       "codeLine": 2,
-      "note": "Initialize stack with reversed nested list: [[1,1], 2, [1,1]] -> stack: [[1,1], 2, [1,1]]",
-      "treeNodes": [
-        {
-          "id": 0,
-          "val": "root",
-          "left": 1,
-          "right": 2
-        },
-        {
-          "id": 1,
-          "val": "[1,1]"
-        },
-        {
-          "id": 2,
-          "val": "2"
-        },
-        {
-          "id": 3,
-          "val": "[1,1]"
-        }
+      "note": "hasNext called: stack top is [1,1], flattening it",
+      "array": [],
+      "visited": [],
+      "i": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "next() returns 1",
+      "array": [
+        1
       ],
       "visited": [
         0
-      ]
+      ],
+      "i": 0,
+      "curr": 0
     },
     {
-      "codeLine": 8,
-      "note": "Check hasNext. Top of stack is not integer, need to flatten.",
-      "treeNodes": [
-        {
-          "id": 0,
-          "val": "root",
-          "left": 1,
-          "right": 2
-        },
-        {
-          "id": 1,
-          "val": "[1,1]"
-        },
-        {
-          "id": 2,
-          "val": "2"
-        },
-        {
-          "id": 3,
-          "val": "[1,1]"
-        }
+      "codeLine": 3,
+      "note": "next() returns 1",
+      "array": [
+        1,
+        1
       ],
       "visited": [
         0,
         1
-      ]
+      ],
+      "i": 1,
+      "curr": 1
     },
     {
-      "codeLine": 10,
-      "note": "Flatten first element [1,1] into stack.",
-      "treeNodes": [
-        {
-          "id": 0,
-          "val": "root",
-          "left": 1,
-          "right": 2
-        },
-        {
-          "id": 1,
-          "val": "[1,1]"
-        },
-        {
-          "id": 2,
-          "val": "2"
-        },
-        {
-          "id": 3,
-          "val": "[1,1]"
-        }
+      "codeLine": 3,
+      "note": "next() returns 2",
+      "array": [
+        1,
+        1,
+        2
       ],
       "visited": [
         0,
-        1
-      ]
+        1,
+        2
+      ],
+      "i": 2,
+      "curr": 2
     },
     {
-      "codeLine": 5,
-      "note": "Call next(): pop 1 from stack.",
-      "treeNodes": [
-        {
-          "id": 0,
-          "val": "root",
-          "left": 1,
-          "right": 2
-        },
-        {
-          "id": 1,
-          "val": "[1,1]"
-        },
-        {
-          "id": 2,
-          "val": "2"
-        },
-        {
-          "id": 3,
-          "val": "[1,1]"
-        }
+      "codeLine": 3,
+      "note": "next() returns 1",
+      "array": [
+        1,
+        1,
+        2,
+        1
       ],
       "visited": [
         0,
+        1,
+        2,
+        3
+      ],
+      "i": 3,
+      "curr": 3
+    },
+    {
+      "codeLine": 3,
+      "note": "next() returns 1",
+      "array": [
+        1,
+        1,
+        2,
+        1,
         1
-      ]
+      ],
+      "visited": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "i": 4,
+      "curr": 4
+    },
+    {
+      "codeLine": 4,
+      "note": "hasNext() is false, return result",
+      "array": [
+        1,
+        1,
+        2,
+        1,
+        1
+      ],
+      "visited": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "i": 4,
+      "curr": null
     }
-  ]
+  ],
+  "fullDescription": "<p>You are given a nested list of integers <code>nestedList</code>. Each element is either an integer or a list whose elements may also be integers or other lists. Implement an iterator to flatten it.</p>\n\n<p>Implement the <code>NestedIterator</code> class:</p>\n\n<ul>\n\t<li><code>NestedIterator(List&lt;NestedInteger&gt; nestedList)</code> Initializes the iterator with the nested list <code>nestedList</code>.</li>\n\t<li><code>int next()</code> Returns the next integer in the nested list.</li>\n\t<li><code>boolean hasNext()</code> Returns <code>true</code> if there are still some integers in the nested list and <code>false</code> otherwise.</li>\n</ul>\n\n<p>Your code will be tested with the following pseudocode:</p>\n\n<pre>\ninitialize iterator with nestedList\nres = []\nwhile iterator.hasNext()\n    append iterator.next() to the end of res\nreturn res\n</pre>\n\n<p>If <code>res</code> matches the expected flattened list, then your code will be judged as correct.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> nestedList = [[1,1],2,[1,1]]\n<strong>Output:</strong> [1,1,2,1,1]\n<strong>Explanation:</strong> By calling next repeatedly until hasNext returns false, the order of elements returned by next should be: [1,1,2,1,1].\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> nestedList = [1,[4,[6]]]\n<strong>Output:</strong> [1,4,6]\n<strong>Explanation:</strong> By calling next repeatedly until hasNext returns false, the order of elements returned by next should be: [1,4,6].\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= nestedList.length &lt;= 500</code></li>\n\t<li>The values of the integers in the nested list is in the range <code>[-10<sup>6</sup>, 10<sup>6</sup>]</code>.</li>\n</ul>\n"
 }

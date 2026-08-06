@@ -1,0 +1,183 @@
+{
+  "title": "Correct a Binary Tree",
+  "difficulty": "Medium",
+  "type": "tree",
+  "tags": [
+    "Tree",
+    "Breadth-First Search",
+    "Hash Table"
+  ],
+  "description": "Identify and remove the invalid node that points to an already visited node in the same level using BFS.",
+  "target": null,
+  "pseudocode": "1. queue = [root], visited = {root.val}\n2. while queue:\n3.   level_size = len(queue)\n4.   for i in range(level_size):\n5.     curr = queue.pop(0)\n6.     if curr.right and curr.right.val in visited: return remove_node(curr)\n7.     if curr.right: queue.append(curr.right), visited.add(curr.right.val)\n8.     if curr.left: queue.append(curr.left), visited.add(curr.left.val)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize queue with root and visited set with root value.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": 3
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 4,
+          "left": null,
+          "right": 2
+        }
+      ],
+      "visited": [
+        1
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Start BFS traversal of the tree.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": 3
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 4,
+          "left": null,
+          "right": 2
+        }
+      ],
+      "visited": [
+        1
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Process node 1.",
+      "curr": 0,
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": 3
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 4,
+          "left": null,
+          "right": 2
+        }
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Node 1's right child (node 2) is added to queue and visited.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": 3
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 4,
+          "left": null,
+          "right": 2
+        }
+      ],
+      "visited": [
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Process node 4. Found that node 4's right child (node 2) is already in visited set.",
+      "curr": 3,
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": 3
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 4,
+          "left": null,
+          "right": 2
+        }
+      ],
+      "visited": [
+        1,
+        2,
+        3,
+        4
+      ]
+    }
+  ]
+}

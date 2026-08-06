@@ -1,0 +1,97 @@
+{
+  "title": "Max Number of K-Sum Pairs",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Two Pointers",
+    "Sorting"
+  ],
+  "description": "Find the maximum number of operations that can be performed on an array where each operation chooses two numbers that sum up to k and removes them.",
+  "target": 5,
+  "pseudocode": "1: nums.sort((a, b) => a - b);\n2: let i = 0, j = nums.length - 1, count = 0;\n3: while (i < j) {\n4:   let sum = nums[i] + nums[j];\n5:   if (sum === k) { count++; i++; j--; }\n6:   else if (sum < k) { i++; }\n7:   else { j--; }\n8: }",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Sort the array to enable two-pointer approach.",
+      "array": [
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Initialize pointers i at start and j at end.",
+      "array": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "i": 0,
+      "j": 3
+    },
+    {
+      "codeLine": 4,
+      "note": "Calculate sum of nums[0] (1) and nums[3] (4).",
+      "array": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "i": 0,
+      "j": 3
+    },
+    {
+      "codeLine": 5,
+      "note": "Sum is 5 (target), increment count and move pointers.",
+      "array": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "i": 1,
+      "j": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Calculate sum of nums[1] (2) and nums[2] (3).",
+      "array": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "i": 1,
+      "j": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Sum is 5 (target), increment count and move pointers.",
+      "array": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "i": 2,
+      "j": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Loop terminates as i is no longer less than j.",
+      "array": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "i": 2,
+      "j": 1
+    }
+  ]
+}

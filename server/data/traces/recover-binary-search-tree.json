@@ -4,68 +4,55 @@
   "type": "tree",
   "tags": [
     "Tree",
-    "DFS",
-    "BST"
+    "Depth-First Search",
+    "Binary Search Tree"
   ],
-  "description": "Recover a binary search tree where two nodes have been swapped by mistake using Morris Traversal.",
-  "target": null,
-  "pseudocode": "1. prev = null, first = null, second = null\n2. curr = root\n3. while curr != null:\n4.   if curr.left == null:\n5.     if prev and prev.val > curr.val:\n6.       if !first: first = prev; second = curr\n7.       else: second = curr\n8.     prev = curr; curr = curr.right\n9.   else:\n10.    temp = curr.left\n11.    while temp.right and temp.right != curr: temp = temp.right\n12.    if !temp.right:\n13.      temp.right = curr; curr = curr.left\n14.    else:\n15.      temp.right = null\n16.      if prev and prev.val > curr.val:\n17.        if !first: first = prev; second = curr\n18.        else: second = curr\n19.      prev = curr; curr = curr.right",
+  "description": "Recover a BST where two nodes were swapped by performing an in-order traversal to identify misplaced nodes.",
+  "pseudocode": "1. Initialize prev = null, first = null, second = null\n2. Perform in-order traversal (node)\n3. If node is null, return\n4. Traverse left\n5. If prev and prev.val > node.val:\n6.   If first is null, set first = prev\n7.   Set second = node\n8. Set prev = node\n9. Traverse right\n10. Swap first and second values",
   "steps": [
     {
       "codeLine": 2,
-      "note": "Initialize traversal at root (Node 3). Tree: 3(L:1, R:4), 1(L:null, R:2). Node 1 and 3 are swapped.",
+      "note": "Starting in-order traversal at root (1)",
       "treeNodes": [
         {
           "id": 0,
-          "val": 3,
-          "left": 1,
-          "right": 2
-        },
-        {
-          "id": 1,
           "val": 1,
-          "left": null,
-          "right": 3
-        },
-        {
-          "id": 2,
-          "val": 4,
-          "left": null,
+          "left": 1,
           "right": null
         },
         {
-          "id": 3,
+          "id": 1,
+          "val": 3,
+          "left": null,
+          "right": 2
+        },
+        {
+          "id": 2,
           "val": 2,
           "left": null,
           "right": null
         }
       ],
-      "curr": 3
+      "curr": 0
     },
     {
-      "codeLine": 13,
-      "note": "Creating thread to inorder predecessor 1 from 3.",
+      "codeLine": 4,
+      "note": "Traversing to left child (3)",
       "treeNodes": [
         {
           "id": 0,
-          "val": 3,
-          "left": 1,
-          "right": 2
-        },
-        {
-          "id": 1,
           "val": 1,
-          "left": null,
-          "right": 3
-        },
-        {
-          "id": 2,
-          "val": 4,
-          "left": null,
+          "left": 1,
           "right": null
         },
         {
-          "id": 3,
+          "id": 1,
+          "val": 3,
+          "left": null,
+          "right": 2
+        },
+        {
+          "id": 2,
           "val": 2,
           "left": null,
           "right": null
@@ -75,28 +62,22 @@
     },
     {
       "codeLine": 5,
-      "note": "At Node 1. Prev is null. No violation.",
+      "note": "Comparing node 3 with prev (null), no swap found yet",
       "treeNodes": [
         {
           "id": 0,
-          "val": 3,
-          "left": 1,
-          "right": 2
-        },
-        {
-          "id": 1,
           "val": 1,
-          "left": null,
-          "right": 3
-        },
-        {
-          "id": 2,
-          "val": 4,
-          "left": null,
+          "left": 1,
           "right": null
         },
         {
-          "id": 3,
+          "id": 1,
+          "val": 3,
+          "left": null,
+          "right": 2
+        },
+        {
+          "id": 2,
           "val": 2,
           "left": null,
           "right": null
@@ -105,66 +86,105 @@
       "curr": 1
     },
     {
-      "codeLine": 16,
-      "note": "At Node 3. Prev(1) < Curr(3). No violation.",
+      "codeLine": 8,
+      "note": "Setting prev to node 3",
       "treeNodes": [
         {
           "id": 0,
-          "val": 3,
-          "left": 1,
-          "right": 2
-        },
-        {
-          "id": 1,
           "val": 1,
-          "left": null,
-          "right": 3
-        },
-        {
-          "id": 2,
-          "val": 4,
-          "left": null,
+          "left": 1,
           "right": null
         },
         {
-          "id": 3,
+          "id": 1,
+          "val": 3,
+          "left": null,
+          "right": 2
+        },
+        {
+          "id": 2,
           "val": 2,
           "left": null,
           "right": null
         }
       ],
-      "curr": 3
+      "curr": 1
     },
     {
-      "codeLine": 16,
-      "note": "At Node 2 (was 3). Prev(3) > Curr(2). First violation detected: first=3, second=2.",
+      "codeLine": 9,
+      "note": "Traversing to right child of 3 (2)",
       "treeNodes": [
         {
           "id": 0,
-          "val": 3,
-          "left": 1,
-          "right": 2
-        },
-        {
-          "id": 1,
           "val": 1,
-          "left": null,
-          "right": 3
-        },
-        {
-          "id": 2,
-          "val": 4,
-          "left": null,
+          "left": 1,
           "right": null
         },
         {
-          "id": 3,
+          "id": 1,
+          "val": 3,
+          "left": null,
+          "right": 2
+        },
+        {
+          "id": 2,
           "val": 2,
           "left": null,
           "right": null
         }
       ],
       "curr": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Found violation: prev (3) > node (2). Set first = 3, second = 2",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": null
+        },
+        {
+          "id": 1,
+          "val": 3,
+          "left": null,
+          "right": 2
+        },
+        {
+          "id": 2,
+          "val": 2,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 10,
+      "note": "Swapping values 3 and 2 results in 1, 3, 2 tree structure corrected",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": null
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": 2
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 0
     }
-  ]
+  ],
+  "fullDescription": "<p>You are given the <code>root</code> of a binary search tree (BST), where the values of <strong>exactly</strong> two nodes of the tree were swapped by mistake. <em>Recover the tree without changing its structure</em>.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2020/10/28/recover1.jpg\" style=\"width: 422px; height: 302px;\" />\n<pre>\n<strong>Input:</strong> root = [1,3,null,null,2]\n<strong>Output:</strong> [3,1,null,null,2]\n<strong>Explanation:</strong> 3 cannot be a left child of 1 because 3 &gt; 1. Swapping 1 and 3 makes the BST valid.\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2020/10/28/recover2.jpg\" style=\"width: 581px; height: 302px;\" />\n<pre>\n<strong>Input:</strong> root = [3,1,4,null,null,2]\n<strong>Output:</strong> [2,1,4,null,null,3]\n<strong>Explanation:</strong> 2 cannot be in the right subtree of 3 because 2 &lt; 3. Swapping 2 and 3 makes the BST valid.\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li>The number of nodes in the tree is in the range <code>[2, 1000]</code>.</li>\n\t<li><code>-2<sup>31</sup> &lt;= Node.val &lt;= 2<sup>31</sup> - 1</code></li>\n</ul>\n\n<p>&nbsp;</p>\n<strong>Follow up:</strong> A solution using <code>O(n)</code> space is pretty straight-forward. Could you devise a constant <code>O(1)</code> space solution?"
 }

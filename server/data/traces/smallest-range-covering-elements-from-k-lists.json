@@ -1,104 +1,166 @@
 {
-  "title": "Smallest Range Covering Elements From K Lists",
+  "title": "Smallest Range Covering Elements from K Lists",
   "difficulty": "Hard",
   "type": "array",
   "tags": [
     "Array",
-    "Heap",
     "Greedy",
-    "Sliding Window"
+    "Heap"
   ],
-  "description": "Find the smallest range that includes at least one number from each of the k lists.",
-  "target": null,
-  "pseudocode": "1. minHeap = push {val, listIdx, elemIdx} for first of each list\n2. maxVal = max(all first elements)\n3. while minHeap not empty:\n4.   {minVal, l, e} = minHeap.pop()\n5.   if maxVal - minVal < minRange: update minRange\n6.   if e + 1 < list[l].length:\n7.     nextVal = list[l][e+1]\n8.     minHeap.push({nextVal, l, e+1})\n9.     maxVal = max(maxVal, nextVal)\n10.  else: break",
+  "description": "Find the smallest range [a, b] that includes at least one number from each of the k lists.",
+  "target": "[20, 24]",
+  "pseudocode": "1. Initialize min-heap with the first element of each list.\n2. Track max value in heap and current range.\n3. While all lists have elements:\n4. Extract min, update range if smaller.\n5. If min element list has more, push next to heap and update max.\n6. Else, break loop.",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize heap with first elements: [4, 10, 15]",
+      "note": "Initialize heap with heads: [0 (list 1), 4 (list 0), 5 (list 2)]. Max is 5.",
       "array": [
+        0,
         4,
-        10,
-        15
+        5
       ],
-      "i": 0,
-      "curr": 4
-    },
-    {
-      "codeLine": 4,
-      "note": "Pop min: 4. Current range: [4, 15]",
-      "array": [
-        4,
-        10,
-        15
+      "visited": [
+        0,
+        1,
+        2
       ],
-      "i": 4,
-      "curr": 4
-    },
-    {
-      "codeLine": 8,
-      "note": "Push next from list 0: 10. Heap: [10, 10, 15]",
-      "array": [
-        10,
-        10,
-        15
-      ],
-      "i": 10,
       "curr": 0
     },
     {
       "codeLine": 4,
-      "note": "Pop min: 10. Current range: [10, 15]",
+      "note": "Pop 0 (list 1). Range [0, 5]. Add 9 from list 1. Heap: [4, 5, 9]. Max is 9.",
       "array": [
-        10,
-        10,
-        15
+        4,
+        5,
+        9
       ],
-      "i": 10,
-      "curr": 10
-    },
-    {
-      "codeLine": 8,
-      "note": "Push next from list 0: 12. Heap: [10, 12, 15]",
-      "array": [
-        10,
-        12,
-        15
+      "visited": [
+        0,
+        2,
+        9
       ],
-      "i": 12,
       "curr": 0
     },
     {
       "codeLine": 4,
-      "note": "Pop min: 10. Current range: [10, 15]",
+      "note": "Pop 4 (list 0). Range [4, 9]. Add 10 from list 0. Heap: [5, 9, 10]. Max is 10.",
       "array": [
-        10,
-        12,
-        15
+        5,
+        9,
+        10
       ],
-      "i": 10,
-      "curr": 10
-    },
-    {
-      "codeLine": 8,
-      "note": "Push next from list 1: 12. Heap: [12, 12, 15]",
-      "array": [
-        12,
-        12,
-        15
+      "visited": [
+        2,
+        9,
+        10
       ],
-      "i": 12,
       "curr": 1
     },
     {
       "codeLine": 4,
-      "note": "Pop min: 12. Current range: [12, 15]",
+      "note": "Pop 5 (list 2). Range [5, 10]. Add 18 from list 2. Heap: [9, 10, 18]. Max is 18.",
+      "array": [
+        9,
+        10,
+        18
+      ],
+      "visited": [
+        9,
+        10,
+        18
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Pop 9 (list 1). Range [9, 18]. Add 12 from list 1. Heap: [10, 12, 18]. Max is 18.",
+      "array": [
+        10,
+        12,
+        18
+      ],
+      "visited": [
+        10,
+        12,
+        18
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Pop 10 (list 0). Range [10, 18]. Add 15 from list 0. Heap: [12, 15, 18]. Max is 18.",
       "array": [
         12,
-        12,
-        15
+        15,
+        18
       ],
-      "i": 12,
-      "curr": 12
+      "visited": [
+        12,
+        15,
+        18
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Pop 12 (list 1). Range [12, 18]. Add 20 from list 1. Heap: [15, 18, 20]. Max is 20.",
+      "array": [
+        15,
+        18,
+        20
+      ],
+      "visited": [
+        15,
+        18,
+        20
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Pop 15 (list 0). Range [15, 20]. Add 24 from list 0. Heap: [18, 20, 24]. Max is 24.",
+      "array": [
+        18,
+        20,
+        24
+      ],
+      "visited": [
+        18,
+        20,
+        24
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Pop 18 (list 2). Range [18, 24]. Add 22 from list 2. Heap: [20, 22, 24]. Max is 24.",
+      "array": [
+        20,
+        22,
+        24
+      ],
+      "visited": [
+        20,
+        22,
+        24
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Pop 20 (list 1). Range [20, 24] is current smallest.",
+      "array": [
+        20,
+        22,
+        24
+      ],
+      "visited": [
+        20,
+        22,
+        24
+      ],
+      "curr": 0
     }
-  ]
+  ],
+  "fullDescription": "<p>You have <code>k</code> lists of sorted integers in <strong>non-decreasing&nbsp;order</strong>. Find the <b>smallest</b> range that includes at least one number from each of the <code>k</code> lists.</p>\n\n<p>We define the range <code>[a, b]</code> is smaller than range <code>[c, d]</code> if <code>b - a &lt; d - c</code> <strong>or</strong> <code>a &lt; c</code> if <code>b - a == d - c</code>.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> nums = [[4,10,15,24,26],[0,9,12,20],[5,18,22,30]]\n<strong>Output:</strong> [20,24]\n<strong>Explanation: </strong>\nList 1: [4, 10, 15, 24,26], 24 is in range [20,24].\nList 2: [0, 9, 12, 20], 20 is in range [20,24].\nList 3: [5, 18, 22, 30], 22 is in range [20,24].\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> nums = [[1,2,3],[1,2,3],[1,2,3]]\n<strong>Output:</strong> [1,1]\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>nums.length == k</code></li>\n\t<li><code>1 &lt;= k &lt;= 3500</code></li>\n\t<li><code>1 &lt;= nums[i].length &lt;= 50</code></li>\n\t<li><code>-10<sup>5</sup> &lt;= nums[i][j] &lt;= 10<sup>5</sup></code></li>\n\t<li><code>nums[i]</code>&nbsp;is sorted in <strong>non-decreasing</strong> order.</li>\n</ul>\n"
 }

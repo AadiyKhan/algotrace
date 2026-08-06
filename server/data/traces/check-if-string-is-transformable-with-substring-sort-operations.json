@@ -1,0 +1,70 @@
+{
+  "title": "Check If String Is Transformable With Substring Sort Operations",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "String",
+    "Greedy",
+    "Sorting"
+  ],
+  "description": "Determine if string s can become string t by sorting substrings. This is possible if for every digit 0-9, the occurrences appear in the same relative order in both strings.",
+  "target": "t",
+  "pseudocode": "1. Store indices of each digit 0-9 in lists\n2. For each digit d in t:\n3. If no occurrences of d left, return false\n4. Check if any smaller digit appears before the next occurrence of d in s\n5. If yes, return false; else, pop index and continue",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize position lists: 0:[2], 1:[0, 1]. s='110', t='101'",
+      "array": [
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Process first digit of t: '1'",
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Check if any 0 exists before the first 1. No, index 0 is valid.",
+      "i": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Remove index 0 from list 1. Remaining 1s: [1]",
+      "i": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Process next digit of t: '0'",
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Check if any digit < 0 exists before index 2. None exist.",
+      "i": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Remove index 2 from list 0. Remaining 0s: []",
+      "i": 2
+    },
+    {
+      "codeLine": 2,
+      "note": "Process next digit of t: '1'",
+      "i": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Check if any 0 exists before index 1. No 0s remain.",
+      "i": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Remove index 1 from list 1. Success.",
+      "i": 1
+    }
+  ]
+}

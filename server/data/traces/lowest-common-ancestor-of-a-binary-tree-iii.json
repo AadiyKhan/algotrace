@@ -1,0 +1,66 @@
+{
+  "title": "Lowest Common Ancestor of a Binary Tree III",
+  "difficulty": "Medium",
+  "type": "tree",
+  "tags": [
+    "Tree",
+    "Binary Tree",
+    "Two Pointers"
+  ],
+  "description": "Find the lowest common ancestor of two nodes in a binary tree where nodes have parent pointers.",
+  "pseudocode": "1: pPtr = p, qPtr = q\n2: while pPtr !== qPtr:\n3:   pPtr = pPtr == null ? q : pPtr.parent\n4:   qPtr = qPtr == null ? p : qPtr.parent\n5: return pPtr",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize two pointers pPtr and qPtr to nodes p and q.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 3,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 5,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 1,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "pPtr (5) is not equal to qPtr (1). Enter loop.",
+      "i": 5,
+      "j": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Move pPtr to parent of 5, which is 3.",
+      "curr": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Move qPtr to parent of 1, which is 3.",
+      "curr": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "pPtr (3) is equal to qPtr (3). Exit loop.",
+      "i": 3,
+      "j": 3
+    },
+    {
+      "codeLine": 5,
+      "note": "Return pPtr (3) as the LCA.",
+      "curr": 0
+    }
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "title": "Lowest Common Ancestor of a Binary Tree IV",
+  "difficulty": "Medium",
+  "type": "tree",
+  "tags": [
+    "Tree",
+    "DFS",
+    "Recursion"
+  ],
+  "description": "Find the lowest common ancestor of a set of nodes in a binary tree.",
+  "target": [
+    4,
+    5
+  ],
+  "pseudocode": "1. function lca(root, nodesSet):\n2.   if !root or nodesSet.has(root.val): return root\n3.   left = lca(root.left, nodesSet)\n4.   right = lca(root.right, nodesSet)\n5.   if left and right: return root\n6.   return left ? left : right",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Starting DFS at root node 1 with target nodes {4, 5}",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 4,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 5,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Moving to left child node 2",
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Moving to left child node 4",
+      "curr": 3
+    },
+    {
+      "codeLine": 2,
+      "note": "Found target node 4, returning node 4",
+      "curr": 3
+    },
+    {
+      "codeLine": 4,
+      "note": "Moving to right child node 5",
+      "curr": 4
+    },
+    {
+      "codeLine": 2,
+      "note": "Found target node 5, returning node 5",
+      "curr": 4
+    },
+    {
+      "codeLine": 5,
+      "note": "Node 2 has left=4 and right=5, returning node 2 as LCA",
+      "curr": 1
+    }
+  ]
+}

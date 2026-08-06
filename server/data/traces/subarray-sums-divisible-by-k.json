@@ -1,5 +1,5 @@
 {
-  "title": "Subarray Sums Divisible By K",
+  "title": "Subarray Sums Divisible by K",
   "difficulty": "Medium",
   "type": "array",
   "tags": [
@@ -7,13 +7,13 @@
     "Hash Table",
     "Prefix Sum"
   ],
-  "description": "Find the total number of continuous subarrays whose sum is divisible by k.",
-  "target": 5,
-  "pseudocode": "1. count = 0, sum = 0\n2. map = {0: 1}\n3. for num in nums:\n4.   sum = (sum + num) % k\n5.   if sum < 0: sum += k\n6.   count += map[sum] || 0\n7.   map[sum] = (map[sum] || 0) + 1",
+  "description": "Count subarrays with sum divisible by k using prefix sum remainders.",
+  "target": 7,
+  "pseudocode": "1. Initialize count = 0, prefixSum = 0, map = {0: 1}\n2. For each num in nums:\n3.   prefixSum = (prefixSum + num) % k\n4.   if prefixSum < 0: prefixSum += k\n5.   count += map.get(prefixSum, 0)\n6.   map[prefixSum] = map.get(prefixSum, 0) + 1\n7. Return count",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize variables count=0, sum=0",
+      "note": "Initialize count to 0 and map to store remainder frequencies.",
       "array": [
         4,
         5,
@@ -22,11 +22,12 @@
         -3,
         1
       ],
-      "curr": 0
+      "visited": [],
+      "i": 0
     },
     {
-      "codeLine": 4,
-      "note": "Processing 4: sum = (0 + 4) % 5 = 4",
+      "codeLine": 3,
+      "note": "Process 4: prefixSum = 4 % 5 = 4. Count = 0.",
       "array": [
         4,
         5,
@@ -35,12 +36,14 @@
         -3,
         1
       ],
-      "i": 0,
-      "curr": 4
+      "visited": [
+        0
+      ],
+      "i": 0
     },
     {
-      "codeLine": 6,
-      "note": "Sum 4 not in map, count remains 0",
+      "codeLine": 3,
+      "note": "Process 5: prefixSum = (4 + 5) % 5 = 4. Found 4 in map once, count = 1.",
       "array": [
         4,
         5,
@@ -49,12 +52,15 @@
         -3,
         1
       ],
-      "i": 0,
-      "curr": 4
+      "visited": [
+        0,
+        1
+      ],
+      "i": 1
     },
     {
-      "codeLine": 4,
-      "note": "Processing 5: sum = (4 + 5) % 5 = 4",
+      "codeLine": 3,
+      "note": "Process 0: prefixSum = (4 + 0) % 5 = 4. Found 4 twice, count = 1 + 2 = 3.",
       "array": [
         4,
         5,
@@ -63,12 +69,16 @@
         -3,
         1
       ],
-      "i": 1,
-      "curr": 5
+      "visited": [
+        0,
+        1,
+        2
+      ],
+      "i": 2
     },
     {
-      "codeLine": 6,
-      "note": "Sum 4 found in map (count 1), increment count to 1",
+      "codeLine": 3,
+      "note": "Process -2: prefixSum = (4 - 2) % 5 = 2. Found 2 zero times, count = 3.",
       "array": [
         4,
         5,
@@ -77,12 +87,17 @@
         -3,
         1
       ],
-      "i": 1,
-      "curr": 4
+      "visited": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "i": 3
     },
     {
-      "codeLine": 4,
-      "note": "Processing 0: sum = (4 + 0) % 5 = 4",
+      "codeLine": 3,
+      "note": "Process -3: prefixSum = (2 - 3) % 5 = -1 -> 4. Found 4 three times, count = 3 + 3 = 6.",
       "array": [
         4,
         5,
@@ -91,12 +106,18 @@
         -3,
         1
       ],
-      "i": 2,
-      "curr": 0
+      "visited": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "i": 4
     },
     {
-      "codeLine": 6,
-      "note": "Sum 4 found in map (count 2), increment count to 3",
+      "codeLine": 3,
+      "note": "Process 1: prefixSum = (4 + 1) % 5 = 0. Found 0 once, count = 6 + 1 = 7.",
       "array": [
         4,
         5,
@@ -105,92 +126,16 @@
         -3,
         1
       ],
-      "i": 2,
-      "curr": 4
-    },
-    {
-      "codeLine": 4,
-      "note": "Processing -2: sum = (4 - 2) % 5 = 2",
-      "array": [
-        4,
-        5,
+      "visited": [
         0,
-        -2,
-        -3,
-        1
-      ],
-      "i": 3,
-      "curr": -2
-    },
-    {
-      "codeLine": 6,
-      "note": "Sum 2 not in map, count remains 3",
-      "array": [
+        1,
+        2,
+        3,
         4,
-        5,
-        0,
-        -2,
-        -3,
-        1
+        5
       ],
-      "i": 3,
-      "curr": 2
-    },
-    {
-      "codeLine": 4,
-      "note": "Processing -3: sum = (2 - 3) % 5 = -1; adjusting to 4",
-      "array": [
-        4,
-        5,
-        0,
-        -2,
-        -3,
-        1
-      ],
-      "i": 4,
-      "curr": -3
-    },
-    {
-      "codeLine": 6,
-      "note": "Sum 4 found in map (count 3), increment count to 6",
-      "array": [
-        4,
-        5,
-        0,
-        -2,
-        -3,
-        1
-      ],
-      "i": 4,
-      "curr": 4
-    },
-    {
-      "codeLine": 4,
-      "note": "Processing 1: sum = (4 + 1) % 5 = 0",
-      "array": [
-        4,
-        5,
-        0,
-        -2,
-        -3,
-        1
-      ],
-      "i": 5,
-      "curr": 1
-    },
-    {
-      "codeLine": 6,
-      "note": "Sum 0 found in map (count 1), increment count to 7",
-      "array": [
-        4,
-        5,
-        0,
-        -2,
-        -3,
-        1
-      ],
-      "i": 5,
-      "curr": 0
+      "i": 5
     }
-  ]
+  ],
+  "fullDescription": "<p>Given an integer array <code>nums</code> and an integer <code>k</code>, return <em>the number of non-empty <strong>subarrays</strong> that have a sum divisible by </em><code>k</code>.</p>\n\n<p>A <strong>subarray</strong> is a <strong>contiguous</strong> part of an array.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> nums = [4,5,0,-2,-3,1], k = 5\n<strong>Output:</strong> 7\n<strong>Explanation:</strong> There are 7 subarrays with a sum divisible by k = 5:\n[4, 5, 0, -2, -3, 1], [5], [5, 0], [5, 0, -2, -3], [0], [0, -2, -3], [-2, -3]\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> nums = [5], k = 9\n<strong>Output:</strong> 0\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= nums.length &lt;= 3 * 10<sup>4</sup></code></li>\n\t<li><code>-10<sup>4</sup> &lt;= nums[i] &lt;= 10<sup>4</sup></code></li>\n\t<li><code>2 &lt;= k &lt;= 10<sup>4</sup></code></li>\n</ul>\n"
 }

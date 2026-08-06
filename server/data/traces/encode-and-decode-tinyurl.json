@@ -4,47 +4,35 @@
   "type": "array",
   "tags": [
     "Hash Table",
-    "Design"
+    "String",
+    "Design",
+    "Hash Function"
   ],
-  "description": "Design a TinyURL encoder and decoder using a hash map to store long URLs.",
-  "target": "tinyurl.com/1",
-  "pseudocode": "1: map = new Map()\n2: id = 0\n3: function encode(longUrl) {\n4:   key = 'tinyurl.com/' + id++\n5:   map.set(key, longUrl)\n6:   return key\n7: }\n8: function decode(shortUrl) {\n9:   return map.get(shortUrl)\n10: }",
+  "description": "Design a class to encode a long URL into a short URL and decode it back to the original URL using a map-based storage.",
+  "target": "https://leetcode.com/problems/design-tinyurl",
+  "pseudocode": "1. Initialize map urls\n2. encode(longUrl): key = hash(longUrl), urls[key] = longUrl, return key\n3. decode(shortUrl): return urls[shortUrl]",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize the storage map.",
+      "note": "Initialize the storage map to hold long URLs indexed by their tiny URL keys.",
       "array": []
     },
     {
-      "codeLine": 4,
-      "note": "Encode 'google.com' by assigning it a new key.",
+      "codeLine": 2,
+      "note": "Encoding: Map the key 'http://tinyurl.com/0' to the original URL.",
       "array": [
-        "tinyurl.com/0: google.com"
-      ]
-    },
-    {
-      "codeLine": 5,
-      "note": "Store the mapping in the hash map.",
-      "array": [
-        "tinyurl.com/0: google.com"
-      ]
-    },
-    {
-      "codeLine": 4,
-      "note": "Encode 'leetcode.com' by assigning it the next available key.",
-      "array": [
-        "tinyurl.com/0: google.com",
-        "tinyurl.com/1: leetcode.com"
-      ]
-    },
-    {
-      "codeLine": 9,
-      "note": "Decode 'tinyurl.com/1' by looking it up in the map.",
-      "array": [
-        "tinyurl.com/0: google.com",
-        "tinyurl.com/1: leetcode.com"
+        "https://leetcode.com/problems/design-tinyurl"
       ],
-      "curr": 1
+      "i": "http://tinyurl.com/0"
+    },
+    {
+      "codeLine": 3,
+      "note": "Decoding: Look up the tiny URL key in the map to retrieve the original URL.",
+      "array": [
+        "https://leetcode.com/problems/design-tinyurl"
+      ],
+      "curr": "http://tinyurl.com/0"
     }
-  ]
+  ],
+  "fullDescription": "<blockquote>Note: This is a companion problem to the <a href=\"https://leetcode.com/discuss/interview-question/system-design/\" target=\"_blank\">System Design</a> problem: <a href=\"https://leetcode.com/discuss/interview-question/124658/Design-a-URL-Shortener-(-TinyURL-)-System/\" target=\"_blank\">Design TinyURL</a>.</blockquote>\n\n<p>TinyURL is a URL shortening service where you enter a URL such as <code>https://leetcode.com/problems/design-tinyurl</code> and it returns a short URL such as <code>http://tinyurl.com/4e9iAk</code>. Design a class to encode a URL and decode a tiny URL.</p>\n\n<p>There is no restriction on how your encode/decode algorithm should work. You just need to ensure that a URL can be encoded to a tiny URL and the tiny URL can be decoded to the original URL.</p>\n\n<p>Implement the <code>Solution</code> class:</p>\n\n<ul>\n\t<li><code>Solution()</code> Initializes the object of the system.</li>\n\t<li><code>String encode(String longUrl)</code> Returns a tiny URL for the given <code>longUrl</code>.</li>\n\t<li><code>String decode(String shortUrl)</code> Returns the original long URL for the given <code>shortUrl</code>. It is guaranteed that the given <code>shortUrl</code> was encoded by the same object.</li>\n</ul>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> url = &quot;https://leetcode.com/problems/design-tinyurl&quot;\n<strong>Output:</strong> &quot;https://leetcode.com/problems/design-tinyurl&quot;\n\n<strong>Explanation:</strong>\nSolution obj = new Solution();\nstring tiny = obj.encode(url); // returns the encoded tiny url.\nstring ans = obj.decode(tiny); // returns the original url after decoding it.\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= url.length &lt;= 10<sup>4</sup></code></li>\n\t<li><code>url</code> is guranteed to be a valid URL.</li>\n</ul>\n"
 }

@@ -1,0 +1,64 @@
+{
+  "title": "Minimize Deviation in Array",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Heap",
+    "Greedy"
+  ],
+  "description": "Minimize the deviation of an array by doubling odd numbers and halving even numbers.",
+  "target": 0,
+  "pseudocode": "1: Push all odd nums * 2 and all even nums into MaxHeap\n2: minVal = min of all initial values\n3: deviation = maxHeap.top - minVal\n4: while maxHeap.top is even:\n5:   val = maxHeap.pop / 2\n6:   maxHeap.push(val)\n7:   minVal = min(minVal, val)\n8:   deviation = min(deviation, maxHeap.top - minVal)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize heap with [4, 2] (odd 1 becomes 2, 2 stays 2). minVal = 2",
+      "array": [
+        4,
+        2
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Initial deviation: 4 - 2 = 2",
+      "array": [
+        4,
+        2
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Max is 4 (even), enter loop",
+      "array": [
+        4,
+        2
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Pop 4, push 4/2 = 2. New heap: [2, 2]",
+      "array": [
+        2,
+        2
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Update minVal = min(2, 2) = 2",
+      "array": [
+        2,
+        2
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Update deviation = min(2, 2-2) = 0",
+      "array": [
+        2,
+        2
+      ]
+    }
+  ]
+}

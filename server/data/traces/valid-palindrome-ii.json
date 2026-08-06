@@ -3,73 +3,73 @@
   "difficulty": "Easy",
   "type": "array",
   "tags": [
+    "Array",
     "String",
-    "Two Pointers",
-    "Greedy"
+    "Two Pointers"
   ],
-  "description": "Determine if a string can be a palindrome after deleting at most one character.",
-  "target": "abca",
-  "pseudocode": "1. left = 0, right = s.length - 1\n2. while left < right:\n3.   if s[left] == s[right]: left++, right--\n4.   else: return check(left+1, right) || check(left, right-1)\n5. return true",
+  "description": "Check if a string can be a palindrome by deleting at most one character.",
+  "pseudocode": "1. Set left=0, right=s.length-1\n2. While left < right:\n3. If s[left] != s[right]: return isPalindrome(left+1, right) or isPalindrome(left, right-1)\n4. left++, right--\n5. Return true",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize pointers at the start and end of the string.",
+      "note": "Initialize left pointer at 0 and right pointer at 2.",
       "array": [
         "a",
         "b",
-        "c",
         "a"
       ],
       "i": 0,
-      "j": 3
-    },
-    {
-      "codeLine": 3,
-      "note": "s[0] == s[3] ('a' == 'a'), move pointers inward.",
-      "array": [
-        "a",
-        "b",
-        "c",
-        "a"
-      ],
-      "i": 1,
       "j": 2,
       "curr": 0
     },
     {
-      "codeLine": 3,
-      "note": "s[1] != s[2] ('b' != 'c'), mismatch found.",
+      "codeLine": 2,
+      "note": "Compare s[0] ('a') and s[2] ('a'). They are equal.",
       "array": [
         "a",
         "b",
-        "c",
         "a"
       ],
-      "i": 1,
+      "i": 0,
       "j": 2,
-      "curr": 1
+      "curr": 0
     },
     {
       "codeLine": 4,
-      "note": "Try skipping index 1 or index 2 to see if result is palindrome.",
+      "note": "Increment left and decrement right.",
       "array": [
         "a",
         "b",
-        "c",
         "a"
       ],
       "i": 1,
-      "j": 2,
+      "j": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Condition left < right (1 < 1) is false. Exit loop.",
+      "array": [
+        "a",
+        "b",
+        "a"
+      ],
+      "i": 1,
+      "j": 1,
       "curr": 1
     },
     {
       "codeLine": 5,
-      "note": "After removing 'b', result 'aca' is a palindrome. Return true.",
+      "note": "Loop finished, string is a valid palindrome.",
       "array": [
         "a",
-        "c",
+        "b",
         "a"
-      ]
+      ],
+      "i": 1,
+      "j": 1,
+      "curr": 1
     }
-  ]
+  ],
+  "fullDescription": "<p>Given a string <code>s</code>, return <code>true</code> <em>if the </em><code>s</code><em> can be palindrome after deleting <strong>at most one</strong> character from it</em>.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> s = &quot;aba&quot;\n<strong>Output:</strong> true\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> s = &quot;abca&quot;\n<strong>Output:</strong> true\n<strong>Explanation:</strong> You could delete the character &#39;c&#39;.\n</pre>\n\n<p><strong class=\"example\">Example 3:</strong></p>\n\n<pre>\n<strong>Input:</strong> s = &quot;abc&quot;\n<strong>Output:</strong> false\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= s.length &lt;= 10<sup>5</sup></code></li>\n\t<li><code>s</code> consists of lowercase English letters.</li>\n</ul>\n"
 }

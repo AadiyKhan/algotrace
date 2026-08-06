@@ -1,0 +1,158 @@
+{
+  "title": "Count Subtrees With Max Distance Between Cities",
+  "difficulty": "Hard",
+  "type": "graph",
+  "tags": [
+    "Graph",
+    "Bitmask",
+    "Dynamic Programming"
+  ],
+  "description": "Count the number of subtrees for each distance d from 1 to n-1.",
+  "target": "n=3, edges=[[1,2],[2,3]]",
+  "pseudocode": "1. generate all subtrees using bitmask\n2. for each subtree, calculate diameter\n3. update result[diameter]++",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize all possible subtrees using bitmask (n=3, masks 1..7)",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": 1
+        },
+        {
+          "id": 1,
+          "val": 2
+        },
+        {
+          "id": 2,
+          "val": 3
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "visited": []
+    },
+    {
+      "codeLine": 2,
+      "note": "Evaluate subtree mask 011 (nodes 1,2): diameter is 1",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": 1
+        },
+        {
+          "id": 1,
+          "val": 2
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ]
+      ],
+      "visited": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Evaluate subtree mask 110 (nodes 2,3): diameter is 1",
+      "graphNodes": [
+        {
+          "id": 1,
+          "val": 2
+        },
+        {
+          "id": 2,
+          "val": 3
+        }
+      ],
+      "graphEdges": [
+        [
+          1,
+          2
+        ]
+      ],
+      "visited": [
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Evaluate subtree mask 111 (nodes 1,2,3): diameter is 2",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": 1
+        },
+        {
+          "id": 1,
+          "val": 2
+        },
+        {
+          "id": 2,
+          "val": 3
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "visited": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Final counts: dist 1: 2, dist 2: 1",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": 1
+        },
+        {
+          "id": 1,
+          "val": 2
+        },
+        {
+          "id": 2,
+          "val": 3
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "visited": [
+        0,
+        1,
+        2
+      ]
+    }
+  ]
+}

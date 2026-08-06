@@ -6,71 +6,136 @@
     "Array",
     "Backtracking"
   ],
-  "description": "Find all unique combinations of candidates that sum to target, where candidates can be reused.",
+  "description": "Find all unique combinations in candidates that sum to target using backtracking.",
   "target": 7,
-  "pseudocode": "1. sort(candidates)\n2. backtrack(remaining, start, path)\n3. if remaining == 0: result.add(path); return\n4. for i from start to len(candidates):\n5.   if candidates[i] > remaining: break\n6.   backtrack(remaining - candidates[i], i, path + candidates[i])",
+  "pseudocode": "1. sort(candidates)\n2. backtrack(remaining, start, path):\n3.   if remaining == 0: add path to result\n4.   for i from start to len(candidates):\n5.     if candidates[i] > remaining: break\n6.     backtrack(remaining - candidates[i], i, path + candidates[i])",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize result array and sort candidates.",
+      "note": "Initialize result list and sort candidates.",
       "array": [
         2,
         3,
         6,
         7
-      ]
+      ],
+      "visited": []
     },
     {
       "codeLine": 2,
-      "note": "Start backtracking with target 7, index 0, and empty path.",
-      "array": [],
-      "i": 0
+      "note": "Start backtracking with target 7, index 0, empty path.",
+      "array": [
+        2,
+        3,
+        6,
+        7
+      ],
+      "i": 0,
+      "visited": []
     },
     {
       "codeLine": 6,
-      "note": "Pick 2. Remaining = 5, path = [2].",
+      "note": "Include 2: remaining = 5.",
       "array": [
-        2
+        2,
+        3,
+        6,
+        7
+      ],
+      "i": 0,
+      "visited": [
+        0
       ]
     },
     {
       "codeLine": 6,
-      "note": "Pick 2 again. Remaining = 3, path = [2, 2].",
+      "note": "Include 2: remaining = 3.",
       "array": [
         2,
-        2
+        3,
+        6,
+        7
+      ],
+      "i": 0,
+      "visited": [
+        0,
+        0
       ]
     },
     {
       "codeLine": 6,
-      "note": "Pick 3. Remaining = 0, path = [2, 2, 3].",
+      "note": "Include 2: remaining = 1. Cannot include 2 anymore (1 < 2).",
       "array": [
         2,
+        3,
+        6,
+        7
+      ],
+      "i": 1,
+      "visited": [
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Backtrack, include 3: path [2, 2, 3], sum = 7.",
+      "array": [
         2,
+        3,
+        6,
+        7
+      ],
+      "i": 1,
+      "visited": [
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Found combination: [2, 2, 3].",
+      "array": [
+        2,
+        3,
+        6,
+        7
+      ],
+      "i": 1,
+      "visited": [
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Backtrack to top, move to index 3 (value 7).",
+      "array": [
+        2,
+        3,
+        6,
+        7
+      ],
+      "i": 3,
+      "visited": [
         3
       ]
     },
     {
       "codeLine": 3,
-      "note": "Target reached. Add to results.",
+      "note": "Found combination: [7].",
       "array": [
         2,
-        2,
+        3,
+        6,
+        7
+      ],
+      "i": 3,
+      "visited": [
         3
-      ]
-    },
-    {
-      "codeLine": 6,
-      "note": "Backtrack. Pick 7 at start index 3. Remaining = 0, path = [7].",
-      "array": [
-        7
-      ]
-    },
-    {
-      "codeLine": 3,
-      "note": "Target reached. Add to results.",
-      "array": [
-        7
       ]
     }
   ],

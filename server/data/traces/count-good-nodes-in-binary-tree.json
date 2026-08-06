@@ -4,16 +4,16 @@
   "type": "tree",
   "tags": [
     "Tree",
-    "DFS",
+    "Depth-First Search",
     "Binary Tree"
   ],
-  "description": "Count the number of nodes in a binary tree where the value is greater than or equal to all nodes on the path from the root.",
-  "target": null,
-  "pseudocode": "1. count = 0\n2. dfs(node, maxVal):\n3.   if not node: return\n4.   if node.val >= maxVal:\n5.     count++\n6.     maxVal = node.val\n7.   dfs(node.left, maxVal)\n8.   dfs(node.right, maxVal)",
+  "description": "Count nodes where no node in the path from root to that node has a greater value.",
+  "target": 4,
+  "pseudocode": "1. dfs(node, maxVal)\n2. if !node return 0\n3. isGood = (node.val >= maxVal)\n4. newMax = max(maxVal, node.val)\n5. return (isGood ? 1 : 0) + dfs(node.left, newMax) + dfs(node.right, newMax)",
   "steps": [
     {
-      "codeLine": 2,
-      "note": "Starting DFS at root node (3) with initial maxVal -infinity",
+      "codeLine": 1,
+      "note": "Starting DFS at root (3) with current max -infinity",
       "treeNodes": [
         {
           "id": 0,
@@ -30,43 +30,24 @@
         {
           "id": 2,
           "val": 4,
-          "left": null,
-          "right": null
+          "left": 4,
+          "right": 5
         },
         {
           "id": 3,
           "val": 3,
           "left": null,
           "right": null
-        }
-      ],
-      "curr": 3
-    },
-    {
-      "codeLine": 4,
-      "note": "Node 3 >= -inf. Increment count (1). New maxVal is 3.",
-      "treeNodes": [
-        {
-          "id": 0,
-          "val": 3,
-          "left": 1,
-          "right": 2
         },
         {
-          "id": 1,
+          "id": 4,
           "val": 1,
-          "left": 3,
-          "right": null
-        },
-        {
-          "id": 2,
-          "val": 4,
           "left": null,
           "right": null
         },
         {
-          "id": 3,
-          "val": 3,
+          "id": 5,
+          "val": 5,
           "left": null,
           "right": null
         }
@@ -74,8 +55,8 @@
       "curr": 0
     },
     {
-      "codeLine": 7,
-      "note": "Traversing to left child (1) with maxVal 3",
+      "codeLine": 3,
+      "note": "Node 3: 3 >= -inf, so it is a good node",
       "treeNodes": [
         {
           "id": 0,
@@ -92,12 +73,67 @@
         {
           "id": 2,
           "val": 4,
-          "left": null,
-          "right": null
+          "left": 4,
+          "right": 5
         },
         {
           "id": 3,
           "val": 3,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 5,
+          "val": 5,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Moving to left child (1) with max 3",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 3,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": 3,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 4,
+          "left": 4,
+          "right": 5
+        },
+        {
+          "id": 3,
+          "val": 3,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 5,
+          "val": 5,
           "left": null,
           "right": null
         }
@@ -105,8 +141,8 @@
       "curr": 1
     },
     {
-      "codeLine": 4,
-      "note": "Node 1 < 3. Not a good node. Continue DFS with maxVal 3.",
+      "codeLine": 3,
+      "note": "Node 1: 1 < 3, not a good node",
       "treeNodes": [
         {
           "id": 0,
@@ -123,12 +159,24 @@
         {
           "id": 2,
           "val": 4,
-          "left": null,
-          "right": null
+          "left": 4,
+          "right": 5
         },
         {
           "id": 3,
           "val": 3,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 5,
+          "val": 5,
           "left": null,
           "right": null
         }
@@ -136,8 +184,8 @@
       "curr": 1
     },
     {
-      "codeLine": 7,
-      "note": "Traversing to child (3) with maxVal 3",
+      "codeLine": 5,
+      "note": "Moving to left child of 1 (node 3) with max 3",
       "treeNodes": [
         {
           "id": 0,
@@ -154,12 +202,24 @@
         {
           "id": 2,
           "val": 4,
-          "left": null,
-          "right": null
+          "left": 4,
+          "right": 5
         },
         {
           "id": 3,
           "val": 3,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 5,
+          "val": 5,
           "left": null,
           "right": null
         }
@@ -167,8 +227,8 @@
       "curr": 3
     },
     {
-      "codeLine": 4,
-      "note": "Node 3 >= 3. Increment count (2). New maxVal 3.",
+      "codeLine": 3,
+      "note": "Node 3: 3 >= 3, is a good node",
       "treeNodes": [
         {
           "id": 0,
@@ -185,12 +245,24 @@
         {
           "id": 2,
           "val": 4,
-          "left": null,
-          "right": null
+          "left": 4,
+          "right": 5
         },
         {
           "id": 3,
           "val": 3,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 5,
+          "val": 5,
           "left": null,
           "right": null
         }
@@ -198,8 +270,8 @@
       "curr": 3
     },
     {
-      "codeLine": 8,
-      "note": "Returning to root and traversing right child (4) with maxVal 3",
+      "codeLine": 5,
+      "note": "Moving back to root and down right path to node 4 (max 3)",
       "treeNodes": [
         {
           "id": 0,
@@ -216,12 +288,24 @@
         {
           "id": 2,
           "val": 4,
-          "left": null,
-          "right": null
+          "left": 4,
+          "right": 5
         },
         {
           "id": 3,
           "val": 3,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 5,
+          "val": 5,
           "left": null,
           "right": null
         }
@@ -229,8 +313,8 @@
       "curr": 2
     },
     {
-      "codeLine": 4,
-      "note": "Node 4 >= 3. Increment count (3). Final result: 3.",
+      "codeLine": 3,
+      "note": "Node 4: 4 >= 3, is a good node",
       "treeNodes": [
         {
           "id": 0,
@@ -247,17 +331,116 @@
         {
           "id": 2,
           "val": 4,
-          "left": null,
-          "right": null
+          "left": 4,
+          "right": 5
         },
         {
           "id": 3,
           "val": 3,
           "left": null,
           "right": null
+        },
+        {
+          "id": 4,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 5,
+          "val": 5,
+          "left": null,
+          "right": null
         }
       ],
       "curr": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Moving to right child of 4 (node 5) with max 4",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 3,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": 3,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 4,
+          "left": 4,
+          "right": 5
+        },
+        {
+          "id": 3,
+          "val": 3,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 5,
+          "val": 5,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 5
+    },
+    {
+      "codeLine": 3,
+      "note": "Node 5: 5 >= 4, is a good node. Total count: 4",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 3,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": 3,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 4,
+          "left": 4,
+          "right": 5
+        },
+        {
+          "id": 3,
+          "val": 3,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 5,
+          "val": 5,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 5
     }
-  ]
+  ],
+  "fullDescription": "<p>Given a binary tree <code>root</code>, a node <em>X</em> in the tree is named&nbsp;<strong>good</strong> if in the path from root to <em>X</em> there are no nodes with a value <em>greater than</em> X.</p>\r\n\r\n<p>Return the number of <strong>good</strong> nodes in the binary tree.</p>\r\n\r\n<p>&nbsp;</p>\r\n<p><strong class=\"example\">Example 1:</strong></p>\r\n\r\n<p><strong><img alt=\"\" src=\"https://assets.leetcode.com/uploads/2020/04/02/test_sample_1.png\" style=\"width: 263px; height: 156px;\" /></strong></p>\r\n\r\n<pre>\r\n<strong>Input:</strong> root = [3,1,4,3,null,1,5]\r\n<strong>Output:</strong> 4\r\n<strong>Explanation:</strong> Nodes in blue are <strong>good</strong>.\r\nRoot Node (3) is always a good node.\r\nNode 4 -&gt; (3,4) is the maximum value in the path starting from the root.\r\nNode 5 -&gt; (3,4,5) is the maximum value in the path\r\nNode 3 -&gt; (3,1,3) is the maximum value in the path.</pre>\r\n\r\n<p><strong class=\"example\">Example 2:</strong></p>\r\n\r\n<p><strong><img alt=\"\" src=\"https://assets.leetcode.com/uploads/2020/04/02/test_sample_2.png\" style=\"width: 157px; height: 161px;\" /></strong></p>\r\n\r\n<pre>\r\n<strong>Input:</strong> root = [3,3,null,4,2]\r\n<strong>Output:</strong> 3\r\n<strong>Explanation:</strong> Node 2 -&gt; (3, 3, 2) is not good, because &quot;3&quot; is higher than it.</pre>\r\n\r\n<p><strong class=\"example\">Example 3:</strong></p>\r\n\r\n<pre>\r\n<strong>Input:</strong> root = [1]\r\n<strong>Output:</strong> 1\r\n<strong>Explanation:</strong> Root is considered as <strong>good</strong>.</pre>\r\n\r\n<p>&nbsp;</p>\r\n<p><strong>Constraints:</strong></p>\r\n\r\n<ul>\r\n\t<li>The number of nodes in the binary tree is in the range&nbsp;<code>[1, 10^5]</code>.</li>\r\n\t<li>Each node&#39;s value is between <code>[-10^4, 10^4]</code>.</li>\r\n</ul>"
 }

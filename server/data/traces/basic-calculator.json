@@ -7,49 +7,78 @@
     "String",
     "Stack"
   ],
-  "description": "Evaluate a string expression containing digits, '+', '-', '(', and ')'.",
+  "description": "Evaluate a mathematical expression string '1 + 1' using a stack to handle numbers and signs.",
   "target": 2,
-  "pseudocode": "1. Initialize result = 0, sign = 1, stack = []\n2. Iterate through string s\n3. If digit, build full number\n4. If '+', update result, sign = 1\n5. If '-', update result, sign = -1\n6. Return result",
+  "pseudocode": "1. Initialize res = 0, sign = 1, stack = []\n2. Iterate through characters in string s\n3. If digit, build full number\n4. If '+', add number to res, set sign = 1\n5. If '-', add number to res, set sign = -1\n6. Add remaining number to res",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize variables: result=0, sign=1, stack=[]",
+      "note": "Initialize result, sign, and empty stack.",
       "array": [
-        0
+        1,
+        "+",
+        1
       ],
-      "curr": 0
+      "i": 0,
+      "visited": []
     },
     {
       "codeLine": 3,
-      "note": "Process '1', update result = result + sign * 1 = 1",
+      "note": "Read digit '1'. Current number is 1.",
       "array": [
+        1,
+        "+",
         1
       ],
-      "curr": 1
+      "i": 0,
+      "visited": [
+        0
+      ]
     },
     {
       "codeLine": 4,
-      "note": "Encounter '+', update sign = 1",
+      "note": "Encounter '+'. Add 1*1 to result, reset sign.",
       "array": [
+        1,
+        "+",
         1
       ],
-      "curr": 1
+      "i": 1,
+      "visited": [
+        0,
+        1
+      ]
     },
     {
       "codeLine": 3,
-      "note": "Process '1', update result = result + sign * 1 = 2",
+      "note": "Read digit '1'. Current number is 1.",
       "array": [
-        2
+        1,
+        "+",
+        1
       ],
-      "curr": 1
+      "i": 2,
+      "visited": [
+        0,
+        1,
+        2
+      ]
     },
     {
       "codeLine": 6,
-      "note": "Return final result 2",
+      "note": "End of string. Add final number 1 to result.",
       "array": [
-        2
+        1,
+        "+",
+        1
       ],
-      "curr": 2
+      "i": 2,
+      "visited": [
+        0,
+        1,
+        2
+      ]
     }
-  ]
+  ],
+  "fullDescription": "<p>Given a string <code>s</code> representing a valid expression, implement a basic calculator to evaluate it, and return <em>the result of the evaluation</em>.</p>\n\n<p><strong>Note:</strong> You are <strong>not</strong> allowed to use any built-in function which evaluates strings as mathematical expressions, such as <code>eval()</code>.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> s = &quot;1 + 1&quot;\n<strong>Output:</strong> 2\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> s = &quot; 2-1 + 2 &quot;\n<strong>Output:</strong> 3\n</pre>\n\n<p><strong class=\"example\">Example 3:</strong></p>\n\n<pre>\n<strong>Input:</strong> s = &quot;(1+(4+5+2)-3)+(6+8)&quot;\n<strong>Output:</strong> 23\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= s.length &lt;= 3 * 10<sup>5</sup></code></li>\n\t<li><code>s</code> consists of digits, <code>&#39;+&#39;</code>, <code>&#39;-&#39;</code>, <code>&#39;(&#39;</code>, <code>&#39;)&#39;</code>, and <code>&#39; &#39;</code>.</li>\n\t<li><code>s</code> represents a valid expression.</li>\n\t<li><code>&#39;+&#39;</code> is <strong>not</strong> used as a unary operation (i.e., <code>&quot;+1&quot;</code> and <code>&quot;+(2 + 3)&quot;</code> is invalid).</li>\n\t<li><code>&#39;-&#39;</code> could be used as a unary operation (i.e., <code>&quot;-1&quot;</code> and <code>&quot;-(2 + 3)&quot;</code> is valid).</li>\n\t<li>There will be no two consecutive operators in the input.</li>\n\t<li>Every number and running calculation will fit in a signed 32-bit integer.</li>\n</ul>\n"
 }

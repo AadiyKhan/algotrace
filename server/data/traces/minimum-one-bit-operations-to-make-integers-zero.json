@@ -1,0 +1,45 @@
+{
+  "title": "Minimum One Bit Operations to Make Integers Zero",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Bit Manipulation",
+    "Dynamic Programming",
+    "Math"
+  ],
+  "description": "Calculate minimum operations to reduce an integer to 0 using Gray code conversion logic.",
+  "target": 0,
+  "pseudocode": "1. function minimumOneBitOperations(n):\n2.   res = 0\n3.   while n > 0:\n4.     res ^= n\n5.     n >>= 1\n6.   return res",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Initialize result variable to 0",
+      "i": 3
+    },
+    {
+      "codeLine": 4,
+      "note": "First iteration: res XOR 3 (011 binary) = 3",
+      "i": 3
+    },
+    {
+      "codeLine": 5,
+      "note": "Shift n right by 1: 3 >> 1 = 1",
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Second iteration: res XOR 1 (011 ^ 001) = 2",
+      "i": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Shift n right by 1: 1 >> 1 = 0",
+      "i": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Return final result 2",
+      "i": 0
+    }
+  ]
+}

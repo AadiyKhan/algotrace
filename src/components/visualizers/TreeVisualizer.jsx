@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import useChatStore from '../../store/useChatStore';
 
 const NODE_R = 22;   // circle radius px
 const H_GAP  = 18;   // horizontal gap between sibling subtrees
@@ -68,6 +69,7 @@ const LEGEND = [
 ];
 
 const TreeVisualizer = ({ stepData }) => {
+  const { askQuestion } = useChatStore();
   const { treeNodes, curr, prev, visited } = stepData;
 
   const nodeMap = {};
@@ -178,7 +180,9 @@ const TreeVisualizer = ({ stepData }) => {
             const cy = pos.y;
 
             return (
-              <g key={node.id}>
+              <g key={node.id}
+                 className="cursor-pointer transition-colors"
+                 onClick={() => askQuestion(`Explain what node with value ${node.val} represents in the tree right now.`)}>
                 {/* Glow halo rendered BEHIND the node — large radial circle */}
                 {isCurr && (
                   <motion.circle
@@ -219,6 +223,33 @@ const TreeVisualizer = ({ stepData }) => {
           })}
         </svg>
       </div>
+
+
+      {/* Results Section */}
+      {(stepData.results || stepData.result) && Array.isArray(stepData.results || stepData.result) && (
+        <div className="flex flex-col gap-4 mt-4 w-full border-t-[2px] border-white/10 pt-8">
+          <div className="flex items-center gap-4">
+            <span className="font-mono font-bold tracking-widest text-[11px] uppercase text-white/50">FOUND_RESULTS</span>
+            <div className="flex-1 h-[2px] bg-white/10" />
+          </div>
+          <div className="flex flex-wrap gap-4">
+            {(stepData.results || stepData.result).length === 0 ? (
+              <span className="font-mono text-[12px] text-white/30 uppercase tracking-widest">[ NONE YET ]</span>
+            ) : (
+              (stepData.results || stepData.result).map((item, idx) => (
+                <motion.div 
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  key={idx} 
+                  className="px-4 py-2 border-[2px] border-amber-500 bg-amber-500/10 text-amber-500 font-mono font-bold text-sm tracking-widest uppercase"
+                >
+                  {typeof item === 'object' ? JSON.stringify(item) : item}
+                </motion.div>
+              ))
+            )}
+          </div>
+        </div>
+      )}
 
       {/* Legend */}
       <div className="grid grid-cols-3 gap-6 border-t-[2px] border-white/10 pt-8 mt-4">

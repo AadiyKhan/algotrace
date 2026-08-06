@@ -1,0 +1,100 @@
+{
+  "title": "Minimum Moves to Make Array Complementary",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Difference Array",
+    "Prefix Sum"
+  ],
+  "description": "Find the minimum moves to make all pairs sum to the same value T, where each number 1 <= nums[i] <= limit.",
+  "target": "T = 4",
+  "pseudocode": "1. delta = [0] * (2 * limit + 2)\n2. for i in range(n/2):\n3.   a, b = nums[i], nums[n-1-i]\n4.   delta[2] += 2\n5.   delta[min(a,b) + 1] -= 1\n6.   delta[a + b] -= 1\n7.   delta[a + b + 1] += 1\n8.   delta[max(a,b) + limit + 1] += 1",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize difference array with size 2*limit + 2",
+      "array": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Processing pair (1, 2) with limit 3",
+      "i": 0,
+      "array": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Initial cost for pair to become 2 moves is 2",
+      "array": [
+        0,
+        0,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Decrement cost for sum range [2, 1]",
+      "array": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Range [sum, sum] moves = 0, adjust difference",
+      "array": [
+        0,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 8,
+      "note": "Range [max+limit+1, end] moves = 2",
+      "array": [
+        0,
+        0,
+        1,
+        0,
+        -1,
+        0,
+        0,
+        1
+      ]
+    }
+  ]
+}

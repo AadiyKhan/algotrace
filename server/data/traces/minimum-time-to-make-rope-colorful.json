@@ -1,0 +1,100 @@
+{
+  "title": "Minimum Time to Make Rope Colorful",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "String",
+    "Greedy"
+  ],
+  "description": "Remove balloons to ensure no two adjacent balloons have the same color by minimizing the total cost.",
+  "target": null,
+  "pseudocode": "1. totalCost = 0\n2. for i = 1 to n-1:\n3.   if colors[i] == colors[i-1]:\n4.     totalCost += min(neededTime[i], neededTime[i-1])\n5.     neededTime[i] = max(neededTime[i], neededTime[i-1])\n6. return totalCost",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize totalCost to 0.",
+      "array": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Start loop at index 1. Colors: 'abaa', Times: [1, 2, 3, 4]. Compare i=1 ('b') with i=0 ('a').",
+      "array": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Colors don't match, continue.",
+      "array": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Compare i=2 ('a') with i=1 ('b'). Colors don't match.",
+      "array": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 2,
+      "note": "Compare i=3 ('a') with i=2 ('a'). Colors match!",
+      "array": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 4,
+      "note": "Add min(neededTime[3]=4, neededTime[2]=3) = 3 to totalCost.",
+      "array": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 5,
+      "note": "Update neededTime[3] to max(4, 3) = 4.",
+      "array": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 6,
+      "note": "Loop ends, return totalCost = 3.",
+      "array": [
+        1,
+        2,
+        3,
+        4
+      ]
+    }
+  ]
+}

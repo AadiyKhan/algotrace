@@ -6,101 +6,174 @@
     "Array",
     "Two Pointers"
   ],
-  "description": "Given an integer array nums sorted in non-decreasing order, return an array of the squares of each number, sorted in non-decreasing order.",
-  "pseudocode": "1: let res = new Array(nums.length)\n2: let left = 0, right = nums.length - 1\n3: for (let k = nums.length - 1; k >= 0; k--) {\n4:   if (Math.abs(nums[left]) > Math.abs(nums[right])) {\n5:     res[k] = nums[left] * nums[left]; left++\n6:   } else {\n7:     res[k] = nums[right] * nums[right]; right--\n8:   }\n9: }",
+  "description": "Square each number and return sorted result using two pointers in O(n).",
+  "target": null,
+  "pseudocode": "1. left = 0, right = n - 1\n2. while left <= right:\n3. if abs(nums[left]) > abs(nums[right]): res[i] = nums[left]^2, left++\n4. else: res[i] = nums[right]^2, right--\n5. i--",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize result array of size 3",
-      "array": [
-        0,
-        0,
-        0
-      ],
-      "curr": 3
-    },
-    {
-      "codeLine": 2,
-      "note": "Initialize pointers at ends",
-      "i": 0,
-      "j": 2,
+      "note": "Initialize pointers at ends of input array",
       "array": [
         -4,
         -1,
-        3
+        0,
+        3,
+        10
+      ],
+      "i": 4,
+      "visited": []
+    },
+    {
+      "codeLine": 3,
+      "note": "Compare abs(-4) and abs(10). 10 is larger.",
+      "array": [
+        -4,
+        -1,
+        0,
+        3,
+        10
+      ],
+      "i": 4,
+      "visited": [
+        100
       ]
     },
     {
       "codeLine": 4,
-      "note": "Compare abs values: |-4| > |3|",
-      "i": 0,
-      "j": 2,
+      "note": "Square 10, decrement right pointer",
       "array": [
         -4,
         -1,
-        3
+        0,
+        3,
+        10
       ],
-      "curr": -4
+      "i": 3,
+      "visited": [
+        100
+      ]
     },
     {
-      "codeLine": 5,
-      "note": "Place 16 at index 2",
-      "i": 1,
-      "j": 2,
+      "codeLine": 3,
+      "note": "Compare abs(-4) and abs(3). 4 is larger.",
       "array": [
+        -4,
+        -1,
         0,
-        0,
-        16
+        3,
+        10
       ],
-      "curr": 16
+      "i": 3,
+      "visited": [
+        16,
+        100
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Square -4, increment left pointer",
+      "array": [
+        -4,
+        -1,
+        0,
+        3,
+        10
+      ],
+      "i": 2,
+      "visited": [
+        16,
+        100
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Compare abs(-1) and abs(3). 3 is larger.",
+      "array": [
+        -4,
+        -1,
+        0,
+        3,
+        10
+      ],
+      "i": 2,
+      "visited": [
+        16,
+        9,
+        100
+      ]
     },
     {
       "codeLine": 4,
-      "note": "Compare abs values: |-1| < |3|",
-      "i": 1,
-      "j": 2,
+      "note": "Square 3, decrement right pointer",
       "array": [
+        -4,
+        -1,
         0,
-        0,
-        16
+        3,
+        10
       ],
-      "curr": -1
+      "i": 1,
+      "visited": [
+        16,
+        9,
+        100
+      ]
     },
     {
-      "codeLine": 7,
-      "note": "Place 9 at index 1",
-      "i": 1,
-      "j": 1,
+      "codeLine": 3,
+      "note": "Compare abs(-1) and abs(0). 1 is larger.",
       "array": [
+        -4,
+        -1,
         0,
-        9,
-        16
+        3,
+        10
       ],
-      "curr": 9
+      "i": 1,
+      "visited": [
+        1,
+        16,
+        9,
+        100
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Square -1, increment left pointer",
+      "array": [
+        -4,
+        -1,
+        0,
+        3,
+        10
+      ],
+      "i": 0,
+      "visited": [
+        1,
+        16,
+        9,
+        100
+      ]
     },
     {
       "codeLine": 4,
-      "note": "Compare abs values: |-1| vs |3|",
-      "i": 1,
-      "j": 1,
+      "note": "Square 0, fill remaining position",
       "array": [
+        -4,
+        -1,
         0,
-        9,
-        16
+        3,
+        10
       ],
-      "curr": -1
-    },
-    {
-      "codeLine": 7,
-      "note": "Place 1 at index 0",
-      "i": 1,
-      "j": 0,
-      "array": [
+      "i": 0,
+      "visited": [
+        0,
         1,
         9,
-        16
-      ],
-      "curr": 1
+        16,
+        100
+      ]
     }
-  ]
+  ],
+  "fullDescription": "<p>Given an integer array <code>nums</code> sorted in <strong>non-decreasing</strong> order, return <em>an array of <strong>the squares of each number</strong> sorted in non-decreasing order</em>.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> nums = [-4,-1,0,3,10]\n<strong>Output:</strong> [0,1,9,16,100]\n<strong>Explanation:</strong> After squaring, the array becomes [16,1,0,9,100].\nAfter sorting, it becomes [0,1,9,16,100].\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> nums = [-7,-3,2,3,11]\n<strong>Output:</strong> [4,9,9,49,121]\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code><span>1 &lt;= nums.length &lt;= </span>10<sup>4</sup></code></li>\n\t<li><code>-10<sup>4</sup> &lt;= nums[i] &lt;= 10<sup>4</sup></code></li>\n\t<li><code>nums</code> is sorted in <strong>non-decreasing</strong> order.</li>\n</ul>\n\n<p>&nbsp;</p>\n<strong>Follow up:</strong> Squaring each element and sorting the new array is very trivial, could you find an <code>O(n)</code> solution using a different approach?"
 }

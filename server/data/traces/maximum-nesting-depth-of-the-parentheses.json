@@ -1,0 +1,73 @@
+{
+  "title": "Maximum Nesting Depth of the Parentheses",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "String",
+    "Stack"
+  ],
+  "description": "Find the maximum nesting depth of the parentheses in a valid parentheses string.",
+  "pseudocode": "let depth = 0;\nlet maxDepth = 0;\nfor (let i = 0; i < s.length; i++) {\n  if (s[i] === '(') {\n    depth++;\n    maxDepth = Math.max(maxDepth, depth);\n  } else if (s[i] === ')') {\n    depth--;\n  }\n}",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize current depth to 0",
+      "i": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Initialize max depth to 0",
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Process character '(' at index 0",
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Open parenthesis found, increment depth to 1",
+      "i": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Update maxDepth to 1",
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Process character '(' at index 1",
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Open parenthesis found, increment depth to 2",
+      "i": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Update maxDepth to 2",
+      "i": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Process character ')' at index 2",
+      "i": 2
+    },
+    {
+      "codeLine": 7,
+      "note": "Close parenthesis found, decrement depth to 1",
+      "i": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Process character ')' at index 3",
+      "i": 3
+    },
+    {
+      "codeLine": 7,
+      "note": "Close parenthesis found, decrement depth to 0",
+      "i": 3
+    }
+  ]
+}

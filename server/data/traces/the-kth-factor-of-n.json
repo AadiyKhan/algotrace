@@ -6,87 +6,102 @@
     "Math",
     "Number Theory"
   ],
-  "description": "Find the kth factor of n by iterating from 1 to n and counting factors.",
+  "description": "Find the kth factor of n by iterating through 1 to n.",
   "target": 3,
-  "pseudocode": "1. count = 0\n2. for i = 1 to n:\n3.   if n % i == 0:\n4.     count += 1\n5.     if count == k:\n6.       return i\n7. return -1",
+  "pseudocode": "1. count = 0\n2. for i from 1 to n:\n3.   if n % i == 0:\n4.     count++\n5.     if count == k: return i\n6. return -1",
   "steps": [
     {
       "codeLine": 1,
       "note": "Initialize count to 0.",
       "array": [],
-      "i": 0,
-      "curr": 0
+      "visited": [],
+      "i": 0
     },
     {
       "codeLine": 2,
-      "note": "Starting loop i=1, 12 % 1 == 0.",
-      "array": [
-        1
-      ],
-      "i": 1,
-      "curr": 1
+      "note": "Start loop, i = 1. Check if 12 % 1 == 0.",
+      "array": [],
+      "visited": [],
+      "i": 1
     },
     {
-      "codeLine": 4,
-      "note": "Factor found: 1. Increment count to 1.",
+      "codeLine": 3,
+      "note": "1 is a factor. Increment count to 1.",
       "array": [
         1
       ],
-      "i": 1,
-      "curr": 1
+      "visited": [
+        1
+      ],
+      "i": 1
     },
     {
       "codeLine": 2,
-      "note": "i=2, 12 % 2 == 0.",
+      "note": "i = 2. Check if 12 % 2 == 0.",
+      "array": [
+        1
+      ],
+      "visited": [
+        1
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "2 is a factor. Increment count to 2.",
       "array": [
         1,
         2
       ],
-      "i": 2,
-      "curr": 2
+      "visited": [
+        1,
+        2
+      ],
+      "i": 2
     },
     {
-      "codeLine": 4,
-      "note": "Factor found: 2. Increment count to 2.",
+      "codeLine": 2,
+      "note": "i = 3. Check if 12 % 3 == 0.",
       "array": [
         1,
         2
       ],
-      "i": 2,
-      "curr": 2
+      "visited": [
+        1,
+        2
+      ],
+      "i": 3
     },
     {
-      "codeLine": 2,
-      "note": "i=3, 12 % 3 == 0.",
+      "codeLine": 3,
+      "note": "3 is a factor. Increment count to 3.",
       "array": [
         1,
         2,
         3
       ],
-      "i": 3,
-      "curr": 3
-    },
-    {
-      "codeLine": 4,
-      "note": "Factor found: 3. Increment count to 3.",
-      "array": [
+      "visited": [
         1,
         2,
         3
       ],
-      "i": 3,
-      "curr": 3
+      "i": 3
     },
     {
       "codeLine": 5,
-      "note": "Count (3) equals k (3). Return 3.",
+      "note": "Count is 3, matches k. Return 3.",
       "array": [
         1,
         2,
         3
       ],
-      "i": 3,
-      "curr": 3
+      "visited": [
+        1,
+        2,
+        3
+      ],
+      "i": 3
     }
-  ]
+  ],
+  "fullDescription": "<p>You are given two positive integers <code>n</code> and <code>k</code>. A factor of an integer <code>n</code> is defined as an integer <code>i</code> where <code>n % i == 0</code>.</p>\n\n<p>Consider a list of all factors of <code>n</code> sorted in <strong>ascending order</strong>, return <em>the </em><code>k<sup>th</sup></code><em> factor</em> in this list or return <code>-1</code> if <code>n</code> has less than <code>k</code> factors.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> n = 12, k = 3\n<strong>Output:</strong> 3\n<strong>Explanation:</strong> Factors list is [1, 2, 3, 4, 6, 12], the 3<sup>rd</sup> factor is 3.\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> n = 7, k = 2\n<strong>Output:</strong> 7\n<strong>Explanation:</strong> Factors list is [1, 7], the 2<sup>nd</sup> factor is 7.\n</pre>\n\n<p><strong class=\"example\">Example 3:</strong></p>\n\n<pre>\n<strong>Input:</strong> n = 4, k = 4\n<strong>Output:</strong> -1\n<strong>Explanation:</strong> Factors list is [1, 2, 4], there is only 3 factors. We should return -1.\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= k &lt;= n &lt;= 1000</code></li>\n</ul>\n\n<p>&nbsp;</p>\n<p><strong>Follow up:</strong></p>\n\n<p>Could you solve this problem in less than O(n) complexity?</p>\n"
 }

@@ -4,80 +4,83 @@
   "type": "array",
   "tags": [
     "Array",
-    "Greedy",
-    "Dynamic Programming"
+    "Dynamic Programming",
+    "Greedy"
   ],
-  "description": "Given an array of non-negative integers, find the minimum number of jumps to reach the last index.",
-  "target": null,
-  "pseudocode": "1: let jumps = 0, currEnd = 0, currFarthest = 0\n2: for i from 0 to nums.length - 2:\n3:   currFarthest = max(currFarthest, i + nums[i])\n4:   if i == currEnd:\n5:     jumps++\n6:     currEnd = currFarthest",
+  "description": "Find the minimum number of jumps to reach the last index in a 0-indexed array where each element is the max jump length.",
+  "target": 4,
+  "pseudocode": "1. jumps = 0, currentEnd = 0, farthest = 0\n2. for i = 0 to n-2:\n3.   farthest = max(farthest, i + nums[i])\n4.   if i == currentEnd:\n5.     jumps++\n6.     currentEnd = farthest",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize jumps, current end of jump range, and furthest reachable index.",
+      "note": "Initialize variables: jumps=0, currentEnd=0, farthest=0",
       "array": [
         2,
         3,
         1,
         1,
         4
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "At i=0, jump length is 2. Farthest = max(0, 0+2) = 2",
+      "array": [
+        2,
+        3,
+        1,
+        1,
+        4
+      ],
+      "i": 0,
+      "visited": [
+        0
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "i (0) == currentEnd (0), increment jumps and update currentEnd",
+      "array": [
+        2,
+        3,
+        1,
+        1,
+        4
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Jumps: 1, currentEnd becomes 2",
+      "array": [
+        2,
+        3,
+        1,
+        1,
+        4
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "At i=1, jump length 3. Farthest = max(2, 1+3) = 4",
+      "array": [
+        2,
+        3,
+        1,
+        1,
+        4
+      ],
+      "i": 1,
+      "visited": [
+        0,
+        1
       ]
     },
     {
       "codeLine": 3,
-      "note": "At i=0, max reachable index is 0+2=2.",
-      "array": [
-        2,
-        3,
-        1,
-        1,
-        4
-      ],
-      "i": 0,
-      "curr": 2
-    },
-    {
-      "codeLine": 4,
-      "note": "i (0) matches currEnd (0). Increment jumps and update currEnd.",
-      "array": [
-        2,
-        3,
-        1,
-        1,
-        4
-      ],
-      "i": 0,
-      "j": 1,
-      "curr": 0
-    },
-    {
-      "codeLine": 3,
-      "note": "At i=1, max reachable is 1+3=4.",
-      "array": [
-        2,
-        3,
-        1,
-        1,
-        4
-      ],
-      "i": 1,
-      "curr": 4
-    },
-    {
-      "codeLine": 4,
-      "note": "i (1) is not currEnd (2). Continue.",
-      "array": [
-        2,
-        3,
-        1,
-        1,
-        4
-      ],
-      "i": 1,
-      "curr": 1
-    },
-    {
-      "codeLine": 3,
-      "note": "At i=2, max reachable is 4.",
+      "note": "At i=2, jump length 1. Farthest = max(4, 2+1) = 4",
       "array": [
         2,
         3,
@@ -86,11 +89,15 @@
         4
       ],
       "i": 2,
-      "curr": 4
+      "visited": [
+        0,
+        1,
+        2
+      ]
     },
     {
       "codeLine": 4,
-      "note": "i (2) matches currEnd (2). Increment jumps and update currEnd.",
+      "note": "i (2) == currentEnd (2), increment jumps and update currentEnd",
       "array": [
         2,
         3,
@@ -98,9 +105,32 @@
         1,
         4
       ],
-      "i": 2,
-      "j": 2,
-      "curr": 2
+      "i": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Jumps: 2, currentEnd becomes 4",
+      "array": [
+        2,
+        3,
+        1,
+        1,
+        4
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 2,
+      "note": "Reached end of loop (i < n-1), final jumps: 2",
+      "array": [
+        2,
+        3,
+        1,
+        1,
+        4
+      ],
+      "i": 3
     }
-  ]
+  ],
+  "fullDescription": "<p>You are given a <strong>0-indexed</strong> array of integers <code>nums</code> of length <code>n</code>. You are initially positioned at&nbsp;index 0.</p>\n\n<p>Each element <code>nums[i]</code> represents the maximum length of a forward jump from index <code>i</code>. In other words, if you are at index <code>i</code>, you can jump to any index <code>(i + j)</code>&nbsp;where:</p>\n\n<ul>\n\t<li><code>0 &lt;= j &lt;= nums[i]</code> and</li>\n\t<li><code>i + j &lt; n</code></li>\n</ul>\n\n<p>Return <em>the minimum number of jumps to reach index </em><code>n - 1</code>. The test cases are generated such that you can reach index&nbsp;<code>n - 1</code>.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> nums = [2,3,1,1,4]\n<strong>Output:</strong> 2\n<strong>Explanation:</strong> The minimum number of jumps to reach the last index is 2. Jump 1 step from index 0 to 1, then 3 steps to the last index.\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> nums = [2,3,0,1,4]\n<strong>Output:</strong> 2\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= nums.length &lt;= 10<sup>4</sup></code></li>\n\t<li><code>0 &lt;= nums[i] &lt;= 1000</code></li>\n\t<li>It&#39;s guaranteed that you can reach <code>nums[n - 1]</code>.</li>\n</ul>\n"
 }

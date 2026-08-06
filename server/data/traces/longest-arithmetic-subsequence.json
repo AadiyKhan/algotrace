@@ -4,115 +4,146 @@
   "type": "array",
   "tags": [
     "Array",
+    "Hash Table",
     "Dynamic Programming"
   ],
-  "description": "Find the length of the longest arithmetic subsequence in an array.",
-  "target": null,
-  "pseudocode": "1. n = nums.length; dp = Array(n).fill(0).map(() => ({}));\n2. maxLen = 0;\n3. for i = 0 to n-1:\n4.   for j = 0 to i-1:\n5.     diff = nums[i] - nums[j];\n6.     dp[i][diff] = (dp[j][diff] || 1) + 1;\n7.     maxLen = Math.max(maxLen, dp[i][diff]);\n8. return maxLen;",
+  "description": "Find the length of the longest arithmetic subsequence in an array using dynamic programming with a map of differences.",
+  "target": 4,
+  "pseudocode": "1. Initialize dp array of maps where dp[i][diff] stores length ending at i with difference diff\n2. For i from 0 to n-1:\n3.   For j from 0 to i-1:\n4.     diff = nums[i] - nums[j]\n5.     dp[i][diff] = dp[j].get(diff, 1) + 1\n6.     maxLen = max(maxLen, dp[i][diff])",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize dp array of empty maps for nums = [3, 6, 9]",
+      "note": "Initialize DP table for nums = [3, 6, 9, 12]",
       "array": [
         3,
         6,
-        9
+        9,
+        12
       ],
-      "curr": 3
+      "visited": [],
+      "curr": 0
     },
     {
       "codeLine": 4,
-      "note": "Compare index 1 (6) with index 0 (3)",
-      "i": 1,
-      "j": 0,
+      "note": "Compare index 1 (6) with index 0 (3): diff = 3",
       "array": [
         3,
         6,
-        9
+        9,
+        12
       ],
+      "i": 1,
+      "j": 0,
       "curr": 1
     },
     {
       "codeLine": 5,
-      "note": "Difference is 6 - 3 = 3",
-      "i": 1,
-      "j": 0,
+      "note": "dp[1][3] = dp[0][3] + 1 = 2",
       "array": [
         3,
         6,
-        9
+        9,
+        12
       ],
-      "curr": 6
-    },
-    {
-      "codeLine": 6,
-      "note": "Set dp[1][3] = 2",
       "i": 1,
       "j": 0,
-      "array": [
-        3,
-        6,
-        9
-      ],
       "curr": 1
     },
     {
       "codeLine": 4,
-      "note": "Compare index 2 (9) with index 0 (3)",
-      "i": 2,
-      "j": 0,
+      "note": "Compare index 2 (9) with index 0 (3): diff = 6",
       "array": [
         3,
         6,
-        9
+        9,
+        12
       ],
+      "i": 2,
+      "j": 0,
       "curr": 2
     },
     {
-      "codeLine": 6,
-      "note": "Difference 6, dp[2][6] = 2",
-      "i": 2,
-      "j": 0,
+      "codeLine": 5,
+      "note": "dp[2][6] = 2",
       "array": [
         3,
         6,
-        9
+        9,
+        12
       ],
-      "curr": 6
+      "i": 2,
+      "j": 0,
+      "curr": 2
     },
     {
       "codeLine": 4,
-      "note": "Compare index 2 (9) with index 1 (6)",
-      "i": 2,
-      "j": 1,
+      "note": "Compare index 2 (9) with index 1 (6): diff = 3",
       "array": [
         3,
         6,
-        9
+        9,
+        12
       ],
+      "i": 2,
+      "j": 1,
       "curr": 2
     },
     {
-      "codeLine": 6,
-      "note": "Difference 3, dp[2][3] = dp[1][3] + 1 = 3",
-      "i": 2,
-      "j": 1,
+      "codeLine": 5,
+      "note": "dp[2][3] = dp[1][3] + 1 = 3",
       "array": [
         3,
         6,
-        9
+        9,
+        12
       ],
+      "i": 2,
+      "j": 1,
+      "curr": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Compare index 3 (12) with index 2 (9): diff = 3",
+      "array": [
+        3,
+        6,
+        9,
+        12
+      ],
+      "i": 3,
+      "j": 2,
       "curr": 3
     },
     {
-      "codeLine": 8,
-      "note": "Return maxLen = 3",
+      "codeLine": 5,
+      "note": "dp[3][3] = dp[2][3] + 1 = 4",
       "array": [
         3,
         6,
-        9
+        9,
+        12
+      ],
+      "i": 3,
+      "j": 2,
+      "curr": 3
+    },
+    {
+      "codeLine": 6,
+      "note": "Final max length found is 4",
+      "array": [
+        3,
+        6,
+        9,
+        12
+      ],
+      "visited": [
+        0,
+        1,
+        2,
+        3
       ],
       "curr": 3
     }
-  ]
+  ],
+  "fullDescription": "<p>Given an array <code>nums</code> of integers, return <em>the length of the longest arithmetic subsequence in</em> <code>nums</code>.</p>\n\n<p><strong>Note</strong> that:</p>\n\n<ul>\n\t<li>A <strong>subsequence</strong> is an array that can be derived from another array by deleting some or no elements without changing the order of the remaining elements.</li>\n\t<li>A sequence <code>seq</code> is arithmetic if <code>seq[i + 1] - seq[i]</code> are all the same value (for <code>0 &lt;= i &lt; seq.length - 1</code>).</li>\n</ul>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> nums = [3,6,9,12]\n<strong>Output:</strong> 4\n<strong>Explanation: </strong> The whole array is an arithmetic sequence with steps of length = 3.\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> nums = [9,4,7,2,10]\n<strong>Output:</strong> 3\n<strong>Explanation: </strong> The longest arithmetic subsequence is [4,7,10].\n</pre>\n\n<p><strong class=\"example\">Example 3:</strong></p>\n\n<pre>\n<strong>Input:</strong> nums = [20,1,15,3,10,5,8]\n<strong>Output:</strong> 4\n<strong>Explanation: </strong> The longest arithmetic subsequence is [20,15,10,5].\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>2 &lt;= nums.length &lt;= 1000</code></li>\n\t<li><code>0 &lt;= nums[i] &lt;= 500</code></li>\n</ul>\n"
 }

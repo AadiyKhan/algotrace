@@ -1,0 +1,129 @@
+{
+  "title": "Build Binary Expression Tree From Infix Expression",
+  "difficulty": "Hard",
+  "type": "tree",
+  "tags": [
+    "Tree",
+    "Stack",
+    "Expression Tree"
+  ],
+  "description": "Convert an infix expression (e.g., '3+4*2') into a binary expression tree.",
+  "target": "3+4*2",
+  "pseudocode": "1. Initialize two stacks: nodes and ops\n2. For each char in expression:\n3. If digit, create node and push to nodes\n4. If '(', push to ops\n5. If ')', pop ops and create subtrees until '('\n6. If operator, compare precedence and pop/build subtrees",
+  "steps": [
+    {
+      "codeLine": 3,
+      "note": "Push operand '3' to nodes stack",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": "3",
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Encounter '+', push to ops stack",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": "3",
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Push operand '4' to nodes stack",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": "3",
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 1,
+          "val": "4",
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Encounter '*', precedence higher than '+', push to ops",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": "3",
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 1,
+          "val": "4",
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Push operand '2' to nodes stack",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": "3",
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 1,
+          "val": "4",
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": "2",
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Pop '*', build subtree (4 * 2)",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": "3",
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": "*",
+          "left": 1,
+          "right": 2
+        }
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Pop '+', build root (3 + *)",
+      "treeNodes": [
+        {
+          "id": 4,
+          "val": "+",
+          "left": 0,
+          "right": 3
+        }
+      ]
+    }
+  ]
+}

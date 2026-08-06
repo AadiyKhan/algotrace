@@ -1,0 +1,115 @@
+{
+  "title": "Change The Root Of A Binary Tree",
+  "difficulty": "Medium",
+  "type": "tree",
+  "tags": [
+    "Tree",
+    "DFS",
+    "Binary Tree"
+  ],
+  "description": "Given a node of a binary tree, reroot the tree such that the given node becomes the new root.",
+  "target": 2,
+  "pseudocode": "1. function reroot(node) {\n2.   let parent = node.parent;\n3.   let prev = null;\n4.   while (node != null) {\n5.     let nextParent = node.parent;\n6.     if (node.left == prev) node.left = node.right;\n7.     node.right = node.left;\n8.     node.left = prev;\n9.     node.parent = prev;\n10.    prev = node;\n11.    node = nextParent;\n12.  }\n13. }",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Initialize starting at the node to be rerooted (Node 2).",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 3,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 2,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Disconnect Node 2 from its parent (Node 1) and flip the pointer structure.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": null
+        },
+        {
+          "id": 1,
+          "val": 3,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 2,
+          "left": 0,
+          "right": null
+        }
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 9,
+      "note": "Node 2 is now the root, updating parent pointers for the old root (Node 1).",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": null
+        },
+        {
+          "id": 1,
+          "val": 3,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 2,
+          "left": 0,
+          "right": null
+        }
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 11,
+      "note": "Finalizing structural update to ensure Node 1 is a child of Node 2.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": null
+        },
+        {
+          "id": 1,
+          "val": 3,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 2,
+          "left": 0,
+          "right": null
+        }
+      ],
+      "curr": null
+    }
+  ]
+}

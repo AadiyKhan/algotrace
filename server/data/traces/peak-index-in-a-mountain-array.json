@@ -6,118 +6,127 @@
     "Array",
     "Binary Search"
   ],
-  "description": "Find the peak element in an array that increases and then decreases.",
+  "description": "Find the peak index in a mountain array using binary search.",
   "target": null,
-  "pseudocode": "1. low = 0, high = arr.length - 1\n2. while low < high:\n3. mid = floor((low + high) / 2)\n4. if arr[mid] < arr[mid + 1]:\n5. low = mid + 1\n6. else:\n7. high = mid\n8. return low",
+  "pseudocode": "1. low = 0, high = len(arr) - 1\n2. while low < high:\n3. mid = (low + high) // 2\n4. if arr[mid] < arr[mid + 1]: low = mid + 1\n5. else: high = mid\n6. return low",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize binary search pointers low and high",
+      "note": "Initialize binary search boundaries.",
       "array": [
         0,
-        2,
-        5,
-        3,
-        1
+        1,
+        0
       ],
-      "i": 0,
-      "j": 4
+      "i": "low=0",
+      "j": "high=2"
+    },
+    {
+      "codeLine": 2,
+      "note": "Start binary search loop.",
+      "array": [
+        0,
+        1,
+        0
+      ],
+      "i": "0",
+      "j": "2"
     },
     {
       "codeLine": 3,
-      "note": "Calculate mid index",
+      "note": "Calculate mid index.",
       "array": [
         0,
-        2,
-        5,
-        3,
-        1
+        1,
+        0
       ],
-      "i": 0,
-      "j": 4,
-      "curr": 2
-    },
-    {
-      "codeLine": 4,
-      "note": "Compare arr[mid] with arr[mid+1] (5 < 3 is false)",
-      "array": [
-        0,
-        2,
-        5,
-        3,
-        1
-      ],
-      "i": 0,
-      "j": 4,
-      "curr": 2
-    },
-    {
-      "codeLine": 7,
-      "note": "Condition false, peak is to the left or at mid; set high = mid",
-      "array": [
-        0,
-        2,
-        5,
-        3,
-        1
-      ],
-      "i": 0,
-      "j": 2,
-      "curr": 2
-    },
-    {
-      "codeLine": 3,
-      "note": "Calculate new mid",
-      "array": [
-        0,
-        2,
-        5,
-        3,
-        1
-      ],
-      "i": 0,
-      "j": 2,
+      "i": "mid=1",
       "curr": 1
     },
     {
       "codeLine": 4,
-      "note": "Compare arr[mid] with arr[mid+1] (2 < 5 is true)",
+      "note": "Check if arr[mid] < arr[mid+1] (1 < 0 is false).",
       "array": [
         0,
-        2,
-        5,
-        3,
-        1
+        1,
+        0
       ],
-      "i": 0,
-      "j": 2,
       "curr": 1
     },
     {
       "codeLine": 5,
-      "note": "Move low pointer to mid + 1",
+      "note": "Condition false, move high to mid.",
       "array": [
         0,
-        2,
-        5,
-        3,
-        1
+        1,
+        0
       ],
-      "i": 2,
-      "j": 2,
-      "curr": 1
+      "i": "low=0",
+      "j": "high=1"
     },
     {
-      "codeLine": 8,
-      "note": "Loop ends, return low as the peak index",
+      "codeLine": 2,
+      "note": "Loop condition 0 < 1 is true.",
       "array": [
         0,
-        2,
-        5,
-        3,
-        1
+        1,
+        0
       ],
-      "i": 2
+      "i": "0",
+      "j": "1"
+    },
+    {
+      "codeLine": 3,
+      "note": "Calculate new mid.",
+      "array": [
+        0,
+        1,
+        0
+      ],
+      "i": "mid=0",
+      "curr": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Check if arr[mid] < arr[mid+1] (0 < 1 is true).",
+      "array": [
+        0,
+        1,
+        0
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Update low to mid + 1.",
+      "array": [
+        0,
+        1,
+        0
+      ],
+      "i": "low=1",
+      "j": "high=1"
+    },
+    {
+      "codeLine": 2,
+      "note": "Loop terminates as low == high.",
+      "array": [
+        0,
+        1,
+        0
+      ],
+      "i": "1"
+    },
+    {
+      "codeLine": 6,
+      "note": "Return peak index 1.",
+      "array": [
+        0,
+        1,
+        0
+      ],
+      "curr": 1
     }
-  ]
+  ],
+  "fullDescription": "<p>You are given an integer <strong>mountain</strong> array <code>arr</code> of length <code>n</code> where the values increase to a <strong>peak element</strong> and then decrease.</p>\n\n<p>Return the index of the peak element.</p>\n\n<p>Your task is to solve it in <code>O(log(n))</code> time complexity.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<div class=\"example-block\">\n<p><strong>Input:</strong> <span class=\"example-io\">arr = [0,1,0]</span></p>\n\n<p><strong>Output:</strong> <span class=\"example-io\">1</span></p>\n</div>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<div class=\"example-block\">\n<p><strong>Input:</strong> <span class=\"example-io\">arr = [0,2,1,0]</span></p>\n\n<p><strong>Output:</strong> <span class=\"example-io\">1</span></p>\n</div>\n\n<p><strong class=\"example\">Example 3:</strong></p>\n\n<div class=\"example-block\">\n<p><strong>Input:</strong> <span class=\"example-io\">arr = [0,10,5,2]</span></p>\n\n<p><strong>Output:</strong> <span class=\"example-io\">1</span></p>\n</div>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>3 &lt;= arr.length &lt;= 10<sup>5</sup></code></li>\n\t<li><code>0 &lt;= arr[i] &lt;= 10<sup>6</sup></code></li>\n\t<li><code>arr</code> is <strong>guaranteed</strong> to be a mountain array.</li>\n</ul>\n"
 }

@@ -1,0 +1,100 @@
+{
+  "title": "Count the Number of Consistent Strings",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "String",
+    "Hash Table"
+  ],
+  "description": "Count the number of strings in an array that consist only of characters from a allowed string.",
+  "target": "ab",
+  "pseudocode": "let set = new Set(allowed);\nlet count = 0;\nfor (let word of words) {\n  let consistent = true;\n  for (let char of word) {\n    if (!set.has(char)) {\n      consistent = false;\n      break;\n    }\n  }\n  if (consistent) count++;\n}",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize a Set with allowed characters 'a' and 'b'.",
+      "array": [
+        "ab",
+        "ad"
+      ],
+      "i": "Set: {a, b}"
+    },
+    {
+      "codeLine": 3,
+      "note": "Start iterating through first word 'ab'.",
+      "array": [
+        "ab",
+        "ad"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Check 'a' in 'ab': exists in set.",
+      "array": [
+        "ab",
+        "ad"
+      ],
+      "i": 0,
+      "j": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Check 'b' in 'ab': exists in set.",
+      "array": [
+        "ab",
+        "ad"
+      ],
+      "i": 0,
+      "j": 1
+    },
+    {
+      "codeLine": 11,
+      "note": "Word 'ab' is consistent. Increment count.",
+      "array": [
+        "ab",
+        "ad"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Start iterating through second word 'ad'.",
+      "array": [
+        "ab",
+        "ad"
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Check 'a' in 'ad': exists in set.",
+      "array": [
+        "ab",
+        "ad"
+      ],
+      "i": 1,
+      "j": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Check 'd' in 'ad': not in set.",
+      "array": [
+        "ab",
+        "ad"
+      ],
+      "i": 1,
+      "j": 1
+    },
+    {
+      "codeLine": 8,
+      "note": "Word 'ad' is inconsistent. Skip increment.",
+      "array": [
+        "ab",
+        "ad"
+      ],
+      "i": 1
+    }
+  ]
+}

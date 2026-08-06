@@ -4,115 +4,170 @@
   "type": "array",
   "tags": [
     "Array",
-    "Math",
-    "Hash Table"
+    "Hash Table",
+    "Counting"
   ],
-  "description": "Find the number of pairs of songs (i, j) such that (time[i] + time[j]) % 60 == 0.",
-  "target": 60,
-  "pseudocode": "1. count = 0\n2. remainders = new Array(60).fill(0)\n3. for time in times:\n4.   rem = time % 60\n5.   target = (60 - rem) % 60\n6.   count += remainders[target]\n7.   remainders[rem]++",
+  "description": "Count pairs of songs (i, j) with i < j such that the sum of their durations is divisible by 60.",
+  "target": 3,
+  "pseudocode": "1. Initialize count = 0, remainders = array of size 60 with 0s\n2. For each t in time:\n3.   rem = t % 60\n4.   target = (60 - rem) % 60\n5.   count += remainders[target]\n6.   remainders[rem]++",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize count to 0 and remainder frequency map.",
+      "note": "Initialize count and remainder frequency array.",
       "array": [
-        30,
-        20,
-        150
+        0,
+        0,
+        0,
+        0,
+        0
       ],
-      "curr": 0
+      "visited": []
     },
     {
-      "codeLine": 3,
-      "note": "Process first song (30). Remainder is 30.",
+      "codeLine": 2,
+      "note": "Process time[0] = 30. rem = 30, target = 30. count = 0 + 0 = 0.",
       "array": [
         30,
         20,
-        150
+        150,
+        100,
+        40
       ],
       "i": 0,
-      "curr": 30
-    },
-    {
-      "codeLine": 5,
-      "note": "Target for 30 is (60 - 30) % 60 = 30. remainders[30] is 0.",
-      "array": [
-        30,
-        20,
-        150
-      ],
-      "curr": 30
-    },
-    {
-      "codeLine": 7,
-      "note": "Update remainders[30] to 1.",
-      "array": [
-        30,
-        20,
-        150
-      ],
-      "curr": 30
-    },
-    {
-      "codeLine": 3,
-      "note": "Process second song (20). Remainder is 20.",
-      "array": [
-        30,
-        20,
-        150
-      ],
-      "i": 1,
-      "curr": 20
-    },
-    {
-      "codeLine": 5,
-      "note": "Target for 20 is 40. remainders[40] is 0.",
-      "array": [
-        30,
-        20,
-        150
-      ],
-      "curr": 20
-    },
-    {
-      "codeLine": 7,
-      "note": "Update remainders[20] to 1.",
-      "array": [
-        30,
-        20,
-        150
-      ],
-      "curr": 20
-    },
-    {
-      "codeLine": 3,
-      "note": "Process third song (150). 150 % 60 = 30.",
-      "array": [
-        30,
-        20,
-        150
-      ],
-      "i": 2,
-      "curr": 150
+      "visited": [
+        0
+      ]
     },
     {
       "codeLine": 6,
-      "note": "Target for 30 is 30. remainders[30] is 1. Add 1 to count.",
+      "note": "Update remainder frequency: remainders[30] = 1.",
       "array": [
         30,
         20,
-        150
+        150,
+        100,
+        40
       ],
-      "curr": 30
+      "i": 0
     },
     {
-      "codeLine": 7,
-      "note": "Update remainders[30] to 2.",
+      "codeLine": 2,
+      "note": "Process time[1] = 20. rem = 20, target = 40. count = 0 + 0 = 0.",
       "array": [
         30,
         20,
-        150
+        150,
+        100,
+        40
       ],
-      "curr": 30
+      "i": 1,
+      "visited": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Update remainder frequency: remainders[20] = 1.",
+      "array": [
+        30,
+        20,
+        150,
+        100,
+        40
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Process time[2] = 150. rem = 30, target = 30. count = 0 + 1 = 1.",
+      "array": [
+        30,
+        20,
+        150,
+        100,
+        40
+      ],
+      "i": 2,
+      "visited": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Update remainder frequency: remainders[30] = 2.",
+      "array": [
+        30,
+        20,
+        150,
+        100,
+        40
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 2,
+      "note": "Process time[3] = 100. rem = 40, target = 20. count = 1 + 1 = 2.",
+      "array": [
+        30,
+        20,
+        150,
+        100,
+        40
+      ],
+      "i": 3,
+      "visited": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Update remainder frequency: remainders[40] = 1.",
+      "array": [
+        30,
+        20,
+        150,
+        100,
+        40
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 2,
+      "note": "Process time[4] = 40. rem = 40, target = 20. count = 2 + 1 = 3.",
+      "array": [
+        30,
+        20,
+        150,
+        100,
+        40
+      ],
+      "i": 4,
+      "visited": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Final update to frequency array. Total count = 3.",
+      "array": [
+        30,
+        20,
+        150,
+        100,
+        40
+      ],
+      "i": 4
     }
-  ]
+  ],
+  "fullDescription": "<p>You are given a list of songs where the <code>i<sup>th</sup></code> song has a duration of <code>time[i]</code> seconds.</p>\n\n<p>Return <em>the number of pairs of songs for which their total duration in seconds is divisible by</em> <code>60</code>. Formally, we want the number of indices <code>i</code>, <code>j</code> such that <code>i &lt; j</code> with <code>(time[i] + time[j]) % 60 == 0</code>.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> time = [30,20,150,100,40]\n<strong>Output:</strong> 3\n<strong>Explanation:</strong> Three pairs have a total duration divisible by 60:\n(time[0] = 30, time[2] = 150): total duration 180\n(time[1] = 20, time[3] = 100): total duration 120\n(time[1] = 20, time[4] = 40): total duration 60\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> time = [60,60,60]\n<strong>Output:</strong> 3\n<strong>Explanation:</strong> All three pairs have a total duration of 120, which is divisible by 60.\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= time.length &lt;= 6 * 10<sup>4</sup></code></li>\n\t<li><code>1 &lt;= time[i] &lt;= 500</code></li>\n</ul>\n"
 }

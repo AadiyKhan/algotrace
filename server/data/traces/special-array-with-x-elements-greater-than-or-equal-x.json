@@ -1,0 +1,133 @@
+{
+  "title": "Special Array With X Elements Greater Than Or Equal X",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Binary Search",
+    "Sorting"
+  ],
+  "description": "Find if there exists an integer x such that there are exactly x numbers in the array greater than or equal to x.",
+  "target": null,
+  "pseudocode": "1. nums.sort((a, b) => a - b)\n2. for (let x = 0; x <= nums.length; x++) {\n3.   let count = 0;\n4.   for (let num of nums) {\n5.     if (num >= x) count++;\n6.   }\n7.   if (count === x) return x;\n8. }\n9. return -1;",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Sort the array in ascending order.",
+      "array": [
+        0,
+        4,
+        1
+      ]
+    },
+    {
+      "codeLine": 1,
+      "note": "Sorted array.",
+      "array": [
+        0,
+        1,
+        4
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Start loop with x = 0.",
+      "array": [
+        0,
+        1,
+        4
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Reset count for x = 0.",
+      "array": [
+        0,
+        1,
+        4
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Check values against x = 0. All 3 are >= 0.",
+      "array": [
+        0,
+        1,
+        4
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 7,
+      "note": "Count is 3, x is 0. 3 != 0. Continue.",
+      "array": [
+        0,
+        1,
+        4
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Set x = 1.",
+      "array": [
+        0,
+        1,
+        4
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Check values against x = 1. Values 1 and 4 are >= 1.",
+      "array": [
+        0,
+        1,
+        4
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "Count is 2, x is 1. 2 != 1. Continue.",
+      "array": [
+        0,
+        1,
+        4
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Set x = 2.",
+      "array": [
+        0,
+        1,
+        4
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Check values against x = 2. Only value 4 is >= 2.",
+      "array": [
+        0,
+        1,
+        4
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 7,
+      "note": "Count is 1, x is 2. 1 != 2. Continue.",
+      "array": [
+        0,
+        1,
+        4
+      ],
+      "i": 2
+    }
+  ]
+}

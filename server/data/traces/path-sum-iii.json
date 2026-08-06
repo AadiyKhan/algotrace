@@ -4,44 +4,68 @@
   "type": "tree",
   "tags": [
     "Tree",
-    "DFS",
-    "Prefix Sum"
+    "Depth-First Search",
+    "Binary Tree"
   ],
-  "description": "Find the number of paths that sum to a target value where paths can start and end anywhere but must move downwards.",
+  "description": "Count paths that sum to targetSum, moving downwards from parent to child.",
   "target": 8,
-  "pseudocode": "1. count = 0\n2. map = {0: 1}\n3. function dfs(node, currSum):\n4.   if !node: return\n5.   currSum += node.val\n6.   count += map[currSum - target] || 0\n7.   map[currSum] = (map[currSum] || 0) + 1\n8.   dfs(node.left, currSum)\n9.   dfs(node.right, currSum)\n10.  map[currSum] -= 1",
+  "pseudocode": "1. dfs(node, currentSum):\n2.   if not node: return\n3.   currentSum += node.val\n4.   count += prefixSums[currentSum - targetSum]\n5.   prefixSums[currentSum]++\n6.   dfs(node.left, currentSum)\n7.   dfs(node.right, currentSum)\n8.   prefixSums[currentSum]--",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize count to 0",
+      "note": "Starting DFS traversal at root (10).",
       "treeNodes": [
         {
           "id": 0,
-          "val": 5,
+          "val": 10,
           "left": 1,
           "right": 2
         },
         {
           "id": 1,
-          "val": 3,
+          "val": 5,
           "left": 3,
           "right": 4
         },
         {
           "id": 2,
-          "val": 8,
+          "val": -3,
+          "left": null,
+          "right": 5
+        },
+        {
+          "id": 3,
+          "val": 3,
+          "left": 6,
+          "right": 7
+        },
+        {
+          "id": 4,
+          "val": 2,
+          "left": null,
+          "right": 8
+        },
+        {
+          "id": 5,
+          "val": 11,
           "left": null,
           "right": null
         },
         {
-          "id": 3,
+          "id": 6,
           "val": 3,
           "left": null,
           "right": null
         },
         {
-          "id": 4,
+          "id": 7,
           "val": -2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 8,
+          "val": 1,
           "left": null,
           "right": null
         }
@@ -49,152 +73,252 @@
       "curr": 0
     },
     {
-      "codeLine": 5,
-      "note": "Enter root 5, currSum = 5",
+      "codeLine": 3,
+      "note": "Traversing to node 5. Current path sum is 15.",
       "treeNodes": [
         {
           "id": 0,
-          "val": 5,
+          "val": 10,
           "left": 1,
           "right": 2
         },
         {
           "id": 1,
-          "val": 3,
+          "val": 5,
           "left": 3,
           "right": 4
         },
         {
           "id": 2,
-          "val": 8,
+          "val": -3,
+          "left": null,
+          "right": 5
+        },
+        {
+          "id": 3,
+          "val": 3,
+          "left": 6,
+          "right": 7
+        },
+        {
+          "id": 4,
+          "val": 2,
+          "left": null,
+          "right": 8
+        },
+        {
+          "id": 5,
+          "val": 11,
           "left": null,
           "right": null
         },
         {
-          "id": 3,
+          "id": 6,
           "val": 3,
           "left": null,
           "right": null
         },
         {
-          "id": 4,
+          "id": 7,
           "val": -2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 8,
+          "val": 1,
           "left": null,
           "right": null
         }
       ],
-      "curr": 0
+      "curr": 1,
+      "prev": 0
     },
     {
-      "codeLine": 6,
-      "note": "map has {0:1}, currSum 5 - 8 = -3. count remains 0.",
+      "codeLine": 4,
+      "note": "Found path sum 8 at node 3 (10+5-3-3+2+? No, 10+5-3-3 = 9... checking 5+3=8).",
       "treeNodes": [
         {
           "id": 0,
-          "val": 5,
+          "val": 10,
           "left": 1,
           "right": 2
         },
         {
           "id": 1,
-          "val": 3,
+          "val": 5,
           "left": 3,
           "right": 4
         },
         {
           "id": 2,
-          "val": 8,
+          "val": -3,
+          "left": null,
+          "right": 5
+        },
+        {
+          "id": 3,
+          "val": 3,
+          "left": 6,
+          "right": 7
+        },
+        {
+          "id": 4,
+          "val": 2,
+          "left": null,
+          "right": 8
+        },
+        {
+          "id": 5,
+          "val": 11,
           "left": null,
           "right": null
         },
         {
-          "id": 3,
+          "id": 6,
           "val": 3,
           "left": null,
           "right": null
         },
         {
-          "id": 4,
+          "id": 7,
           "val": -2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 8,
+          "val": 1,
           "left": null,
           "right": null
         }
       ],
-      "curr": 0
+      "curr": 3,
+      "prev": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "Finished exploring left subtree, moving to right child 2.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 10,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 5,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 2,
+          "val": -3,
+          "left": null,
+          "right": 5
+        },
+        {
+          "id": 3,
+          "val": 3,
+          "left": 6,
+          "right": 7
+        },
+        {
+          "id": 4,
+          "val": 2,
+          "left": null,
+          "right": 8
+        },
+        {
+          "id": 5,
+          "val": 11,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 6,
+          "val": 3,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 7,
+          "val": -2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 8,
+          "val": 1,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 4,
+      "prev": 1
     },
     {
       "codeLine": 8,
-      "note": "Move to node 3, currSum = 8",
+      "note": "Completed traversal. Total paths found: 3.",
       "treeNodes": [
         {
           "id": 0,
-          "val": 5,
+          "val": 10,
           "left": 1,
           "right": 2
         },
         {
           "id": 1,
-          "val": 3,
-          "left": 3,
-          "right": 4
-        },
-        {
-          "id": 2,
-          "val": 8,
-          "left": null,
-          "right": null
-        },
-        {
-          "id": 3,
-          "val": 3,
-          "left": null,
-          "right": null
-        },
-        {
-          "id": 4,
-          "val": -2,
-          "left": null,
-          "right": null
-        }
-      ],
-      "curr": 1
-    },
-    {
-      "codeLine": 6,
-      "note": "map has {0:1, 5:1}, currSum 8 - 8 = 0. Found path! count = 1.",
-      "treeNodes": [
-        {
-          "id": 0,
           "val": 5,
-          "left": 1,
-          "right": 2
-        },
-        {
-          "id": 1,
-          "val": 3,
           "left": 3,
           "right": 4
         },
         {
           "id": 2,
-          "val": 8,
+          "val": -3,
+          "left": null,
+          "right": 5
+        },
+        {
+          "id": 3,
+          "val": 3,
+          "left": 6,
+          "right": 7
+        },
+        {
+          "id": 4,
+          "val": 2,
+          "left": null,
+          "right": 8
+        },
+        {
+          "id": 5,
+          "val": 11,
           "left": null,
           "right": null
         },
         {
-          "id": 3,
+          "id": 6,
           "val": 3,
           "left": null,
           "right": null
         },
         {
-          "id": 4,
+          "id": 7,
           "val": -2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 8,
+          "val": 1,
           "left": null,
           "right": null
         }
       ],
-      "curr": 1
+      "curr": 0
     }
-  ]
+  ],
+  "fullDescription": "<p>Given the <code>root</code> of a binary tree and an integer <code>targetSum</code>, return <em>the number of paths where the sum of the values&nbsp;along the path equals</em>&nbsp;<code>targetSum</code>.</p>\n\n<p>The path does not need to start or end at the root or a leaf, but it must go downwards (i.e., traveling only from parent nodes to child nodes).</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2021/04/09/pathsum3-1-tree.jpg\" style=\"width: 450px; height: 386px;\" />\n<pre>\n<strong>Input:</strong> root = [10,5,-3,3,2,null,11,3,-2,null,1], targetSum = 8\n<strong>Output:</strong> 3\n<strong>Explanation:</strong> The paths that sum to 8 are shown.\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> root = [5,4,8,11,null,13,4,7,2,null,null,5,1], targetSum = 22\n<strong>Output:</strong> 3\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li>The number of nodes in the tree is in the range <code>[0, 1000]</code>.</li>\n\t<li><code>-10<sup>9</sup> &lt;= Node.val &lt;= 10<sup>9</sup></code></li>\n\t<li><code>-1000 &lt;= targetSum &lt;= 1000</code></li>\n</ul>\n"
 }

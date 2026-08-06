@@ -1,0 +1,75 @@
+{
+  "title": "Lexicographically Smallest String After Applying Operations",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "String",
+    "BFS",
+    "Breadth-First Search"
+  ],
+  "description": "Find the lexicographically smallest string by applying add-a and rotate-b operations.",
+  "target": "smallest string",
+  "pseudocode": "1. queue = [s], visited = {s}\n2. while queue not empty:\n3.   curr = queue.shift()\n4.   res = min(res, curr)\n5.   add_op = applyAdd(curr, a)\n6.   rot_op = applyRotate(curr, b)\n7.   for next in [add_op, rot_op]:\n8.     if next not in visited:\n9.       visited.add(next), queue.push(next)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize BFS queue with starting string '5525' and visited set.",
+      "array": [
+        "5",
+        "5",
+        "2",
+        "5"
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Pop current string '5525' from queue.",
+      "array": [
+        "5",
+        "5",
+        "2",
+        "5"
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Apply add operation (a=9): '5525' -> '4414'.",
+      "array": [
+        "4",
+        "4",
+        "1",
+        "4"
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Apply rotate operation (b=2): '5525' -> '2555'.",
+      "array": [
+        "2",
+        "5",
+        "5",
+        "5"
+      ]
+    },
+    {
+      "codeLine": 9,
+      "note": "Add new states '4414' and '2555' to queue and mark as visited.",
+      "array": [
+        "2",
+        "5",
+        "5",
+        "5"
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Update result to '2555' as it is lexicographically smaller than '5525'.",
+      "array": [
+        "2",
+        "5",
+        "5",
+        "5"
+      ]
+    }
+  ]
+}

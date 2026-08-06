@@ -5,15 +5,15 @@
   "tags": [
     "Tree",
     "DFS",
-    "Greedy"
+    "Dynamic Programming"
   ],
-  "description": "Place the minimum number of cameras in a binary tree such that all nodes are monitored.",
+  "description": "Place minimum cameras to monitor all nodes. A camera covers its parent, itself, and children.",
   "target": 1,
-  "pseudocode": "1: function solve(root):\n2:   res = 0\n3:   function dfs(node):\n4:     if !node: return 1\n5:     left = dfs(node.left)\n6:     right = dfs(node.right)\n7:     if left == 0 or right == 0:\n8:       res++\n9:       return 2\n10:    if left == 2 or right == 2:\n11:      return 1\n12:    return 0\n13:  if dfs(root) == 0: res++\n14:  return res",
+  "pseudocode": "1. Define dfs(node): return state (0: needs coverage, 1: has camera, 2: covered)\n2. If node is null, return 2 (covered)\n3. Get states of left and right children\n4. If either child is 0 (needs coverage), increment cameras and return 1 (has camera)\n5. If either child is 1 (has camera), return 2 (covered)\n6. Otherwise, return 0 (needs coverage)",
   "steps": [
     {
-      "codeLine": 3,
-      "note": "Starting DFS at root node 0.",
+      "codeLine": 1,
+      "note": "Starting DFS traversal from root (id 0).",
       "treeNodes": [
         {
           "id": 0,
@@ -24,15 +24,89 @@
         {
           "id": 1,
           "val": 0,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 3,
+          "val": 0,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 0,
           "left": null,
           "right": null
         }
       ],
       "curr": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Traversing to left child 1.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 0,
+          "left": 1,
+          "right": null
+        },
+        {
+          "id": 1,
+          "val": 0,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 3,
+          "val": 0,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 0,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Leaf nodes 3 and 4 return state 0 (needs coverage).",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 0,
+          "left": 1,
+          "right": null
+        },
+        {
+          "id": 1,
+          "val": 0,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 3,
+          "val": 0,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 0,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 1
     },
     {
       "codeLine": 4,
-      "note": "Reaching leaf node's child (null), return 1 (covered).",
+      "note": "Node 1 sees children need coverage, place camera at 1. Total cameras: 1.",
       "treeNodes": [
         {
           "id": 0,
@@ -42,6 +116,18 @@
         },
         {
           "id": 1,
+          "val": 1,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 3,
+          "val": 0,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
           "val": 0,
           "left": null,
           "right": null
@@ -50,82 +136,36 @@
       "curr": 1
     },
     {
-      "codeLine": 7,
-      "note": "Leaf node 1 checks children status, returns 0 (needs camera).",
+      "codeLine": 5,
+      "note": "Root node 0 sees child 1 has camera, returns state 2 (covered).",
       "treeNodes": [
         {
           "id": 0,
-          "val": 0,
+          "val": 2,
           "left": 1,
           "right": null
         },
         {
           "id": 1,
+          "val": 1,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 3,
           "val": 0,
           "left": null,
           "right": null
-        }
-      ],
-      "curr": 1
-    },
-    {
-      "codeLine": 8,
-      "note": "Node 0 sees child 1 needs camera, incrementing result.",
-      "treeNodes": [
-        {
-          "id": 0,
-          "val": 0,
-          "left": 1,
-          "right": null
         },
         {
-          "id": 1,
-          "val": 0,
-          "left": null,
-          "right": null
-        }
-      ],
-      "visited": [
-        1
-      ]
-    },
-    {
-      "codeLine": 9,
-      "note": "Node 0 returns 2 (has camera).",
-      "treeNodes": [
-        {
-          "id": 0,
-          "val": 0,
-          "left": 1,
-          "right": null
-        },
-        {
-          "id": 1,
+          "id": 4,
           "val": 0,
           "left": null,
           "right": null
         }
       ],
       "curr": 0
-    },
-    {
-      "codeLine": 14,
-      "note": "Final camera count is 1.",
-      "treeNodes": [
-        {
-          "id": 0,
-          "val": 0,
-          "left": 1,
-          "right": null
-        },
-        {
-          "id": 1,
-          "val": 0,
-          "left": null,
-          "right": null
-        }
-      ],
-      "curr": 1
     }
-  ]
+  ],
+  "fullDescription": "<p>You are given the <code>root</code> of a binary tree. We install cameras on the tree nodes where each camera at a node can monitor its parent, itself, and its immediate children.</p>\n\n<p>Return <em>the minimum number of cameras needed to monitor all nodes of the tree</em>.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2018/12/29/bst_cameras_01.png\" style=\"width: 138px; height: 163px;\" />\n<pre>\n<strong>Input:</strong> root = [0,0,null,0,0]\n<strong>Output:</strong> 1\n<strong>Explanation:</strong> One camera is enough to monitor all nodes if placed as shown.\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2018/12/29/bst_cameras_02.png\" style=\"width: 139px; height: 312px;\" />\n<pre>\n<strong>Input:</strong> root = [0,0,null,0,null,0,null,null,0]\n<strong>Output:</strong> 2\n<strong>Explanation:</strong> At least two cameras are needed to monitor all nodes of the tree. The above image shows one of the valid configurations of camera placement.\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li>The number of nodes in the tree is in the range <code>[1, 1000]</code>.</li>\n\t<li><code>Node.val == 0</code></li>\n</ul>\n"
 }

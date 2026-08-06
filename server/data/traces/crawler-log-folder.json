@@ -1,0 +1,62 @@
+{
+  "title": "Crawler Log Folder",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "String",
+    "Stack"
+  ],
+  "description": "Calculate the minimum number of operations to return to the main folder given a list of logs.",
+  "target": null,
+  "pseudocode": "1. depth = 0\n2. for log in logs:\n3.   if log == '../':\n4.     depth = max(0, depth - 1)\n5.   else if log != './':\n6.     depth++\n7. return depth",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize depth at 0",
+      "array": [
+        "d1/",
+        "../",
+        "d2/"
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Processing 'd1/'",
+      "i": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Move into 'd1/', depth increases",
+      "i": 0,
+      "curr": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Processing '../'",
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Move up, depth decreases",
+      "i": 1,
+      "curr": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Processing 'd2/'",
+      "i": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Move into 'd2/', depth increases",
+      "i": 2,
+      "curr": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "Final depth is 1",
+      "curr": 1
+    }
+  ]
+}

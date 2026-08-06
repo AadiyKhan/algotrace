@@ -1,0 +1,146 @@
+{
+  "title": "Minimum Operations to Reduce X to Zero",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Two Pointers",
+    "Sliding Window",
+    "Prefix Sum"
+  ],
+  "description": "Find the minimum number of operations to reduce x to zero by removing elements from either end. This is equivalent to finding the longest subarray whose sum equals (totalSum - x).",
+  "target": 5,
+  "pseudocode": "1. target = sum(nums) - x\n2. if target < 0 return -1\n3. left = 0, currentSum = 0, maxLen = -1\n4. for right = 0 to n-1:\n5.   currentSum += nums[right]\n6.   while currentSum > target:\n7.     currentSum -= nums[left++]\n8.   if currentSum == target:\n9.     maxLen = max(maxLen, right - left + 1)\n10. return n - maxLen if maxLen != -1 else -1",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Calculate target subarray sum: 11 - 5 = 6.",
+      "array": [
+        1,
+        1,
+        4,
+        2,
+        3
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Start iteration, right=0, currentSum=1.",
+      "array": [
+        1,
+        1,
+        4,
+        2,
+        3
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "right=1, currentSum=2.",
+      "array": [
+        1,
+        1,
+        4,
+        2,
+        3
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "right=2, currentSum=6. Target reached.",
+      "array": [
+        1,
+        1,
+        4,
+        2,
+        3
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 9,
+      "note": "maxLen updated to 3 (indices 0 to 2).",
+      "array": [
+        1,
+        1,
+        4,
+        2,
+        3
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "right=3, currentSum=8. Must shrink window.",
+      "array": [
+        1,
+        1,
+        4,
+        2,
+        3
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 7,
+      "note": "Shrinking: remove nums[0], currentSum=7, left=1.",
+      "array": [
+        1,
+        1,
+        4,
+        2,
+        3
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 7,
+      "note": "Shrinking: remove nums[1], currentSum=6, left=2.",
+      "array": [
+        1,
+        1,
+        4,
+        2,
+        3
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 9,
+      "note": "maxLen remains 3 (len is 3-2+1=2, not > 3).",
+      "array": [
+        1,
+        1,
+        4,
+        2,
+        3
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 5,
+      "note": "right=4, currentSum=9. Shrink window.",
+      "array": [
+        1,
+        1,
+        4,
+        2,
+        3
+      ],
+      "i": 4
+    },
+    {
+      "codeLine": 10,
+      "note": "End. Result is n(5) - maxLen(3) = 2 operations.",
+      "array": [
+        1,
+        1,
+        4,
+        2,
+        3
+      ]
+    }
+  ]
+}

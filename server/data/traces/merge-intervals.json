@@ -6,12 +6,10 @@
     "Array",
     "Sorting"
   ],
-  "description": "Merge overlapping intervals into a consolidated list.",
-  "pseudocode": "1. Sort intervals by start time.\n2. Initialize merged list with the first interval.\n3. For each subsequent interval:\n4. If current overlaps with last in merged, merge them.\n5. Else, append current to merged.",
+  "description": "Given an array of intervals where intervals[i] = [start_i, end_i], merge all overlapping intervals, and return an array of the non-overlapping intervals that cover all the intervals in the input.",
+  "target": null,
   "steps": [
     {
-      "codeLine": 1,
-      "note": "Sort intervals by start time.",
       "array": [
         [
           1,
@@ -29,87 +27,22 @@
           15,
           18
         ]
-      ]
-    },
-    {
+      ],
+      "i": 0,
+      "currentMap": {
+        "merged": []
+      },
       "codeLine": 2,
-      "note": "Initialize merged list with the first interval.",
+      "note": "Initialize empty merged list."
+    },
+    {
       "array": [
         [
           1,
           3
-        ]
-      ]
-    },
-    {
-      "codeLine": 3,
-      "note": "Examine interval [2, 6].",
-      "array": [
-        [
-          1,
-          3
-        ]
-      ],
-      "i": 1
-    },
-    {
-      "codeLine": 4,
-      "note": "2 <= 3, so merge [1, 3] and [2, 6] into [1, 6].",
-      "array": [
-        [
-          1,
-          6
-        ]
-      ],
-      "i": 1
-    },
-    {
-      "codeLine": 3,
-      "note": "Examine interval [8, 10].",
-      "array": [
-        [
-          1,
-          6
-        ]
-      ],
-      "i": 2
-    },
-    {
-      "codeLine": 5,
-      "note": "8 > 6, no overlap. Append [8, 10].",
-      "array": [
-        [
-          1,
-          6
         ],
         [
-          8,
-          10
-        ]
-      ],
-      "i": 2
-    },
-    {
-      "codeLine": 3,
-      "note": "Examine interval [15, 18].",
-      "array": [
-        [
-          1,
-          6
-        ],
-        [
-          8,
-          10
-        ]
-      ],
-      "i": 3
-    },
-    {
-      "codeLine": 5,
-      "note": "15 > 10, no overlap. Append [15, 18].",
-      "array": [
-        [
-          1,
+          2,
           6
         ],
         [
@@ -121,8 +54,357 @@
           18
         ]
       ],
-      "i": 3
+      "i": 0,
+      "currentMap": {
+        "merged": [
+          [
+            1,
+            3
+          ]
+        ]
+      },
+      "codeLine": 8,
+      "note": "i=0: Merged list is empty, so we just add [1,3]."
+    },
+    {
+      "array": [
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          8,
+          10
+        ],
+        [
+          15,
+          18
+        ]
+      ],
+      "i": 1,
+      "currentMap": {
+        "merged": [
+          [
+            1,
+            3
+          ]
+        ]
+      },
+      "codeLine": 3,
+      "note": "i=1: Look at interval [2,6]."
+    },
+    {
+      "array": [
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          8,
+          10
+        ],
+        [
+          15,
+          18
+        ]
+      ],
+      "i": 1,
+      "currentMap": {
+        "merged": [
+          [
+            1,
+            3
+          ]
+        ]
+      },
+      "codeLine": 5,
+      "note": "Does [2,6] overlap with last merged interval [1,3]? Yes, 2 <= 3."
+    },
+    {
+      "array": [
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          8,
+          10
+        ],
+        [
+          15,
+          18
+        ]
+      ],
+      "i": 1,
+      "currentMap": {
+        "merged": [
+          [
+            1,
+            6
+          ]
+        ]
+      },
+      "codeLine": 6,
+      "note": "Merge them! Update end to max(3, 6) = 6. Merged is now [1,6]."
+    },
+    {
+      "array": [
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          8,
+          10
+        ],
+        [
+          15,
+          18
+        ]
+      ],
+      "i": 2,
+      "currentMap": {
+        "merged": [
+          [
+            1,
+            6
+          ]
+        ]
+      },
+      "codeLine": 3,
+      "note": "i=2: Look at interval [8,10]."
+    },
+    {
+      "array": [
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          8,
+          10
+        ],
+        [
+          15,
+          18
+        ]
+      ],
+      "i": 2,
+      "currentMap": {
+        "merged": [
+          [
+            1,
+            6
+          ]
+        ]
+      },
+      "codeLine": 5,
+      "note": "Does [8,10] overlap with [1,6]? No, 8 > 6."
+    },
+    {
+      "array": [
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          8,
+          10
+        ],
+        [
+          15,
+          18
+        ]
+      ],
+      "i": 2,
+      "currentMap": {
+        "merged": [
+          [
+            1,
+            6
+          ],
+          [
+            8,
+            10
+          ]
+        ]
+      },
+      "codeLine": 8,
+      "note": "Add [8,10] as a distinct interval to merged list."
+    },
+    {
+      "array": [
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          8,
+          10
+        ],
+        [
+          15,
+          18
+        ]
+      ],
+      "i": 3,
+      "currentMap": {
+        "merged": [
+          [
+            1,
+            6
+          ],
+          [
+            8,
+            10
+          ]
+        ]
+      },
+      "codeLine": 3,
+      "note": "i=3: Look at interval [15,18]."
+    },
+    {
+      "array": [
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          8,
+          10
+        ],
+        [
+          15,
+          18
+        ]
+      ],
+      "i": 3,
+      "currentMap": {
+        "merged": [
+          [
+            1,
+            6
+          ],
+          [
+            8,
+            10
+          ]
+        ]
+      },
+      "codeLine": 5,
+      "note": "Does [15,18] overlap with [8,10]? No, 15 > 10."
+    },
+    {
+      "array": [
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          8,
+          10
+        ],
+        [
+          15,
+          18
+        ]
+      ],
+      "i": 3,
+      "currentMap": {
+        "merged": [
+          [
+            1,
+            6
+          ],
+          [
+            8,
+            10
+          ],
+          [
+            15,
+            18
+          ]
+        ]
+      },
+      "codeLine": 8,
+      "note": "Add [15,18] as a distinct interval to merged list."
+    },
+    {
+      "array": [
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          8,
+          10
+        ],
+        [
+          15,
+          18
+        ]
+      ],
+      "i": null,
+      "currentMap": {
+        "merged": [
+          [
+            1,
+            6
+          ],
+          [
+            8,
+            10
+          ],
+          [
+            15,
+            18
+          ]
+        ]
+      },
+      "codeLine": 9,
+      "note": "Loop finishes. Return merged list. ✓"
     }
   ],
+  "pseudocode": "function merge(intervals):\n  merged = []\n  for interval in intervals:\n    last = merged.last()\n    if not merged.isEmpty() and interval.start <= last.end:\n      last.end = max(last.end, interval.end)\n    else:\n      merged.append(interval)\n  return merged",
   "fullDescription": "<p>Given an array&nbsp;of <code>intervals</code>&nbsp;where <code>intervals[i] = [start<sub>i</sub>, end<sub>i</sub>]</code>, merge all overlapping intervals, and return <em>an array of the non-overlapping intervals that cover all the intervals in the input</em>.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> intervals = [[1,3],[2,6],[8,10],[15,18]]\n<strong>Output:</strong> [[1,6],[8,10],[15,18]]\n<strong>Explanation:</strong> Since intervals [1,3] and [2,6] overlap, merge them into [1,6].\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> intervals = [[1,4],[4,5]]\n<strong>Output:</strong> [[1,5]]\n<strong>Explanation:</strong> Intervals [1,4] and [4,5] are considered overlapping.\n</pre>\n\n<p><strong class=\"example\">Example 3:</strong></p>\n\n<pre>\n<strong>Input:</strong> intervals = [[4,7],[1,4]]\n<strong>Output:</strong> [[1,7]]\n<strong>Explanation:</strong> Intervals [1,4] and [4,7] are considered overlapping.\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= intervals.length &lt;= 10<sup>4</sup></code></li>\n\t<li><code>intervals[i].length == 2</code></li>\n\t<li><code>0 &lt;= start<sub>i</sub> &lt;= end<sub>i</sub> &lt;= 10<sup>4</sup></code></li>\n</ul>\n"
 }

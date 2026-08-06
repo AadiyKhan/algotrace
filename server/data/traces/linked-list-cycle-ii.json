@@ -6,26 +6,30 @@
     "Linked List",
     "Two Pointers"
   ],
-  "description": "Find the entry point of the cycle in a linked list using Floyd's Tortoise and Hare algorithm.",
-  "pseudocode": "1. slow = head, fast = head\n2. do { slow = slow.next, fast = fast.next.next } while (slow != fast)\n3. slow = head\n4. while (slow != fast) { slow = slow.next, fast = fast.next } \n5. return slow",
+  "description": "Find the node where the cycle begins in a linked list using Floyd's Tortoise and Hare algorithm.",
+  "pseudocode": "1. slow = head, fast = head\n2. while fast and fast.next:\n3.   slow = slow.next, fast = fast.next.next\n4.   if slow == fast: break\n5. slow = head\n6. while slow != fast:\n7.   slow = slow.next, fast = fast.next\n8. return slow",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize slow and fast pointers at head (index 0).",
+      "note": "Initialize slow and fast pointers at head (node 3).",
       "nodes": [
         {
+          "id": 0,
           "val": 3,
           "next": 1
         },
         {
+          "id": 1,
           "val": 2,
           "next": 2
         },
         {
+          "id": 2,
           "val": 0,
           "next": 3
         },
         {
+          "id": 3,
           "val": -4,
           "next": 1
         }
@@ -33,22 +37,26 @@
       "curr": 0
     },
     {
-      "codeLine": 2,
-      "note": "Pointers traverse until they meet inside the cycle.",
+      "codeLine": 3,
+      "note": "Move slow to 2, fast to 0.",
       "nodes": [
         {
+          "id": 0,
           "val": 3,
           "next": 1
         },
         {
+          "id": 1,
           "val": 2,
           "next": 2
         },
         {
+          "id": 2,
           "val": 0,
           "next": 3
         },
         {
+          "id": 3,
           "val": -4,
           "next": 1
         }
@@ -57,21 +65,52 @@
     },
     {
       "codeLine": 3,
-      "note": "Reset slow pointer to head to find cycle entry.",
+      "note": "Move slow to 0, fast to 2 (cycle detected).",
       "nodes": [
         {
+          "id": 0,
           "val": 3,
           "next": 1
         },
         {
+          "id": 1,
           "val": 2,
           "next": 2
         },
         {
+          "id": 2,
           "val": 0,
           "next": 3
         },
         {
+          "id": 3,
+          "val": -4,
+          "next": 1
+        }
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Reset slow to head (node 3).",
+      "nodes": [
+        {
+          "id": 0,
+          "val": 3,
+          "next": 1
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "next": 2
+        },
+        {
+          "id": 2,
+          "val": 0,
+          "next": 3
+        },
+        {
+          "id": 3,
           "val": -4,
           "next": 1
         }
@@ -79,22 +118,26 @@
       "curr": 0
     },
     {
-      "codeLine": 4,
-      "note": "Move both one step at a time until they meet at the entry point.",
+      "codeLine": 7,
+      "note": "Move slow and fast one step at a time.",
       "nodes": [
         {
+          "id": 0,
           "val": 3,
           "next": 1
         },
         {
+          "id": 1,
           "val": 2,
           "next": 2
         },
         {
+          "id": 2,
           "val": 0,
           "next": 3
         },
         {
+          "id": 3,
           "val": -4,
           "next": 1
         }
@@ -102,27 +145,32 @@
       "curr": 1
     },
     {
-      "codeLine": 5,
-      "note": "Return the node at the current position, which is the cycle entry.",
+      "codeLine": 8,
+      "note": "slow meets fast at the start of the cycle (node 2).",
       "nodes": [
         {
+          "id": 0,
           "val": 3,
           "next": 1
         },
         {
+          "id": 1,
           "val": 2,
           "next": 2
         },
         {
+          "id": 2,
           "val": 0,
           "next": 3
         },
         {
+          "id": 3,
           "val": -4,
           "next": 1
         }
       ],
       "curr": 1
     }
-  ]
+  ],
+  "fullDescription": "<p>Given the <code>head</code> of a linked list, return <em>the node where the cycle begins. If there is no cycle, return </em><code>null</code>.</p>\n\n<p>There is a cycle in a linked list if there is some node in the list that can be reached again by continuously following the <code>next</code> pointer. Internally, <code>pos</code> is used to denote the index of the node that tail&#39;s <code>next</code> pointer is connected to (<strong>0-indexed</strong>). It is <code>-1</code> if there is no cycle. <strong>Note that</strong> <code>pos</code> <strong>is not passed as a parameter</strong>.</p>\n\n<p><strong>Do not modify</strong> the linked list.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2018/12/07/circularlinkedlist.png\" style=\"height: 145px; width: 450px;\" />\n<pre>\n<strong>Input:</strong> head = [3,2,0,-4], pos = 1\n<strong>Output:</strong> tail connects to node index 1\n<strong>Explanation:</strong> There is a cycle in the linked list, where tail connects to the second node.\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2018/12/07/circularlinkedlist_test2.png\" style=\"height: 105px; width: 201px;\" />\n<pre>\n<strong>Input:</strong> head = [1,2], pos = 0\n<strong>Output:</strong> tail connects to node index 0\n<strong>Explanation:</strong> There is a cycle in the linked list, where tail connects to the first node.\n</pre>\n\n<p><strong class=\"example\">Example 3:</strong></p>\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2018/12/07/circularlinkedlist_test3.png\" style=\"height: 65px; width: 65px;\" />\n<pre>\n<strong>Input:</strong> head = [1], pos = -1\n<strong>Output:</strong> no cycle\n<strong>Explanation:</strong> There is no cycle in the linked list.\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li>The number of the nodes in the list is in the range <code>[0, 10<sup>4</sup>]</code>.</li>\n\t<li><code>-10<sup>5</sup> &lt;= Node.val &lt;= 10<sup>5</sup></code></li>\n\t<li><code>pos</code> is <code>-1</code> or a <strong>valid index</strong> in the linked-list.</li>\n</ul>\n\n<p>&nbsp;</p>\n<p><strong>Follow up:</strong> Can you solve it using <code>O(1)</code> (i.e. constant) memory?</p>\n"
 }

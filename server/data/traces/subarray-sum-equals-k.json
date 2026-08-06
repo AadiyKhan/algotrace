@@ -7,130 +7,92 @@
     "Hash Table",
     "Prefix Sum"
   ],
-  "description": "Find the total number of continuous subarrays whose sum equals to k.",
-  "target": 3,
-  "pseudocode": "1. map = {0: 1}, sum = 0, count = 0\n2. for num in nums:\n3.   sum += num\n4.   if (sum - k) in map:\n5.     count += map[sum - k]\n6.   map[sum] = (map[sum] || 0) + 1",
+  "description": "Count total number of contiguous subarrays that sum to k using prefix sums and a hash map.",
+  "target": 2,
+  "pseudocode": "1. count = 0, sum = 0, map = {0: 1}\n2. for x in nums:\n3.   sum += x\n4.   if (sum - k) in map: count += map[sum - k]\n5.   map[sum] = map.get(sum, 0) + 1",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize map with base case sum 0.",
+      "note": "Initialize count, prefix sum, and hash map with {0: 1}.",
       "array": [
         1,
-        2,
-        3
+        1,
+        1
       ],
-      "i": 0,
-      "curr": 0
+      "visited": []
     },
     {
       "codeLine": 3,
-      "note": "First element: sum becomes 1.",
+      "note": "First element: sum = 1.",
       "array": [
         1,
-        2,
-        3
+        1,
+        1
       ],
       "i": 0,
-      "curr": 1
+      "visited": [
+        0
+      ]
     },
     {
       "codeLine": 4,
-      "note": "Check map for (1 - 3) = -2. Not found.",
+      "note": "sum(1) - k(2) = -1. Not in map.",
       "array": [
         1,
-        2,
-        3
-      ],
-      "i": 0,
-      "curr": 1
-    },
-    {
-      "codeLine": 6,
-      "note": "Add current sum 1 to map.",
-      "array": [
         1,
-        2,
-        3
+        1
       ],
-      "i": 0,
-      "curr": 1
+      "i": 0
     },
     {
       "codeLine": 3,
-      "note": "Second element: sum becomes 1 + 2 = 3.",
+      "note": "Second element: sum = 2.",
       "array": [
         1,
-        2,
-        3
+        1,
+        1
       ],
       "i": 1,
-      "curr": 1
+      "visited": [
+        0,
+        1
+      ]
     },
     {
       "codeLine": 4,
-      "note": "Check map for (3 - 3) = 0. Found!",
+      "note": "sum(2) - k(2) = 0. Found in map! count = 1.",
       "array": [
         1,
-        2,
-        3
-      ],
-      "i": 1,
-      "curr": 3
-    },
-    {
-      "codeLine": 5,
-      "note": "Increment count by 1.",
-      "array": [
         1,
-        2,
-        3
+        1
       ],
-      "i": 1,
-      "curr": 1
-    },
-    {
-      "codeLine": 6,
-      "note": "Add current sum 3 to map.",
-      "array": [
-        1,
-        2,
-        3
-      ],
-      "i": 1,
-      "curr": 3
+      "i": 1
     },
     {
       "codeLine": 3,
-      "note": "Third element: sum becomes 3 + 3 = 6.",
+      "note": "Third element: sum = 3.",
       "array": [
         1,
-        2,
-        3
+        1,
+        1
       ],
       "i": 2,
-      "curr": 3
+      "visited": [
+        0,
+        1,
+        2
+      ]
     },
     {
       "codeLine": 4,
-      "note": "Check map for (6 - 3) = 3. Found!",
+      "note": "sum(3) - k(2) = 1. Found in map! count = 2.",
       "array": [
         1,
-        2,
-        3
-      ],
-      "i": 2,
-      "curr": 6
-    },
-    {
-      "codeLine": 5,
-      "note": "Increment count by 1 (Total: 2).",
-      "array": [
         1,
-        2,
-        3
+        1
       ],
-      "i": 2,
-      "curr": 1
+      "i": 2
     }
-  ]
+  ],
+  "fullDescription": "<p>Given an array of integers <code>nums</code> and an integer <code>k</code>, return <em>the total number of subarrays whose sum equals to</em> <code>k</code>.</p>\n\n<p>A subarray is a contiguous <strong>non-empty</strong> sequence of elements within an array.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n<pre><strong>Input:</strong> nums = [1,1,1], k = 2\n<strong>Output:</strong> 2\n</pre><p><strong class=\"example\">Example 2:</strong></p>\n<pre><strong>Input:</strong> nums = [1,2,3], k = 3\n<strong>Output:</strong> 2\n</pre>\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= nums.length &lt;= 2 * 10<sup>4</sup></code></li>\n\t<li><code>-1000 &lt;= nums[i] &lt;= 1000</code></li>\n\t<li><code>-10<sup>7</sup> &lt;= k &lt;= 10<sup>7</sup></code></li>\n</ul>\n"
 }

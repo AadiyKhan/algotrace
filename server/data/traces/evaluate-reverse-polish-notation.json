@@ -4,28 +4,16 @@
   "type": "array",
   "tags": [
     "Array",
-    "Stack",
-    "Math"
+    "Math",
+    "Stack"
   ],
-  "description": "Evaluate the value of an arithmetic expression in Reverse Polish Notation using a stack.",
+  "description": "Evaluate an arithmetic expression in Reverse Polish Notation using a stack.",
   "target": 9,
-  "pseudocode": "1. stack = []\n2. for token in tokens:\n3.   if token is operator:\n4.     b = stack.pop()\n5.     a = stack.pop()\n6.     result = perform(a, b, token)\n7.     stack.push(result)\n8.   else:\n9.     stack.push(parseInt(token))",
+  "pseudocode": "1. Initialize an empty stack.\n2. For each token in tokens:\n3. If token is a number, push it onto the stack.\n4. If token is an operator, pop two numbers, perform operation, push result.",
   "steps": [
     {
-      "codeLine": 1,
-      "note": "Initialize an empty stack.",
-      "array": [
-        "2",
-        "1",
-        "+",
-        "3",
-        "*"
-      ],
-      "i": 0
-    },
-    {
-      "codeLine": 9,
-      "note": "Push 2 onto stack.",
+      "codeLine": 2,
+      "note": "Starting iteration with token '2'",
       "array": [
         "2",
         "1",
@@ -34,129 +22,88 @@
         "*"
       ],
       "i": 0,
-      "visited": [
-        2
-      ]
+      "visited": []
     },
     {
-      "codeLine": 9,
-      "note": "Push 1 onto stack.",
+      "codeLine": 3,
+      "note": "Pushing 2 onto stack",
+      "array": [
+        "2"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Processing token '1'",
+      "array": [
+        "2",
+        "1"
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Pushing 1 onto stack",
+      "array": [
+        "2",
+        "1"
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Processing token '+'",
       "array": [
         "2",
         "1",
-        "+",
-        "3",
-        "*"
+        "+"
       ],
-      "i": 1,
-      "visited": [
-        2,
-        1
-      ]
-    },
-    {
-      "codeLine": 4,
-      "note": "Pop 1 (b).",
-      "array": [
-        "2",
-        "1",
-        "+",
-        "3",
-        "*"
-      ],
-      "i": 2,
-      "visited": [
-        2
-      ]
-    },
-    {
-      "codeLine": 5,
-      "note": "Pop 2 (a).",
-      "array": [
-        "2",
-        "1",
-        "+",
-        "3",
-        "*"
-      ],
-      "i": 2,
-      "visited": [],
-      "curr": 2
-    },
-    {
-      "codeLine": 7,
-      "note": "Push result 3 (2+1).",
-      "array": [
-        "2",
-        "1",
-        "+",
-        "3",
-        "*"
-      ],
-      "i": 2,
-      "visited": [
-        3
-      ]
-    },
-    {
-      "codeLine": 9,
-      "note": "Push 3 onto stack.",
-      "array": [
-        "2",
-        "1",
-        "+",
-        "3",
-        "*"
-      ],
-      "i": 3,
-      "visited": [
-        3,
-        3
-      ]
+      "i": 2
     },
     {
       "codeLine": 4,
-      "note": "Pop 3 (b).",
+      "note": "Pop 1 and 2, calculate 2+1=3, push 3",
       "array": [
-        "2",
-        "1",
-        "+",
-        "3",
-        "*"
+        "3"
       ],
-      "i": 4,
-      "visited": [
-        3
-      ]
+      "i": 2
     },
     {
-      "codeLine": 5,
-      "note": "Pop 3 (a).",
+      "codeLine": 2,
+      "note": "Processing token '3'",
       "array": [
-        "2",
-        "1",
-        "+",
         "3",
-        "*"
+        "3"
       ],
-      "i": 4,
-      "visited": [],
-      "curr": 3
+      "i": 3
     },
     {
-      "codeLine": 7,
-      "note": "Push result 9 (3*3).",
+      "codeLine": 3,
+      "note": "Pushing 3 onto stack",
       "array": [
-        "2",
-        "1",
-        "+",
+        "3",
+        "3"
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 2,
+      "note": "Processing token '*'",
+      "array": [
+        "3",
         "3",
         "*"
       ],
-      "i": 4,
-      "visited": [
-        9
-      ]
+      "i": 4
+    },
+    {
+      "codeLine": 4,
+      "note": "Pop 3 and 3, calculate 3*3=9, push 9",
+      "array": [
+        "9"
+      ],
+      "i": 4
     }
-  ]
+  ],
+  "fullDescription": "<p>You are given an array of strings <code>tokens</code> that represents an arithmetic expression in a <a href=\"http://en.wikipedia.org/wiki/Reverse_Polish_notation\" target=\"_blank\">Reverse Polish Notation</a>.</p>\n\n<p>Evaluate the expression. Return <em>an integer that represents the value of the expression</em>.</p>\n\n<p><strong>Note</strong> that:</p>\n\n<ul>\n\t<li>The valid operators are <code>&#39;+&#39;</code>, <code>&#39;-&#39;</code>, <code>&#39;*&#39;</code>, and <code>&#39;/&#39;</code>.</li>\n\t<li>Each operand may be an integer or another expression.</li>\n\t<li>The division between two integers always <strong>truncates toward zero</strong>.</li>\n\t<li>There will not be any division by zero.</li>\n\t<li>The input represents a valid arithmetic expression in a reverse polish notation.</li>\n\t<li>The answer and all the intermediate calculations can be represented in a <strong>32-bit</strong> integer.</li>\n</ul>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> tokens = [&quot;2&quot;,&quot;1&quot;,&quot;+&quot;,&quot;3&quot;,&quot;*&quot;]\n<strong>Output:</strong> 9\n<strong>Explanation:</strong> ((2 + 1) * 3) = 9\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> tokens = [&quot;4&quot;,&quot;13&quot;,&quot;5&quot;,&quot;/&quot;,&quot;+&quot;]\n<strong>Output:</strong> 6\n<strong>Explanation:</strong> (4 + (13 / 5)) = 6\n</pre>\n\n<p><strong class=\"example\">Example 3:</strong></p>\n\n<pre>\n<strong>Input:</strong> tokens = [&quot;10&quot;,&quot;6&quot;,&quot;9&quot;,&quot;3&quot;,&quot;+&quot;,&quot;-11&quot;,&quot;*&quot;,&quot;/&quot;,&quot;*&quot;,&quot;17&quot;,&quot;+&quot;,&quot;5&quot;,&quot;+&quot;]\n<strong>Output:</strong> 22\n<strong>Explanation:</strong> ((10 * (6 / ((9 + 3) * -11))) + 17) + 5\n= ((10 * (6 / (12 * -11))) + 17) + 5\n= ((10 * (6 / -132)) + 17) + 5\n= ((10 * 0) + 17) + 5\n= (0 + 17) + 5\n= 17 + 5\n= 22\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= tokens.length &lt;= 10<sup>4</sup></code></li>\n\t<li><code>tokens[i]</code> is either an operator: <code>&quot;+&quot;</code>, <code>&quot;-&quot;</code>, <code>&quot;*&quot;</code>, or <code>&quot;/&quot;</code>, or an integer in the range <code>[-200, 200]</code>.</li>\n</ul>\n"
 }

@@ -1,0 +1,166 @@
+{
+  "title": "Checking Existence of Edge Length Limited Paths",
+  "difficulty": "Hard",
+  "type": "graph",
+  "tags": [
+    "Graph",
+    "Union-Find",
+    "Sorting"
+  ],
+  "description": "Determine if there exists a path between two nodes such that every edge on the path has a length strictly less than a given limit.",
+  "target": 3,
+  "pseudocode": "1. Sort edges by weight\n2. Sort queries by limit\n3. Initialize DSU with n nodes\n4. For each query (u, v, limit):\n5.   Add all edges with weight < limit into DSU\n6.   Check if find(u) == find(v)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Sort edges: [[0,1,2], [1,2,5], [0,2,3]] -> [[0,1,2], [0,2,3], [1,2,5]]",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": 0
+        },
+        {
+          "id": 1,
+          "val": 1
+        },
+        {
+          "id": 2,
+          "val": 2
+        }
+      ],
+      "graphEdges": []
+    },
+    {
+      "codeLine": 2,
+      "note": "Queries sorted by limit: [[0, 2, 3], [0, 2, 6]]",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": 0
+        },
+        {
+          "id": 1,
+          "val": 1
+        },
+        {
+          "id": 2,
+          "val": 2
+        }
+      ],
+      "graphEdges": []
+    },
+    {
+      "codeLine": 5,
+      "note": "Adding edge [0,1] with weight 2 (limit 3)",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": 0
+        },
+        {
+          "id": 1,
+          "val": 1
+        },
+        {
+          "id": 2,
+          "val": 2
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ]
+      ],
+      "visited": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Query 0 to 2 with limit 3: Roots are different (0 vs 2), result false",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": 0
+        },
+        {
+          "id": 1,
+          "val": 1
+        },
+        {
+          "id": 2,
+          "val": 2
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Adding edge [0,2] with weight 3 (limit 6)",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": 0
+        },
+        {
+          "id": 1,
+          "val": 1
+        },
+        {
+          "id": 2,
+          "val": 2
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "visited": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Query 0 to 2 with limit 6: Roots are same, result true",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": 0
+        },
+        {
+          "id": 1,
+          "val": 1
+        },
+        {
+          "id": 2,
+          "val": 2
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ]
+      ]
+    }
+  ]
+}

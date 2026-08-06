@@ -1,0 +1,66 @@
+{
+  "title": "Partitioning Into Minimum Number Of Deci-Binary Numbers",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Greedy",
+    "String"
+  ],
+  "description": "Find the minimum number of positive deci-binary numbers needed to sum up to a given string n.",
+  "target": "32",
+  "pseudocode": "function minPartitions(n) {\n  let maxDigit = 0;\n  for (let i = 0; i < n.length; i++) {\n    maxDigit = Math.max(maxDigit, parseInt(n[i]));\n  }\n  return maxDigit;\n}",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Initialize maxDigit to 0.",
+      "array": [
+        3,
+        2
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Examine index 0 (value 3). Compare 0 and 3.",
+      "array": [
+        3,
+        2
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Update maxDigit to 3.",
+      "array": [
+        3,
+        2
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Examine index 1 (value 2). Compare 3 and 2.",
+      "array": [
+        3,
+        2
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "maxDigit remains 3.",
+      "array": [
+        3,
+        2
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Return maxDigit which is 3.",
+      "array": [
+        3,
+        2
+      ]
+    }
+  ]
+}

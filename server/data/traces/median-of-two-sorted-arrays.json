@@ -7,149 +7,61 @@
     "Binary Search",
     "Divide and Conquer"
   ],
-  "description": "Given two sorted arrays nums1 and nums2 of size m and n respectively, return the median of the two sorted arrays in O(log(min(m,n))) time.",
-  "target": 3,
-  "pseudocode": "1. Ensure nums1 is shorter than nums2\n2. Set low = 0, high = m, halfLen = (m + n + 1) / 2\n3. While low <= high:\n4.   i = (low + high) / 2, j = halfLen - i\n5.   Get maxLeft1, minRight1, maxLeft2, minRight2\n6.   If maxLeft1 <= minRight2 and maxLeft2 <= minRight1:\n7.     If total length is odd, return max(maxLeft1, maxLeft2)\n8.     Else return (max(maxLeft1, maxLeft2) + min(minRight1, minRight2)) / 2\n9.   Else if maxLeft1 > minRight2: high = i - 1\n10.  Else: low = i + 1",
+  "description": "Find the median of two sorted arrays using binary search partition.",
+  "target": 2,
+  "pseudocode": "1. Ensure nums1 is the smaller array. \n2. Binary search for partition index in nums1. \n3. Calculate partition index for nums2. \n4. Verify partition satisfies maxLeft <= minRight condition. \n5. Calculate median based on total length parity.",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize binary search on smaller array nums1 = [1, 3] and nums2 = [2, 4, 5].",
+      "note": "Initialize binary search on nums1=[1,3] and nums2=[2].",
       "array": [
         1,
-        3,
-        2,
-        4,
-        5
+        3
       ],
       "i": 0,
-      "j": 0,
-      "curr": 1
+      "curr": 0
     },
     {
       "codeLine": 2,
-      "note": "Set search boundaries: low = 0, high = 2, halfLen = (2 + 3 + 1) / 2 = 3.",
+      "note": "Partition nums1 at index 1: left=[1], right=[3].",
       "array": [
         1,
-        3,
-        2,
-        4,
-        5
+        3
       ],
-      "i": 0,
-      "j": 0,
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Calculate partition for nums2: total_len=3, half=(3+1)//2=2. Partition at index 1.",
+      "array": [
+        2
+      ],
+      "i": 1,
       "curr": 0
     },
     {
       "codeLine": 4,
-      "note": "Calculate partition indices: i = (0 + 2) / 2 = 1 (nums1), j = 3 - 1 = 2 (nums2).",
+      "note": "Check partition: maxLeft1=1, maxLeft2=2; minRight1=3, minRight2=infinity. Valid.",
       "array": [
         1,
-        3,
         2,
-        4,
-        5
+        3
       ],
       "i": 1,
-      "j": 2,
-      "curr": 0
+      "curr": 1
     },
     {
       "codeLine": 5,
-      "note": "Elements around partitions: maxLeft1 = 1, minRight1 = 3, maxLeft2 = 4, minRight2 = 5.",
+      "note": "Total length is odd, median is max(maxLeft1, maxLeft2) = 2.",
       "array": [
         1,
-        3,
         2,
-        4,
-        5
+        3
       ],
       "i": 1,
-      "j": 2,
       "curr": 1
-    },
-    {
-      "codeLine": 6,
-      "note": "Check validity: maxLeft2 (4) > minRight1 (3), so partition is invalid.",
-      "array": [
-        1,
-        3,
-        2,
-        4,
-        5
-      ],
-      "i": 1,
-      "j": 2,
-      "curr": 2
-    },
-    {
-      "codeLine": 10,
-      "note": "maxLeft2 > minRight1 means i is too small. Move low to i + 1 = 2.",
-      "array": [
-        1,
-        3,
-        2,
-        4,
-        5
-      ],
-      "i": 2,
-      "j": 2,
-      "curr": 2
-    },
-    {
-      "codeLine": 4,
-      "note": "Recalculate partition indices: i = (2 + 2) / 2 = 2 (nums1), j = 3 - 2 = 1 (nums2).",
-      "array": [
-        1,
-        3,
-        2,
-        4,
-        5
-      ],
-      "i": 2,
-      "j": 1,
-      "curr": 2
-    },
-    {
-      "codeLine": 5,
-      "note": "Elements around partitions: maxLeft1 = 3, minRight1 = Infinity, maxLeft2 = 2, minRight2 = 4.",
-      "array": [
-        1,
-        3,
-        2,
-        4,
-        5
-      ],
-      "i": 2,
-      "j": 1,
-      "curr": 1
-    },
-    {
-      "codeLine": 6,
-      "note": "Check validity: maxLeft1 (3) <= minRight2 (4) and maxLeft2 (2) <= minRight1 (Infinity). Valid!",
-      "array": [
-        1,
-        3,
-        2,
-        4,
-        5
-      ],
-      "i": 2,
-      "j": 1,
-      "curr": 1
-    },
-    {
-      "codeLine": 7,
-      "note": "Total length is odd (5). Return median = max(maxLeft1, maxLeft2) = max(3, 2) = 3.",
-      "array": [
-        1,
-        3,
-        2,
-        4,
-        5
-      ],
-      "i": 2,
-      "j": 1,
-      "curr": 5
     }
-  ]
+  ],
+  "fullDescription": "<p>Given two sorted arrays <code>nums1</code> and <code>nums2</code> of size <code>m</code> and <code>n</code> respectively, return <strong>the median</strong> of the two sorted arrays.</p>\n\n<p>The overall run time complexity should be <code>O(log (m+n))</code>.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> nums1 = [1,3], nums2 = [2]\n<strong>Output:</strong> 2.00000\n<strong>Explanation:</strong> merged array = [1,2,3] and median is 2.\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> nums1 = [1,2], nums2 = [3,4]\n<strong>Output:</strong> 2.50000\n<strong>Explanation:</strong> merged array = [1,2,3,4] and median is (2 + 3) / 2 = 2.5.\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>nums1.length == m</code></li>\n\t<li><code>nums2.length == n</code></li>\n\t<li><code>0 &lt;= m &lt;= 1000</code></li>\n\t<li><code>0 &lt;= n &lt;= 1000</code></li>\n\t<li><code>1 &lt;= m + n &lt;= 2000</code></li>\n\t<li><code>-10<sup>6</sup> &lt;= nums1[i], nums2[i] &lt;= 10<sup>6</sup></code></li>\n</ul>\n"
 }

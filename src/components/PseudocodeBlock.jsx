@@ -1,5 +1,7 @@
 import React, { useEffect, useRef } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Sparkles } from 'lucide-react';
+import useChatStore from '../store/useChatStore';
 
 const KEYWORDS = ['function', 'return', 'if', 'else', 'for', 'while', 'from', 'to', 'new', 'in', 'not', 'null', 'true', 'false', 'and', 'or'];
 const KW_RE = new RegExp(`\\b(${KEYWORDS.join('|')})\\b`, 'g');
@@ -19,6 +21,7 @@ const tokenize = (line) => {
 };
 
 const PseudocodeBlock = ({ code = '', activeLine }) => {
+  const { askQuestion } = useChatStore();
   const lines = (code || '').split('\n');
   const activeRef = useRef(null);
 
@@ -62,6 +65,21 @@ const PseudocodeBlock = ({ code = '', activeLine }) => {
                   : <span key={i}>{tok.t}</span>
               )}
             </span>
+
+            <AnimatePresence>
+              {isActive && (
+                <motion.button
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.8 }}
+                  title="Explain this line"
+                  onClick={() => askQuestion(`Can you explain the exact logic happening on line ${lineNum} of the pseudocode in the current step?`)}
+                  className="ml-4 p-1.5 rounded bg-amber-500/10 text-amber-500 hover:bg-amber-500 hover:text-black transition-colors"
+                >
+                  <Sparkles size={13} />
+                </motion.button>
+              )}
+            </AnimatePresence>
           </motion.div>
         );
       })}

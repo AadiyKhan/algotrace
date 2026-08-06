@@ -7,12 +7,12 @@
     "Matrix",
     "Simulation"
   ],
-  "description": "Update the grid based on 4 rules: underpopulation (live < 2), survival (2 or 3), overpopulation (live > 3), reproduction (dead == 3). Use -1 for dead->live and 2 for live->dead.",
-  "pseudocode": "1. for r in rows, c in cols: \n2.   liveNeighbors = count(r, c)\n3.   if board[r][c] == 1 and (liveNeighbors < 2 or liveNeighbors > 3): board[r][c] = 2\n4.   if board[r][c] == 0 and liveNeighbors == 3: board[r][c] = -1\n5. for r in rows, c in cols: \n6.   board[r][c] = 1 if board[r][c] > 0 else 0",
+  "description": "Update the board state based on Conway's Game of Life rules.",
+  "pseudocode": "1. Iterate through each cell (i, j)\n2. Count live neighbors for current cell\n3. Apply rules to determine next state: 0->1 (2), 1->0 (-1)\n4. Finalize board by replacing 2 with 1 and -1 with 0",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize traversal of the 3x3 grid.",
+      "note": "Starting board traversal",
       "matrix": [
         [
           0,
@@ -28,6 +28,11 @@
           1,
           1,
           1
+        ],
+        [
+          0,
+          0,
+          0
         ]
       ],
       "curr": [
@@ -37,7 +42,7 @@
     },
     {
       "codeLine": 2,
-      "note": "Cell [0,0] is dead, has 1 live neighbor. Stay dead.",
+      "note": "Cell (0,0) has 1 live neighbor (0,1), stays dead (0)",
       "matrix": [
         [
           0,
@@ -53,6 +58,11 @@
           1,
           1,
           1
+        ],
+        [
+          0,
+          0,
+          0
         ]
       ],
       "curr": [
@@ -62,7 +72,7 @@
     },
     {
       "codeLine": 3,
-      "note": "Cell [0,1] is live, has 2 neighbors. Stays live.",
+      "note": "Cell (1,2) has 3 live neighbors (1,1), (2,1), (2,2), becomes live",
       "matrix": [
         [
           0,
@@ -72,47 +82,57 @@
         [
           0,
           0,
-          1
+          2
         ],
         [
           1,
           1,
           1
+        ],
+        [
+          0,
+          0,
+          0
         ]
       ],
       "curr": [
-        0,
+        1,
+        2
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Cell (2,1) has 3 live neighbors, stays alive",
+      "matrix": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          2
+        ],
+        [
+          0,
+          1,
+          1
+        ],
+        [
+          0,
+          1,
+          0
+        ]
+      ],
+      "curr": [
+        2,
         1
       ]
     },
     {
       "codeLine": 4,
-      "note": "Cell [1,1] is dead, has 3 live neighbors. Reproduces (marked -1).",
-      "matrix": [
-        [
-          0,
-          1,
-          0
-        ],
-        [
-          0,
-          -1,
-          1
-        ],
-        [
-          1,
-          1,
-          1
-        ]
-      ],
-      "curr": [
-        1,
-        1
-      ]
-    },
-    {
-      "codeLine": 6,
-      "note": "Final sweep: replace state markers -1 and 2 to 1 and 0.",
+      "note": "Finalizing cell states",
       "matrix": [
         [
           0,
@@ -121,19 +141,21 @@
         ],
         [
           1,
-          1,
+          0,
           1
         ],
         [
           0,
           1,
           1
+        ],
+        [
+          0,
+          1,
+          0
         ]
-      ],
-      "curr": [
-        2,
-        2
       ]
     }
-  ]
+  ],
+  "fullDescription": "<p>According to <a href=\"https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life\" target=\"_blank\">Wikipedia&#39;s article</a>: &quot;The <b>Game of Life</b>, also known simply as <b>Life</b>, is a cellular automaton devised by the British mathematician John Horton Conway in 1970.&quot;</p>\n\n<p>The board is made up of an <code>m x n</code> grid of cells, where each cell has an initial state: <b>live</b> (represented by a <code>1</code>) or <b>dead</b> (represented by a <code>0</code>). Each cell interacts with its <a href=\"https://en.wikipedia.org/wiki/Moore_neighborhood\" target=\"_blank\">eight neighbors</a> (horizontal, vertical, diagonal) using the following four rules (taken from the above Wikipedia article):</p>\n\n<ol>\n\t<li>Any live cell with fewer than two live neighbors dies as if caused by under-population.</li>\n\t<li>Any live cell with two or three live neighbors lives on to the next generation.</li>\n\t<li>Any live cell with more than three live neighbors dies, as if by over-population.</li>\n\t<li>Any dead cell with exactly three live neighbors becomes a live cell, as if by reproduction.</li>\n</ol>\n\n<p><span>The next state of the board is determined by applying the above rules simultaneously to every cell in the current state of the <code>m x n</code> grid <code>board</code>. In this process, births and deaths occur <strong>simultaneously</strong>.</span></p>\n\n<p><span>Given the current state of the <code>board</code>, <strong>update</strong> the <code>board</code> to reflect its next state.</span></p>\n\n<p><strong>Note</strong> that you do not need to return anything.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2020/12/26/grid1.jpg\" style=\"width: 562px; height: 322px;\" />\n<pre>\n<strong>Input:</strong> board = [[0,1,0],[0,0,1],[1,1,1],[0,0,0]]\n<strong>Output:</strong> [[0,0,0],[1,0,1],[0,1,1],[0,1,0]]\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2020/12/26/grid2.jpg\" style=\"width: 402px; height: 162px;\" />\n<pre>\n<strong>Input:</strong> board = [[1,1],[1,0]]\n<strong>Output:</strong> [[1,1],[1,1]]\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>m == board.length</code></li>\n\t<li><code>n == board[i].length</code></li>\n\t<li><code>1 &lt;= m, n &lt;= 25</code></li>\n\t<li><code>board[i][j]</code> is <code>0</code> or <code>1</code>.</li>\n</ul>\n\n<p>&nbsp;</p>\n<p><strong>Follow up:</strong></p>\n\n<ul>\n\t<li>Could you solve it in-place? Remember that the board needs to be updated simultaneously: You cannot update some cells first and then use their updated values to update other cells.</li>\n\t<li>In this question, we represent the board using a 2D array. In principle, the board is infinite, which would cause problems when the active area encroaches upon the border of the array (i.e., live cells reach the border). How would you address these problems?</li>\n</ul>\n"
 }

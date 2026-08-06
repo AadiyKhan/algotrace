@@ -6,181 +6,298 @@
     "Linked List",
     "Recursion"
   ],
-  "description": "Remove all nodes from a linked list that have a specific value val.",
+  "description": "Remove all nodes from a linked list that have a specific value.",
   "target": 6,
-  "pseudocode": "1. dummy = {val: 0, next: head}\n2. curr = dummy\n3. while curr.next != null:\n4.   if curr.next.val == target:\n5.     curr.next = curr.next.next\n6.   else:\n7.     curr = curr.next",
+  "pseudocode": "1. Create dummy node pointing to head\n2. Set curr to dummy\n3. While curr.next exists:\n4. If curr.next.val == val, skip it\n5. Else move curr forward",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize dummy node pointing to head to handle edge cases.",
+      "note": "Initialize dummy node pointing to the head [1,2,6,3,4,5,6].",
       "nodes": [
         {
-          "val": 0,
-          "next": 1
+          "id": 0,
+          "val": "dummy"
         },
         {
-          "val": 1,
-          "next": 2
+          "id": 1,
+          "val": 1
         },
         {
-          "val": 6,
-          "next": 3
+          "id": 2,
+          "val": 2
         },
         {
-          "val": 1,
-          "next": null
+          "id": 3,
+          "val": 6
+        },
+        {
+          "id": 4,
+          "val": 3
+        },
+        {
+          "id": 5,
+          "val": 4
+        },
+        {
+          "id": 6,
+          "val": 5
+        },
+        {
+          "id": 7,
+          "val": 6
         }
       ],
       "curr": 0
     },
     {
-      "codeLine": 3,
-      "note": "Check if current node's next is not null.",
+      "codeLine": 5,
+      "note": "Move to node 1.",
       "nodes": [
         {
-          "val": 0,
-          "next": 1
+          "id": 0,
+          "val": "dummy"
         },
         {
-          "val": 1,
-          "next": 2
+          "id": 1,
+          "val": 1
         },
         {
-          "val": 6,
-          "next": 3
+          "id": 2,
+          "val": 2
         },
         {
-          "val": 1,
-          "next": null
-        }
-      ],
-      "curr": 0
-    },
-    {
-      "codeLine": 4,
-      "note": "Check if node 1 matches target 6.",
-      "nodes": [
-        {
-          "val": 0,
-          "next": 1
+          "id": 3,
+          "val": 6
         },
         {
-          "val": 1,
-          "next": 2
+          "id": 4,
+          "val": 3
         },
         {
-          "val": 6,
-          "next": 3
+          "id": 5,
+          "val": 4
         },
         {
-          "val": 1,
-          "next": null
-        }
-      ],
-      "curr": 0
-    },
-    {
-      "codeLine": 7,
-      "note": "No match, move curr forward.",
-      "nodes": [
-        {
-          "val": 0,
-          "next": 1
+          "id": 6,
+          "val": 5
         },
         {
-          "val": 1,
-          "next": 2
-        },
-        {
-          "val": 6,
-          "next": 3
-        },
-        {
-          "val": 1,
-          "next": null
-        }
-      ],
-      "curr": 1
-    },
-    {
-      "codeLine": 4,
-      "note": "Check if node 6 matches target 6.",
-      "nodes": [
-        {
-          "val": 0,
-          "next": 1
-        },
-        {
-          "val": 1,
-          "next": 2
-        },
-        {
-          "val": 6,
-          "next": 3
-        },
-        {
-          "val": 1,
-          "next": null
+          "id": 7,
+          "val": 6
         }
       ],
       "curr": 1
     },
     {
       "codeLine": 5,
-      "note": "Match found, update curr.next to skip node 6.",
+      "note": "Move to node 2.",
       "nodes": [
         {
-          "val": 0,
-          "next": 1
+          "id": 0,
+          "val": "dummy"
         },
         {
-          "val": 1,
-          "next": 3
+          "id": 1,
+          "val": 1
         },
         {
-          "val": 1,
-          "next": null
+          "id": 2,
+          "val": 2
+        },
+        {
+          "id": 3,
+          "val": 6
+        },
+        {
+          "id": 4,
+          "val": 3
+        },
+        {
+          "id": 5,
+          "val": 4
+        },
+        {
+          "id": 6,
+          "val": 5
+        },
+        {
+          "id": 7,
+          "val": 6
         }
       ],
-      "curr": 1
+      "curr": 2
     },
     {
-      "codeLine": 7,
-      "note": "Move curr to next node (which is now 1).",
+      "codeLine": 4,
+      "note": "Found val 6 at node 3, skipping it.",
       "nodes": [
         {
-          "val": 0,
-          "next": 1
+          "id": 0,
+          "val": "dummy"
         },
         {
-          "val": 1,
-          "next": 3
+          "id": 1,
+          "val": 1
         },
         {
-          "val": 1,
-          "next": null
+          "id": 2,
+          "val": 2
+        },
+        {
+          "id": 4,
+          "val": 3
+        },
+        {
+          "id": 5,
+          "val": 4
+        },
+        {
+          "id": 6,
+          "val": 5
+        },
+        {
+          "id": 7,
+          "val": 6
         }
       ],
       "curr": 2
     },
     {
-      "codeLine": 3,
-      "note": "curr.next is null, loop terminates.",
+      "codeLine": 5,
+      "note": "Move to node 3.",
       "nodes": [
         {
-          "val": 0,
-          "next": 1
+          "id": 0,
+          "val": "dummy"
         },
         {
-          "val": 1,
-          "next": 3
+          "id": 1,
+          "val": 1
         },
         {
-          "val": 1,
-          "next": null
+          "id": 2,
+          "val": 2
+        },
+        {
+          "id": 4,
+          "val": 3
+        },
+        {
+          "id": 5,
+          "val": 4
+        },
+        {
+          "id": 6,
+          "val": 5
+        },
+        {
+          "id": 7,
+          "val": 6
         }
       ],
-      "curr": 2
+      "curr": 4
+    },
+    {
+      "codeLine": 5,
+      "note": "Move to node 4.",
+      "nodes": [
+        {
+          "id": 0,
+          "val": "dummy"
+        },
+        {
+          "id": 1,
+          "val": 1
+        },
+        {
+          "id": 2,
+          "val": 2
+        },
+        {
+          "id": 4,
+          "val": 3
+        },
+        {
+          "id": 5,
+          "val": 4
+        },
+        {
+          "id": 6,
+          "val": 5
+        },
+        {
+          "id": 7,
+          "val": 6
+        }
+      ],
+      "curr": 5
+    },
+    {
+      "codeLine": 5,
+      "note": "Move to node 5.",
+      "nodes": [
+        {
+          "id": 0,
+          "val": "dummy"
+        },
+        {
+          "id": 1,
+          "val": 1
+        },
+        {
+          "id": 2,
+          "val": 2
+        },
+        {
+          "id": 4,
+          "val": 3
+        },
+        {
+          "id": 5,
+          "val": 4
+        },
+        {
+          "id": 6,
+          "val": 5
+        },
+        {
+          "id": 7,
+          "val": 6
+        }
+      ],
+      "curr": 6
+    },
+    {
+      "codeLine": 4,
+      "note": "Found val 6 at node 7, skipping it.",
+      "nodes": [
+        {
+          "id": 0,
+          "val": "dummy"
+        },
+        {
+          "id": 1,
+          "val": 1
+        },
+        {
+          "id": 2,
+          "val": 2
+        },
+        {
+          "id": 4,
+          "val": 3
+        },
+        {
+          "id": 5,
+          "val": 4
+        },
+        {
+          "id": 6,
+          "val": 5
+        }
+      ],
+      "curr": 6
     }
-  ]
+  ],
+  "fullDescription": "<p>Given the <code>head</code> of a linked list and an integer <code>val</code>, remove all the nodes of the linked list that has <code>Node.val == val</code>, and return <em>the new head</em>.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2021/03/06/removelinked-list.jpg\" style=\"width: 500px; height: 142px;\" />\n<pre>\n<strong>Input:</strong> head = [1,2,6,3,4,5,6], val = 6\n<strong>Output:</strong> [1,2,3,4,5]\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> head = [], val = 1\n<strong>Output:</strong> []\n</pre>\n\n<p><strong class=\"example\">Example 3:</strong></p>\n\n<pre>\n<strong>Input:</strong> head = [7,7,7,7], val = 7\n<strong>Output:</strong> []\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li>The number of nodes in the list is in the range <code>[0, 10<sup>4</sup>]</code>.</li>\n\t<li><code>1 &lt;= Node.val &lt;= 50</code></li>\n\t<li><code>0 &lt;= val &lt;= 50</code></li>\n</ul>\n"
 }

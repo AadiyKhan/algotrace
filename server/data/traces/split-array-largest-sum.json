@@ -5,16 +5,15 @@
   "tags": [
     "Array",
     "Binary Search",
-    "Dynamic Programming",
     "Greedy"
   ],
-  "description": "Split an array into m non-empty continuous subarrays such that the largest sum among these subarrays is minimized.",
-  "target": 2,
-  "pseudocode": "1. low = max(nums), high = sum(nums)\n2. while low < high:\n3.   mid = (low + high) // 2\n4.   if canSplit(nums, m, mid):\n5.     high = mid\n6.   else:\n7.     low = mid + 1\n8. return low",
+  "description": "Minimize the largest sum of k subarrays using binary search on the answer range.",
+  "target": 18,
+  "pseudocode": "1. low = max(nums), high = sum(nums)\n2. while low < high:\n3.   mid = (low + high) // 2\n4.   if canSplit(mid, k): high = mid\n5.   else: low = mid + 1\n6. return low",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize binary search range: [max(7,2,5,10,8)=10, sum(7,2,5,10,8)=32]",
+      "note": "Initialize binary search range: low = max(7,2,5,10,8) = 10, high = sum = 32.",
       "array": [
         7,
         2,
@@ -22,11 +21,11 @@
         10,
         8
       ],
-      "curr": 7
+      "visited": []
     },
     {
       "codeLine": 3,
-      "note": "Calculate mid = (10 + 32) // 2 = 21",
+      "note": "Calculate mid = (10 + 32) // 2 = 21.",
       "array": [
         7,
         2,
@@ -34,11 +33,11 @@
         10,
         8
       ],
-      "curr": 10
+      "i": 21
     },
     {
       "codeLine": 4,
-      "note": "Check if can split into 2 subarrays with max sum 21. True (e.g., [7,2,5], [10,8])",
+      "note": "Check if can split with max sum 21. [7,2,5] sum 14, [10,8] sum 18. Possible (count 2 <= k).",
       "array": [
         7,
         2,
@@ -46,11 +45,41 @@
         10,
         8
       ],
-      "curr": 2
+      "visited": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Since 21 is valid, try smaller: high = 21.",
+      "array": [
+        7,
+        2,
+        5,
+        10,
+        8
+      ],
+      "i": 21
+    },
+    {
+      "codeLine": 3,
+      "note": "Calculate mid = (10 + 21) // 2 = 15.",
+      "array": [
+        7,
+        2,
+        5,
+        10,
+        8
+      ],
+      "i": 15
     },
     {
       "codeLine": 5,
-      "note": "Set high = 21, search range now [10, 21]",
+      "note": "Check if can split with 15. [7,2,5] sum 14, [10] sum 10, [8] sum 8. Need 3 subarrays > k=2.",
       "array": [
         7,
         2,
@@ -58,11 +87,29 @@
         10,
         8
       ],
-      "curr": 21
+      "visited": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Since 15 is too small, set low = 15 + 1 = 16.",
+      "array": [
+        7,
+        2,
+        5,
+        10,
+        8
+      ],
+      "i": 16
     },
     {
       "codeLine": 3,
-      "note": "Calculate mid = (10 + 21) // 2 = 15",
+      "note": "Calculate mid = (16 + 21) // 2 = 18.",
       "array": [
         7,
         2,
@@ -70,11 +117,11 @@
         10,
         8
       ],
-      "curr": 10
+      "i": 18
     },
     {
       "codeLine": 4,
-      "note": "Check if can split into 2 subarrays with max sum 15. False (need at least 3: [7,2,5], [10], [8])",
+      "note": "Check if can split with 18. [7,2,5] sum 14, [10,8] sum 18. Possible (count 2 <= k).",
       "array": [
         7,
         2,
@@ -82,11 +129,17 @@
         10,
         8
       ],
-      "curr": 2
+      "visited": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
     },
     {
-      "codeLine": 7,
-      "note": "Set low = 15 + 1 = 16, search range now [16, 21]",
+      "codeLine": 6,
+      "note": "Binary search concludes, return minimized largest sum: 18.",
       "array": [
         7,
         2,
@@ -94,19 +147,14 @@
         10,
         8
       ],
-      "curr": 15
-    },
-    {
-      "codeLine": 8,
-      "note": "Final binary search result converges at 18",
-      "array": [
-        7,
+      "visited": [
+        0,
+        1,
         2,
-        5,
-        10,
-        8
-      ],
-      "curr": 18
+        3,
+        4
+      ]
     }
-  ]
+  ],
+  "fullDescription": "<p>Given an integer array <code>nums</code> and an integer <code>k</code>, split <code>nums</code> into <code>k</code> non-empty subarrays such that the largest sum of any subarray is <strong>minimized</strong>.</p>\n\n<p>Return <em>the minimized largest sum of the split</em>.</p>\n\n<p>A <strong>subarray</strong> is a contiguous part of the array.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> nums = [7,2,5,10,8], k = 2\n<strong>Output:</strong> 18\n<strong>Explanation:</strong> There are four ways to split nums into two subarrays.\nThe best way is to split it into [7,2,5] and [10,8], where the largest sum among the two subarrays is only 18.\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> nums = [1,2,3,4,5], k = 2\n<strong>Output:</strong> 9\n<strong>Explanation:</strong> There are four ways to split nums into two subarrays.\nThe best way is to split it into [1,2,3] and [4,5], where the largest sum among the two subarrays is only 9.\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= nums.length &lt;= 1000</code></li>\n\t<li><code>0 &lt;= nums[i] &lt;= 10<sup>6</sup></code></li>\n\t<li><code>1 &lt;= k &lt;= min(50, nums.length)</code></li>\n</ul>\n"
 }

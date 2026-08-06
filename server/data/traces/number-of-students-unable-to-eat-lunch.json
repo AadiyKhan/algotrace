@@ -1,0 +1,134 @@
+{
+  "title": "Number of Students Unable to Eat Lunch",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Stack",
+    "Queue",
+    "Simulation"
+  ],
+  "description": "Count the number of students unable to eat given student preferences and sandwich types.",
+  "target": null,
+  "pseudocode": "1. count0 = students.filter(s => s == 0).length\n2. count1 = students.length - count0\n3. for sandwich of sandwiches:\n4.   if sandwich == 0 and count0 > 0: count0--\n5.   else if sandwich == 1 and count1 > 0: count1--\n6.   else: break\n7. return count0 + count1",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Count initial students wanting circular (0) sandwiches.",
+      "array": [
+        1,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Count initial students wanting square (1) sandwiches.",
+      "array": [
+        1,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Check first sandwich (0).",
+      "i": 0,
+      "array": [
+        1,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Sandwich is 0, count0 is 2. Decrement count0.",
+      "i": 0,
+      "array": [
+        1,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Check second sandwich (0).",
+      "i": 1,
+      "array": [
+        1,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Sandwich is 0, count0 is 1. Decrement count0.",
+      "i": 1,
+      "array": [
+        1,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Check third sandwich (1).",
+      "i": 2,
+      "array": [
+        1,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Sandwich is 1, count1 is 2. Decrement count1.",
+      "i": 2,
+      "array": [
+        1,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Check fourth sandwich (1).",
+      "i": 3,
+      "array": [
+        1,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Sandwich is 1, count1 is 1. Decrement count1.",
+      "i": 3,
+      "array": [
+        1,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "All sandwiches eaten, return 0.",
+      "array": [
+        1,
+        1,
+        0,
+        0
+      ]
+    }
+  ]
+}

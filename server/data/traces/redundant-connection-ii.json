@@ -1,121 +1,114 @@
 {
   "title": "Redundant Connection II",
   "difficulty": "Hard",
-  "type": "tree",
+  "type": "graph",
   "tags": [
-    "Graph",
+    "Graph Theory",
     "Union-Find",
-    "DFS"
+    "Depth-First Search"
   ],
-  "description": "Find the edge that can be removed to make a directed graph a valid rooted tree.",
-  "pseudocode": "1. Find edges with two parents.\n2. Use Union-Find to detect cycles.\n3. If 2 parents exist, check which edge removal fixes the tree.\n4. Else, remove the last edge that completes a cycle.",
+  "description": "Find and remove an edge to convert a directed graph with an extra edge into a rooted tree.",
+  "pseudocode": "1. Initialize parent array and identify nodes with two parents.\n2. If a node has two parents, potential redundant edges are the two incoming edges.\n3. Use Union-Find to detect cycles in the graph (skipping one of the potential edges).\n4. Return the edge that resolves both the cycle and the two-parent condition.",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize Union-Find parent array for 3 nodes.",
-      "treeNodes": [
+      "note": "Initialize parent tracking. Node 3 has two parents (1 and 2).",
+      "graphNodes": [
         {
           "id": 1,
-          "val": 1,
-          "left": null,
-          "right": null
+          "val": 1
         },
         {
           "id": 2,
-          "val": 2,
-          "left": null,
-          "right": null
+          "val": 2
         },
         {
           "id": 3,
-          "val": 3,
-          "left": null,
-          "right": null
+          "val": 3
         }
       ],
-      "visited": [],
-      "curr": 3
+      "graphEdges": [
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "curr": 3,
+      "visited": []
     },
     {
       "codeLine": 2,
-      "note": "Processing edge [1, 2]. No cycle.",
-      "treeNodes": [
+      "note": "Identify [2, 3] as a candidate edge because node 3 already has parent 1.",
+      "graphNodes": [
         {
           "id": 1,
-          "val": 1,
-          "left": 2,
-          "right": null
+          "val": 1
         },
         {
           "id": 2,
-          "val": 2,
-          "left": null,
-          "right": null
+          "val": 2
         },
         {
           "id": 3,
-          "val": 3,
-          "left": null,
-          "right": null
+          "val": 3
         }
       ],
-      "visited": [
-        1,
-        2
-      ]
-    },
-    {
-      "codeLine": 2,
-      "note": "Processing edge [1, 3]. No cycle.",
-      "treeNodes": [
-        {
-          "id": 1,
-          "val": 1,
-          "left": 2,
-          "right": 3
-        },
-        {
-          "id": 2,
-          "val": 2,
-          "left": null,
-          "right": null
-        },
-        {
-          "id": 3,
-          "val": 3,
-          "left": null,
-          "right": null
-        }
+      "graphEdges": [
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          3
+        ]
       ],
+      "curr": 3,
       "visited": [
         1,
-        2,
         3
       ]
     },
     {
-      "codeLine": 2,
-      "note": "Processing edge [2, 3]. Cycle detected involving 1-2-3.",
-      "treeNodes": [
+      "codeLine": 3,
+      "note": "Run Union-Find skipping [2, 3]. No cycle detected.",
+      "graphNodes": [
         {
           "id": 1,
-          "val": 1,
-          "left": 2,
-          "right": 3
+          "val": 1
         },
         {
           "id": 2,
-          "val": 2,
-          "left": 3,
-          "right": null
+          "val": 2
         },
         {
           "id": 3,
-          "val": 3,
-          "left": null,
-          "right": null
+          "val": 3
         }
       ],
+      "graphEdges": [
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "curr": 2,
       "visited": [
         1,
         2,
@@ -124,32 +117,38 @@
     },
     {
       "codeLine": 4,
-      "note": "Edge [2, 3] is identified as the redundant connection.",
-      "treeNodes": [
+      "note": "Since skipping [2, 3] makes it a valid tree, [2, 3] is the redundant edge.",
+      "graphNodes": [
         {
           "id": 1,
-          "val": 1,
-          "left": 2,
-          "right": 3
+          "val": 1
         },
         {
           "id": 2,
-          "val": 2,
-          "left": null,
-          "right": null
+          "val": 2
         },
         {
           "id": 3,
-          "val": 3,
-          "left": null,
-          "right": null
+          "val": 3
         }
       ],
+      "graphEdges": [
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "curr": 3,
       "visited": [
         1,
         2,
         3
       ]
     }
-  ]
+  ],
+  "fullDescription": "<p>In this problem, a rooted tree is a <b>directed</b> graph such that, there is exactly one node (the root) for which all other nodes are descendants of this node, plus every node has exactly one parent, except for the root node which has no parents.</p>\n\n<p>The given input is a directed graph that started as a rooted tree with <code>n</code> nodes (with distinct values from <code>1</code> to <code>n</code>), with one additional directed edge added. The added edge has two different vertices chosen from <code>1</code> to <code>n</code>, and was not an edge that already existed.</p>\n\n<p>The resulting graph is given as a 2D-array of <code>edges</code>. Each element of <code>edges</code> is a pair <code>[u<sub>i</sub>, v<sub>i</sub>]</code> that represents a <b>directed</b> edge connecting nodes <code>u<sub>i</sub></code> and <code>v<sub>i</sub></code>, where <code>u<sub>i</sub></code> is a parent of child <code>v<sub>i</sub></code>.</p>\n\n<p>Return <em>an edge that can be removed so that the resulting graph is a rooted tree of</em> <code>n</code> <em>nodes</em>. If there are multiple answers, return the answer that occurs last in the given 2D-array.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2020/12/20/graph1.jpg\" style=\"width: 222px; height: 222px;\" />\n<pre>\n<strong>Input:</strong> edges = [[1,2],[1,3],[2,3]]\n<strong>Output:</strong> [2,3]\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2020/12/20/graph2.jpg\" style=\"width: 222px; height: 382px;\" />\n<pre>\n<strong>Input:</strong> edges = [[1,2],[2,3],[3,4],[4,1],[1,5]]\n<strong>Output:</strong> [4,1]\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>n == edges.length</code></li>\n\t<li><code>3 &lt;= n &lt;= 1000</code></li>\n\t<li><code>edges[i].length == 2</code></li>\n\t<li><code>1 &lt;= u<sub>i</sub>, v<sub>i</sub> &lt;= n</code></li>\n\t<li><code>u<sub>i</sub> != v<sub>i</sub></code></li>\n</ul>\n"
 }

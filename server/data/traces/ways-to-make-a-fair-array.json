@@ -1,0 +1,73 @@
+{
+  "title": "Ways to Make a Fair Array",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Prefix Sum"
+  ],
+  "description": "Find the number of indices such that if removed, the sum of even-indexed elements equals the sum of odd-indexed elements.",
+  "target": null,
+  "pseudocode": "1. totalEven = sum of all even indices, totalOdd = sum of all odd indices\n2. for i in 0 to n-1:\n3.   if i % 2 == 0: currentEven = totalEven - nums[i]\n4.   else: currentOdd = totalOdd - nums[i]\n5.   if (currentEven + prevOdd) == (currentOdd + prevEven): count++\n6.   if i % 2 == 0: prevEven += nums[i]\n7.   else: prevOdd += nums[i]",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Calculate initial prefix sums: totalEven=2, totalOdd=1",
+      "array": [
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "i=0: Remove nums[0]. Even sum becomes 0, Odd sum stays 1. 0 != 1.",
+      "array": [
+        1,
+        1,
+        1
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Update prevEven: 0 + 1 = 1",
+      "array": [
+        1,
+        1,
+        1
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "i=1: Remove nums[1]. Odd sum becomes 0, Even sum remains 1. 1 == 0? No.",
+      "array": [
+        1,
+        1,
+        1
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Update prevOdd: 0 + 1 = 1",
+      "array": [
+        1,
+        1,
+        1
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "i=2: Remove nums[2]. Even sum becomes 1, Odd sum is 1. 1 == 1! count++.",
+      "array": [
+        1,
+        1,
+        1
+      ],
+      "i": 2
+    }
+  ]
+}

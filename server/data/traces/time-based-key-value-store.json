@@ -4,131 +4,74 @@
   "type": "array",
   "tags": [
     "Hash Table",
-    "Binary Search",
-    "Design"
+    "String",
+    "Binary Search"
   ],
-  "description": "Design a time-based key-value store that supports multiple values for the same key at different timestamps and retrieves the value for a key at or before a given timestamp.",
-  "target": 20,
-  "pseudocode": "1. map = new Map();\n2. map.get(key).push({timestamp, value});\n3. low = 0, high = list.length - 1;\n4. while (low <= high) {\n5.   mid = (low + high) >> 1;\n6.   if (list[mid].timestamp <= timestamp) {\n7.     res = list[mid].value;\n8.     low = mid + 1;\n9.   } else {\n10.    high = mid - 1;\n11.  }\n12. }",
+  "description": "Store and retrieve values based on key and timestamp using binary search on a sorted list of timestamps.",
+  "target": null,
+  "pseudocode": "1. store = map<string, list<pair<timestamp, value>>>\n2. set(key, val, time): store[key].push({time, val})\n3. get(key, time): \n4.   list = store[key]\n5.   idx = binarySearch(list, time)\n6.   return list[idx].val if idx exists else \"\"",
   "steps": [
     {
       "codeLine": 2,
-      "note": "Insert {timestamp: 10, value: 'bar'} into key 'foo'",
+      "note": "Set key 'foo' with value 'bar' at timestamp 1.",
       "array": [
-        {
-          "timestamp": 10,
-          "value": "bar"
-        }
+        "foo: [(1, 'bar')]"
       ],
-      "curr": 10
+      "visited": [
+        0
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Get 'foo' at timestamp 1. Binary search finds index 0.",
+      "array": [
+        "foo: [(1, 'bar')]"
+      ],
+      "visited": [
+        0
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Get 'foo' at timestamp 3. Binary search finds index 0 (1 <= 3).",
+      "array": [
+        "foo: [(1, 'bar')]"
+      ],
+      "visited": [
+        0
+      ]
     },
     {
       "codeLine": 2,
-      "note": "Insert {timestamp: 30, value: 'baz'} into key 'foo'",
+      "note": "Set key 'foo' with value 'bar2' at timestamp 4.",
       "array": [
-        {
-          "timestamp": 10,
-          "value": "bar"
-        },
-        {
-          "timestamp": 30,
-          "value": "baz"
-        }
+        "foo: [(1, 'bar'), (4, 'bar2')]"
       ],
-      "curr": 30
-    },
-    {
-      "codeLine": 4,
-      "note": "Binary search for timestamp 20: Initializing pointers",
-      "array": [
-        {
-          "timestamp": 10,
-          "value": "bar"
-        },
-        {
-          "timestamp": 30,
-          "value": "baz"
-        }
-      ],
-      "i": 0,
-      "j": 1,
-      "curr": 20
+      "visited": [
+        0,
+        1
+      ]
     },
     {
       "codeLine": 5,
-      "note": "Calculate mid index",
+      "note": "Get 'foo' at timestamp 4. Binary search finds index 1.",
       "array": [
-        {
-          "timestamp": 10,
-          "value": "bar"
-        },
-        {
-          "timestamp": 30,
-          "value": "baz"
-        }
+        "foo: [(1, 'bar'), (4, 'bar2')]"
       ],
-      "curr": 0
-    },
-    {
-      "codeLine": 6,
-      "note": "10 <= 20 is true, update result to 'bar'",
-      "array": [
-        {
-          "timestamp": 10,
-          "value": "bar"
-        },
-        {
-          "timestamp": 30,
-          "value": "baz"
-        }
-      ],
-      "curr": 0
-    },
-    {
-      "codeLine": 8,
-      "note": "Move low pointer to search right half",
-      "array": [
-        {
-          "timestamp": 10,
-          "value": "bar"
-        },
-        {
-          "timestamp": 30,
-          "value": "baz"
-        }
-      ],
-      "i": 1
+      "visited": [
+        1
+      ]
     },
     {
       "codeLine": 5,
-      "note": "Mid index is now 1",
+      "note": "Get 'foo' at timestamp 5. Binary search finds index 1 (4 <= 5).",
       "array": [
-        {
-          "timestamp": 10,
-          "value": "bar"
-        },
-        {
-          "timestamp": 30,
-          "value": "baz"
-        }
+        "foo: [(1, 'bar'), (4, 'bar2')]"
       ],
-      "curr": 1
-    },
-    {
-      "codeLine": 6,
-      "note": "30 <= 20 is false, move high pointer",
-      "array": [
-        {
-          "timestamp": 10,
-          "value": "bar"
-        },
-        {
-          "timestamp": 30,
-          "value": "baz"
-        }
-      ],
-      "j": 0,
-      "curr": 30
+      "visited": [
+        1
+      ]
     }
-  ]
+  ],
+  "fullDescription": "<p>Design a time-based key-value data structure that can store multiple values for the same key at different time stamps and retrieve the key&#39;s value at a certain timestamp.</p>\n\n<p>Implement the <code>TimeMap</code> class:</p>\n\n<ul>\n\t<li><code>TimeMap()</code> Initializes the object of the data structure.</li>\n\t<li><code>void set(String key, String value, int timestamp)</code> Stores the key <code>key</code> with the value <code>value</code> at the given time <code>timestamp</code>.</li>\n\t<li><code>String get(String key, int timestamp)</code> Returns a value such that <code>set</code> was called previously, with <code>timestamp_prev &lt;= timestamp</code>. If there are multiple such values, it returns the value associated with the largest <code>timestamp_prev</code>. If there are no values, it returns <code>&quot;&quot;</code>.</li>\n</ul>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<pre>\n<strong>Input</strong>\n[&quot;TimeMap&quot;, &quot;set&quot;, &quot;get&quot;, &quot;get&quot;, &quot;set&quot;, &quot;get&quot;, &quot;get&quot;]\n[[], [&quot;foo&quot;, &quot;bar&quot;, 1], [&quot;foo&quot;, 1], [&quot;foo&quot;, 3], [&quot;foo&quot;, &quot;bar2&quot;, 4], [&quot;foo&quot;, 4], [&quot;foo&quot;, 5]]\n<strong>Output</strong>\n[null, null, &quot;bar&quot;, &quot;bar&quot;, null, &quot;bar2&quot;, &quot;bar2&quot;]\n\n<strong>Explanation</strong>\nTimeMap timeMap = new TimeMap();\ntimeMap.set(&quot;foo&quot;, &quot;bar&quot;, 1);  // store the key &quot;foo&quot; and value &quot;bar&quot; along with timestamp = 1.\ntimeMap.get(&quot;foo&quot;, 1);         // return &quot;bar&quot;\ntimeMap.get(&quot;foo&quot;, 3);         // return &quot;bar&quot;, since there is no value corresponding to foo at timestamp 3 and timestamp 2, then the only value is at timestamp 1 is &quot;bar&quot;.\ntimeMap.set(&quot;foo&quot;, &quot;bar2&quot;, 4); // store the key &quot;foo&quot; and value &quot;bar2&quot; along with timestamp = 4.\ntimeMap.get(&quot;foo&quot;, 4);         // return &quot;bar2&quot;\ntimeMap.get(&quot;foo&quot;, 5);         // return &quot;bar2&quot;\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= key.length, value.length &lt;= 100</code></li>\n\t<li><code>key</code> and <code>value</code> consist of lowercase English letters and digits.</li>\n\t<li><code>1 &lt;= timestamp &lt;= 10<sup>7</sup></code></li>\n\t<li>All the timestamps <code>timestamp</code> of <code>set</code> are strictly increasing.</li>\n\t<li>At most <code>2 * 10<sup>5</sup></code> calls will be made to <code>set</code> and <code>get</code>.</li>\n</ul>\n"
 }

@@ -8,29 +8,29 @@
   ],
   "description": "Calculate x raised to the power n using binary exponentiation.",
   "target": 1024,
-  "pseudocode": "1. If n == 0 return 1\n2. If n < 0, x = 1/x, n = -n\n3. half = pow(x, n / 2)\n4. If n % 2 == 0 return half * half\n5. Else return x * half * half",
+  "pseudocode": "1. If n == 0 return 1\n2. If n < 0, x = 1/x, n = -n\n3. half = pow(x, n // 2)\n4. If n is even, return half * half\n5. If n is odd, return x * half * half",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Starting power calculation for x=2, n=10",
+      "note": "Initialize variables x = 2.0, n = 10",
       "array": [
         2,
         10
       ],
-      "curr": 2
+      "curr": 0
     },
     {
       "codeLine": 3,
-      "note": "Recursively call pow(2, 5)",
+      "note": "Recursive step: n=10, half = pow(2, 5)",
       "array": [
         2,
         5
       ],
-      "curr": 2
+      "curr": 1
     },
     {
       "codeLine": 3,
-      "note": "Recursively call pow(2, 2)",
+      "note": "Recursive step: n=5, half = pow(2, 2)",
       "array": [
         2,
         2
@@ -39,57 +39,67 @@
     },
     {
       "codeLine": 3,
-      "note": "Recursively call pow(2, 1)",
+      "note": "Recursive step: n=2, half = pow(2, 1)",
       "array": [
         2,
         1
       ],
-      "curr": 2
+      "curr": 3
     },
     {
-      "codeLine": 1,
-      "note": "Base case reached for pow(2, 0) = 1",
+      "codeLine": 3,
+      "note": "Recursive step: n=1, half = pow(2, 0)",
       "array": [
         2,
         0
       ],
-      "curr": 2
+      "curr": 4
+    },
+    {
+      "codeLine": 1,
+      "note": "Base case n=0 reached, return 1.0",
+      "array": [
+        2,
+        0
+      ],
+      "curr": 5
     },
     {
       "codeLine": 5,
-      "note": "Returning 2 * 1 * 1 = 2 for pow(2, 1)",
-      "array": [
-        2,
-        1
-      ],
-      "curr": 2
-    },
-    {
-      "codeLine": 4,
-      "note": "Returning 2 * 2 = 4 for pow(2, 2)",
+      "note": "n=1 is odd: return 2.0 * 1.0 * 1.0 = 2.0",
       "array": [
         2,
         2
       ],
-      "curr": 2
+      "curr": 4
+    },
+    {
+      "codeLine": 4,
+      "note": "n=2 is even: return 2.0 * 2.0 = 4.0",
+      "array": [
+        2,
+        4
+      ],
+      "curr": 3
     },
     {
       "codeLine": 5,
-      "note": "Returning 2 * 4 * 4 = 32 for pow(2, 5)",
+      "note": "n=5 is odd: return 2.0 * 4.0 * 4.0 = 32.0",
       "array": [
         2,
-        5
+        32
       ],
       "curr": 2
     },
     {
       "codeLine": 4,
-      "note": "Returning 32 * 32 = 1024 for pow(2, 10)",
+      "note": "n=10 is even: return 32.0 * 32.0 = 1024.0",
       "array": [
         2,
-        10
+        1024
       ],
-      "curr": 32
+      "curr": 1
     }
-  ]
+  ],
+  "fullDescription": "<p>Implement <a href=\"http://www.cplusplus.com/reference/valarray/pow/\" target=\"_blank\">pow(x, n)</a>, which calculates <code>x</code> raised to the power <code>n</code> (i.e., <code>x<sup>n</sup></code>).</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> x = 2.00000, n = 10\n<strong>Output:</strong> 1024.00000\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> x = 2.10000, n = 3\n<strong>Output:</strong> 9.26100\n</pre>\n\n<p><strong class=\"example\">Example 3:</strong></p>\n\n<pre>\n<strong>Input:</strong> x = 2.00000, n = -2\n<strong>Output:</strong> 0.25000\n<strong>Explanation:</strong> 2<sup>-2</sup> = 1/2<sup>2</sup> = 1/4 = 0.25\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>-100.0 &lt; x &lt; 100.0</code></li>\n\t<li><code>-2<sup>31</sup> &lt;= n &lt;= 2<sup>31</sup>-1</code></li>\n\t<li><code>n</code> is an integer.</li>\n\t<li>Either <code>x</code> is not zero or <code>n &gt; 0</code>.</li>\n\t<li><code>-10<sup>4</sup> &lt;= x<sup>n</sup> &lt;= 10<sup>4</sup></code></li>\n</ul>\n"
 }

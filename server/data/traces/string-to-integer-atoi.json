@@ -1,21 +1,27 @@
 {
-  "title": "String To Integer Atoi",
+  "title": "String to Integer (atoi)",
   "difficulty": "Medium",
   "type": "array",
   "tags": [
     "String"
   ],
-  "description": "Implement the myAtoi(string s) function, which converts a string to a 32-bit signed integer by skipping leading whitespace, checking for signs, and parsing digits while handling overflow.",
-  "target": -42,
-  "pseudocode": "index = 0, sign = 1, result = 0\nwhile index < n and s[index] == ' ':\n  index++\nif index < n and (s[index] == '+' or s[index] == '-'):\n  sign = (s[index] == '-') ? -1 : 1\n  index++\nwhile index < n and isDigit(s[index]):\n  digit = s[index] - '0'\n  result = result * 10 + digit\n  if result * sign out of 32-bit range: return bound\n  index++\nreturn result * sign",
+  "description": "Convert a string to a 32-bit signed integer by parsing whitespace, sign, and digits.",
+  "target": 42,
+  "pseudocode": "1. Initialize i=0, sign=1, result=0\n2. Skip whitespace\n3. Check sign: if s[i] == '-' or '+', set sign\n4. Read digits while s[i] is digit: result = result * 10 + digit\n5. Clamp result to 32-bit range and return",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize variables: index = 0, sign = 1, result = 0.",
+      "note": "Initialize variables: i=0, sign=1, result=0",
       "array": [
-        " ",
-        " ",
-        "-",
+        "4",
+        "2"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Checking for leading whitespace: None found at index 0",
+      "array": [
         "4",
         "2"
       ],
@@ -23,12 +29,9 @@
       "curr": 0
     },
     {
-      "codeLine": 2,
-      "note": "s[0] is whitespace ' '. Skip it by incrementing index.",
+      "codeLine": 3,
+      "note": "Checking for sign: current char is '4', which is not '-' or '+'. sign remains 1",
       "array": [
-        " ",
-        " ",
-        "-",
         "4",
         "2"
       ],
@@ -36,12 +39,19 @@
       "curr": 0
     },
     {
-      "codeLine": 2,
-      "note": "s[1] is whitespace ' '. Skip it by incrementing index.",
+      "codeLine": 4,
+      "note": "Reading digit '4': result becomes 0 * 10 + 4 = 4",
       "array": [
-        " ",
-        " ",
-        "-",
+        "4",
+        "2"
+      ],
+      "i": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Reading digit '2': result becomes 4 * 10 + 2 = 42",
+      "array": [
         "4",
         "2"
       ],
@@ -49,134 +59,15 @@
       "curr": 1
     },
     {
-      "codeLine": 2,
-      "note": "s[2] is '-' (not whitespace), stop skipping whitespace.",
-      "array": [
-        " ",
-        " ",
-        "-",
-        "4",
-        "2"
-      ],
-      "i": 2,
-      "curr": 2
-    },
-    {
-      "codeLine": 4,
-      "note": "s[2] is '-'. Set sign = -1 and increment index to 3.",
-      "array": [
-        " ",
-        " ",
-        "-",
-        "4",
-        "2"
-      ],
-      "i": 2,
-      "curr": 2
-    },
-    {
-      "codeLine": 6,
-      "note": "s[3] is '4', which is a digit. Extract digit value 4.",
-      "array": [
-        " ",
-        " ",
-        "-",
-        "4",
-        "2"
-      ],
-      "i": 3,
-      "curr": 3
-    },
-    {
-      "codeLine": 7,
-      "note": "Update result = 0 * 10 + 4 = 4.",
-      "array": [
-        " ",
-        " ",
-        "-",
-        "4",
-        "2"
-      ],
-      "i": 3,
-      "curr": 0
-    },
-    {
-      "codeLine": 9,
-      "note": "Increment index to 4.",
-      "array": [
-        " ",
-        " ",
-        "-",
-        "4",
-        "2"
-      ],
-      "i": 4,
-      "curr": 4
-    },
-    {
-      "codeLine": 6,
-      "note": "s[4] is '2', which is a digit. Extract digit value 2.",
-      "array": [
-        " ",
-        " ",
-        "-",
-        "4",
-        "2"
-      ],
-      "i": 4,
-      "curr": 4
-    },
-    {
-      "codeLine": 7,
-      "note": "Update result = 4 * 10 + 2 = 42.",
-      "array": [
-        " ",
-        " ",
-        "-",
-        "4",
-        "2"
-      ],
-      "i": 4,
-      "curr": 4
-    },
-    {
-      "codeLine": 9,
-      "note": "Increment index to 5.",
-      "array": [
-        " ",
-        " ",
-        "-",
-        "4",
-        "2"
-      ],
-      "i": 5,
-      "curr": 5
-    },
-    {
       "codeLine": 5,
-      "note": "Index 5 is out of bounds. Loop finishes.",
+      "note": "End of string reached. Result 42 is within 32-bit range, returning 42.",
       "array": [
-        " ",
-        " ",
-        "-",
         "4",
         "2"
       ],
-      "i": 5,
-      "curr": 5
-    },
-    {
-      "codeLine": 10,
-      "note": "Apply sign: return result * sign = 42 * -1 = -42.",
-      "array": [
-        " ",
-        " ",
-        "-",
-        "4",
-        "2"
-      ],
-      "i": 5,
-      "curr": 42
+      "i": 2,
+      "curr": 1
     }
-  ]
+  ],
+  "fullDescription": "<p>Implement the <code>myAtoi(string s)</code> function, which converts a string to a 32-bit signed integer.</p>\n\n<p>The algorithm for <code>myAtoi(string s)</code> is as follows:</p>\n\n<ol>\n\t<li><strong>Whitespace</strong>: Ignore any leading whitespace (<code>&quot; &quot;</code>).</li>\n\t<li><strong>Signedness</strong>: Determine the sign by checking if the next character is <code>&#39;-&#39;</code> or <code>&#39;+&#39;</code>, assuming positivity if neither present.</li>\n\t<li><strong>Conversion</strong>: Read the integer by skipping leading zeros&nbsp;until a non-digit character is encountered or the end of the string is reached. If no digits were read, then the result is 0.</li>\n\t<li><strong>Rounding</strong>: If the integer is out of the 32-bit signed integer range <code>[-2<sup>31</sup>, 2<sup>31</sup> - 1]</code>, then round the integer to remain in the range. Specifically, integers less than <code>-2<sup>31</sup></code> should be rounded to <code>-2<sup>31</sup></code>, and integers greater than <code>2<sup>31</sup> - 1</code> should be rounded to <code>2<sup>31</sup> - 1</code>.</li>\n</ol>\n\n<p>Return the integer as the final result.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<div class=\"example-block\">\n<p><strong>Input:</strong> <span class=\"example-io\">s = &quot;42&quot;</span></p>\n\n<p><strong>Output:</strong> <span class=\"example-io\">42</span></p>\n\n<p><strong>Explanation:</strong></p>\n\n<pre>\nThe underlined characters are what is read in and the caret is the current reader position.\nStep 1: &quot;42&quot; (no characters read because there is no leading whitespace)\n         ^\nStep 2: &quot;42&quot; (no characters read because there is neither a &#39;-&#39; nor &#39;+&#39;)\n         ^\nStep 3: &quot;<u>42</u>&quot; (&quot;42&quot; is read in)\n           ^\n</pre>\n</div>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<div class=\"example-block\">\n<p><strong>Input:</strong> <span class=\"example-io\">s = &quot; -042&quot;</span></p>\n\n<p><strong>Output:</strong> <span class=\"example-io\">-42</span></p>\n\n<p><strong>Explanation:</strong></p>\n\n<pre>\nStep 1: &quot;<u>   </u>-042&quot; (leading whitespace is read and ignored)\n            ^\nStep 2: &quot;   <u>-</u>042&quot; (&#39;-&#39; is read, so the result should be negative)\n             ^\nStep 3: &quot;   -<u>042</u>&quot; (&quot;042&quot; is read in, leading zeros ignored in the result)\n               ^\n</pre>\n</div>\n\n<p><strong class=\"example\">Example 3:</strong></p>\n\n<div class=\"example-block\">\n<p><strong>Input:</strong> <span class=\"example-io\">s = &quot;1337c0d3&quot;</span></p>\n\n<p><strong>Output:</strong> <span class=\"example-io\">1337</span></p>\n\n<p><strong>Explanation:</strong></p>\n\n<pre>\nStep 1: &quot;1337c0d3&quot; (no characters read because there is no leading whitespace)\n         ^\nStep 2: &quot;1337c0d3&quot; (no characters read because there is neither a &#39;-&#39; nor &#39;+&#39;)\n         ^\nStep 3: &quot;<u>1337</u>c0d3&quot; (&quot;1337&quot; is read in; reading stops because the next character is a non-digit)\n             ^\n</pre>\n</div>\n\n<p><strong class=\"example\">Example 4:</strong></p>\n\n<div class=\"example-block\">\n<p><strong>Input:</strong> <span class=\"example-io\">s = &quot;0-1&quot;</span></p>\n\n<p><strong>Output:</strong> <span class=\"example-io\">0</span></p>\n\n<p><strong>Explanation:</strong></p>\n\n<pre>\nStep 1: &quot;0-1&quot; (no characters read because there is no leading whitespace)\n         ^\nStep 2: &quot;0-1&quot; (no characters read because there is neither a &#39;-&#39; nor &#39;+&#39;)\n         ^\nStep 3: &quot;<u>0</u>-1&quot; (&quot;0&quot; is read in; reading stops because the next character is a non-digit)\n          ^\n</pre>\n</div>\n\n<p><strong class=\"example\">Example 5:</strong></p>\n\n<div class=\"example-block\">\n<p><strong>Input:</strong> <span class=\"example-io\">s = &quot;words and 987&quot;</span></p>\n\n<p><strong>Output:</strong> <span class=\"example-io\">0</span></p>\n\n<p><strong>Explanation:</strong></p>\n\n<p>Reading stops at the first non-digit character &#39;w&#39;.</p>\n</div>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>0 &lt;= s.length &lt;= 200</code></li>\n\t<li><code>s</code> consists of English letters (lower-case and upper-case), digits (<code>0-9</code>), <code>&#39; &#39;</code>, <code>&#39;+&#39;</code>, <code>&#39;-&#39;</code>, and <code>&#39;.&#39;</code>.</li>\n</ul>\n"
 }

@@ -3,39 +3,113 @@
   "difficulty": "Medium",
   "type": "matrix",
   "tags": [
-    "Matrix",
-    "DFS",
-    "BFS",
-    "Queue"
+    "Array",
+    "Depth-First Search",
+    "Breadth-First Search",
+    "Matrix"
   ],
-  "description": "Find the shortest bridge to connect two islands in a binary matrix by flipping 0s to 1s.",
+  "description": "Find the shortest distance between two islands in a binary matrix by flipping 0s to 1s.",
   "target": 1,
-  "pseudocode": "1. Find first island using DFS and add all its coordinates to a queue\n2. While queue is not empty:\n3.   Pop current cell, explore neighbors\n4.   If neighbor is 0, mark as 1, increment distance and push to queue\n5.   If neighbor is 1 and not part of first island, return distance",
+  "pseudocode": "1. Find the first island using DFS and add all its coordinates to a queue.\n2. Perform BFS from the queue to find the distance to the second island.\n3. Return the number of layers (flips) taken to reach any coordinate of the second island.",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Identify the first island (1s) using DFS and store coordinates in queue",
+      "note": "Starting DFS to identify the first island at (0, 1).",
       "matrix": [
         [
-          1,
-          0
+          0,
+          1
         ],
         [
-          0,
+          1,
           0
         ]
       ],
       "visited": [
         [
           0,
-          0
+          1
         ]
+      ],
+      "curr": [
+        0,
+        1
       ]
     },
     {
-      "codeLine": 3,
-      "note": "Begin BFS from the first island to find the nearest 0",
+      "codeLine": 1,
+      "note": "DFS continues, finding connected land at (1, 0).",
       "matrix": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "visited": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "curr": [
+        1,
+        0
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Starting BFS from island cells to expand towards the second island.",
+      "matrix": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "visited": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "curr": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Expanding BFS to water cell (0, 0).",
+      "matrix": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "visited": [
+        [
+          0,
+          1
+        ],
         [
           1,
           0
@@ -48,21 +122,29 @@
       "curr": [
         0,
         0
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Target reached at (0, 0) adjacent to second island component, distance 1.",
+      "matrix": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
       ],
       "visited": [
         [
           0,
-          0
-        ]
-      ]
-    },
-    {
-      "codeLine": 4,
-      "note": "Flip adjacent 0 to 1 and update distance",
-      "matrix": [
+          1
+        ],
         [
           1,
-          1
+          0
         ],
         [
           0,
@@ -71,32 +153,9 @@
       ],
       "curr": [
         0,
-        1
-      ],
-      "visited": [
-        [
-          0,
-          0
-        ],
-        [
-          0,
-          1
-        ]
-      ]
-    },
-    {
-      "codeLine": 5,
-      "note": "Bridge complete, distance is 1",
-      "matrix": [
-        [
-          1,
-          1
-        ],
-        [
-          0,
-          0
-        ]
+        0
       ]
     }
-  ]
+  ],
+  "fullDescription": "<p>You are given an <code>n x n</code> binary matrix <code>grid</code> where <code>1</code> represents land and <code>0</code> represents water.</p>\n\n<p>An <strong>island</strong> is a 4-directionally connected group of <code>1</code>&#39;s not connected to any other <code>1</code>&#39;s. There are <strong>exactly two islands</strong> in <code>grid</code>.</p>\n\n<p>You may change <code>0</code>&#39;s to <code>1</code>&#39;s to connect the two islands to form <strong>one island</strong>.</p>\n\n<p>Return <em>the smallest number of </em><code>0</code><em>&#39;s you must flip to connect the two islands</em>.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> grid = [[0,1],[1,0]]\n<strong>Output:</strong> 1\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> grid = [[0,1,0],[0,0,0],[0,0,1]]\n<strong>Output:</strong> 2\n</pre>\n\n<p><strong class=\"example\">Example 3:</strong></p>\n\n<pre>\n<strong>Input:</strong> grid = [[1,1,1,1,1],[1,0,0,0,1],[1,0,1,0,1],[1,0,0,0,1],[1,1,1,1,1]]\n<strong>Output:</strong> 1\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>n == grid.length == grid[i].length</code></li>\n\t<li><code>2 &lt;= n &lt;= 100</code></li>\n\t<li><code>grid[i][j]</code> is either <code>0</code> or <code>1</code>.</li>\n\t<li>There are exactly two islands in <code>grid</code>.</li>\n</ul>\n"
 }

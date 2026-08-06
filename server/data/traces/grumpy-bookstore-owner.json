@@ -6,114 +6,142 @@
     "Array",
     "Sliding Window"
   ],
-  "description": "Maximize customers by using a technique to keep the owner from being grumpy for a window of k minutes.",
-  "target": 3,
-  "pseudocode": "1. satisfied = sum(customers[i] where grumpy[i] == 0)\n2. max_additional = 0, curr_additional = 0\n3. For i in 0 to k-1: if grumpy[i] == 1, curr_additional += customers[i]\n4. max_additional = curr_additional\n5. For i in k to n-1:\n6.   if grumpy[i] == 1, curr_additional += customers[i]\n7.   if grumpy[i-k] == 1, curr_additional -= customers[i-k]\n8.   max_additional = max(max_additional, curr_additional)\n9. return satisfied + max_additional",
+  "description": "Maximize satisfied customers by using a secret technique to negate grumpy minutes for a window of size 'minutes'.",
+  "target": 16,
+  "pseudocode": "1. Calculate base satisfied customers where grumpy[i] == 0.\n2. Use sliding window of size 'minutes' to calculate potential gains.\n3. Keep track of window sum of customers where grumpy[i] == 1.\n4. Update result with base + max_gain.",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Calculate base satisfied customers: customers[2] (1) + customers[3] (7) = 8",
+      "note": "Calculate initial satisfied customers (indices 0, 2, 4, 6): 1 + 1 + 1 + 7 = 10",
       "array": [
         1,
         0,
         1,
-        7
+        2,
+        1,
+        1,
+        7,
+        5
       ],
-      "i": 0,
-      "curr": 2
+      "visited": [
+        0,
+        2,
+        4,
+        6
+      ],
+      "i": 0
     },
     {
-      "codeLine": 3,
-      "note": "Initial window [0, 1] (k=2): grumpy indices 0 and 1. Added customers: 1 + 0 = 1",
+      "codeLine": 2,
+      "note": "Sliding window [0, 1, 2]: potential gain is customers[1] where grumpy[1] == 1, sum = 0",
       "array": [
         1,
         0,
         1,
-        7
+        2,
+        1,
+        1,
+        7,
+        5
       ],
-      "i": 1,
-      "curr": 0
+      "visited": [
+        1
+      ],
+      "i": 0
     },
     {
-      "codeLine": 4,
-      "note": "max_additional is now 1",
+      "codeLine": 2,
+      "note": "Sliding window [1, 2, 3]: potential gain is customers[1] + customers[3] = 0 + 2 = 2",
       "array": [
         1,
         0,
         1,
-        7
+        2,
+        1,
+        1,
+        7,
+        5
       ],
-      "curr": 1
+      "visited": [
+        1,
+        3
+      ],
+      "i": 1
     },
     {
-      "codeLine": 6,
-      "note": "Slide window to [1, 2]: Add customers[2] (grumpy is 1), curr_additional = 1 + 1 = 2",
+      "codeLine": 2,
+      "note": "Sliding window [2, 3, 4]: potential gain is customers[3] = 2",
       "array": [
         1,
         0,
         1,
-        7
+        2,
+        1,
+        1,
+        7,
+        5
       ],
-      "i": 2,
-      "curr": 1
+      "visited": [
+        3
+      ],
+      "i": 2
     },
     {
-      "codeLine": 7,
-      "note": "Slide window: Remove customers[0] (grumpy is 1), curr_additional = 2 - 1 = 1",
+      "codeLine": 2,
+      "note": "Sliding window [3, 4, 5]: potential gain is customers[3] + customers[5] = 2 + 1 = 3",
       "array": [
         1,
         0,
         1,
-        7
+        2,
+        1,
+        1,
+        7,
+        5
       ],
-      "i": 2,
-      "curr": 0
+      "visited": [
+        3,
+        5
+      ],
+      "i": 3
     },
     {
-      "codeLine": 8,
-      "note": "max_additional remains 1",
+      "codeLine": 2,
+      "note": "Sliding window [4, 5, 6]: potential gain is customers[5] = 1",
       "array": [
         1,
         0,
         1,
-        7
+        2,
+        1,
+        1,
+        7,
+        5
       ],
-      "curr": 1
+      "visited": [
+        5
+      ],
+      "i": 4
     },
     {
-      "codeLine": 6,
-      "note": "Slide window to [2, 3]: Add customers[3] (grumpy is 0), curr_additional = 1 + 0 = 1",
+      "codeLine": 2,
+      "note": "Sliding window [5, 6, 7]: potential gain is customers[5] + customers[7] = 1 + 5 = 6. Total = 10 + 6 = 16",
       "array": [
         1,
         0,
         1,
+        2,
+        1,
+        1,
+        7,
+        5
+      ],
+      "visited": [
+        5,
         7
       ],
-      "i": 3,
-      "curr": 2
-    },
-    {
-      "codeLine": 7,
-      "note": "Slide window: Remove customers[1] (grumpy is 0), curr_additional = 1 - 0 = 1",
-      "array": [
-        1,
-        0,
-        1,
-        7
-      ],
-      "i": 3,
-      "curr": 1
-    },
-    {
-      "codeLine": 9,
-      "note": "Total = 8 + 1 = 9",
-      "array": [
-        1,
-        0,
-        1,
-        7
-      ],
-      "curr": 8
+      "i": 5
     }
-  ]
+  ],
+  "fullDescription": "<p>There is a bookstore owner that has a store open for <code>n</code> minutes. You are given an integer array <code>customers</code> of length <code>n</code> where <code>customers[i]</code> is the number of the customers that enter the store at the start of the <code>i<sup>th</sup></code> minute and all those customers leave after the end of that minute.</p>\n\n<p>During certain minutes, the bookstore owner is grumpy. You are given a binary array grumpy where <code>grumpy[i]</code> is <code>1</code> if the bookstore owner is grumpy during the <code>i<sup>th</sup></code> minute, and is <code>0</code> otherwise.</p>\n\n<p>When the bookstore owner is grumpy, the customers entering during that minute are not <strong>satisfied</strong>. Otherwise, they are satisfied.</p>\n\n<p>The bookstore owner knows a secret technique to remain <strong>not grumpy</strong> for <code>minutes</code> consecutive minutes, but this technique can only be used <strong>once</strong>.</p>\n\n<p>Return the <strong>maximum</strong> number of customers that can be <em>satisfied</em> throughout the day.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<div class=\"example-block\">\n<p><strong>Input:</strong> <span class=\"example-io\">customers = [1,0,1,2,1,1,7,5], grumpy = [0,1,0,1,0,1,0,1], minutes = 3</span></p>\n\n<p><strong>Output:</strong> <span class=\"example-io\">16</span></p>\n\n<p><strong>Explanation:</strong></p>\n\n<p>The bookstore owner keeps themselves not grumpy for the last 3 minutes.</p>\n\n<p>The maximum number of customers that can be satisfied = 1 + 1 + 1 + 1 + 7 + 5 = 16.</p>\n</div>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<div class=\"example-block\">\n<p><strong>Input:</strong> <span class=\"example-io\">customers = [1], grumpy = [0], minutes = 1</span></p>\n\n<p><strong>Output:</strong> <span class=\"example-io\">1</span></p>\n</div>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>n == customers.length == grumpy.length</code></li>\n\t<li><code>1 &lt;= minutes &lt;= n &lt;= 2 * 10<sup>4</sup></code></li>\n\t<li><code>0 &lt;= customers[i] &lt;= 1000</code></li>\n\t<li><code>grumpy[i]</code> is either <code>0</code> or <code>1</code>.</li>\n</ul>\n"
 }

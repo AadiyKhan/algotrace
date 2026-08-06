@@ -4,123 +4,182 @@
   "type": "array",
   "tags": [
     "Array",
-    "Binary Search",
-    "Greedy"
+    "Binary Search"
   ],
-  "description": "Find the minimum weight capacity of a ship to transport all packages within D days.",
-  "target": 3,
-  "pseudocode": "1. low = max(weights), high = sum(weights)\n2. while low < high:\n3.   mid = (low + high) // 2\n4.   days = 1, current_load = 0\n5.   for w in weights:\n6.     if current_load + w > mid: days++, current_load = 0\n7.     current_load += w\n8.   if days <= D: high = mid\n9.   else: low = mid + 1\n10. return low",
+  "description": "Find the minimum ship capacity to ship all packages within D days using binary search on the range of possible capacities.",
+  "target": 15,
+  "pseudocode": "1. low = max(weights), high = sum(weights)\n2. while low < high:\n3.   mid = low + (high - low) / 2\n4.   if canShip(mid, days) <= days: high = mid\n5.   else: low = mid + 1\n6. return low",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize binary search bounds. weights = [3, 2, 2, 4, 1, 4], D = 3",
+      "note": "Initialize search range: low = 10 (max weight), high = 55 (sum weights).",
       "array": [
-        3,
-        2,
-        2,
-        4,
         1,
-        4
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
       ],
-      "curr": 3
+      "visited": []
     },
     {
       "codeLine": 3,
-      "note": "Calculate mid capacity: (4 + 16) / 2 = 10",
+      "note": "Calculate mid: (10 + 55) / 2 = 32. Check if capacity 32 works.",
       "array": [
-        3,
-        2,
-        2,
-        4,
         1,
-        4
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
       ],
-      "i": 10,
-      "curr": 4
+      "visited": []
+    },
+    {
+      "codeLine": 4,
+      "note": "Capacity 32 is sufficient (days needed: 2 <= 5). Adjust high to 32.",
+      "array": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "visited": []
+    },
+    {
+      "codeLine": 3,
+      "note": "New mid: (10 + 32) / 2 = 21. Check if capacity 21 works.",
+      "array": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "visited": []
+    },
+    {
+      "codeLine": 4,
+      "note": "Capacity 21 is sufficient (days needed: 3 <= 5). Adjust high to 21.",
+      "array": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "visited": []
+    },
+    {
+      "codeLine": 3,
+      "note": "New mid: (10 + 21) / 2 = 15. Check if capacity 15 works.",
+      "array": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "visited": []
+    },
+    {
+      "codeLine": 4,
+      "note": "Capacity 15 is sufficient (days needed: 5 <= 5). Adjust high to 15.",
+      "array": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "visited": []
+    },
+    {
+      "codeLine": 3,
+      "note": "New mid: (10 + 15) / 2 = 12. Check if capacity 12 works.",
+      "array": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "visited": []
     },
     {
       "codeLine": 5,
-      "note": "Simulate shipping with capacity 10",
+      "note": "Capacity 12 is insufficient (needs > 5 days). Set low = 13.",
       "array": [
-        3,
-        2,
-        2,
-        4,
         1,
-        4
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
       ],
-      "i": 10,
-      "curr": 0
+      "visited": []
     },
     {
       "codeLine": 6,
-      "note": "Packages [3, 2, 2] fit (sum 7 <= 10). Next is 4, 7+4 > 10, start new day.",
+      "note": "Convergence reached. Result is 15.",
       "array": [
-        3,
-        2,
-        2,
-        4,
         1,
-        4
-      ],
-      "i": 10,
-      "curr": 3
-    },
-    {
-      "codeLine": 8,
-      "note": "Days needed (2) <= D (3). Capacity 10 is feasible, try smaller.",
-      "array": [
+        2,
         3,
-        2,
-        2,
         4,
-        1,
-        4
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
       ],
-      "i": 10,
-      "curr": 2
-    },
-    {
-      "codeLine": 3,
-      "note": "New mid capacity: (4 + 10) / 2 = 7",
-      "array": [
-        3,
-        2,
-        2,
-        4,
-        1,
-        4
-      ],
-      "i": 7,
-      "curr": 4
-    },
-    {
-      "codeLine": 5,
-      "note": "Simulate shipping with capacity 7",
-      "array": [
-        3,
-        2,
-        2,
-        4,
-        1,
-        4
-      ],
-      "i": 7,
-      "curr": 0
-    },
-    {
-      "codeLine": 8,
-      "note": "Calculated days = 3. Days <= D (3) is true.",
-      "array": [
-        3,
-        2,
-        2,
-        4,
-        1,
-        4
-      ],
-      "i": 7,
-      "curr": 3
+      "visited": []
     }
-  ]
+  ],
+  "fullDescription": "<p>A conveyor belt has packages that must be shipped from one port to another within <code>days</code> days.</p>\n\n<p>The <code>i<sup>th</sup></code> package on the conveyor belt has a weight of <code>weights[i]</code>. Each day, we load the ship with packages on the conveyor belt (in the order given by <code>weights</code>). We may not load more weight than the maximum weight capacity of the ship.</p>\n\n<p>Return the least weight capacity of the ship that will result in all the packages on the conveyor belt being shipped within <code>days</code> days.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> weights = [1,2,3,4,5,6,7,8,9,10], days = 5\n<strong>Output:</strong> 15\n<strong>Explanation:</strong> A ship capacity of 15 is the minimum to ship all the packages in 5 days like this:\n1st day: 1, 2, 3, 4, 5\n2nd day: 6, 7\n3rd day: 8\n4th day: 9\n5th day: 10\n\nNote that the cargo must be shipped in the order given, so using a ship of capacity 14 and splitting the packages into parts like (2, 3, 4, 5), (1, 6, 7), (8), (9), (10) is not allowed.\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> weights = [3,2,2,4,1,4], days = 3\n<strong>Output:</strong> 6\n<strong>Explanation:</strong> A ship capacity of 6 is the minimum to ship all the packages in 3 days like this:\n1st day: 3, 2\n2nd day: 2, 4\n3rd day: 1, 4\n</pre>\n\n<p><strong class=\"example\">Example 3:</strong></p>\n\n<pre>\n<strong>Input:</strong> weights = [1,2,3,1,1], days = 4\n<strong>Output:</strong> 3\n<strong>Explanation:</strong>\n1st day: 1\n2nd day: 2\n3rd day: 3\n4th day: 1, 1\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= days &lt;= weights.length &lt;= 5 * 10<sup>4</sup></code></li>\n\t<li><code>1 &lt;= weights[i] &lt;= 500</code></li>\n</ul>\n"
 }

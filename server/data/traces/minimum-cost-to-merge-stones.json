@@ -7,58 +7,88 @@
     "Dynamic Programming",
     "Prefix Sum"
   ],
-  "description": "Merge k consecutive piles of stones until only one remains, minimizing the total cost.",
+  "description": "Find the minimum cost to merge n piles of stones into one pile by merging k consecutive piles at a time.",
   "target": 1,
-  "pseudocode": "1. If (n-1) % (k-1) != 0, return -1.\n2. Use DP table dp[i][j] for min cost to merge stones[i...j].\n3. For length len from k to n:\n4.   For i from 0 to n-len:\n5.     j = i + len - 1\n6.     dp[i][j] = min(dp[i][m] + dp[m+1][j]) for m in steps of (k-1)\n7.     If (j-i) % (k-1) == 0: dp[i][j] += sum(stones[i...j])",
+  "pseudocode": "1. Initialize DP table where dp[i][j] is min cost to merge stones[i...j]\n2. Calculate prefix sums for range sum queries\n3. Iterate over length len from k to n\n4. For each range [i, j], split into subproblems with step k-1\n5. Return dp[0][n-1] if possible, else -1",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Check if total reduction is possible: (4-1) % (2-1) == 0.",
+      "note": "Initialize DP table for stones [3, 2, 4, 1] with k=2",
       "array": [
         3,
         2,
         4,
         1
       ],
-      "curr": 4
+      "visited": []
+    },
+    {
+      "codeLine": 2,
+      "note": "Precomputing prefix sums: [0, 3, 5, 9, 10]",
+      "array": [
+        3,
+        2,
+        4,
+        1
+      ],
+      "visited": [
+        0,
+        1,
+        2,
+        3
+      ]
     },
     {
       "codeLine": 3,
-      "note": "Merging piles of length 2: [3,2], [2,4], [4,1].",
-      "array": [
-        3,
-        2,
-        4,
-        1
-      ],
-      "curr": 2
-    },
-    {
-      "codeLine": 6,
-      "note": "Merge [3,2] cost 5, current state [5, 4, 1].",
+      "note": "Merging length 2: [3, 2] cost 5",
       "array": [
         5,
         4,
         1
       ],
-      "curr": 3
+      "visited": [
+        0,
+        1
+      ]
     },
     {
-      "codeLine": 6,
-      "note": "Merge [4,1] cost 5, current state [5, 5].",
+      "codeLine": 4,
+      "note": "Merging length 2: [4, 1] cost 5",
       "array": [
         5,
         5
       ],
-      "curr": 4
+      "visited": [
+        1,
+        2
+      ]
     },
     {
-      "codeLine": 6,
-      "note": "Merge [5,5] cost 10, final pile [10]. Total cost = 5 + 5 + 10 = 20.",
+      "codeLine": 4,
+      "note": "Merging final length 2: [5, 5] cost 10, total 20",
       "array": [
         10
       ],
-      "curr": 5
+      "visited": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Minimum cost found: 20",
+      "array": [
+        10
+      ],
+      "visited": [
+        0,
+        1,
+        2,
+        3
+      ]
     }
-  ]
+  ],
+  "fullDescription": "<p>There are <code>n</code> piles of <code>stones</code> arranged in a row. The <code>i<sup>th</sup></code> pile has <code>stones[i]</code> stones.</p>\n\n<p>A move consists of merging exactly <code>k</code> <strong>consecutive</strong> piles into one pile, and the cost of this move is equal to the total number of stones in these <code>k</code> piles.</p>\n\n<p>Return <em>the minimum cost to merge all piles of stones into one pile</em>. If it is impossible, return <code>-1</code>.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> stones = [3,2,4,1], k = 2\n<strong>Output:</strong> 20\n<strong>Explanation:</strong> We start with [3, 2, 4, 1].\nWe merge [3, 2] for a cost of 5, and we are left with [5, 4, 1].\nWe merge [4, 1] for a cost of 5, and we are left with [5, 5].\nWe merge [5, 5] for a cost of 10, and we are left with [10].\nThe total cost was 20, and this is the minimum possible.\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> stones = [3,2,4,1], k = 3\n<strong>Output:</strong> -1\n<strong>Explanation:</strong> After any merge operation, there are 2 piles left, and we can&#39;t merge anymore.  So the task is impossible.\n</pre>\n\n<p><strong class=\"example\">Example 3:</strong></p>\n\n<pre>\n<strong>Input:</strong> stones = [3,5,1,2,6], k = 3\n<strong>Output:</strong> 25\n<strong>Explanation:</strong> We start with [3, 5, 1, 2, 6].\nWe merge [5, 1, 2] for a cost of 8, and we are left with [3, 8, 6].\nWe merge [3, 8, 6] for a cost of 17, and we are left with [17].\nThe total cost was 25, and this is the minimum possible.\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>n == stones.length</code></li>\n\t<li><code>1 &lt;= n &lt;= 30</code></li>\n\t<li><code>1 &lt;= stones[i] &lt;= 100</code></li>\n\t<li><code>2 &lt;= k &lt;= 30</code></li>\n</ul>\n"
 }

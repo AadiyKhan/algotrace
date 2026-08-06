@@ -7,55 +7,40 @@
     "Breadth-First Search",
     "Binary Tree"
   ],
-  "description": "Return the zigzag level order traversal of a binary tree's nodes' values.",
-  "pseudocode": "1. queue = [root]\n2. leftToRight = true\n3. while queue:\n4.   level = []\n5.   for i in range(len(queue)):\n6.     curr = queue.shift()\n7.     if leftToRight: level.push(curr.val) else: level.unshift(curr.val)\n8.     if curr.left: queue.push(curr.left)\n9.     if curr.right: queue.push(curr.right)\n10.  result.push(level)\n11.  leftToRight = !leftToRight",
+  "description": "Perform a zigzag level order traversal of a binary tree.",
+  "pseudocode": "1. Initialize queue with root\n2. While queue is not empty, get current level size\n3. Create current level list, iterate size times\n4. If left-to-right, append to list, else insert at index 0\n5. Add children to queue, toggle zigzag direction\n6. Return result list",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize queue with root node (1)",
+      "note": "Initialize queue with root node 3.",
       "treeNodes": [
         {
           "id": 0,
-          "val": 1,
+          "val": 3,
           "left": 1,
           "right": 2
         },
         {
           "id": 1,
-          "val": 2,
+          "val": 9,
           "left": null,
           "right": null
         },
         {
           "id": 2,
-          "val": 3,
-          "left": null,
-          "right": null
-        }
-      ],
-      "visited": [
-        0
-      ]
-    },
-    {
-      "codeLine": 6,
-      "note": "Process level 0 (root)",
-      "treeNodes": [
-        {
-          "id": 0,
-          "val": 1,
-          "left": 1,
-          "right": 2
+          "val": 20,
+          "left": 3,
+          "right": 4
         },
         {
-          "id": 1,
-          "val": 2,
+          "id": 3,
+          "val": 15,
           "left": null,
           "right": null
         },
         {
-          "id": 2,
-          "val": 3,
+          "id": 4,
+          "val": 7,
           "left": null,
           "right": null
         }
@@ -63,93 +48,153 @@
       "curr": 0
     },
     {
-      "codeLine": 8,
-      "note": "Add children 2 and 3 to queue",
+      "codeLine": 3,
+      "note": "Process level 0: [3]. Left-to-right order.",
       "treeNodes": [
         {
           "id": 0,
-          "val": 1,
+          "val": 3,
           "left": 1,
           "right": 2
         },
         {
           "id": 1,
-          "val": 2,
+          "val": 9,
           "left": null,
           "right": null
         },
         {
           "id": 2,
-          "val": 3,
+          "val": 20,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 3,
+          "val": 15,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 7,
           "left": null,
           "right": null
         }
       ],
-      "visited": [
-        0,
-        1,
-        2
-      ]
+      "curr": 0
     },
     {
-      "codeLine": 7,
-      "note": "Process level 1 (nodes 2, 3) in right-to-left order",
+      "codeLine": 5,
+      "note": "Process level 1: [9, 20]. Zigzag: Right-to-left order [20, 9].",
       "treeNodes": [
         {
           "id": 0,
-          "val": 1,
+          "val": 3,
           "left": 1,
           "right": 2
         },
         {
           "id": 1,
-          "val": 2,
+          "val": 9,
           "left": null,
           "right": null
         },
         {
           "id": 2,
-          "val": 3,
+          "val": 20,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 3,
+          "val": 15,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 7,
           "left": null,
           "right": null
         }
       ],
-      "curr": 2,
-      "visited": [
-        0,
-        1,
-        2
-      ]
+      "curr": 2
     },
     {
-      "codeLine": 7,
-      "note": "Add node 2 to level array",
+      "codeLine": 5,
+      "note": "Process level 2: [15, 7]. Left-to-right order [15, 7].",
       "treeNodes": [
         {
           "id": 0,
-          "val": 1,
+          "val": 3,
           "left": 1,
           "right": 2
         },
         {
           "id": 1,
-          "val": 2,
+          "val": 9,
           "left": null,
           "right": null
         },
         {
           "id": 2,
-          "val": 3,
+          "val": 20,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 3,
+          "val": 15,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 7,
           "left": null,
           "right": null
         }
       ],
-      "curr": 1,
-      "visited": [
-        0,
-        1,
-        2
-      ]
+      "curr": 3
+    },
+    {
+      "codeLine": 6,
+      "note": "Return result: [[3], [20, 9], [15, 7]].",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 3,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 9,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 20,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 3,
+          "val": 15,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 7,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": null
     }
-  ]
+  ],
+  "fullDescription": "<p>Given the <code>root</code> of a binary tree, return <em>the zigzag level order traversal of its nodes&#39; values</em>. (i.e., from left to right, then right to left for the next level and alternate between).</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2021/02/19/tree1.jpg\" style=\"width: 277px; height: 302px;\" />\n<pre>\n<strong>Input:</strong> root = [3,9,20,null,null,15,7]\n<strong>Output:</strong> [[3],[20,9],[15,7]]\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> root = [1]\n<strong>Output:</strong> [[1]]\n</pre>\n\n<p><strong class=\"example\">Example 3:</strong></p>\n\n<pre>\n<strong>Input:</strong> root = []\n<strong>Output:</strong> []\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li>The number of nodes in the tree is in the range <code>[0, 2000]</code>.</li>\n\t<li><code>-100 &lt;= Node.val &lt;= 100</code></li>\n</ul>\n"
 }

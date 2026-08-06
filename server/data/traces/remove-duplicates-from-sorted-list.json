@@ -5,41 +5,25 @@
   "tags": [
     "Linked List"
   ],
-  "description": "Remove all duplicate elements from a sorted linked list such that each element appears only once.",
-  "pseudocode": "1. current = head\n2. while current != null && current.next != null:\n3.   if current.val == current.next.val:\n4.     current.next = current.next.next\n5.   else:\n6.     current = current.next",
+  "description": "Remove all duplicate elements from a sorted linked list so each appears only once.",
+  "pseudocode": "1. current = head\n2. while current != null and current.next != null:\n3.   if current.val == current.next.val:\n4.     current.next = current.next.next\n5.   else:\n6.     current = current.next",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize current pointer at the head node.",
+      "note": "Initialize current pointer to the head of the list.",
       "nodes": [
         {
+          "id": 0,
           "val": 1,
           "next": 1
         },
         {
+          "id": 1,
           "val": 1,
           "next": 2
         },
         {
-          "val": 2,
-          "next": null
-        }
-      ],
-      "curr": 0
-    },
-    {
-      "codeLine": 2,
-      "note": "Check if current and next exist.",
-      "nodes": [
-        {
-          "val": 1,
-          "next": 1
-        },
-        {
-          "val": 1,
-          "next": 2
-        },
-        {
+          "id": 2,
           "val": 2,
           "next": null
         }
@@ -48,17 +32,20 @@
     },
     {
       "codeLine": 3,
-      "note": "Comparing current(1) and next(1). They are equal.",
+      "note": "Compare current node value (1) with next node value (1). They are equal.",
       "nodes": [
         {
+          "id": 0,
           "val": 1,
           "next": 1
         },
         {
+          "id": 1,
           "val": 1,
           "next": 2
         },
         {
+          "id": 2,
           "val": 2,
           "next": null
         }
@@ -67,28 +54,15 @@
     },
     {
       "codeLine": 4,
-      "note": "Duplicate found, skipping the next node.",
+      "note": "Remove the duplicate by pointing current.next to current.next.next.",
       "nodes": [
         {
+          "id": 0,
           "val": 1,
           "next": 2
         },
         {
-          "val": 2,
-          "next": null
-        }
-      ],
-      "curr": 0
-    },
-    {
-      "codeLine": 2,
-      "note": "Check if current and next exist again.",
-      "nodes": [
-        {
-          "val": 1,
-          "next": 2
-        },
-        {
+          "id": 2,
           "val": 2,
           "next": null
         }
@@ -97,13 +71,15 @@
     },
     {
       "codeLine": 3,
-      "note": "Comparing current(1) and next(2). They are different.",
+      "note": "Compare current node value (1) with next node value (2). They are different.",
       "nodes": [
         {
+          "id": 0,
           "val": 1,
           "next": 2
         },
         {
+          "id": 2,
           "val": 2,
           "next": null
         }
@@ -112,18 +88,38 @@
     },
     {
       "codeLine": 6,
-      "note": "Move current pointer forward.",
+      "note": "Move current pointer to next node.",
       "nodes": [
         {
+          "id": 0,
           "val": 1,
           "next": 2
         },
         {
+          "id": 2,
           "val": 2,
           "next": null
         }
       ],
-      "curr": 1
+      "curr": 2
+    },
+    {
+      "codeLine": 2,
+      "note": "Current.next is null, loop terminates.",
+      "nodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "next": 2
+        },
+        {
+          "id": 2,
+          "val": 2,
+          "next": null
+        }
+      ],
+      "curr": 2
     }
-  ]
+  ],
+  "fullDescription": "<p>Given the <code>head</code> of a sorted linked list, <em>delete all duplicates such that each element appears only once</em>. Return <em>the linked list <strong>sorted</strong> as well</em>.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2021/01/04/list1.jpg\" style=\"width: 302px; height: 242px;\" />\n<pre>\n<strong>Input:</strong> head = [1,1,2]\n<strong>Output:</strong> [1,2]\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2021/01/04/list2.jpg\" style=\"width: 542px; height: 222px;\" />\n<pre>\n<strong>Input:</strong> head = [1,1,2,3,3]\n<strong>Output:</strong> [1,2,3]\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li>The number of nodes in the list is in the range <code>[0, 300]</code>.</li>\n\t<li><code>-100 &lt;= Node.val &lt;= 100</code></li>\n\t<li>The list is guaranteed to be <strong>sorted</strong> in ascending order.</li>\n</ul>\n"
 }

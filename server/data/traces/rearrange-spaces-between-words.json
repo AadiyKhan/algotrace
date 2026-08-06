@@ -1,0 +1,61 @@
+{
+  "title": "Rearrange Spaces Between Words",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "String"
+  ],
+  "description": "Rearrange spaces in a string to be distributed equally between words, with leftover spaces at the end.",
+  "target": null,
+  "pseudocode": "1. words = text.split().filter(Boolean)\n2. spaceCount = (text.match(/ /g) || []).length\n3. gaps = words.length > 1 ? words.length - 1 : 1\n4. perGap = words.length > 1 ? Math.floor(spaceCount / gaps) : 0\n5. extra = words.length > 1 ? spaceCount % gaps : spaceCount\n6. result = words.join(' '.repeat(perGap)) + ' '.repeat(extra)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Split the input string into an array of individual words.",
+      "array": [
+        "hello",
+        "world"
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Count total spaces in original string ' hello   world ' (5 spaces).",
+      "array": [
+        "hello",
+        "world"
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Determine the number of gaps between words.",
+      "array": [
+        "hello",
+        "world"
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Calculate spaces per gap: 5 spaces / 1 gap = 5.",
+      "array": [
+        "hello",
+        "world"
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Calculate remaining spaces: 5 % 1 = 0.",
+      "array": [
+        "hello",
+        "world"
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Construct final string: 'hello' + '     ' + 'world'.",
+      "array": [
+        "hello",
+        "world"
+      ]
+    }
+  ]
+}

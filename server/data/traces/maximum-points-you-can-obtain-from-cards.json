@@ -1,5 +1,5 @@
 {
-  "title": "Maximum Points You Can Obtain From Cards",
+  "title": "Maximum Points You Can Obtain from Cards",
   "difficulty": "Medium",
   "type": "array",
   "tags": [
@@ -7,13 +7,13 @@
     "Sliding Window",
     "Prefix Sum"
   ],
-  "description": "Calculate the maximum score by picking k cards from either the beginning or the end of an array.",
-  "target": 3,
-  "pseudocode": "1: total = sum(cardPoints)\n2: windowSum = sum(cardPoints[0...n-k-1])\n3: minWindow = windowSum\n4: for i from 0 to k-1:\n5:   windowSum = windowSum - cardPoints[i] + cardPoints[n-k+i]\n6:   minWindow = min(minWindow, windowSum)\n7: return total - minWindow",
+  "description": "Calculate the maximum sum of k cards taken from either the beginning or the end using a sliding window on the complement subarray.",
+  "target": 12,
+  "pseudocode": "1. totalSum = sum(cardPoints)\n2. windowSize = n - k\n3. currentWindowSum = sum(first windowSize elements)\n4. minWindowSum = currentWindowSum\n5. for i from windowSize to n - 1:\n6.    currentWindowSum += cardPoints[i] - cardPoints[i - windowSize]\n7.    minWindowSum = min(minWindowSum, currentWindowSum)\n8. return totalSum - minWindowSum",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Calculate total sum of all cards (1+2+3+4+5+6+1 = 22).",
+      "note": "Calculate total sum of all cards: 1+2+3+4+5+6+1 = 22.",
       "array": [
         1,
         2,
@@ -23,11 +23,11 @@
         6,
         1
       ],
-      "curr": 1
+      "visited": []
     },
     {
-      "codeLine": 2,
-      "note": "Calculate initial window sum for n-k elements (n=7, k=3, window size=4). sum(1,2,3,4) = 10.",
+      "codeLine": 3,
+      "note": "Initialize window of size (7-3)=4. Sum of first 4: 1+2+3+4 = 10.",
       "array": [
         1,
         2,
@@ -37,26 +37,17 @@
         6,
         1
       ],
-      "curr": 7
-    },
-    {
-      "codeLine": 4,
-      "note": "Start sliding window to find minimum sum of middle elements.",
-      "i": 0,
-      "array": [
+      "i": 3,
+      "visited": [
+        0,
         1,
         2,
-        3,
-        4,
-        5,
-        6,
-        1
+        3
       ]
     },
     {
-      "codeLine": 5,
-      "note": "Slide window: remove 1, add 5. windowSum = 10 - 1 + 5 = 14.",
-      "i": 0,
+      "codeLine": 6,
+      "note": "Slide window: subtract 1, add 5. New sum: 10 - 1 + 5 = 14.",
       "array": [
         1,
         2,
@@ -66,12 +57,17 @@
         6,
         1
       ],
-      "curr": 1
+      "i": 4,
+      "visited": [
+        1,
+        2,
+        3,
+        4
+      ]
     },
     {
       "codeLine": 6,
-      "note": "Update minWindow = min(10, 14) = 10.",
-      "i": 0,
+      "note": "Slide window: subtract 2, add 6. New sum: 14 - 2 + 6 = 18.",
       "array": [
         1,
         2,
@@ -81,27 +77,17 @@
         6,
         1
       ],
-      "curr": 10
-    },
-    {
-      "codeLine": 5,
-      "note": "Slide window: remove 2, add 6. windowSum = 14 - 2 + 6 = 18.",
-      "i": 1,
-      "array": [
-        1,
+      "i": 5,
+      "visited": [
         2,
         3,
         4,
-        5,
-        6,
-        1
-      ],
-      "curr": 2
+        5
+      ]
     },
     {
       "codeLine": 6,
-      "note": "Update minWindow = min(10, 18) = 10.",
-      "i": 1,
+      "note": "Slide window: subtract 3, add 1. New sum: 18 - 3 + 1 = 16.",
       "array": [
         1,
         2,
@@ -111,12 +97,17 @@
         6,
         1
       ],
-      "curr": 10
+      "i": 6,
+      "visited": [
+        3,
+        4,
+        5,
+        6
+      ]
     },
     {
-      "codeLine": 5,
-      "note": "Slide window: remove 3, add 1. windowSum = 18 - 3 + 1 = 16.",
-      "i": 2,
+      "codeLine": 8,
+      "note": "Min window sum found is 10. Max score = Total (22) - MinWindow (10) = 12.",
       "array": [
         1,
         2,
@@ -126,36 +117,13 @@
         6,
         1
       ],
-      "curr": 3
-    },
-    {
-      "codeLine": 6,
-      "note": "Update minWindow = min(10, 16) = 10.",
-      "i": 2,
-      "array": [
+      "visited": [
+        0,
         1,
         2,
-        3,
-        4,
-        5,
-        6,
-        1
-      ],
-      "curr": 10
-    },
-    {
-      "codeLine": 7,
-      "note": "Result is total - minWindow = 22 - 10 = 12.",
-      "array": [
-        1,
-        2,
-        3,
-        4,
-        5,
-        6,
-        1
-      ],
-      "curr": 22
+        3
+      ]
     }
-  ]
+  ],
+  "fullDescription": "<p>There are several cards <strong>arranged in a row</strong>, and each card has an associated number of points. The points are given in the integer array <code>cardPoints</code>.</p>\n\n<p>In one step, you can take one card from the beginning or from the end of the row. You have to take exactly <code>k</code> cards.</p>\n\n<p>Your score is the sum of the points of the cards you have taken.</p>\n\n<p>Given the integer array <code>cardPoints</code> and the integer <code>k</code>, return the <em>maximum score</em> you can obtain.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> cardPoints = [1,2,3,4,5,6,1], k = 3\n<strong>Output:</strong> 12\n<strong>Explanation:</strong> After the first step, your score will always be 1. However, choosing the rightmost card first will maximize your total score. The optimal strategy is to take the three cards on the right, giving a final score of 1 + 6 + 5 = 12.\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> cardPoints = [2,2,2], k = 2\n<strong>Output:</strong> 4\n<strong>Explanation:</strong> Regardless of which two cards you take, your score will always be 4.\n</pre>\n\n<p><strong class=\"example\">Example 3:</strong></p>\n\n<pre>\n<strong>Input:</strong> cardPoints = [9,7,7,9,7,7,9], k = 7\n<strong>Output:</strong> 55\n<strong>Explanation:</strong> You have to take all the cards. Your score is the sum of points of all cards.\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= cardPoints.length &lt;= 10<sup>5</sup></code></li>\n\t<li><code>1 &lt;= cardPoints[i] &lt;= 10<sup>4</sup></code></li>\n\t<li><code>1 &lt;= k &lt;= cardPoints.length</code></li>\n</ul>\n"
 }

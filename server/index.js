@@ -1,10 +1,10 @@
-require('dotenv').config();
+require('dotenv').config({ path: require('path').join(__dirname, '.env') });
 const express = require('express');
 const cors = require('cors');
 const rateLimit = require('express-rate-limit');
 const fetch = require('node-fetch');
 const baseRegistry = require('./registry');
-const { generateTrace } = require('./llmService');
+const { generateTrace, chatWithContext } = require('./llmService');
 const fs = require('fs').promises;
 const path = require('path');
 
@@ -187,6 +187,22 @@ app.post('/api/generate', generateLimiter, async (req, res) => {
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: error.message || 'Failed to generate trace.' });
+  }
+});
+
+// Handle AI chat interactions
+app.post('/api/chat', async (req, res) => {
+  const { problemContext, stepContext, history, message } = req.body;
+  
+  if (!message) return res.status(400).json({ error: 'Missing message.' });
+  if (!problemContext || !stepContext) return res.status(400).json({ error: 'Missing context.' });
+
+  try {
+    const response = await chatWithContext(problemContext, stepContext, history || [], message);
+    res.json({ response });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: error.message || 'Failed to generate response.' });
   }
 });
 

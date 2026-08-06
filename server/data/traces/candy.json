@@ -6,41 +6,68 @@
     "Array",
     "Greedy"
   ],
-  "description": "Distribute candies to children with different ratings such that every child gets at least one candy and children with higher ratings get more than their neighbors.",
-  "target": null,
-  "pseudocode": "1: candies = Array(n).fill(1)\n2: for i = 1 to n-1: if ratings[i] > ratings[i-1]: candies[i] = candies[i-1] + 1\n3: for i = n-2 down to 0: if ratings[i] > ratings[i+1]: candies[i] = max(candies[i], candies[i+1] + 1)",
+  "description": "Distribute minimum candies to children such that those with higher ratings than neighbors get more candies.",
+  "target": 5,
+  "pseudocode": "1. Initialize candies array with 1s\n2. Forward pass: if ratings[i] > ratings[i-1], candies[i] = candies[i-1] + 1\n3. Backward pass: if ratings[i] > ratings[i+1], candies[i] = max(candies[i], candies[i+1] + 1)\n4. Return sum of candies array",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize all children with 1 candy.",
+      "note": "Initialize candies array with 1 for each child.",
+      "array": [
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Forward pass: ratings[1] (0) is not > ratings[0] (1).",
       "array": [
         1,
         1,
         1
       ],
-      "curr": 1
+      "i": 1
     },
     {
       "codeLine": 2,
-      "note": "Left-to-right pass: 1 > 0? No. 2 > 1? Yes, update index 2.",
+      "note": "Forward pass: ratings[2] (2) > ratings[1] (0), update candies[2].",
       "array": [
         1,
         1,
         2
       ],
-      "i": 2,
-      "curr": 1
+      "i": 2
     },
     {
       "codeLine": 3,
-      "note": "Right-to-left pass: 1 > 2? No. 0 > 1? No. No changes needed.",
+      "note": "Backward pass: ratings[1] (0) is not > ratings[2] (2).",
       "array": [
         1,
         1,
         2
       ],
-      "i": 0,
-      "curr": 1
+      "i": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Backward pass: ratings[0] (1) > ratings[1] (0), update candies[0] = max(1, 1+1).",
+      "array": [
+        2,
+        1,
+        2
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Final sum calculation: 2 + 1 + 2 = 5.",
+      "array": [
+        2,
+        1,
+        2
+      ]
     }
-  ]
+  ],
+  "fullDescription": "<p>There are <code>n</code> children standing in a line. Each child is assigned a rating value given in the integer array <code>ratings</code>.</p>\n\n<p>You are giving candies to these children subjected to the following requirements:</p>\n\n<ul>\n\t<li>Each child must have at least one candy.</li>\n\t<li>Children with a higher rating get more candies than their neighbors.</li>\n</ul>\n\n<p>Return <em>the minimum number of candies you need to have to distribute the candies to the children</em>.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> ratings = [1,0,2]\n<strong>Output:</strong> 5\n<strong>Explanation:</strong> You can allocate to the first, second and third child with 2, 1, 2 candies respectively.\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> ratings = [1,2,2]\n<strong>Output:</strong> 4\n<strong>Explanation:</strong> You can allocate to the first, second and third child with 1, 2, 1 candies respectively.\nThe third child gets 1 candy because it satisfies the above two conditions.\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>n == ratings.length</code></li>\n\t<li><code>1 &lt;= n &lt;= 2 * 10<sup>4</sup></code></li>\n\t<li><code>0 &lt;= ratings[i] &lt;= 2 * 10<sup>4</sup></code></li>\n</ul>\n"
 }

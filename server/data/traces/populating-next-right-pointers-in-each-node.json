@@ -3,72 +3,65 @@
   "difficulty": "Medium",
   "type": "tree",
   "tags": [
+    "Linked List",
     "Tree",
-    "Breadth-First Search",
-    "Binary Tree"
+    "Breadth-First Search"
   ],
-  "description": "Populate each node's next pointer to point to its next right node in a perfect binary tree.",
-  "pseudocode": "1: let leftmost = root\n2: while leftmost.left:\n3:   let curr = leftmost\n4:   while curr:\n5:     curr.left.next = curr.right\n6:     if curr.next: curr.right.next = curr.next.left\n7:     curr = curr.next\n8:   leftmost = leftmost.left",
+  "description": "Populate each next pointer to point to the node to its right in a perfect binary tree.",
+  "pseudocode": "1. If root is null, return root\n2. Set leftChild = root\n3. While leftChild.left exists:\n4.   curr = leftChild\n5.   While curr exists:\n6.     curr.left.next = curr.right\n7.     If curr.next exists: curr.right.next = curr.next.left\n8.     curr = curr.next\n9.   leftChild = leftChild.left",
   "steps": [
     {
-      "codeLine": 1,
-      "note": "Initialize leftmost pointer to root node (ID 0).",
+      "codeLine": 2,
+      "note": "Initialize leftChild at the root (1).",
       "treeNodes": [
         {
           "id": 0,
           "val": 1,
           "left": 1,
-          "right": 2,
-          "next": null
+          "right": 2
         },
         {
           "id": 1,
           "val": 2,
           "left": 3,
-          "right": 4,
-          "next": null
+          "right": 4
         },
         {
           "id": 2,
           "val": 3,
           "left": 5,
-          "right": 6,
-          "next": null
+          "right": 6
         },
         {
           "id": 3,
           "val": 4,
           "left": null,
-          "right": null,
-          "next": null
+          "right": null
         },
         {
           "id": 4,
           "val": 5,
           "left": null,
-          "right": null,
-          "next": null
+          "right": null
         },
         {
           "id": 5,
           "val": 6,
           "left": null,
-          "right": null,
-          "next": null
+          "right": null
         },
         {
           "id": 6,
           "val": 7,
           "left": null,
-          "right": null,
-          "next": null
+          "right": null
         }
       ],
       "curr": 0
     },
     {
-      "codeLine": 5,
-      "note": "Connect node 2's left child (4) to node 2's right child (5).",
+      "codeLine": 6,
+      "note": "Process level 0: link 2 and 3.",
       "treeNodes": [
         {
           "id": 0,
@@ -89,41 +82,52 @@
           "left": 5,
           "right": 6,
           "next": null
+        }
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Process level 1: link 4 to 5, and 5 to 6.",
+      "treeNodes": [
+        {
+          "id": 1,
+          "val": 2,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": 5,
+          "right": 6
         },
         {
           "id": 3,
           "val": 4,
-          "left": null,
-          "right": null,
           "next": 4
         },
         {
           "id": 4,
           "val": 5,
-          "left": null,
-          "right": null,
           "next": 5
         },
         {
           "id": 5,
           "val": 6,
-          "left": null,
-          "right": null,
           "next": 6
         },
         {
           "id": 6,
           "val": 7,
-          "left": null,
-          "right": null,
           "next": null
         }
       ],
-      "curr": 2
+      "curr": 1
     },
     {
-      "codeLine": 6,
-      "note": "Connect node 2's right child (5) to node 3's left child (6).",
+      "codeLine": 9,
+      "note": "Tree fully populated with next pointers.",
       "treeNodes": [
         {
           "id": 0,
@@ -134,14 +138,12 @@
         {
           "id": 1,
           "val": 2,
-          "left": 3,
-          "right": 4
+          "next": 2
         },
         {
           "id": 2,
           "val": 3,
-          "left": 5,
-          "right": 6
+          "next": null
         },
         {
           "id": 3,
@@ -160,54 +162,12 @@
         },
         {
           "id": 6,
-          "val": 7
+          "val": 7,
+          "next": null
         }
       ],
-      "curr": 2
-    },
-    {
-      "codeLine": 8,
-      "note": "Move to the next level of the tree.",
-      "treeNodes": [
-        {
-          "id": 0,
-          "val": 1,
-          "left": 1,
-          "right": 2
-        },
-        {
-          "id": 1,
-          "val": 2,
-          "left": 3,
-          "right": 4
-        },
-        {
-          "id": 2,
-          "val": 3,
-          "left": 5,
-          "right": 6
-        },
-        {
-          "id": 3,
-          "val": 4,
-          "next": 4
-        },
-        {
-          "id": 4,
-          "val": 5,
-          "next": 5
-        },
-        {
-          "id": 5,
-          "val": 6,
-          "next": 6
-        },
-        {
-          "id": 6,
-          "val": 7
-        }
-      ],
-      "curr": 2
+      "curr": 0
     }
-  ]
+  ],
+  "fullDescription": "<p>You are given a <strong>perfect binary tree</strong> where all leaves are on the same level, and every parent has two children. The binary tree has the following definition:</p>\n\n<pre>\nstruct Node {\n  int val;\n  Node *left;\n  Node *right;\n  Node *next;\n}\n</pre>\n\n<p>Populate each next pointer to point to its next right node. If there is no next right node, the next pointer should be set to <code>NULL</code>.</p>\n\n<p>Initially, all next pointers are set to <code>NULL</code>.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2019/02/14/116_sample.png\" style=\"width: 500px; height: 171px;\" />\n<pre>\n<strong>Input:</strong> root = [1,2,3,4,5,6,7]\n<strong>Output:</strong> [1,#,2,3,#,4,5,6,7,#]\n<strong>Explanation: </strong>Given the above perfect binary tree (Figure A), your function should populate each next pointer to point to its next right node, just like in Figure B. The serialized output is in level order as connected by the next pointers, with &#39;#&#39; signifying the end of each level.\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> root = []\n<strong>Output:</strong> []\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li>The number of nodes in the tree is in the range <code>[0, 2<sup>12</sup> - 1]</code>.</li>\n\t<li><code>-1000 &lt;= Node.val &lt;= 1000</code></li>\n</ul>\n\n<p>&nbsp;</p>\n<p><strong>Follow-up:</strong></p>\n\n<ul>\n\t<li>You may only use constant extra space.</li>\n\t<li>The recursive approach is fine. You may assume implicit stack space does not count as extra space for this problem.</li>\n</ul>\n"
 }

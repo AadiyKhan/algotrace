@@ -3,60 +3,133 @@
   "difficulty": "Medium",
   "type": "array",
   "tags": [
-    "Array",
+    "String",
     "Stack",
     "Greedy"
   ],
-  "description": "Given a non-negative integer represented as a string num and an integer k, remove k digits so that the number is the smallest possible.",
-  "target": "k=1",
-  "pseudocode": "1: stack = []\n2: for digit in num:\n3:   while k > 0 and stack and stack.top > digit:\n4:     stack.pop()\n5:     k--\n6:   stack.push(digit)\n7: return stack.join('')",
+  "description": "Remove k digits to make the resulting number the smallest possible using a monotonic stack.",
+  "target": "1219",
+  "pseudocode": "1. stack = []\n2. for digit in num:\n3.   while k > 0 and stack and stack.top > digit:\n4.     stack.pop(), k--\n5.   stack.push(digit)\n6. while k > 0: stack.pop(), k--\n7. return stack.join('')",
   "steps": [
     {
-      "codeLine": 1,
-      "note": "Initialize empty stack.",
-      "array": []
-    },
-    {
       "codeLine": 2,
-      "note": "Processing digit '1'",
+      "note": "Initialize stack with first digit '1'",
       "array": [
         "1"
       ],
-      "curr": 1
+      "visited": [
+        0
+      ],
+      "curr": 0
     },
     {
-      "codeLine": 2,
-      "note": "Processing digit '4'",
+      "codeLine": 3,
+      "note": "Compare '4' with stack top '1'. Since 4 > 1, push 4.",
       "array": [
         "1",
         "4"
       ],
-      "curr": 4
+      "visited": [
+        0,
+        1
+      ],
+      "curr": 1
     },
     {
-      "codeLine": 3,
-      "note": "Digit '3' is smaller than top '4', remove '4'",
+      "codeLine": 4,
+      "note": "Compare '3' with stack top '4'. Since 3 < 4, pop 4. k becomes 2.",
       "array": [
         "1"
       ],
-      "curr": 3
+      "visited": [
+        0
+      ],
+      "curr": 0
     },
     {
-      "codeLine": 6,
-      "note": "Push '3' onto stack",
+      "codeLine": 5,
+      "note": "Push '3' to stack.",
       "array": [
         "1",
         "3"
       ],
+      "visited": [
+        0,
+        2
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Compare '2' with stack top '3'. Since 2 < 3, pop 3. k becomes 1.",
+      "array": [
+        "1"
+      ],
+      "visited": [
+        0
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Push '2' to stack.",
+      "array": [
+        "1",
+        "2"
+      ],
+      "visited": [
+        0,
+        3
+      ],
       "curr": 3
     },
     {
-      "codeLine": 7,
-      "note": "Final result from stack",
+      "codeLine": 4,
+      "note": "Compare '2' with stack top '2'. Not smaller, push 2.",
       "array": [
         "1",
-        "3"
-      ]
+        "2",
+        "2"
+      ],
+      "visited": [
+        0,
+        3,
+        4
+      ],
+      "curr": 4
+    },
+    {
+      "codeLine": 5,
+      "note": "Process '1'. 1 < 2, pop 2. k becomes 0.",
+      "array": [
+        "1",
+        "2",
+        "1"
+      ],
+      "visited": [
+        0,
+        3,
+        5
+      ],
+      "curr": 5
+    },
+    {
+      "codeLine": 5,
+      "note": "Remaining digits '9' added to stack.",
+      "array": [
+        "1",
+        "2",
+        "1",
+        "9"
+      ],
+      "visited": [
+        0,
+        3,
+        5,
+        6
+      ],
+      "curr": 6
     }
-  ]
+  ],
+  "fullDescription": "<p>Given string num representing a non-negative integer <code>num</code>, and an integer <code>k</code>, return <em>the smallest possible integer after removing</em> <code>k</code> <em>digits from</em> <code>num</code>.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> num = &quot;1432219&quot;, k = 3\n<strong>Output:</strong> &quot;1219&quot;\n<strong>Explanation:</strong> Remove the three digits 4, 3, and 2 to form the new number 1219 which is the smallest.\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> num = &quot;10200&quot;, k = 1\n<strong>Output:</strong> &quot;200&quot;\n<strong>Explanation:</strong> Remove the leading 1 and the number is 200. Note that the output must not contain leading zeroes.\n</pre>\n\n<p><strong class=\"example\">Example 3:</strong></p>\n\n<pre>\n<strong>Input:</strong> num = &quot;10&quot;, k = 2\n<strong>Output:</strong> &quot;0&quot;\n<strong>Explanation:</strong> Remove all the digits from the number and it is left with nothing which is 0.\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= k &lt;= num.length &lt;= 10<sup>5</sup></code></li>\n\t<li><code>num</code> consists of only digits.</li>\n\t<li><code>num</code> does not have any leading zeros except for the zero itself.</li>\n</ul>\n"
 }

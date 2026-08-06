@@ -3,124 +3,391 @@
   "difficulty": "Hard",
   "type": "matrix",
   "tags": [
+    "Array",
+    "Depth-First Search",
+    "Breadth-First Search",
     "Matrix",
-    "DFS",
-    "Breadth-First Search"
+    "Simulation"
   ],
-  "description": "Contain the virus by building walls around infected regions to prevent them from spreading to uninfected cells.",
-  "pseudocode": "1. Find all connected components of viruses\n2. For each region, calculate the wall cost to contain and count the threats to uninfected cells\n3. Select the region that threatens the most uninfected cells\n4. Build walls around it and spread the remaining viruses",
+  "description": "Quarantine viral regions by building walls around the area threatening the most uninfected cells each day.",
+  "pseudocode": "1. While infected regions exist:\n2. Identify all disconnected virus regions using BFS/DFS.\n3. Find the region that threatens the most uninfected cells.\n4. Build walls around that region and add to total wall count.\n5. Let remaining virus regions spread to adjacent uninfected cells.",
   "steps": [
     {
-      "codeLine": 1,
-      "note": "Identifying infected regions. Region 1: (0,0), (0,1). Region 2: (2,2).",
+      "codeLine": 2,
+      "note": "Identifying two disconnected virus regions in the grid.",
       "matrix": [
         [
+          0,
           1,
-          1,
-          0
-        ],
-        [
           0,
           0,
-          0
-        ],
-        [
+          0,
           0,
           0,
           1
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
         ]
       ],
       "visited": [
         [
           0,
-          0
-        ],
-        [
-          0,
           1
-        ]
-      ]
-    },
-    {
-      "codeLine": 2,
-      "note": "Region 1 needs 4 walls and threatens 3 empty cells. Region 2 needs 4 walls and threatens 4 empty cells.",
-      "matrix": [
+        ],
         [
           1,
-          1,
-          0
-        ],
-        [
-          0,
-          0,
-          0
-        ],
-        [
-          0,
-          0,
           1
+        ],
+        [
+          0,
+          7
+        ],
+        [
+          1,
+          7
+        ],
+        [
+          2,
+          7
         ]
-      ],
-      "curr": [
-        2,
-        2
       ]
     },
     {
       "codeLine": 3,
-      "note": "Region 2 is chosen to be contained because it threatens more cells.",
+      "note": "Region 1 (left) threatens 4 cells; Region 2 (right) threatens 3 cells. Selecting Region 1.",
       "matrix": [
         [
+          0,
           1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          0,
           1,
-          0
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
         ],
         [
           0,
           0,
-          0
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
         ],
         [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "curr": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Building 5 walls around the left region.",
+      "matrix": [
+        [
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "visited": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "The virus from the right region spreads to adjacent cells.",
+      "matrix": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ]
+      ],
+      "visited": [
+        [
+          0,
+          7
+        ],
+        [
+          1,
+          7
+        ],
+        [
+          2,
+          7
+        ],
+        [
+          0,
+          6
+        ],
+        [
+          1,
+          6
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          3,
+          7
+        ]
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Only one region remains, threatening 5 uninfected cells.",
+      "matrix": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
           0,
           0,
           1
         ]
       ],
       "curr": [
-        2,
-        2
+        0,
+        7
       ]
     },
     {
       "codeLine": 4,
-      "note": "Building walls around Region 2 and spreading Region 1 to neighbors.",
+      "note": "Building 5 walls around the remaining region. Total walls: 10.",
       "matrix": [
         [
-          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
           1,
           1
         ],
         [
           0,
+          0,
+          0,
+          0,
+          0,
+          0,
           1,
-          0
+          1
         ],
         [
           0,
           0,
-          -1
+          0,
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
         ]
       ],
       "visited": [
         [
           0,
-          2
+          6
         ],
         [
           1,
-          1
+          6
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          0,
+          7
+        ],
+        [
+          1,
+          7
+        ],
+        [
+          2,
+          7
+        ],
+        [
+          3,
+          7
         ]
       ]
     }
-  ]
+  ],
+  "fullDescription": "<p>A virus is spreading rapidly, and your task is to quarantine the infected area by installing walls.</p>\n\n<p>The world is modeled as an <code>m x n</code> binary grid <code>isInfected</code>, where <code>isInfected[i][j] == 0</code> represents uninfected cells, and <code>isInfected[i][j] == 1</code> represents cells contaminated with the virus. A wall (and only one wall) can be installed between any two <strong>4-directionally</strong> adjacent cells, on the shared boundary.</p>\n\n<p>Every night, the virus spreads to all neighboring cells in all four directions unless blocked by a wall. Resources are limited. Each day, you can install walls around only one region (i.e., the affected area (continuous block of infected cells) that threatens the most uninfected cells the following night). There <strong>will never be a tie</strong>.</p>\n\n<p>Return <em>the number of walls used to quarantine all the infected regions</em>. If the world will become fully infected, return the number of walls used.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2021/06/01/virus11-grid.jpg\" style=\"width: 500px; height: 255px;\" />\n<pre>\n<strong>Input:</strong> isInfected = [[0,1,0,0,0,0,0,1],[0,1,0,0,0,0,0,1],[0,0,0,0,0,0,0,1],[0,0,0,0,0,0,0,0]]\n<strong>Output:</strong> 10\n<strong>Explanation:</strong> There are 2 contaminated regions.\nOn the first day, add 5 walls to quarantine the viral region on the left. The board after the virus spreads is:\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2021/06/01/virus12edited-grid.jpg\" style=\"width: 500px; height: 257px;\" />\nOn the second day, add 5 walls to quarantine the viral region on the right. The virus is fully contained.\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2021/06/01/virus13edited-grid.jpg\" style=\"width: 500px; height: 261px;\" />\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2021/06/01/virus2-grid.jpg\" style=\"width: 653px; height: 253px;\" />\n<pre>\n<strong>Input:</strong> isInfected = [[1,1,1],[1,0,1],[1,1,1]]\n<strong>Output:</strong> 4\n<strong>Explanation:</strong> Even though there is only one cell saved, there are 4 walls built.\nNotice that walls are only built on the shared boundary of two different cells.\n</pre>\n\n<p><strong class=\"example\">Example 3:</strong></p>\n\n<pre>\n<strong>Input:</strong> isInfected = [[1,1,1,0,0,0,0,0,0],[1,0,1,0,1,1,1,1,1],[1,1,1,0,0,0,0,0,0]]\n<strong>Output:</strong> 13\n<strong>Explanation:</strong> The region on the left only builds two new walls.\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>m ==&nbsp;isInfected.length</code></li>\n\t<li><code>n ==&nbsp;isInfected[i].length</code></li>\n\t<li><code>1 &lt;= m, n &lt;= 50</code></li>\n\t<li><code>isInfected[i][j]</code> is either <code>0</code> or <code>1</code>.</li>\n\t<li>There is always a contiguous viral region throughout the described process that will <strong>infect strictly more uncontaminated squares</strong> in the next round.</li>\n</ul>\n"
 }

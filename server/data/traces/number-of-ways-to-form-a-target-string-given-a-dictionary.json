@@ -1,0 +1,99 @@
+{
+  "title": "Number of Ways to Form a Target String Given a Dictionary",
+  "difficulty": "Hard",
+  "type": "matrix",
+  "tags": [
+    "Array",
+    "String",
+    "Dynamic Programming"
+  ],
+  "description": "Calculate the number of ways to form target string using characters from given dictionary at specific indices.",
+  "target": "aba",
+  "pseudocode": "1. count[char][index] = frequency of char at index in dictionary\n2. dp[i][j] = ways to form target[i:] using columns [j:]\n3. if j == m: return 0\n4. ways = dp[i][j+1] (skip current column)\n5. ways += count[target[i]][j] * dp[i+1][j+1] (use current column)\n6. return ways",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Precomputing character frequencies for each column index",
+      "matrix": [
+        [
+          1,
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          0
+        ]
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Initializing DP table with target length 3 and dictionary length 3",
+      "matrix": [
+        [
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Skipping column 0 for target 'a'",
+      "curr": [
+        0,
+        0
+      ],
+      "i": 0,
+      "j": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Matching 'a' at column 0, multiply count by sub-problem",
+      "curr": [
+        0,
+        0
+      ],
+      "i": 0,
+      "j": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Final DP cell reached, returning total permutations",
+      "matrix": [
+        [
+          4,
+          2,
+          1,
+          1
+        ],
+        [
+          0,
+          1,
+          1,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          0
+        ]
+      ]
+    }
+  ]
+}

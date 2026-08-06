@@ -1,0 +1,87 @@
+{
+  "title": "Maximize Grid Happiness",
+  "difficulty": "Hard",
+  "type": "matrix",
+  "tags": [
+    "Dynamic Programming",
+    "Bitmask"
+  ],
+  "description": "Maximize happiness in a grid by placing introverts and extroverts based on neighbors.",
+  "target": 0,
+  "pseudocode": "1. for r in rows:\n2.   for c in cols:\n3.     for mask in states:\n4.       dp[r][c][mask] = max(happiness)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initializing DP state for a 2x2 grid.",
+      "matrix": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Placing an introvert at (0,0), initial happiness 120.",
+      "matrix": [
+        [
+          120,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "curr": [
+        0,
+        0
+      ],
+      "i": 0,
+      "j": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Placing an extrovert at (0,1), adjusting based on introvert neighbor.",
+      "matrix": [
+        [
+          120,
+          40
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "curr": [
+        0,
+        1
+      ],
+      "i": 0,
+      "j": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Final state calculation for 2x2 grid.",
+      "matrix": [
+        [
+          120,
+          40
+        ],
+        [
+          40,
+          120
+        ]
+      ],
+      "curr": [
+        1,
+        1
+      ]
+    }
+  ]
+}

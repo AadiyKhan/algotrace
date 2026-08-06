@@ -1,0 +1,124 @@
+{
+  "title": "Largest Substring Between Two Equal Characters",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "String",
+    "Hash Table"
+  ],
+  "description": "Find the maximum length of a substring between two equal characters, excluding the characters themselves.",
+  "target": null,
+  "pseudocode": "1. let map = {}\n2. let maxLen = -1\n3. for i from 0 to s.length - 1:\n4.   if s[i] in map:\n5.     maxLen = max(maxLen, i - map[s[i]] - 1)\n6.   else:\n7.     map[s[i]] = i",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize map to store first occurrence indices",
+      "array": [
+        "a",
+        "b",
+        "c",
+        "a"
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "First iteration: i = 0, char = 'a'",
+      "array": [
+        "a",
+        "b",
+        "c",
+        "a"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 7,
+      "note": "Store index of 'a': map['a'] = 0",
+      "array": [
+        "a",
+        "b",
+        "c",
+        "a"
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Second iteration: i = 1, char = 'b'",
+      "array": [
+        "a",
+        "b",
+        "c",
+        "a"
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "Store index of 'b': map['b'] = 1",
+      "array": [
+        "a",
+        "b",
+        "c",
+        "a"
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Third iteration: i = 2, char = 'c'",
+      "array": [
+        "a",
+        "b",
+        "c",
+        "a"
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 7,
+      "note": "Store index of 'c': map['c'] = 2",
+      "array": [
+        "a",
+        "b",
+        "c",
+        "a"
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Fourth iteration: i = 3, char = 'a'",
+      "array": [
+        "a",
+        "b",
+        "c",
+        "a"
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 4,
+      "note": "'a' is in map at index 0",
+      "array": [
+        "a",
+        "b",
+        "c",
+        "a"
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 5,
+      "note": "Calculate length: 3 - 0 - 1 = 2. maxLen = 2",
+      "array": [
+        "a",
+        "b",
+        "c",
+        "a"
+      ],
+      "i": 3
+    }
+  ]
+}

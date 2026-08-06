@@ -1,0 +1,63 @@
+{
+  "title": "Sort Array By Increasing Frequency",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "Sorting"
+  ],
+  "description": "Sort an array of integers based on the frequency of elements in increasing order; if frequencies are the same, sort by value in descending order.",
+  "target": null,
+  "pseudocode": "1. Map frequencies of all numbers\n2. Sort array using custom comparator:\n3. If freq[a] != freq[b], return freq[a] - freq[b]\n4. Else, return b - a",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Count frequencies: {1: 1, 2: 3, 3: 2}",
+      "array": [
+        1,
+        2,
+        2,
+        2,
+        3,
+        3
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Comparing 1 (freq 1) and 2 (freq 3). Since 1 < 3, keep order.",
+      "array": [
+        1,
+        2,
+        2,
+        2,
+        3,
+        3
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Comparing 2 (freq 3) and 3 (freq 2). Since 3 > 2, swap 3s before 2s.",
+      "array": [
+        1,
+        3,
+        3,
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Final sorted array based on freq then descending value.",
+      "array": [
+        1,
+        3,
+        3,
+        2,
+        2,
+        2
+      ]
+    }
+  ]
+}

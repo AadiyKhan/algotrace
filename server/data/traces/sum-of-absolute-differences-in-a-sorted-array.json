@@ -1,0 +1,104 @@
+{
+  "title": "Sum of Absolute Differences in a Sorted Array",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Math",
+    "Prefix Sum"
+  ],
+  "description": "Calculate the sum of absolute differences between each element and all other elements in a sorted array using prefix sums.",
+  "target": null,
+  "pseudocode": "1. totalSum = sum(nums)\n2. leftSum = 0\n3. for i from 0 to n-1:\n4.   rightSum = totalSum - leftSum - nums[i]\n5.   result[i] = (i * nums[i] - leftSum) + (rightSum - (n - 1 - i) * nums[i])\n6.   leftSum += nums[i]",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Calculate total sum: 1 + 4 + 6 = 11",
+      "array": [
+        1,
+        4,
+        6
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Start loop for index i=0, nums[i]=1",
+      "array": [
+        1,
+        4,
+        6
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Calculate result[0]: (0*1 - 0) + (10 - 2*1) = 8",
+      "array": [
+        1,
+        4,
+        6
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Update leftSum to 1",
+      "array": [
+        1,
+        4,
+        6
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Start loop for index i=1, nums[i]=4",
+      "array": [
+        1,
+        4,
+        6
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Calculate result[1]: (1*4 - 1) + (6 - 1*4) = 3 + 2 = 5",
+      "array": [
+        1,
+        4,
+        6
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Update leftSum to 5",
+      "array": [
+        1,
+        4,
+        6
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Start loop for index i=2, nums[i]=6",
+      "array": [
+        1,
+        4,
+        6
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 5,
+      "note": "Calculate result[2]: (2*6 - 5) + (0 - 0*6) = 7",
+      "array": [
+        1,
+        4,
+        6
+      ],
+      "i": 2
+    }
+  ]
+}

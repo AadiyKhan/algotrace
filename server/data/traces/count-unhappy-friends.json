@@ -1,0 +1,43 @@
+{
+  "title": "Count Unhappy Friends",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Simulation"
+  ],
+  "description": "Find the number of unhappy friends given preference lists and current pairings.",
+  "target": null,
+  "pseudocode": "1. Create a rank matrix where rank[i][j] is the preference rank of j for i.\n2. Iterate through each pair (x, y) where x is paired with y.\n3. For each x, check all friends u that x prefers over y.\n4. If u prefers x over their current partner v, x is unhappy.",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize rank matrix for constant time lookups",
+      "array": [
+        1,
+        0,
+        3,
+        2
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Check pair (x=0, y=1)",
+      "i": 0,
+      "j": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Friend 0 checks preference list: prefers 2 over 1",
+      "i": 0,
+      "curr": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Friend 2's partner is 3. 2 prefers 0 over 3, so 0 is unhappy",
+      "i": 0,
+      "curr": 2,
+      "prev": 3
+    }
+  ]
+}

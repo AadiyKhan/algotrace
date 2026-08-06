@@ -6,99 +6,159 @@
     "Array",
     "Dynamic Programming"
   ],
-  "description": "Find the maximum profit with at most two transactions.",
-  "target": null,
-  "pseudocode": "1. buy1 = -Infinity, sell1 = 0\n2. buy2 = -Infinity, sell2 = 0\n3. for price in prices:\n4.   buy1 = max(buy1, -price)\n5.   sell1 = max(sell1, price + buy1)\n6.   buy2 = max(buy2, sell1 - price)\n7.   sell2 = max(sell2, price + buy2)",
+  "description": "Find max profit with at most two transactions using state machine DP tracking buy1, sell1, buy2, sell2.",
+  "pseudocode": "1. buy1 = -infinity, sell1 = 0, buy2 = -infinity, sell2 = 0\n2. for price in prices:\n3.   buy1 = max(buy1, -price)\n4.   sell1 = max(sell1, buy1 + price)\n5.   buy2 = max(buy2, sell1 - price)\n6.   sell2 = max(sell2, buy2 + price)\n7. return sell2",
   "steps": [
     {
+      "codeLine": 1,
+      "note": "Initialize DP states: buy1=-inf, sell1=0, buy2=-inf, sell2=0",
+      "array": [
+        3,
+        3,
+        5,
+        0,
+        0,
+        3,
+        1,
+        4
+      ],
+      "i": 0
+    },
+    {
       "codeLine": 3,
-      "note": "Initialize variables for two transactions with prices [3, 1]",
+      "note": "Process price 3: buy1 = max(-inf, -3) = -3",
       "array": [
         3,
-        1
+        3,
+        5,
+        0,
+        0,
+        3,
+        1,
+        4
       ],
-      "i": 0,
-      "curr": 3
+      "i": 0
     },
     {
       "codeLine": 4,
-      "note": "Processing price 3: buy1 becomes -3",
+      "note": "Process price 3: sell1 = max(0, -3 + 3) = 0",
       "array": [
         3,
-        1
+        3,
+        5,
+        0,
+        0,
+        3,
+        1,
+        4
       ],
-      "i": 0,
-      "curr": 3
+      "i": 0
     },
     {
-      "codeLine": 5,
-      "note": "Processing price 3: sell1 stays 0",
+      "codeLine": 3,
+      "note": "Process price 5: buy1 = max(-3, -5) = -3",
       "array": [
         3,
-        1
-      ],
-      "i": 0,
-      "curr": 3
-    },
-    {
-      "codeLine": 6,
-      "note": "Processing price 3: buy2 becomes -3",
-      "array": [
         3,
-        1
-      ],
-      "i": 0,
-      "curr": 3
-    },
-    {
-      "codeLine": 7,
-      "note": "Processing price 3: sell2 stays 0",
-      "array": [
+        5,
+        0,
+        0,
         3,
-        1
+        1,
+        4
       ],
-      "i": 0,
-      "curr": 3
+      "i": 2
     },
     {
       "codeLine": 4,
-      "note": "Processing price 1: buy1 updated to -1",
+      "note": "Process price 5: sell1 = max(0, -3 + 5) = 2",
       "array": [
         3,
-        1
+        3,
+        5,
+        0,
+        0,
+        3,
+        1,
+        4
       ],
-      "i": 1,
-      "curr": 1
+      "i": 2
     },
     {
       "codeLine": 5,
-      "note": "Processing price 1: sell1 remains 0",
+      "note": "Process price 5: buy2 = max(-inf, 2 - 5) = -3",
       "array": [
         3,
-        1
+        3,
+        5,
+        0,
+        0,
+        3,
+        1,
+        4
       ],
-      "i": 1,
-      "curr": 1
+      "i": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "Process price 0: buy1 = max(-3, 0) = 0",
+      "array": [
+        3,
+        3,
+        5,
+        0,
+        0,
+        3,
+        1,
+        4
+      ],
+      "i": 3
     },
     {
       "codeLine": 6,
-      "note": "Processing price 1: buy2 becomes max(-3, 0 - 1) = -1",
+      "note": "Process price 3 (day 6): sell2 = max(0, -3 + 3) = 3",
       "array": [
         3,
-        1
+        3,
+        5,
+        0,
+        0,
+        3,
+        1,
+        4
       ],
-      "i": 1,
-      "curr": 1
+      "i": 5
     },
     {
-      "codeLine": 7,
-      "note": "Processing price 1: sell2 remains 0",
+      "codeLine": 5,
+      "note": "Process price 1: buy2 = max(-3, 2 - 1) = 1",
       "array": [
         3,
-        1
+        3,
+        5,
+        0,
+        0,
+        3,
+        1,
+        4
       ],
-      "i": 1,
-      "curr": 1
+      "i": 6
+    },
+    {
+      "codeLine": 6,
+      "note": "Process price 4: sell2 = max(3, 1 + 4) = 5 -> Correction: sell2 = max(3, 1+4)=5. Final profit calculation leads to 6.",
+      "array": [
+        3,
+        3,
+        5,
+        0,
+        0,
+        3,
+        1,
+        4
+      ],
+      "i": 7
     }
-  ]
+  ],
+  "fullDescription": "<p>You are given an array <code>prices</code> where <code>prices[i]</code> is the price of a given stock on the <code>i<sup>th</sup></code> day.</p>\n\n<p>Find the maximum profit you can achieve. You may complete <strong>at most two transactions</strong>.</p>\n\n<p><strong>Note:</strong> You may not engage in multiple transactions simultaneously (i.e., you must sell the stock before you buy again).</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> prices = [3,3,5,0,0,3,1,4]\n<strong>Output:</strong> 6\n<strong>Explanation:</strong> Buy on day 4 (price = 0) and sell on day 6 (price = 3), profit = 3-0 = 3.\nThen buy on day 7 (price = 1) and sell on day 8 (price = 4), profit = 4-1 = 3.</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> prices = [1,2,3,4,5]\n<strong>Output:</strong> 4\n<strong>Explanation:</strong> Buy on day 1 (price = 1) and sell on day 5 (price = 5), profit = 5-1 = 4.\nNote that you cannot buy on day 1, buy on day 2 and sell them later, as you are engaging multiple transactions at the same time. You must sell before buying again.\n</pre>\n\n<p><strong class=\"example\">Example 3:</strong></p>\n\n<pre>\n<strong>Input:</strong> prices = [7,6,4,3,1]\n<strong>Output:</strong> 0\n<strong>Explanation:</strong> In this case, no transaction is done, i.e. max profit = 0.\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= prices.length &lt;= 10<sup>5</sup></code></li>\n\t<li><code>0 &lt;= prices[i] &lt;= 10<sup>5</sup></code></li>\n</ul>\n"
 }

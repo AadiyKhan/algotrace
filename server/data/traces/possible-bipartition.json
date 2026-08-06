@@ -4,15 +4,15 @@
   "type": "graph",
   "tags": [
     "Graph Theory",
-    "Depth-First Search"
+    "Graph Coloring"
   ],
   "description": "Determine if a graph can be bipartite using 2-coloring.",
-  "target": true,
-  "pseudocode": "1. Build adjacency list from dislikes\n2. Initialize colors array with 0\n3. For each node 1 to n:\n4. If uncolored, DFS and color with 1\n5. If neighbor has same color, return false\n6. Return true",
+  "target": null,
+  "pseudocode": "1. Build adjacency list from dislikes\n2. Create colors array initialized to 0\n3. For each node 1 to n:\n4. If color is 0, start BFS/DFS, color node 1\n5. For each neighbor, if uncolored, color with opposite\n6. If neighbor has same color, return false\n7. Return true",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Building adjacency list: 1:[2,3], 2:[1,4], 3:[1], 4:[2]",
+      "note": "Initialize adjacency list: {1: [2, 3], 2: [1, 4], 3: [1], 4: [2]}",
       "graphNodes": [
         {
           "id": 1,
@@ -46,15 +46,15 @@
         ]
       ],
       "visited": [],
-      "curr": 1
+      "curr": null
     },
     {
       "codeLine": 4,
-      "note": "Start DFS from node 1, color 1",
+      "note": "Start BFS from node 1, color node 1 as color 1",
       "graphNodes": [
         {
           "id": 1,
-          "val": "1(C:1)"
+          "val": "1(C1)"
         },
         {
           "id": 2,
@@ -85,23 +85,24 @@
       ],
       "visited": [
         1
-      ]
+      ],
+      "curr": 1
     },
     {
       "codeLine": 5,
-      "note": "Color neighbor 2 with -1 (opposite of 1)",
+      "note": "Visit neighbors of 1: color node 2 and 3 as color 2",
       "graphNodes": [
         {
           "id": 1,
-          "val": "1(C:1)"
+          "val": "1(C1)"
         },
         {
           "id": 2,
-          "val": "2(C:-1)"
+          "val": "2(C2)"
         },
         {
           "id": 3,
-          "val": 3
+          "val": "3(C2)"
         },
         {
           "id": 4,
@@ -124,111 +125,30 @@
       ],
       "visited": [
         1,
-        2
-      ]
-    },
-    {
-      "codeLine": 5,
-      "note": "Color neighbor 4 with 1 (opposite of 2)",
-      "graphNodes": [
-        {
-          "id": 1,
-          "val": "1(C:1)"
-        },
-        {
-          "id": 2,
-          "val": "2(C:-1)"
-        },
-        {
-          "id": 3,
-          "val": 3
-        },
-        {
-          "id": 4,
-          "val": "4(C:1)"
-        }
-      ],
-      "graphEdges": [
-        [
-          1,
-          2
-        ],
-        [
-          1,
-          3
-        ],
-        [
-          2,
-          4
-        ]
-      ],
-      "visited": [
-        1,
         2,
-        4
-      ]
-    },
-    {
-      "codeLine": 5,
-      "note": "Backtrack, color neighbor 3 with -1 (opposite of 1)",
-      "graphNodes": [
-        {
-          "id": 1,
-          "val": "1(C:1)"
-        },
-        {
-          "id": 2,
-          "val": "2(C:-1)"
-        },
-        {
-          "id": 3,
-          "val": "3(C:-1)"
-        },
-        {
-          "id": 4,
-          "val": "4(C:1)"
-        }
-      ],
-      "graphEdges": [
-        [
-          1,
-          2
-        ],
-        [
-          1,
-          3
-        ],
-        [
-          2,
-          4
-        ]
-      ],
-      "visited": [
-        1,
-        2,
-        4,
         3
-      ]
+      ],
+      "curr": 2
     },
     {
-      "codeLine": 6,
-      "note": "All nodes colored successfully, return true",
+      "codeLine": 5,
+      "note": "Visit neighbor of 2: color node 4 as color 1",
       "graphNodes": [
         {
           "id": 1,
-          "val": "1(C:1)"
+          "val": "1(C1)"
         },
         {
           "id": 2,
-          "val": "2(C:-1)"
+          "val": "2(C2)"
         },
         {
           "id": 3,
-          "val": "3(C:-1)"
+          "val": "3(C2)"
         },
         {
           "id": 4,
-          "val": "4(C:1)"
+          "val": "4(C1)"
         }
       ],
       "graphEdges": [
@@ -250,7 +170,52 @@
         2,
         3,
         4
-      ]
+      ],
+      "curr": 4
+    },
+    {
+      "codeLine": 7,
+      "note": "No conflicts found. Return true.",
+      "graphNodes": [
+        {
+          "id": 1,
+          "val": "1(C1)"
+        },
+        {
+          "id": 2,
+          "val": "2(C2)"
+        },
+        {
+          "id": 3,
+          "val": "3(C2)"
+        },
+        {
+          "id": 4,
+          "val": "4(C1)"
+        }
+      ],
+      "graphEdges": [
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          4
+        ]
+      ],
+      "visited": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "curr": 4
     }
-  ]
+  ],
+  "fullDescription": "<p>We want to split a group of <code>n</code> people (labeled from <code>1</code> to <code>n</code>) into two groups of <strong>any size</strong>. Each person may dislike some other people, and they should not go into the same group.</p>\n\n<p>Given the integer <code>n</code> and the array <code>dislikes</code> where <code>dislikes[i] = [a<sub>i</sub>, b<sub>i</sub>]</code> indicates that the person labeled <code>a<sub>i</sub></code> does not like the person labeled <code>b<sub>i</sub></code>, return <code>true</code> <em>if it is possible to split everyone into two groups in this way</em>.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> n = 4, dislikes = [[1,2],[1,3],[2,4]]\n<strong>Output:</strong> true\n<strong>Explanation:</strong> The first group has [1,4], and the second group has [2,3].\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> n = 3, dislikes = [[1,2],[1,3],[2,3]]\n<strong>Output:</strong> false\n<strong>Explanation:</strong> We need at least 3 groups to divide them. We cannot put them in two groups.\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= n &lt;= 2000</code></li>\n\t<li><code>0 &lt;= dislikes.length &lt;= 10<sup>4</sup></code></li>\n\t<li><code>dislikes[i].length == 2</code></li>\n\t<li><code>1 &lt;= a<sub>i</sub> &lt; b<sub>i</sub> &lt;= n</code></li>\n\t<li>All the pairs of <code>dislikes</code> are <strong>unique</strong>.</li>\n</ul>\n"
 }

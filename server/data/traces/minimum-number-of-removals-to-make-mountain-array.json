@@ -1,0 +1,78 @@
+{
+  "title": "Minimum Number of Removals to Make Mountain Array",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Dynamic Programming"
+  ],
+  "description": "Find the minimum number of elements to remove to make the array a mountain (increasing then decreasing).",
+  "target": 0,
+  "pseudocode": "1. lis = calculate LIS from left to right\n2. lds = calculate LIS from right to left\n3. max_len = 0\n4. for i from 1 to n-2:\n5.   if lis[i] > 1 and lds[i] > 1:\n6.     max_len = max(max_len, lis[i] + lds[i] - 1)\n7. return n - max_len",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Calculate LIS (Longest Increasing Subsequence) ending at each index for array [2, 1, 1, 5, 3, 1]",
+      "array": [
+        2,
+        1,
+        1,
+        5,
+        3,
+        1
+      ],
+      "i": "LIS: [1, 1, 1, 2, 2, 1]"
+    },
+    {
+      "codeLine": 2,
+      "note": "Calculate LDS (Longest Decreasing Subsequence) starting at each index",
+      "array": [
+        2,
+        1,
+        1,
+        5,
+        3,
+        1
+      ],
+      "i": "LDS: [2, 1, 1, 3, 2, 1]"
+    },
+    {
+      "codeLine": 4,
+      "note": "Checking peak at index 3 (value 5)",
+      "array": [
+        2,
+        1,
+        1,
+        5,
+        3,
+        1
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 6,
+      "note": "Peak is valid (LIS=2, LDS=3). Mountain length: 2+3-1 = 4",
+      "array": [
+        2,
+        1,
+        1,
+        5,
+        3,
+        1
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 7,
+      "note": "Return removals: 6 - 4 = 2",
+      "array": [
+        2,
+        1,
+        1,
+        5,
+        3,
+        1
+      ]
+    }
+  ]
+}

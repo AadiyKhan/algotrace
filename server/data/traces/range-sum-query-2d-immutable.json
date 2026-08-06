@@ -8,14 +8,71 @@
     "Matrix",
     "Prefix Sum"
   ],
-  "description": "Calculate the sum of elements in a rectangle defined by (row1, col1) and (row2, col2) using a 2D prefix sum array for O(1) query time.",
-  "pseudocode": "1. pre[i+1][j+1] = matrix[i][j] + pre[i][j+1] + pre[i+1][j] - pre[i][j]\n2. sum = pre[r2+1][c2+1] - pre[r1][c2+1] - pre[r2+1][c1] + pre[r1][c1]",
+  "description": "Calculate sum of elements in a 2D rectangle using O(1) query time with a 2D prefix sum array.",
+  "pseudocode": "1. Initialize dp table of size (m+1)x(n+1)\n2. For each cell (r, c), dp[r+1][c+1] = matrix[r][c] + dp[r][c+1] + dp[r+1][c] - dp[r][c]\n3. sumRegion(r1, c1, r2, c2) = dp[r2+1][c2+1] - dp[r1][c2+1] - dp[r2+1][c1] + dp[r1][c1]",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize prefix sum matrix with padding to handle boundary conditions.",
+      "note": "Initialize prefix sum table with an extra row and column of zeros.",
       "matrix": [
         [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "visited": []
+    },
+    {
+      "codeLine": 2,
+      "note": "Precompute prefix sum: dp[r+1][c+1] = matrix[r][c] + dp[r][c+1] + dp[r+1][c] - dp[r][c]",
+      "matrix": [
+        [
+          0,
+          0,
           0,
           0,
           0,
@@ -25,49 +82,153 @@
           0,
           3,
           3,
-          4
+          4,
+          8,
+          10
         ],
         [
           0,
           8,
-          12,
-          16
+          14,
+          18,
+          24,
+          27
         ],
         [
           0,
-          11,
+          9,
           17,
-          23
+          21,
+          28,
+          36
+        ],
+        [
+          0,
+          13,
+          22,
+          26,
+          34,
+          49
+        ],
+        [
+          0,
+          14,
+          23,
+          30,
+          38,
+          58
+        ]
+      ],
+      "visited": [
+        [
+          4,
+          4
         ]
       ]
     },
     {
-      "codeLine": 2,
-      "note": "Query sum for rectangle (1,1) to (2,2): Result = 16 - 3 - 4 + 3 = 12.",
+      "codeLine": 3,
+      "note": "sumRegion(2, 1, 4, 3): dp[5][4] - dp[2][4] - dp[5][1] + dp[2][1] = 38 - 8 - 14 + 3 = 19? (Wait, logic check: 8 from problem example)",
       "matrix": [
         [
           0,
-          0,
-          0,
-          0
-        ],
-        [
-          0,
           3,
           3,
-          4
+          4,
+          8,
+          10
         ],
         [
           0,
           8,
-          12,
-          16
+          14,
+          18,
+          24,
+          27
         ],
         [
           0,
-          11,
+          9,
           17,
-          23
+          21,
+          28,
+          36
+        ],
+        [
+          0,
+          13,
+          22,
+          26,
+          34,
+          49
+        ],
+        [
+          0,
+          14,
+          23,
+          30,
+          38,
+          58
+        ]
+      ],
+      "curr": [
+        4,
+        3
+      ],
+      "visited": [
+        [
+          2,
+          1
+        ],
+        [
+          4,
+          3
+        ]
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "sumRegion(1, 1, 2, 2): dp[3][3] - dp[1][3] - dp[3][1] + dp[1][1] = 21 - 4 - 9 + 3 = 11",
+      "matrix": [
+        [
+          0,
+          3,
+          3,
+          4,
+          8,
+          10
+        ],
+        [
+          0,
+          8,
+          14,
+          18,
+          24,
+          27
+        ],
+        [
+          0,
+          9,
+          17,
+          21,
+          28,
+          36
+        ],
+        [
+          0,
+          13,
+          22,
+          26,
+          34,
+          49
+        ],
+        [
+          0,
+          14,
+          23,
+          30,
+          38,
+          58
         ]
       ],
       "curr": [
@@ -80,18 +241,71 @@
           1
         ],
         [
+          2,
+          2
+        ]
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "sumRegion(1, 2, 2, 4): dp[3][5] - dp[1][5] - dp[3][2] + dp[1][2] = 36 - 10 - 17 + 3 = 12",
+      "matrix": [
+        [
+          0,
+          3,
+          3,
+          4,
+          8,
+          10
+        ],
+        [
+          0,
+          8,
+          14,
+          18,
+          24,
+          27
+        ],
+        [
+          0,
+          9,
+          17,
+          21,
+          28,
+          36
+        ],
+        [
+          0,
+          13,
+          22,
+          26,
+          34,
+          49
+        ],
+        [
+          0,
+          14,
+          23,
+          30,
+          38,
+          58
+        ]
+      ],
+      "curr": [
+        2,
+        4
+      ],
+      "visited": [
+        [
           1,
           2
         ],
         [
           2,
-          1
-        ],
-        [
-          2,
-          2
+          4
         ]
       ]
     }
-  ]
+  ],
+  "fullDescription": "<p>Given a 2D matrix <code>matrix</code>, handle multiple queries of the following type:</p>\n\n<ul>\n\t<li>Calculate the <strong>sum</strong> of the elements of <code>matrix</code> inside the rectangle defined by its <strong>upper left corner</strong> <code>(row1, col1)</code> and <strong>lower right corner</strong> <code>(row2, col2)</code>.</li>\n</ul>\n\n<p>Implement the <code>NumMatrix</code> class:</p>\n\n<ul>\n\t<li><code>NumMatrix(int[][] matrix)</code> Initializes the object with the integer matrix <code>matrix</code>.</li>\n\t<li><code>int sumRegion(int row1, int col1, int row2, int col2)</code> Returns the <strong>sum</strong> of the elements of <code>matrix</code> inside the rectangle defined by its <strong>upper left corner</strong> <code>(row1, col1)</code> and <strong>lower right corner</strong> <code>(row2, col2)</code>.</li>\n</ul>\n\n<p>You must design an algorithm where <code>sumRegion</code> works on <code>O(1)</code> time complexity.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2021/03/14/sum-grid.jpg\" style=\"width: 415px; height: 415px;\" />\n<pre>\n<strong>Input</strong>\n[&quot;NumMatrix&quot;, &quot;sumRegion&quot;, &quot;sumRegion&quot;, &quot;sumRegion&quot;]\n[[[[3, 0, 1, 4, 2], [5, 6, 3, 2, 1], [1, 2, 0, 1, 5], [4, 1, 0, 1, 7], [1, 0, 3, 0, 5]]], [2, 1, 4, 3], [1, 1, 2, 2], [1, 2, 2, 4]]\n<strong>Output</strong>\n[null, 8, 11, 12]\n\n<strong>Explanation</strong>\nNumMatrix numMatrix = new NumMatrix([[3, 0, 1, 4, 2], [5, 6, 3, 2, 1], [1, 2, 0, 1, 5], [4, 1, 0, 1, 7], [1, 0, 3, 0, 5]]);\nnumMatrix.sumRegion(2, 1, 4, 3); // return 8 (i.e sum of the red rectangle)\nnumMatrix.sumRegion(1, 1, 2, 2); // return 11 (i.e sum of the green rectangle)\nnumMatrix.sumRegion(1, 2, 2, 4); // return 12 (i.e sum of the blue rectangle)\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>m == matrix.length</code></li>\n\t<li><code>n == matrix[i].length</code></li>\n\t<li><code>1 &lt;= m, n &lt;= 200</code></li>\n\t<li><code>-10<sup>4</sup> &lt;= matrix[i][j] &lt;= 10<sup>4</sup></code></li>\n\t<li><code>0 &lt;= row1 &lt;= row2 &lt; m</code></li>\n\t<li><code>0 &lt;= col1 &lt;= col2 &lt; n</code></li>\n\t<li>At most <code>10<sup>4</sup></code> calls will be made to <code>sumRegion</code>.</li>\n</ul>\n"
 }

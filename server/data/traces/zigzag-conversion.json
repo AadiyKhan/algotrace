@@ -3,433 +3,172 @@
   "difficulty": "Medium",
   "type": "array",
   "tags": [
-    "String"
+    "String",
+    "Array"
   ],
-  "description": "Convert a string s into a zigzag pattern on a given number of rows, then read line by line.",
-  "target": 3,
-  "pseudocode": "function convert(s, numRows):\n  if numRows == 1 or numRows >= len(s): return s\n  rows = [\"\" for _ in range(numRows)]\n  currRow, goingDown = 0, False\n  for char in s:\n    rows[currRow] += char\n    if currRow == 0 or currRow == numRows - 1:\n      goingDown = not goingDown\n    currRow += 1 if goingDown else -1\n  return \"\".join(rows)",
+  "description": "Convert string to zigzag pattern across numRows and read line by line.",
+  "target": "PAHNAPLSIIGYIR",
+  "pseudocode": "1. if numRows == 1 return s\n2. rows = [\"\" for _ in range(numRows)]\n3. currRow = 0, step = 1\n4. for char in s:\n5.   rows[currRow] += char\n6.   if currRow == 0 or currRow == numRows - 1: step = -step\n7.   currRow += step\n8. return ''.join(rows)",
   "steps": [
     {
-      "codeLine": 1,
-      "note": "Initialize conversion for s = 'PAYPALISH' and numRows = 3.",
+      "codeLine": 2,
+      "note": "Initialize 3 empty rows for the zigzag pattern.",
       "array": [
-        "P",
-        "A",
-        "Y",
-        "P",
-        "A",
-        "L",
-        "I",
-        "S",
-        "H"
+        "",
+        "",
+        ""
       ],
-      "curr": 3
+      "i": 0
     },
     {
-      "codeLine": 3,
-      "note": "Create 3 empty row buckets: Row 0, Row 1, Row 2.",
+      "codeLine": 5,
+      "note": "Place 'P' in row 0.",
       "array": [
         "P",
-        "A",
-        "Y",
-        "P",
-        "A",
-        "L",
-        "I",
-        "S",
-        "H"
+        "",
+        ""
       ],
-      "curr": 3
+      "i": 0
     },
     {
-      "codeLine": 4,
-      "note": "Initialize currRow = 0 and goingDown = false.",
+      "codeLine": 5,
+      "note": "Place 'A' in row 1.",
       "array": [
         "P",
         "A",
-        "Y",
-        "P",
-        "A",
-        "L",
-        "I",
-        "S",
-        "H"
+        ""
       ],
-      "i": 0,
-      "curr": 0
+      "i": 1
     },
     {
-      "codeLine": 6,
-      "note": "Process s[0] = 'P'. Append 'P' to Row 0.",
+      "codeLine": 5,
+      "note": "Place 'Y' in row 2.",
       "array": [
         "P",
         "A",
-        "Y",
-        "P",
-        "A",
-        "L",
-        "I",
-        "S",
-        "H"
+        "Y"
       ],
-      "i": 0,
-      "curr": 0
+      "i": 2
     },
     {
-      "codeLine": 8,
-      "note": "Top boundary reached (currRow == 0). Toggle goingDown to true.",
+      "codeLine": 5,
+      "note": "Place 'P' in row 1 (reversing direction).",
       "array": [
         "P",
-        "A",
-        "Y",
-        "P",
-        "A",
-        "L",
-        "I",
-        "S",
-        "H"
+        "AP",
+        "Y"
       ],
-      "i": 0,
-      "curr": 0
+      "i": 1
     },
     {
-      "codeLine": 9,
-      "note": "Move down to currRow = 1.",
+      "codeLine": 5,
+      "note": "Place 'A' in row 0.",
       "array": [
-        "P",
-        "A",
-        "Y",
-        "P",
-        "A",
-        "L",
-        "I",
-        "S",
-        "H"
+        "PA",
+        "AP",
+        "Y"
       ],
-      "i": 0,
-      "curr": 1
+      "i": 0
     },
     {
-      "codeLine": 6,
-      "note": "Process s[1] = 'A'. Append 'A' to Row 1.",
+      "codeLine": 5,
+      "note": "Place 'L' in row 1.",
       "array": [
-        "P",
-        "A",
-        "Y",
-        "P",
-        "A",
-        "L",
-        "I",
-        "S",
-        "H"
+        "PA",
+        "APL",
+        "Y"
       ],
-      "i": 1,
-      "curr": 1
+      "i": 1
     },
     {
-      "codeLine": 9,
-      "note": "Continue moving down to currRow = 2.",
+      "codeLine": 5,
+      "note": "Place 'I' in row 2.",
       "array": [
-        "P",
-        "A",
-        "Y",
-        "P",
-        "A",
-        "L",
-        "I",
-        "S",
-        "H"
+        "PA",
+        "APL",
+        "YI"
       ],
-      "i": 1,
-      "curr": 2
+      "i": 2
     },
     {
-      "codeLine": 6,
-      "note": "Process s[2] = 'Y'. Append 'Y' to Row 2.",
+      "codeLine": 5,
+      "note": "Place 'S' in row 1.",
       "array": [
-        "P",
-        "A",
-        "Y",
-        "P",
-        "A",
-        "L",
-        "I",
-        "S",
-        "H"
+        "PA",
+        "APLS",
+        "YI"
       ],
-      "i": 2,
-      "curr": 2
+      "i": 1
     },
     {
-      "codeLine": 8,
-      "note": "Bottom boundary reached (currRow == 2). Toggle goingDown to false.",
+      "codeLine": 5,
+      "note": "Place 'H' in row 0.",
       "array": [
-        "P",
-        "A",
-        "Y",
-        "P",
-        "A",
-        "L",
-        "I",
-        "S",
-        "H"
+        "PAH",
+        "APLS",
+        "YI"
       ],
-      "i": 2,
-      "curr": 2
+      "i": 0
     },
     {
-      "codeLine": 9,
-      "note": "Move up to currRow = 1.",
+      "codeLine": 5,
+      "note": "Place 'I' in row 1.",
       "array": [
-        "P",
-        "A",
-        "Y",
-        "P",
-        "A",
-        "L",
-        "I",
-        "S",
-        "H"
+        "PAH",
+        "APLSI",
+        "YI"
       ],
-      "i": 2,
-      "curr": 1
+      "i": 1
     },
     {
-      "codeLine": 6,
-      "note": "Process s[3] = 'P'. Append 'P' to Row 1.",
+      "codeLine": 5,
+      "note": "Place 'R' in row 2.",
       "array": [
-        "P",
-        "A",
-        "Y",
-        "P",
-        "A",
-        "L",
-        "I",
-        "S",
-        "H"
+        "PAH",
+        "APLSI",
+        "YIR"
       ],
-      "i": 3,
-      "curr": 1
+      "i": 2
     },
     {
-      "codeLine": 9,
-      "note": "Continue moving up to currRow = 0.",
+      "codeLine": 5,
+      "note": "Place 'I' in row 1.",
       "array": [
-        "P",
-        "A",
-        "Y",
-        "P",
-        "A",
-        "L",
-        "I",
-        "S",
-        "H"
+        "PAH",
+        "APLSII",
+        "YIR"
       ],
-      "i": 3,
-      "curr": 0
+      "i": 1
     },
     {
-      "codeLine": 6,
-      "note": "Process s[4] = 'A'. Append 'A' to Row 0.",
+      "codeLine": 5,
+      "note": "Place 'N' in row 0.",
       "array": [
-        "P",
-        "A",
-        "Y",
-        "P",
-        "A",
-        "L",
-        "I",
-        "S",
-        "H"
+        "PAHN",
+        "APLSII",
+        "YIR"
       ],
-      "i": 4,
-      "curr": 0
+      "i": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Place 'G' in row 1.",
+      "array": [
+        "PAHN",
+        "APLSIIG",
+        "YIR"
+      ],
+      "i": 1
     },
     {
       "codeLine": 8,
-      "note": "Top boundary reached (currRow == 0). Toggle goingDown to true.",
+      "note": "Concatenate all rows to get final result: PAHNAPLSIIGYIR",
       "array": [
-        "P",
-        "A",
-        "Y",
-        "P",
-        "A",
-        "L",
-        "I",
-        "S",
-        "H"
-      ],
-      "i": 4,
-      "curr": 0
-    },
-    {
-      "codeLine": 9,
-      "note": "Move down to currRow = 1.",
-      "array": [
-        "P",
-        "A",
-        "Y",
-        "P",
-        "A",
-        "L",
-        "I",
-        "S",
-        "H"
-      ],
-      "i": 4,
-      "curr": 1
-    },
-    {
-      "codeLine": 6,
-      "note": "Process s[5] = 'L'. Append 'L' to Row 1.",
-      "array": [
-        "P",
-        "A",
-        "Y",
-        "P",
-        "A",
-        "L",
-        "I",
-        "S",
-        "H"
-      ],
-      "i": 5,
-      "curr": 1
-    },
-    {
-      "codeLine": 9,
-      "note": "Continue moving down to currRow = 2.",
-      "array": [
-        "P",
-        "A",
-        "Y",
-        "P",
-        "A",
-        "L",
-        "I",
-        "S",
-        "H"
-      ],
-      "i": 5,
-      "curr": 2
-    },
-    {
-      "codeLine": 6,
-      "note": "Process s[6] = 'I'. Append 'I' to Row 2.",
-      "array": [
-        "P",
-        "A",
-        "Y",
-        "P",
-        "A",
-        "L",
-        "I",
-        "S",
-        "H"
-      ],
-      "i": 6,
-      "curr": 2
-    },
-    {
-      "codeLine": 8,
-      "note": "Bottom boundary reached (currRow == 2). Toggle goingDown to false.",
-      "array": [
-        "P",
-        "A",
-        "Y",
-        "P",
-        "A",
-        "L",
-        "I",
-        "S",
-        "H"
-      ],
-      "i": 6,
-      "curr": 2
-    },
-    {
-      "codeLine": 9,
-      "note": "Move up to currRow = 1.",
-      "array": [
-        "P",
-        "A",
-        "Y",
-        "P",
-        "A",
-        "L",
-        "I",
-        "S",
-        "H"
-      ],
-      "i": 6,
-      "curr": 1
-    },
-    {
-      "codeLine": 6,
-      "note": "Process s[7] = 'S'. Append 'S' to Row 1.",
-      "array": [
-        "P",
-        "A",
-        "Y",
-        "P",
-        "A",
-        "L",
-        "I",
-        "S",
-        "H"
-      ],
-      "i": 7,
-      "curr": 1
-    },
-    {
-      "codeLine": 9,
-      "note": "Continue moving up to currRow = 0.",
-      "array": [
-        "P",
-        "A",
-        "Y",
-        "P",
-        "A",
-        "L",
-        "I",
-        "S",
-        "H"
-      ],
-      "i": 7,
-      "curr": 0
-    },
-    {
-      "codeLine": 6,
-      "note": "Process s[8] = 'H'. Append 'H' to Row 0.",
-      "array": [
-        "P",
-        "A",
-        "Y",
-        "P",
-        "A",
-        "L",
-        "I",
-        "S",
-        "H"
-      ],
-      "i": 8,
-      "curr": 0
-    },
-    {
-      "codeLine": 10,
-      "note": "Join rows: Row 0 ('PAH') + Row 1 ('APLS') + Row 2 ('YI') = 'PAHAPLSYI'.",
-      "array": [
-        "P",
-        "A",
-        "Y",
-        "P",
-        "A",
-        "L",
-        "I",
-        "S",
-        "H"
-      ],
-      "curr": 0
+        "PAHN",
+        "APLSIIG",
+        "YIR"
+      ]
     }
-  ]
+  ],
+  "fullDescription": "<p>The string <code>&quot;PAYPALISHIRING&quot;</code> is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)</p>\n\n<pre>\nP   A   H   N\nA P L S I I G\nY   I   R\n</pre>\n\n<p>And then read line by line: <code>&quot;PAHNAPLSIIGYIR&quot;</code></p>\n\n<p>Write the code that will take a string and make this conversion given a number of rows:</p>\n\n<pre>\nstring convert(string s, int numRows);\n</pre>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> s = &quot;PAYPALISHIRING&quot;, numRows = 3\n<strong>Output:</strong> &quot;PAHNAPLSIIGYIR&quot;\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> s = &quot;PAYPALISHIRING&quot;, numRows = 4\n<strong>Output:</strong> &quot;PINALSIGYAHRPI&quot;\n<strong>Explanation:</strong>\nP     I    N\nA   L S  I G\nY A   H R\nP     I\n</pre>\n\n<p><strong class=\"example\">Example 3:</strong></p>\n\n<pre>\n<strong>Input:</strong> s = &quot;A&quot;, numRows = 1\n<strong>Output:</strong> &quot;A&quot;\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= s.length &lt;= 1000</code></li>\n\t<li><code>s</code> consists of English letters (lower-case and upper-case), <code>&#39;,&#39;</code> and <code>&#39;.&#39;</code>.</li>\n\t<li><code>1 &lt;= numRows &lt;= 1000</code></li>\n</ul>\n"
 }

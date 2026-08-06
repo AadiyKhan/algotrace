@@ -10,208 +10,361 @@
   ],
   "description": "Find all shortest transformation sequences from beginWord to endWord.",
   "target": "cog",
-  "pseudocode": "1. Build adjacency list for words differing by one letter\n2. Perform BFS to find shortest path distances\n3. Use backtracking to reconstruct paths from end to begin",
+  "pseudocode": "1. Build adjacency list for words differing by one letter\n2. Perform BFS to find shortest distance from beginWord\n3. Use DFS (backtracking) to collect all paths with minimum distance",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize graph with words hit, hot, dot, dog, lot, log, cog",
+      "note": "Building graph connections between words.",
       "graphNodes": [
         {
-          "id": 0,
+          "id": "hit",
           "val": "hit"
         },
         {
-          "id": 1,
+          "id": "hot",
           "val": "hot"
         },
         {
-          "id": 2,
+          "id": "dot",
           "val": "dot"
         },
         {
-          "id": 3,
+          "id": "dog",
           "val": "dog"
         },
         {
-          "id": 4,
+          "id": "lot",
           "val": "lot"
         },
         {
-          "id": 5,
+          "id": "log",
           "val": "log"
         },
         {
-          "id": 6,
+          "id": "cog",
           "val": "cog"
         }
       ],
       "graphEdges": [
         [
-          0,
-          1
+          "hit",
+          "hot"
         ],
         [
-          1,
-          2
+          "hot",
+          "dot"
         ],
         [
-          1,
-          4
+          "hot",
+          "lot"
         ],
         [
-          2,
-          3
+          "dot",
+          "dog"
         ],
         [
-          3,
-          6
+          "lot",
+          "log"
         ],
         [
-          4,
-          5
+          "dog",
+          "cog"
         ],
         [
-          5,
-          6
+          "log",
+          "cog"
         ]
+      ],
+      "curr": "hit"
+    },
+    {
+      "codeLine": 2,
+      "note": "BFS: Exploring neighbors of hit.",
+      "graphNodes": [
+        {
+          "id": "hit",
+          "val": "hit"
+        },
+        {
+          "id": "hot",
+          "val": "hot"
+        },
+        {
+          "id": "dot",
+          "val": "dot"
+        },
+        {
+          "id": "dog",
+          "val": "dog"
+        },
+        {
+          "id": "lot",
+          "val": "lot"
+        },
+        {
+          "id": "log",
+          "val": "log"
+        },
+        {
+          "id": "cog",
+          "val": "cog"
+        }
+      ],
+      "graphEdges": [
+        [
+          "hit",
+          "hot"
+        ],
+        [
+          "hot",
+          "dot"
+        ],
+        [
+          "hot",
+          "lot"
+        ],
+        [
+          "dot",
+          "dog"
+        ],
+        [
+          "lot",
+          "log"
+        ],
+        [
+          "dog",
+          "cog"
+        ],
+        [
+          "log",
+          "cog"
+        ]
+      ],
+      "curr": "hot",
+      "visited": [
+        "hit",
+        "hot"
       ]
     },
     {
       "codeLine": 2,
-      "note": "BFS calculates distance: hit:0, hot:1, dot:2, lot:2, dog:3, log:3, cog:4",
+      "note": "BFS: Level 2 nodes identified.",
       "graphNodes": [
         {
-          "id": 0,
+          "id": "hit",
           "val": "hit"
         },
         {
-          "id": 1,
+          "id": "hot",
           "val": "hot"
         },
         {
-          "id": 2,
+          "id": "dot",
           "val": "dot"
         },
         {
-          "id": 3,
+          "id": "dog",
           "val": "dog"
         },
         {
-          "id": 4,
+          "id": "lot",
           "val": "lot"
         },
         {
-          "id": 5,
+          "id": "log",
           "val": "log"
         },
         {
-          "id": 6,
+          "id": "cog",
           "val": "cog"
         }
       ],
       "graphEdges": [
         [
-          0,
-          1
+          "hit",
+          "hot"
         ],
         [
-          1,
-          2
+          "hot",
+          "dot"
         ],
         [
-          1,
-          4
+          "hot",
+          "lot"
         ],
         [
-          2,
-          3
+          "dot",
+          "dog"
         ],
         [
-          3,
-          6
+          "lot",
+          "log"
         ],
         [
-          4,
-          5
+          "dog",
+          "cog"
         ],
         [
-          5,
-          6
+          "log",
+          "cog"
         ]
       ],
+      "curr": "lot",
       "visited": [
-        0,
-        1,
-        2,
-        4,
-        3,
-        5,
-        6
+        "hit",
+        "hot",
+        "dot",
+        "lot"
       ]
     },
     {
       "codeLine": 3,
-      "note": "Backtrack from cog to hit to find all shortest sequences",
+      "note": "DFS: Backtracking from cog to hit.",
       "graphNodes": [
         {
-          "id": 0,
+          "id": "hit",
           "val": "hit"
         },
         {
-          "id": 1,
+          "id": "hot",
           "val": "hot"
         },
         {
-          "id": 2,
+          "id": "dot",
           "val": "dot"
         },
         {
-          "id": 3,
+          "id": "dog",
           "val": "dog"
         },
         {
-          "id": 4,
+          "id": "lot",
           "val": "lot"
         },
         {
-          "id": 5,
+          "id": "log",
           "val": "log"
         },
         {
-          "id": 6,
+          "id": "cog",
           "val": "cog"
         }
       ],
       "graphEdges": [
         [
-          0,
-          1
+          "hit",
+          "hot"
         ],
         [
-          1,
-          2
+          "hot",
+          "dot"
         ],
         [
-          1,
-          4
+          "hot",
+          "lot"
         ],
         [
-          2,
-          3
+          "dot",
+          "dog"
         ],
         [
-          3,
-          6
+          "lot",
+          "log"
         ],
         [
-          4,
-          5
+          "dog",
+          "cog"
         ],
         [
-          5,
-          6
+          "log",
+          "cog"
         ]
+      ],
+      "curr": "cog",
+      "visited": [
+        "hit",
+        "hot",
+        "dot",
+        "dog",
+        "lot",
+        "log",
+        "cog"
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Path found: hit-hot-dot-dog-cog.",
+      "graphNodes": [
+        {
+          "id": "hit",
+          "val": "hit"
+        },
+        {
+          "id": "hot",
+          "val": "hot"
+        },
+        {
+          "id": "dot",
+          "val": "dot"
+        },
+        {
+          "id": "dog",
+          "val": "dog"
+        },
+        {
+          "id": "lot",
+          "val": "lot"
+        },
+        {
+          "id": "log",
+          "val": "log"
+        },
+        {
+          "id": "cog",
+          "val": "cog"
+        }
+      ],
+      "graphEdges": [
+        [
+          "hit",
+          "hot"
+        ],
+        [
+          "hot",
+          "dot"
+        ],
+        [
+          "hot",
+          "lot"
+        ],
+        [
+          "dot",
+          "dog"
+        ],
+        [
+          "lot",
+          "log"
+        ],
+        [
+          "dog",
+          "cog"
+        ],
+        [
+          "log",
+          "cog"
+        ]
+      ],
+      "curr": "hit",
+      "visited": [
+        "hit",
+        "hot",
+        "dot",
+        "dog",
+        "lot",
+        "log",
+        "cog"
       ]
     }
-  ]
+  ],
+  "fullDescription": "<p>A <strong>transformation sequence</strong> from word <code>beginWord</code> to word <code>endWord</code> using a dictionary <code>wordList</code> is a sequence of words <code>beginWord -&gt; s<sub>1</sub> -&gt; s<sub>2</sub> -&gt; ... -&gt; s<sub>k</sub></code> such that:</p>\n\n<ul>\n\t<li>Every adjacent pair of words differs by a single letter.</li>\n\t<li>Every <code>s<sub>i</sub></code> for <code>1 &lt;= i &lt;= k</code> is in <code>wordList</code>. Note that <code>beginWord</code> does not need to be in <code>wordList</code>.</li>\n\t<li><code>s<sub>k</sub> == endWord</code></li>\n</ul>\n\n<p>Given two words, <code>beginWord</code> and <code>endWord</code>, and a dictionary <code>wordList</code>, return <em>all the <strong>shortest transformation sequences</strong> from</em> <code>beginWord</code> <em>to</em> <code>endWord</code><em>, or an empty list if no such sequence exists. Each sequence should be returned as a list of the words </em><code>[beginWord, s<sub>1</sub>, s<sub>2</sub>, ..., s<sub>k</sub>]</code>.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> beginWord = &quot;hit&quot;, endWord = &quot;cog&quot;, wordList = [&quot;hot&quot;,&quot;dot&quot;,&quot;dog&quot;,&quot;lot&quot;,&quot;log&quot;,&quot;cog&quot;]\n<strong>Output:</strong> [[&quot;hit&quot;,&quot;hot&quot;,&quot;dot&quot;,&quot;dog&quot;,&quot;cog&quot;],[&quot;hit&quot;,&quot;hot&quot;,&quot;lot&quot;,&quot;log&quot;,&quot;cog&quot;]]\n<strong>Explanation:</strong>&nbsp;There are 2 shortest transformation sequences:\n&quot;hit&quot; -&gt; &quot;hot&quot; -&gt; &quot;dot&quot; -&gt; &quot;dog&quot; -&gt; &quot;cog&quot;\n&quot;hit&quot; -&gt; &quot;hot&quot; -&gt; &quot;lot&quot; -&gt; &quot;log&quot; -&gt; &quot;cog&quot;\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> beginWord = &quot;hit&quot;, endWord = &quot;cog&quot;, wordList = [&quot;hot&quot;,&quot;dot&quot;,&quot;dog&quot;,&quot;lot&quot;,&quot;log&quot;]\n<strong>Output:</strong> []\n<strong>Explanation:</strong> The endWord &quot;cog&quot; is not in wordList, therefore there is no valid transformation sequence.\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= beginWord.length &lt;= 5</code></li>\n\t<li><code>endWord.length == beginWord.length</code></li>\n\t<li><code>1 &lt;= wordList.length &lt;= 500</code></li>\n\t<li><code>wordList[i].length == beginWord.length</code></li>\n\t<li><code>beginWord</code>, <code>endWord</code>, and <code>wordList[i]</code> consist of lowercase English letters.</li>\n\t<li><code>beginWord != endWord</code></li>\n\t<li>All the words in <code>wordList</code> are <strong>unique</strong>.</li>\n\t<li>The <strong>sum</strong> of all shortest transformation sequences does not exceed <code>10<sup>5</sup></code>.</li>\n</ul>\n"
 }

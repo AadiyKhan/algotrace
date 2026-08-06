@@ -4,31 +4,63 @@
   "type": "tree",
   "tags": [
     "Dynamic Programming",
+    "Backtracking",
     "Tree",
-    "Backtracking"
+    "Binary Search Tree"
   ],
-  "description": "Generate all structurally unique BSTs that store nodes 1 to n.",
-  "target": 2,
-  "pseudocode": "1: function generateTrees(n) {\n2:   return build(1, n);\n3: }\n4: function build(start, end) {\n5:   if (start > end) return [null];\n6:   let res = [];\n7:   for (let i = start; i <= end; i++) {\n8:     let left = build(start, i - 1);\n9:     let right = build(i + 1, end);\n10:    for (let l of left) {\n11:      for (let r of right) {\n12:        let node = {val: i, left: l, right: r};\n13:        res.push(node);\n14:      }\n15:    }\n16:  }\n17:  return res;\n18: }",
+  "description": "Generate all structurally unique BSTs with nodes from 1 to n.",
+  "target": 3,
+  "pseudocode": "1. Define generateTrees(start, end):\n2. If start > end, return [null]\n3. For i from start to end:\n4.   leftTrees = generateTrees(start, i - 1)\n5.   rightTrees = generateTrees(i + 1, end)\n6.   For each l in leftTrees, r in rightTrees:\n7.     Create root node i, set root.left = l, root.right = r\n8.     Add root to results",
   "steps": [
     {
-      "codeLine": 2,
-      "note": "Starting generation for n=2",
+      "codeLine": 3,
+      "note": "Start generating trees for range [1, 3] with root i=1",
       "treeNodes": [],
-      "curr": 2
+      "curr": null
     },
     {
       "codeLine": 7,
-      "note": "Rooting at 1, left subtrees are empty, right are {2}",
+      "note": "Root 1: left=[], right=[2, 3]",
       "treeNodes": [
         {
-          "id": 0,
+          "id": 1,
           "val": 1,
           "left": null,
-          "right": 1
+          "right": 2
         },
         {
+          "id": 2,
+          "val": 2,
+          "left": null,
+          "right": 3
+        },
+        {
+          "id": 3,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "Root 1: left=[], right=[3, 2]",
+      "treeNodes": [
+        {
           "id": 1,
+          "val": 1,
+          "left": null,
+          "right": 3
+        },
+        {
+          "id": 3,
+          "val": 3,
+          "left": 2,
+          "right": null
+        },
+        {
+          "id": 2,
           "val": 2,
           "left": null,
           "right": null
@@ -38,10 +70,66 @@
     },
     {
       "codeLine": 7,
-      "note": "Rooting at 2, left subtrees are {1}, right are empty",
+      "note": "Root 2: left=[1], right=[3]",
       "treeNodes": [
         {
-          "id": 0,
+          "id": 2,
+          "val": 2,
+          "left": 1,
+          "right": 3
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 7,
+      "note": "Root 3: left=[1, 2], right=[]",
+      "treeNodes": [
+        {
+          "id": 3,
+          "val": 3,
+          "left": 1,
+          "right": null
+        },
+        {
+          "id": 1,
+          "val": 1,
+          "left": null,
+          "right": 2
+        },
+        {
+          "id": 2,
+          "val": 2,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 3
+    },
+    {
+      "codeLine": 7,
+      "note": "Root 3: left=[2, 1], right=[]",
+      "treeNodes": [
+        {
+          "id": 3,
+          "val": 3,
+          "left": 2,
+          "right": null
+        },
+        {
+          "id": 2,
           "val": 2,
           "left": 1,
           "right": null
@@ -53,7 +141,8 @@
           "right": null
         }
       ],
-      "curr": 2
+      "curr": 3
     }
-  ]
+  ],
+  "fullDescription": "<p>Given an integer <code>n</code>, return <em>all the structurally unique <strong>BST&#39;</strong>s (binary search trees), which has exactly </em><code>n</code><em> nodes of unique values from</em> <code>1</code> <em>to</em> <code>n</code>. Return the answer in <strong>any order</strong>.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2021/01/18/uniquebstn3.jpg\" style=\"width: 600px; height: 148px;\" />\n<pre>\n<strong>Input:</strong> n = 3\n<strong>Output:</strong> [[1,null,2,null,3],[1,null,3,2],[2,1,3],[3,1,null,null,2],[3,2,null,1]]\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> n = 1\n<strong>Output:</strong> [[1]]\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= n &lt;= 8</code></li>\n</ul>\n"
 }

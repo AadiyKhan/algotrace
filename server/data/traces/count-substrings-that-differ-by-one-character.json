@@ -1,0 +1,71 @@
+{
+  "title": "Count Substrings That Differ By One Character",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "String",
+    "Dynamic Programming"
+  ],
+  "description": "Given two strings s and t, find the number of pairs of substrings (one from s, one from t) that differ by exactly one character.",
+  "target": null,
+  "pseudocode": "1. count = 0\n2. for i from 0 to s.length-1:\n3.   for j from 0 to t.length-1:\n4.     m = 0, diff = 0\n5.     while i+m < s.length and j+m < t.length:\n6.       if s[i+m] != t[j+m]: diff++\n7.       if diff == 1: count++\n8.       if diff > 1: break\n9.       m++\n10. return count",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Starting outer loop for s='ab', t='ac'",
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Starting inner loop for t",
+      "i": 0,
+      "j": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Compare s[0]='a' and t[0]='a'. No diff.",
+      "i": 0,
+      "j": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 9,
+      "note": "Move to next characters",
+      "i": 0,
+      "j": 0,
+      "curr": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Compare s[1]='b' and t[1]='c'. diff is 1.",
+      "i": 0,
+      "j": 0,
+      "curr": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "Diff is 1, increment count.",
+      "i": 0,
+      "j": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Inner loop j increments",
+      "i": 0,
+      "j": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Compare s[0]='a' and t[1]='c'. diff is 1.",
+      "i": 0,
+      "j": 1,
+      "curr": 0
+    },
+    {
+      "codeLine": 7,
+      "note": "Diff is 1, increment count.",
+      "i": 0,
+      "j": 1
+    }
+  ]
+}

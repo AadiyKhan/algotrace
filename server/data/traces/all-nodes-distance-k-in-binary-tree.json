@@ -4,17 +4,16 @@
   "type": "tree",
   "tags": [
     "Tree",
-    "DFS",
-    "BFS",
-    "Graph"
+    "Depth-First Search",
+    "Breadth-First Search"
   ],
-  "description": "Find all nodes at distance K from target node in a binary tree.",
+  "description": "Find all nodes at distance k from a target node in a binary tree by converting the tree to an undirected graph via parent pointers.",
   "target": 5,
-  "pseudocode": "1. Build adjacency list graph from parent-child pointers\n2. Perform BFS from target node\n3. Track visited nodes in a set\n4. Collect nodes at distance K",
+  "pseudocode": "1. Build parent map using DFS\n2. Perform BFS from target node\n3. Track distance and visited nodes\n4. Collect nodes at distance k",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Building graph: Mapping parent-child relationships",
+      "note": "Building parent map starting from root 3",
       "treeNodes": [
         {
           "id": 0,
@@ -31,8 +30,8 @@
         {
           "id": 2,
           "val": 1,
-          "left": null,
-          "right": null
+          "left": 5,
+          "right": 6
         },
         {
           "id": 3,
@@ -43,53 +42,103 @@
         {
           "id": 4,
           "val": 2,
-          "left": null,
-          "right": null
-        }
-      ]
-    },
-    {
-      "codeLine": 2,
-      "note": "Starting BFS from target node (val 5, id 1)",
-      "treeNodes": [
-        {
-          "id": 0,
-          "val": 3,
-          "left": 1,
-          "right": 2
+          "left": 7,
+          "right": 8
         },
         {
-          "id": 1,
-          "val": 5,
-          "left": 3,
-          "right": 4
-        },
-        {
-          "id": 2,
-          "val": 1,
+          "id": 5,
+          "val": 0,
           "left": null,
           "right": null
         },
         {
-          "id": 3,
-          "val": 6,
+          "id": 6,
+          "val": 8,
           "left": null,
           "right": null
         },
         {
-          "id": 4,
-          "val": 2,
+          "id": 7,
+          "val": 7,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 8,
+          "val": 4,
           "left": null,
           "right": null
         }
       ],
+      "curr": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Starting BFS from target node 5",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 3,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 5,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 2,
+          "val": 1,
+          "left": 5,
+          "right": 6
+        },
+        {
+          "id": 3,
+          "val": 6,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 2,
+          "left": 7,
+          "right": 8
+        },
+        {
+          "id": 5,
+          "val": 0,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 6,
+          "val": 8,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 7,
+          "val": 7,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 8,
+          "val": 4,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 1,
       "visited": [
         1
       ]
     },
     {
       "codeLine": 3,
-      "note": "Exploring neighbors at distance 1 from node 5: {3, 6, 2}",
+      "note": "Exploring neighbors of node 5 at distance 1 (nodes 3, 4, 0)",
       "treeNodes": [
         {
           "id": 0,
@@ -106,8 +155,8 @@
         {
           "id": 2,
           "val": 1,
-          "left": null,
-          "right": null
+          "left": 5,
+          "right": 6
         },
         {
           "id": 3,
@@ -118,20 +167,45 @@
         {
           "id": 4,
           "val": 2,
+          "left": 7,
+          "right": 8
+        },
+        {
+          "id": 5,
+          "val": 0,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 6,
+          "val": 8,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 7,
+          "val": 7,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 8,
+          "val": 4,
           "left": null,
           "right": null
         }
       ],
+      "curr": 4,
       "visited": [
         1,
-        0,
         3,
-        4
+        4,
+        0
       ]
     },
     {
       "codeLine": 4,
-      "note": "Returning nodes found at distance K=2: [6, 2, 1]",
+      "note": "Exploring neighbors of distance 1 nodes to find distance 2 (7, 4, 1)",
       "treeNodes": [
         {
           "id": 0,
@@ -148,8 +222,8 @@
         {
           "id": 2,
           "val": 1,
-          "left": null,
-          "right": null
+          "left": 5,
+          "right": 6
         },
         {
           "id": 3,
@@ -160,17 +234,45 @@
         {
           "id": 4,
           "val": 2,
+          "left": 7,
+          "right": 8
+        },
+        {
+          "id": 5,
+          "val": 0,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 6,
+          "val": 8,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 7,
+          "val": 7,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 8,
+          "val": 4,
           "left": null,
           "right": null
         }
       ],
+      "curr": 8,
       "visited": [
         1,
-        0,
         3,
         4,
+        0,
+        7,
+        8,
         2
       ]
     }
-  ]
+  ],
+  "fullDescription": "<p>Given the <code>root</code> of a binary tree, the value of a target node <code>target</code>, and an integer <code>k</code>, return <em>an array of the values of all nodes that have a distance </em><code>k</code><em> from the target node.</em></p>\n\n<p>You can return the answer in <strong>any order</strong>.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n<img alt=\"\" src=\"https://s3-lc-upload.s3.amazonaws.com/uploads/2018/06/28/sketch0.png\" style=\"width: 500px; height: 429px;\" />\n<pre>\n<strong>Input:</strong> root = [3,5,1,6,2,0,8,null,null,7,4], target = 5, k = 2\n<strong>Output:</strong> [7,4,1]\nExplanation: The nodes that are a distance 2 from the target node (with value 5) have values 7, 4, and 1.\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> root = [1], target = 1, k = 3\n<strong>Output:</strong> []\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li>The number of nodes in the tree is in the range <code>[1, 500]</code>.</li>\n\t<li><code>0 &lt;= Node.val &lt;= 500</code></li>\n\t<li>All the values <code>Node.val</code> are <strong>unique</strong>.</li>\n\t<li><code>target</code> is the value of one of the nodes in the tree.</li>\n\t<li><code>0 &lt;= k &lt;= 1000</code></li>\n</ul>\n"
 }

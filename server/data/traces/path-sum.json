@@ -4,260 +4,259 @@
   "type": "tree",
   "tags": [
     "Tree",
-    "Depth-First Search",
-    "Binary Tree"
+    "Depth-First Search"
   ],
-  "description": "Determine if there is a root-to-leaf path that sums up to targetSum.",
+  "description": "Check if a root-to-leaf path exists with the given target sum.",
   "target": 22,
-  "pseudocode": "1. If root is null, return false.\n2. If root is leaf and val == targetSum, return true.\n3. Return hasPathSum(root.left, targetSum - val) || hasPathSum(root.right, targetSum - val)",
+  "pseudocode": "1. If root is null, return false\n2. Subtract root.val from targetSum\n3. If leaf and targetSum == 0, return true\n4. Recurse left and right",
   "steps": [
     {
-      "codeLine": 3,
-      "note": "Starting DFS at root (val: 5), target 22",
-      "treeNodes": [
-        {
-          "id": 0,
-          "val": 5,
-          "left": 1,
-          "right": 2
-        },
-        {
-          "id": 1,
-          "val": 4,
-          "left": 3,
-          "right": null
-        },
-        {
-          "id": 2,
-          "val": 8,
-          "left": 4,
-          "right": 5
-        },
-        {
-          "id": 3,
-          "val": 11,
-          "left": 6,
-          "right": 7
-        },
-        {
-          "id": 4,
-          "val": 13,
-          "left": null,
-          "right": null
-        },
-        {
-          "id": 5,
-          "val": 4,
-          "left": null,
-          "right": 8
-        },
-        {
-          "id": 6,
-          "val": 7,
-          "left": null,
-          "right": null
-        },
-        {
-          "id": 7,
-          "val": 2,
-          "left": null,
-          "right": null
-        },
-        {
-          "id": 8,
-          "val": 1,
-          "left": null,
-          "right": null
-        }
-      ],
-      "curr": 5
-    },
-    {
-      "codeLine": 3,
-      "note": "Traversing left to node 4, target remaining: 17",
-      "treeNodes": [
-        {
-          "id": 0,
-          "val": 5,
-          "left": 1,
-          "right": 2
-        },
-        {
-          "id": 1,
-          "val": 4,
-          "left": 3,
-          "right": null
-        },
-        {
-          "id": 2,
-          "val": 8,
-          "left": 4,
-          "right": 5
-        },
-        {
-          "id": 3,
-          "val": 11,
-          "left": 6,
-          "right": 7
-        },
-        {
-          "id": 4,
-          "val": 13,
-          "left": null,
-          "right": null
-        },
-        {
-          "id": 5,
-          "val": 4,
-          "left": null,
-          "right": 8
-        },
-        {
-          "id": 6,
-          "val": 7,
-          "left": null,
-          "right": null
-        },
-        {
-          "id": 7,
-          "val": 2,
-          "left": null,
-          "right": null
-        },
-        {
-          "id": 8,
-          "val": 1,
-          "left": null,
-          "right": null
-        }
-      ],
-      "curr": 4
-    },
-    {
-      "codeLine": 3,
-      "note": "Traversing left to node 11, target remaining: 6",
-      "treeNodes": [
-        {
-          "id": 0,
-          "val": 5,
-          "left": 1,
-          "right": 2
-        },
-        {
-          "id": 1,
-          "val": 4,
-          "left": 3,
-          "right": null
-        },
-        {
-          "id": 2,
-          "val": 8,
-          "left": 4,
-          "right": 5
-        },
-        {
-          "id": 3,
-          "val": 11,
-          "left": 6,
-          "right": 7
-        },
-        {
-          "id": 4,
-          "val": 13,
-          "left": null,
-          "right": null
-        },
-        {
-          "id": 5,
-          "val": 4,
-          "left": null,
-          "right": 8
-        },
-        {
-          "id": 6,
-          "val": 7,
-          "left": null,
-          "right": null
-        },
-        {
-          "id": 7,
-          "val": 2,
-          "left": null,
-          "right": null
-        },
-        {
-          "id": 8,
-          "val": 1,
-          "left": null,
-          "right": null
-        }
-      ],
-      "curr": 11
-    },
-    {
-      "codeLine": 3,
-      "note": "Traversing right to node 2, target remaining: 0",
-      "treeNodes": [
-        {
-          "id": 0,
-          "val": 5,
-          "left": 1,
-          "right": 2
-        },
-        {
-          "id": 1,
-          "val": 4,
-          "left": 3,
-          "right": null
-        },
-        {
-          "id": 2,
-          "val": 8,
-          "left": 4,
-          "right": 5
-        },
-        {
-          "id": 3,
-          "val": 11,
-          "left": 6,
-          "right": 7
-        },
-        {
-          "id": 4,
-          "val": 13,
-          "left": null,
-          "right": null
-        },
-        {
-          "id": 5,
-          "val": 4,
-          "left": null,
-          "right": 8
-        },
-        {
-          "id": 6,
-          "val": 7,
-          "left": null,
-          "right": null
-        },
-        {
-          "id": 7,
-          "val": 2,
-          "left": null,
-          "right": null
-        },
-        {
-          "id": 8,
-          "val": 1,
-          "left": null,
-          "right": null
-        }
-      ],
-      "curr": 2
-    },
-    {
       "codeLine": 2,
-      "note": "Leaf node 2 found with value 2, matches remaining target 2. Return True.",
+      "note": "Start at root (5), targetSum remaining: 22 - 5 = 17",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 5,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 4,
+          "left": 3,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 8,
+          "left": 4,
+          "right": 5
+        },
+        {
+          "id": 3,
+          "val": 11,
+          "left": 6,
+          "right": 7
+        },
+        {
+          "id": 4,
+          "val": 13,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 5,
+          "val": 4,
+          "left": null,
+          "right": 8
+        },
+        {
+          "id": 6,
+          "val": 7,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 7,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 8,
+          "val": 1,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Traverse left to node (4), targetSum remaining: 17 - 4 = 13",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 5,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 4,
+          "left": 3,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 8,
+          "left": 4,
+          "right": 5
+        },
+        {
+          "id": 3,
+          "val": 11,
+          "left": 6,
+          "right": 7
+        },
+        {
+          "id": 4,
+          "val": 13,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 5,
+          "val": 4,
+          "left": null,
+          "right": 8
+        },
+        {
+          "id": 6,
+          "val": 7,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 7,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 8,
+          "val": 1,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Traverse left to node (11), targetSum remaining: 13 - 11 = 2",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 5,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 4,
+          "left": 3,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 8,
+          "left": 4,
+          "right": 5
+        },
+        {
+          "id": 3,
+          "val": 11,
+          "left": 6,
+          "right": 7
+        },
+        {
+          "id": 4,
+          "val": 13,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 5,
+          "val": 4,
+          "left": null,
+          "right": 8
+        },
+        {
+          "id": 6,
+          "val": 7,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 7,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 8,
+          "val": 1,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 3
+    },
+    {
+      "codeLine": 4,
+      "note": "Traverse left to node (7), targetSum remaining: 2 - 7 = -5. Not a match.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 5,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 4,
+          "left": 3,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 8,
+          "left": 4,
+          "right": 5
+        },
+        {
+          "id": 3,
+          "val": 11,
+          "left": 6,
+          "right": 7
+        },
+        {
+          "id": 4,
+          "val": 13,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 5,
+          "val": 4,
+          "left": null,
+          "right": 8
+        },
+        {
+          "id": 6,
+          "val": 7,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 7,
+          "val": 2,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 8,
+          "val": 1,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 6
+    },
+    {
+      "codeLine": 4,
+      "note": "Backtrack and move to right child (2), targetSum remaining: 2 - 2 = 0. Leaf node found!",
       "treeNodes": [
         {
           "id": 0,
@@ -316,5 +315,6 @@
       ],
       "curr": 7
     }
-  ]
+  ],
+  "fullDescription": "<p>Given the <code>root</code> of a binary tree and an integer <code>targetSum</code>, return <code>true</code> if the tree has a <strong>root-to-leaf</strong> path such that adding up all the values along the path equals <code>targetSum</code>.</p>\n\n<p>A <strong>leaf</strong> is a node with no children.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2021/01/18/pathsum1.jpg\" style=\"width: 500px; height: 356px;\" />\n<pre>\n<strong>Input:</strong> root = [5,4,8,11,null,13,4,7,2,null,null,null,1], targetSum = 22\n<strong>Output:</strong> true\n<strong>Explanation:</strong> The root-to-leaf path with the target sum is shown.\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2021/01/18/pathsum2.jpg\" />\n<pre>\n<strong>Input:</strong> root = [1,2,3], targetSum = 5\n<strong>Output:</strong> false\n<strong>Explanation:</strong> There are two root-to-leaf paths in the tree:\n(1 --&gt; 2): The sum is 3.\n(1 --&gt; 3): The sum is 4.\nThere is no root-to-leaf path with sum = 5.\n</pre>\n\n<p><strong class=\"example\">Example 3:</strong></p>\n\n<pre>\n<strong>Input:</strong> root = [], targetSum = 0\n<strong>Output:</strong> false\n<strong>Explanation:</strong> Since the tree is empty, there are no root-to-leaf paths.\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li>The number of nodes in the tree is in the range <code>[0, 5000]</code>.</li>\n\t<li><code>-1000 &lt;= Node.val &lt;= 1000</code></li>\n\t<li><code>-1000 &lt;= targetSum &lt;= 1000</code></li>\n</ul>\n"
 }

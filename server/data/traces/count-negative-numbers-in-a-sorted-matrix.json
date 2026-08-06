@@ -4,29 +4,73 @@
   "type": "matrix",
   "tags": [
     "Array",
-    "Matrix",
-    "Binary Search"
+    "Binary Search",
+    "Matrix"
   ],
-  "description": "Count the number of negative numbers in a row-wise and column-wise non-increasing matrix.",
-  "pseudocode": "let count = 0; let rows = grid.length; let cols = grid[0].length;\nlet r = 0; let c = cols - 1;\nwhile (r < rows && c >= 0) {\n  if (grid[r][c] < 0) {\n    count += (rows - r);\n    c--;\n  } else {\n    r++;\n  }\n}",
+  "description": "Count negative numbers in a row-wise and column-wise non-increasing sorted matrix using an O(m+n) approach.",
+  "target": 8,
+  "pseudocode": "1. Initialize count = 0, row = 0, col = n - 1\n2. While row < m and col >= 0:\n3. If grid[row][col] < 0: count += (m - row), col--\n4. Else: row++\n5. Return count",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize count to 0, start at top-right corner [0, 2].",
+      "note": "Initialize variables: row at top-right (0, 3).",
       "matrix": [
         [
           4,
           3,
+          2,
           -1
         ],
         [
           3,
           2,
-          -2
+          1,
+          -1
         ],
         [
           1,
+          1,
           -1,
+          -2
+        ],
+        [
+          -1,
+          -1,
+          -2,
+          -3
+        ]
+      ],
+      "curr": [
+        0,
+        3
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "grid[0][3] is -1 (negative). Add (4 - 0) = 4 to count. Move left.",
+      "matrix": [
+        [
+          4,
+          3,
+          2,
+          -1
+        ],
+        [
+          3,
+          2,
+          1,
+          -1
+        ],
+        [
+          1,
+          1,
+          -1,
+          -2
+        ],
+        [
+          -1,
+          -1,
+          -2,
           -3
         ]
       ],
@@ -37,253 +81,238 @@
     },
     {
       "codeLine": 4,
-      "note": "Check grid[0][2] (-1). It is negative.",
+      "note": "grid[0][2] is 2 (positive). Move down.",
       "matrix": [
         [
           4,
           3,
+          2,
           -1
         ],
         [
           3,
           2,
-          -2
-        ],
-        [
           1,
-          -1,
-          -3
-        ]
-      ],
-      "curr": [
-        0,
-        2
-      ]
-    },
-    {
-      "codeLine": 5,
-      "note": "Since -1 < 0, add all remaining rows in column 2 to count (3 - 0 = 3). Count is now 3.",
-      "matrix": [
-        [
-          4,
-          3,
           -1
         ],
         [
-          3,
-          2,
+          1,
+          1,
+          -1,
           -2
         ],
         [
-          1,
           -1,
-          -3
-        ]
-      ],
-      "curr": [
-        0,
-        2
-      ]
-    },
-    {
-      "codeLine": 6,
-      "note": "Move column pointer left to c=1.",
-      "matrix": [
-        [
-          4,
-          3,
-          -1
-        ],
-        [
-          3,
-          2,
-          -2
-        ],
-        [
-          1,
           -1,
-          -3
-        ]
-      ],
-      "curr": [
-        0,
-        1
-      ]
-    },
-    {
-      "codeLine": 4,
-      "note": "Check grid[0][1] (3). It is positive.",
-      "matrix": [
-        [
-          4,
-          3,
-          -1
-        ],
-        [
-          3,
-          2,
-          -2
-        ],
-        [
-          1,
-          -1,
-          -3
-        ]
-      ],
-      "curr": [
-        0,
-        1
-      ]
-    },
-    {
-      "codeLine": 8,
-      "note": "Since 3 >= 0, move row pointer down to r=1.",
-      "matrix": [
-        [
-          4,
-          3,
-          -1
-        ],
-        [
-          3,
-          2,
-          -2
-        ],
-        [
-          1,
-          -1,
+          -2,
           -3
         ]
       ],
       "curr": [
         1,
+        2
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "grid[1][2] is 1 (positive). Move down.",
+      "matrix": [
+        [
+          4,
+          3,
+          2,
+          -1
+        ],
+        [
+          3,
+          2,
+          1,
+          -1
+        ],
+        [
+          1,
+          1,
+          -1,
+          -2
+        ],
+        [
+          -1,
+          -1,
+          -2,
+          -3
+        ]
+      ],
+      "curr": [
+        2,
+        2
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "grid[2][2] is -1 (negative). Add (4 - 2) = 2 to count. Move left.",
+      "matrix": [
+        [
+          4,
+          3,
+          2,
+          -1
+        ],
+        [
+          3,
+          2,
+          1,
+          -1
+        ],
+        [
+          1,
+          1,
+          -1,
+          -2
+        ],
+        [
+          -1,
+          -1,
+          -2,
+          -3
+        ]
+      ],
+      "curr": [
+        2,
         1
       ]
     },
     {
       "codeLine": 4,
-      "note": "Check grid[1][1] (2). It is positive.",
+      "note": "grid[2][1] is 1 (positive). Move down.",
       "matrix": [
         [
           4,
           3,
+          2,
           -1
         ],
         [
           3,
           2,
-          -2
+          1,
+          -1
         ],
         [
           1,
+          1,
           -1,
+          -2
+        ],
+        [
+          -1,
+          -1,
+          -2,
           -3
         ]
       ],
       "curr": [
-        1,
+        3,
         1
       ]
     },
     {
-      "codeLine": 8,
-      "note": "Move row pointer down to r=2.",
+      "codeLine": 3,
+      "note": "grid[3][1] is -1 (negative). Add (4 - 3) = 1 to count. Move left.",
       "matrix": [
         [
           4,
           3,
+          2,
           -1
         ],
         [
           3,
           2,
-          -2
-        ],
-        [
           1,
-          -1,
-          -3
-        ]
-      ],
-      "curr": [
-        2,
-        1
-      ]
-    },
-    {
-      "codeLine": 4,
-      "note": "Check grid[2][1] (-1). It is negative.",
-      "matrix": [
-        [
-          4,
-          3,
           -1
         ],
         [
-          3,
-          2,
+          1,
+          1,
+          -1,
           -2
         ],
         [
-          1,
           -1,
+          -1,
+          -2,
           -3
         ]
       ],
       "curr": [
-        2,
-        1
-      ]
-    },
-    {
-      "codeLine": 5,
-      "note": "Add remaining rows in column 1 (3 - 2 = 1). Count is now 4.",
-      "matrix": [
-        [
-          4,
-          3,
-          -1
-        ],
-        [
-          3,
-          2,
-          -2
-        ],
-        [
-          1,
-          -1,
-          -3
-        ]
-      ],
-      "curr": [
-        2,
-        1
-      ]
-    },
-    {
-      "codeLine": 6,
-      "note": "Move column pointer left to c=0.",
-      "matrix": [
-        [
-          4,
-          3,
-          -1
-        ],
-        [
-          3,
-          2,
-          -2
-        ],
-        [
-          1,
-          -1,
-          -3
-        ]
-      ],
-      "curr": [
-        2,
+        3,
         0
       ]
+    },
+    {
+      "codeLine": 3,
+      "note": "grid[3][0] is -1 (negative). Add (4 - 3) = 1 to count. Move left.",
+      "matrix": [
+        [
+          4,
+          3,
+          2,
+          -1
+        ],
+        [
+          3,
+          2,
+          1,
+          -1
+        ],
+        [
+          1,
+          1,
+          -1,
+          -2
+        ],
+        [
+          -1,
+          -1,
+          -2,
+          -3
+        ]
+      ],
+      "curr": [
+        3,
+        -1
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Total count is 8.",
+      "matrix": [
+        [
+          4,
+          3,
+          2,
+          -1
+        ],
+        [
+          3,
+          2,
+          1,
+          -1
+        ],
+        [
+          1,
+          1,
+          -1,
+          -2
+        ],
+        [
+          -1,
+          -1,
+          -2,
+          -3
+        ]
+      ]
     }
-  ]
+  ],
+  "fullDescription": "<p>Given a <code>m x n</code> matrix <code>grid</code> which is sorted in non-increasing order both row-wise and column-wise, return <em>the number of <strong>negative</strong> numbers in</em> <code>grid</code>.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> grid = [[4,3,2,-1],[3,2,1,-1],[1,1,-1,-2],[-1,-1,-2,-3]]\n<strong>Output:</strong> 8\n<strong>Explanation:</strong> There are 8 negatives number in the matrix.\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> grid = [[3,2],[1,0]]\n<strong>Output:</strong> 0\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>m == grid.length</code></li>\n\t<li><code>n == grid[i].length</code></li>\n\t<li><code>1 &lt;= m, n &lt;= 100</code></li>\n\t<li><code>-100 &lt;= grid[i][j] &lt;= 100</code></li>\n</ul>\n\n<p>&nbsp;</p>\n<strong>Follow up:</strong> Could you find an <code>O(n + m)</code> solution?"
 }

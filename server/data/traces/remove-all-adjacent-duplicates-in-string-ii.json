@@ -7,162 +7,108 @@
     "String",
     "Stack"
   ],
-  "description": "Remove k adjacent identical characters repeatedly until no more can be removed.",
+  "description": "Remove k adjacent equal characters repeatedly until no more k-length duplicates exist.",
   "target": 2,
-  "pseudocode": "1. Initialize a stack to store pairs of [char, count]\n2. For each char in s:\n3.   If char == stack.top().char, increment count\n4.   If count == k, pop stack\n5.   Else push [char, 1]\n6. Construct result from remaining stack elements",
+  "pseudocode": "1. stack = []\n2. for char in s:\n3.   if stack and stack.top.char == char:\n4.     stack.top.count += 1\n5.   else: stack.push({char, 1})\n6.   if stack.top.count == k: stack.pop()\n7. return concat(stack.chars)",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize empty stack",
+      "note": "Initialize empty stack.",
       "array": [],
       "visited": []
     },
     {
       "codeLine": 2,
-      "note": "Process 'a'",
+      "note": "Processing 'a'.",
       "array": [
         "a"
       ],
-      "i": 0
+      "curr": 0
     },
     {
-      "codeLine": 5,
-      "note": "Push ['a', 1] to stack",
+      "codeLine": 3,
+      "note": "Stack empty, pushing 'a' with count 1.",
       "array": [
-        [
-          "a",
-          1
-        ]
+        "a:1"
       ],
-      "i": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "Processing 'b'.",
+      "array": [
+        "a:1",
+        "b:1"
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "'b' != 'a', pushing 'b' with count 1.",
+      "array": [
+        "a:1",
+        "b:1"
+      ],
       "curr": 1
     },
     {
       "codeLine": 2,
-      "note": "Process 'b'",
+      "note": "Processing 'c'.",
       "array": [
-        [
-          "a",
-          1
-        ],
-        [
-          "b",
-          1
-        ]
+        "a:1",
+        "b:1",
+        "c:1"
       ],
-      "i": 1
+      "curr": 2
     },
     {
-      "codeLine": 5,
-      "note": "Push ['b', 1] to stack",
+      "codeLine": 3,
+      "note": "'c' != 'b', pushing 'c' with count 1.",
       "array": [
-        [
-          "a",
-          1
-        ],
-        [
-          "b",
-          1
-        ]
+        "a:1",
+        "b:1",
+        "c:1"
       ],
-      "i": 1,
-      "curr": 1
+      "curr": 2
     },
     {
       "codeLine": 2,
-      "note": "Process 'c'",
+      "note": "Processing 'd'.",
       "array": [
-        [
-          "a",
-          1
-        ],
-        [
-          "b",
-          1
-        ],
-        [
-          "c",
-          1
-        ]
+        "a:1",
+        "b:1",
+        "c:1",
+        "d:1"
       ],
-      "i": 2
+      "curr": 3
     },
     {
-      "codeLine": 5,
-      "note": "Push ['c', 1] to stack",
+      "codeLine": 3,
+      "note": "'d' != 'c', pushing 'd' with count 1.",
       "array": [
-        [
-          "a",
-          1
-        ],
-        [
-          "b",
-          1
-        ],
-        [
-          "c",
-          1
-        ]
+        "a:1",
+        "b:1",
+        "c:1",
+        "d:1"
       ],
-      "i": 2,
-      "curr": 1
+      "curr": 3
     },
     {
-      "codeLine": 2,
-      "note": "Process 'd'",
-      "array": [
-        [
-          "a",
-          1
-        ],
-        [
-          "b",
-          1
-        ],
-        [
-          "c",
-          1
-        ],
-        [
-          "d",
-          1
-        ]
-      ],
-      "i": 3
-    },
-    {
-      "codeLine": 5,
-      "note": "Push ['d', 1] to stack",
-      "array": [
-        [
-          "a",
-          1
-        ],
-        [
-          "b",
-          1
-        ],
-        [
-          "c",
-          1
-        ],
-        [
-          "d",
-          1
-        ]
-      ],
-      "i": 3,
-      "curr": 1
-    },
-    {
-      "codeLine": 6,
-      "note": "Construct result string from stack",
+      "codeLine": 7,
+      "note": "Loop finished, returning final string 'abcd'.",
       "array": [
         "a",
         "b",
         "c",
         "d"
+      ],
+      "visited": [
+        0,
+        1,
+        2,
+        3
       ]
     }
-  ]
+  ],
+  "fullDescription": "<p>You are given a string <code>s</code> and an integer <code>k</code>, a <code>k</code> <strong>duplicate removal</strong> consists of choosing <code>k</code> adjacent and equal letters from <code>s</code> and removing them, causing the left and the right side of the deleted substring to concatenate together.</p>\n\n<p>We repeatedly make <code>k</code> <strong>duplicate removals</strong> on <code>s</code> until we no longer can.</p>\n\n<p>Return <em>the final string after all such duplicate removals have been made</em>. It is guaranteed that the answer is <strong>unique</strong>.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> s = &quot;abcd&quot;, k = 2\n<strong>Output:</strong> &quot;abcd&quot;\n<strong>Explanation: </strong>There&#39;s nothing to delete.</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> s = &quot;deeedbbcccbdaa&quot;, k = 3\n<strong>Output:</strong> &quot;aa&quot;\n<strong>Explanation: \n</strong>First delete &quot;eee&quot; and &quot;ccc&quot;, get &quot;ddbbbdaa&quot;\nThen delete &quot;bbb&quot;, get &quot;dddaa&quot;\nFinally delete &quot;ddd&quot;, get &quot;aa&quot;</pre>\n\n<p><strong class=\"example\">Example 3:</strong></p>\n\n<pre>\n<strong>Input:</strong> s = &quot;pbbcggttciiippooaais&quot;, k = 2\n<strong>Output:</strong> &quot;ps&quot;\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= s.length &lt;= 10<sup>5</sup></code></li>\n\t<li><code>2 &lt;= k &lt;= 10<sup>4</sup></code></li>\n\t<li><code>s</code> only contains lowercase English letters.</li>\n</ul>\n"
 }

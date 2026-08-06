@@ -1,0 +1,137 @@
+{
+  "title": "Even Odd Tree",
+  "difficulty": "Medium",
+  "type": "tree",
+  "tags": [
+    "Tree",
+    "Breadth-First Search",
+    "Binary Tree"
+  ],
+  "description": "Check if a binary tree is Even-Odd. Even levels must have increasing odd values; odd levels must have decreasing even values.",
+  "pseudocode": "1. queue = [root], level = 0\n2. while queue is not empty:\n3.   prev = null\n4.   size = queue.length\n5.   for i in 0 to size-1:\n6.     node = queue.shift()\n7.     if (level % 2 == 0) and (node.val % 2 == 0 or (prev and node.val <= prev)) return false\n8.     if (level % 2 != 0) and (node.val % 2 != 0 or (prev and node.val >= prev)) return false\n9.     prev = node.val\n10.    if node.left: queue.push(node.left)\n11.    if node.right: queue.push(node.right)\n12.  level++",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize BFS with root (val: 1) at level 0.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 10,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 4,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Process root (val 1), level 0 is even. Valid.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 10,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 4,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 12,
+      "note": "Increment level to 1 (odd).",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 10,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 4,
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Process node val 10 at level 1. Odd level, must be even. Valid.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 10,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 4,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Process node val 4 at level 1. Even and 4 < 10. Valid.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 10,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 2,
+          "val": 4,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 2
+    }
+  ]
+}

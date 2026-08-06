@@ -1,349 +1,104 @@
 {
   "title": "Longest Valid Parentheses",
-  "difficulty": "Medium",
+  "difficulty": "Hard",
   "type": "array",
   "tags": [
+    "Array",
     "String",
-    "Stack",
-    "Dynamic Programming"
+    "Stack"
   ],
-  "description": "Given a string containing just the characters '(' and ')', find the length of the longest valid (well-formed) parentheses substring.",
-  "pseudocode": "1. function longestValidParentheses(s):\n2.     maxLength = 0\n3.     stack = []\n4.     stack.push(-1) // Base index for calculating lengths\n5.\n6.     for i from 0 to s.length - 1:\n7.         if s[i] == '(': \n8.             stack.push(i)\n9.         else: // s[i] == ')'\n10.            stack.pop()\n11.            if stack.isEmpty():\n12.                stack.push(i) // Unmatched ')' becomes new base\n13.            else:\n14.                maxLength = Math.max(maxLength, i - stack.top())\n15.\n16.    return maxLength",
+  "description": "Find the length of the longest valid parentheses substring using a stack to track indices.",
+  "target": 2,
+  "pseudocode": "1. Initialize stack with -1\n2. Iterate through string with index i\n3. If '(', push i onto stack\n4. If ')', pop from stack\n5. If stack is empty, push i onto stack\n6. Else, update max length with i - stack.top()",
   "steps": [
     {
-      "codeLine": 2,
-      "note": "Initialize `maxLength` to 0. This variable will store the maximum length found so far.",
+      "codeLine": 1,
+      "note": "Initialize stack with -1 to handle base case for length calculation.",
       "array": [
-        ")",
         "(",
-        ")",
         "(",
-        ")",
         ")"
       ],
-      "stack": [],
-      "i": null,
+      "queue": [
+        -1
+      ],
+      "visited": [],
+      "curr": -1
+    },
+    {
+      "codeLine": 3,
+      "note": "Index 0: Character is '('. Push index 0 onto stack.",
+      "array": [
+        "(",
+        "(",
+        ")"
+      ],
+      "queue": [
+        -1,
+        0
+      ],
+      "visited": [
+        0
+      ],
       "curr": 0
     },
     {
       "codeLine": 3,
-      "note": "Initialize an empty stack. This stack will store indices of '(' characters and base indices for length calculations.",
+      "note": "Index 1: Character is '('. Push index 1 onto stack.",
       "array": [
-        ")",
         "(",
-        ")",
         "(",
-        ")",
         ")"
       ],
-      "stack": [],
-      "i": null
+      "queue": [
+        -1,
+        0,
+        1
+      ],
+      "visited": [
+        0,
+        1
+      ],
+      "curr": 1
     },
     {
       "codeLine": 4,
-      "note": "Push -1 onto the stack. This serves as a base index to correctly calculate lengths from the beginning of the string or after an invalid parenthesis.",
+      "note": "Index 2: Character is ')'. Pop index from stack.",
       "array": [
-        ")",
         "(",
-        ")",
         "(",
-        ")",
         ")"
       ],
-      "stack": [
-        -1
-      ],
-      "i": null,
-      "curr": -1
-    },
-    {
-      "codeLine": 6,
-      "note": "Start iterating through the string `s`. Current index `i` is 0, character `s[0]` is ')'.",
-      "array": [
-        ")",
-        "(",
-        ")",
-        "(",
-        ")",
-        ")"
-      ],
-      "stack": [
-        -1
-      ],
-      "i": 0,
-      "curr": 0
-    },
-    {
-      "codeLine": 9,
-      "note": "Character `s[0]` is ')'. Pop the top element from the stack.",
-      "array": [
-        ")",
-        "(",
-        ")",
-        "(",
-        ")",
-        ")"
-      ],
-      "stack": [],
-      "i": 0,
-      "curr": 0
-    },
-    {
-      "codeLine": 11,
-      "note": "After popping, the stack is empty. This means `s[0]` is an unmatched closing parenthesis. Push its current index (0) onto the stack to serve as a new base for subsequent valid parentheses. `maxLength` remains 0.",
-      "array": [
-        ")",
-        "(",
-        ")",
-        "(",
-        ")",
-        ")"
-      ],
-      "stack": [
+      "queue": [
+        -1,
         0
       ],
-      "i": 0,
-      "curr": 0
-    },
-    {
-      "codeLine": 6,
-      "note": "Move to the next character. Current index `i` is 1, character `s[1]` is '('.",
-      "array": [
-        ")",
-        "(",
-        ")",
-        "(",
-        ")",
-        ")"
-      ],
-      "stack": [
-        0
-      ],
-      "i": 1,
-      "curr": 1
-    },
-    {
-      "codeLine": 8,
-      "note": "Character `s[1]` is '('. Push its index (1) onto the stack. `maxLength` remains 0.",
-      "array": [
-        ")",
-        "(",
-        ")",
-        "(",
-        ")",
-        ")"
-      ],
-      "stack": [
+      "visited": [
         0,
-        1
+        1,
+        2
       ],
-      "i": 1,
-      "curr": 1
-    },
-    {
-      "codeLine": 6,
-      "note": "Move to the next character. Current index `i` is 2, character `s[2]` is ')'.",
-      "array": [
-        ")",
-        "(",
-        ")",
-        "(",
-        ")",
-        ")"
-      ],
-      "stack": [
-        0,
-        1
-      ],
-      "i": 2,
-      "curr": 2
-    },
-    {
-      "codeLine": 10,
-      "note": "Character `s[2]` is ')'. Pop the top element from the stack (which is 1).",
-      "array": [
-        ")",
-        "(",
-        ")",
-        "(",
-        ")",
-        ")"
-      ],
-      "stack": [
-        0
-      ],
-      "i": 2,
-      "curr": 2
-    },
-    {
-      "codeLine": 14,
-      "note": "The stack is not empty. Calculate the length of the current valid parentheses substring: `i - stack.top()` = `2 - 0 = 2`. Update `maxLength` if this length is greater. `maxLength` becomes `max(0, 2) = 2`.",
-      "array": [
-        ")",
-        "(",
-        ")",
-        "(",
-        ")",
-        ")"
-      ],
-      "stack": [
-        0
-      ],
-      "i": 2,
       "curr": 2
     },
     {
       "codeLine": 6,
-      "note": "Move to the next character. Current index `i` is 3, character `s[3]` is '('.",
+      "note": "Calculate length: 2 - (-1) = 2. Update max length to 2.",
       "array": [
-        ")",
         "(",
-        ")",
         "(",
-        ")",
         ")"
       ],
-      "stack": [
+      "queue": [
+        -1,
         0
       ],
-      "i": 3,
-      "curr": 3
-    },
-    {
-      "codeLine": 8,
-      "note": "Character `s[3]` is '('. Push its index (3) onto the stack. `maxLength` remains 2.",
-      "array": [
-        ")",
-        "(",
-        ")",
-        "(",
-        ")",
-        ")"
-      ],
-      "stack": [
+      "visited": [
         0,
-        3
+        1,
+        2
       ],
-      "i": 3,
-      "curr": 3
-    },
-    {
-      "codeLine": 6,
-      "note": "Move to the next character. Current index `i` is 4, character `s[4]` is ')'.",
-      "array": [
-        ")",
-        "(",
-        ")",
-        "(",
-        ")",
-        ")"
-      ],
-      "stack": [
-        0,
-        3
-      ],
-      "i": 4,
-      "curr": 4
-    },
-    {
-      "codeLine": 10,
-      "note": "Character `s[4]` is ')'. Pop the top element from the stack (which is 3).",
-      "array": [
-        ")",
-        "(",
-        ")",
-        "(",
-        ")",
-        ")"
-      ],
-      "stack": [
-        0
-      ],
-      "i": 4,
-      "curr": 4
-    },
-    {
-      "codeLine": 14,
-      "note": "The stack is not empty. Calculate the length of the current valid parentheses substring: `i - stack.top()` = `4 - 0 = 4`. Update `maxLength` if this length is greater. `maxLength` becomes `max(2, 4) = 4`.",
-      "array": [
-        ")",
-        "(",
-        ")",
-        "(",
-        ")",
-        ")"
-      ],
-      "stack": [
-        0
-      ],
-      "i": 4,
-      "curr": 4
-    },
-    {
-      "codeLine": 6,
-      "note": "Move to the next character. Current index `i` is 5, character `s[5]` is ')'.",
-      "array": [
-        ")",
-        "(",
-        ")",
-        "(",
-        ")",
-        ")"
-      ],
-      "stack": [
-        0
-      ],
-      "i": 5,
-      "curr": 5
-    },
-    {
-      "codeLine": 10,
-      "note": "Character `s[5]` is ')'. Pop the top element from the stack (which is 0).",
-      "array": [
-        ")",
-        "(",
-        ")",
-        "(",
-        ")",
-        ")"
-      ],
-      "stack": [],
-      "i": 5,
-      "curr": 5
-    },
-    {
-      "codeLine": 12,
-      "note": "After popping, the stack is empty. This means `s[5]` is an unmatched closing parenthesis. Push its current index (5) onto the stack to serve as a new base. `maxLength` remains 4.",
-      "array": [
-        ")",
-        "(",
-        ")",
-        "(",
-        ")",
-        ")"
-      ],
-      "stack": [
-        5
-      ],
-      "i": 5,
-      "curr": 5
-    },
-    {
-      "codeLine": 16,
-      "note": "End of loop. All characters processed. Return the final `maxLength` which is 4.",
-      "array": [
-        ")",
-        "(",
-        ")",
-        "(",
-        ")",
-        ")"
-      ],
-      "stack": [
-        5
-      ],
-      "i": null,
-      "curr": 4
+      "curr": 2
     }
-  ]
+  ],
+  "fullDescription": "<p>Given a string containing just the characters <code>&#39;(&#39;</code> and <code>&#39;)&#39;</code>, return <em>the length of the longest valid (well-formed) parentheses </em><span data-keyword=\"substring-nonempty\"><em>substring</em></span>.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> s = &quot;(()&quot;\n<strong>Output:</strong> 2\n<strong>Explanation:</strong> The longest valid parentheses substring is &quot;()&quot;.\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> s = &quot;)()())&quot;\n<strong>Output:</strong> 4\n<strong>Explanation:</strong> The longest valid parentheses substring is &quot;()()&quot;.\n</pre>\n\n<p><strong class=\"example\">Example 3:</strong></p>\n\n<pre>\n<strong>Input:</strong> s = &quot;&quot;\n<strong>Output:</strong> 0\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>0 &lt;= s.length &lt;= 3 * 10<sup>4</sup></code></li>\n\t<li><code>s[i]</code> is <code>&#39;(&#39;</code>, or <code>&#39;)&#39;</code>.</li>\n</ul>\n"
 }

@@ -1,0 +1,142 @@
+{
+  "title": "Minimum Jumps to Reach Home",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "Breadth-First Search"
+  ],
+  "description": "Find minimum jumps from 0 to x using forward 'a' and backward 'b' jumps, avoiding forbidden positions and consecutive back jumps.",
+  "target": 9,
+  "pseudocode": "1. queue = [(0, 0, false)] // position, steps, wasBack\n2. visited = {(0, false)}\n3. while queue not empty:\n4.   pos, steps, back = queue.pop(0)\n5.   if pos == x: return steps\n6.   // try forward jump\n7.   if pos + a <= limit and pos + a not in forbidden and (pos + a, false) not in visited:\n8.     add (pos + a, steps + 1, false) to queue\n9.   // try backward jump\n10.  if not back and pos - b > 0 and pos - b not in forbidden and (pos - b, true) not in visited:\n11.    add (pos - b, steps + 1, true) to queue",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize queue with starting position 0",
+      "array": [
+        0
+      ],
+      "queue": [
+        [
+          0,
+          0,
+          false
+        ]
+      ],
+      "visited": []
+    },
+    {
+      "codeLine": 7,
+      "note": "Jump forward to 3",
+      "array": [
+        0,
+        3
+      ],
+      "queue": [
+        [
+          3,
+          1,
+          false
+        ]
+      ],
+      "curr": 3,
+      "visited": [
+        [
+          0,
+          false
+        ]
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Jump forward to 6",
+      "array": [
+        0,
+        3,
+        6
+      ],
+      "queue": [
+        [
+          6,
+          2,
+          false
+        ]
+      ],
+      "curr": 6,
+      "visited": [
+        [
+          0,
+          false
+        ],
+        [
+          3,
+          false
+        ]
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Jump forward to 9 (Target reached)",
+      "array": [
+        0,
+        3,
+        6,
+        9
+      ],
+      "queue": [
+        [
+          9,
+          3,
+          false
+        ]
+      ],
+      "curr": 9,
+      "visited": [
+        [
+          0,
+          false
+        ],
+        [
+          3,
+          false
+        ],
+        [
+          6,
+          false
+        ]
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Current position 9 equals target x",
+      "array": [
+        0,
+        3,
+        6,
+        9
+      ],
+      "queue": [],
+      "curr": 9,
+      "visited": [
+        [
+          0,
+          false
+        ],
+        [
+          3,
+          false
+        ],
+        [
+          6,
+          false
+        ],
+        [
+          9,
+          false
+        ]
+      ]
+    }
+  ],
+  "fullDescription": "<p>A certain bug&#39;s home is on the x-axis at position <code>x</code>. Help them get there from position <code>0</code>.</p>\n\n<p>The bug jumps according to the following rules:</p>\n\n<ul>\n\t<li>It can jump exactly <code>a</code> positions <strong>forward</strong> (to the right).</li>\n\t<li>It can jump exactly <code>b</code> positions <strong>backward</strong> (to the left).</li>\n\t<li>It cannot jump backward twice in a row.</li>\n\t<li>It cannot jump to any <code>forbidden</code> positions.</li>\n</ul>\n\n<p>The bug may jump forward <strong>beyond</strong> its home, but it <strong>cannot jump</strong> to positions numbered with <strong>negative</strong> integers.</p>\n\n<p>Given an array of integers <code>forbidden</code>, where <code>forbidden[i]</code> means that the bug cannot jump to the position <code>forbidden[i]</code>, and integers <code>a</code>, <code>b</code>, and <code>x</code>, return <em>the minimum number of jumps needed for the bug to reach its home</em>. If there is no possible sequence of jumps that lands the bug on position <code>x</code>, return <code>-1.</code></p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> forbidden = [14,4,18,1,15], a = 3, b = 15, x = 9\n<strong>Output:</strong> 3\n<strong>Explanation:</strong> 3 jumps forward (0 -&gt; 3 -&gt; 6 -&gt; 9) will get the bug home.\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> forbidden = [8,3,16,6,12,20], a = 15, b = 13, x = 11\n<strong>Output:</strong> -1\n</pre>\n\n<p><strong class=\"example\">Example 3:</strong></p>\n\n<pre>\n<strong>Input:</strong> forbidden = [1,6,2,14,5,17,4], a = 16, b = 9, x = 7\n<strong>Output:</strong> 2\n<strong>Explanation:</strong> One jump forward (0 -&gt; 16) then one jump backward (16 -&gt; 7) will get the bug home.\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= forbidden.length &lt;= 1000</code></li>\n\t<li><code>1 &lt;= a, b, forbidden[i] &lt;= 2000</code></li>\n\t<li><code>0 &lt;= x &lt;= 2000</code></li>\n\t<li>All the elements in <code>forbidden</code> are distinct.</li>\n\t<li>Position <code>x</code> is not forbidden.</li>\n</ul>\n"
+}

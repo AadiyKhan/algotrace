@@ -1,0 +1,100 @@
+{
+  "title": "Sum of Special Evenly Spaced Elements",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Math",
+    "Dynamic Programming"
+  ],
+  "description": "Calculate the sum of elements at indices i, i+stride, i+2*stride, ... for given starting indices and strides.",
+  "target": null,
+  "pseudocode": "1. function solve(nums, queries) {\n2.   let results = [];\n3.   for (let [start, stride] of queries) {\n4.     let sum = 0;\n5.     for (let i = start; i < nums.length; i += stride) {\n6.       sum += nums[i];\n7.     }\n8.     results.push(sum);\n9.   }\n10.  return results;\n11. }",
+  "steps": [
+    {
+      "codeLine": 3,
+      "note": "Initialize query: start at 1, stride 2.",
+      "array": [
+        10,
+        20,
+        30,
+        40,
+        50
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "First index: nums[1] = 20.",
+      "array": [
+        10,
+        20,
+        30,
+        40,
+        50
+      ],
+      "i": 1,
+      "curr": 1
+    },
+    {
+      "codeLine": 6,
+      "note": "Add 20 to sum.",
+      "array": [
+        10,
+        20,
+        30,
+        40,
+        50
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Next index: 1 + 2 = 3. nums[3] = 40.",
+      "array": [
+        10,
+        20,
+        30,
+        40,
+        50
+      ],
+      "i": 3,
+      "curr": 3
+    },
+    {
+      "codeLine": 6,
+      "note": "Add 40 to sum. Total is 60.",
+      "array": [
+        10,
+        20,
+        30,
+        40,
+        50
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 5,
+      "note": "Next index: 3 + 2 = 5. Out of bounds.",
+      "array": [
+        10,
+        20,
+        30,
+        40,
+        50
+      ],
+      "i": 5
+    },
+    {
+      "codeLine": 8,
+      "note": "Push sum 60 to results.",
+      "array": [
+        10,
+        20,
+        30,
+        40,
+        50
+      ]
+    }
+  ]
+}

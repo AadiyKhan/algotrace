@@ -7,61 +7,66 @@
     "String",
     "Backtracking"
   ],
-  "description": "Generate all possible letter combinations for phone digits 23 using backtracking.",
+  "description": "Generate all possible letter combinations for a digit string using backtracking.",
   "target": "23",
-  "pseudocode": "1. mapping = {'2': 'abc', '3': 'def'}\n2. result = []\n3. backtrack(index, path)\n4. if index == len(digits): result.append(path); return\n5. for char in mapping[digits[index]]: backtrack(index + 1, path + char)",
+  "pseudocode": "1. map = {'2': 'abc', '3': 'def', ...}\n2. res = []\n3. backtrack(index, path)\n4. if index == digits.length: res.add(path); return\n5. for char in map[digits[index]]:\n6.   backtrack(index + 1, path + char)",
   "steps": [
     {
-      "codeLine": 1,
-      "note": "Initialize mapping and result list.",
+      "codeLine": 2,
+      "note": "Initialize result array",
+      "array": [],
+      "visited": []
+    },
+    {
+      "codeLine": 3,
+      "note": "Start backtracking at index 0",
       "array": [],
       "i": 0
     },
     {
-      "codeLine": 3,
-      "note": "Start backtracking at index 0, path empty.",
-      "array": [],
-      "i": 0,
-      "curr": 0
-    },
-    {
       "codeLine": 5,
-      "note": "Choosing 'a' from digit '2'.",
+      "note": "Exploring letters for digit '2': 'a'",
       "array": [
         "a"
       ],
-      "i": 1,
-      "curr": 2
+      "i": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Moving to index 1",
+      "array": [
+        "a"
+      ],
+      "i": 1
     },
     {
       "codeLine": 5,
-      "note": "Choosing 'd' from digit '3'.",
+      "note": "Exploring letters for digit '3': 'd'",
       "array": [
-        "ad"
+        "a",
+        "d"
       ],
-      "i": 2,
-      "curr": 3
+      "i": 1
     },
     {
       "codeLine": 4,
-      "note": "Reached end, add 'ad' to result.",
+      "note": "Base case reached, adding 'ad'",
       "array": [
         "ad"
       ]
     },
     {
       "codeLine": 5,
-      "note": "Backtrack, choosing 'e' from digit '3'.",
+      "note": "Exploring next letter for '3': 'e'",
       "array": [
         "ad",
         "ae"
       ],
-      "i": 2,
-      "curr": 3
+      "i": 1
     },
     {
       "codeLine": 4,
-      "note": "Reached end, add 'ae' to result.",
+      "note": "Base case reached, adding 'ae'",
       "array": [
         "ad",
         "ae"
@@ -69,18 +74,17 @@
     },
     {
       "codeLine": 5,
-      "note": "Backtrack, choosing 'f' from digit '3'.",
+      "note": "Exploring next letter for '3': 'f'",
       "array": [
         "ad",
         "ae",
         "af"
       ],
-      "i": 2,
-      "curr": 3
+      "i": 1
     },
     {
       "codeLine": 4,
-      "note": "Reached end, add 'af' to result.",
+      "note": "Base case reached, adding 'af'",
       "array": [
         "ad",
         "ae",
@@ -89,41 +93,18 @@
     },
     {
       "codeLine": 5,
-      "note": "Backtrack to '2', choosing 'b'.",
+      "note": "Backtrack to digit '2', choosing 'b'",
       "array": [
         "ad",
         "ae",
         "af",
         "bd"
       ],
-      "i": 1,
-      "curr": 2
+      "i": 0
     },
     {
-      "codeLine": 5,
-      "note": "Choosing 'd' from digit '3'.",
-      "array": [
-        "ad",
-        "ae",
-        "af",
-        "bd"
-      ],
-      "i": 2,
-      "curr": 3
-    },
-    {
-      "codeLine": 4,
-      "note": "Reached end, add 'bd' to result.",
-      "array": [
-        "ad",
-        "ae",
-        "af",
-        "bd"
-      ]
-    },
-    {
-      "codeLine": 5,
-      "note": "Continuing combination for 'b'...",
+      "codeLine": 6,
+      "note": "Exploring 'd', 'e', 'f' for 'b'",
       "array": [
         "ad",
         "ae",
@@ -132,11 +113,11 @@
         "be",
         "bf"
       ],
-      "i": 2
+      "i": 1
     },
     {
       "codeLine": 5,
-      "note": "Backtrack to '2', choosing 'c'.",
+      "note": "Backtrack to digit '2', choosing 'c'",
       "array": [
         "ad",
         "ae",
@@ -148,8 +129,8 @@
         "ce",
         "cf"
       ],
-      "i": 1,
-      "curr": 2
+      "i": 0
     }
-  ]
+  ],
+  "fullDescription": "<p>Given a string containing digits from <code>2-9</code> inclusive, return all possible letter combinations that the number could represent. Return the answer in <strong>any order</strong>.</p>\n\n<p>A mapping of digits to letters (just like on the telephone buttons) is given below. Note that 1 does not map to any letters.</p>\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2022/03/15/1200px-telephone-keypad2svg.png\" style=\"width: 300px; height: 243px;\" />\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> digits = &quot;23&quot;\n<strong>Output:</strong> [&quot;ad&quot;,&quot;ae&quot;,&quot;af&quot;,&quot;bd&quot;,&quot;be&quot;,&quot;bf&quot;,&quot;cd&quot;,&quot;ce&quot;,&quot;cf&quot;]\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> digits = &quot;2&quot;\n<strong>Output:</strong> [&quot;a&quot;,&quot;b&quot;,&quot;c&quot;]\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= digits.length &lt;= 4</code></li>\n\t<li><code>digits[i]</code> is a digit in the range <code>[&#39;2&#39;, &#39;9&#39;]</code>.</li>\n</ul>\n"
 }

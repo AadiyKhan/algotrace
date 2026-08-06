@@ -3,128 +3,54 @@
   "difficulty": "Medium",
   "type": "array",
   "tags": [
-    "Array",
-    "Dynamic Programming",
-    "Math"
+    "Math",
+    "Dynamic Programming"
   ],
-  "description": "Find the nth ugly number (a number whose prime factors are limited to 2, 3, and 5).",
-  "target": 5,
-  "pseudocode": "1: ugly = [1]\n2: p2 = p3 = p5 = 0\n3: for i from 1 to n-1:\n4:   next = min(ugly[p2]*2, ugly[p3]*3, ugly[p5]*5)\n5:   ugly.push(next)\n6:   if next == ugly[p2]*2: p2++\n7:   if next == ugly[p3]*3: p3++\n8:   if next == ugly[p5]*5: p5++",
+  "description": "Find the nth ugly number by building the sequence using factors 2, 3, and 5.",
+  "target": 10,
+  "pseudocode": "1. Initialize ugly = [1], p2=0, p3=0, p5=0\n2. While length(ugly) < n:\n3.   next_val = min(ugly[p2]*2, ugly[p3]*3, ugly[p5]*5)\n4.   ugly.append(next_val)\n5.   if next_val == ugly[p2]*2: p2++\n6.   if next_val == ugly[p3]*3: p3++\n7.   if next_val == ugly[p5]*5: p5++",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize ugly numbers array with 1",
+      "note": "Initialize ugly numbers array with 1.",
       "array": [
         1
       ],
-      "i": 0,
-      "curr": 1
+      "i": 0
     },
     {
-      "codeLine": 4,
-      "note": "Calculate next ugly number as min(1*2, 1*3, 1*5) = 2",
-      "array": [
-        1
-      ],
-      "i": 1,
-      "curr": 1
-    },
-    {
-      "codeLine": 5,
-      "note": "Push 2 to array",
+      "codeLine": 3,
+      "note": "Calculate next ugly number: min(1*2, 1*3, 1*5) = 2.",
       "array": [
         1,
         2
       ],
-      "curr": 2
+      "i": 1
     },
     {
-      "codeLine": 6,
-      "note": "2 is 1*2, increment p2",
-      "array": [
-        1,
-        2
-      ],
-      "curr": 2
-    },
-    {
-      "codeLine": 4,
-      "note": "Calculate next min(2*2, 1*3, 1*5) = 3",
-      "array": [
-        1,
-        2
-      ],
-      "i": 2,
-      "curr": 2
-    },
-    {
-      "codeLine": 5,
-      "note": "Push 3 to array",
+      "codeLine": 3,
+      "note": "Calculate next ugly number: min(2*2, 1*3, 1*5) = 3.",
       "array": [
         1,
         2,
         3
       ],
-      "curr": 3
+      "i": 2
     },
     {
-      "codeLine": 7,
-      "note": "3 is 1*3, increment p3",
-      "array": [
-        1,
-        2,
-        3
-      ],
-      "curr": 3
-    },
-    {
-      "codeLine": 4,
-      "note": "Calculate next min(2*2, 2*3, 1*5) = 4",
-      "array": [
-        1,
-        2,
-        3
-      ],
-      "i": 3,
-      "curr": 2
-    },
-    {
-      "codeLine": 5,
-      "note": "Push 4 to array",
+      "codeLine": 3,
+      "note": "Calculate next ugly number: min(2*2, 2*3, 1*5) = 4.",
       "array": [
         1,
         2,
         3,
         4
       ],
-      "curr": 4
+      "i": 3
     },
     {
-      "codeLine": 6,
-      "note": "4 is 2*2, increment p2",
-      "array": [
-        1,
-        2,
-        3,
-        4
-      ],
-      "curr": 4
-    },
-    {
-      "codeLine": 4,
-      "note": "Calculate next min(3*2, 2*3, 1*5) = 5",
-      "array": [
-        1,
-        2,
-        3,
-        4
-      ],
-      "i": 4,
-      "curr": 3
-    },
-    {
-      "codeLine": 5,
-      "note": "Push 5 to array",
+      "codeLine": 3,
+      "note": "Calculate next ugly number: min(3*2, 2*3, 1*5) = 5.",
       "array": [
         1,
         2,
@@ -132,19 +58,83 @@
         4,
         5
       ],
-      "curr": 5
+      "i": 4
     },
     {
-      "codeLine": 8,
-      "note": "5 is 1*5, increment p5",
+      "codeLine": 3,
+      "note": "Calculate next ugly number: min(3*2, 3*3, 2*5) = 6.",
       "array": [
         1,
         2,
         3,
         4,
-        5
+        5,
+        6
       ],
-      "curr": 5
+      "i": 5
+    },
+    {
+      "codeLine": 3,
+      "note": "Calculate next ugly number: min(4*2, 3*3, 2*5) = 8.",
+      "array": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        8
+      ],
+      "i": 6
+    },
+    {
+      "codeLine": 3,
+      "note": "Calculate next ugly number: min(5*2, 4*3, 2*5) = 9.",
+      "array": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        8,
+        9
+      ],
+      "i": 7
+    },
+    {
+      "codeLine": 3,
+      "note": "Calculate next ugly number: min(6*2, 4*3, 2*5) = 10.",
+      "array": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        8,
+        9,
+        10
+      ],
+      "i": 8
+    },
+    {
+      "codeLine": 3,
+      "note": "Calculate next ugly number: min(8*2, 5*3, 3*5) = 12.",
+      "array": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        8,
+        9,
+        10,
+        12
+      ],
+      "i": 9
     }
-  ]
+  ],
+  "fullDescription": "<p>An <strong>ugly number</strong> is a positive integer whose prime factors are limited to <code>2</code>, <code>3</code>, and <code>5</code>.</p>\n\n<p>Given an integer <code>n</code>, return <em>the</em> <code>n<sup>th</sup></code> <em><strong>ugly number</strong></em>.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> n = 10\n<strong>Output:</strong> 12\n<strong>Explanation:</strong> [1, 2, 3, 4, 5, 6, 8, 9, 10, 12] is the sequence of the first 10 ugly numbers.\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> n = 1\n<strong>Output:</strong> 1\n<strong>Explanation:</strong> 1 has no prime factors, therefore all of its prime factors are limited to 2, 3, and 5.\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= n &lt;= 1690</code></li>\n</ul>\n"
 }

@@ -1,1629 +1,199 @@
 {
-  "title": "Substring With Concatenation Of All Words",
+  "title": "Substring with Concatenation of All Words",
   "difficulty": "Hard",
   "type": "array",
   "tags": [
-    "String",
     "Hash Table",
+    "String",
     "Sliding Window"
   ],
-  "description": "Find all starting indices of substrings in 's' that are a concatenation of each word in 'words' exactly once and without any intervening characters.",
-  "pseudocode": "1. function findSubstring(s, words) {\n2.   if (!s || !words || words.length === 0) return [];\n3.\n4.   const wordLength = words[0].length;\n5.   const numWords = words.length;\n6.   const totalLength = wordLength * numWords;\n7.   const sLength = s.length;\n8.   const result = [];\n9.\n10.  if (sLength < totalLength) return [];\n11.\n12.  const wordCounts = new Map();\n13.  for (const word of words) {\n14.    wordCounts.set(word, (wordCounts.get(word) || 0) + 1);\n15.  }\n16.\n17.  // Iterate through 's' using 'wordLength' different starting offsets.\n18.  // This is crucial to cover all possible starting positions of concatenated substrings.\n19.  for (let offset = 0; offset < wordLength; offset++) {\n20.    let left = offset;\n21.    let count = 0; // Tracks number of words matched in the current window\n22.    const currentWindowCounts = new Map(); // Frequencies of words in the current window\n23.\n24.    // Slide the window (right pointer advances by wordLength each time)\n25.    for (let right = offset; right <= sLength - wordLength; right += wordLength) {\n26.      const currentWord = s.substring(right, right + wordLength);\n27.\n28.      if (!wordCounts.has(currentWord)) {\n29.        // If the current word is not in 'words', reset the window.\n30.        currentWindowCounts.clear();\n31.        count = 0;\n32.        left = right + wordLength; // Move left pointer past the invalid word\n33.      } else {\n34.        // Add currentWord to the window and update its count.\n35.        currentWindowCounts.set(currentWord, (currentWindowCounts.get(currentWord) || 0) + 1);\n36.        count++;\n37.\n38.        // If currentWord count exceeds its required frequency, shrink window from left.\n39.        while (currentWindowCounts.get(currentWord) > wordCounts.get(currentWord)) {\n40.          const wordToRemove = s.substring(left, left + wordLength);\n41.          currentWindowCounts.set(wordToRemove, currentWindowCounts.get(wordToRemove) - 1);\n42.          count--;\n43.          left += wordLength;\n44.        }\n45.\n46.        // If all words are matched in the current window (its length is totalLength).\n47.        if (count === numWords) {\n48.          result.push(left); // Store the starting index of the valid substring.\n49.\n50.          // To find subsequent matches efficiently, slide the window one word to the right\n51.          // by removing the leftmost word.\n52.          const wordToRemove = s.substring(left, left + wordLength);\n53.          currentWindowCounts.set(wordToRemove, currentWindowCounts.get(wordToRemove) - 1);\n54.          count--;\n55.          left += wordLength;\n56.        }\n57.      }\n58.    }\n59.  }\n60.  return result;\n61. }",
+  "description": "Find all starting indices of substrings in s that are a concatenation of each word in words exactly once.",
+  "target": "[0, 9]",
+  "pseudocode": "1. Initialize wordCount map and window size\n2. Iterate through each offset from 0 to wordLength-1\n3. Use sliding window to track occurrences of words\n4. If window matches wordCount, add start index to results",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize the function with input string 's' and array of words 'words'.",
-      "array": "barfoothefoobarman",
-      "extra": {
-        "s": "barfoothefoobarman",
-        "words": [
-          "foo",
-          "bar"
-        ]
-      }
+      "note": "Initialize wordCount map with {foo: 1, bar: 1}",
+      "array": [
+        "b",
+        "a",
+        "r",
+        "f",
+        "o",
+        "o",
+        "t",
+        "h",
+        "e",
+        "f",
+        "o",
+        "o",
+        "b",
+        "a",
+        "r",
+        "m",
+        "a",
+        "n"
+      ],
+      "visited": [],
+      "result": []
+    },
+    {
+      "codeLine": 3,
+      "note": "Checking window at index 0: 'barfoo'",
+      "array": [
+        "b",
+        "a",
+        "r",
+        "f",
+        "o",
+        "o",
+        "t",
+        "h",
+        "e",
+        "f",
+        "o",
+        "o",
+        "b",
+        "a",
+        "r",
+        "m",
+        "a",
+        "n"
+      ],
+      "i": 0,
+      "visited": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "result": [
+        0
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Sliding window to next possible segments",
+      "array": [
+        "b",
+        "a",
+        "r",
+        "f",
+        "o",
+        "o",
+        "t",
+        "h",
+        "e",
+        "f",
+        "o",
+        "o",
+        "b",
+        "a",
+        "r",
+        "m",
+        "a",
+        "n"
+      ],
+      "i": 3,
+      "visited": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "result": [
+        0
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Checking window at index 9: 'foobar'",
+      "array": [
+        "b",
+        "a",
+        "r",
+        "f",
+        "o",
+        "o",
+        "t",
+        "h",
+        "e",
+        "f",
+        "o",
+        "o",
+        "b",
+        "a",
+        "r",
+        "m",
+        "a",
+        "n"
+      ],
+      "i": 9,
+      "visited": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "result": [
+        0,
+        9
+      ]
     },
     {
       "codeLine": 4,
-      "note": "Calculate 'wordLength' (length of each word).",
-      "array": "barfoothefoobarman",
-      "extra": {
-        "wordLength": 3
-      }
-    },
-    {
-      "codeLine": 5,
-      "note": "Calculate 'numWords' (total number of words to match).",
-      "array": "barfoothefoobarman",
-      "extra": {
-        "numWords": 2
-      }
-    },
-    {
-      "codeLine": 6,
-      "note": "Calculate 'totalLength' (expected length of the concatenated substring).",
-      "array": "barfoothefoobarman",
-      "extra": {
-        "totalLength": 6
-      }
-    },
-    {
-      "codeLine": 7,
-      "note": "Get the length of the main string 's'.",
-      "array": "barfoothefoobarman",
-      "extra": {
-        "sLength": 18
-      }
-    },
-    {
-      "codeLine": 8,
-      "note": "Initialize 'result' array to store the starting indices.",
-      "array": "barfoothefoobarman",
-      "extra": {
-        "result": []
-      }
-    },
-    {
-      "codeLine": 12,
-      "note": "Create 'wordCounts' map to store required frequencies of words from 'words'.",
-      "array": "barfoothefoobarman"
-    },
-    {
-      "codeLine": 13,
-      "note": "Populate 'wordCounts': 'foo' occurs 1 time, 'bar' occurs 1 time.",
-      "array": "barfoothefoobarman",
-      "extra": {
-        "wordCounts": {
-          "foo": 1,
-          "bar": 1
-        }
-      },
-      "curr": 1
-    },
-    {
-      "codeLine": 19,
-      "note": "Start the outer loop with 'offset = 0' (first possible starting position).",
-      "array": "barfoothefoobarman",
-      "i": 0,
-      "curr": 0
-    },
-    {
-      "codeLine": 20,
-      "note": "Initialize 'left' pointer for the current sliding window to 'offset'.",
-      "array": "barfoothefoobarman",
-      "i": 0,
-      "left": 0
-    },
-    {
-      "codeLine": 21,
-      "note": "Initialize 'count' of matched words in current window to 0.",
-      "array": "barfoothefoobarman",
-      "i": 0,
-      "left": 0,
-      "extra": {
-        "count": 0
-      },
-      "curr": 0
-    },
-    {
-      "codeLine": 22,
-      "note": "Initialize 'currentWindowCounts' map for the words in the current window.",
-      "array": "barfoothefoobarman",
-      "i": 0,
-      "left": 0,
-      "extra": {
-        "currentWindowCounts": {}
-      }
-    },
-    {
-      "codeLine": 25,
-      "note": "Start the inner loop: 'right' pointer for the current word starts at 'offset'.",
-      "array": "barfoothefoobarman",
-      "i": 0,
-      "left": 0,
-      "j": 0,
-      "curr": [
+      "note": "Finished scanning string, returning indices",
+      "array": [
+        "b",
+        "a",
+        "r",
+        "f",
+        "o",
+        "o",
+        "t",
+        "h",
+        "e",
+        "f",
+        "o",
+        "o",
+        "b",
+        "a",
+        "r",
+        "m",
+        "a",
+        "n"
+      ],
+      "visited": [
         0,
-        2
-      ],
-      "extra": {
-        "window": [
-          0,
-          2
-        ]
-      }
-    },
-    {
-      "codeLine": 26,
-      "note": "Extract 'currentWord' from 's' starting at 'right': 'bar'.",
-      "array": "barfoothefoobarman",
-      "i": 0,
-      "left": 0,
-      "j": 0,
-      "curr": [
-        0,
-        2
-      ],
-      "extra": {
-        "currentWord": "bar",
-        "window": [
-          0,
-          2
-        ]
-      }
-    },
-    {
-      "codeLine": 28,
-      "note": "Check if 'bar' is in 'wordCounts'. It is.",
-      "array": "barfoothefoobarman",
-      "i": 0,
-      "left": 0,
-      "j": 0,
-      "curr": [
-        0,
-        2
-      ],
-      "extra": {
-        "currentWord": "bar",
-        "window": [
-          0,
-          2
-        ]
-      }
-    },
-    {
-      "codeLine": 35,
-      "note": "Add 'bar' to 'currentWindowCounts' and increment its frequency.",
-      "array": "barfoothefoobarman",
-      "i": 0,
-      "left": 0,
-      "j": 0,
-      "curr": [
-        0,
-        2
-      ],
-      "extra": {
-        "currentWindowCounts": {
-          "bar": 1
-        },
-        "window": [
-          0,
-          2
-        ]
-      }
-    },
-    {
-      "codeLine": 36,
-      "note": "Increment 'count' of matched words to 1.",
-      "array": "barfoothefoobarman",
-      "i": 0,
-      "left": 0,
-      "j": 0,
-      "curr": [
-        0,
-        2
-      ],
-      "extra": {
-        "count": 1,
-        "currentWindowCounts": {
-          "bar": 1
-        },
-        "window": [
-          0,
-          2
-        ]
-      }
-    },
-    {
-      "codeLine": 39,
-      "note": "Count of 'bar' (1) is not greater than required (1). Skip shrinking the window.",
-      "array": "barfoothefoobarman",
-      "i": 0,
-      "left": 0,
-      "j": 0,
-      "curr": [
-        0,
-        2
-      ],
-      "extra": {
-        "count": 1,
-        "currentWindowCounts": {
-          "bar": 1
-        },
-        "window": [
-          0,
-          2
-        ]
-      }
-    },
-    {
-      "codeLine": 47,
-      "note": "'count' (1) is not equal to 'numWords' (2). No full match yet.",
-      "array": "barfoothefoobarman",
-      "i": 0,
-      "left": 0,
-      "j": 0,
-      "curr": [
-        0,
-        2
-      ],
-      "extra": {
-        "count": 1,
-        "currentWindowCounts": {
-          "bar": 1
-        },
-        "window": [
-          0,
-          2
-        ]
-      }
-    },
-    {
-      "codeLine": 25,
-      "note": "Advance 'right' pointer to the next word position (3).",
-      "array": "barfoothefoobarman",
-      "i": 0,
-      "left": 0,
-      "j": 3,
-      "curr": [
-        3,
-        5
-      ],
-      "extra": {
-        "window": [
-          0,
-          5
-        ]
-      }
-    },
-    {
-      "codeLine": 26,
-      "note": "Extract 'currentWord': 'foo'.",
-      "array": "barfoothefoobarman",
-      "i": 0,
-      "left": 0,
-      "j": 3,
-      "curr": [
-        3,
-        5
-      ],
-      "extra": {
-        "currentWord": "foo",
-        "window": [
-          0,
-          5
-        ]
-      }
-    },
-    {
-      "codeLine": 28,
-      "note": "Check if 'foo' is in 'wordCounts'. It is.",
-      "array": "barfoothefoobarman",
-      "i": 0,
-      "left": 0,
-      "j": 3,
-      "curr": [
-        3,
-        5
-      ],
-      "extra": {
-        "currentWord": "foo",
-        "window": [
-          0,
-          5
-        ]
-      }
-    },
-    {
-      "codeLine": 35,
-      "note": "Add 'foo' to 'currentWindowCounts'.",
-      "array": "barfoothefoobarman",
-      "i": 0,
-      "left": 0,
-      "j": 3,
-      "curr": [
-        3,
-        5
-      ],
-      "extra": {
-        "currentWindowCounts": {
-          "bar": 1,
-          "foo": 1
-        },
-        "window": [
-          0,
-          5
-        ]
-      }
-    },
-    {
-      "codeLine": 36,
-      "note": "Increment 'count' to 2.",
-      "array": "barfoothefoobarman",
-      "i": 0,
-      "left": 0,
-      "j": 3,
-      "curr": [
-        3,
-        5
-      ],
-      "extra": {
-        "count": 2,
-        "currentWindowCounts": {
-          "bar": 1,
-          "foo": 1
-        },
-        "window": [
-          0,
-          5
-        ]
-      }
-    },
-    {
-      "codeLine": 39,
-      "note": "Count of 'foo' (1) is not greater than required (1). Skip shrinking the window.",
-      "array": "barfoothefoobarman",
-      "i": 0,
-      "left": 0,
-      "j": 3,
-      "curr": [
-        3,
-        5
-      ],
-      "extra": {
-        "count": 2,
-        "currentWindowCounts": {
-          "bar": 1,
-          "foo": 1
-        },
-        "window": [
-          0,
-          5
-        ]
-      }
-    },
-    {
-      "codeLine": 47,
-      "note": "'count' (2) IS equal to 'numWords' (2)! Found a full match.",
-      "array": "barfoothefoobarman",
-      "i": 0,
-      "left": 0,
-      "j": 3,
-      "curr": null,
-      "extra": {
-        "count": 2,
-        "currentWindowCounts": {
-          "bar": 1,
-          "foo": 1
-        },
-        "window": [
-          0,
-          5
-        ]
-      }
-    },
-    {
-      "codeLine": 48,
-      "note": "Add 'left' (0) to 'result'.",
-      "array": "barfoothefoobarman",
-      "i": 0,
-      "left": 0,
-      "j": 3,
-      "curr": null,
-      "extra": {
-        "result": [
-          0
-        ],
-        "count": 2,
-        "currentWindowCounts": {
-          "bar": 1,
-          "foo": 1
-        },
-        "window": [
-          0,
-          5
-        ]
-      }
-    },
-    {
-      "codeLine": 52,
-      "note": "Extract 'wordToRemove' from the left of the window: 'bar'.",
-      "array": "barfoothefoobarman",
-      "i": 0,
-      "left": 0,
-      "j": 3,
-      "curr": [
-        0,
-        2
-      ],
-      "extra": {
-        "wordToRemove": "bar",
-        "window": [
-          0,
-          5
-        ]
-      }
-    },
-    {
-      "codeLine": 53,
-      "note": "Decrement 'bar' count in 'currentWindowCounts'.",
-      "array": "barfoothefoobarman",
-      "i": 0,
-      "left": 0,
-      "j": 3,
-      "curr": [
-        0,
-        2
-      ],
-      "extra": {
-        "currentWindowCounts": {
-          "bar": 0,
-          "foo": 1
-        },
-        "window": [
-          0,
-          5
-        ]
-      }
-    },
-    {
-      "codeLine": 54,
-      "note": "Decrement 'count' to 1.",
-      "array": "barfoothefoobarman",
-      "i": 0,
-      "left": 0,
-      "j": 3,
-      "curr": [
-        0,
-        2
-      ],
-      "extra": {
-        "count": 1,
-        "currentWindowCounts": {
-          "bar": 0,
-          "foo": 1
-        },
-        "window": [
-          0,
-          5
-        ]
-      }
-    },
-    {
-      "codeLine": 55,
-      "note": "Move 'left' pointer forward by 'wordLength' to 3.",
-      "array": "barfoothefoobarman",
-      "i": 0,
-      "left": 3,
-      "j": 3,
-      "curr": null,
-      "extra": {
-        "window": [
-          3,
-          5
-        ]
-      }
-    },
-    {
-      "codeLine": 25,
-      "note": "Advance 'right' pointer to the next word position (6).",
-      "array": "barfoothefoobarman",
-      "i": 0,
-      "left": 3,
-      "j": 6,
-      "curr": [
-        6,
-        8
-      ],
-      "extra": {
-        "window": [
-          3,
-          8
-        ]
-      }
-    },
-    {
-      "codeLine": 26,
-      "note": "Extract 'currentWord': 'the'.",
-      "array": "barfoothefoobarman",
-      "i": 0,
-      "left": 3,
-      "j": 6,
-      "curr": [
-        6,
-        8
-      ],
-      "extra": {
-        "currentWord": "the",
-        "window": [
-          3,
-          8
-        ]
-      }
-    },
-    {
-      "codeLine": 28,
-      "note": "Check if 'the' is in 'wordCounts'. It is NOT.",
-      "array": "barfoothefoobarman",
-      "i": 0,
-      "left": 3,
-      "j": 6,
-      "curr": [
-        6,
-        8
-      ],
-      "extra": {
-        "currentWord": "the",
-        "window": [
-          3,
-          8
-        ]
-      }
-    },
-    {
-      "codeLine": 30,
-      "note": "Clear 'currentWindowCounts' due to invalid word.",
-      "array": "barfoothefoobarman",
-      "i": 0,
-      "left": 3,
-      "j": 6,
-      "curr": [
-        6,
-        8
-      ],
-      "extra": {
-        "currentWindowCounts": {},
-        "window": null
-      }
-    },
-    {
-      "codeLine": 31,
-      "note": "Reset 'count' to 0.",
-      "array": "barfoothefoobarman",
-      "i": 0,
-      "left": 3,
-      "j": 6,
-      "curr": [
-        6,
-        8
-      ],
-      "extra": {
-        "count": 0,
-        "window": null
-      }
-    },
-    {
-      "codeLine": 32,
-      "note": "Move 'left' pointer past the invalid word to 9.",
-      "array": "barfoothefoobarman",
-      "i": 0,
-      "left": 9,
-      "j": 6,
-      "curr": [
-        6,
-        8
-      ],
-      "extra": {
-        "window": null
-      }
-    },
-    {
-      "codeLine": 25,
-      "note": "Advance 'right' pointer to the next word position (9).",
-      "array": "barfoothefoobarman",
-      "i": 0,
-      "left": 9,
-      "j": 9,
-      "curr": [
-        9,
-        11
-      ],
-      "extra": {
-        "window": [
-          9,
-          11
-        ]
-      }
-    },
-    {
-      "codeLine": 26,
-      "note": "Extract 'currentWord': 'foo'.",
-      "array": "barfoothefoobarman",
-      "i": 0,
-      "left": 9,
-      "j": 9,
-      "curr": [
-        9,
-        11
-      ],
-      "extra": {
-        "currentWord": "foo",
-        "window": [
-          9,
-          11
-        ]
-      }
-    },
-    {
-      "codeLine": 28,
-      "note": "Check if 'foo' is in 'wordCounts'. It is.",
-      "array": "barfoothefoobarman",
-      "i": 0,
-      "left": 9,
-      "j": 9,
-      "curr": [
-        9,
-        11
-      ],
-      "extra": {
-        "currentWord": "foo",
-        "window": [
-          9,
-          11
-        ]
-      }
-    },
-    {
-      "codeLine": 35,
-      "note": "Add 'foo' to 'currentWindowCounts'.",
-      "array": "barfoothefoobarman",
-      "i": 0,
-      "left": 9,
-      "j": 9,
-      "curr": [
-        9,
-        11
-      ],
-      "extra": {
-        "currentWindowCounts": {
-          "foo": 1
-        },
-        "window": [
-          9,
-          11
-        ]
-      }
-    },
-    {
-      "codeLine": 36,
-      "note": "Increment 'count' to 1.",
-      "array": "barfoothefoobarman",
-      "i": 0,
-      "left": 9,
-      "j": 9,
-      "curr": [
-        9,
-        11
-      ],
-      "extra": {
-        "count": 1,
-        "currentWindowCounts": {
-          "foo": 1
-        },
-        "window": [
-          9,
-          11
-        ]
-      }
-    },
-    {
-      "codeLine": 39,
-      "note": "Count of 'foo' (1) is not greater than required (1). Skip shrinking.",
-      "array": "barfoothefoobarman",
-      "i": 0,
-      "left": 9,
-      "j": 9,
-      "curr": [
-        9,
-        11
-      ],
-      "extra": {
-        "count": 1,
-        "currentWindowCounts": {
-          "foo": 1
-        },
-        "window": [
-          9,
-          11
-        ]
-      }
-    },
-    {
-      "codeLine": 47,
-      "note": "'count' (1) is not equal to 'numWords' (2). No full match yet.",
-      "array": "barfoothefoobarman",
-      "i": 0,
-      "left": 9,
-      "j": 9,
-      "curr": [
-        9,
-        11
-      ],
-      "extra": {
-        "count": 1,
-        "currentWindowCounts": {
-          "foo": 1
-        },
-        "window": [
-          9,
-          11
-        ]
-      }
-    },
-    {
-      "codeLine": 25,
-      "note": "Advance 'right' pointer to the next word position (12).",
-      "array": "barfoothefoobarman",
-      "i": 0,
-      "left": 9,
-      "j": 12,
-      "curr": [
-        12,
-        14
-      ],
-      "extra": {
-        "window": [
-          9,
-          14
-        ]
-      }
-    },
-    {
-      "codeLine": 26,
-      "note": "Extract 'currentWord': 'bar'.",
-      "array": "barfoothefoobarman",
-      "i": 0,
-      "left": 9,
-      "j": 12,
-      "curr": [
-        12,
-        14
-      ],
-      "extra": {
-        "currentWord": "bar",
-        "window": [
-          9,
-          14
-        ]
-      }
-    },
-    {
-      "codeLine": 28,
-      "note": "Check if 'bar' is in 'wordCounts'. It is.",
-      "array": "barfoothefoobarman",
-      "i": 0,
-      "left": 9,
-      "j": 12,
-      "curr": [
-        12,
-        14
-      ],
-      "extra": {
-        "currentWord": "bar",
-        "window": [
-          9,
-          14
-        ]
-      }
-    },
-    {
-      "codeLine": 35,
-      "note": "Add 'bar' to 'currentWindowCounts'.",
-      "array": "barfoothefoobarman",
-      "i": 0,
-      "left": 9,
-      "j": 12,
-      "curr": [
-        12,
-        14
-      ],
-      "extra": {
-        "currentWindowCounts": {
-          "foo": 1,
-          "bar": 1
-        },
-        "window": [
-          9,
-          14
-        ]
-      }
-    },
-    {
-      "codeLine": 36,
-      "note": "Increment 'count' to 2.",
-      "array": "barfoothefoobarman",
-      "i": 0,
-      "left": 9,
-      "j": 12,
-      "curr": [
-        12,
-        14
-      ],
-      "extra": {
-        "count": 2,
-        "currentWindowCounts": {
-          "foo": 1,
-          "bar": 1
-        },
-        "window": [
-          9,
-          14
-        ]
-      }
-    },
-    {
-      "codeLine": 39,
-      "note": "Count of 'bar' (1) is not greater than required (1). Skip shrinking.",
-      "array": "barfoothefoobarman",
-      "i": 0,
-      "left": 9,
-      "j": 12,
-      "curr": [
-        12,
-        14
-      ],
-      "extra": {
-        "count": 2,
-        "currentWindowCounts": {
-          "foo": 1,
-          "bar": 1
-        },
-        "window": [
-          9,
-          14
-        ]
-      }
-    },
-    {
-      "codeLine": 47,
-      "note": "'count' (2) IS equal to 'numWords' (2)! Found a full match.",
-      "array": "barfoothefoobarman",
-      "i": 0,
-      "left": 9,
-      "j": 12,
-      "curr": null,
-      "extra": {
-        "count": 2,
-        "currentWindowCounts": {
-          "foo": 1,
-          "bar": 1
-        },
-        "window": [
-          9,
-          14
-        ]
-      }
-    },
-    {
-      "codeLine": 48,
-      "note": "Add 'left' (9) to 'result'.",
-      "array": "barfoothefoobarman",
-      "i": 0,
-      "left": 9,
-      "j": 12,
-      "curr": null,
-      "extra": {
-        "result": [
-          0,
-          9
-        ],
-        "count": 2,
-        "currentWindowCounts": {
-          "foo": 1,
-          "bar": 1
-        },
-        "window": [
-          9,
-          14
-        ]
-      }
-    },
-    {
-      "codeLine": 52,
-      "note": "Extract 'wordToRemove' from the left of the window: 'foo'.",
-      "array": "barfoothefoobarman",
-      "i": 0,
-      "left": 9,
-      "j": 12,
-      "curr": [
-        9,
-        11
-      ],
-      "extra": {
-        "wordToRemove": "foo",
-        "window": [
-          9,
-          14
-        ]
-      }
-    },
-    {
-      "codeLine": 53,
-      "note": "Decrement 'foo' count in 'currentWindowCounts'.",
-      "array": "barfoothefoobarman",
-      "i": 0,
-      "left": 9,
-      "j": 12,
-      "curr": [
-        9,
-        11
-      ],
-      "extra": {
-        "currentWindowCounts": {
-          "foo": 0,
-          "bar": 1
-        },
-        "window": [
-          9,
-          14
-        ]
-      }
-    },
-    {
-      "codeLine": 54,
-      "note": "Decrement 'count' to 1.",
-      "array": "barfoothefoobarman",
-      "i": 0,
-      "left": 9,
-      "j": 12,
-      "curr": [
-        9,
-        11
-      ],
-      "extra": {
-        "count": 1,
-        "currentWindowCounts": {
-          "foo": 0,
-          "bar": 1
-        },
-        "window": [
-          9,
-          14
-        ]
-      }
-    },
-    {
-      "codeLine": 55,
-      "note": "Move 'left' pointer forward by 'wordLength' to 12.",
-      "array": "barfoothefoobarman",
-      "i": 0,
-      "left": 12,
-      "j": 12,
-      "curr": null,
-      "extra": {
-        "window": [
-          12,
-          14
-        ]
-      }
-    },
-    {
-      "codeLine": 25,
-      "note": "Advance 'right' pointer to the next word position (15).",
-      "array": "barfoothefoobarman",
-      "i": 0,
-      "left": 12,
-      "j": 15,
-      "curr": [
-        15,
-        17
-      ],
-      "extra": {
-        "window": [
-          12,
-          17
-        ]
-      }
-    },
-    {
-      "codeLine": 26,
-      "note": "Extract 'currentWord': 'man'.",
-      "array": "barfoothefoobarman",
-      "i": 0,
-      "left": 12,
-      "j": 15,
-      "curr": [
-        15,
-        17
-      ],
-      "extra": {
-        "currentWord": "man",
-        "window": [
-          12,
-          17
-        ]
-      }
-    },
-    {
-      "codeLine": 28,
-      "note": "Check if 'man' is in 'wordCounts'. It is NOT.",
-      "array": "barfoothefoobarman",
-      "i": 0,
-      "left": 12,
-      "j": 15,
-      "curr": [
-        15,
-        17
-      ],
-      "extra": {
-        "currentWord": "man",
-        "window": [
-          12,
-          17
-        ]
-      }
-    },
-    {
-      "codeLine": 30,
-      "note": "Clear 'currentWindowCounts' due to invalid word.",
-      "array": "barfoothefoobarman",
-      "i": 0,
-      "left": 12,
-      "j": 15,
-      "curr": [
-        15,
-        17
-      ],
-      "extra": {
-        "currentWindowCounts": {},
-        "window": null
-      }
-    },
-    {
-      "codeLine": 31,
-      "note": "Reset 'count' to 0.",
-      "array": "barfoothefoobarman",
-      "i": 0,
-      "left": 12,
-      "j": 15,
-      "curr": [
-        15,
-        17
-      ],
-      "extra": {
-        "count": 0,
-        "window": null
-      }
-    },
-    {
-      "codeLine": 32,
-      "note": "Move 'left' pointer past the invalid word to 18.",
-      "array": "barfoothefoobarman",
-      "i": 0,
-      "left": 18,
-      "j": 15,
-      "curr": [
-        15,
-        17
-      ],
-      "extra": {
-        "window": null
-      }
-    },
-    {
-      "codeLine": 25,
-      "note": "Inner loop condition (right <= sLength - wordLength) is now false (18 <= 15). Loop ends.",
-      "array": "barfoothefoobarman",
-      "i": 0,
-      "left": 18,
-      "j": 18,
-      "curr": null,
-      "extra": {
-        "count": 0,
-        "currentWindowCounts": {},
-        "window": null
-      }
-    },
-    {
-      "codeLine": 19,
-      "note": "Increment 'offset' to 1. Start processing for the next offset.",
-      "array": "barfoothefoobarman",
-      "i": 1,
-      "j": null,
-      "curr": null,
-      "extra": {
-        "result": [
-          0,
-          9
-        ]
-      }
-    },
-    {
-      "codeLine": 20,
-      "note": "Initialize 'left' pointer for offset 1 to 1.",
-      "array": "barfoothefoobarman",
-      "i": 1,
-      "left": 1,
-      "curr": 1
-    },
-    {
-      "codeLine": 21,
-      "note": "Initialize 'count' to 0.",
-      "array": "barfoothefoobarman",
-      "i": 1,
-      "left": 1,
-      "extra": {
-        "count": 0
-      },
-      "curr": 0
-    },
-    {
-      "codeLine": 22,
-      "note": "Initialize 'currentWindowCounts' map.",
-      "array": "barfoothefoobarman",
-      "i": 1,
-      "left": 1,
-      "extra": {
-        "currentWindowCounts": {}
-      }
-    },
-    {
-      "codeLine": 25,
-      "note": "Start inner loop for 'offset = 1'. 'right' starts at 1.",
-      "array": "barfoothefoobarman",
-      "i": 1,
-      "left": 1,
-      "j": 1,
-      "curr": [
         1,
-        3
-      ],
-      "extra": {
-        "window": [
-          1,
-          3
-        ]
-      }
-    },
-    {
-      "codeLine": 26,
-      "note": "Extract 'currentWord': 'arf'.",
-      "array": "barfoothefoobarman",
-      "i": 1,
-      "left": 1,
-      "j": 1,
-      "curr": [
-        1,
-        3
-      ],
-      "extra": {
-        "currentWord": "arf",
-        "window": [
-          1,
-          3
-        ]
-      }
-    },
-    {
-      "codeLine": 28,
-      "note": "'arf' is not in 'wordCounts'. Reset window.",
-      "array": "barfoothefoobarman",
-      "i": 1,
-      "left": 1,
-      "j": 1,
-      "curr": [
-        1,
-        3
-      ],
-      "extra": {
-        "currentWord": "arf",
-        "currentWindowCounts": {},
-        "window": null
-      }
-    },
-    {
-      "codeLine": 32,
-      "note": "Move 'left' pointer to 4.",
-      "array": "barfoothefoobarman",
-      "i": 1,
-      "left": 4,
-      "j": 1,
-      "curr": [
-        1,
-        3
-      ],
-      "extra": {
-        "window": null
-      }
-    },
-    {
-      "codeLine": 25,
-      "note": "Advance 'right' pointer to 4. Extract 'currentWord': 'oot'.",
-      "array": "barfoothefoobarman",
-      "i": 1,
-      "left": 4,
-      "j": 4,
-      "curr": [
-        4,
-        6
-      ],
-      "extra": {
-        "currentWord": "oot",
-        "window": [
-          4,
-          6
-        ]
-      }
-    },
-    {
-      "codeLine": 28,
-      "note": "'oot' is not in 'wordCounts'. Reset window.",
-      "array": "barfoothefoobarman",
-      "i": 1,
-      "left": 4,
-      "j": 4,
-      "curr": [
-        4,
-        6
-      ],
-      "extra": {
-        "currentWord": "oot",
-        "currentWindowCounts": {},
-        "window": null
-      }
-    },
-    {
-      "codeLine": 32,
-      "note": "Move 'left' pointer to 7.",
-      "array": "barfoothefoobarman",
-      "i": 1,
-      "left": 7,
-      "j": 4,
-      "curr": [
-        4,
-        6
-      ],
-      "extra": {
-        "window": null
-      }
-    },
-    {
-      "codeLine": 25,
-      "note": "Advance 'right' pointer to 7. Extract 'currentWord': 'hef'.",
-      "array": "barfoothefoobarman",
-      "i": 1,
-      "left": 7,
-      "j": 7,
-      "curr": [
-        7,
-        9
-      ],
-      "extra": {
-        "currentWord": "hef",
-        "window": [
-          7,
-          9
-        ]
-      }
-    },
-    {
-      "codeLine": 28,
-      "note": "'hef' is not in 'wordCounts'. Reset window.",
-      "array": "barfoothefoobarman",
-      "i": 1,
-      "left": 7,
-      "j": 7,
-      "curr": [
-        7,
-        9
-      ],
-      "extra": {
-        "currentWord": "hef",
-        "currentWindowCounts": {},
-        "window": null
-      }
-    },
-    {
-      "codeLine": 32,
-      "note": "Move 'left' pointer to 10.",
-      "array": "barfoothefoobarman",
-      "i": 1,
-      "left": 10,
-      "j": 7,
-      "curr": [
-        7,
-        9
-      ],
-      "extra": {
-        "window": null
-      }
-    },
-    {
-      "codeLine": 25,
-      "note": "Advance 'right' pointer to 10. Extract 'currentWord': 'oob'.",
-      "array": "barfoothefoobarman",
-      "i": 1,
-      "left": 10,
-      "j": 10,
-      "curr": [
-        10,
-        12
-      ],
-      "extra": {
-        "currentWord": "oob",
-        "window": [
-          10,
-          12
-        ]
-      }
-    },
-    {
-      "codeLine": 28,
-      "note": "'oob' is not in 'wordCounts'. Reset window.",
-      "array": "barfoothefoobarman",
-      "i": 1,
-      "left": 10,
-      "j": 10,
-      "curr": [
-        10,
-        12
-      ],
-      "extra": {
-        "currentWord": "oob",
-        "currentWindowCounts": {},
-        "window": null
-      }
-    },
-    {
-      "codeLine": 32,
-      "note": "Move 'left' pointer to 13.",
-      "array": "barfoothefoobarman",
-      "i": 1,
-      "left": 13,
-      "j": 10,
-      "curr": [
-        10,
-        12
-      ],
-      "extra": {
-        "window": null
-      }
-    },
-    {
-      "codeLine": 25,
-      "note": "Advance 'right' pointer to 13. Extract 'currentWord': 'arm'.",
-      "array": "barfoothefoobarman",
-      "i": 1,
-      "left": 13,
-      "j": 13,
-      "curr": [
-        13,
-        15
-      ],
-      "extra": {
-        "currentWord": "arm",
-        "window": [
-          13,
-          15
-        ]
-      }
-    },
-    {
-      "codeLine": 28,
-      "note": "'arm' is not in 'wordCounts'. Reset window.",
-      "array": "barfoothefoobarman",
-      "i": 1,
-      "left": 13,
-      "j": 13,
-      "curr": [
-        13,
-        15
-      ],
-      "extra": {
-        "currentWord": "arm",
-        "currentWindowCounts": {},
-        "window": null
-      }
-    },
-    {
-      "codeLine": 32,
-      "note": "Move 'left' pointer to 16.",
-      "array": "barfoothefoobarman",
-      "i": 1,
-      "left": 16,
-      "j": 13,
-      "curr": [
-        13,
-        15
-      ],
-      "extra": {
-        "window": null
-      }
-    },
-    {
-      "codeLine": 25,
-      "note": "Inner loop condition (right <= sLength - wordLength) is now false (16 <= 15). Loop ends.",
-      "array": "barfoothefoobarman",
-      "i": 1,
-      "left": 16,
-      "j": 16,
-      "curr": null,
-      "extra": {
-        "window": null
-      }
-    },
-    {
-      "codeLine": 19,
-      "note": "Increment 'offset' to 2. Start processing for the next offset.",
-      "array": "barfoothefoobarman",
-      "i": 2,
-      "j": null,
-      "curr": null,
-      "extra": {
-        "result": [
-          0,
-          9
-        ]
-      }
-    },
-    {
-      "codeLine": 20,
-      "note": "Initialize 'left' pointer for offset 2 to 2.",
-      "array": "barfoothefoobarman",
-      "i": 2,
-      "left": 2,
-      "curr": 2
-    },
-    {
-      "codeLine": 21,
-      "note": "Initialize 'count' to 0.",
-      "array": "barfoothefoobarman",
-      "i": 2,
-      "left": 2,
-      "extra": {
-        "count": 0
-      },
-      "curr": 0
-    },
-    {
-      "codeLine": 22,
-      "note": "Initialize 'currentWindowCounts' map.",
-      "array": "barfoothefoobarman",
-      "i": 2,
-      "left": 2,
-      "extra": {
-        "currentWindowCounts": {}
-      }
-    },
-    {
-      "codeLine": 25,
-      "note": "Start inner loop for 'offset = 2'. 'right' starts at 2. This and subsequent iterations for offset=2 will also not find valid words, similar to offset=1.",
-      "array": "barfoothefoobarman",
-      "i": 2,
-      "left": 2,
-      "j": 2,
-      "curr": [
         2,
-        4
-      ],
-      "extra": {
-        "currentWord": "rfo",
-        "window": [
-          2,
-          4
-        ]
-      }
-    },
-    {
-      "codeLine": 28,
-      "note": "'rfo' is not in 'wordCounts'. Reset window and advance 'left' to 5.",
-      "array": "barfoothefoobarman",
-      "i": 2,
-      "left": 5,
-      "j": 2,
-      "curr": [
-        2,
-        4
-      ],
-      "extra": {
-        "currentWord": "rfo",
-        "currentWindowCounts": {},
-        "window": null
-      }
-    },
-    {
-      "codeLine": 25,
-      "note": "Advance 'right' pointer to 5. Extract 'currentWord': 'oth'. 'oth' is not in 'wordCounts'. Reset window and advance 'left' to 8.",
-      "array": "barfoothefoobarman",
-      "i": 2,
-      "left": 8,
-      "j": 5,
-      "curr": [
+        3,
+        4,
         5,
-        7
-      ],
-      "extra": {
-        "currentWord": "oth",
-        "currentWindowCounts": {},
-        "window": null
-      }
-    },
-    {
-      "codeLine": 25,
-      "note": "Advance 'right' pointer to 8. Extract 'currentWord': 'efo'. 'efo' is not in 'wordCounts'. Reset window and advance 'left' to 11.",
-      "array": "barfoothefoobarman",
-      "i": 2,
-      "left": 11,
-      "j": 8,
-      "curr": [
-        8,
-        10
-      ],
-      "extra": {
-        "currentWord": "efo",
-        "currentWindowCounts": {},
-        "window": null
-      }
-    },
-    {
-      "codeLine": 25,
-      "note": "Advance 'right' pointer to 11. Extract 'currentWord': 'oba'. 'oba' is not in 'wordCounts'. Reset window and advance 'left' to 14.",
-      "array": "barfoothefoobarman",
-      "i": 2,
-      "left": 14,
-      "j": 11,
-      "curr": [
+        9,
+        10,
         11,
-        13
+        12,
+        13,
+        14
       ],
-      "extra": {
-        "currentWord": "oba",
-        "currentWindowCounts": {},
-        "window": null
-      }
-    },
-    {
-      "codeLine": 25,
-      "note": "Advance 'right' pointer to 14. Extract 'currentWord': 'arm'. 'arm' is not in 'wordCounts'. Reset window and advance 'left' to 17.",
-      "array": "barfoothefoobarman",
-      "i": 2,
-      "left": 17,
-      "j": 14,
-      "curr": [
-        14,
-        16
-      ],
-      "extra": {
-        "currentWord": "arm",
-        "currentWindowCounts": {},
-        "window": null
-      }
-    },
-    {
-      "codeLine": 25,
-      "note": "Inner loop condition is now false (17 <= 15). Loop ends for offset 2.",
-      "array": "barfoothefoobarman",
-      "i": 2,
-      "left": 17,
-      "j": 17,
-      "curr": null,
-      "extra": {
-        "window": null
-      }
-    },
-    {
-      "codeLine": 19,
-      "note": "Outer loop condition (offset < wordLength) is now false (3 < 3). Loop ends.",
-      "array": "barfoothefoobarman",
-      "i": null,
-      "j": null,
-      "curr": null,
-      "extra": {
-        "result": [
-          0,
-          9
-        ]
-      }
-    },
-    {
-      "codeLine": 60,
-      "note": "All iterations complete. Return the final result array.",
-      "array": "barfoothefoobarman",
-      "extra": {
-        "result": [
-          0,
-          9
-        ]
-      }
+      "result": [
+        0,
+        9
+      ]
     }
-  ]
+  ],
+  "fullDescription": "<p>You are given a string <code>s</code> and an array of strings <code>words</code>. All the strings of <code>words</code> are of <strong>the same length</strong>.</p>\n\n<p>A <strong>concatenated string</strong> is a string that exactly contains all the strings of any permutation of <code>words</code> concatenated.</p>\n\n<ul>\n\t<li>For example, if <code>words = [&quot;ab&quot;,&quot;cd&quot;,&quot;ef&quot;]</code>, then <code>&quot;abcdef&quot;</code>, <code>&quot;abefcd&quot;</code>, <code>&quot;cdabef&quot;</code>, <code>&quot;cdefab&quot;</code>, <code>&quot;efabcd&quot;</code>, and <code>&quot;efcdab&quot;</code> are all concatenated strings. <code>&quot;acdbef&quot;</code> is not a concatenated string because it is not the concatenation of any permutation of <code>words</code>.</li>\n</ul>\n\n<p>Return an array of <em>the starting indices</em> of all the concatenated substrings in <code>s</code>. You can return the answer in <strong>any order</strong>.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<div class=\"example-block\">\n<p><strong>Input:</strong> <span class=\"example-io\">s = &quot;barfoothefoobarman&quot;, words = [&quot;foo&quot;,&quot;bar&quot;]</span></p>\n\n<p><strong>Output:</strong> <span class=\"example-io\">[0,9]</span></p>\n\n<p><strong>Explanation:</strong></p>\n\n<p>The substring starting at 0 is <code>&quot;barfoo&quot;</code>. It is the concatenation of <code>[&quot;bar&quot;,&quot;foo&quot;]</code> which is a permutation of <code>words</code>.<br />\nThe substring starting at 9 is <code>&quot;foobar&quot;</code>. It is the concatenation of <code>[&quot;foo&quot;,&quot;bar&quot;]</code> which is a permutation of <code>words</code>.</p>\n</div>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<div class=\"example-block\">\n<p><strong>Input:</strong> <span class=\"example-io\">s = &quot;wordgoodgoodgoodbestword&quot;, words = [&quot;word&quot;,&quot;good&quot;,&quot;best&quot;,&quot;word&quot;]</span></p>\n\n<p><strong>Output:</strong> <span class=\"example-io\">[]</span></p>\n\n<p><strong>Explanation:</strong></p>\n\n<p>There is no concatenated substring.</p>\n</div>\n\n<p><strong class=\"example\">Example 3:</strong></p>\n\n<div class=\"example-block\">\n<p><strong>Input:</strong> <span class=\"example-io\">s = &quot;barfoofoobarthefoobarman&quot;, words = [&quot;bar&quot;,&quot;foo&quot;,&quot;the&quot;]</span></p>\n\n<p><strong>Output:</strong> <span class=\"example-io\">[6,9,12]</span></p>\n\n<p><strong>Explanation:</strong></p>\n\n<p>The substring starting at 6 is <code>&quot;foobarthe&quot;</code>. It is the concatenation of <code>[&quot;foo&quot;,&quot;bar&quot;,&quot;the&quot;]</code>.<br />\nThe substring starting at 9 is <code>&quot;barthefoo&quot;</code>. It is the concatenation of <code>[&quot;bar&quot;,&quot;the&quot;,&quot;foo&quot;]</code>.<br />\nThe substring starting at 12 is <code>&quot;thefoobar&quot;</code>. It is the concatenation of <code>[&quot;the&quot;,&quot;foo&quot;,&quot;bar&quot;]</code>.</p>\n</div>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= s.length &lt;= 10<sup>4</sup></code></li>\n\t<li><code>1 &lt;= words.length &lt;= 5000</code></li>\n\t<li><code>1 &lt;= words[i].length &lt;= 30</code></li>\n\t<li><code>s</code> and <code>words[i]</code> consist of lowercase English letters.</li>\n</ul>\n"
 }

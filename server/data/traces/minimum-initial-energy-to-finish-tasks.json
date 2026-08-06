@@ -1,0 +1,68 @@
+{
+  "title": "Minimum Initial Energy to Finish Tasks",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Greedy",
+    "Sorting"
+  ],
+  "description": "Find the minimum initial energy required to complete all tasks, where each task has an actual cost and a minimum threshold.",
+  "target": null,
+  "pseudocode": "1. tasks.sort((a, b) => (b[1] - b[0]) - (a[1] - a[0]))\n2. let energy = 0\n3. for (let task of tasks) {\n4.   energy = Math.max(energy + task[0], task[1])\n5. }\n6. return energy",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Sort tasks by (min - actual) in descending order to prioritize high-margin tasks.",
+      "array": [
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          5
+        ]
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Start iteration with task [3, 5].",
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Calculate energy: max(0 + 3, 5) = 5.",
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Move to task [2, 4].",
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Calculate energy: max(5 + 2, 4) = 7.",
+      "i": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Move to task [1, 2].",
+      "i": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Calculate energy: max(7 + 1, 2) = 8.",
+      "i": 2
+    },
+    {
+      "codeLine": 6,
+      "note": "Return final energy 8.",
+      "i": 2
+    }
+  ]
+}

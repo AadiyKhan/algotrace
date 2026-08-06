@@ -1,0 +1,119 @@
+{
+  "title": "Maximum Erasure Value",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Sliding Window",
+    "Hash Set"
+  ],
+  "description": "Find the maximum sum of a subarray with unique elements.",
+  "target": null,
+  "pseudocode": "let left = 0, currentSum = 0, maxSum = 0, seen = new Set();\nfor (let right = 0; right < nums.length; right++) {\n  while (seen.has(nums[right])) {\n    seen.delete(nums[left]);\n    currentSum -= nums[left];\n    left++;\n  }\n  seen.add(nums[right]);\n  currentSum += nums[right];\n  maxSum = Math.max(maxSum, currentSum);\n}",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Initialize variables with nums = [4, 2, 4, 5, 6]",
+      "array": [
+        4,
+        2,
+        4,
+        5,
+        6
+      ],
+      "i": 0,
+      "j": 0
+    },
+    {
+      "codeLine": 7,
+      "note": "Add 4 to set and sum. maxSum = 4",
+      "array": [
+        4,
+        2,
+        4,
+        5,
+        6
+      ],
+      "i": 0,
+      "j": 0
+    },
+    {
+      "codeLine": 7,
+      "note": "Add 2 to set and sum. maxSum = 6",
+      "array": [
+        4,
+        2,
+        4,
+        5,
+        6
+      ],
+      "i": 0,
+      "j": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "Duplicate 4 found at index 2. Enter while loop.",
+      "array": [
+        4,
+        2,
+        4,
+        5,
+        6
+      ],
+      "i": 0,
+      "j": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Remove 4 at index 0. Update left to 1.",
+      "array": [
+        4,
+        2,
+        4,
+        5,
+        6
+      ],
+      "i": 1,
+      "j": 2
+    },
+    {
+      "codeLine": 7,
+      "note": "Add 4 at index 2. currentSum = 2+4=6. maxSum = 6",
+      "array": [
+        4,
+        2,
+        4,
+        5,
+        6
+      ],
+      "i": 1,
+      "j": 2
+    },
+    {
+      "codeLine": 7,
+      "note": "Add 5. currentSum = 2+4+5=11. maxSum = 11",
+      "array": [
+        4,
+        2,
+        4,
+        5,
+        6
+      ],
+      "i": 1,
+      "j": 3
+    },
+    {
+      "codeLine": 7,
+      "note": "Add 6. currentSum = 2+4+5+6=17. maxSum = 17",
+      "array": [
+        4,
+        2,
+        4,
+        5,
+        6
+      ],
+      "i": 1,
+      "j": 4
+    }
+  ]
+}

@@ -1,807 +1,103 @@
 {
-  "title": "Roman To Integer",
+  "title": "Roman to Integer",
   "difficulty": "Easy",
   "type": "array",
   "tags": [
     "Hash Table",
+    "Math",
     "String"
   ],
-  "description": "Converts a Roman numeral string (e.g., 'IV', 'MCMXCIV') to its integer equivalent by iterating through the characters and handling subtractive cases (like 'IV' for 4) by checking the next character.",
-  "pseudocode": "1. function romanToInt(s):\n2.   map = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000}\n3.   total = 0\n4.   i = 0\n5.   while i < length(s):\n6.     currentValue = map[s[i]]\n7.     // Check if there is a next character\n8.     if i + 1 < length(s):\n9.       nextValue = map[s[i+1]]\n10.      // If current value is smaller than next, it's a subtractive case (e.g., IV, IX)\n11.      if currentValue < nextValue:\n12.        total = total - currentValue\n13.      else:\n14.        total = total + currentValue\n15.    else: // Last character, always add its value\n16.      total = total + currentValue\n17.    i = i + 1\n18.  return total",
+  "description": "Convert Roman numeral string 'III' to integer 3.",
+  "target": 3,
+  "pseudocode": "1. total = 0, prev = 0\n2. for char in s:\n3.   curr = map[char]\n4.   if curr > prev: total += curr - 2 * prev\n5.   else: total += curr\n6.   prev = curr\n7. return total",
   "steps": [
     {
-      "codeLine": 2,
-      "note": "Initialize a map for Roman numeral values, total sum to 0, and index `i` to 0. Input string is 'MCMXCIV'.",
+      "codeLine": 1,
+      "note": "Initialize total and prev values.",
       "array": [
-        "M",
-        "C",
-        "M",
-        "X",
-        "C",
         "I",
-        "V"
+        "I",
+        "I"
+      ],
+      "i": 0,
+      "curr": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Process first 'I', curr is 1.",
+      "array": [
+        "I",
+        "I",
+        "I"
       ],
       "i": 0,
       "curr": 0
     },
     {
       "codeLine": 5,
-      "note": "Start loop. `i=0` is less than string length (7).",
+      "note": "1 is not > 0, add 1 to total. total = 1.",
       "array": [
-        "M",
-        "C",
-        "M",
-        "X",
-        "C",
         "I",
-        "V"
+        "I",
+        "I"
       ],
       "i": 0,
       "curr": 0
     },
     {
-      "codeLine": 6,
-      "note": "Current character `s[0]` is 'M'. Its value (currentValue) is 1000.",
+      "codeLine": 3,
+      "note": "Process second 'I', curr is 1.",
       "array": [
-        "M",
-        "C",
-        "M",
-        "X",
-        "C",
         "I",
-        "V"
-      ],
-      "i": 0,
-      "curr": 0
-    },
-    {
-      "codeLine": 8,
-      "note": "Check if a next character exists. `i+1` (1) is less than length (7), so 'C' exists.",
-      "array": [
-        "M",
-        "C",
-        "M",
-        "X",
-        "C",
         "I",
-        "V"
-      ],
-      "i": 0,
-      "curr": 1
-    },
-    {
-      "codeLine": 9,
-      "note": "Next character `s[1]` is 'C'. Its value (nextValue) is 100.",
-      "array": [
-        "M",
-        "C",
-        "M",
-        "X",
-        "C",
-        "I",
-        "V"
-      ],
-      "i": 0,
-      "curr": 1
-    },
-    {
-      "codeLine": 11,
-      "note": "Compare currentValue (1000) with nextValue (100). 1000 < 100 is false, so it's not a subtractive case.",
-      "array": [
-        "M",
-        "C",
-        "M",
-        "X",
-        "C",
-        "I",
-        "V"
-      ],
-      "i": 0,
-      "curr": 1000
-    },
-    {
-      "codeLine": 14,
-      "note": "Add currentValue (1000) to total. `total` becomes 0 + 1000 = 1000.",
-      "total": 1000,
-      "array": [
-        "M",
-        "C",
-        "M",
-        "X",
-        "C",
-        "I",
-        "V"
-      ],
-      "i": 0,
-      "curr": 1000
-    },
-    {
-      "codeLine": 17,
-      "note": "Increment `i` to 1.",
-      "total": 1000,
-      "array": [
-        "M",
-        "C",
-        "M",
-        "X",
-        "C",
-        "I",
-        "V"
+        "I"
       ],
       "i": 1,
       "curr": 1
     },
     {
       "codeLine": 5,
-      "note": "Continue loop. `i=1` is less than string length (7).",
-      "total": 1000,
+      "note": "1 is not > 1, add 1 to total. total = 2.",
       "array": [
-        "M",
-        "C",
-        "M",
-        "X",
-        "C",
         "I",
-        "V"
+        "I",
+        "I"
       ],
       "i": 1,
       "curr": 1
     },
     {
-      "codeLine": 6,
-      "note": "Current character `s[1]` is 'C'. Its value (currentValue) is 100.",
-      "total": 1000,
+      "codeLine": 3,
+      "note": "Process third 'I', curr is 1.",
       "array": [
-        "M",
-        "C",
-        "M",
-        "X",
-        "C",
         "I",
-        "V"
-      ],
-      "i": 1,
-      "curr": 1
-    },
-    {
-      "codeLine": 8,
-      "note": "Check if a next character exists. `i+1` (2) is less than length (7), so 'M' exists.",
-      "total": 1000,
-      "array": [
-        "M",
-        "C",
-        "M",
-        "X",
-        "C",
         "I",
-        "V"
-      ],
-      "i": 1,
-      "curr": 1
-    },
-    {
-      "codeLine": 9,
-      "note": "Next character `s[2]` is 'M'. Its value (nextValue) is 1000.",
-      "total": 1000,
-      "array": [
-        "M",
-        "C",
-        "M",
-        "X",
-        "C",
-        "I",
-        "V"
-      ],
-      "i": 1,
-      "curr": 2
-    },
-    {
-      "codeLine": 11,
-      "note": "Compare currentValue (100) with nextValue (1000). 100 < 1000 is true, it's a subtractive case (CM).",
-      "total": 1000,
-      "array": [
-        "M",
-        "C",
-        "M",
-        "X",
-        "C",
-        "I",
-        "V"
-      ],
-      "i": 1,
-      "curr": 100
-    },
-    {
-      "codeLine": 12,
-      "note": "Subtract currentValue (100) from total. `total` becomes 1000 - 100 = 900.",
-      "total": 900,
-      "array": [
-        "M",
-        "C",
-        "M",
-        "X",
-        "C",
-        "I",
-        "V"
-      ],
-      "i": 1,
-      "curr": 100
-    },
-    {
-      "codeLine": 17,
-      "note": "Increment `i` to 2.",
-      "total": 900,
-      "array": [
-        "M",
-        "C",
-        "M",
-        "X",
-        "C",
-        "I",
-        "V"
+        "I"
       ],
       "i": 2,
       "curr": 2
     },
     {
       "codeLine": 5,
-      "note": "Continue loop. `i=2` is less than string length (7).",
-      "total": 900,
+      "note": "1 is not > 1, add 1 to total. total = 3.",
       "array": [
-        "M",
-        "C",
-        "M",
-        "X",
-        "C",
         "I",
-        "V"
+        "I",
+        "I"
       ],
       "i": 2,
       "curr": 2
     },
     {
-      "codeLine": 6,
-      "note": "Current character `s[2]` is 'M'. Its value (currentValue) is 1000.",
-      "total": 900,
+      "codeLine": 7,
+      "note": "Return total 3.",
       "array": [
-        "M",
-        "C",
-        "M",
-        "X",
-        "C",
         "I",
-        "V"
+        "I",
+        "I"
       ],
-      "i": 2,
       "curr": 2
-    },
-    {
-      "codeLine": 8,
-      "note": "Check if a next character exists. `i+1` (3) is less than length (7), so 'X' exists.",
-      "total": 900,
-      "array": [
-        "M",
-        "C",
-        "M",
-        "X",
-        "C",
-        "I",
-        "V"
-      ],
-      "i": 2,
-      "curr": 1
-    },
-    {
-      "codeLine": 9,
-      "note": "Next character `s[3]` is 'X'. Its value (nextValue) is 10.",
-      "total": 900,
-      "array": [
-        "M",
-        "C",
-        "M",
-        "X",
-        "C",
-        "I",
-        "V"
-      ],
-      "i": 2,
-      "curr": 3
-    },
-    {
-      "codeLine": 11,
-      "note": "Compare currentValue (1000) with nextValue (10). 1000 < 10 is false.",
-      "total": 900,
-      "array": [
-        "M",
-        "C",
-        "M",
-        "X",
-        "C",
-        "I",
-        "V"
-      ],
-      "i": 2,
-      "curr": 1000
-    },
-    {
-      "codeLine": 14,
-      "note": "Add currentValue (1000) to total. `total` becomes 900 + 1000 = 1900.",
-      "total": 1900,
-      "array": [
-        "M",
-        "C",
-        "M",
-        "X",
-        "C",
-        "I",
-        "V"
-      ],
-      "i": 2,
-      "curr": 1000
-    },
-    {
-      "codeLine": 17,
-      "note": "Increment `i` to 3.",
-      "total": 1900,
-      "array": [
-        "M",
-        "C",
-        "M",
-        "X",
-        "C",
-        "I",
-        "V"
-      ],
-      "i": 3,
-      "curr": 3
-    },
-    {
-      "codeLine": 5,
-      "note": "Continue loop. `i=3` is less than string length (7).",
-      "total": 1900,
-      "array": [
-        "M",
-        "C",
-        "M",
-        "X",
-        "C",
-        "I",
-        "V"
-      ],
-      "i": 3,
-      "curr": 3
-    },
-    {
-      "codeLine": 6,
-      "note": "Current character `s[3]` is 'X'. Its value (currentValue) is 10.",
-      "total": 1900,
-      "array": [
-        "M",
-        "C",
-        "M",
-        "X",
-        "C",
-        "I",
-        "V"
-      ],
-      "i": 3,
-      "curr": 3
-    },
-    {
-      "codeLine": 8,
-      "note": "Check if a next character exists. `i+1` (4) is less than length (7), so 'C' exists.",
-      "total": 1900,
-      "array": [
-        "M",
-        "C",
-        "M",
-        "X",
-        "C",
-        "I",
-        "V"
-      ],
-      "i": 3,
-      "curr": 1
-    },
-    {
-      "codeLine": 9,
-      "note": "Next character `s[4]` is 'C'. Its value (nextValue) is 100.",
-      "total": 1900,
-      "array": [
-        "M",
-        "C",
-        "M",
-        "X",
-        "C",
-        "I",
-        "V"
-      ],
-      "i": 3,
-      "curr": 4
-    },
-    {
-      "codeLine": 11,
-      "note": "Compare currentValue (10) with nextValue (100). 10 < 100 is true, it's a subtractive case (XC).",
-      "total": 1900,
-      "array": [
-        "M",
-        "C",
-        "M",
-        "X",
-        "C",
-        "I",
-        "V"
-      ],
-      "i": 3,
-      "curr": 10
-    },
-    {
-      "codeLine": 12,
-      "note": "Subtract currentValue (10) from total. `total` becomes 1900 - 10 = 1890.",
-      "total": 1890,
-      "array": [
-        "M",
-        "C",
-        "M",
-        "X",
-        "C",
-        "I",
-        "V"
-      ],
-      "i": 3,
-      "curr": 10
-    },
-    {
-      "codeLine": 17,
-      "note": "Increment `i` to 4.",
-      "total": 1890,
-      "array": [
-        "M",
-        "C",
-        "M",
-        "X",
-        "C",
-        "I",
-        "V"
-      ],
-      "i": 4,
-      "curr": 4
-    },
-    {
-      "codeLine": 5,
-      "note": "Continue loop. `i=4` is less than string length (7).",
-      "total": 1890,
-      "array": [
-        "M",
-        "C",
-        "M",
-        "X",
-        "C",
-        "I",
-        "V"
-      ],
-      "i": 4,
-      "curr": 4
-    },
-    {
-      "codeLine": 6,
-      "note": "Current character `s[4]` is 'C'. Its value (currentValue) is 100.",
-      "total": 1890,
-      "array": [
-        "M",
-        "C",
-        "M",
-        "X",
-        "C",
-        "I",
-        "V"
-      ],
-      "i": 4,
-      "curr": 4
-    },
-    {
-      "codeLine": 8,
-      "note": "Check if a next character exists. `i+1` (5) is less than length (7), so 'I' exists.",
-      "total": 1890,
-      "array": [
-        "M",
-        "C",
-        "M",
-        "X",
-        "C",
-        "I",
-        "V"
-      ],
-      "i": 4,
-      "curr": 1
-    },
-    {
-      "codeLine": 9,
-      "note": "Next character `s[5]` is 'I'. Its value (nextValue) is 1.",
-      "total": 1890,
-      "array": [
-        "M",
-        "C",
-        "M",
-        "X",
-        "C",
-        "I",
-        "V"
-      ],
-      "i": 4,
-      "curr": 5
-    },
-    {
-      "codeLine": 11,
-      "note": "Compare currentValue (100) with nextValue (1). 100 < 1 is false.",
-      "total": 1890,
-      "array": [
-        "M",
-        "C",
-        "M",
-        "X",
-        "C",
-        "I",
-        "V"
-      ],
-      "i": 4,
-      "curr": 100
-    },
-    {
-      "codeLine": 14,
-      "note": "Add currentValue (100) to total. `total` becomes 1890 + 100 = 1990.",
-      "total": 1990,
-      "array": [
-        "M",
-        "C",
-        "M",
-        "X",
-        "C",
-        "I",
-        "V"
-      ],
-      "i": 4,
-      "curr": 100
-    },
-    {
-      "codeLine": 17,
-      "note": "Increment `i` to 5.",
-      "total": 1990,
-      "array": [
-        "M",
-        "C",
-        "M",
-        "X",
-        "C",
-        "I",
-        "V"
-      ],
-      "i": 5,
-      "curr": 5
-    },
-    {
-      "codeLine": 5,
-      "note": "Continue loop. `i=5` is less than string length (7).",
-      "total": 1990,
-      "array": [
-        "M",
-        "C",
-        "M",
-        "X",
-        "C",
-        "I",
-        "V"
-      ],
-      "i": 5,
-      "curr": 5
-    },
-    {
-      "codeLine": 6,
-      "note": "Current character `s[5]` is 'I'. Its value (currentValue) is 1.",
-      "total": 1990,
-      "array": [
-        "M",
-        "C",
-        "M",
-        "X",
-        "C",
-        "I",
-        "V"
-      ],
-      "i": 5,
-      "curr": 5
-    },
-    {
-      "codeLine": 8,
-      "note": "Check if a next character exists. `i+1` (6) is less than length (7), so 'V' exists.",
-      "total": 1990,
-      "array": [
-        "M",
-        "C",
-        "M",
-        "X",
-        "C",
-        "I",
-        "V"
-      ],
-      "i": 5,
-      "curr": 1
-    },
-    {
-      "codeLine": 9,
-      "note": "Next character `s[6]` is 'V'. Its value (nextValue) is 5.",
-      "total": 1990,
-      "array": [
-        "M",
-        "C",
-        "M",
-        "X",
-        "C",
-        "I",
-        "V"
-      ],
-      "i": 5,
-      "curr": 6
-    },
-    {
-      "codeLine": 11,
-      "note": "Compare currentValue (1) with nextValue (5). 1 < 5 is true, it's a subtractive case (IV).",
-      "total": 1990,
-      "array": [
-        "M",
-        "C",
-        "M",
-        "X",
-        "C",
-        "I",
-        "V"
-      ],
-      "i": 5,
-      "curr": 1
-    },
-    {
-      "codeLine": 12,
-      "note": "Subtract currentValue (1) from total. `total` becomes 1990 - 1 = 1989.",
-      "total": 1989,
-      "array": [
-        "M",
-        "C",
-        "M",
-        "X",
-        "C",
-        "I",
-        "V"
-      ],
-      "i": 5,
-      "curr": 1
-    },
-    {
-      "codeLine": 17,
-      "note": "Increment `i` to 6.",
-      "total": 1989,
-      "array": [
-        "M",
-        "C",
-        "M",
-        "X",
-        "C",
-        "I",
-        "V"
-      ],
-      "i": 6,
-      "curr": 6
-    },
-    {
-      "codeLine": 5,
-      "note": "Continue loop. `i=6` is less than string length (7).",
-      "total": 1989,
-      "array": [
-        "M",
-        "C",
-        "M",
-        "X",
-        "C",
-        "I",
-        "V"
-      ],
-      "i": 6,
-      "curr": 6
-    },
-    {
-      "codeLine": 6,
-      "note": "Current character `s[6]` is 'V'. Its value (currentValue) is 5.",
-      "total": 1989,
-      "array": [
-        "M",
-        "C",
-        "M",
-        "X",
-        "C",
-        "I",
-        "V"
-      ],
-      "i": 6,
-      "curr": 6
-    },
-    {
-      "codeLine": 8,
-      "note": "Check if a next character exists. `i+1` (7) is NOT less than length (7). This is the last character.",
-      "total": 1989,
-      "array": [
-        "M",
-        "C",
-        "M",
-        "X",
-        "C",
-        "I",
-        "V"
-      ],
-      "i": 6,
-      "curr": 1
-    },
-    {
-      "codeLine": 16,
-      "note": "Add currentValue (5) to total. `total` becomes 1989 + 5 = 1994.",
-      "total": 1994,
-      "array": [
-        "M",
-        "C",
-        "M",
-        "X",
-        "C",
-        "I",
-        "V"
-      ],
-      "i": 6,
-      "curr": 5
-    },
-    {
-      "codeLine": 17,
-      "note": "Increment `i` to 7.",
-      "total": 1994,
-      "array": [
-        "M",
-        "C",
-        "M",
-        "X",
-        "C",
-        "I",
-        "V"
-      ],
-      "i": 7,
-      "curr": 7
-    },
-    {
-      "codeLine": 5,
-      "note": "Loop condition `i < length(s)` (7 < 7) is false. Exit loop.",
-      "total": 1994,
-      "array": [
-        "M",
-        "C",
-        "M",
-        "X",
-        "C",
-        "I",
-        "V"
-      ],
-      "i": 7,
-      "curr": 7
-    },
-    {
-      "codeLine": 18,
-      "note": "Return the final total, which is 1994.",
-      "total": 1994,
-      "array": [
-        "M",
-        "C",
-        "M",
-        "X",
-        "C",
-        "I",
-        "V"
-      ],
-      "i": 7,
-      "curr": 1994
     }
-  ]
+  ],
+  "fullDescription": "<p>Roman numerals are represented by seven different symbols:&nbsp;<code>I</code>, <code>V</code>, <code>X</code>, <code>L</code>, <code>C</code>, <code>D</code> and <code>M</code>.</p>\n\n<pre>\n<strong>Symbol</strong>       <strong>Value</strong>\nI             1\nV             5\nX             10\nL             50\nC             100\nD             500\nM             1000</pre>\n\n<p>For example,&nbsp;<code>2</code> is written as <code>II</code>&nbsp;in Roman numeral, just two ones added together. <code>12</code> is written as&nbsp;<code>XII</code>, which is simply <code>X + II</code>. The number <code>27</code> is written as <code>XXVII</code>, which is <code>XX + V + II</code>.</p>\n\n<p>Roman numerals are usually written largest to smallest from left to right. However, the numeral for four is not <code>IIII</code>. Instead, the number four is written as <code>IV</code>. Because the one is before the five we subtract it making four. The same principle applies to the number nine, which is written as <code>IX</code>. There are six instances where subtraction is used:</p>\n\n<ul>\n\t<li><code>I</code> can be placed before <code>V</code> (5) and <code>X</code> (10) to make 4 and 9.&nbsp;</li>\n\t<li><code>X</code> can be placed before <code>L</code> (50) and <code>C</code> (100) to make 40 and 90.&nbsp;</li>\n\t<li><code>C</code> can be placed before <code>D</code> (500) and <code>M</code> (1000) to make 400 and 900.</li>\n</ul>\n\n<p>Given a roman numeral, convert it to an integer.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> s = &quot;III&quot;\n<strong>Output:</strong> 3\n<strong>Explanation:</strong> III = 3.\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> s = &quot;LVIII&quot;\n<strong>Output:</strong> 58\n<strong>Explanation:</strong> L = 50, V= 5, III = 3.\n</pre>\n\n<p><strong class=\"example\">Example 3:</strong></p>\n\n<pre>\n<strong>Input:</strong> s = &quot;MCMXCIV&quot;\n<strong>Output:</strong> 1994\n<strong>Explanation:</strong> M = 1000, CM = 900, XC = 90 and IV = 4.\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= s.length &lt;= 15</code></li>\n\t<li><code>s</code> contains only&nbsp;the characters <code>(&#39;I&#39;, &#39;V&#39;, &#39;X&#39;, &#39;L&#39;, &#39;C&#39;, &#39;D&#39;, &#39;M&#39;)</code>.</li>\n\t<li>It is <strong>guaranteed</strong>&nbsp;that <code>s</code> is a valid roman numeral in the range <code>[1, 3999]</code>.</li>\n</ul>\n"
 }

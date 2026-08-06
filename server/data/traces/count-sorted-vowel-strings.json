@@ -1,0 +1,86 @@
+{
+  "title": "Count Sorted Vowel Strings",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Math",
+    "Dynamic Programming",
+    "Combinatorics"
+  ],
+  "description": "Given an integer n, return the number of strings of length n that consist only of vowels ('a', 'e', 'i', 'o', 'u') and are lexicographically sorted.",
+  "target": 2,
+  "pseudocode": "1. vowels = [1, 1, 1, 1, 1]\n2. for i in range(2, n + 1):\n3.   for j in range(1, 5):\n4.     vowels[j] += vowels[j-1]",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize count of strings ending in each vowel to 1 for n=1.",
+      "array": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Starting loop for n=2.",
+      "array": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Update vowels[1] (ending in 'e'): 1 + 1 = 2.",
+      "array": [
+        1,
+        2,
+        1,
+        1,
+        1
+      ],
+      "j": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Update vowels[2] (ending in 'i'): 1 + 2 = 3.",
+      "array": [
+        1,
+        2,
+        3,
+        1,
+        1
+      ],
+      "j": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Update vowels[3] (ending in 'o'): 1 + 3 = 4.",
+      "array": [
+        1,
+        2,
+        3,
+        4,
+        1
+      ],
+      "j": 3
+    },
+    {
+      "codeLine": 4,
+      "note": "Update vowels[4] (ending in 'u'): 1 + 4 = 5.",
+      "array": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "j": 4
+    }
+  ]
+}

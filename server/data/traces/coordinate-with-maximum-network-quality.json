@@ -1,0 +1,106 @@
+{
+  "title": "Coordinate With Maximum Network Quality",
+  "difficulty": "Medium",
+  "type": "matrix",
+  "tags": [
+    "Array",
+    "Math"
+  ],
+  "description": "Find a coordinate with the maximum network quality given towers with signal strengths and a radius threshold.",
+  "target": 7,
+  "pseudocode": "1. maxQuality = 0, bestCoord = [0, 0]\n2. for x from 0 to 50:\n3.   for y from 0 to 50:\n4.     currQuality = 0\n5.     for tower in towers:\n6.       dist = sqrt((tower.x-x)^2 + (tower.y-y)^2)\n7.       if dist <= radius:\n8.         currQuality += floor(tower.q / (1 + dist))\n9.     if currQuality > maxQuality:\n10.      maxQuality = currQuality, bestCoord = [x, y]",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize maxQuality and bestCoord",
+      "matrix": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "i": 0,
+      "j": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Calculating quality for coordinate [0,0]",
+      "matrix": [
+        [
+          19,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "i": 0,
+      "j": 0
+    },
+    {
+      "codeLine": 9,
+      "note": "Found new max quality at [0,0]",
+      "matrix": [
+        [
+          19,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "i": 0,
+      "j": 0
+    },
+    {
+      "codeLine": 10,
+      "note": "Updating best coordinate to [0,0]",
+      "matrix": [
+        [
+          19,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "i": 0,
+      "j": 0
+    }
+  ]
+}

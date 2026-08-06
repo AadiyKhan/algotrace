@@ -7,13 +7,33 @@
     "Math",
     "String"
   ],
-  "description": "Convert a given integer to its Roman numeral representation by repeatedly subtracting the largest possible standard Roman numeral values.",
-  "target": 1994,
-  "pseudocode": "1. values = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1]\n2. symbols = [\"M\", \"CM\", \"D\", \"CD\", \"C\", \"XC\", \"L\", \"XL\", \"X\", \"IX\", \"V\", \"IV\", \"I\"]\n3. result = \"\"\n4. for i from 0 to 12:\n5.   while num >= values[i]:\n6.     result += symbols[i]\n7.     num -= values[i]\n8. return result",
+  "description": "Convert integer 3749 to Roman numeral using greedy subtraction.",
+  "target": "MMMDCCXLIX",
+  "pseudocode": "1. valMap = [[1000, 'M'], [900, 'CM'], [500, 'D'], [400, 'CD'], [100, 'C'], [90, 'XC'], [50, 'L'], [40, 'XL'], [10, 'X'], [9, 'IX'], [5, 'V'], [4, 'IV'], [1, 'I']]\n2. res = ''\n3. for value, symbol in valMap:\n4.   while num >= value:\n5.     res += symbol\n6.     num -= value",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize values and symbols mapping arrays. Input num = 1994, result = ''",
+      "note": "Initialize mapping of values to Roman symbols",
+      "array": [
+        1000,
+        900,
+        500,
+        400,
+        100,
+        90,
+        50,
+        40,
+        10,
+        9,
+        5,
+        4,
+        1
+      ],
+      "visited": []
+    },
+    {
+      "codeLine": 4,
+      "note": "Process 3000 (M): num=3749, subtract 1000 three times",
       "array": [
         1000,
         900,
@@ -30,11 +50,14 @@
         1
       ],
       "i": 0,
-      "curr": 1994
+      "curr": 0,
+      "visited": [
+        0
+      ]
     },
     {
-      "codeLine": 5,
-      "note": "Check num (1994) >= values[0] (1000). Condition holds true.",
+      "codeLine": 4,
+      "note": "Process 700 (DCC): subtract 500 once, then 100 twice",
       "array": [
         1000,
         900,
@@ -50,12 +73,16 @@
         4,
         1
       ],
-      "i": 0,
-      "curr": 1994
+      "i": 2,
+      "curr": 2,
+      "visited": [
+        0,
+        2
+      ]
     },
     {
-      "codeLine": 6,
-      "note": "Append symbol 'M' to result. Subtract 1000 from num. Remaining num = 994, result = 'M'.",
+      "codeLine": 4,
+      "note": "Process 40 (XL): subtract 40 once",
       "array": [
         1000,
         900,
@@ -71,12 +98,18 @@
         4,
         1
       ],
-      "i": 0,
-      "curr": 994
+      "i": 7,
+      "curr": 7,
+      "visited": [
+        0,
+        2,
+        4,
+        7
+      ]
     },
     {
-      "codeLine": 5,
-      "note": "Check num (994) >= values[0] (1000). Condition is false, move to next value.",
+      "codeLine": 4,
+      "note": "Process 9 (IX): subtract 9 once",
       "array": [
         1000,
         900,
@@ -92,96 +125,19 @@
         4,
         1
       ],
-      "i": 0,
-      "curr": 994
-    },
-    {
-      "codeLine": 5,
-      "note": "Check num (994) >= values[1] (900). Condition holds true.",
-      "array": [
-        1000,
-        900,
-        500,
-        400,
-        100,
-        90,
-        50,
-        40,
-        10,
-        9,
-        5,
+      "i": 9,
+      "curr": 9,
+      "visited": [
+        0,
+        2,
         4,
-        1
-      ],
-      "i": 1,
-      "curr": 994
-    },
-    {
-      "codeLine": 6,
-      "note": "Append symbol 'CM' to result. Subtract 900 from num. Remaining num = 94, result = 'MCM'.",
-      "array": [
-        1000,
-        900,
-        500,
-        400,
-        100,
-        90,
-        50,
-        40,
-        10,
-        9,
-        5,
-        4,
-        1
-      ],
-      "i": 1,
-      "curr": 94
-    },
-    {
-      "codeLine": 5,
-      "note": "Check num (94) >= values[1] (900). False. Skip values 500, 400, 100 as num < values[i]. Move to i = 5 (90).",
-      "array": [
-        1000,
-        900,
-        500,
-        400,
-        100,
-        90,
-        50,
-        40,
-        10,
-        9,
-        5,
-        4,
-        1
-      ],
-      "i": 5,
-      "curr": 94
-    },
-    {
-      "codeLine": 5,
-      "note": "Check num (94) >= values[5] (90). Condition holds true.",
-      "array": [
-        1000,
-        900,
-        500,
-        400,
-        100,
-        90,
-        50,
-        40,
-        10,
-        9,
-        5,
-        4,
-        1
-      ],
-      "i": 5,
-      "curr": 94
+        7,
+        9
+      ]
     },
     {
       "codeLine": 6,
-      "note": "Append symbol 'XC' to result. Subtract 90 from num. Remaining num = 4, result = 'MCMXC'.",
+      "note": "Result complete: MMMDCCXLIX",
       "array": [
         1000,
         900,
@@ -197,92 +153,14 @@
         4,
         1
       ],
-      "i": 5,
-      "curr": 4
-    },
-    {
-      "codeLine": 5,
-      "note": "Check num (4) >= values[5] (90). False. Skip values 50, 40, 10, 9, 5 as num < values[i]. Move to i = 11 (4).",
-      "array": [
-        1000,
-        900,
-        500,
-        400,
-        100,
-        90,
-        50,
-        40,
-        10,
-        9,
-        5,
+      "visited": [
+        0,
+        2,
         4,
-        1
-      ],
-      "i": 11,
-      "curr": 4
-    },
-    {
-      "codeLine": 5,
-      "note": "Check num (4) >= values[11] (4). Condition holds true.",
-      "array": [
-        1000,
-        900,
-        500,
-        400,
-        100,
-        90,
-        50,
-        40,
-        10,
-        9,
-        5,
-        4,
-        1
-      ],
-      "i": 11,
-      "curr": 4
-    },
-    {
-      "codeLine": 6,
-      "note": "Append symbol 'IV' to result. Subtract 4 from num. Remaining num = 0, result = 'MCMXCIV'.",
-      "array": [
-        1000,
-        900,
-        500,
-        400,
-        100,
-        90,
-        50,
-        40,
-        10,
-        9,
-        5,
-        4,
-        1
-      ],
-      "i": 11,
-      "curr": 0
-    },
-    {
-      "codeLine": 8,
-      "note": "Num is now 0. Conversion complete, return final result 'MCMXCIV'.",
-      "array": [
-        1000,
-        900,
-        500,
-        400,
-        100,
-        90,
-        50,
-        40,
-        10,
-        9,
-        5,
-        4,
-        1
-      ],
-      "i": 12,
-      "curr": 0
+        7,
+        9
+      ]
     }
-  ]
+  ],
+  "fullDescription": "<p>Seven different symbols represent Roman numerals with the following values:</p>\n\n<table>\n\t<thead>\n\t\t<tr>\n\t\t\t<th>Symbol</th>\n\t\t\t<th>Value</th>\n\t\t</tr>\n\t</thead>\n\t<tbody>\n\t\t<tr>\n\t\t\t<td>I</td>\n\t\t\t<td>1</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>V</td>\n\t\t\t<td>5</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>X</td>\n\t\t\t<td>10</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>L</td>\n\t\t\t<td>50</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>C</td>\n\t\t\t<td>100</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>D</td>\n\t\t\t<td>500</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>M</td>\n\t\t\t<td>1000</td>\n\t\t</tr>\n\t</tbody>\n</table>\n\n<p>Roman numerals are formed by appending&nbsp;the conversions of&nbsp;decimal place values&nbsp;from highest to lowest. Converting a decimal place value into a Roman numeral has the following rules:</p>\n\n<ul>\n\t<li>If the value does not start with 4 or&nbsp;9, select the symbol of the maximal value that can be subtracted from the input, append that symbol to the result, subtract its value, and convert the remainder to a Roman numeral.</li>\n\t<li>If the value starts with 4 or 9 use the&nbsp;<strong>subtractive form</strong>&nbsp;representing&nbsp;one symbol subtracted from the following symbol, for example,&nbsp;4 is 1 (<code>I</code>) less than 5 (<code>V</code>): <code>IV</code>&nbsp;and 9 is 1 (<code>I</code>) less than 10 (<code>X</code>): <code>IX</code>.&nbsp;Only the following subtractive forms are used: 4 (<code>IV</code>), 9 (<code>IX</code>),&nbsp;40 (<code>XL</code>), 90 (<code>XC</code>), 400 (<code>CD</code>) and 900 (<code>CM</code>).</li>\n\t<li>Only powers of 10 (<code>I</code>, <code>X</code>, <code>C</code>, <code>M</code>) can be appended consecutively at most 3 times to represent multiples of 10. You cannot append 5&nbsp;(<code>V</code>), 50 (<code>L</code>), or 500 (<code>D</code>) multiple times. If you need to append a symbol&nbsp;4 times&nbsp;use the <strong>subtractive form</strong>.</li>\n</ul>\n\n<p>Given an integer, convert it to a Roman numeral.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<div class=\"example-block\">\n<p><strong>Input:</strong> <span class=\"example-io\">num = 3749</span></p>\n\n<p><strong>Output:</strong> <span class=\"example-io\">&quot;MMMDCCXLIX&quot;</span></p>\n\n<p><strong>Explanation:</strong></p>\n\n<pre>\n3000 = MMM as 1000 (M) + 1000 (M) + 1000 (M)\n 700 = DCC as 500 (D) + 100 (C) + 100 (C)\n  40 = XL as 10 (X) less of 50 (L)\n   9 = IX as 1 (I) less of 10 (X)\nNote: 49 is not 1 (I) less of 50 (L) because the conversion is based on decimal places\n</pre>\n</div>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<div class=\"example-block\">\n<p><strong>Input:</strong> <span class=\"example-io\">num = 58</span></p>\n\n<p><strong>Output:</strong> <span class=\"example-io\">&quot;LVIII&quot;</span></p>\n\n<p><strong>Explanation:</strong></p>\n\n<pre>\n50 = L\n 8 = VIII\n</pre>\n</div>\n\n<p><strong class=\"example\">Example 3:</strong></p>\n\n<div class=\"example-block\">\n<p><strong>Input:</strong> <span class=\"example-io\">num = 1994</span></p>\n\n<p><strong>Output:</strong> <span class=\"example-io\">&quot;MCMXCIV&quot;</span></p>\n\n<p><strong>Explanation:</strong></p>\n\n<pre>\n1000 = M\n 900 = CM\n  90 = XC\n   4 = IV\n</pre>\n</div>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= num &lt;= 3999</code></li>\n</ul>\n"
 }

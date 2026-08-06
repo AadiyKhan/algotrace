@@ -4,296 +4,151 @@
   "type": "array",
   "tags": [
     "Array",
-    "Divide and Conquer",
-    "Sorting",
-    "Boyer-Moore Voting Algorithm"
+    "Counting",
+    "Boyer-Moore"
   ],
-  "description": "Find the element in an array that appears more than n/2 times.",
-  "target": null,
-  "pseudocode": "1: candidate = null, count = 0\n2: for num in nums:\n3:   if count == 0:\n4:     candidate = num\n5:   count += (num == candidate) ? 1 : -1\n6: return candidate",
+  "description": "Find the element that appears more than n/2 times using Boyer-Moore Voting Algorithm.",
+  "target": 3,
+  "pseudocode": "1. Initialize candidate = null, count = 0\n2. For each num in nums:\n3. If count == 0, candidate = num\n4. If num == candidate, count++\n5. Else count--\n6. Return candidate",
   "steps": [
     {
       "codeLine": 1,
       "note": "Initialize candidate and count.",
       "array": [
+        3,
         2,
+        3
+      ],
+      "i": 0,
+      "visited": []
+    },
+    {
+      "codeLine": 2,
+      "note": "Processing first element: 3.",
+      "array": [
+        3,
         2,
-        1,
-        1,
-        1,
+        3
+      ],
+      "i": 0,
+      "visited": [
+        0
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Count is 0, set candidate to 3.",
+      "array": [
+        3,
         2,
-        2
+        3
+      ],
+      "i": 0,
+      "visited": [
+        0
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "num == candidate (3 == 3), increment count to 1.",
+      "array": [
+        3,
+        2,
+        3
+      ],
+      "i": 0,
+      "visited": [
+        0
       ]
     },
     {
       "codeLine": 2,
-      "note": "Start iteration, first element is 2.",
+      "note": "Processing second element: 2.",
       "array": [
+        3,
         2,
-        2,
-        1,
-        1,
-        1,
-        2,
-        2
-      ],
-      "i": 0,
-      "curr": 2
-    },
-    {
-      "codeLine": 3,
-      "note": "Count is 0, set candidate to 2.",
-      "array": [
-        2,
-        2,
-        1,
-        1,
-        1,
-        2,
-        2
-      ],
-      "i": 0,
-      "prev": 0,
-      "curr": 0
-    },
-    {
-      "codeLine": 5,
-      "note": "Count increments to 1.",
-      "array": [
-        2,
-        2,
-        1,
-        1,
-        1,
-        2,
-        2
-      ],
-      "i": 0,
-      "curr": 1
-    },
-    {
-      "codeLine": 2,
-      "note": "Next element is 2. Count is not 0.",
-      "array": [
-        2,
-        2,
-        1,
-        1,
-        1,
-        2,
-        2
+        3
       ],
       "i": 1,
-      "curr": 2
+      "visited": [
+        0,
+        1
+      ]
     },
     {
       "codeLine": 5,
-      "note": "Num matches candidate, count becomes 2.",
+      "note": "num != candidate (2 != 3), decrement count to 0.",
       "array": [
+        3,
         2,
-        2,
-        1,
-        1,
-        1,
-        2,
-        2
+        3
       ],
       "i": 1,
-      "curr": 2
+      "visited": [
+        0,
+        1
+      ]
     },
     {
       "codeLine": 2,
-      "note": "Next element is 1.",
+      "note": "Processing third element: 3.",
       "array": [
+        3,
         2,
-        2,
-        1,
-        1,
-        1,
-        2,
-        2
+        3
       ],
       "i": 2,
-      "curr": 1
-    },
-    {
-      "codeLine": 5,
-      "note": "Num differs, count decrements to 1.",
-      "array": [
-        2,
-        2,
+      "visited": [
+        0,
         1,
-        1,
-        1,
-        2,
         2
-      ],
-      "i": 2,
-      "curr": 1
-    },
-    {
-      "codeLine": 2,
-      "note": "Next element is 1.",
-      "array": [
-        2,
-        2,
-        1,
-        1,
-        1,
-        2,
-        2
-      ],
-      "i": 3,
-      "curr": 1
-    },
-    {
-      "codeLine": 5,
-      "note": "Num differs, count decrements to 0.",
-      "array": [
-        2,
-        2,
-        1,
-        1,
-        1,
-        2,
-        2
-      ],
-      "i": 3,
-      "curr": 0
-    },
-    {
-      "codeLine": 2,
-      "note": "Next element is 1.",
-      "array": [
-        2,
-        2,
-        1,
-        1,
-        1,
-        2,
-        2
-      ],
-      "i": 4,
-      "curr": 1
+      ]
     },
     {
       "codeLine": 3,
-      "note": "Count is 0, update candidate to 1.",
+      "note": "Count is 0, set candidate to 3.",
       "array": [
+        3,
         2,
-        2,
-        1,
-        1,
-        1,
-        2,
-        2
+        3
       ],
-      "i": 4,
-      "curr": 0
+      "i": 2,
+      "visited": [
+        0,
+        1,
+        2
+      ]
     },
     {
-      "codeLine": 5,
-      "note": "Count increments to 1.",
+      "codeLine": 4,
+      "note": "num == candidate (3 == 3), increment count to 1.",
       "array": [
+        3,
         2,
-        2,
-        1,
-        1,
-        1,
-        2,
-        2
+        3
       ],
-      "i": 4,
-      "curr": 1
-    },
-    {
-      "codeLine": 2,
-      "note": "Next element is 2.",
-      "array": [
-        2,
-        2,
+      "i": 2,
+      "visited": [
+        0,
         1,
-        1,
-        1,
-        2,
         2
-      ],
-      "i": 5,
-      "curr": 2
-    },
-    {
-      "codeLine": 5,
-      "note": "Num differs, count decrements to 0.",
-      "array": [
-        2,
-        2,
-        1,
-        1,
-        1,
-        2,
-        2
-      ],
-      "i": 5,
-      "curr": 0
-    },
-    {
-      "codeLine": 2,
-      "note": "Next element is 2.",
-      "array": [
-        2,
-        2,
-        1,
-        1,
-        1,
-        2,
-        2
-      ],
-      "i": 6,
-      "curr": 2
-    },
-    {
-      "codeLine": 3,
-      "note": "Count is 0, update candidate to 2.",
-      "array": [
-        2,
-        2,
-        1,
-        1,
-        1,
-        2,
-        2
-      ],
-      "i": 6,
-      "curr": 0
-    },
-    {
-      "codeLine": 5,
-      "note": "Count increments to 1.",
-      "array": [
-        2,
-        2,
-        1,
-        1,
-        1,
-        2,
-        2
-      ],
-      "i": 6,
-      "curr": 1
+      ]
     },
     {
       "codeLine": 6,
-      "note": "Returning final candidate: 2.",
+      "note": "Return the majority element: 3.",
       "array": [
+        3,
         2,
-        2,
-        1,
-        1,
-        1,
-        2,
-        2
+        3
       ],
-      "curr": 2
+      "i": 2,
+      "visited": [
+        0,
+        1,
+        2
+      ]
     }
-  ]
+  ],
+  "fullDescription": "<p>Given an array <code>nums</code> of size <code>n</code>, return <em>the majority element</em>.</p>\n\n<p>The majority element is the element that appears more than <code>&lfloor;n / 2&rfloor;</code> times. You may assume that the majority element always exists in the array.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n<pre><strong>Input:</strong> nums = [3,2,3]\n<strong>Output:</strong> 3\n</pre><p><strong class=\"example\">Example 2:</strong></p>\n<pre><strong>Input:</strong> nums = [2,2,1,1,1,2,2]\n<strong>Output:</strong> 2\n</pre>\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>n == nums.length</code></li>\n\t<li><code>1 &lt;= n &lt;= 5 * 10<sup>4</sup></code></li>\n\t<li><code>-10<sup>9</sup> &lt;= nums[i] &lt;= 10<sup>9</sup></code></li>\n\t<li>The input is generated such that a majority element will exist in the array.</li>\n</ul>\n\n<p>&nbsp;</p>\n<strong>Follow-up:</strong> Could you solve the problem in linear time and in <code>O(1)</code> space?"
 }

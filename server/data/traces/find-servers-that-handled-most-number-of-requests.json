@@ -1,0 +1,95 @@
+{
+  "title": "Find Servers That Handled Most Number Of Requests",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Heap",
+    "Greedy"
+  ],
+  "description": "Find the servers that handled the maximum number of requests given arrival times and load durations.",
+  "target": null,
+  "pseudocode": "1. availableServers = MinHeap(0..k-1)\n2. busyServers = MinHeap()\n3. counts = Array(k, 0)\n4. for i, (arrival, load) in requests:\n5.   while busyServers.peek().time <= arrival:\n6.     availableServers.push(busyServers.pop().id)\n7.   if availableServers is empty: continue\n8.   serverID = availableServers.findBest(i % k)\n9.   counts[serverID]++\n10.  busyServers.push(serverID, arrival + load)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize available servers [0, 1, 2] and counts [0, 0, 0]",
+      "array": [
+        0,
+        0,
+        0
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Processing request 0: arrival 1, duration 2",
+      "array": [
+        0,
+        0,
+        0
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 8,
+      "note": "Server 1 is assigned as (0 % 3) is 0, but 0 is available, so 1 is picked",
+      "array": [
+        0,
+        1,
+        0
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 10,
+      "note": "Server 1 is now busy until time 3",
+      "array": [
+        0,
+        1,
+        0
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Processing request 1: arrival 2, duration 2",
+      "array": [
+        0,
+        1,
+        0
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "Check busy servers: server 1 ends at 3, not free yet",
+      "array": [
+        0,
+        1,
+        0
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 8,
+      "note": "Server 2 is assigned (next available after index 1)",
+      "array": [
+        0,
+        1,
+        1
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 10,
+      "note": "Server 2 is busy until time 4",
+      "array": [
+        0,
+        1,
+        1
+      ],
+      "i": 1
+    }
+  ]
+}

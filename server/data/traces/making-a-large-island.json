@@ -6,35 +6,15 @@
     "Array",
     "Depth-First Search",
     "Breadth-First Search",
-    "Union Find",
+    "Union-Find",
     "Matrix"
   ],
-  "description": "Find the largest island size after changing exactly one 0 to a 1.",
-  "target": null,
-  "pseudocode": "1. Map each island to an ID and store its area in a hash map\n2. Iterate through each cell in the grid\n3. If cell is 0, check all 4 neighbors\n4. Calculate potential area: 1 + sum of areas of unique neighboring islands\n5. Track the maximum area found",
+  "description": "Find the largest island size possible after flipping at most one 0 to 1.",
+  "pseudocode": "1. Label each island with a unique ID and store its area in a map.\n2. Iterate through each 0 in the grid.\n3. Check its 4 neighbors to find unique adjacent island IDs.\n4. Calculate potential area = 1 + sum of areas of neighboring islands.\n5. Return maximum potential area.",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initial grid: [[1, 0], [0, 1]]. Identifying islands.",
-      "matrix": [
-        [
-          1,
-          0
-        ],
-        [
-          0,
-          1
-        ]
-      ],
-      "visited": [],
-      "curr": [
-        1,
-        0
-      ]
-    },
-    {
-      "codeLine": 1,
-      "note": "Island at [0,0] assigned ID 2 with area 1. Island at [1,1] assigned ID 3 with area 1.",
+      "note": "Labeling islands: Island at (0,0) is ID 2, Island at (1,1) is ID 3.",
       "matrix": [
         [
           2,
@@ -58,83 +38,47 @@
     },
     {
       "codeLine": 2,
-      "note": "Checking cell [0, 1] (value 0).",
+      "note": "Evaluating flip at (0,1). Neighbors are (0,0) [ID 2] and (1,1) [ID 3].",
+      "matrix": [
+        [
+          2,
+          1
+        ],
+        [
+          0,
+          3
+        ]
+      ],
+      "curr": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Area = 1 (flip) + 1 (ID 2 area) + 1 (ID 3 area) = 3.",
+      "matrix": [
+        [
+          2,
+          1
+        ],
+        [
+          0,
+          3
+        ]
+      ],
+      "curr": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Evaluating flip at (1,0). Neighbors are (0,0) [ID 2] and (1,1) [ID 3].",
       "matrix": [
         [
           2,
           0
-        ],
-        [
-          0,
-          3
-        ]
-      ],
-      "curr": [
-        0,
-        1
-      ]
-    },
-    {
-      "codeLine": 4,
-      "note": "Potential area at [0, 1] is 1 + area(2) + area(3) = 1 + 1 + 1 = 3.",
-      "matrix": [
-        [
-          2,
-          1
-        ],
-        [
-          0,
-          3
-        ]
-      ],
-      "curr": [
-        0,
-        1
-      ]
-    },
-    {
-      "codeLine": 5,
-      "note": "Maximum area updated to 3.",
-      "matrix": [
-        [
-          2,
-          1
-        ],
-        [
-          0,
-          3
-        ]
-      ],
-      "curr": [
-        0,
-        1
-      ]
-    },
-    {
-      "codeLine": 3,
-      "note": "Checking cell [1, 0] (value 0).",
-      "matrix": [
-        [
-          2,
-          1
-        ],
-        [
-          0,
-          3
-        ]
-      ],
-      "curr": [
-        1,
-        0
-      ]
-    },
-    {
-      "codeLine": 4,
-      "note": "Potential area at [1, 0] is 1 + area(2) + area(3) = 1 + 1 + 1 = 3.",
-      "matrix": [
-        [
-          2,
-          1
         ],
         [
           1,
@@ -145,6 +89,39 @@
         1,
         0
       ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Area = 1 (flip) + 1 (ID 2 area) + 1 (ID 3 area) = 3.",
+      "matrix": [
+        [
+          2,
+          0
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "curr": [
+        1,
+        0
+      ]
+    },
+    {
+      "codeLine": 5,
+      "note": "Max island size found is 3.",
+      "matrix": [
+        [
+          2,
+          1
+        ],
+        [
+          0,
+          3
+        ]
+      ]
     }
-  ]
+  ],
+  "fullDescription": "<p>You are given an <code>n x n</code> binary matrix <code>grid</code>. You are allowed to change <strong>at most one</strong> <code>0</code> to be <code>1</code>.</p>\n\n<p>Return <em>the size of the largest <strong>island</strong> in</em> <code>grid</code> <em>after applying this operation</em>.</p>\n\n<p>An <strong>island</strong> is a 4-directionally connected group of <code>1</code>s.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> grid = [[1,0],[0,1]]\n<strong>Output:</strong> 3\n<strong>Explanation:</strong> Change one 0 to 1 and connect two 1s, then we get an island with area = 3.\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> grid = [[1,1],[1,0]]\n<strong>Output:</strong> 4\n<strong>Explanation: </strong>Change the 0 to 1 and make the island bigger, only one island with area = 4.</pre>\n\n<p><strong class=\"example\">Example 3:</strong></p>\n\n<pre>\n<strong>Input:</strong> grid = [[1,1],[1,1]]\n<strong>Output:</strong> 4\n<strong>Explanation:</strong> Can&#39;t change any 0 to 1, only one island with area = 4.\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>n == grid.length</code></li>\n\t<li><code>n == grid[i].length</code></li>\n\t<li><code>1 &lt;= n &lt;= 500</code></li>\n\t<li><code>grid[i][j]</code> is either <code>0</code> or <code>1</code>.</li>\n</ul>\n"
 }

@@ -1,0 +1,81 @@
+{
+  "title": "Distribute Repeating Integers",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Backtracking",
+    "Bitmask"
+  ],
+  "description": "Given an array of integers and an array of quantities, check if we can distribute the quantities among the counts of each unique integer in the array.",
+  "target": null,
+  "pseudocode": "1. countMap = getFrequencies(nums)\n2. counts = Object.values(countMap)\n3. quantities.sort((a,b) => b-a)\n4. function backtrack(idx):\n5.   if idx == quantities.length return true\n6.   for i from 0 to counts.length - 1:\n7.     if counts[i] >= quantities[idx]:\n8.       counts[i] -= quantities[idx]\n9.       if backtrack(idx + 1) return true\n10.      counts[i] += quantities[idx]\n11.  return false",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Count frequencies of input numbers [1, 1, 2, 2, 2], counts are [2, 3].",
+      "array": [
+        2,
+        3
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Sort quantities descending: [2, 1].",
+      "i": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Attempt to place quantity 2 into count index 0.",
+      "array": [
+        2,
+        3
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 8,
+      "note": "Place 2 in counts[0]. New counts: [0, 3].",
+      "array": [
+        0,
+        3
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 9,
+      "note": "Recursively call backtrack for quantity 1.",
+      "array": [
+        0,
+        3
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 7,
+      "note": "Check if index 1 can hold quantity 1.",
+      "array": [
+        0,
+        3
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 8,
+      "note": "Place 1 in counts[1]. New counts: [0, 2].",
+      "array": [
+        0,
+        2
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 5,
+      "note": "All quantities distributed successfully.",
+      "array": [
+        0,
+        2
+      ]
+    }
+  ]
+}

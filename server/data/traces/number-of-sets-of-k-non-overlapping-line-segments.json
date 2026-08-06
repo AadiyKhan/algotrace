@@ -1,0 +1,65 @@
+{
+  "title": "Number of Sets of K Non-Overlapping Line Segments",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Dynamic Programming",
+    "Math"
+  ],
+  "description": "Find the number of ways to draw k non-overlapping line segments on n points on a 1D line.",
+  "target": 2,
+  "pseudocode": "1. dp[n+1][k+1][2] initialized to 0\n2. dp[0][0][0] = 1\n3. for i from 0 to n:\n4.   for j from 0 to k:\n5.     for state in {0, 1}:\n6.       dp[i+1][j][0] += dp[i][j][0] + dp[i][j][1]\n7.       if state == 0:\n8.         dp[i+1][j+1][1] += dp[i][j][0]\n9.       else:\n10.        dp[i+1][j][1] += dp[i][j][1]\n11. return dp[n][k][0] + dp[n][k][1]",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Initialize DP table with base case: 0 segments on 0 points = 1 way.",
+      "array": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Transitioning for point 1: Adding a non-segment state.",
+      "array": [
+        1,
+        1,
+        0
+      ],
+      "i": 0,
+      "j": 0
+    },
+    {
+      "codeLine": 8,
+      "note": "Starting a new segment on point 1.",
+      "array": [
+        1,
+        1,
+        1
+      ],
+      "i": 0,
+      "j": 0
+    },
+    {
+      "codeLine": 10,
+      "note": "Continuing an existing segment to point 2.",
+      "array": [
+        2,
+        2,
+        1
+      ],
+      "i": 1,
+      "j": 1
+    },
+    {
+      "codeLine": 11,
+      "note": "Final calculation for n=4, k=2.",
+      "array": [
+        3,
+        3,
+        3
+      ]
+    }
+  ]
+}

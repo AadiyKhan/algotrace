@@ -1,0 +1,91 @@
+{
+  "title": "Create Sorted Array Through Instructions",
+  "difficulty": "Hard",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Binary Indexed Tree",
+    "Divide and Conquer"
+  ],
+  "description": "Given an array of instructions, create a sorted array by inserting each element. For each insertion, calculate the cost as min(elements strictly less than current, elements strictly greater than current).",
+  "target": 3,
+  "pseudocode": "1. bit = new Array(maxVal + 1).fill(0)\n2. cost = 0\n3. for (let i = 0; i < instructions.length; i++) {\n4.   val = instructions[i]\n5.   less = query(val - 1)\n6.   greater = i - query(val)\n7.   cost += min(less, greater)\n8.   update(val, 1)\n9. }",
+  "steps": [
+    {
+      "codeLine": 3,
+      "note": "Starting loop with instructions = [1, 5, 6, 2]",
+      "array": [
+        1,
+        5,
+        6,
+        2
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Insert 1: less than 1 is 0, greater than 1 is 0. Cost = 0.",
+      "array": [
+        1
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 8,
+      "note": "Update BIT with 1",
+      "array": [
+        1
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "Process 5: less than 5 is 1, greater than 5 is 0. Cost += 0.",
+      "array": [
+        1,
+        5
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 8,
+      "note": "Update BIT with 5",
+      "array": [
+        1,
+        5
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Process 6: less than 6 is 2, greater than 6 is 0. Cost += 0.",
+      "array": [
+        1,
+        5,
+        6
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 8,
+      "note": "Update BIT with 6",
+      "array": [
+        1,
+        5,
+        6
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Process 2: less than 2 is 1 (the '1'), greater than 2 is 2 (the '5' and '6'). Cost += min(1, 2) = 1.",
+      "array": [
+        1,
+        2,
+        5,
+        6
+      ],
+      "i": 3
+    }
+  ]
+}

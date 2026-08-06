@@ -1,20 +1,20 @@
 {
-  "title": "Kth Largest Element In An Array",
+  "title": "Kth Largest Element in an Array",
   "difficulty": "Medium",
   "type": "array",
   "tags": [
     "Array",
+    "Divide and Conquer",
     "Sorting",
-    "Heap",
-    "Quickselect"
+    "Heap"
   ],
   "description": "Find the kth largest element in an unsorted array using the Quickselect algorithm.",
-  "target": 2,
-  "pseudocode": "1. function quickselect(arr, k):\n2.   pivot = arr[last]\n3.   partition into left (smaller) and right (larger)\n4.   if k <= right.length: return quickselect(right, k)\n5.   else if k == right.length + 1: return pivot\n6.   else: return quickselect(left, k - right.length - 1)",
+  "target": 5,
+  "pseudocode": "1. pivot = array[high]\n2. i = low\n3. for j from low to high-1:\n4.   if array[j] <= pivot:\n5.     swap(array[i], array[j]), i++\n6. swap(array[i], array[high])\n7. return i",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize Quickselect with array [3, 2, 1, 5, 6, 4] and k=2",
+      "note": "Initialize Quickselect with pivot = 4 (last element).",
       "array": [
         3,
         2,
@@ -23,78 +23,123 @@
         6,
         4
       ],
-      "curr": 3
-    },
-    {
-      "codeLine": 2,
-      "note": "Select last element 4 as pivot",
-      "array": [
-        3,
-        2,
-        1,
-        5,
-        6,
-        4
-      ],
-      "i": 5,
-      "curr": 4
+      "i": 0,
+      "visited": []
     },
     {
       "codeLine": 3,
-      "note": "Partition: elements > 4 (5, 6) moved to right, others to left",
+      "note": "Start partitioning. Compare elements with pivot 4.",
+      "array": [
+        3,
+        2,
+        1,
+        5,
+        6,
+        4
+      ],
+      "i": 0,
+      "j": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "3 <= 4, swap index 0 with 0.",
+      "array": [
+        3,
+        2,
+        1,
+        5,
+        6,
+        4
+      ],
+      "i": 1,
+      "j": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "2 <= 4, swap index 1 with 1.",
+      "array": [
+        3,
+        2,
+        1,
+        5,
+        6,
+        4
+      ],
+      "i": 2,
+      "j": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "1 <= 4, swap index 2 with 2.",
+      "array": [
+        3,
+        2,
+        1,
+        5,
+        6,
+        4
+      ],
+      "i": 3,
+      "j": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "5 > 4, skip.",
+      "array": [
+        3,
+        2,
+        1,
+        5,
+        6,
+        4
+      ],
+      "i": 3,
+      "j": 3
+    },
+    {
+      "codeLine": 4,
+      "note": "6 > 4, skip.",
+      "array": [
+        3,
+        2,
+        1,
+        5,
+        6,
+        4
+      ],
+      "i": 3,
+      "j": 4
+    },
+    {
+      "codeLine": 6,
+      "note": "Swap pivot (index 5) with i (index 3).",
       "array": [
         3,
         2,
         1,
         4,
-        5,
-        6
-      ],
-      "curr": 4
-    },
-    {
-      "codeLine": 4,
-      "note": "k=2 is <= right.length (2), recurse into right side [5, 6]",
-      "array": [
-        5,
-        6
-      ],
-      "curr": 2
-    },
-    {
-      "codeLine": 2,
-      "note": "Select 6 as pivot",
-      "array": [
-        5,
-        6
-      ],
-      "i": 1,
-      "curr": 6
-    },
-    {
-      "codeLine": 3,
-      "note": "Partition: elements > 6 are empty, elements < 6 is [5]",
-      "array": [
-        5,
-        6
-      ],
-      "curr": 6
-    },
-    {
-      "codeLine": 6,
-      "note": "k=2, right.length=0. Recurse into left side",
-      "array": [
+        6,
         5
       ],
-      "curr": 2
+      "i": 3,
+      "j": 5
     },
     {
-      "codeLine": 5,
-      "note": "Pivot 5 matches k position, return 5",
+      "codeLine": 7,
+      "note": "Pivot index is 3. 2nd largest is to the right.",
       "array": [
+        3,
+        2,
+        1,
+        4,
+        6,
         5
       ],
-      "curr": 5
+      "i": 3,
+      "visited": [
+        3
+      ]
     }
-  ]
+  ],
+  "fullDescription": "<p>Given an integer array <code>nums</code> and an integer <code>k</code>, return <em>the</em> <code>k<sup>th</sup></code> <em>largest element in the array</em>.</p>\n\n<p>Note that it is the <code>k<sup>th</sup></code> largest element in the sorted order, not the <code>k<sup>th</sup></code> distinct element.</p>\n\n<p>Can you solve it without sorting?</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n<pre><strong>Input:</strong> nums = [3,2,1,5,6,4], k = 2\n<strong>Output:</strong> 5\n</pre><p><strong class=\"example\">Example 2:</strong></p>\n<pre><strong>Input:</strong> nums = [3,2,3,1,2,4,5,5,6], k = 4\n<strong>Output:</strong> 4\n</pre>\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= k &lt;= nums.length &lt;= 10<sup>5</sup></code></li>\n\t<li><code>-10<sup>4</sup> &lt;= nums[i] &lt;= 10<sup>4</sup></code></li>\n</ul>\n"
 }

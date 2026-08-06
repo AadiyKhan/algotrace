@@ -9,13 +9,13 @@
     "Depth-First Search",
     "Matrix"
   ],
-  "description": "Find if a word exists in a 2D grid of characters using backtracking.",
+  "description": "Determine if a word exists in a 2D grid by traversing adjacent cells.",
   "target": "ABCCED",
-  "pseudocode": "1. For each cell (r, c) in board:\n2. If board[r][c] == word[0] and dfs(r, c, 0):\n3. Return true\n4. Return false\n5. dfs(r, c, index):\n6. If index == word.length: return true\n7. If out of bounds or board[r][c] != word[index] or visited: return false\n8. Mark visited, explore neighbors, unmark visited",
+  "pseudocode": "1. For each cell (r, c) in board:\n2. If dfs(r, c, 0) return true\n3. dfs(r, c, index):\n4. If index == word.length return true\n5. If out of bounds or board[r][c] != word[index] or visited, return false\n6. Mark visited, if dfs in neighbors return true, backtrack.",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Starting search at (0,0) for 'A'",
+      "note": "Starting search at (0, 0) with 'A'",
       "matrix": [
         [
           "A",
@@ -35,12 +35,16 @@
           "E",
           "E"
         ]
+      ],
+      "curr": [
+        0,
+        0
       ],
       "visited": []
     },
     {
-      "codeLine": 5,
-      "note": "Matched 'A' at (0,0), looking for 'B'",
+      "codeLine": 3,
+      "note": "Match found at (0,0), looking for 'B' at (0,1)",
       "matrix": [
         [
           "A",
@@ -60,6 +64,10 @@
           "E",
           "E"
         ]
+      ],
+      "curr": [
+        0,
+        1
       ],
       "visited": [
         [
@@ -69,8 +77,8 @@
       ]
     },
     {
-      "codeLine": 5,
-      "note": "Matched 'B' at (0,1), looking for 'C'",
+      "codeLine": 3,
+      "note": "Match found at (0,1), looking for 'C' at (0,2)",
       "matrix": [
         [
           "A",
@@ -91,39 +99,9 @@
           "E"
         ]
       ],
-      "visited": [
-        [
-          0,
-          0
-        ],
-        [
-          0,
-          1
-        ]
-      ]
-    },
-    {
-      "codeLine": 5,
-      "note": "Matched 'C' at (0,2), looking for 'C'",
-      "matrix": [
-        [
-          "A",
-          "B",
-          "C",
-          "E"
-        ],
-        [
-          "S",
-          "F",
-          "C",
-          "S"
-        ],
-        [
-          "A",
-          "D",
-          "E",
-          "E"
-        ]
+      "curr": [
+        0,
+        2
       ],
       "visited": [
         [
@@ -132,155 +110,13 @@
         ],
         [
           0,
-          1
-        ],
-        [
-          0,
-          2
-        ]
-      ]
-    },
-    {
-      "codeLine": 5,
-      "note": "Matched 'C' at (1,2), looking for 'E'",
-      "matrix": [
-        [
-          "A",
-          "B",
-          "C",
-          "E"
-        ],
-        [
-          "S",
-          "F",
-          "C",
-          "S"
-        ],
-        [
-          "A",
-          "D",
-          "E",
-          "E"
-        ]
-      ],
-      "visited": [
-        [
-          0,
-          0
-        ],
-        [
-          0,
-          1
-        ],
-        [
-          0,
-          2
-        ],
-        [
-          1,
-          2
-        ]
-      ]
-    },
-    {
-      "codeLine": 5,
-      "note": "Matched 'E' at (2,2), looking for 'D'",
-      "matrix": [
-        [
-          "A",
-          "B",
-          "C",
-          "E"
-        ],
-        [
-          "S",
-          "F",
-          "C",
-          "S"
-        ],
-        [
-          "A",
-          "D",
-          "E",
-          "E"
-        ]
-      ],
-      "visited": [
-        [
-          0,
-          0
-        ],
-        [
-          0,
-          1
-        ],
-        [
-          0,
-          2
-        ],
-        [
-          1,
-          2
-        ],
-        [
-          2,
-          2
-        ]
-      ]
-    },
-    {
-      "codeLine": 5,
-      "note": "Matched 'D' at (2,1), word found",
-      "matrix": [
-        [
-          "A",
-          "B",
-          "C",
-          "E"
-        ],
-        [
-          "S",
-          "F",
-          "C",
-          "S"
-        ],
-        [
-          "A",
-          "D",
-          "E",
-          "E"
-        ]
-      ],
-      "visited": [
-        [
-          0,
-          0
-        ],
-        [
-          0,
-          1
-        ],
-        [
-          0,
-          2
-        ],
-        [
-          1,
-          2
-        ],
-        [
-          2,
-          2
-        ],
-        [
-          2,
           1
         ]
       ]
     },
     {
       "codeLine": 3,
-      "note": "Returning true",
+      "note": "Match found at (0,2), looking for 'C' at (1,2)",
       "matrix": [
         [
           "A",
@@ -300,6 +136,148 @@
           "E",
           "E"
         ]
+      ],
+      "curr": [
+        1,
+        2
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ]
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Match found at (1,2), looking for 'E' at (2,2)",
+      "matrix": [
+        [
+          "A",
+          "B",
+          "C",
+          "E"
+        ],
+        [
+          "S",
+          "F",
+          "C",
+          "S"
+        ],
+        [
+          "A",
+          "D",
+          "E",
+          "E"
+        ]
+      ],
+      "curr": [
+        2,
+        2
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ]
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Match found at (2,2), looking for 'D' at (2,1)",
+      "matrix": [
+        [
+          "A",
+          "B",
+          "C",
+          "E"
+        ],
+        [
+          "S",
+          "F",
+          "C",
+          "S"
+        ],
+        [
+          "A",
+          "D",
+          "E",
+          "E"
+        ]
+      ],
+      "curr": [
+        2,
+        1
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          2
+        ]
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "Word exhausted, return true",
+      "matrix": [
+        [
+          "A",
+          "B",
+          "C",
+          "E"
+        ],
+        [
+          "S",
+          "F",
+          "C",
+          "S"
+        ],
+        [
+          "A",
+          "D",
+          "E",
+          "E"
+        ]
+      ],
+      "curr": [
+        2,
+        1
       ],
       "visited": [
         [

@@ -45,3 +45,17 @@ export const generateTraceData = async (slug, userCode = null, language = 'Auto'
   }
   return res.json();
 };
+
+// ── Send chat message to AI Assistant ────────────────────────
+export const sendChatMessage = async (problemContext, stepContext, history, message) => {
+  const res = await fetch(`${BASE}/chat`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ problemContext, stepContext, history, message }),
+  });
+  if (!res.ok) {
+    const data = await res.json().catch(() => ({}));
+    throw new Error(data.error || 'Failed to get chat response');
+  }
+  return res.json();
+};

@@ -1,0 +1,197 @@
+{
+  "title": "Minimum Cost to Connect Two Groups of Points",
+  "difficulty": "Hard",
+  "type": "graph",
+  "tags": [
+    "Dynamic Programming",
+    "Bitmask",
+    "Graph"
+  ],
+  "description": "Connect two groups of points with minimum cost such that each point is connected to at least one point in the other group.",
+  "target": null,
+  "pseudocode": "1. mask_limit = 1 << group2_size\n2. dp = array(mask_limit, infinity)\n3. dp[0] = 0\n4. for each point_i in group1:\n5.   new_dp = array(mask_limit, infinity)\n6.   for mask in 0 to mask_limit - 1:\n7.     for point_j in group2:\n8.       new_mask = mask | (1 << point_j)\n9.       new_dp[new_mask] = min(new_dp[new_mask], dp[mask] + cost[i][j])",
+  "steps": [
+    {
+      "codeLine": 2,
+      "note": "Initialize DP table with size 2^group2_size (4). dp[0] = 0, others = infinity.",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": "G1-0"
+        },
+        {
+          "id": 1,
+          "val": "G1-1"
+        },
+        {
+          "id": 2,
+          "val": "G2-0"
+        },
+        {
+          "id": 3,
+          "val": "G2-1"
+        }
+      ],
+      "visited": []
+    },
+    {
+      "codeLine": 4,
+      "note": "Processing point 0 of group 1.",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": "G1-0"
+        },
+        {
+          "id": 1,
+          "val": "G1-1"
+        },
+        {
+          "id": 2,
+          "val": "G2-0"
+        },
+        {
+          "id": 3,
+          "val": "G2-1"
+        }
+      ],
+      "i": 0,
+      "visited": [
+        0
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Calculating cost to connect group1[0] to group2[0].",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": "G1-0"
+        },
+        {
+          "id": 1,
+          "val": "G1-1"
+        },
+        {
+          "id": 2,
+          "val": "G2-0"
+        },
+        {
+          "id": 3,
+          "val": "G2-1"
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          2
+        ]
+      ],
+      "i": 0,
+      "j": 0
+    },
+    {
+      "codeLine": 8,
+      "note": "Update DP state with new mask (connect to point 0).",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": "G1-0"
+        },
+        {
+          "id": 1,
+          "val": "G1-1"
+        },
+        {
+          "id": 2,
+          "val": "G2-0"
+        },
+        {
+          "id": 3,
+          "val": "G2-1"
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          2
+        ]
+      ],
+      "visited": [
+        0,
+        2
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Calculating cost to connect group1[0] to group2[1].",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": "G1-0"
+        },
+        {
+          "id": 1,
+          "val": "G1-1"
+        },
+        {
+          "id": 2,
+          "val": "G2-0"
+        },
+        {
+          "id": 3,
+          "val": "G2-1"
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ]
+      ],
+      "i": 0,
+      "j": 1
+    },
+    {
+      "codeLine": 9,
+      "note": "Finalizing state for group1 point 0.",
+      "graphNodes": [
+        {
+          "id": 0,
+          "val": "G1-0"
+        },
+        {
+          "id": 1,
+          "val": "G1-1"
+        },
+        {
+          "id": 2,
+          "val": "G2-0"
+        },
+        {
+          "id": 3,
+          "val": "G2-1"
+        }
+      ],
+      "graphEdges": [
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ]
+      ],
+      "visited": [
+        0,
+        2,
+        3
+      ]
+    }
+  ]
+}

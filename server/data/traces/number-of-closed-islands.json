@@ -3,18 +3,180 @@
   "difficulty": "Medium",
   "type": "matrix",
   "tags": [
-    "DFS",
-    "Matrix",
-    "Graph"
+    "Array",
+    "Depth-First Search",
+    "Breadth-First Search",
+    "Matrix"
   ],
-  "description": "Find the number of closed islands (land cells fully surrounded by water) in a 2D grid.",
-  "pseudocode": "function closedIsland(grid) {\n  let count = 0;\n  for(let r=0; r<rows; r++) for(let c=0; c<cols; c++) {\n    if(grid[r][c] === 0) {\n      if(isClosed(r, c)) count++;\n    }\n  }\n  return count;\n}",
+  "description": "Count islands (0s) completely surrounded by water (1s).",
+  "pseudocode": "1. For each cell on boundary, if 0, flood-fill with 1 (not closed).\n2. For each remaining 0, increment count and flood-fill with 1.",
   "steps": [
     {
+      "codeLine": 1,
+      "note": "Starting boundary flood-fill to remove non-closed islands.",
+      "matrix": [
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          0
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          1,
+          1,
+          1,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0
+        ]
+      ],
+      "curr": [
+        0,
+        7
+      ],
+      "visited": [
+        [
+          0,
+          7
+        ]
+      ]
+    },
+    {
+      "codeLine": 1,
+      "note": "Marked boundary island at (0,7) as water.",
+      "matrix": [
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          1,
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      ],
+      "curr": [
+        3,
+        6
+      ],
+      "visited": [
+        [
+          0,
+          7
+        ],
+        [
+          3,
+          6
+        ]
+      ]
+    },
+    {
       "codeLine": 2,
-      "note": "Initialize count to 0.",
+      "note": "Found first closed island starting at (1, 1).",
       "matrix": [
         [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
           1,
           1,
           1
@@ -22,27 +184,9 @@
         [
           1,
           0,
-          1
-        ],
-        [
-          1,
-          1,
-          1
-        ]
-      ],
-      "i": 0,
-      "j": 0
-    },
-    {
-      "codeLine": 4,
-      "note": "Check cell (1, 1). It is 0 (land).",
-      "matrix": [
-        [
-          1,
-          1,
-          1
-        ],
-        [
+          0,
+          0,
+          0,
           1,
           0,
           1
@@ -50,29 +194,9 @@
         [
           1,
           1,
-          1
-        ]
-      ],
-      "curr": [
-        1,
-        1
-      ]
-    },
-    {
-      "codeLine": 5,
-      "note": "DFS checks neighbors of (1, 1). All neighbors are 1 (water), so it is a closed island.",
-      "matrix": [
-        [
           1,
           1,
-          1
-        ],
-        [
           1,
-          0,
-          1
-        ],
-        [
           1,
           1,
           1
@@ -84,37 +208,149 @@
       ],
       "visited": [
         [
+          0,
+          7
+        ],
+        [
+          3,
+          6
+        ],
+        [
           1,
           1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          3
         ]
       ]
     },
     {
-      "codeLine": 5,
-      "note": "Increment count as island is closed.",
+      "codeLine": 2,
+      "note": "Found second closed island starting at (3, 1).",
       "matrix": [
         [
           1,
           1,
+          1,
+          1,
+          1,
+          1,
+          1,
           1
         ],
         [
           1,
           1,
+          1,
+          1,
+          1,
+          1,
+          1,
           1
         ],
         [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1,
           1,
           1,
           1
         ]
       ],
+      "curr": [
+        3,
+        1
+      ],
       "visited": [
+        [
+          0,
+          7
+        ],
+        [
+          3,
+          6
+        ],
         [
           1,
           1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          1
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          3,
+          4
         ]
       ]
     }
-  ]
+  ],
+  "fullDescription": "<p>Given a 2D&nbsp;<code>grid</code> consists of <code>0s</code> (land)&nbsp;and <code>1s</code> (water).&nbsp; An <em>island</em> is a maximal 4-directionally connected group of <code><font face=\"monospace\">0</font>s</code> and a <em>closed island</em>&nbsp;is an island <strong>totally</strong>&nbsp;(all left, top, right, bottom) surrounded by <code>1s.</code></p>\n\n<p>Return the number of <em>closed islands</em>.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<p><img alt=\"\" src=\"https://assets.leetcode.com/uploads/2019/10/31/sample_3_1610.png\" style=\"width: 240px; height: 120px;\" /></p>\n\n<pre>\n<strong>Input:</strong> grid = [[1,1,1,1,1,1,1,0],[1,0,0,0,0,1,1,0],[1,0,1,0,1,1,1,0],[1,0,0,0,0,1,0,1],[1,1,1,1,1,1,1,0]]\n<strong>Output:</strong> 2\n<strong>Explanation:</strong> \nIslands in gray are closed because they are completely surrounded by water (group of 1s).</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<p><img alt=\"\" src=\"https://assets.leetcode.com/uploads/2019/10/31/sample_4_1610.png\" style=\"width: 160px; height: 80px;\" /></p>\n\n<pre>\n<strong>Input:</strong> grid = [[0,0,1,0,0],[0,1,0,1,0],[0,1,1,1,0]]\n<strong>Output:</strong> 1\n</pre>\n\n<p><strong class=\"example\">Example 3:</strong></p>\n\n<pre>\n<strong>Input:</strong> grid = [[1,1,1,1,1,1,1],\n&nbsp;              [1,0,0,0,0,0,1],\n&nbsp;              [1,0,1,1,1,0,1],\n&nbsp;              [1,0,1,0,1,0,1],\n&nbsp;              [1,0,1,1,1,0,1],\n&nbsp;              [1,0,0,0,0,0,1],\n               [1,1,1,1,1,1,1]]\n<strong>Output:</strong> 2\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= grid.length, grid[0].length &lt;= 100</code></li>\n\t<li><code>0 &lt;= grid[i][j] &lt;=1</code></li>\n</ul>\n"
 }

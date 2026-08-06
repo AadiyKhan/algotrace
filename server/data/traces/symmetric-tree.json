@@ -8,12 +8,13 @@
     "Breadth-First Search",
     "Binary Tree"
   ],
-  "description": "Determine if a binary tree is a mirror image of itself.",
-  "pseudocode": "1. If root is null, return true\n2. Call isMirror(root.left, root.right)\n3. isMirror(n1, n2):\n4. If n1 and n2 are null, return true\n5. If n1 or n2 is null, or n1.val != n2.val, return false\n6. Return isMirror(n1.left, n2.right) AND isMirror(n1.right, n2.left)",
+  "description": "Check if a binary tree is a mirror image of itself.",
+  "target": null,
+  "pseudocode": "1. If root is null, return true\n2. Call helper(root.left, root.right)\n3. Helper(n1, n2):\n4. If both null, return true\n5. If one null or vals differ, return false\n6. Return helper(n1.left, n2.right) AND helper(n1.right, n2.left)",
   "steps": [
     {
       "codeLine": 2,
-      "note": "Comparing root's left child (2) and right child (2)",
+      "note": "Initialize comparison between root.left (2) and root.right (2)",
       "treeNodes": [
         {
           "id": 0,
@@ -58,11 +59,11 @@
           "right": null
         }
       ],
-      "curr": 2
+      "curr": 0
     },
     {
       "codeLine": 6,
-      "note": "Comparing left subtrees of nodes 1 and 2: node 3 and node 6",
+      "note": "Comparing outer nodes: n1.left (3) and n2.right (3)",
       "treeNodes": [
         {
           "id": 0,
@@ -89,21 +90,14 @@
           "right": null
         },
         {
-          "id": 6,
-          "val": 3,
+          "id": 4,
+          "val": 4,
           "left": null,
           "right": null
-        }
-      ],
-      "curr": 1
-    },
-    {
-      "codeLine": 6,
-      "note": "Comparing outer nodes: left.left (3) and right.right (3). Vals match.",
-      "treeNodes": [
+        },
         {
-          "id": 3,
-          "val": 3,
+          "id": 5,
+          "val": 4,
           "left": null,
           "right": null
         },
@@ -118,8 +112,32 @@
     },
     {
       "codeLine": 6,
-      "note": "Comparing inner nodes: left.right (4) and right.left (4). Vals match.",
+      "note": "Comparing inner nodes: n1.right (4) and n2.left (4)",
       "treeNodes": [
+        {
+          "id": 0,
+          "val": 1,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 2,
+          "val": 2,
+          "left": 5,
+          "right": 6
+        },
+        {
+          "id": 3,
+          "val": 3,
+          "left": null,
+          "right": null
+        },
         {
           "id": 4,
           "val": 4,
@@ -131,22 +149,65 @@
           "val": 4,
           "left": null,
           "right": null
+        },
+        {
+          "id": 6,
+          "val": 3,
+          "left": null,
+          "right": null
         }
       ],
       "curr": 4
     },
     {
       "codeLine": 6,
-      "note": "All subtrees match, tree is symmetric.",
+      "note": "All pairs matched, tree is symmetric",
       "treeNodes": [
         {
           "id": 0,
           "val": 1,
           "left": 1,
           "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 2,
+          "val": 2,
+          "left": 5,
+          "right": 6
+        },
+        {
+          "id": 3,
+          "val": 3,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 4,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 5,
+          "val": 4,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 6,
+          "val": 3,
+          "left": null,
+          "right": null
         }
       ],
-      "curr": 4
+      "curr": 0
     }
-  ]
+  ],
+  "fullDescription": "<p>Given the <code>root</code> of a binary tree, <em>check whether it is a mirror of itself</em> (i.e., symmetric around its center).</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2021/02/19/symtree1.jpg\" style=\"width: 354px; height: 291px;\" />\n<pre>\n<strong>Input:</strong> root = [1,2,2,3,4,4,3]\n<strong>Output:</strong> true\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2021/02/19/symtree2.jpg\" style=\"width: 308px; height: 258px;\" />\n<pre>\n<strong>Input:</strong> root = [1,2,2,null,3,null,3]\n<strong>Output:</strong> false\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li>The number of nodes in the tree is in the range <code>[1, 1000]</code>.</li>\n\t<li><code>-100 &lt;= Node.val &lt;= 100</code></li>\n</ul>\n\n<p>&nbsp;</p>\n<strong>Follow up:</strong> Could you solve it both recursively and iteratively?"
 }

@@ -7,8 +7,8 @@
     "Matrix",
     "Simulation"
   ],
-  "description": "Traverse an m x n matrix in spiral order.",
-  "pseudocode": "1. Define top, bottom, left, right boundaries\n2. While top <= bottom and left <= right:\n3. Traverse top row, increment top\n4. Traverse right column, decrement right\n5. If top <= bottom, traverse bottom row, decrement bottom\n6. If left <= right, traverse left column, increment left",
+  "description": "Traverse a matrix in spiral order starting from top-left.",
+  "pseudocode": "1. Initialize top=0, bottom=m-1, left=0, right=n-1\n2. While top <= bottom and left <= right:\n3. Traverse right across the top row\n4. Traverse down the right column\n5. Traverse left across the bottom row\n6. Traverse up the left column\n7. Update boundaries",
   "steps": [
     {
       "codeLine": 1,
@@ -29,11 +29,12 @@
           8,
           9
         ]
-      ]
+      ],
+      "visited": []
     },
     {
       "codeLine": 3,
-      "note": "Traverse top row (1, 2, 3), set top=1",
+      "note": "Traversing top row (1, 2, 3). Increment top boundary.",
       "matrix": [
         [
           1,
@@ -51,14 +52,24 @@
           9
         ]
       ],
-      "curr": [
-        0,
-        2
+      "visited": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ]
       ]
     },
     {
       "codeLine": 4,
-      "note": "Traverse right col (6, 9), set right=1",
+      "note": "Traversing right column (6, 9). Decrement right boundary.",
       "matrix": [
         [
           1,
@@ -76,14 +87,32 @@
           9
         ]
       ],
-      "curr": [
-        2,
-        2
+      "visited": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          2
+        ]
       ]
     },
     {
       "codeLine": 5,
-      "note": "Traverse bottom row (8, 7), set bottom=1",
+      "note": "Traversing bottom row (8, 7). Decrement bottom boundary.",
       "matrix": [
         [
           1,
@@ -101,14 +130,40 @@
           9
         ]
       ],
-      "curr": [
-        2,
-        0
+      "visited": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          0
+        ]
       ]
     },
     {
       "codeLine": 6,
-      "note": "Traverse left col (4), set left=1",
+      "note": "Traversing left column (4). Increment left boundary.",
       "matrix": [
         [
           1,
@@ -126,14 +181,44 @@
           9
         ]
       ],
-      "curr": [
-        1,
-        0
+      "visited": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          1,
+          0
+        ]
       ]
     },
     {
-      "codeLine": 3,
-      "note": "Traverse remaining middle element (5), increment top",
+      "codeLine": 2,
+      "note": "Final inner element (5).",
       "matrix": [
         [
           1,
@@ -151,9 +236,43 @@
           9
         ]
       ],
-      "curr": [
-        1,
-        1
+      "visited": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
       ]
     }
   ],

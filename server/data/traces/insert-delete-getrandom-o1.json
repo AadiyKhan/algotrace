@@ -5,46 +5,77 @@
   "tags": [
     "Array",
     "Hash Table",
+    "Math",
     "Design",
     "Randomized"
   ],
-  "description": "Implement the RandomizedSet class to support insert, remove, and getRandom in O(1) average time.",
-  "target": null,
-  "pseudocode": "1. map = {}\n2. list = []\n3. insert(val): if val in map: return false; list.push(val); map[val] = list.length - 1; return true\n4. remove(val): if val not in map: return false; last = list[list.length - 1]; idx = map[val]; list[idx] = last; map[last] = idx; list.pop(); delete map[val]; return true\n5. getRandom(): return list[Math.floor(Math.random() * list.length)]",
+  "description": "Implement a data structure that supports insert, remove, and getRandom in O(1) average time.",
+  "pseudocode": "1. Initialize empty list and map\n2. insert(val): if map contains val, return false; else append to list, map[val] = lastIndex, return true\n3. remove(val): if !map contains val, return false; else swap val with last element, pop back, update map, return true\n4. getRandom(): return list[random index]",
   "steps": [
     {
-      "codeLine": 3,
-      "note": "Insert 10 into the set. Added to list and map.",
+      "codeLine": 1,
+      "note": "Initialize RandomizedSet",
+      "array": [],
+      "visited": []
+    },
+    {
+      "codeLine": 2,
+      "note": "insert(1): 1 not in map, append to array",
       "array": [
-        10
+        1
       ],
-      "i": "10",
-      "curr": 10
+      "i": 0
     },
     {
       "codeLine": 3,
-      "note": "Insert 20 into the set. Appended to list.",
+      "note": "remove(2): 2 not in map, return false",
       "array": [
-        10,
-        20
+        1
       ],
-      "i": "20",
-      "curr": 20
+      "i": null
+    },
+    {
+      "codeLine": 2,
+      "note": "insert(2): 2 not in map, append to array",
+      "array": [
+        1,
+        2
+      ],
+      "i": 1
     },
     {
       "codeLine": 4,
-      "note": "Remove 10. Replace 10 with last element (20), then pop.",
+      "note": "getRandom(): return random element (returns 2)",
       "array": [
-        20
+        1,
+        2
       ],
-      "curr": 10
+      "curr": 1
     },
     {
-      "codeLine": 5,
-      "note": "Get random from current array.",
+      "codeLine": 3,
+      "note": "remove(1): 1 exists, swap with last (2), pop back",
       "array": [
-        20
-      ]
+        2
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 2,
+      "note": "insert(2): 2 already exists, return false",
+      "array": [
+        2
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 4,
+      "note": "getRandom(): return random element (returns 2)",
+      "array": [
+        2
+      ],
+      "curr": 0
     }
-  ]
+  ],
+  "fullDescription": "<p>Implement the <code>RandomizedSet</code> class:</p>\n\n<ul>\n\t<li><code>RandomizedSet()</code> Initializes the <code>RandomizedSet</code> object.</li>\n\t<li><code>bool insert(int val)</code> Inserts an item <code>val</code> into the set if not present. Returns <code>true</code> if the item was not present, <code>false</code> otherwise.</li>\n\t<li><code>bool remove(int val)</code> Removes an item <code>val</code> from the set if present. Returns <code>true</code> if the item was present, <code>false</code> otherwise.</li>\n\t<li><code>int getRandom()</code> Returns a random element from the current set of elements (it&#39;s guaranteed that at least one element exists when this method is called). Each element must have the <b>same probability</b> of being returned.</li>\n</ul>\n\n<p>You must implement the functions of the class such that each function works in&nbsp;<strong>average</strong>&nbsp;<code>O(1)</code>&nbsp;time complexity.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<pre>\n<strong>Input</strong>\n[&quot;RandomizedSet&quot;, &quot;insert&quot;, &quot;remove&quot;, &quot;insert&quot;, &quot;getRandom&quot;, &quot;remove&quot;, &quot;insert&quot;, &quot;getRandom&quot;]\n[[], [1], [2], [2], [], [1], [2], []]\n<strong>Output</strong>\n[null, true, false, true, 2, true, false, 2]\n\n<strong>Explanation</strong>\nRandomizedSet randomizedSet = new RandomizedSet();\nrandomizedSet.insert(1); // Inserts 1 to the set. Returns true as 1 was inserted successfully.\nrandomizedSet.remove(2); // Returns false as 2 does not exist in the set.\nrandomizedSet.insert(2); // Inserts 2 to the set, returns true. Set now contains [1,2].\nrandomizedSet.getRandom(); // getRandom() should return either 1 or 2 randomly.\nrandomizedSet.remove(1); // Removes 1 from the set, returns true. Set now contains [2].\nrandomizedSet.insert(2); // 2 was already in the set, so return false.\nrandomizedSet.getRandom(); // Since 2 is the only number in the set, getRandom() will always return 2.\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>-2<sup>31</sup> &lt;= val &lt;= 2<sup>31</sup> - 1</code></li>\n\t<li>At most <code>2 *&nbsp;</code><code>10<sup>5</sup></code> calls will be made to <code>insert</code>, <code>remove</code>, and <code>getRandom</code>.</li>\n\t<li>There will be <strong>at least one</strong> element in the data structure when <code>getRandom</code> is called.</li>\n</ul>\n"
 }

@@ -4,117 +4,106 @@
   "type": "array",
   "tags": [
     "Array",
+    "Queue",
     "Prefix Sum",
     "Monotonic Queue"
   ],
-  "description": "Find the length of the shortest non-empty subarray with sum at least k using a monotonic queue and prefix sums.",
+  "description": "Find the length of the shortest subarray with sum at least k using a monotonic queue of prefix sums.",
   "target": 1,
-  "pseudocode": "1. P = [0] + prefix sums\n2. deque = empty\n3. min_len = infinity\n4. for i from 0 to len(P)-1:\n5.   while deque and P[i] - P[deque[0]] >= k:\n6.     update min_len\n7.     popleft from deque\n8.   while deque and P[i] <= P[deque[-1]]: pop from deque\n9.   append i to deque",
+  "pseudocode": "1. Initialize prefixSum = [0], deque = [0], minLen = infinity\n2. For i from 0 to n-1:\n3.   currSum = prefixSum[i] + nums[i]\n4.   While deque and currSum - prefixSum[deque.front] >= k:\n5.     minLen = min(minLen, i + 1 - deque.popfront())\n6.   While deque and currSum <= prefixSum[deque.back]: deque.popback()\n7.   deque.pushback(i + 1), prefixSum.push(currSum)\n8. Return minLen == infinity ? -1 : minLen",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize prefix sum array P. P[0]=0, P[1]=0+1=1.",
+      "note": "Initialize prefixSum array with 0 and deque with index 0.",
       "array": [
-        0,
         1
       ],
-      "curr": 0
+      "visited": [],
+      "queue": [
+        0
+      ],
+      "i": null
     },
     {
       "codeLine": 2,
-      "note": "Initialize empty deque for indices.",
+      "note": "Start iteration for i = 0, nums[0] = 1.",
       "array": [
-        0,
         1
       ],
-      "visited": []
+      "visited": [],
+      "queue": [
+        0
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 3,
+      "note": "Calculate current prefix sum: 0 + 1 = 1.",
+      "array": [
+        1
+      ],
+      "visited": [],
+      "queue": [
+        0
+      ],
+      "i": 0
     },
     {
       "codeLine": 4,
-      "note": "Iteration i = 0: P[0] = 0.",
+      "note": "Check if current prefix sum (1) - deque front (0) >= k (1). 1 - 0 >= 1 is true.",
       "array": [
-        0,
         1
       ],
-      "visited": [
+      "visited": [],
+      "queue": [
         0
+      ],
+      "i": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Update minLen to 1, pop from deque.",
+      "array": [
+        1
+      ],
+      "visited": [],
+      "queue": [],
+      "i": 0
+    },
+    {
+      "codeLine": 6,
+      "note": "Deque is empty, skipping popback.",
+      "array": [
+        1
+      ],
+      "visited": [],
+      "queue": [],
+      "i": 0
+    },
+    {
+      "codeLine": 7,
+      "note": "Push index 1 to deque, update prefixSum.",
+      "array": [
+        1
+      ],
+      "visited": [],
+      "queue": [
+        1
       ],
       "i": 0
     },
     {
       "codeLine": 8,
-      "note": "Deque is empty, append index 0.",
+      "note": "Loop finished, return minLen = 1.",
       "array": [
-        0,
         1
       ],
-      "visited": [
-        0
+      "visited": [],
+      "queue": [
+        1
       ],
       "i": 0
-    },
-    {
-      "codeLine": 4,
-      "note": "Iteration i = 1: P[1] = 1.",
-      "array": [
-        0,
-        1
-      ],
-      "visited": [
-        0,
-        1
-      ],
-      "i": 1
-    },
-    {
-      "codeLine": 5,
-      "note": "Check condition: P[1] - P[0] >= 1 (1 - 0 >= 1). True.",
-      "array": [
-        0,
-        1
-      ],
-      "visited": [
-        0,
-        1
-      ],
-      "i": 1
-    },
-    {
-      "codeLine": 6,
-      "note": "Update min_len to 1 - 0 = 1.",
-      "array": [
-        0,
-        1
-      ],
-      "visited": [
-        0,
-        1
-      ],
-      "i": 1
-    },
-    {
-      "codeLine": 7,
-      "note": "Pop index 0 from deque.",
-      "array": [
-        0,
-        1
-      ],
-      "visited": [
-        1
-      ],
-      "i": 1
-    },
-    {
-      "codeLine": 9,
-      "note": "Append index 1 to deque.",
-      "array": [
-        0,
-        1
-      ],
-      "visited": [
-        1
-      ],
-      "i": 1
     }
-  ]
+  ],
+  "fullDescription": "<p>Given an integer array <code>nums</code> and an integer <code>k</code>, return <em>the length of the shortest non-empty <strong>subarray</strong> of </em><code>nums</code><em> with a sum of at least </em><code>k</code>. If there is no such <strong>subarray</strong>, return <code>-1</code>.</p>\n\n<p>A <strong>subarray</strong> is a <strong>contiguous</strong> part of an array.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n<pre><strong>Input:</strong> nums = [1], k = 1\n<strong>Output:</strong> 1\n</pre><p><strong class=\"example\">Example 2:</strong></p>\n<pre><strong>Input:</strong> nums = [1,2], k = 4\n<strong>Output:</strong> -1\n</pre><p><strong class=\"example\">Example 3:</strong></p>\n<pre><strong>Input:</strong> nums = [2,-1,2], k = 3\n<strong>Output:</strong> 3\n</pre>\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= nums.length &lt;= 10<sup>5</sup></code></li>\n\t<li><code>-10<sup>5</sup> &lt;= nums[i] &lt;= 10<sup>5</sup></code></li>\n\t<li><code>1 &lt;= k &lt;= 10<sup>9</sup></code></li>\n</ul>\n"
 }

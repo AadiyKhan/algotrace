@@ -3,40 +3,41 @@
   "difficulty": "Medium",
   "type": "tree",
   "tags": [
+    "Dynamic Programming",
     "Tree",
-    "DFS",
-    "Dynamic Programming"
+    "Depth-First Search",
+    "Binary Tree"
   ],
-  "description": "Find the maximum amount of money you can rob without robbing two directly connected houses in a binary tree.",
-  "pseudocode": "function rob(node) {\n  if (!node) return [0, 0];\n  const left = rob(node.left);\n  const right = rob(node.right);\n  const robCurrent = node.val + left[1] + right[1];\n  const skipCurrent = Math.max(left[0], left[1]) + Math.max(right[0], right[1]);\n  return [robCurrent, skipCurrent];\n}",
+  "description": "Find the maximum sum of node values such that no two nodes are connected by an edge.",
+  "pseudocode": "1. dfs(root) returns [rob_root, skip_root]\n2. left = dfs(root.left)\n3. right = dfs(root.right)\n4. rob = root.val + left[1] + right[1]\n5. skip = max(left[0], left[1]) + max(right[0], right[1])\n6. return [rob, skip]",
   "steps": [
     {
-      "codeLine": 2,
-      "note": "Traverse to the leftmost leaf node (ID 2).",
+      "codeLine": 1,
+      "note": "Traversing to the leaf node (val 3) at left-right-left position.",
       "treeNodes": [
         {
           "id": 0,
           "val": 3,
           "left": 1,
-          "right": 3
+          "right": 2
         },
         {
           "id": 1,
           "val": 2,
           "left": null,
-          "right": 2
+          "right": 3
         },
         {
           "id": 2,
           "val": 3,
           "left": null,
-          "right": null
+          "right": 4
         },
         {
           "id": 3,
           "val": 3,
           "left": null,
-          "right": 4
+          "right": null
         },
         {
           "id": 4,
@@ -45,39 +46,109 @@
           "right": null
         }
       ],
-      "visited": [
-        0,
-        1,
-        2
-      ]
+      "curr": 3
     },
     {
-      "codeLine": 5,
-      "note": "Leaf node 2 returns [3, 0].",
+      "codeLine": 6,
+      "note": "Leaf node 3 returns [3, 0].",
       "treeNodes": [
         {
           "id": 0,
           "val": 3,
           "left": 1,
-          "right": 3
+          "right": 2
         },
         {
           "id": 1,
           "val": 2,
           "left": null,
-          "right": 2
+          "right": 3
         },
         {
           "id": 2,
           "val": 3,
           "left": null,
-          "right": null
+          "right": 4
         },
         {
           "id": 3,
           "val": 3,
           "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 1,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 3
+    },
+    {
+      "codeLine": 4,
+      "note": "Calculating max for node 2: rob = 2 + 0 + 0 = 2, skip = 3 + 0 = 3.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 3,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": 3
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
           "right": 4
+        },
+        {
+          "id": 3,
+          "val": 3,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 1,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Calculating max for node 3 (right child): rob = 3 + 0 + 1 = 4, skip = 1 + 0 = 1.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 3,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": null,
+          "right": 3
+        },
+        {
+          "id": 2,
+          "val": 3,
+          "left": null,
+          "right": 4
+        },
+        {
+          "id": 3,
+          "val": 3,
+          "left": null,
+          "right": null
         },
         {
           "id": 4,
@@ -89,69 +160,32 @@
       "curr": 2
     },
     {
-      "codeLine": 6,
-      "note": "Node 1 calculates rob: 2+0=2, skip: max(3,0)=3. Returns [2, 3].",
+      "codeLine": 4,
+      "note": "Final calculation for root (val 3): rob = 3 + max(2,3) + max(4,1) = 3 + 3 + 4 = 10? No, logic: rob=3+3+1=7. Returning final result.",
       "treeNodes": [
         {
           "id": 0,
           "val": 3,
           "left": 1,
-          "right": 3
+          "right": 2
         },
         {
           "id": 1,
           "val": 2,
           "left": null,
-          "right": 2
-        },
-        {
-          "id": 2,
-          "val": 3,
-          "left": null,
-          "right": null
-        },
-        {
-          "id": 3,
-          "val": 3,
-          "left": null,
-          "right": 4
-        },
-        {
-          "id": 4,
-          "val": 1,
-          "left": null,
-          "right": 4
-        }
-      ],
-      "curr": 1
-    },
-    {
-      "codeLine": 6,
-      "note": "Root node 0 aggregates results: rob 3 + skip left + skip right = 3+3+1 = 7.",
-      "treeNodes": [
-        {
-          "id": 0,
-          "val": 3,
-          "left": 1,
           "right": 3
         },
         {
-          "id": 1,
-          "val": 2,
-          "left": null,
-          "right": 2
-        },
-        {
           "id": 2,
           "val": 3,
           "left": null,
-          "right": null
+          "right": 4
         },
         {
           "id": 3,
           "val": 3,
           "left": null,
-          "right": 4
+          "right": null
         },
         {
           "id": 4,
@@ -162,5 +196,6 @@
       ],
       "curr": 0
     }
-  ]
+  ],
+  "fullDescription": "<p>The thief has found himself a new place for his thievery again. There is only one entrance to this area, called <code>root</code>.</p>\n\n<p>Besides the <code>root</code>, each house has one and only one parent house. After a tour, the smart thief realized that all houses in this place form a binary tree. It will automatically contact the police if <strong>two directly-linked houses were broken into on the same night</strong>.</p>\n\n<p>Given the <code>root</code> of the binary tree, return <em>the maximum amount of money the thief can rob <strong>without alerting the police</strong></em>.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2021/03/10/rob1-tree.jpg\" style=\"width: 277px; height: 293px;\" />\n<pre>\n<strong>Input:</strong> root = [3,2,3,null,3,null,1]\n<strong>Output:</strong> 7\n<strong>Explanation:</strong> Maximum amount of money the thief can rob = 3 + 3 + 1 = 7.\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2021/03/10/rob2-tree.jpg\" style=\"width: 357px; height: 293px;\" />\n<pre>\n<strong>Input:</strong> root = [3,4,5,1,3,null,1]\n<strong>Output:</strong> 9\n<strong>Explanation:</strong> Maximum amount of money the thief can rob = 4 + 5 = 9.\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li>The number of nodes in the tree is in the range <code>[1, 10<sup>4</sup>]</code>.</li>\n\t<li><code>0 &lt;= Node.val &lt;= 10<sup>4</sup></code></li>\n</ul>\n"
 }

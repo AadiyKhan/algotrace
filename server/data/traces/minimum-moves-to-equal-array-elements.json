@@ -1,108 +1,133 @@
 {
   "title": "Minimum Moves to Equal Array Elements",
-  "difficulty": "Easy",
+  "difficulty": "Medium",
   "type": "array",
   "tags": [
     "Array",
     "Math"
   ],
-  "description": "Calculate the minimum number of moves required to make all array elements equal, where a move consists of incrementing n - 1 elements by 1.",
-  "target": null,
-  "pseudocode": "1. let minVal = min(nums)\n2. let moves = 0\n3. for each num in nums:\n4.   moves += num - minVal\n5. return moves",
+  "description": "Calculate minimum moves by observing that incrementing n-1 elements is mathematically equivalent to decrementing 1 element.",
+  "target": 3,
+  "pseudocode": "1. min_val = min(nums)\n2. moves = 0\n3. for x in nums:\n4.    moves += x - min_val\n5. return moves",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Find the minimum value in the array to serve as the baseline.",
+      "note": "Find the minimum value in the array.",
       "array": [
         1,
         2,
         3
-      ]
+      ],
+      "visited": []
     },
     {
       "codeLine": 2,
-      "note": "Initialize moves counter to 0.",
+      "note": "Initialize total moves to 0.",
       "array": [
         1,
         2,
         3
       ],
-      "curr": 0
+      "visited": []
     },
     {
       "codeLine": 3,
-      "note": "Start iterating through the array.",
-      "array": [
-        1,
-        2,
-        3
-      ],
-      "i": 0
-    },
-    {
-      "codeLine": 4,
-      "note": "Calculate difference for index 0: 1 - 1 = 0.",
+      "note": "Iterate through the array to calculate the difference from min_val (1).",
       "array": [
         1,
         2,
         3
       ],
       "i": 0,
-      "curr": 0
+      "visited": [
+        0
+      ]
+    },
+    {
+      "codeLine": 4,
+      "note": "First element: 1 - 1 = 0 moves.",
+      "array": [
+        1,
+        2,
+        3
+      ],
+      "i": 0,
+      "visited": [
+        0
+      ]
     },
     {
       "codeLine": 3,
-      "note": "Move to index 1.",
+      "note": "Move to second element.",
       "array": [
         1,
         2,
         3
       ],
       "i": 1,
-      "curr": 1
+      "visited": [
+        0,
+        1
+      ]
     },
     {
       "codeLine": 4,
-      "note": "Calculate difference for index 1: 2 - 1 = 1. Moves = 1.",
+      "note": "Second element: 2 - 1 = 1 move. Total moves = 1.",
       "array": [
         1,
         2,
         3
       ],
       "i": 1,
-      "curr": 1
+      "visited": [
+        0,
+        1
+      ]
     },
     {
       "codeLine": 3,
-      "note": "Move to index 2.",
+      "note": "Move to third element.",
       "array": [
         1,
         2,
         3
       ],
       "i": 2,
-      "curr": 2
+      "visited": [
+        0,
+        1,
+        2
+      ]
     },
     {
       "codeLine": 4,
-      "note": "Calculate difference for index 2: 3 - 1 = 2. Moves = 1 + 2 = 3.",
+      "note": "Third element: 3 - 1 = 2 moves. Total moves = 3.",
       "array": [
         1,
         2,
         3
       ],
       "i": 2,
-      "curr": 2
+      "visited": [
+        0,
+        1,
+        2
+      ]
     },
     {
       "codeLine": 5,
-      "note": "Return total moves: 3.",
+      "note": "Return final result of 3 moves.",
       "array": [
         1,
         2,
         3
       ],
-      "curr": 3
+      "visited": [
+        0,
+        1,
+        2
+      ]
     }
-  ]
+  ],
+  "fullDescription": "<p>Given an integer array <code>nums</code> of size <code>n</code>, return <em>the minimum number of moves required to make all array elements equal</em>.</p>\n\n<p>In one move, you can increment <code>n - 1</code> elements of the array by <code>1</code>.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> nums = [1,2,3]\n<strong>Output:</strong> 3\n<strong>Explanation:</strong> Only three moves are needed (remember each move increments two elements):\n[1,2,3]  =&gt;  [2,3,3]  =&gt;  [3,4,3]  =&gt;  [4,4,4]\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> nums = [1,1,1]\n<strong>Output:</strong> 0\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>n == nums.length</code></li>\n\t<li><code>1 &lt;= nums.length &lt;= 10<sup>5</sup></code></li>\n\t<li><code>-10<sup>9</sup> &lt;= nums[i] &lt;= 10<sup>9</sup></code></li>\n\t<li>The answer is guaranteed to fit in a <strong>32-bit</strong> integer.</li>\n</ul>\n"
 }

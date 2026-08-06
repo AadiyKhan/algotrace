@@ -1,0 +1,93 @@
+{
+  "title": "Design An Expression Tree With Evaluate Function",
+  "difficulty": "Medium",
+  "type": "tree",
+  "tags": [
+    "Tree",
+    "Design",
+    "Stack"
+  ],
+  "description": "Build an expression tree from a postfix expression and implement an evaluate function to compute the result.",
+  "target": 6,
+  "pseudocode": "1. stack = []\n2. for char in postfix:\n3.   if char is digit: stack.push(Node(val=char))\n4.   else: \n5.     right = stack.pop(), left = stack.pop()\n6.     stack.push(Node(val=char, left=left, right=right))\n7. return stack.top().evaluate()",
+  "steps": [
+    {
+      "codeLine": 3,
+      "note": "Push '3' onto stack",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": "3",
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "Push '2' onto stack",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": "3",
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 1,
+          "val": "2",
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Operator '+', pop 2 and 3, push new node",
+      "treeNodes": [
+        {
+          "id": 2,
+          "val": "+",
+          "left": 0,
+          "right": 1
+        },
+        {
+          "id": 0,
+          "val": "3",
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 1,
+          "val": "2",
+          "left": null,
+          "right": null
+        }
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Evaluate tree starting at root (3 + 2 = 5)",
+      "treeNodes": [
+        {
+          "id": 2,
+          "val": "+",
+          "left": 0,
+          "right": 1
+        },
+        {
+          "id": 0,
+          "val": "3",
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 1,
+          "val": "2",
+          "left": null,
+          "right": null
+        }
+      ]
+    }
+  ]
+}

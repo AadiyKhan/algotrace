@@ -4,73 +4,85 @@
   "type": "array",
   "tags": [
     "Math",
-    "Dynamic Programming"
+    "Dynamic Programming",
+    "Recursion"
   ],
-  "description": "Count the total number of digit 1 appearing in all non-negative integers less than or equal to n.",
+  "description": "Count the total number of digit 1 in all integers from 0 to n using digit position analysis.",
   "target": 13,
-  "pseudocode": "function countDigitOne(n) {\n  let count = 0;\n  for (let m = 1; m <= n; m *= 10) {\n    let a = Math.floor(n / (m * 10)), b = n % (m * 10);\n    count += a * m + Math.min(Math.max(b - m + 1, 0), m);\n  }\n  return count;\n}",
+  "pseudocode": "1. Initialize count = 0, factor = 1\n2. While factor <= n:\n3.   divider = factor * 10\n4.   count += (n // divider) * factor + min(max(n % divider - factor + 1, 0), factor)\n5.   factor *= 10",
   "steps": [
     {
-      "codeLine": 2,
-      "note": "Initialize count to 0, start loop with m=1",
+      "codeLine": 1,
+      "note": "Initialize count to 0 and factor to 1 (representing the units place).",
       "array": [
+        0,
         13
       ],
-      "i": "m=1",
-      "curr": 0
-    },
-    {
-      "codeLine": 3,
-      "note": "Calculate a (higher digits) and b (remainder)",
-      "array": [
-        13
-      ],
-      "i": "m=1",
-      "curr": "a=1, b=3"
-    },
-    {
-      "codeLine": 4,
-      "note": "Update count: a*m + min(max(b-m+1, 0), m) = 1*1 + min(max(3, 0), 1) = 1+1 = 2",
-      "array": [
-        13
-      ],
-      "i": "m=1",
-      "curr": 1
+      "visited": []
     },
     {
       "codeLine": 2,
-      "note": "Next iteration m=10",
+      "note": "First iteration: factor = 1. Condition 1 <= 13 is true.",
       "array": [
+        0,
         13
       ],
-      "i": "m=10",
-      "curr": 10
-    },
-    {
-      "codeLine": 3,
-      "note": "Calculate a and b for m=10",
-      "array": [
-        13
-      ],
-      "i": "m=10",
-      "curr": "a=0, b=3"
+      "i": 1
     },
     {
       "codeLine": 4,
-      "note": "Update count: 2 + (0*10 + min(max(3-10+1, 0), 10)) = 2 + 0 = 2",
+      "note": "Calculating ones at units place: (13 // 10) * 1 + min(max(13 % 10 - 1 + 1, 0), 1) = 1 + 1 = 2.",
       "array": [
+        2,
         13
       ],
-      "i": "m=10",
-      "curr": 2
+      "i": 1
     },
     {
-      "codeLine": 6,
-      "note": "Return total count of 6 (the number of 1s in 1, 10, 11, 12, 13)",
+      "codeLine": 5,
+      "note": "Update factor to 10.",
       "array": [
+        2,
         13
       ],
-      "curr": 6
+      "i": 10
+    },
+    {
+      "codeLine": 2,
+      "note": "Second iteration: factor = 10. Condition 10 <= 13 is true.",
+      "array": [
+        2,
+        13
+      ],
+      "i": 10
+    },
+    {
+      "codeLine": 4,
+      "note": "Calculating ones at tens place: (13 // 100) * 10 + min(max(13 % 100 - 10 + 1, 0), 10) = 0 + 4 = 4. Total count = 2 + 4 = 6.",
+      "array": [
+        6,
+        13
+      ],
+      "i": 10
+    },
+    {
+      "codeLine": 5,
+      "note": "Update factor to 100.",
+      "array": [
+        6,
+        13
+      ],
+      "i": 100
+    },
+    {
+      "codeLine": 2,
+      "note": "Loop terminates as factor 100 > 13.",
+      "array": [
+        6,
+        13
+      ],
+      "i": 100
     }
-  ]
+  ],
+  "fullDescription": "<p>Given an integer <code>n</code>, count <em>the total number of digit </em><code>1</code><em> appearing in all non-negative integers less than or equal to</em> <code>n</code>.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> n = 13\n<strong>Output:</strong> 6\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> n = 0\n<strong>Output:</strong> 0\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>0 &lt;= n &lt;= 10<sup>9</sup></code></li>\n</ul>\n"
 }

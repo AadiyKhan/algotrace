@@ -5,45 +5,53 @@
   "tags": [
     "Math"
   ],
-  "description": "Calculate the smaller angle between the hour and minute hand of a clock.",
+  "description": "Calculate the smaller angle between the hour and minute hand given hour = 12 and minutes = 30.",
   "target": 165,
-  "pseudocode": "1. hour_angle = (hour % 12 + minutes / 60) * 30\n2. minute_angle = minutes * 6\n3. diff = abs(hour_angle - minute_angle)\n4. return min(diff, 360 - diff)",
+  "pseudocode": "1. minute_angle = minutes * 6\n2. hour_angle = (hour % 12 + minutes / 60) * 30\n3. diff = abs(hour_angle - minute_angle)\n4. return min(diff, 360 - diff)",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Calculate hour hand position. 12 becomes 0, plus 30 mins (0.5 hours) = 0.5 * 30 = 15 degrees.",
+      "note": "Calculate minute hand position: 30 minutes * 6 degrees/minute = 180 degrees.",
       "array": [
-        15,
-        0
+        12,
+        30
       ],
-      "curr": 12
+      "i": 180
     },
     {
       "codeLine": 2,
-      "note": "Calculate minute hand position. 30 mins * 6 degrees/min = 180 degrees.",
+      "note": "Calculate hour hand position: (12 % 12 + 30 / 60) * 30 = 0.5 * 30 = 15 degrees.",
       "array": [
-        15,
-        180
+        12,
+        30
       ],
-      "curr": 30
+      "i": 180,
+      "j": 15
     },
     {
       "codeLine": 3,
-      "note": "Calculate the absolute difference: |15 - 180| = 165.",
+      "note": "Calculate absolute difference: abs(15 - 180) = 165 degrees.",
       "array": [
-        15,
-        180,
-        165
+        12,
+        30
       ],
-      "curr": 15
+      "i": 180,
+      "j": 15,
+      "visited": [
+        165
+      ]
     },
     {
       "codeLine": 4,
-      "note": "Return the smaller angle: min(165, 360 - 165) = min(165, 195) = 165.",
+      "note": "Return smaller angle: min(165, 360 - 165) = 165 degrees.",
       "array": [
-        165
+        12,
+        30
       ],
-      "curr": 165
+      "visited": [
+        165
+      ]
     }
-  ]
+  ],
+  "fullDescription": "<p>Given two numbers, <code>hour</code> and <code>minutes</code>, return <em>the smaller angle (in degrees) formed between the </em><code>hour</code><em> and the </em><code>minute</code><em> hand</em>.</p>\n\n<p>Answers within <code>10<sup>-5</sup></code> of the actual value will be accepted as correct.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2019/12/26/sample_1_1673.png\" style=\"width: 300px; height: 296px;\" />\n<pre>\n<strong>Input:</strong> hour = 12, minutes = 30\n<strong>Output:</strong> 165\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2019/12/26/sample_2_1673.png\" style=\"width: 300px; height: 301px;\" />\n<pre>\n<strong>Input:</strong> hour = 3, minutes = 30\n<strong>Output:</strong> 75\n</pre>\n\n<p><strong class=\"example\">Example 3:</strong></p>\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2019/12/26/sample_3_1673.png\" style=\"width: 300px; height: 301px;\" />\n<pre>\n<strong>Input:</strong> hour = 3, minutes = 15\n<strong>Output:</strong> 7.5\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= hour &lt;= 12</code></li>\n\t<li><code>0 &lt;= minutes &lt;= 59</code></li>\n</ul>\n"
 }

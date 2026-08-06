@@ -6,119 +6,90 @@
     "Array",
     "Dynamic Programming"
   ],
-  "description": "Find the maximum profit with at most k transactions.",
+  "description": "Find the maximum profit with at most k transactions using dynamic programming.",
   "target": 2,
-  "pseudocode": "1. if k == 0 return 0\n2. buy = [-infinity, -infinity]\n3. sell = [0, 0]\n4. for price in prices:\n5.   for i in 0..k-1:\n6.     buy[i] = max(buy[i], (i == 0 ? 0 : sell[i-1]) - price)\n7.     sell[i] = max(sell[i], buy[i] + price)",
+  "pseudocode": "1. Initialize dp[k+1][prices.length] array with 0s\n2. For t from 1 to k:\n3.   Initialize max_diff = -prices[0]\n4.   For d from 1 to prices.length - 1:\n5.     dp[t][d] = max(dp[t][d-1], prices[d] + max_diff)\n6.     max_diff = max(max_diff, dp[t-1][d] - prices[d])",
   "steps": [
     {
+      "codeLine": 1,
+      "note": "Initialize DP table for k=2 transactions and prices [2, 4, 1]",
+      "array": [
+        0,
+        0,
+        0
+      ],
+      "visited": []
+    },
+    {
       "codeLine": 2,
-      "note": "Initialize buy array for k=2 transactions.",
+      "note": "Start transaction t=1",
       "array": [
-        3,
-        2,
-        6
+        0,
+        0,
+        0
       ],
-      "i": "buy: [-inf, -inf]",
-      "curr": 2
+      "i": 1
     },
     {
-      "codeLine": 4,
-      "note": "Process first price: 3",
+      "codeLine": 3,
+      "note": "Set max_diff for first transaction",
       "array": [
-        3,
-        2,
-        6
+        0,
+        0,
+        0
       ],
-      "i": 0,
-      "curr": 3
-    },
-    {
-      "codeLine": 6,
-      "note": "Update buy[0]: max(-inf, 0 - 3) = -3",
-      "array": [
-        3,
-        2,
-        6
-      ],
-      "i": 0,
-      "curr": 0
-    },
-    {
-      "codeLine": 7,
-      "note": "Update sell[0]: max(0, -3 + 3) = 0",
-      "array": [
-        3,
-        2,
-        6
-      ],
-      "i": 0,
       "curr": 0
     },
     {
       "codeLine": 4,
-      "note": "Process second price: 2",
+      "note": "Processing day 1 (price 4)",
       "array": [
-        3,
+        0,
         2,
-        6
+        0
       ],
-      "i": 1,
-      "curr": 2
+      "j": 1
     },
     {
-      "codeLine": 6,
-      "note": "Update buy[0]: max(-3, 0 - 2) = -2",
+      "codeLine": 5,
+      "note": "Update max profit for day 1",
       "array": [
-        3,
+        0,
         2,
-        6
+        2
       ],
-      "i": 1,
-      "curr": 0
+      "j": 2
     },
     {
-      "codeLine": 7,
-      "note": "Update sell[0]: max(0, -2 + 2) = 0",
+      "codeLine": 2,
+      "note": "Start transaction t=2",
       "array": [
-        3,
+        0,
         2,
-        6
+        2
       ],
-      "i": 1,
-      "curr": 0
+      "i": 2
     },
     {
       "codeLine": 4,
-      "note": "Process third price: 6",
+      "note": "Processing day 1 (price 4) for transaction 2",
       "array": [
-        3,
+        0,
         2,
-        6
+        2
       ],
-      "i": 2,
-      "curr": 6
+      "j": 1
     },
     {
-      "codeLine": 6,
-      "note": "Update buy[0]: max(-2, 0 - 6) = -2",
+      "codeLine": 5,
+      "note": "Processing day 2 (price 1) for transaction 2",
       "array": [
-        3,
+        0,
         2,
-        6
+        2
       ],
-      "i": 2,
-      "curr": 0
-    },
-    {
-      "codeLine": 7,
-      "note": "Update sell[0]: max(0, -2 + 6) = 4",
-      "array": [
-        3,
-        2,
-        6
-      ],
-      "i": 2,
-      "curr": 0
+      "j": 2
     }
-  ]
+  ],
+  "fullDescription": "<p>You are given an integer array <code>prices</code> where <code>prices[i]</code> is the price of a given stock on the <code>i<sup>th</sup></code> day, and an integer <code>k</code>.</p>\n\n<p>Find the maximum profit you can achieve. You may complete at most <code>k</code> transactions: i.e. you may buy at most <code>k</code> times and sell at most <code>k</code> times.</p>\n\n<p><strong>Note:</strong> You may not engage in multiple transactions simultaneously (i.e., you must sell the stock before you buy again).</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> k = 2, prices = [2,4,1]\n<strong>Output:</strong> 2\n<strong>Explanation:</strong> Buy on day 1 (price = 2) and sell on day 2 (price = 4), profit = 4-2 = 2.\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> k = 2, prices = [3,2,6,5,0,3]\n<strong>Output:</strong> 7\n<strong>Explanation:</strong> Buy on day 2 (price = 2) and sell on day 3 (price = 6), profit = 6-2 = 4. Then buy on day 5 (price = 0) and sell on day 6 (price = 3), profit = 3-0 = 3.\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= k &lt;= 100</code></li>\n\t<li><code>1 &lt;= prices.length &lt;= 1000</code></li>\n\t<li><code>0 &lt;= prices[i] &lt;= 1000</code></li>\n</ul>\n"
 }

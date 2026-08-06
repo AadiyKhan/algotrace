@@ -7,25 +7,13 @@
     "Stack",
     "Monotonic Stack"
   ],
-  "description": "Find the largest rectangular area in a histogram where each bar has a width of 1.",
+  "description": "Calculate the largest rectangle area in a histogram using a monotonic stack.",
   "target": 10,
-  "pseudocode": "1: stack = []\n2: maxArea = 0\n3: for i = 0 to heights.length:\n4:   while stack and heights[i] < heights[stack.top()]:\n5:     h = heights[stack.pop()]\n6:     w = stack.empty() ? i : i - stack.top() - 1\n7:     maxArea = max(maxArea, h * w)\n8:   stack.push(i)\n9: return maxArea",
+  "pseudocode": "1. Initialize stack = [-1], maxArea = 0\n2. For i = 0 to heights.length - 1:\n3. While stack.top != -1 and heights[stack.top] >= heights[i]:\n4. height = heights[stack.pop()], width = i - stack.top - 1, maxArea = max(maxArea, height * width)\n5. stack.push(i)\n6. While stack.top != -1: pop and calculate area",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize empty stack and maxArea",
-      "array": [
-        2,
-        1,
-        5,
-        6,
-        2,
-        3
-      ]
-    },
-    {
-      "codeLine": 3,
-      "note": "Push index 0 (val 2) to stack",
+      "note": "Initialize stack with -1 to handle boundary conditions.",
       "array": [
         2,
         1,
@@ -34,12 +22,31 @@
         2,
         3
       ],
-      "i": 0,
+      "visited": [
+        -1
+      ],
+      "curr": -1
+    },
+    {
+      "codeLine": 5,
+      "note": "Push index 0 (height 2) to stack.",
+      "array": [
+        2,
+        1,
+        5,
+        6,
+        2,
+        3
+      ],
+      "visited": [
+        -1,
+        0
+      ],
       "curr": 0
     },
     {
       "codeLine": 3,
-      "note": "Height 1 < 2, pop 0. Area = 2 * 1 = 2",
+      "note": "Height 1 < 2, pop index 0, calculate area = 2 * (1 - (-1) - 1) = 2.",
       "array": [
         2,
         1,
@@ -48,12 +55,31 @@
         2,
         3
       ],
-      "i": 1,
+      "visited": [
+        -1
+      ],
+      "curr": 0
+    },
+    {
+      "codeLine": 5,
+      "note": "Push index 1 (height 1).",
+      "array": [
+        2,
+        1,
+        5,
+        6,
+        2,
+        3
+      ],
+      "visited": [
+        -1,
+        1
+      ],
       "curr": 1
     },
     {
-      "codeLine": 8,
-      "note": "Push index 1 (val 1) to stack",
+      "codeLine": 5,
+      "note": "Push index 2 (height 5).",
       "array": [
         2,
         1,
@@ -62,26 +88,16 @@
         2,
         3
       ],
-      "i": 1,
-      "curr": 1
-    },
-    {
-      "codeLine": 3,
-      "note": "Push index 2 (val 5) to stack",
-      "array": [
-        2,
+      "visited": [
+        -1,
         1,
-        5,
-        6,
-        2,
-        3
+        2
       ],
-      "i": 2,
       "curr": 2
     },
     {
-      "codeLine": 3,
-      "note": "Push index 3 (val 6) to stack",
+      "codeLine": 5,
+      "note": "Push index 3 (height 6).",
       "array": [
         2,
         1,
@@ -90,12 +106,35 @@
         2,
         3
       ],
-      "i": 3,
+      "visited": [
+        -1,
+        1,
+        2,
+        3
+      ],
+      "curr": 3
+    },
+    {
+      "codeLine": 3,
+      "note": "Height 2 < 6, pop index 3, area = 6 * (4 - 2 - 1) = 6.",
+      "array": [
+        2,
+        1,
+        5,
+        6,
+        2,
+        3
+      ],
+      "visited": [
+        -1,
+        1,
+        2
+      ],
       "curr": 3
     },
     {
       "codeLine": 4,
-      "note": "Height 2 < 6, pop 3. Area = 6 * 1 = 6",
+      "note": "Height 2 < 5, pop index 2, area = 5 * (4 - 1 - 1) = 10.",
       "array": [
         2,
         1,
@@ -104,12 +143,15 @@
         2,
         3
       ],
-      "i": 4,
+      "visited": [
+        -1,
+        1
+      ],
       "curr": 2
     },
     {
-      "codeLine": 4,
-      "note": "Height 2 < 5, pop 2. Area = 5 * 2 = 10",
+      "codeLine": 5,
+      "note": "Push index 4 (height 2).",
       "array": [
         2,
         1,
@@ -118,26 +160,16 @@
         2,
         3
       ],
-      "i": 4,
-      "curr": 2
-    },
-    {
-      "codeLine": 8,
-      "note": "Push index 4 (val 2) to stack",
-      "array": [
-        2,
+      "visited": [
+        -1,
         1,
-        5,
-        6,
-        2,
-        3
+        4
       ],
-      "i": 4,
       "curr": 4
     },
     {
-      "codeLine": 9,
-      "note": "Final maxArea calculated is 10",
+      "codeLine": 5,
+      "note": "Push index 5 (height 3).",
       "array": [
         2,
         1,
@@ -146,7 +178,28 @@
         2,
         3
       ],
-      "curr": 10
+      "visited": [
+        -1,
+        1,
+        4,
+        5
+      ],
+      "curr": 5
+    },
+    {
+      "codeLine": 6,
+      "note": "Final stacks popped, maxArea remains 10.",
+      "array": [
+        2,
+        1,
+        5,
+        6,
+        2,
+        3
+      ],
+      "visited": [],
+      "curr": 5
     }
-  ]
+  ],
+  "fullDescription": "<p>Given an array of integers <code>heights</code> representing the histogram&#39;s bar height where the width of each bar is <code>1</code>, return <em>the area of the largest rectangle in the histogram</em>.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2021/01/04/histogram.jpg\" style=\"width: 522px; height: 242px;\" />\n<pre>\n<strong>Input:</strong> heights = [2,1,5,6,2,3]\n<strong>Output:</strong> 10\n<strong>Explanation:</strong> The above is a histogram where width of each bar is 1.\nThe largest rectangle is shown in the red area, which has an area = 10 units.\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2021/01/04/histogram-1.jpg\" style=\"width: 202px; height: 362px;\" />\n<pre>\n<strong>Input:</strong> heights = [2,4]\n<strong>Output:</strong> 4\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= heights.length &lt;= 10<sup>5</sup></code></li>\n\t<li><code>0 &lt;= heights[i] &lt;= 10<sup>4</sup></code></li>\n</ul>\n"
 }

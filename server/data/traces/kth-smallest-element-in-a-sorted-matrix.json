@@ -3,17 +3,17 @@
   "difficulty": "Medium",
   "type": "matrix",
   "tags": [
-    "Matrix",
+    "Array",
     "Binary Search",
-    "Heap"
+    "Matrix"
   ],
-  "description": "Find the kth smallest element in an n x n matrix where each row and column is sorted in ascending order.",
-  "target": 8,
-  "pseudocode": "1. low = matrix[0][0], high = matrix[n-1][n-1]\n2. while low < high:\n3.   mid = low + (high - low) // 2\n4.   count = countLessEqual(matrix, mid)\n5.   if count < k: low = mid + 1\n6.   else: high = mid\n7. return low",
+  "description": "Find the kth smallest element in an n x n sorted matrix using binary search on values.",
+  "target": 13,
+  "pseudocode": "1. low = matrix[0][0], high = matrix[n-1][n-1]\n2. while low < high:\n3.   mid = low + (high - low) // 2\n4.   count = countLessEqual(matrix, mid)\n5.   if count < k: low = mid + 1\n6.   else: high = mid",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize binary search range between top-left (1) and bottom-right (15).",
+      "note": "Initialize binary search range [1, 15]",
       "matrix": [
         [
           1,
@@ -31,14 +31,11 @@
           15
         ]
       ],
-      "curr": [
-        0,
-        0
-      ]
+      "visited": []
     },
     {
       "codeLine": 3,
-      "note": "Calculate mid: (1 + 15) // 2 = 8.",
+      "note": "Calculate mid: 1 + (15-1)//2 = 8",
       "matrix": [
         [
           1,
@@ -56,15 +53,11 @@
           15
         ]
       ],
-      "i": 8,
-      "curr": [
-        1,
-        15
-      ]
+      "curr": "8"
     },
     {
       "codeLine": 4,
-      "note": "Count elements <= 8. Found: 1, 5 (Count = 2).",
+      "note": "Count elements <= 8: [1, 5] count = 2",
       "matrix": [
         [
           1,
@@ -95,7 +88,7 @@
     },
     {
       "codeLine": 5,
-      "note": "Count (2) < k (8). Set low = mid + 1 = 9.",
+      "note": "count (2) < k (8), move low to mid + 1 = 9",
       "matrix": [
         [
           1,
@@ -113,15 +106,11 @@
           15
         ]
       ],
-      "i": 9,
-      "curr": [
-        2,
-        8
-      ]
+      "visited": []
     },
     {
       "codeLine": 3,
-      "note": "Calculate mid: (9 + 15) // 2 = 12.",
+      "note": "New mid: 9 + (15-9)//2 = 12",
       "matrix": [
         [
           1,
@@ -139,15 +128,11 @@
           15
         ]
       ],
-      "i": 12,
-      "curr": [
-        9,
-        15
-      ]
+      "curr": "12"
     },
     {
       "codeLine": 4,
-      "note": "Count elements <= 12. Found: 1, 5, 9, 10, 11, 12 (Count = 6).",
+      "note": "Count elements <= 12: [1,5,9,10,11,12] count = 6",
       "matrix": [
         [
           1,
@@ -193,8 +178,29 @@
       ]
     },
     {
-      "codeLine": 6,
-      "note": "Count (6) >= k (8) is false, narrowing range.",
+      "codeLine": 5,
+      "note": "count (6) < k (8), move low to mid + 1 = 13",
+      "matrix": [
+        [
+          1,
+          5,
+          9
+        ],
+        [
+          10,
+          11,
+          13
+        ],
+        [
+          12,
+          13,
+          15
+        ]
+      ]
+    },
+    {
+      "codeLine": 3,
+      "note": "New mid: 13 + (15-13)//2 = 14",
       "matrix": [
         [
           1,
@@ -212,14 +218,87 @@
           15
         ]
       ],
-      "curr": [
-        6,
-        8
+      "curr": "14"
+    },
+    {
+      "codeLine": 4,
+      "note": "Count elements <= 14: [1,5,9,10,11,12,13,13] count = 8",
+      "matrix": [
+        [
+          1,
+          5,
+          9
+        ],
+        [
+          10,
+          11,
+          13
+        ],
+        [
+          12,
+          13,
+          15
+        ]
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          2,
+          1
+        ]
       ]
     },
     {
-      "codeLine": 7,
-      "note": "Binary search concludes. Return 13.",
+      "codeLine": 6,
+      "note": "count (8) >= k (8), set high = 14",
+      "matrix": [
+        [
+          1,
+          5,
+          9
+        ],
+        [
+          10,
+          11,
+          13
+        ],
+        [
+          12,
+          13,
+          15
+        ]
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Low matches High, return 13",
       "matrix": [
         [
           1,
@@ -238,5 +317,6 @@
         ]
       ]
     }
-  ]
+  ],
+  "fullDescription": "<p>Given an <code>n x n</code> <code>matrix</code> where each of the rows and columns is sorted in ascending order, return <em>the</em> <code>k<sup>th</sup></code> <em>smallest element in the matrix</em>.</p>\n\n<p>Note that it is the <code>k<sup>th</sup></code> smallest element <strong>in the sorted order</strong>, not the <code>k<sup>th</sup></code> <strong>distinct</strong> element.</p>\n\n<p>You must find a solution with a memory complexity better than <code>O(n<sup>2</sup>)</code>.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> matrix = [[1,5,9],[10,11,13],[12,13,15]], k = 8\n<strong>Output:</strong> 13\n<strong>Explanation:</strong> The elements in the matrix are [1,5,9,10,11,12,13,<u><strong>13</strong></u>,15], and the 8<sup>th</sup> smallest number is 13\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> matrix = [[-5]], k = 1\n<strong>Output:</strong> -5\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>n == matrix.length == matrix[i].length</code></li>\n\t<li><code>1 &lt;= n &lt;= 300</code></li>\n\t<li><code>-10<sup>9</sup> &lt;= matrix[i][j] &lt;= 10<sup>9</sup></code></li>\n\t<li>All the rows and columns of <code>matrix</code> are <strong>guaranteed</strong> to be sorted in <strong>non-decreasing order</strong>.</li>\n\t<li><code>1 &lt;= k &lt;= n<sup>2</sup></code></li>\n</ul>\n\n<p>&nbsp;</p>\n<p><strong>Follow up:</strong></p>\n\n<ul>\n\t<li>Could you solve the problem with a constant memory (i.e., <code>O(1)</code> memory complexity)?</li>\n\t<li>Could you solve the problem in <code>O(n)</code> time complexity? The solution may be too advanced for an interview but you may find reading <a href=\"http://www.cse.yorku.ca/~andy/pubs/X+Y.pdf\" target=\"_blank\">this paper</a> fun.</li>\n</ul>\n"
 }

@@ -1,0 +1,48 @@
+{
+  "title": "Alert Using Same Key Card Three Or More Times In A One Hour Period",
+  "difficulty": "Medium",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Hash Table",
+    "Sorting"
+  ],
+  "description": "Find names of workers who used their key card three or more times within a one-hour period.",
+  "pseudocode": "1. map = {}\n2. for (name, time) in logs:\n3.   minutes = convertToMinutes(time)\n4.   map[name].push(minutes)\n5. for name in map:\n6.   times = sort(map[name])\n7.   for i from 2 to times.length - 1:\n8.     if times[i] - times[i-2] <= 60:\n9.       alerted.push(name); break",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize empty frequency map for logs.",
+      "array": []
+    },
+    {
+      "codeLine": 4,
+      "note": "Adding times for 'daniel': [100, 110, 150].",
+      "i": "daniel",
+      "array": [
+        100,
+        110,
+        150
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Sorting times for 'daniel': [100, 110, 150].",
+      "array": [
+        100,
+        110,
+        150
+      ]
+    },
+    {
+      "codeLine": 7,
+      "note": "Checking index 2: times[2] - times[0] = 150 - 100 = 50.",
+      "i": 2
+    },
+    {
+      "codeLine": 8,
+      "note": "50 <= 60, condition met. Adding 'daniel' to alerted list.",
+      "i": 2
+    }
+  ]
+}

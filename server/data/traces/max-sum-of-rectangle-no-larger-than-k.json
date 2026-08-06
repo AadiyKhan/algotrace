@@ -1,41 +1,28 @@
 {
-  "title": "Max Sum Of Rectangle No Larger Than K",
+  "title": "Max Sum of Rectangle No Larger Than K",
   "difficulty": "Hard",
   "type": "matrix",
   "tags": [
     "Array",
     "Matrix",
-    "Binary Search",
-    "Sliding Window"
+    "Prefix Sum",
+    "Binary Search"
   ],
-  "description": "Find the maximum sum of a rectangle in a 2D matrix such that the sum is no larger than K.",
+  "description": "Find the maximum sum of a rectangle in a matrix no larger than k.",
   "target": 2,
-  "pseudocode": "1. max_sum = -infinity\n2. for left = 0 to cols:\n3.   row_sums = [0]*rows\n4.   for right = left to cols:\n5.     for row = 0 to rows:\n6.       row_sums[row] += matrix[row][right]\n7.     current_max = find_max_subarray_le_k(row_sums, k)\n8.     max_sum = max(max_sum, current_max)",
+  "pseudocode": "1. Initialize maxSum = -infinity\n2. Iterate over column pairs (left, right)\n3. For each pair, calculate row sums into 1D array\n4. Use TreeSet to find subarray sum <= k\n5. Update maxSum",
   "steps": [
     {
-      "codeLine": 2,
-      "note": "Initialize left boundary",
+      "codeLine": 1,
+      "note": "Initialize maxSum to a very small value.",
       "matrix": [
         [
           1,
-          0
+          0,
+          1
         ],
         [
-          -2,
-          3
-        ]
-      ],
-      "i": 0
-    },
-    {
-      "codeLine": 5,
-      "note": "Calculating row sums for columns 0 to 0",
-      "matrix": [
-        [
-          1,
-          0
-        ],
-        [
+          0,
           -2,
           3
         ]
@@ -46,109 +33,173 @@
       ]
     },
     {
-      "codeLine": 6,
-      "note": "Row sums for column 0: [1, -2]",
+      "codeLine": 2,
+      "note": "Selecting column range [0, 0]. Row sums: [1, 0]",
       "matrix": [
         [
           1,
-          0
+          0,
+          1
         ],
         [
+          0,
           -2,
           3
         ]
       ],
-      "i": 0,
       "curr": [
         0,
-        1
-      ]
-    },
-    {
-      "codeLine": 7,
-      "note": "Max subarray <= 2 for [1, -2] is 1",
-      "matrix": [
-        [
-          1,
-          0
-        ],
-        [
-          -2,
-          3
-        ]
+        0
       ],
       "i": 0,
-      "curr": [
-        2,
-        1
-      ]
+      "j": 0
     },
     {
       "codeLine": 4,
-      "note": "Expanding right boundary to column 1",
+      "note": "Searching for rectangle sum <= 2 in col range [0, 0]. Found max sum 1.",
       "matrix": [
         [
           1,
-          0
+          0,
+          1
         ],
         [
+          0,
           -2,
           3
         ]
       ],
-      "i": 1
+      "curr": [
+        0,
+        0
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ]
+      ]
     },
     {
-      "codeLine": 6,
-      "note": "Updating row sums: [1+0, -2+3] = [1, 1]",
+      "codeLine": 2,
+      "note": "Selecting column range [0, 1]. Row sums: [1, -2]",
       "matrix": [
         [
           1,
-          0
+          0,
+          1
         ],
         [
+          0,
           -2,
           3
         ]
       ],
-      "i": 1,
+      "curr": [
+        0,
+        1
+      ],
+      "i": 0,
+      "j": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "Subarray sums include 1, 1-2=-1. Max sum <= 2 is 1.",
+      "matrix": [
+        [
+          1,
+          0,
+          1
+        ],
+        [
+          0,
+          -2,
+          3
+        ]
+      ],
       "curr": [
         1,
-        0
-      ]
-    },
-    {
-      "codeLine": 7,
-      "note": "Max subarray <= 2 for [1, 1] is 2",
-      "matrix": [
+        1
+      ],
+      "visited": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
         [
           1,
           0
         ],
         [
+          1,
+          1
+        ]
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Selecting column range [0, 2]. Row sums: [2, 1]",
+      "matrix": [
+        [
+          1,
+          0,
+          1
+        ],
+        [
+          0,
           -2,
           3
         ]
       ],
-      "i": 1,
       "curr": [
-        2,
-        1
-      ]
+        1,
+        2
+      ],
+      "i": 0,
+      "j": 2
     },
     {
-      "codeLine": 8,
-      "note": "Update global max_sum to 2",
+      "codeLine": 5,
+      "note": "Rectangle [[0, 1], [-2, 3]] sum is 2. maxSum updated to 2.",
       "matrix": [
         [
           1,
-          0
+          0,
+          1
         ],
         [
+          0,
           -2,
           3
+        ]
+      ],
+      "curr": [
+        1,
+        2
+      ],
+      "visited": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          2
         ]
       ]
     }
-  ]
+  ],
+  "fullDescription": "<p>Given an <code>m x n</code> matrix <code>matrix</code> and an integer <code>k</code>, return <em>the max sum of a rectangle in the matrix such that its sum is no larger than</em> <code>k</code>.</p>\n\n<p>It is <strong>guaranteed</strong> that there will be a rectangle with a sum no larger than <code>k</code>.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2021/03/18/sum-grid.jpg\" style=\"width: 255px; height: 176px;\" />\n<pre>\n<strong>Input:</strong> matrix = [[1,0,1],[0,-2,3]], k = 2\n<strong>Output:</strong> 2\n<strong>Explanation:</strong> Because the sum of the blue rectangle [[0, 1], [-2, 3]] is 2, and 2 is the max number no larger than k (k = 2).\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> matrix = [[2,2,-1]], k = 3\n<strong>Output:</strong> 3\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>m == matrix.length</code></li>\n\t<li><code>n == matrix[i].length</code></li>\n\t<li><code>1 &lt;= m, n &lt;= 100</code></li>\n\t<li><code>-100 &lt;= matrix[i][j] &lt;= 100</code></li>\n\t<li><code>-10<sup>5</sup> &lt;= k &lt;= 10<sup>5</sup></code></li>\n</ul>\n\n<p>&nbsp;</p>\n<p><strong>Follow up:</strong> What if the number of rows is much larger than the number of columns?</p>\n"
 }

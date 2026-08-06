@@ -5,76 +5,64 @@
   "tags": [
     "String",
     "Backtracking",
-    "BFS"
+    "Breadth-First Search"
   ],
-  "description": "Remove the minimum number of invalid parentheses in order to make the input string valid. Return all possible results.",
-  "target": "()",
-  "pseudocode": "1. function removeInvalidParentheses(s) {\n2.   let result = [];\n3.   let queue = [s];\n4.   let visited = new Set([s]);\n5.   let found = false;\n6.   while(queue.length > 0) {\n7.     let str = queue.shift();\n8.     if(isValid(str)) { result.push(str); found = true; }\n9.     if(!found) {\n10.      for(let i=0; i<str.length; i++) {\n11.        if(str[i] !== '(' && str[i] !== ')') continue;\n12.        let next = str.slice(0, i) + str.slice(i+1);\n13.        if(!visited.has(next)) { visited.add(next); queue.push(next); }\n14.      }\n15.    }\n16.  }\n17.  return result;\n18. }",
+  "description": "Remove the minimum number of invalid parentheses to make the string valid using BFS.",
+  "target": "()())()",
+  "pseudocode": "1. Initialize queue with s, visited set with s\n2. While queue is not empty:\n3.   Level check: if found valid strings, return them\n4.   For each string in current level:\n5.     Generate all possible states by removing one parenthesis\n6.     If state is valid, mark found flag, add to result\n7.     Else if not visited, add to queue",
   "steps": [
     {
-      "codeLine": 3,
-      "note": "Initialize queue with starting string '()('",
+      "codeLine": 1,
+      "note": "Initialize BFS queue with starting string",
       "array": [
-        "(",
-        ")",
-        "("
-      ]
-    },
-    {
-      "codeLine": 7,
-      "note": "Dequeue '()('",
-      "array": [
-        "(",
-        ")",
-        "("
-      ],
-      "i": null
-    },
-    {
-      "codeLine": 8,
-      "note": "Check validity: '()(' is invalid",
-      "array": [
-        "(",
-        ")",
-        "("
-      ]
-    },
-    {
-      "codeLine": 12,
-      "note": "Generate next level strings by removing one parenthesis",
-      "array": [
-        ")",
-        "(",
-        "("
-      ],
-      "i": 0
-    },
-    {
-      "codeLine": 13,
-      "note": "Add '()', '((' to queue",
-      "array": [
-        "(",
-        ")"
+        "()())()"
       ],
       "visited": [
-        "()",
-        "(("
+        "()())()"
       ]
     },
     {
-      "codeLine": 8,
-      "note": "Check validity of '()'",
+      "codeLine": 4,
+      "note": "Processing level 1: Remove one character from ()())()",
       "array": [
-        "(",
-        ")"
+        "()())()"
+      ],
+      "visited": [
+        "()())()",
+        ")())()",
+        "()())()",
+        "()()()",
+        "()())("
       ]
     },
     {
-      "codeLine": 17,
-      "note": "Return result",
+      "codeLine": 6,
+      "note": "Checking validity: ()()() is valid",
       "array": [
-        "()"
+        "(())()",
+        "()()()"
+      ],
+      "visited": [
+        "()())()",
+        ")())()",
+        "()()()",
+        "()())("
+      ]
+    },
+    {
+      "codeLine": 6,
+      "note": "Checking validity: (())() is valid",
+      "array": [
+        "(())()",
+        "()()()"
+      ],
+      "visited": [
+        "()())()",
+        ")())()",
+        "()()()",
+        "()())("
       ]
     }
-  ]
+  ],
+  "fullDescription": "<p>Given a string <code>s</code> that contains parentheses and letters, remove the minimum number of invalid parentheses to make the input string valid.</p>\n\n<p>Return <em>a list of <strong>unique strings</strong> that are valid with the minimum number of removals</em>. You may return the answer in <strong>any order</strong>.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> s = &quot;()())()&quot;\n<strong>Output:</strong> [&quot;(())()&quot;,&quot;()()()&quot;]\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> s = &quot;(a)())()&quot;\n<strong>Output:</strong> [&quot;(a())()&quot;,&quot;(a)()()&quot;]\n</pre>\n\n<p><strong class=\"example\">Example 3:</strong></p>\n\n<pre>\n<strong>Input:</strong> s = &quot;)(&quot;\n<strong>Output:</strong> [&quot;&quot;]\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= s.length &lt;= 25</code></li>\n\t<li><code>s</code> consists of lowercase English letters and parentheses <code>&#39;(&#39;</code> and <code>&#39;)&#39;</code>.</li>\n\t<li>There will be at most <code>20</code> parentheses in <code>s</code>.</li>\n</ul>\n"
 }

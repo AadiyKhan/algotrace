@@ -4,83 +4,72 @@
   "type": "array",
   "tags": [
     "Array",
-    "Hashing"
+    "Hash Table"
   ],
-  "description": "Find the smallest missing positive integer in an unsorted array.",
-  "target": null,
-  "pseudocode": "1. for i = 0 to n-1: while nums[i] > 0 and nums[i] <= n and nums[nums[i]-1] != nums[i]: swap(nums[i], nums[nums[i]-1])\n2. for i = 0 to n-1: if nums[i] != i + 1: return i + 1\n3. return n + 1",
+  "description": "Find the smallest missing positive integer in an unsorted array using cyclic sort in O(n) time.",
+  "target": 3,
+  "pseudocode": "1. for i in range(len(nums)): while 0 < nums[i] <= len(nums) and nums[nums[i]-1] != nums[i]: swap(nums[i], nums[nums[i]-1])\n2. for i in range(len(nums)): if nums[i] != i + 1: return i + 1\n3. return len(nums) + 1",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initial state: swapping nums[0] (3) into index 2.",
-      "array": [
-        3,
-        4,
-        -1,
-        1
-      ],
-      "i": 0,
-      "curr": 0
-    },
-    {
-      "codeLine": 1,
-      "note": "Swapped 3 to index 2: array is [-1, 4, 3, 1].",
-      "array": [
-        -1,
-        4,
-        3,
-        1
-      ],
-      "i": 0,
-      "curr": 3
-    },
-    {
-      "codeLine": 1,
-      "note": "Moving to i=1, nums[1] is 4. Swapping 4 to index 3.",
-      "array": [
-        -1,
-        1,
-        3,
-        4
-      ],
-      "i": 1,
-      "curr": 1
-    },
-    {
-      "codeLine": 1,
-      "note": "After swapping 4, nums[1] is 1. Swapping 1 to index 0.",
+      "note": "Initialize cyclic sort. Current index i=0, nums[0]=1. Already in correct place (1 at index 0).",
       "array": [
         1,
-        -1,
-        3,
-        4
+        2,
+        0
       ],
-      "i": 1,
-      "curr": 4
+      "i": 0
+    },
+    {
+      "codeLine": 1,
+      "note": "Moving to index i=1. nums[1]=2. Should be at index 1. Already in correct place.",
+      "array": [
+        1,
+        2,
+        0
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 1,
+      "note": "Moving to index i=2. nums[2]=0. 0 is not in range [1, 3], skip swap.",
+      "array": [
+        1,
+        2,
+        0
+      ],
+      "i": 2
     },
     {
       "codeLine": 2,
-      "note": "Checking for missing positive. Index 0 is correct (1).",
+      "note": "Checking index 0: nums[0] is 1 (matches 0+1). Continue.",
       "array": [
         1,
-        -1,
-        3,
-        4
+        2,
+        0
       ],
-      "i": 0,
-      "curr": 0
+      "i": 0
     },
     {
       "codeLine": 2,
-      "note": "Index 1 should be 2, but found -1. Returning 2.",
+      "note": "Checking index 1: nums[1] is 2 (matches 1+1). Continue.",
       "array": [
         1,
-        -1,
-        3,
-        4
+        2,
+        0
       ],
-      "i": 1,
-      "curr": 1
+      "i": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Checking index 2: nums[2] is 0 (does not match 2+1). Found missing positive 3.",
+      "array": [
+        1,
+        2,
+        0
+      ],
+      "i": 2
     }
-  ]
+  ],
+  "fullDescription": "<p>Given an unsorted integer array <code>nums</code>. Return the <em>smallest positive integer</em> that is <em>not present</em> in <code>nums</code>.</p>\n\n<p>You must implement an algorithm that runs in <code>O(n)</code> time and uses <code>O(1)</code> auxiliary space.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> nums = [1,2,0]\n<strong>Output:</strong> 3\n<strong>Explanation:</strong> The numbers in the range [1,2] are all in the array.\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> nums = [3,4,-1,1]\n<strong>Output:</strong> 2\n<strong>Explanation:</strong> 1 is in the array but 2 is missing.\n</pre>\n\n<p><strong class=\"example\">Example 3:</strong></p>\n\n<pre>\n<strong>Input:</strong> nums = [7,8,9,11,12]\n<strong>Output:</strong> 1\n<strong>Explanation:</strong> The smallest positive integer 1 is missing.\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= nums.length &lt;= 10<sup>5</sup></code></li>\n\t<li><code>-2<sup>31</sup> &lt;= nums[i] &lt;= 2<sup>31</sup> - 1</code></li>\n</ul>\n"
 }

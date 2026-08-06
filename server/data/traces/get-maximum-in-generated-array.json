@@ -1,0 +1,172 @@
+{
+  "title": "Get Maximum in Generated Array",
+  "difficulty": "Easy",
+  "type": "array",
+  "tags": [
+    "Array",
+    "Simulation",
+    "Dynamic Programming"
+  ],
+  "description": "Generate an array based on specific rules and find the maximum value among the first n+1 elements.",
+  "target": 7,
+  "pseudocode": "1: let nums = [0, 1]\n2: for i from 1 to n/2:\n3:   if 2*i <= n: nums[2*i] = nums[i]\n4:   if 2*i+1 <= n: nums[2*i+1] = nums[i] + nums[i+1]\n5: return Math.max(...nums)",
+  "steps": [
+    {
+      "codeLine": 1,
+      "note": "Initialize array with base cases nums[0]=0, nums[1]=1.",
+      "array": [
+        0,
+        1
+      ]
+    },
+    {
+      "codeLine": 2,
+      "note": "Start loop with i=1.",
+      "array": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 3,
+      "note": "nums[2] = nums[1] = 1.",
+      "array": [
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 4,
+      "note": "nums[3] = nums[1] + nums[2] = 1 + 1 = 2.",
+      "array": [
+        0,
+        1,
+        1,
+        2,
+        0,
+        0,
+        0,
+        0
+      ],
+      "i": 1
+    },
+    {
+      "codeLine": 2,
+      "note": "Loop increment, i=2.",
+      "array": [
+        0,
+        1,
+        1,
+        2,
+        0,
+        0,
+        0,
+        0
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 3,
+      "note": "nums[4] = nums[2] = 1.",
+      "array": [
+        0,
+        1,
+        1,
+        2,
+        1,
+        0,
+        0,
+        0
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "nums[5] = nums[2] + nums[3] = 1 + 2 = 3.",
+      "array": [
+        0,
+        1,
+        1,
+        2,
+        1,
+        3,
+        0,
+        0
+      ],
+      "i": 2
+    },
+    {
+      "codeLine": 2,
+      "note": "Loop increment, i=3.",
+      "array": [
+        0,
+        1,
+        1,
+        2,
+        1,
+        3,
+        0,
+        0
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 3,
+      "note": "nums[6] = nums[3] = 2.",
+      "array": [
+        0,
+        1,
+        1,
+        2,
+        1,
+        3,
+        2,
+        0
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 4,
+      "note": "nums[7] = nums[3] + nums[4] = 2 + 1 = 3.",
+      "array": [
+        0,
+        1,
+        1,
+        2,
+        1,
+        3,
+        2,
+        3
+      ],
+      "i": 3
+    },
+    {
+      "codeLine": 5,
+      "note": "Return max of array, which is 3.",
+      "array": [
+        0,
+        1,
+        1,
+        2,
+        1,
+        3,
+        2,
+        3
+      ]
+    }
+  ]
+}

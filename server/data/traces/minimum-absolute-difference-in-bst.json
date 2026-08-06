@@ -4,16 +4,15 @@
   "type": "tree",
   "tags": [
     "Tree",
-    "Depth-First Search",
-    "Binary Search Tree"
+    "Binary Search Tree",
+    "Depth-First Search"
   ],
-  "description": "Find the minimum absolute difference between the values of any two nodes in a BST using in-order traversal.",
-  "target": 1,
-  "pseudocode": "1. minDiff = infinity, prev = null\n2. function inorder(node):\n3.   if node is null return\n4.   inorder(node.left)\n5.   if prev is not null: minDiff = min(minDiff, node.val - prev.val)\n6.   prev = node\n7.   inorder(node.right)",
+  "description": "Find the minimum absolute difference between the values of any two different nodes in a BST using inorder traversal.",
+  "pseudocode": "1. prev = null, minDiff = infinity\n2. traverse(node):\n3.   if node is null return\n4.   traverse(node.left)\n5.   if prev is not null: minDiff = min(minDiff, node.val - prev.val)\n6.   prev = node\n7.   traverse(node.right)",
   "steps": [
     {
-      "codeLine": 1,
-      "note": "Initialize minDiff to infinity and prev to null.",
+      "codeLine": 2,
+      "note": "Starting inorder traversal at root node 4.",
       "treeNodes": [
         {
           "id": 0,
@@ -45,11 +44,12 @@
           "left": null,
           "right": null
         }
-      ]
+      ],
+      "curr": 0
     },
     {
       "codeLine": 4,
-      "note": "Visiting node 1 (leftmost node).",
+      "note": "Traversing to left child 2.",
       "treeNodes": [
         {
           "id": 0,
@@ -85,8 +85,82 @@
       "curr": 1
     },
     {
+      "codeLine": 4,
+      "note": "Traversing to left child 1.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 4,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 2,
+          "val": 6,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 3
+    },
+    {
+      "codeLine": 6,
+      "note": "Visited node 1. Setting prev to 1.",
+      "treeNodes": [
+        {
+          "id": 0,
+          "val": 4,
+          "left": 1,
+          "right": 2
+        },
+        {
+          "id": 1,
+          "val": 2,
+          "left": 3,
+          "right": 4
+        },
+        {
+          "id": 2,
+          "val": 6,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 3,
+          "val": 1,
+          "left": null,
+          "right": null
+        },
+        {
+          "id": 4,
+          "val": 3,
+          "left": null,
+          "right": null
+        }
+      ],
+      "curr": 3
+    },
+    {
       "codeLine": 5,
-      "note": "prev is null, update prev to node 1.",
+      "note": "Visiting node 2. Diff with prev(1) is 1. minDiff = 1.",
       "treeNodes": [
         {
           "id": 0,
@@ -123,7 +197,7 @@
     },
     {
       "codeLine": 6,
-      "note": "Backtrack to node 2, update minDiff: |2-1| = 1.",
+      "note": "Updating prev to 2.",
       "treeNodes": [
         {
           "id": 0,
@@ -156,48 +230,11 @@
           "right": null
         }
       ],
-      "curr": 2
+      "curr": 1
     },
     {
       "codeLine": 7,
-      "note": "Move to node 3 (right child of 2). minDiff = min(1, |3-2|) = 1.",
-      "treeNodes": [
-        {
-          "id": 0,
-          "val": 4,
-          "left": 1,
-          "right": 2
-        },
-        {
-          "id": 1,
-          "val": 2,
-          "left": 3,
-          "right": 4
-        },
-        {
-          "id": 2,
-          "val": 6,
-          "left": null,
-          "right": null
-        },
-        {
-          "id": 3,
-          "val": 1,
-          "left": null,
-          "right": null
-        },
-        {
-          "id": 4,
-          "val": 3,
-          "left": null,
-          "right": null
-        }
-      ],
-      "curr": 3
-    },
-    {
-      "codeLine": 7,
-      "note": "Moving to root node 4. minDiff = min(1, |4-3|) = 1.",
+      "note": "Visiting node 3. Diff with prev(2) is 1.",
       "treeNodes": [
         {
           "id": 0,
@@ -231,43 +268,7 @@
         }
       ],
       "curr": 4
-    },
-    {
-      "codeLine": 7,
-      "note": "Final step, visiting node 6. minDiff = min(1, |6-4|) = 1.",
-      "treeNodes": [
-        {
-          "id": 0,
-          "val": 4,
-          "left": 1,
-          "right": 2
-        },
-        {
-          "id": 1,
-          "val": 2,
-          "left": 3,
-          "right": 4
-        },
-        {
-          "id": 2,
-          "val": 6,
-          "left": null,
-          "right": null
-        },
-        {
-          "id": 3,
-          "val": 1,
-          "left": null,
-          "right": null
-        },
-        {
-          "id": 4,
-          "val": 3,
-          "left": null,
-          "right": null
-        }
-      ],
-      "curr": 6
     }
-  ]
+  ],
+  "fullDescription": "<p>Given the <code>root</code> of a Binary Search Tree (BST), return <em>the minimum absolute difference between the values of any two different nodes in the tree</em>.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2021/02/05/bst1.jpg\" style=\"width: 292px; height: 301px;\" />\n<pre>\n<strong>Input:</strong> root = [4,2,6,1,3]\n<strong>Output:</strong> 1\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n<img alt=\"\" src=\"https://assets.leetcode.com/uploads/2021/02/05/bst2.jpg\" style=\"width: 282px; height: 301px;\" />\n<pre>\n<strong>Input:</strong> root = [1,0,48,null,null,12,49]\n<strong>Output:</strong> 1\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li>The number of nodes in the tree is in the range <code>[2, 10<sup>4</sup>]</code>.</li>\n\t<li><code>0 &lt;= Node.val &lt;= 10<sup>5</sup></code></li>\n</ul>\n\n<p>&nbsp;</p>\n<p><strong>Note:</strong> This question is the same as 783: <a href=\"https://leetcode.com/problems/minimum-distance-between-bst-nodes/\" target=\"_blank\">https://leetcode.com/problems/minimum-distance-between-bst-nodes/</a></p>\n"
 }

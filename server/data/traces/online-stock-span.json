@@ -3,99 +3,147 @@
   "difficulty": "Medium",
   "type": "array",
   "tags": [
-    "Array",
     "Stack",
+    "Design",
     "Monotonic Stack"
   ],
-  "description": "Calculate the span of a stock's price today, defined as the number of consecutive days (including today) before today where the price was less than or equal to today's price.",
-  "target": null,
-  "pseudocode": "1: span = 1\n2: while stack is not empty and stack.top.price <= price:\n3:   span += stack.pop().span\n4: stack.push({price, span})\n5: return span",
+  "description": "Calculate the span of stock prices using a monotonic stack to store [price, span] pairs.",
+  "pseudocode": "1. span = 1\n2. while stack and stack.top.price <= price:\n3.     span += stack.pop().span\n4. stack.push([price, span])\n5. return span",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize span for price 100",
+      "note": "Initialize next(100), span=1",
       "array": [
         100
       ],
-      "curr": 100
+      "curr": 0
     },
     {
       "codeLine": 4,
-      "note": "Stack empty, push {100, 1}",
+      "note": "Stack empty, push [100, 1]",
       "array": [
         100
       ],
-      "i": 1,
-      "curr": 100
+      "curr": 0
     },
     {
       "codeLine": 1,
-      "note": "Initialize span for price 80",
+      "note": "next(80), 80 < 100, span remains 1",
       "array": [
         100,
         80
       ],
-      "curr": 80
-    },
-    {
-      "codeLine": 2,
-      "note": "80 <= 100 is false, skip while",
-      "array": [
-        100,
-        80
-      ],
-      "curr": 80
+      "curr": 1
     },
     {
       "codeLine": 4,
-      "note": "Push {80, 1}",
+      "note": "Push [80, 1]",
       "array": [
         100,
         80
       ],
-      "i": 1,
-      "curr": 80
+      "curr": 1
     },
     {
       "codeLine": 1,
-      "note": "Initialize span for price 85",
+      "note": "next(60), 60 < 80, span remains 1",
       "array": [
         100,
         80,
-        85
+        60
       ],
-      "curr": 85
+      "curr": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Push [60, 1]",
+      "array": [
+        100,
+        80,
+        60
+      ],
+      "curr": 2
     },
     {
       "codeLine": 2,
-      "note": "85 >= 80, pop {80, 1}",
+      "note": "next(70), 70 > 60, pop [60, 1], span becomes 1+1=2",
       "array": [
         100,
         80,
-        85
+        70
       ],
-      "curr": 85
+      "curr": 2
     },
     {
-      "codeLine": 3,
-      "note": "span becomes 1 + 1 = 2",
+      "codeLine": 4,
+      "note": "Push [70, 2]",
       "array": [
         100,
         80,
+        70
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 1,
+      "note": "next(60), 60 < 70, span remains 1",
+      "array": [
+        100,
+        80,
+        70,
+        60
+      ],
+      "curr": 3
+    },
+    {
+      "codeLine": 4,
+      "note": "Push [60, 1]",
+      "array": [
+        100,
+        80,
+        70,
+        60
+      ],
+      "curr": 3
+    },
+    {
+      "codeLine": 2,
+      "note": "next(75), pop [60,1] and [70,2], span becomes 1+1+2=4",
+      "array": [
+        100,
+        80,
+        75
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 4,
+      "note": "Push [75, 4]",
+      "array": [
+        100,
+        80,
+        75
+      ],
+      "curr": 2
+    },
+    {
+      "codeLine": 2,
+      "note": "next(85), pop [75,4] and [80,1], span becomes 1+4+1=6",
+      "array": [
+        100,
         85
       ],
       "curr": 1
     },
     {
       "codeLine": 4,
-      "note": "Push {85, 2}",
+      "note": "Push [85, 6]",
       "array": [
         100,
-        80,
         85
       ],
-      "i": 2,
-      "curr": 85
+      "curr": 1
     }
-  ]
+  ],
+  "fullDescription": "<p>Design an algorithm that collects daily price quotes for some stock and returns <strong>the span</strong> of that stock&#39;s price for the current day.</p>\n\n<p>The <strong>span</strong> of the stock&#39;s price in one day is the maximum number of consecutive days (starting from that day and going backward) for which the stock price was less than or equal to the price of that day.</p>\n\n<ul>\n\t<li>For example, if the prices of the stock in the last four days is <code>[7,2,1,2]</code> and the price of the stock today is <code>2</code>, then the span of today is <code>4</code> because starting from today, the price of the stock was less than or equal <code>2</code> for <code>4</code> consecutive days.</li>\n\t<li>Also, if the prices of the stock in the last four days is <code>[7,34,1,2]</code> and the price of the stock today is <code>8</code>, then the span of today is <code>3</code> because starting from today, the price of the stock was less than or equal <code>8</code> for <code>3</code> consecutive days.</li>\n</ul>\n\n<p>Implement the <code>StockSpanner</code> class:</p>\n\n<ul>\n\t<li><code>StockSpanner()</code> Initializes the object of the class.</li>\n\t<li><code>int next(int price)</code> Returns the <strong>span</strong> of the stock&#39;s price given that today&#39;s price is <code>price</code>.</li>\n</ul>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<pre>\n<strong>Input</strong>\n[&quot;StockSpanner&quot;, &quot;next&quot;, &quot;next&quot;, &quot;next&quot;, &quot;next&quot;, &quot;next&quot;, &quot;next&quot;, &quot;next&quot;]\n[[], [100], [80], [60], [70], [60], [75], [85]]\n<strong>Output</strong>\n[null, 1, 1, 1, 2, 1, 4, 6]\n\n<strong>Explanation</strong>\nStockSpanner stockSpanner = new StockSpanner();\nstockSpanner.next(100); // return 1\nstockSpanner.next(80);  // return 1\nstockSpanner.next(60);  // return 1\nstockSpanner.next(70);  // return 2\nstockSpanner.next(60);  // return 1\nstockSpanner.next(75);  // return 4, because the last 4 prices (including today&#39;s price of 75) were less than or equal to today&#39;s price.\nstockSpanner.next(85);  // return 6\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= price &lt;= 10<sup>5</sup></code></li>\n\t<li>At most <code>10<sup>4</sup></code> calls will be made to <code>next</code>.</li>\n</ul>\n"
 }
