@@ -23,7 +23,7 @@ const BLIND_75_SLUGS = [
   "valid-palindrome","longest-palindromic-substring","palindromic-substrings","encode-and-decode-strings",
   "maximum-depth-of-binary-tree","same-tree","invert-binary-tree","binary-tree-maximum-path-sum","binary-tree-level-order-traversal",
   "serialize-and-deserialize-binary-tree","subtree-of-another-tree","construct-binary-tree-from-preorder-and-inorder-traversal",
-  "validate-binary-search-tree","kth-smallest-element-in-a-bst","lowest-common-ancestor-of-a-bst","implement-trie-prefix-tree",
+  "validate-binary-search-tree","kth-smallest-element-in-a-bst","lowest-common-ancestor-of-a-binary-search-tree","implement-trie-prefix-tree",
   "design-add-and-search-words-data-structure","word-search-ii","top-k-frequent-elements","find-median-from-data-stream"
 ];
 
