@@ -22,7 +22,7 @@ AlgoTrace is an interactive, AI-powered algorithm visualizer that lets you scrub
 ---
 
 ## [0x00] THE VIBE
-AlgoTrace isn't your professor's boring DSA tool. Built with a **Duotone Hacker Aesthetic** (Bricolage Grotesque + Electric Cyan/Crimson clash), it turns debugging into a gamified experience. Complete a trace? Get a confetti burst. Solving a hard problem? It's badged with animated rainbow loot-rarity.
+AlgoTrace isn't your professor's boring DSA tool. Built with a **Duotone Hacker Aesthetic** (Bricolage Grotesque + Electric Cyan/Crimson clash), it turns debugging into a gamified experience. Complete a trace? Get a confetti burst. Solving a hard problem? It's badged with animated rainbow loot-rarity. Ready to trace some code?
 
 ## [0x01] SYSTEM FEATURES
 
