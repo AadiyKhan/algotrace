@@ -358,20 +358,97 @@ const GenericArrayViz = ({ stepData }) => {
   const { askQuestion } = useChatStore();
   const { array = [], visited = [], queue = [], result = [], i = null, currentMap = {} } = stepData;
   const stackArr = currentMap?.stack ?? null;
+  const dpArr = Array.isArray(stepData.dp) ? stepData.dp : null;
+
+  // Scalar variables from currentMap (skip reserved keys)
+  const RESERVED_MAP_KEYS = new Set(['stack', 'merged', 'mid']);
+  const scalarVars = Object.entries(currentMap || {}).filter(
+    ([k, v]) => !RESERVED_MAP_KEYS.has(k) && (typeof v === 'number' || typeof v === 'string' || typeof v === 'boolean')
+  );
 
   return (
     <div className="flex flex-col gap-8 w-full p-4">
-      {/* Arrays */}
-      {(!array.length && !visited.length && !queue.length && !result.length) ? (
+      {/* ── DP Table ─────────────────────────────────────────── */}
+      {dpArr !== null && (
         <div>
           <div className="flex items-center gap-4 mb-6">
-            <span className="font-mono font-bold tracking-widest text-[11px] uppercase text-white/50">DATA</span>
-            <div className="flex-1 h-[2px] bg-white/10" />
+            <span className="font-mono font-bold tracking-widest text-[11px] uppercase text-teal-400">DP_TABLE</span>
+            <div className="flex-1 h-[2px] bg-teal-500/20" />
+            <span className="font-mono text-[10px] text-white/30 uppercase tracking-widest">
+              {dpArr.length} CELLS
+            </span>
           </div>
-          <div className="font-mono text-sm text-white/20 uppercase tracking-widest w-full text-center py-8">
-            [ EMPTY ]
+          <div className="flex gap-1 justify-center flex-wrap p-2 bg-[#050505] border-[2px] border-teal-500/30 rounded-lg shadow-inner overflow-hidden min-h-[96px] items-end"
+               style={{ boxShadow: '0 0 30px rgba(20,184,166,0.08)' }}>
+            <AnimatePresence mode="popLayout">
+              {dpArr.length === 0 ? (
+                <div className="font-mono text-sm text-white/20 uppercase tracking-widest w-full text-center py-6">
+                  [ INITIALISING... ]
+                </div>
+              ) : (
+                dpArr.map((val, idx) => {
+                  const isActive = i === idx;
+                  const isLast = idx === dpArr.length - 1;
+                  const isFilled = val !== 0 || idx === 0;
+                  return (
+                    <motion.div
+                      key={idx}
+                      layout
+                      initial={{ opacity: 0, scale: 0.8, y: 20 }}
+                      animate={{ opacity: 1, scale: 1, y: 0 }}
+                      exit={{ opacity: 0, scale: 0.8, y: -20 }}
+                      transition={{ type: 'spring', stiffness: 350, damping: 25 }}
+                      className="flex flex-col items-center gap-1"
+                    >
+                      <div className="h-6 flex items-end justify-center w-full">
+                        {isActive && <Pointer label="i" layoutId="dp-pointer-i" color="#14b8a6" textColor="#050505" />}
+                      </div>
+                      <motion.div
+                        onClick={() => askQuestion(`Explain what dp[${idx}] = ${val} means in the DP table at this step.`)}
+                        className="min-w-[56px] min-h-[56px] flex items-center justify-center font-mono font-black text-lg z-0 cursor-pointer transition-colors"
+                        style={{
+                          background: isActive
+                            ? 'rgba(20,184,166,0.25)'
+                            : isLast && isFilled
+                            ? 'rgba(20,184,166,0.10)'
+                            : isFilled
+                            ? 'rgba(20,184,166,0.05)'
+                            : 'rgba(255,255,255,0.02)',
+                          border: `2px solid ${isActive ? '#14b8a6' : isLast && isFilled ? 'rgba(20,184,166,0.6)' : isFilled ? 'rgba(20,184,166,0.3)' : 'rgba(255,255,255,0.1)'}`,
+                          color: isActive ? '#fff' : isFilled ? 'rgba(255,255,255,0.9)' : 'rgba(255,255,255,0.25)',
+                          boxShadow: isActive ? '0 0 20px rgba(20,184,166,0.35)' : isLast && isFilled ? '0 0 12px rgba(20,184,166,0.15)' : 'none',
+                        }}
+                        animate={isActive ? { scale: [1, 1.12, 1] } : {}}
+                        whileHover={{ scale: 1.05 }}
+                        transition={{ duration: 0.3 }}
+                      >
+                        {val}
+                      </motion.div>
+                      <span className="font-mono text-[10px] font-bold text-teal-500/50 tracking-widest mt-1">
+                        [{idx}]
+                      </span>
+                    </motion.div>
+                  );
+                })
+              )}
+            </AnimatePresence>
           </div>
         </div>
+      )}
+
+      {/* ── Arrays ───────────────────────────────────────────── */}
+      {(!array.length && !visited.length && !queue.length && !result.length) ? (
+        dpArr === null && (
+          <div>
+            <div className="flex items-center gap-4 mb-6">
+              <span className="font-mono font-bold tracking-widest text-[11px] uppercase text-white/50">DATA</span>
+              <div className="flex-1 h-[2px] bg-white/10" />
+            </div>
+            <div className="font-mono text-sm text-white/20 uppercase tracking-widest w-full text-center py-8">
+              [ EMPTY ]
+            </div>
+          </div>
+        )
       ) : (
         [
           { label: 'ARRAY', data: array },
@@ -428,7 +505,37 @@ const GenericArrayViz = ({ stepData }) => {
         })
       )}
 
-      {/* Stack visualization */}
+      {/* ── Scalar Variables (from currentMap) ───────────────── */}
+      {scalarVars.length > 0 && (
+        <div className="border-t-[2px] border-white/10 pt-8 mt-4">
+          <div className="flex items-center gap-4 mb-6">
+            <span className="font-mono font-bold tracking-widest text-[11px] uppercase text-white/50">VARIABLES</span>
+            <div className="flex-1 h-[2px] bg-white/10" />
+          </div>
+          <div className={`grid gap-4`} style={{ gridTemplateColumns: `repeat(${Math.min(scalarVars.length, 4)}, 1fr)` }}>
+            {scalarVars.map(([key, value]) => (
+              <motion.div
+                key={key}
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="flex flex-col items-center gap-2 py-5 bg-[#050505] border-[2px] border-white/20"
+              >
+                <span className="font-mono font-bold text-[11px] uppercase tracking-widest text-white/40">{key}</span>
+                <motion.span
+                  key={String(value)}
+                  initial={{ opacity: 0, y: -4 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="font-mono font-black text-3xl text-amber-400"
+                >
+                  {String(value)}
+                </motion.span>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* ── Stack visualization ───────────────────────────────── */}
       {stackArr !== null && (
         <div className="border-t-[2px] border-white/10 pt-8 mt-4">
           <div className="flex items-center gap-4 mb-6">
@@ -476,7 +583,7 @@ const GenericArrayViz = ({ stepData }) => {
         </div>
       )}
 
-      {/* Results Section */}
+      {/* ── Results Section ───────────────────────────────────── */}
       {(stepData.results || stepData.result) && Array.isArray(stepData.results || stepData.result) && (
         <div className="flex flex-col gap-4 mt-4 w-full border-t-[2px] border-white/10 pt-8">
           <div className="flex items-center gap-4">
@@ -756,80 +863,265 @@ const TwoPointerViz = ({ stepData }) => {
 /* ─── DP Array Visualizer ────────────────────────────────────── */
 const DPViz = ({ stepData }) => {
   const { askQuestion } = useChatStore();
-  const raw = stepData.dp ?? stepData.memo ?? stepData.table ?? stepData.array ?? [];
+  const raw = stepData.dp ?? stepData.memo ?? stepData.table ?? [];
   const dp = Array.isArray(raw) ? raw : [];
+  const inputArr = Array.isArray(stepData.array) ? stepData.array : [];
   const curr = stepData.curr ?? stepData.i ?? null;
-  const result = stepData.result ?? stepData.res ?? (dp.length > 0 ? dp[dp.length - 1] : null);
+  const finalAnswer = stepData.result ?? stepData.res ?? null;
+
+  // Scalar variables from currentMap
+  const RESERVED_KEYS = new Set(['stack', 'merged', 'mid']);
+  const scalarVars = Object.entries(stepData.currentMap || {}).filter(
+    ([k, v]) => !RESERVED_KEYS.has(k) && (typeof v === 'number' || typeof v === 'string')
+  );
+
+  // Backtrack the optimal robbery path once dp is fully computed
+  const getRobbedPath = (dpArr, nums) => {
+    if (!dpArr || dpArr.length === 0 || !nums || nums.length === 0) return new Set();
+    const n = dpArr.length;
+    const path = new Set();
+    let i = n - 1;
+    while (i >= 0) {
+      if (i === 0) { path.add(0); break; }
+      if (dpArr[i] !== dpArr[i - 1]) { path.add(i); i -= 2; }
+      else { i -= 1; }
+    }
+    return path;
+  };
+
+  const isHouseRobber = inputArr.length > 0 && dp.length > 0 && dp.length === inputArr.length;
+  const fullyComputed = curr === null && dp.length > 0 && dp.every(v => v !== undefined && v !== null);
+  const robbedPath = (isHouseRobber && fullyComputed) ? getRobbedPath(dp, inputArr) : new Set();
+
+  // Build formula for current step
+  const buildFormula = () => {
+    if (curr === null || curr < 2 || !isHouseRobber) return null;
+    const prev1 = dp[curr - 1] ?? 0;
+    const prev2 = dp[curr - 2] ?? 0;
+    const num = inputArr[curr];
+    if (num === undefined) return null;
+    const option1 = prev1;
+    const option2 = prev2 + num;
+    return { option1, option2, chose: dp[curr], num, curr, prev1, prev2 };
+  };
+  const formula = buildFormula();
 
   return (
     <div className="flex flex-col gap-8 w-full p-4">
-      {/* Input array if separate */}
-      {stepData.array && stepData.dp && (
-        <div>
-          <div className="flex items-center gap-4 mb-4">
-            <span className="font-mono font-bold tracking-widest text-[11px] uppercase text-white/50">INPUT</span>
-            <div className="flex-1 h-[2px] bg-white/10" />
+
+      {/* ── INPUT + DP TABLE aligned ─────────────────────────── */}
+      {(inputArr.length > 0 || dp.length > 0) && (
+        <div className="flex flex-col gap-3">
+          {/* Input row */}
+          {inputArr.length > 0 && (
+            <div>
+              <div className="flex items-center gap-3 mb-2">
+                <span className="font-mono font-bold tracking-widest text-[10px] uppercase text-white/30">HOUSES</span>
+                <div className="flex-1 h-[1px] bg-white/08" />
+              </div>
+              <div className="flex gap-1 overflow-x-auto pb-1">
+                {inputArr.map((val, idx) => {
+                  const isActive = curr === idx;
+                  const isRobbed = robbedPath.has(idx);
+                  return (
+                    <motion.div key={idx} layout className="flex flex-col items-center gap-1 shrink-0">
+                      <div className="h-5 flex items-end justify-center w-full">
+                        {isActive && <Pointer label="i" layoutId="dp-input-ptr" color="#f59e0b" textColor="#050505" />}
+                      </div>
+                      <motion.div
+                        onClick={() => askQuestion(`Why is house ${idx} (value=${val}) ${isRobbed ? 'robbed' : 'skipped'} in the optimal solution?`)}
+                        className="min-w-[52px] min-h-[52px] flex items-center justify-center font-mono font-bold text-base cursor-pointer transition-colors"
+                        style={{
+                          background: isRobbed ? 'rgba(245,158,11,0.12)' : isActive ? 'rgba(255,255,255,0.08)' : 'rgba(255,255,255,0.02)',
+                          border: `2px solid ${isActive ? '#f59e0b' : isRobbed ? 'rgba(245,158,11,0.5)' : 'rgba(255,255,255,0.12)'}`,
+                          color: isActive ? '#fff' : isRobbed ? 'rgba(245,158,11,0.9)' : 'rgba(255,255,255,0.5)',
+                          boxShadow: isRobbed ? '0 0 12px rgba(245,158,11,0.12)' : 'none',
+                        }}
+                        animate={isActive ? { scale: [1, 1.06, 1] } : {}}
+                        whileHover={{ scale: 1.05 }}
+                        transition={{ duration: 0.3 }}
+                      >
+                        {val}
+                      </motion.div>
+                      <span className="font-mono text-[9px] font-bold text-white/20 tracking-widest mt-1">h[{idx}]</span>
+                    </motion.div>
+                  );
+                })}
+              </div>
+            </div>
+          )}
+
+          {/* DP Table row */}
+          <div>
+            <div className="flex items-center gap-4 mb-2">
+              <span className="font-mono font-bold tracking-widest text-[11px] uppercase text-amber-500">DP_TABLE</span>
+              <div className="flex-1 h-[2px] bg-amber-500/20" />
+              {finalAnswer !== null && finalAnswer !== undefined && (
+                <motion.span
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  className="font-mono font-bold tracking-widest text-[11px] uppercase text-amber-400"
+                >
+                  ANS = <span className="text-white text-sm">{String(finalAnswer)}</span>
+                </motion.span>
+              )}
+            </div>
+            <div
+              className="flex gap-1 p-3 bg-[#050505] border-[2px] border-amber-500/25 rounded-lg shadow-inner min-h-[96px] items-end overflow-x-auto"
+              style={{ boxShadow: '0 0 30px rgba(245,158,11,0.04)' }}
+            >
+              <AnimatePresence mode="popLayout">
+                {dp.length === 0 ? (
+                  <div className="font-mono text-sm text-white/15 uppercase tracking-widest w-full text-center py-6">
+                    [ NOT INITIALISED ]
+                  </div>
+                ) : (
+                  dp.map((val, idx) => {
+                    const isCurr = idx === curr;
+                    const isFilled = curr === null ? true : idx <= curr;
+                    const isRobbed = robbedPath.has(idx);
+                    const displayVal = (val === null || val === undefined) ? '?' : String(val);
+                    return (
+                      <motion.div key={idx} layout
+                        initial={{ opacity: 0, scale: 0.8, y: 20 }}
+                        animate={{ opacity: 1, scale: 1, y: 0 }}
+                        exit={{ opacity: 0, scale: 0.8, y: -20 }}
+                        transition={{ type: 'spring', stiffness: 350, damping: 25 }}
+                        className="flex flex-col items-center gap-1 shrink-0"
+                      >
+                        <div className="h-6 flex items-end justify-center w-full">
+                          {isCurr && <Pointer label="i" layoutId="dp-ptr-i" />}
+                        </div>
+                        <motion.div
+                          onClick={() => askQuestion(`Explain why dp[${idx}] = ${displayVal}: what is the max amount we can rob from the first ${idx + 1} house(s)?`)}
+                          className="min-w-[52px] min-h-[52px] flex items-center justify-center font-mono font-black text-base cursor-pointer hover:border-amber-500 transition-colors"
+                          style={{
+                            background: isCurr
+                              ? 'rgba(245,158,11,0.22)'
+                              : isRobbed && fullyComputed
+                              ? 'rgba(245,158,11,0.10)'
+                              : isFilled
+                              ? 'rgba(245,158,11,0.05)'
+                              : 'rgba(255,255,255,0.02)',
+                            border: `2px solid ${isCurr ? '#f59e0b' : isFilled ? 'rgba(245,158,11,0.35)' : 'rgba(255,255,255,0.1)'}`,
+                            color: isCurr ? '#fff' : isFilled ? 'rgba(255,255,255,0.9)' : 'rgba(255,255,255,0.2)',
+                            boxShadow: isCurr ? '0 0 20px rgba(245,158,11,0.35)' : 'none',
+                          }}
+                          animate={isCurr ? { scale: [1, 1.1, 1] } : {}}
+                          whileHover={{ scale: 1.05 }}
+                          transition={{ duration: 0.3 }}
+                        >
+                          {displayVal}
+                        </motion.div>
+                        <span className="font-mono text-[9px] font-bold text-amber-500/35 tracking-widest mt-1">
+                          dp[{idx}]
+                        </span>
+                      </motion.div>
+                    );
+                  })
+                )}
+              </AnimatePresence>
+            </div>
           </div>
-          <div className="flex gap-1 p-2 bg-[#050505] border-[2px] border-white/10 rounded-lg min-h-[56px] items-center overflow-x-auto">
-            {stepData.array.map((val, idx) => (
-              <div key={idx} className="flex flex-col items-center gap-1 shrink-0">
-                <div className="min-w-[44px] min-h-[44px] flex items-center justify-center font-mono font-bold text-base"
-                  style={{ background: 'rgba(255,255,255,0.03)', border: '2px solid rgba(255,255,255,0.1)', color: 'rgba(255,255,255,0.6)' }}>
-                  {val}
-                </div>
+        </div>
+      )}
+
+      {/* ── Formula breakdown ───────────────────────────────── */}
+      {formula && (
+        <motion.div
+          key={`formula-${curr}`}
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="border-t-[2px] border-white/10 pt-6"
+        >
+          <div className="flex items-center gap-3 mb-4">
+            <span className="font-mono font-bold tracking-widest text-[11px] uppercase text-white/35">STEP_FORMULA</span>
+            <div className="flex-1 h-[1px] bg-white/08" />
+          </div>
+          <div className="bg-[#050505] border-[2px] border-white/12 p-5 font-mono text-sm space-y-3">
+            <div className="flex items-center gap-2 flex-wrap">
+              <span className="text-white/40 font-bold">dp[{formula.curr}]</span>
+              <span className="text-white/25">=</span>
+              <span className="text-amber-400 font-bold">max(</span>
+              <span className={`px-3 py-1 border font-bold text-sm ${formula.chose === formula.option1 && formula.chose !== formula.option2 ? 'border-amber-500 bg-amber-500/15 text-white' : 'border-white/12 text-white/40'}`}>
+                skip: dp[{formula.curr - 1}]={formula.option1}
+              </span>
+              <span className="text-amber-400">,</span>
+              <span className={`px-3 py-1 border font-bold text-sm ${formula.chose === formula.option2 ? 'border-amber-500 bg-amber-500/15 text-white' : 'border-white/12 text-white/40'}`}>
+                rob: dp[{formula.curr - 2}]({formula.prev2})+h[{formula.curr}]({formula.num})={formula.option2}
+              </span>
+              <span className="text-amber-400 font-bold">)</span>
+              <span className="text-white/25">=</span>
+              <motion.span key={formula.chose} initial={{ scale: 0.8, opacity: 0 }} animate={{ scale: 1, opacity: 1 }}
+                className="text-amber-400 font-black text-xl">
+                {formula.chose}
+              </motion.span>
+            </div>
+            <p className="text-[10px] text-white/25 uppercase tracking-widest mt-2">
+              {formula.chose === formula.option2 && formula.chose !== formula.option1
+                ? `→ Rob house ${formula.curr} (adds $${formula.num}), best total = $${formula.chose}`
+                : formula.chose === formula.option1 && formula.chose !== formula.option2
+                ? `→ Skip house ${formula.curr}, carry forward $${formula.option1}`
+                : `→ Tie — both options give $${formula.chose}`}
+            </p>
+          </div>
+        </motion.div>
+      )}
+
+      {/* ── Scalar Variables ────────────────────────────────── */}
+      {scalarVars.length > 0 && (
+        <div className="border-t-[2px] border-white/10 pt-6">
+          <div className="flex items-center gap-3 mb-4">
+            <span className="font-mono font-bold tracking-widest text-[11px] uppercase text-white/35">VARIABLES</span>
+            <div className="flex-1 h-[1px] bg-white/08" />
+          </div>
+          <div className="grid gap-3" style={{ gridTemplateColumns: `repeat(${Math.min(scalarVars.length, 4)}, 1fr)` }}>
+            {scalarVars.map(([key, value]) => (
+              <div key={key} className="flex flex-col items-center gap-1 py-4 bg-[#050505] border-[2px] border-white/12">
+                <span className="font-mono font-bold text-[10px] uppercase tracking-widest text-white/30">{key}</span>
+                <motion.span key={String(value)} initial={{ opacity: 0, y: -4 }} animate={{ opacity: 1, y: 0 }}
+                  className="font-mono font-black text-2xl text-amber-400">
+                  {String(value)}
+                </motion.span>
               </div>
             ))}
           </div>
         </div>
       )}
 
-      {/* DP table */}
-      <div>
-        <div className="flex items-center gap-4 mb-4">
-          <span className="font-mono font-bold tracking-widest text-[11px] uppercase text-amber-500">DP_TABLE</span>
-          <div className="flex-1 h-[2px] bg-amber-500/20" />
-          {result !== null && result !== undefined && (
-            <span className="font-mono font-bold tracking-widest text-[11px] uppercase text-amber-500">
-              ANS = <span className="text-white">{String(result)}</span>
+      {/* ── Optimal robbery path (final state only) ─────────── */}
+      {robbedPath.size > 0 && (
+        <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}
+          className="border-t-[2px] border-amber-500/30 pt-6">
+          <div className="flex items-center gap-4 mb-4">
+            <span className="font-mono font-bold tracking-widest text-[11px] uppercase text-amber-500">OPTIMAL_ROB_PATH</span>
+            <div className="flex-1 h-[2px] bg-amber-500/20" />
+            <span className="font-mono text-[11px] text-amber-400 font-bold">
+              TOTAL = ${[...robbedPath].reduce((sum, idx) => sum + (inputArr[idx] || 0), 0)}
             </span>
-          )}
-        </div>
-        <div className="flex gap-1 p-2 bg-[#050505] border-[2px] border-amber-500/20 rounded-lg shadow-inner min-h-[96px] items-end overflow-x-auto">
-          <AnimatePresence mode="popLayout">
-            {dp.map((val, idx) => {
-              const isCurr = idx === curr;
-              const isFilled = val !== null && val !== undefined && val !== 0 && val !== Infinity;
-              return (
-                <motion.div key={idx} layout
-                  initial={{ opacity: 0, scale: 0.8, y: 20 }}
-                  animate={{ opacity: 1, scale: 1, y: 0 }}
-                  exit={{ opacity: 0, scale: 0.8, y: -20 }}
-                  transition={{ type: 'spring', stiffness: 350, damping: 25 }}
-                  className="flex flex-col items-center gap-1 shrink-0"
-                >
-                  <div className="h-6 flex items-end justify-center w-full">
-                    {isCurr && <Pointer label="i" layoutId="dp-ptr-i" />}
-                  </div>
-                  <motion.div
-                    onClick={() => askQuestion(`Explain what the dynamic programming value ${val !== null && val !== undefined ? String(val) : 'infinity'} at index ${idx} represents right now.`)}
-                    className="min-w-[52px] min-h-[52px] flex items-center justify-center font-mono font-black text-base cursor-pointer hover:border-amber-500 transition-colors"
-                    style={{
-                      background: isCurr ? 'rgba(245,158,11,0.2)' : isFilled ? 'rgba(245,158,11,0.06)' : 'rgba(255,255,255,0.02)',
-                      border: `2px solid ${isCurr ? '#f59e0b' : isFilled ? 'rgba(245,158,11,0.3)' : 'rgba(255,255,255,0.1)'}`,
-                      color: isCurr ? '#fff' : isFilled ? 'rgba(255,255,255,0.9)' : 'rgba(255,255,255,0.2)',
-                      boxShadow: isCurr ? '0 0 20px rgba(245,158,11,0.3)' : 'none',
-                    }}
-                    animate={isCurr ? { scale: [1, 1.08, 1] } : {}}
-                    whileHover={{ scale: 1.05 }}
-                    transition={{ duration: 0.3 }}
-                  >{val !== null && val !== undefined ? String(val) : '∞'}</motion.div>
-                  <span className="font-mono text-[10px] font-bold text-white/25 tracking-widest mt-1">[{idx}]</span>
-                </motion.div>
-              );
-            })}
-          </AnimatePresence>
-        </div>
-      </div>
+          </div>
+          <div className="flex gap-3 flex-wrap">
+            {inputArr.map((val, idx) => (
+              <div key={idx} className="flex flex-col items-center gap-1" style={{ opacity: robbedPath.has(idx) ? 1 : 0.3 }}>
+                <div className="w-12 h-12 flex items-center justify-center font-mono font-black text-base"
+                  style={{
+                    background: robbedPath.has(idx) ? 'rgba(245,158,11,0.2)' : 'rgba(255,255,255,0.02)',
+                    border: `2px solid ${robbedPath.has(idx) ? '#f59e0b' : 'rgba(255,255,255,0.1)'}`,
+                    color: robbedPath.has(idx) ? '#fff' : 'rgba(255,255,255,0.3)',
+                    boxShadow: robbedPath.has(idx) ? '0 0 16px rgba(245,158,11,0.25)' : 'none',
+                  }}>
+                  {val}
+                </div>
+                <span className="font-mono text-[9px] font-bold tracking-widest"
+                  style={{ color: robbedPath.has(idx) ? '#f59e0b' : 'rgba(255,255,255,0.2)' }}>
+                  {robbedPath.has(idx) ? '✓ ROB' : '✗ SKIP'}
+                </span>
+              </div>
+            ))}
+          </div>
+        </motion.div>
+      )}
+
     </div>
   );
 };

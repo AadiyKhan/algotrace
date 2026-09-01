@@ -8,149 +8,64 @@
   ],
   "description": "Calculate the maximum amount of money that can be robbed without hitting adjacent houses.",
   "target": 4,
-  "pseudocode": "1. Initialize prev2 = 0, prev1 = 0\n2. For each num in nums:\n3. current = max(prev1, prev2 + num)\n4. prev2 = prev1\n5. prev1 = current\n6. Return prev1",
+  "pseudocode": "1. dp = array of size n, all zeros\n2. dp[0] = nums[0]\n3. dp[1] = max(nums[0], nums[1])\n4. for i from 2 to n-1:\n5.   dp[i] = max(dp[i-1], dp[i-2] + nums[i])\n6. return dp[n-1]",
   "steps": [
     {
       "codeLine": 1,
-      "note": "Initialize variables prev2 (i-2) and prev1 (i-1) to 0.",
-      "array": [
-        1,
-        2,
-        3,
-        1
-      ],
-      "i": 0
+      "note": "Initialize DP array of size 4 (one entry per house), all zeros.",
+      "array": [1, 2, 3, 1],
+      "dp": [0, 0, 0, 0],
+      "i": null
     },
     {
       "codeLine": 2,
-      "note": "Processing first house (val=1).",
-      "array": [
-        1,
-        2,
-        3,
-        1
-      ],
+      "note": "Base case: dp[0] = nums[0] = 1. The only option for house 0 is to rob it.",
+      "array": [1, 2, 3, 1],
+      "dp": [1, 0, 0, 0],
       "i": 0
     },
     {
       "codeLine": 3,
-      "note": "current = max(0, 0 + 1) = 1.",
-      "array": [
-        1,
-        2,
-        3,
-        1
-      ],
-      "i": 0
-    },
-    {
-      "codeLine": 5,
-      "note": "Update prev1 to 1, prev2 to 0.",
-      "array": [
-        1,
-        2,
-        3,
-        1
-      ],
-      "i": 0
-    },
-    {
-      "codeLine": 2,
-      "note": "Processing second house (val=2).",
-      "array": [
-        1,
-        2,
-        3,
-        1
-      ],
+      "note": "Base case: dp[1] = max(nums[0], nums[1]) = max(1, 2) = 2. Best from first two houses.",
+      "array": [1, 2, 3, 1],
+      "dp": [1, 2, 0, 0],
       "i": 1
     },
     {
-      "codeLine": 3,
-      "note": "current = max(1, 0 + 2) = 2.",
-      "array": [
-        1,
-        2,
-        3,
-        1
-      ],
-      "i": 1
-    },
-    {
-      "codeLine": 5,
-      "note": "Update prev1 to 2, prev2 to 1.",
-      "array": [
-        1,
-        2,
-        3,
-        1
-      ],
-      "i": 1
-    },
-    {
-      "codeLine": 2,
-      "note": "Processing third house (val=3).",
-      "array": [
-        1,
-        2,
-        3,
-        1
-      ],
-      "i": 2
-    },
-    {
-      "codeLine": 3,
-      "note": "current = max(2, 1 + 3) = 4.",
-      "array": [
-        1,
-        2,
-        3,
-        1
-      ],
+      "codeLine": 4,
+      "note": "Start loop at i=2.",
+      "array": [1, 2, 3, 1],
+      "dp": [1, 2, 0, 0],
       "i": 2
     },
     {
       "codeLine": 5,
-      "note": "Update prev1 to 4, prev2 to 2.",
-      "array": [
-        1,
-        2,
-        3,
-        1
-      ],
+      "note": "i=2: dp[2] = max(dp[1], dp[0] + nums[2]) = max(2, 1 + 3) = 4. Rob houses 0 and 2!",
+      "array": [1, 2, 3, 1],
+      "dp": [1, 2, 4, 0],
       "i": 2
     },
     {
-      "codeLine": 2,
-      "note": "Processing fourth house (val=1).",
-      "array": [
-        1,
-        2,
-        3,
-        1
-      ],
+      "codeLine": 4,
+      "note": "Loop continues at i=3.",
+      "array": [1, 2, 3, 1],
+      "dp": [1, 2, 4, 0],
       "i": 3
     },
     {
-      "codeLine": 3,
-      "note": "current = max(4, 2 + 1) = 4.",
-      "array": [
-        1,
-        2,
-        3,
-        1
-      ],
+      "codeLine": 5,
+      "note": "i=3: dp[3] = max(dp[2], dp[1] + nums[3]) = max(4, 2 + 1) = 4. Best is still 4.",
+      "array": [1, 2, 3, 1],
+      "dp": [1, 2, 4, 4],
       "i": 3
     },
     {
       "codeLine": 6,
-      "note": "Return final max 4.",
-      "array": [
-        1,
-        2,
-        3,
-        1
-      ]
+      "note": "Return dp[3] = 4. Maximum amount robbed without alerting police.",
+      "array": [1, 2, 3, 1],
+      "dp": [1, 2, 4, 4],
+      "i": null,
+      "result": 4
     }
   ],
   "fullDescription": "<p>You are a professional robber planning to rob houses along a street. Each house has a certain amount of money stashed, the only constraint stopping you from robbing each of them is that adjacent houses have security systems connected and <b>it will automatically contact the police if two adjacent houses were broken into on the same night</b>.</p>\n\n<p>Given an integer array <code>nums</code> representing the amount of money of each house, return <em>the maximum amount of money you can rob tonight <b>without alerting the police</b></em>.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<pre>\n<strong>Input:</strong> nums = [1,2,3,1]\n<strong>Output:</strong> 4\n<strong>Explanation:</strong> Rob house 1 (money = 1) and then rob house 3 (money = 3).\nTotal amount you can rob = 1 + 3 = 4.\n</pre>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<pre>\n<strong>Input:</strong> nums = [2,7,9,3,1]\n<strong>Output:</strong> 12\n<strong>Explanation:</strong> Rob house 1 (money = 2), rob house 3 (money = 9) and rob house 5 (money = 1).\nTotal amount you can rob = 2 + 9 + 1 = 12.\n</pre>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= nums.length &lt;= 100</code></li>\n\t<li><code>0 &lt;= nums[i] &lt;= 400</code></li>\n</ul>\n"
